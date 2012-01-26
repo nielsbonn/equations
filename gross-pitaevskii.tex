@@ -1,0 +1,356 @@
+\documentclass[11pt,a4paper,twoside,headsepline]{scrartcl}
+\usepackage[utf8x]{inputenc}
+\usepackage{showkeys}
+\usepackage[24h]{scrtime}
+\usepackage{amsmath, amsthm, amssymb}
+
+\usepackage{scrpage2}
+\ihead{Gross-Pitaevskii Equation}
+\chead{Page: \thepage}
+\ohead{Version: \today, \thistime}
+\pagestyle{scrheadings}
+
+%%%%%%%%%%%%%%% Theorems etc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{exm}[thm]{Example}
+
+\newtheorem*{rem}{Remark}
+\newtheorem*{hyp}{Hypothesis}
+
+%%%%%%%%%%%%%% Notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\di}{\textrm{d}}		% differential (for integrals)
+\newcommand{\Lcal}{\mathcal{L}}		% calligraphic L
+\newcommand{\Ncal}{\mathcal{N}}		% calligraphic N
+\newcommand{\Kcal}{\mathcal{K}}		% calligraphic N
+\newcommand{\Vcal}{\mathcal{V}}		% calligraphic V
+\newcommand{\Hcal}{\mathcal{H}}		% calligraphic H
+\newcommand{\Ocal}{\mathcal{O}}		% big-O, order-of
+\newcommand{\hc}{\mbox{h.c.}}		%hermitian conjugate
+\newcommand{\scal}[2]{\left<#1,#2\right>} % scalaer product
+\newcommand{\cc}[1]{\overline{#1}}	% complex conjugate
+\newcommand{\Rbb}{\mathbb{R}}		% real numbers
+\newcommand{\Cbb}{\mathbb{C}}		% complex numbers
+\newcommand{\Nbb}{\mathbb{N}}		% natural numbers
+\renewcommand{\Re}{\operatorname{Re}} 	%RealPart
+\renewcommand{\Im}{\operatorname{Im}} 	%ImaginaryPart
+\newcommand{\norm}[1]{\lVert#1\rVert}	%Norm
+\newcommand{\ev}[1]{\left<#1\right>}	%expectation value
+\newcommand{\ph}{\varphi_t^{(N)}}	% solution of N-dependent Hartree equation
+\newcommand{\phdot}{\dot{\varphi}_t^{(N)}}	% time derivative of solution of N-dependent Hartree equation
+\newcommand{\sqn}{\sqrt{N}}		% square root of N
+\newcommand{\project}[1]{\lvert #1 \big>\big< #1\rvert}	% orthogonal projection operator
+\newcommand{\Tr}{\operatorname{Tr}}	% Trace
+
+
+\newcommand{\be}[1]{\begin{equation}\label{eq:#1}}	%begin equation with label
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bd}{\begin{displaymath}}			% abbreviation begin displaymath
+\newcommand{\ed}{\end{displaymath}}
+
+\newcommand{\tagg}[1]{ \stepcounter{equation} \tag{\theequation} \label{eq:#1} } % add tag and label in align*-environments
+
+\newcommand{\eqr}[1]{\eqref{eq:#1}}			%eqref with prefix :eq
+
+%%%%%%%%%%%%%%% main content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\allowdisplaybreaks
+
+\begin{document}
+Remark: In some places e.\,g.\ lemma \ref{lem:kvbounds}, we should work backwards, from the proofs of the theorems to the proof of the lemmata, so that we know how exactly to formulate the lemmata.
+
+\section{Notation}
+Hamiltonian etc.
+\bd
+\Kcal := \int \di x\, \nabla_x a^*_x \nabla_x a_x,
+\quad
+\Vcal_N := \frac{1}{2}\int\di x \di y\, V_N(x-y) a^*_x a^*_y a_y a_x
+\ed
+\bd
+V_N(x) := N^2V(Nx), \quad \Hcal := \Kcal + \Vcal_N, \quad \Ncal := \int \di x\, a^*_x a_x
+\ed
+Second quantization
+\bd
+a^*(f) := \int \di x\, f(x) a^*_x, \quad a(f) := \int \di x\, \cc{f(x)} a_x
+\ed
+\bd
+A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
+\ed
+Bogoliubov transformation
+\bd
+k(x,y) = k_t(x,y) := -N w_N(x-y) \ph(x) \ph(y) = k(y,x)
+\ed
+\bd
+B(k_t) = \frac{1}{2}\int \di x \di y\, \left( \cc{k(x,y)} a_x a_y - k(x,y) a^*_x a^*_y\right) (!), \quad T_t := e^{-B(k_t)}
+\ed
+\bd
+s(x,y) := k(x,y) + \frac{1}{3!}(k \cc k k)(x,y) + \dots = \sum_{n=0}^\infty \frac{(k \cc k)^n k}{(2n+1)!}(x,y) =: k(x,y) + r(x,y)
+\ed
+\bd
+c(x,y) := \delta(x-y) + \frac{1}{2!}(k \cc k)(x,y) + \dots = \sum_{n=0}^\infty \frac{(k \cc k)^n}{(2n)!}(x,y) =: \delta(x-y) + p(x,y)
+\ed
+the power series of $\sinh$ and $\cosh$, where the product is convolution of integral kernels, i.\,e. $(k \cc k)(x,y) = \int \di z\, k(x,z) \cc{k(z,y)}$.
+\bd
+a^\ast(q_y) := \int \di z\, q(z,y) a^*_z = a^*(q(\cdot,y)) , \quad a(q_y) := \int \di z\, \cc{q(z,y)} a^*_z = a(q(\cdot,y))
+\ed
+Zero-energy scattering equation
+\be{scatteringequation}
+\left(-\Delta + \frac{1}{2}V_N \right)(1-w_N) = 0
+\ee
+\bd
+w_N(x) = w(Nx), \quad f_N(x) = 1-w_N(x) = f(Nx)
+\ed
+\bd
+U_N(t) := T^*_t W^*_t e^{- i t \Hcal_N} W_0 T_0,\quad W_t := W(\sqn \ph)
+\ed
+
+\begin{lem}[Properties of the scattering equation \cite{ESY2006}]
+ \bd
+\lvert N w_N(x)\rvert \leq \frac{\max\{a_0,R\}}{\lvert x\rvert}\quad \forall x \in \Rbb^3
+\ed
+\bd
+0 < C_0 \leq w_N(x) \leq 1\quad \forall x \in \Rbb^3, \quad C_0 = C_0(V) \mbox{ uniform in } N
+\ed
+\bd
+\lvert \nabla w_N(x) \rvert \leq \frac{c a_0}{N \lvert x\rvert^2}\quad \forall x \in \Rbb^3, \quad c \mbox { is universal constant}
+\ed
+\end{lem}
+
+\begin{lem}[Bogoliubov transformation \cite{GMM2010}]
+\label{lem:bogoliubovtransformation}
+ \bd
+ T_t^* a^*_x T_t = \int \left( \cc{s(y,x)} a_y + c(y,x) a^*_y \right) \di y = a^*(c_x) + a(s_x).
+ \ed
+\bd
+ T_t^* a_x T_t = a(c_x) + a^*(s_x).
+\ed
+\end{lem}
+
+\begin{lem}[Formula in Fock space \cite{RS2009}]
+ \bd
+\left(\partial_t e^{C(t)} \right) e^{-C(t)} = \dot C(t) + \frac{1}{2!}[C(t),\dot C(t)]+ \frac{1}{3!}[C(t),[C(t),\dot C(t)]] + \dots
+ \ed
+%\bd
+%e^{C(t)} H e^{-C(t)} = H + [C(t),H] + \frac{1}{2!}[C(t),[C(t),H]] + \dots
+%\ed
+\bd
+ W^*(f) a_x W(f) = a_x + f(x), \quad W^*(f)a^*_x W(f) = a^*_x + \cc{f(x)}
+\ed
+\bd
+[a_x,a^*_y] = \delta(x-y), \quad [a(f),a^*(g)] = \scal{f}{g}
+\ed
+\end{lem}
+
+\section{The generator}
+The generator $\Lcal_N(t)$ is defined by
+\bd
+\Lcal_N(t) U_N(t) = i \partial_t U_N(t).
+\ed
+We calculate that
+\begin{align*}
+\Lcal_N(t) 	& = (i \partial_t T^*_t) T_t + T^*_t \left( (i \partial_t W^*_t) W_t + W^*_t \Hcal_N W_t \right) T_t \\
+		& =: (i \partial_t T^*_t) T_t + T^*_t \Lcal^{(0)}_N(t) T_t
+\end{align*}
+where
+\begin{align*}
+& \Lcal^{(0)}_N(t) = \Kcal + \Vcal_N \\
+		& + N^{1/2} \left(  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right) + \hc  \right) \\
+		& + N^0	    \left(  \frac{1}{2}\int \di x \di y\, NV_N(x-y)\left( \cc{\ph(x)} \cc{\ph(y)} a_y a_x + \hc \right) \right) \\
+		& + N^0	    \left(  \int \di x \di y\, NV_N(x-y)\left( \lvert \ph(x) \rvert^2 a^*_y a_y + \cc{\ph(x)} \ph(y) a^*_y a_x \right) \right) \\
+		& + N^{-1/2}\left(  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right) \\
+		& + N b(N,t),
+\end{align*}
+with a phase (which, like all phases, will be dropped from now on without any further comment)
+\bd
+b(N,t) = \norm{\nabla \ph}_{L^2}^2 - \Im \scal{\ph}{\phdot} + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y) \rvert^2.
+\ed
+Here we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation
+\bd
+i\partial_t \ph = -\Delta \ph + \left(f_N N V_N \ast \lvert \ph \rvert^2 \right) \ph.
+\ed
+Compare \cite{RS2009}, but notice that due to the factor $f_N$ in the Hartree equation, in our case the cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ and ensures further cancelation with the cubic terms. This cancelation is revealed through the Bogoliubov transformation, to be calculated now.
+
+We now identify cancellations between linear terms stemming from the transformation of linear terms and linear terms stemming from normal-ordering transformed cubic operators:
+\begin{align*}
+& T^*_t \Lcal^{(0)}_N(t) T_t = \int \di x\, T^*_t a^*_x T_t \bigg[   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
+& + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
+& + N^{1/2} \ph(x) \int \di y\, w_N N V_N(x-y) \lvert \ph(y) \rvert^2 \tagg{linearterm} \\
+& + \frac{1}{2} \int \di y\, NV_N(x-y)  \ph(x) \ph(y)  T^*_t a^*_y T_t \\
+& + \frac{1}{2} \int \di y\, NV_N(x-y) \left(  \lvert \ph(y)\rvert^2 T^*_t a_x T_t + \ph(x) \cc{\ph(y)} T^*_t a_y T_t  \right) \\
+& + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} T^*_t a_x a_y T_t  \bigg]\tagg{cubicterm} \\
+& + \hc
+\end{align*}
+Between the term \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and plugging in $c = \delta + p$ and $s = k + r$, we find that the linear term is completely cancelled. Terms generated by normal ordering which are pure numbers are dropped then, and we find:
+\begin{align*}
+& T^*_t \Lcal^{(0)}_N(t) T_t = \int \di x\, T^*_t a^*_x T_t \bigg[   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
+& + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
+& + \frac{1}{2} \int \di y\, NV_N(x-y)  \ph(x) \ph(y)  T^*_t a^*_y T_t \\
+& + \frac{1}{2} \int \di y\, NV_N(x-y) \left(  \lvert \ph(y)\rvert^2 T^*_t a_x T_t + \ph(x) \cc{\ph(y)} T^*_t a_y T_t  \right) \\
+& + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} \times \\
+& \qquad\qquad  \times \bigg(  a^*(s_x) a^*(s_y) + a^*(s_x) a(c_y)  + a^*(s_y) a(c_x) + a(c_x) a(c_y)  \bigg)  \bigg] \\
+& + \hc
+\end{align*}
+Now we apply Lemma \ref{lem:bogoliubovtransformation} everywhere and expand all the terms, normal order all terms, and observe that many terms appear twice (maybe in the hermitian conjugate or with $x$ and $y$ interchanged):
+\begin{align*}
+& T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
+& \frac{1}{2} \int \di x\, \left[ a^*(c_x) a(-\Delta_x c_x) + \boxed{2 a^*(c_x) a^*(-\Delta_x s_x)} + a^*(-\Delta_x s_x) a(s_x) \right] \tagg{cancellation_kinetic} \\
+& + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
+& \times \Big[   \frac{1}{2N}\bigg( a^*(c_x) a^*(c_y) a(c_y) a(c_x) + 4 a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) \\
+				      & \qquad\qquad + 2 a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x) + 2 a^*(c_x) a^*(s_x) a(s_y) a(c_y) \\
+				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \\
+				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \\
+& + \frac{1}{N}\bigg(   \boxed{a^*(c_x)a^*(c_y) \scal{c_y}{s_x}} + a^*(c_x) a(c_y) \scal{s_y}{s_x} \tagg{cancellation_normalorder} \\
+			& \qquad\qquad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} \\
+			& \qquad\qquad + 2 a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \\
+			& \qquad\qquad + a^*(c_y) a(s_x) \scal{c_y}{s_x} +  a^*(s_y) a(s_y) \scal{s_x}{s_x}\\
+			& \qquad\qquad + a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + a^*(s_y) a(s_x) \scal{s_y}{s_x}   \bigg) \\
+& + \ph(x)\ph(y) \Big( \boxed{a^*(c_x) a^*(c_y)} + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big) \tagg{cancellation_standard} \\
+& + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \\
+& + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) \\
+					    & \qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y) \\
+					    & \qquad\qquad + a^*(s_x) a^*(s_y) a(s_x) + a^*(s_x) a(s_x) a(c_y) \\
+					    & \qquad\qquad + a^*(s_y) a(s_x) a(c_x) + a(s_x) a(c_x) a(c_y)    \bigg) \\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x} \\
+					    & \qquad\qquad + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y}   \bigg)    \Big] + \hc
+\end{align*}
+We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice, that the lhs of the zero-enegry scattering equation \eqr{scatteringequation} appears. There are however 6 remainder terms left (see final result for the generator below).
+
+Then the final result for the generator is:
+\begin{align*}
+& T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
+& \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \\
+& \qquad\qquad \qquad\qquad						+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big) \\
+& \qquad\qquad 			+ a^*(c_x) a(-\Delta_x c_x) + a^*(-\Delta_x s_x) a(s_x) \bigg] \\
+& + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
+& \times \Big[   \frac{1}{2N}\bigg( a^*(c_x) a^*(c_y) a(c_y) a(c_x) + 4 a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) \\
+				      & \qquad\qquad + 2 a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x) + 2 a^*(c_x) a^*(s_x) a(s_y) a(c_y) \\
+				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \\
+				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \\
+& + \frac{1}{N}\bigg(   a^*(c_x) a^*_y \Big( r(y,x) + \scal{p_y}{s_x} \Big) + a^*(c_x) a^*(p_y) \Big( k(y,x) + r(y,x) + \scal{p_y}{s_x} \Big) \\
+      & \qquad\qquad + a^*(c_x) a(c_y) \scal{s_y}{s_x} + a^*(s_y) a(s_y) \scal{s_x}{s_x} + a^*(s_y) a(s_x) \scal{s_y}{s_x}\\
+      & \qquad\qquad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} + a^*(s_y) a^*(s_x) \scal{s_x}{c_y}\\
+      & \qquad\qquad + 2a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} + a^*(c_y) a(s_x) \scal{c_y}{s_x}    \bigg) \\
+& + \ph(x)\ph(y) \Big( a^*(c_x) a^*(p_y) + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big) \\
+& + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \\
+& + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) \\
+					    & \qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y) + a^*(s_y) a(s_x) a(c_x)\\
+					    & \qquad\qquad + a^*(s_x) a^*(s_y) a(s_x) + a^*(s_x) a(s_x) a(c_y) + a(s_x) a(c_x) a(c_y)  \bigg) \\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x} \\
+					    & \qquad\qquad + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y}   \bigg)    \Big] + \hc
+\end{align*}
+The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$ and $\Ncal \Kcal$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
+
+\section{A-priori estimates}
+\begin{lem}
+ \bd
+  \norm{k} \leq C, \quad \norm{\nabla k} \leq \sqrt{N}
+ \ed
+ \bd
+  \lvert p(x,y) \rvert \leq C \lvert \ph(x) \rvert\cdot \lvert \ph(y) \rvert, \quad \norm{p} \leq C, \quad \norm{\nabla p} \leq C
+ \ed
+\end{lem}
+
+\begin{lem}
+\bd
+\Ncal \leq C T^*_t (\Ncal + 1) T_t, \quad \Ncal^2 \leq C T^*_t (\Ncal + 1)^2 T_t, \quad T^*_t (\Ncal + 1) T_t \leq \Ncal
+\ed
+\end{lem}
+
+
+\begin{lem}
+\label{lem:nsquaredbound}
+ \bd
+ \frac{1}{N}\ev{\Ncal^2} \leq C \ev{\Ncal}, \quad \frac{1}{N}\ev{\Ncal \Kcal} \leq \ev{\Kcal}
+ \ed
+\end{lem}
+
+\begin{lem}
+ \bd
+  \ev{(\partial_t T^*_t)T_t} \leq C \ev{\Ncal}
+ \ed
+\end{lem}
+
+
+\section{Estimating the number of fluctuations}
+\begin{lem}
+\label{lem:kvbounds}
+ \bd
+\ev{\Kcal} \leq  C \ev{\Lcal}
+\ed
+and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic in annihilation and creation operators, we also need bounds by $\Lcal$.
+\end{lem}
+
+\begin{lem}
+\label{lem:ldotbounds}
+ \bd
+  \frac{\di}{\di t} \ev{\Lcal} = \ev{\dot \Lcal} \leq C \ev{\Lcal + \Ncal}
+ \ed
+\end{lem}
+
+\begin{lem}
+\label{lem:lncommutatorbound}
+ \bd
+  \ev{[\Lcal,\Ncal]} \leq C \left( \ev{N} + \frac{1}{N}\ev{\Ncal^2} + \frac{1}{N} \ev{\Ncal \Kcal} \right)
+ \ed
+\end{lem}
+\begin{proof}
+We have
+\begin{align*}
+& [T^*_t \Lcal_N^{(0)}(t) T_t,\Ncal] = \\ 
+& \int \di x\, \bigg[ a(c_x) \int \di y\, a_y \Big( N \nabla w_N(x-y) \cc{\nabla_x \ph(x)} 2 \cc{\ph(y)} \\
+& \qquad\qquad \qquad\qquad						+ Nw_N(x-y) \cc{\Delta_x \ph(x) \ph(y)} - \cc{\Delta_x r(y,x)} \Big) \bigg]\\
+& + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
+& \times \Big[   \frac{4}{N}\bigg( a^*(c_y)a(s_x)a(c_y)a(c_x) + a(s_x)a(s_y)a(c_y)a(c_x) + a^*(s_y)a(s_x)a(s_y)a(c_x) \bigg) \\
+& + \frac{2}{N}\bigg(  a(c_x) a_y \Big( \cc{r(y,x)} + \scal{s_x}{p_y} \Big) + a(c_x) a(p_y) \Big( \cc{k(y,x)} + \cc{r(y,x)} + \scal{s_x}{p_y} \Big) \\
+			& \qquad\qquad + 2 a(c_x) a(s_x) \scal{s_y}{s_y} + 2 a(c_x)a(s_y) \scal{s_x}{s_y} + a(s_y) a(s_x) \scal{c_y}{s_x} \bigg)\\
+& + \ph(x)\ph(y) 2\Big(  a(c_x) a(p_y) + a(s_x) a(s_y) \Big) \\
+& + \ph(x) \cc{\ph(y)} 4 a(c_x) a(s_y) \qquad \qquad + \lvert \ph(y) \rvert^2 4 a(c_x) a(s_x) \\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(   3 a(s_y)a(s_x)a(c_x) + a^*(c_y)a(s_x)a(c_x) \\
+					    & \qquad\qquad + a^*(c_x)a(s_y)a(c_x) + a^*(c_x) a(c_x) a(c_y) + a^*(s_y) a(s_x) a(c_x)\\
+					    & \qquad\qquad + a^*(s_x)a(s_y)a(s_x) + a^*(s_x) a(s_x) a(c_y) + 3 a(s_x) a(c_x) a(c_y) \bigg) \\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a(s_x) \scal{s_y}{s_x} + a(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y}   \bigg)    \Big] - \hc
+\end{align*}
+\end{proof}
+
+
+\begin{prp}
+ $N$-independent bound on $\ev{\Ncal}$ by employing all the above and Gronwall.
+\end{prp}
+\begin{proof}
+ By lemma \ref{lem:lncommutatorbound}, lemma \ref{lem:nsquaredbound} and lemma \ref{lem:kvbounds}, $\ev{[\Lcal,\Ncal]}$ is bounded by $\ev{\Lcal+\Ncal}$. So by lemma \ref{lem:ldotbounds}, the sum $\Lcal+C \Ncal$ is bounded above, and for $C$ large enough, it is positive, so we get a bound for $\Ncal$.
+\end{proof}
+
+
+\section{Main result}
+\begin{thm}
+ Convergence of reduced density matrix for Bogoliubov state.
+\end{thm}
+
+\begin{thm}
+ Convergence of reduced density matrix for factorized initial state.
+\end{thm}
+
+
+\section{Uniform regularity for the Hartree equation}
+\begin{lem}[Uniform $H^2$-regularity]
+ XYZ
+\end{lem}
+\begin{lem}[Convergence of $\ph$ to $\varphi_t$ in $L^2$]
+ XZY
+\end{lem}
+
+\begin{lem}
+ Convergence of $\Tr \lvert \project{\ph} - \project{\varphi_t} \rvert$.
+\end{lem}
+
+
+\bibliography{gross-pitaevskii}
+\bibliographystyle{plain}
+
+\end{document}
+
+
