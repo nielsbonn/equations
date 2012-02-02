@@ -34,14 +34,16 @@
 \begin{itemize}
   \item Section ``Operator T'' almost finished. Need to finish proof of Prop.
     \ref{p:psr}(v)(vi). Perhaps we deal with that in a coffee break\dots
-  \item In the Section ``Propositions'', just did $T^ \N T$ and $T^* \N T$,
-    but still have to make the notation $a(f_x)$ compatible with the main {\tt g-p.tex}
+  \item In the Section ``Propositions'', just did $T^* \N T$ and $T^* \N T$,
+    but still have to make the notation $a(f_x)$ compatible with the main {\tt
+    g-p.tex}
 \end{itemize}
+
 
 \section{Zero-energy scattering equation}
 
 
-Consider $V \in C_c^\infty(\R^3)$ and let $f$ be the solution of the
+Consider $V \in C_c^\infty(\R^3)$, and let $f$ be the solution of the
 zero-energy scattering equation
 \begin{displaymath}
   \left( -\Delta + \frac{1}{2} V \right) f = 0
@@ -79,11 +81,11 @@ a_N/|x|$ for $|x| \ge R/N$.
   Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
   spherical symmetric with scattering length $a_0$. Let
   \begin{displaymath}
-    \rho = \sup_{r \ge 0} r^2 V(r) + \int_0^\infty dr \, r V(r).
+    \rho = \sup_{r \ge 0} r^2 V(r) + \int_0^\infty dr \, r V(r),
   \end{displaymath}
-  Consider the solution $f_N = 1-w_N$ of the zero-energy scattering equation
-  with potential $V_N$. Then, the following hold with constants uniform in
-  $N$.
+  and consider the solution $f_N = 1-w_N$ of the zero-energy scattering
+  equation with potential $V_N$. Then, the following hold with constants
+  uniform in $N$.
 
   (i) There exists a constant $C_0 > 0$, which depends on the unscaled
   potential $V$, such that
@@ -161,7 +163,7 @@ f(x,z) g(z,y)$.
   \begin{equation}
     \begin{alignedat}{2}
       \| p \|_{L^2} & \le C_1, \qquad & \| \nabla_1 p \|_{L^2} & \le C_1, \\
-      \| r \|_{L^2} & \le C_1, \qquad & \| \nabla_1 r \|_{L^2} & \le C_1
+      \| r \|_{L^2} & \le C_1, \qquad & \| \nabla_1 r \|_{L^2} & \le C_1,
     \end{alignedat}
     \tag{v}
   \end{equation}
@@ -170,7 +172,7 @@ f(x,z) g(z,y)$.
     \| s \|_{L^2} \le C_1, \qquad \| \nabla_1 s \|_{L^2} \apprle \| \varphi
     \|_{H^2}^2 \sqrt{N}, \tag{vi}
   \end{equation}
-  where $C_1 = e^{C \| \varphi \|_{H^1}^4}$.
+  with $C_1 = e^{C \| \varphi \|_{H^1}^6}$.
 \end{prop}
 
 
@@ -197,7 +199,7 @@ f(x,z) g(z,y)$.
   \end{displaymath}
 
 
-  (ii) By the Leibniz rule, and triangle inequality, there are two terms to be
+  (ii) By the Leibniz rule and triangle inequality, there are two terms to be
   estimated:
   \begin{displaymath}
     \| \nabla_1 k \|_{L^2} \le \| N w_N(x-y) \nabla \varphi(x) \varphi(y)
@@ -225,9 +227,8 @@ f(x,z) g(z,y)$.
     & \apprle N \| \varphi \|_{L^2}^2 ( \| \nabla \varphi \|_{L^2}^2 + \|
     \Delta \varphi \|_{L^2}^2) \apprle N \| \varphi \|_{H^2}^4.
   \end{align*}
-  Now, using the zero-energy scattering equation, Young's inequality, Lemma
-  \ref{l:w}(i), and Sobolev's inequality,
-  \begin{align*}
+  Now, using the zero-energy scattering equation, and by `Young's inequality,
+  Lemma \ref{l:w}(i), and Sobolev's inequality, \begin{align*}
     & - \int dx \, |\varphi(x)|^2 \int dy \, N^2 w_N(x-y) \Delta w_N(x-y)
     |\varphi(y)|^2 \\
     & = - N \int dx \, |\varphi(x)|^2 \int dy \, \big( w_N N (1-w_N) V_N
@@ -248,7 +249,7 @@ f(x,z) g(z,y)$.
   \end{displaymath}
 
 
-  (iii) The proof is by induction in $n \ge 1$. We first prove the estimate
+  (iii) The proof is by induction on $n \ge 1$. We first prove the estimate
   for $n=1$. We begin observing that, by H\"older's inequality and \eqref{w},
   \begin{equation}
     \begin{aligned}
@@ -279,13 +280,13 @@ f(x,z) g(z,y)$.
     \right)^{1/2} \left( \int dy \, | (k\overline{k})^n(z_2,y)|^2
     \right)^{1/2} \\
     & \le \| k \overline{k} \|_{L^2}^2 \| (k \overline{k})^n \|_{L_2}^2 \le
-    C^{2(n+1)} \| \varphi \|_{H^1}^{8(n+1)},
+    C^{2(n+1)} \| \varphi \|_{H^1}^{8(n+1)}.
   \end{align*}
-  which completes the induction step and proves the desired estimate.
+  This completes the induction step and proves the desired estimate.
 
 
-  (iv) We first prove the estimate for $n=1$. By the Leibniz rule, and
-  triangle inequality,
+  (iv) We first prove the estimate for $n=1$. By the Leibniz rule and triangle
+  inequality,
   \begin{displaymath}
     \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2},
   \end{displaymath}
@@ -318,8 +319,10 @@ f(x,z) g(z,y)$.
     \overline{k})^{n-1} \|_{L^2} \le \| \nabla_1 k \overline{k} \|_{L^2} \| (k
     \overline{k})^{n-1} \|_{L_2} \le C^{2n} \| \varphi \|_{H_1}^{8n}.
   \end{displaymath}
+  This is the desired inequality.
 
 
+  \marginpar{Unfinished}
   (v) By H\"older's inequality (as in the proof of (iii)) and then by (i) and
   (iii) we have that
   \begin{displaymath}
@@ -338,7 +341,7 @@ f(x,z) g(z,y)$.
 \section{Propositions}
 
 
-Let $f(x,y)$ be a function of two variables. To simplify the notation write
+Let $f(x,y)$ be a function of two variables. To simplify the notation we write
 \begin{displaymath}
   f_x(y) = f(x,y).
 \end{displaymath}
@@ -355,10 +358,10 @@ all $\psi \in \mathcal{F}$.
   Let $p, s \in L^2(\R^3 \times \R^3)$. Then,
   \label{p:TNT}
   \begin{align}
-    T^* \N T & \le C (\N+1), \label{TNT} \tag{i} \\
-    T^* \N^2 T & \le C^2 (\N+1)^2, \label{TN2T} \tag{ii}
+    T^* \N T & \apprle C (\N+1), \label{TNT} \tag{i} \\
+    T^* \N^2 T & \apprle C^2 (\N+1)^2, \label{TN2T} \tag{ii}
   \end{align}
-  where $C = 5(1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2)$.
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 \end{prop}
 
 
@@ -390,7 +393,7 @@ all $\psi \in \mathcal{F}$.
     & = \int dx \, \langle \psi, (a_x^* + a^*(p_x) + a(s_x)) T^* \N T (a_x +
     a(p_x) + a^*(s_x)) \psi \rangle + \langle \psi, T^* \N T \psi \rangle.
   \end{align*}
-  Then, by part (i), Cauchy-Schwarz inequality, using that $a_x \N^{1/2} =
+  Then, by part (i) and Cauchy-Schwarz inequality, using that $a_x \N^{1/2} =
   (\N+1)^{1/2} a_x$, and by Lemma R-S 2.1,
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
