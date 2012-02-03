@@ -54,10 +54,10 @@ order=-1
 
 [item:gross-pitaevskii.tex]
 archive=true
-column=41
+column=34
 encoding=UTF-8
 highlight=LaTeX
-line=228
+line=253
 mode=LaTeX
 open=true
 order=0
@@ -67,5 +67,5 @@ CursorColumn=17
 CursorLine=39
 
 [view-settings,view=0,item:gross-pitaevskii.tex]
-CursorColumn=41
-CursorLine=228
+CursorColumn=34
+CursorLine=253
