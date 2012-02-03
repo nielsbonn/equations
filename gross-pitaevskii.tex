@@ -78,6 +78,13 @@ a^*(f) := \int \di x\, f(x) a^*_x, \quad a(f) := \int \di x\, \cc{f(x)} a_x
 \bd
 A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
 \ed
+Estimates
+\bd
+\norm{a(f)\psi} \leq \norm{f}_{L^2} \norm{\Ncal^{1/2}\psi}, \qquad \norm{a^*(f)\psi} \leq \norm{f}_{L^2} \norm{(\Ncal+1)^{1/2}\psi}
+\ed
+\bd
+\mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
+\ed
 Bogoliubov transformation
 \bd
 k(x,y) = k_t(x,y) := -N w_N(x-y) \ph(x) \ph(y) = k(y,x)
@@ -215,11 +222,11 @@ Now we apply Lemma \ref{lem:bogoliubovtransformation} everywhere and expand all 
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y} \\
 					    & \qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
 \end{align*}
-We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice, that the lhs of the zero-enegry scattering equation \eqr{scatteringequation} appears. There are however 6 remainder terms left (see final result for the generator below).
+We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scatteringequation} appears. There are however 6 remainder terms left (see final result for the generator below).
 
 Then the final result for the generator is:
-\begin{align*}
-& T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
+\begin{align}
+& T^*_t \Lcal_N^{(0)}(t) T_t = \nonumber \\ 
 & \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \\
 & \qquad\qquad \qquad\qquad						+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big) \\
 & \qquad\qquad 			+ a^*(c_x) a(-\Delta_x c_x) + a^*(-\Delta_x s_x) a(s_x) \bigg] \\
@@ -240,7 +247,7 @@ Then the final result for the generator is:
 					    & \qquad\qquad + a^*(s_x) a^*(s_y) a(s_x) + a^*(s_x) a(s_x) a(c_y) + a(s_x) a(c_x) a(c_y)  \bigg) \\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + 							a(c_x) \scal{s_x}{s_y} \\
 					    & \qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
-\end{align*}
+\end{align}
 The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$ and $\Ncal \Kcal$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
 
 \section{A-priori estimates}
