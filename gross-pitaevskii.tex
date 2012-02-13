@@ -100,7 +100,33 @@
 \section{Fock space representation}
 
 
-\marginpar{I think that is = instead of := in this case}
+We define the bosonic Fock space $\mathcal{F}$ over $L^2(\R^3)$ as the Hilbert
+space
+\[
+  \mathcal{F} = \bigoplus_{n \ge 0} L^2(\R^3)^{\otimes_s n} = \mathds{C}
+  \oplus \bigoplus_{n \ge 1} L^2_s(\R^{3n}),
+\]
+with the convention that $L^2(\R^3)^{\otimes_s 0} = \mathds{C}$. Here
+$L^2_s(\R^{3n})$ is the subspace of $L^2(\R^{3n})$ consisting of all functions
+that are symmetric with respect to arbitrary permutations of the $n$ variables
+in $\R^3$. Vectors in $\mathcal{F}$ are sequences $\psi = \{ \psi^{(n)} \}_{n
+\ge 0}$ of $n$-particle wave functions $\psi^{(n)} \in L^2_s(\R^{3n})$. The
+scalar product on $\mathcal{F}$ is defined as
+\begin{align*}
+  \langle \psi_1, \psi_2 \rangle & = \sum_{n \ge 0} \langle \psi_1^{(n)},
+  \psi_2^{(n)} \rangle_{L^2(\R^{3n})} \\
+  & = \overline{\psi_1^{(0)}} \psi_2^{(0)} + \sum_{n \ge 1} \int dx_1 \cdots
+  dx_n \overline{\psi_1^{(n)}}(x_1, \dots, x_n) \psi_2^{(n)}(x_1, \dots, x_n).
+\end{align*}
+An $N$ particle state with wave function $\psi_N$ is described on
+$\mathcal{F}$ by the sequence $\{ \psi^{(n)} \}_{n \ge 0}$ where $\psi^{(n)}
+= 0$ for all $n \neq N$ and $\psi^{(N)} = \psi_N$. The vector $\{ 1, 0, 0,
+\dots \} \in \mathcal{F}$ is called the vacuum, and will be denote by
+$\Omega$.
+
+
+We will also make use of operator valued distributions $a_x^*$ and $a_x$, with
+$x \in \R^3$, defined so that
 \begin{equation}
   \label{a}
   \begin{aligned}
@@ -108,6 +134,13 @@
       a(f) & = \int \di x\, \cc{f(x)} a_x.
   \end{aligned}
 \end{equation}
+
+
+Estimates
+\marginpar{Did you already use this?}
+\bd
+\mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
+\ed
 
 
 \begin{lem}
@@ -124,17 +157,6 @@
 \end{lem}
 
 
-Second quantization
-\bd
-A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
-\ed
-Estimates
-\marginpar{Did you already use this?}
-\bd
-\mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
-\ed
-
-
 Hamiltonian etc.
 \bd
 \Kcal := \int \di x\, \nabla_x a^*_x \nabla_x a_x,
@@ -143,6 +165,13 @@ Hamiltonian etc.
 \ed
 \bd
 V_N(x) := N^2V(Nx), \quad \Hcal := \Kcal + \Vcal_N, \quad \Ncal := \int \di x\, a^*_x a_x
+\ed
+
+
+For $f \in L^2(\R^3)$, we define the Weyl operator
+\bd
+%A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
+W(f) = \exp(a^*(f) - a(f)).
 \ed
 
 
@@ -214,13 +243,13 @@ a_N/|x|$ for $|x| \ge R/N$.
   them} (iii) There exist constants $C_1$ and $C_2$, depending only on $V$,
   such that
   \[
-    |\nabla w_N(x)| \le C_1 N \qquad \text{and} \qquad | \Delta w_N(x)| \le
+    |\nabla w_N(x)| \le C_1 N \qquad \text{and} \qquad | \nabla^2 w_N(x)| \le
     C_2 N^2 \qquad \text{for all } x \in \R^3.
   \]
   Moreover, there exists a universal constant $C$ such that
   \[
     |\nabla w_N(x)| \le \frac{C a_0}{N |x|^2}, \qquad |\nabla w_N(x)| \le
-    \frac{C \rho}{|x|}, \qquad |\Delta w_N(x)| \le \frac{C \rho}{N^2 |x|^2}
+    \frac{C \rho}{|x|}, \qquad |\nabla^2 w_N(x)| \le \frac{C \rho}{N^2 |x|^2}
   \]
   for all $x \in \R^3$.
 \end{lem}
