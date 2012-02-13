@@ -2,19 +2,16 @@
 
 * The files pdes.tex and n2k2.tex are here for the record. They will
   eventually be merged to the main file (g-p.tex at the moment).
+* Copied stuff to g-p.tex. Of course, there is still overlap and extra
+  material, but I think it was time to move to just one file.
 
-* Edited g-p.tex. Structured/moved things a little bit.
+## Suggestions
 
-## n2nk.tex
+* Set up a convention for labels (something like {l: {eq: {p: ).
+* Make shorter labels.
 
-Finished the estimate for `U_t^* N^2 U_t`.
+## Todo
 
-### Todo
-
-* Proof of one small item.
+* Proof of item (v) in a lemma.
 * Proof of easy formulae lemma.
 * Estimate for `U_t^* NK U_t`.
-
-## pdes.tex
-
-It seems okay. Ready to be merged.
