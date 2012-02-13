@@ -10,9 +10,10 @@
 Finished the estimate for `U_t^* N^2 U_t`.
 
 ### Todo
-    * Proof of one small item.
-    * Proof of easy formulae lemma.
-    * Estimate for `U_t^* NK U_t`.
+
+* Proof of one small item.
+* Proof of easy formulae lemma.
+* Estimate for `U_t^* NK U_t`.
 
 ## pdes.tex
 
