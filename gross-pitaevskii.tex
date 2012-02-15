@@ -321,7 +321,7 @@ a^\ast(q_y) := \int \di z\, q(z,y) a^*_z = a^*(q(\cdot,y)) , \quad a(q_y) :=
 
 
 \begin{lem}[Bogoliubov transformation \cite{GMM2010}]
-\label{lem:bogoliubovtransformation}
+\label{l:bt}
  \bd
  T_t^* a^*_x T_t = \int \left( \cc{s(y,x)} a_y + c(y,x) a^*_y \right) \di y =
  a^*(c_x) + a(s_x).
@@ -606,7 +606,7 @@ Between the term \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and
 & \qquad \qquad  a^*(s_x) a^*(s_y) + a^*(s_x) a(c_y)  + a^*(s_y) a(c_x) + a(c_x) a(c_y)  \bigg)  \bigg] \\
 & + \hc
 \end{align*}
-Now we apply Lemma \ref{lem:bogoliubovtransformation} everywhere and expand all the terms, normal order all terms, and observe that many terms appear twice (maybe in the hermitian conjugate or with $x$ and $y$ interchanged):
+Now we apply Lemma \ref{l:bt} everywhere and expand all the terms, normal order all terms, and observe that many terms appear twice (maybe in the hermitian conjugate or with $x$ and $y$ interchanged):
 \begin{align*}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
 & \frac{1}{2} \int \di x\, \left[ a^*(c_x) a(-\Delta_x c_x) + \boxed{2 a^*(c_x) a^*(-\Delta_x s_x)} + a^*(-\Delta_x s_x) a(s_x) \right] \tagg{cancellation_kinetic} \\
@@ -800,13 +800,13 @@ all $\psi \in \mathcal{F}$.
 \begin{lem}
   \label{l:N2}
   Let $U_t$ be the unitary evolution defined in (X). Then,
-  \begin{align}
-    \langle U_t \psi, \N^2 U_t \psi \rangle & \apprle N \langle U_t \psi,
-    (\N+1) U_t \psi \rangle + N \langle \psi, (\N+1) \psi \rangle + \langle
-    \psi, (\N+1)^2 \psi \rangle, \tag{i} \\
-    \langle U_t \psi, \N \K U_t \psi \rangle & \apprle \tag{ii}
-  \end{align}
-  (Or we can state as an operator inequality on $\mathcal{F}$)
+%  \begin{align}
+%    \langle U_t \psi, \N^2 U_t \psi \rangle & \apprle N \langle U_t \psi,
+%    (\N+1) U_t \psi \rangle + N \langle \psi, (\N+1) \psi \rangle + \langle
+%    \psi, (\N+1)^2 \psi \rangle, \tag{i} \\
+%    \langle U_t \psi, \N \K U_t \psi \rangle & \apprle \tag{ii}
+%  \end{align}
+%  (Or we can state as an operator inequality on $\mathcal{F}$)
   \begin{align}
     U_t^* \N^2 U_t & \apprle N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2, \tag{i}
     \\
@@ -815,7 +815,8 @@ all $\psi \in \mathcal{F}$.
 \end{lem}
 
 
-The proof of Lemma \ref{l:N2} is based on the next two propositions.
+The proof of Lemma \ref{l:N2} is based on the next two propositions, which we
+prove first.
 
 
 \begin{prp}
@@ -835,7 +836,8 @@ The proof of Lemma \ref{l:N2} is based on the next two propositions.
 
 \begin{prp}
   \label{p:formulae}
-  We have the following pull-through formulae:
+  Let $\varphi \in L^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. The following
+  pull-through formulae hold true:
   \begin{align}
     \N W(\sqrt{N} \varphi)^* & = W(\sqrt{N} \varphi)^* (\N - \sqrt{N}
     \psi(\varphi) + N), \tag{i} \\
@@ -846,6 +848,13 @@ The proof of Lemma \ref{l:N2} is based on the next two propositions.
     \phi(\varphi) T & = T \phi(C \varphi + S \overline{\varphi}). \tag{iv}
   \end{align}
 \end{prp}
+
+
+\begin{proof}[Proof of Proposition \ref{p:formulae}]
+  Recall that $\phi(\varphi) = a(\varphi) + a^*(\varphi)$. After a short
+  calculation, using parts (ii) and (iii) of Lemma \ref{l:W}, one easily finds
+  (i), (ii) and (iii). Similarly, part (iv) follows by Lemma \ref{l:bt}.
+\end{proof}
 
 
 \begin{proof}[Proof of Proposition \ref{p:TNT}]
