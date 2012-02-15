@@ -5,7 +5,7 @@
 %\usepackage{showkeys}
 \usepackage[bookmarksnumbered=true]{hyperref} % Added by GBdO
 \usepackage[color,notref,notcite]{showkeys} % Added by GBdO
-\usepackage[12h=false]{scrtime}
+\usepackage[24h]{scrtime}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{dsfont,wasysym} % added by GBdO
 
@@ -63,8 +63,8 @@
 \newcommand{\Rbb}{\mathbb{R}}		% real numbers
 \newcommand{\Cbb}{\mathbb{C}}		% complex numbers
 \newcommand{\Nbb}{\mathbb{N}}		% natural numbers
-\renewcommand{\Re}{\operatorname{Re}} 	%RealPart
-\renewcommand{\Im}{\operatorname{Im}} 	%ImaginaryPart
+\renewcommand{\Re}{\operatorname{Re}\,} 	%RealPart
+\renewcommand{\Im}{\operatorname{Im}\,} 	%ImaginaryPart
 \newcommand{\norm}[1]{\lVert#1\rVert}	%Norm
 \newcommand{\ev}[1]{\left<#1\right>}	%expectation value
 \newcommand{\ph}{\varphi_t^{(N)}}	% solution of N-dependent Hartree equation
@@ -108,8 +108,8 @@ space
 \]
 with the convention that $L^2(\R^3)^{\otimes_s 0} = \mathds{C}$. Here
 $L^2_s(\R^{3n})$ is the subspace of $L^2(\R^{3n})$ consisting of all functions
-that are symmetric with respect to arbitrary permutations of the $n$ variables
-in $\R^3$. Vectors in $\mathcal{F}$ are sequences $\psi = \{ \psi^{(n)} \}_{n
+that are symmetric with respect to arbitrary permutations of the $n$
+variables. Vectors in $\mathcal{F}$ are sequences $\psi = \{ \psi^{(n)} \}_{n
 \ge 0}$ of $n$-particle wave functions $\psi^{(n)} \in L^2_s(\R^{3n})$. The
 scalar product on $\mathcal{F}$ is defined as
 \begin{align*}
@@ -125,8 +125,8 @@ $\mathcal{F}$ by the sequence $\{ \psi^{(n)} \}_{n \ge 0}$ where $\psi^{(n)}
 $\Omega$.
 
 
-We will also make use of operator valued distributions $a_x^*$ and $a_x$, with
-$x \in \R^3$, defined so that
+We will make use of operator valued distributions $a_x^*$ and $a_x$, with $x
+\in \R^3$, defined so that
 \begin{equation}
   \label{a}
   \begin{aligned}
@@ -134,22 +134,22 @@ $x \in \R^3$, defined so that
       a(f) & = \int \di x\, \cc{f(x)} a_x.
   \end{aligned}
 \end{equation}
-
-
-Estimates
-\marginpar{Did you already use this?}
+It is also convenient to introduce the notation
+\marginpar{Either this or $a(\nabla f)$}
 \bd
-\mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
+\mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we
+have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
 \ed
 
 
 \begin{lem}
   \label{l:a}
-  Let $f \in L^2(\R^3)$. Then, for any $\psi \in \mathcal{F}$,
+  Let $f \in H^1(\R^3)$. Then, for any $\psi \in \mathcal{F}$,
   \begin{equation}
     \label{aNorm}
     \begin{aligned}
       \norm{a(f)\psi} & \leq \norm{f}_{L^2} \norm{\Ncal^{1/2}\psi}, \\
+      \norm{a(\nabla f)\psi} & \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}, \\
       \norm{a^*(f)\psi} & \leq \norm{f}_{L^2} \norm{(\Ncal+1)^{1/2}\psi}, \\
       \norm{\phi(f) \psi} & \leq 2 \norm{f}_{L^2} \norm{(\N+1)^{1/2} \psi}.
     \end{aligned}
@@ -164,18 +164,63 @@ Hamiltonian etc.
 \Vcal_N := \frac{1}{2}\int\di x \di y\, V_N(x-y) a^*_x a^*_y a_y a_x
 \ed
 \bd
-V_N(x) := N^2V(Nx), \quad \Hcal := \Kcal + \Vcal_N, \quad \Ncal := \int \di x\, a^*_x a_x
+V_N(x) := N^2V(Nx), \quad \Hcal := \Kcal + \Vcal_N, \quad \Ncal := \int \di
+x\, a^*_x a_x
 \ed
 
 
-For $f \in L^2(\R^3)$, we define the Weyl operator
+For $f \in L^2(\R^3)$, we define the Weyl operator on $\mathcal{F}$ as
 \bd
 %A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
 W(f) = \exp(a^*(f) - a(f)).
 \ed
 
 
-\fbox{Combo Lemma for Weyl operator} \label{l:W}
+\begin{lem}
+  \label{l:W}
+  Let $f, g \in L^2(\R^3)$.
+  \begin{itemize}
+    \item[(i)] The Weyl operator satisfies the relations
+      \[
+        W(f) W(g) = W(g) W(f) e^{-2i \Im \langle f, g \rangle_{L^2}} = W(f+g)
+        e^{-i \Im \langle f, g \rangle_{L^2}}.
+      \]
+    \item[(ii)] The operator $W(f)$ is unitary on $\mathcal{F}$ and
+      \[
+        W(f)^* = W(f)^{-1} = W(-f).
+      \]
+    \item[(iii)] We have
+      \[
+        W(f)^* a_x W(f) = a_x + f(x) \qquad \text{and} \qquad W(f)^* a_x^* W(f)
+        = a_x^* + \overline{f(x)}.
+      \]
+    \item[(iv)] It follows from (iii) that coherent states are eigenvectors of
+      anihilation operators:
+      \[
+        a_x \psi(f) = f(x) \psi(f) \qquad \text{so that} \qquad a(g) \psi(f)
+        = \langle g, f \rangle_{L^2} \psi.
+      \]
+    \item[(v)] The expectation of the number of particles in the coherent
+      state $\psi(f)$ is given by $\| f \|_{L^2}^2$, that is,
+      \[
+        \langle \psi(f), \N^2 \psi(f) \rangle = \| f \|_{L^2}^2.
+      \]
+      Also the variance of the number of particles in $\psi(f)$ is given by
+      $\| f \|_{L^2}$ (the distribution of $\N$ is poisson), that is,
+      \[
+        \langle \psi(f), \N^2 \psi(f) \rangle - \langle \psi(f), \N \psi(f)
+        \rangle^2 = \| f \|_{L^2}^2.
+      \]
+    \item[(vi)] Coherent states are normalized but not orthogonal to each
+      other. In fact,
+      \[
+        \langle \psi(f), \psi(g) \rangle = e^{-\frac{1}{2} (\| f \|_{L^2}^2 +
+        \| g \|_{L^2}^2 - 2 \langle f, g \rangle_{L^2} )} \qquad \text{so
+        that} \qquad |\langle \psi(f), \psi(g) \rangle| = e^{-\frac{1}{2} \| f
+        - g \|_{L^2}^2}.
+      \]
+    \end{itemize}
+\end{lem}
 
 
 \section{Zero-energy scattering equation}
@@ -216,6 +261,7 @@ a_N/|x|$ for $|x| \ge R/N$.
 
 
 \begin{lem}[\cite{ESY2010}]
+\marginpar{We might clean up this lemma if we don't use everything}
   \label{l:w}
   Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
   spherical symmetric with scattering length $a_0$. Let
@@ -225,33 +271,41 @@ a_N/|x|$ for $|x| \ge R/N$.
   and consider the solution $f_N = 1-w_N$ of the zero-energy scattering
   equation with scaled potential $V_N$. Then, the following hold with
   constants uniform in $N$.
-
-  (i) There exists a constant $C_0 > 0$, which depends on the unscaled
-  potential $V$, such that
-  \[
-    C_0 \le 1 - w_N(x) \le 1 \qquad \text{for all } x \in \R^3.
-  \]
-
-  (ii) Let $R$ be such that $\text{supp }V \subset \{ x \in \R^3 \; | \;\; |x|
-  \le R \}$. Then,
-  \[
-    w_N(x) = \frac{a_0}{N|x|} \qquad \text{for all } x \in \R^3 \text{ with }
-    |x| > R/N.
-  \]
-
-  \marginpar{part (iii) might be cleaned up since we are not using all of
-  them} (iii) There exist constants $C_1$ and $C_2$, depending only on $V$,
-  such that
-  \[
-    |\nabla w_N(x)| \le C_1 N \qquad \text{and} \qquad | \nabla^2 w_N(x)| \le
-    C_2 N^2 \qquad \text{for all } x \in \R^3.
-  \]
-  Moreover, there exists a universal constant $C$ such that
-  \[
-    |\nabla w_N(x)| \le \frac{C a_0}{N |x|^2}, \qquad |\nabla w_N(x)| \le
-    \frac{C \rho}{|x|}, \qquad |\nabla^2 w_N(x)| \le \frac{C \rho}{N^2 |x|^2}
-  \]
-  for all $x \in \R^3$.
+  \begin{itemize}
+    \item[(i)] There exists a constant $C_0 > 0$, which depends on the
+      unscaled potential $V$, such that
+      \[
+        C_0 \le 1 - w_N(x) \le 1 \qquad \text{for all } x \in \R^3.
+      \]
+    \item[(ii)] Let $R$ be such that $\text{supp }V \subset \{ x \in \R^3 \; |
+      \;\; |x| \le R \}$. Then,
+      \[
+        w_N(x) = \frac{a_0}{N|x|} \qquad \text{for all } x \in \R^3 \text{
+        with } |x| > R/N.
+      \]
+    \item[(iii)] From (i) and (ii) it follows that
+    \[
+      |w_N(x)| \le \max\{a_0, R\} \frac{1}{N|x|} \qquad \text{for all } x \in
+      \R^3.
+    \]
+    \item[(iv)] There exist constants $C_1$ and $C_2$, depending only on $V$,
+      such that
+      \[
+        |\nabla w_N(x)| \le C_1 N \qquad \text{and} \qquad | \nabla^2 w_N(x)| \le
+        C_2 N^2
+      \]
+      for all $x \in \R^3$. Furthermore, there exists a universal constant
+      $C$, such that
+      \[
+        |\nabla w_N(x)| \le \frac{C a_0}{N |x|^2}, \qquad |\nabla w_N(x)| \le
+        \frac{C \rho}{|x|}, \qquad |\nabla^2 w_N(x)| \le \frac{C \rho}{N^2 |x|^2}
+      \]
+      for all $x \in \R^3$.
+    \item[(v)] From (iv) it follows that
+      \[
+        |\nabla w_N(x)| \le \qquad \text{for all } x \in \R^3.
+      \]
+  \end{itemize}
 \end{lem}
 
 
@@ -335,8 +389,8 @@ f(x,z) g(z,y)$. Consequently, for $f \in L^2(\R^3)$,
 \[
   T^* a(f) T = a(Cf) + a^*(S\overline{f}),
 \]
-where $C$ and $S$ are operators on $L^2(\R^3)$ with integral kernels $c$ and
-$s$, respectively.
+where $C$ and $S$ are integral operators on $L^2(\R^3)$ with integral kernels
+$c$ and $s$, respectively.
 
 
 \begin{prp}
@@ -783,17 +837,19 @@ all $\psi \in \mathcal{F}$.
 
 \begin{lem}
   \label{l:N2}
-
-  Let $U_t$ be the unitary evolution defined by X. Then,
-  \[
-    \langle U_t \psi, \N^2 U_t \psi \rangle \apprle N \langle U_t \psi, (\N+1)
-    U_t \psi \rangle + N \langle \psi, (\N+1) \psi \rangle + \langle \psi,
-    (\N+1)^2 \psi \rangle.
-  \]
+  Let $U_t$ be the unitary evolution defined in (X). Then,
+  \begin{align}
+    \langle U_t \psi, \N^2 U_t \psi \rangle & \apprle N \langle U_t \psi,
+    (\N+1) U_t \psi \rangle + N \langle \psi, (\N+1) \psi \rangle + \langle
+    \psi, (\N+1)^2 \psi \rangle, \tag{i} \\
+    \langle U_t \psi, \N \K U_t \psi \rangle & \apprle \tag{ii}
+  \end{align}
   (Or we can state as an operator inequality on $\mathcal{F}$)
-  \[
-    U_t^* \N^2 U_t \apprle N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2.
-  \]
+  \begin{align}
+    U_t^* \N^2 U_t & \apprle N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2, \tag{i}
+    \\
+    U_t^* \N \K U_t & \apprle \tag{ii}
+  \end{align}
 \end{lem}
 
 
