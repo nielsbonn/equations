@@ -5,7 +5,7 @@
 %\usepackage{showkeys}
 %\usepackage[bookmarksnumbered=true]{hyperref} % Added by GBdO
 \usepackage[color,notref,notcite]{showkeys} % Added by GBdO
-\usepackage{scrtime} %testing connection
+\usepackage{scrtime}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{dsfont,wasysym} % added by GBdO
 
@@ -135,7 +135,7 @@ We will make use of operator valued distributions $a_x^*$ and $a_x$, with $x
   \end{aligned}
 \end{equation}
 It is also convenient to introduce the notation
-\marginpar{Either this or $a(\nabla f)$}
+\marginpar{Either this or $a(\nabla f)$. I'll think about it.}
 \bd
 \mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we
 have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
@@ -642,7 +642,7 @@ Then the final result for the generator is:
 				      & \qquad\qquad + 2 a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x) + 2 a^*(c_x) a^*(s_x) a(s_y) a(c_y) \\
 				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \\
 				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \\
-& + \frac{1}{N}\bigg(   a^*(c_x) a^*_y \Big( r(y,x) + \scal{p_y}{s_x} \Big) + a^*(c_x) a^*(p_y) \Big( s(y,x) + \scal{p_y}{s_x} \Big) \\
+& + \frac{1}{N}\bigg(   a^*(c_x) a^*(c_y) \Big( r(y,x) + \scal{p_y}{s_x} \Big) + a^*(c_x) a^*(p_y) k(y,x) \\
       & \qquad\qquad + a^*(c_x) a(c_y) \scal{s_y}{s_x} + a^*(s_y) a(s_y) \scal{s_x}{s_x} + a^*(s_y) a(s_x) \scal{s_y}{s_x}\\
       & \qquad\qquad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} + a^*(s_y) a^*(s_x) \scal{s_x}{c_y}\\
       & \qquad\qquad + 2a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} + a^*(c_y) a(s_x) \scal{c_y}{s_x}    \bigg) \\
@@ -655,7 +655,7 @@ Then the final result for the generator is:
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + 							a(c_x) \scal{s_x}{s_y} \\
 					    & \qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
 \end{align}
-The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$ and $\Ncal \Kcal$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
+The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
 
 
 \section{Estimates for the terms of the generator}
@@ -684,7 +684,7 @@ ToDo: Type all the estimates here.
 
 \begin{lem}
 \label{lem:nsquaredbound}
-For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{\cdot} = \scal{U_N(t)T^*\Omega}{\cdot U_N(t)T^*\Omega}$, we have
+For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{\cdot} = \scal{U_N(t)T^*\Omega}{\cdot U_N(t)T^*\Omega}$, we have \marginpar{$\Ncal\Kcal$ not needed anymore?}
  \bd
  \frac{1}{N}\ev{\Ncal^2} \leq C \ev{\Ncal}, \quad \frac{1}{N}\ev{\Ncal \Kcal} \leq \ev{\Kcal}
  \ed
@@ -696,7 +696,7 @@ For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{
  \ed
 \end{lem}
 \begin{proof}
-remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are complicated.
+remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are complicated. TODO.
 \end{proof}
 
 
@@ -706,6 +706,10 @@ remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are compli
 -c\ev{\Ncal} \leq \ev{\Lcal}
 \ed 
 \end{lem}
+\begin{proof}
+ done
+\end{proof}
+
 
 \begin{lem}
 \label{lem:kvbounds}
@@ -714,6 +718,10 @@ remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are compli
 \ed
 and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic in annihilation and creation operators, we also need bounds by $\Lcal$.
 \end{lem}
+\begin{proof}
+ done
+\end{proof}
+
 
 \begin{lem}
 \label{lem:ldotbounds}
@@ -721,6 +729,10 @@ and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic i
   \frac{\di}{\di t} \ev{\Lcal} = \ev{\dot \Lcal} \leq C \ev{\Lcal + \Ncal}
  \ed
 \end{lem}
+\begin{proof}
+ TODO.
+\end{proof}
+
 
 \begin{lem}
 \label{lem:lncommutatorbound}
@@ -730,7 +742,7 @@ and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic i
 (rhs can have also other terms for which lemma \ref{lem:kvbounds} holds)
 \end{lem}
 \begin{proof}
-We have
+We have \marginpar{I have to retype this, but in priciple done}
 \begin{align*}
 & [T^*_t \Lcal_N^{(0)}(t) T_t,\Ncal] = \\ 
 & \int \di x\, \bigg[ a(c_x) \int \di y\, a_y \Big( N \nabla w_N(x-y) \cc{\nabla_x \ph(x)} 2 \cc{\ph(y)} \\
