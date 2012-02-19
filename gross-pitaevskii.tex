@@ -57,8 +57,10 @@
 \newcommand{\Vcal}{\mathcal{V}}		% calligraphic V
 \newcommand{\Hcal}{\mathcal{H}}		% calligraphic H
 \newcommand{\Ocal}{\mathcal{O}}		% big-O, order-of
+\newcommand{\tilV}{\tilde{\mathcal{V}}_N}		% symbol for the smeared potential energy part of the hamiltonian
+\newcommand{\estlist}[2]{\underline{Line \ref{l#1}, summand #2:}}
 \newcommand{\hc}{\mbox{h.c.}}		%hermitian conjugate
-\newcommand{\scal}[2]{\left<#1,#2\right>} % scalaer product
+\newcommand{\scal}[2]{\big<#1,#2\big>} % scalaer product
 \newcommand{\cc}[1]{\overline{#1}}	% complex conjugate
 \newcommand{\Rbb}{\mathbb{R}}		% real numbers
 \newcommand{\Cbb}{\mathbb{C}}		% complex numbers
@@ -66,7 +68,7 @@
 \renewcommand{\Re}{\operatorname{Re}\,} 	%RealPart
 \renewcommand{\Im}{\operatorname{Im}\,} 	%ImaginaryPart
 \newcommand{\norm}[1]{\lVert#1\rVert}	%Norm
-\newcommand{\ev}[1]{\left<#1\right>}	%expectation value
+\newcommand{\ev}[1]{\big<#1\big>}	%expectation value
 \newcommand{\ph}{\varphi_t^{(N)}}	% solution of N-dependent Hartree equation
 \newcommand{\phdot}{\dot{\varphi}_t^{(N)}}	% time derivative of solution of N-dependent Hartree equation
 \newcommand{\sqn}{\sqrt{N}}		% square root of N
@@ -634,32 +636,87 @@ We now proceed to identify a cancellation between the second summand in line \eq
 Then the final result for the generator is:
 \begin{align}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \nonumber \\ 
-& \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \\
-& \qquad\qquad \qquad\qquad						+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big) \\
-& \qquad\qquad 			+ a^*(c_x) a(-\Delta_x c_x) + a^*(-\Delta_x s_x) a(s_x) \bigg] \\
+& \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \label{l7}\\
+& \qquad\qquad \qquad\qquad						+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big) \label{l8}\\
+& \qquad\qquad 			+ a^*(c_x) a(-\Delta_x c_x) + a^*(-\Delta_x s_x) a(s_x) \bigg] \label{l9} \\
 & + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \nonumber \\
-& \times \Big[   \frac{1}{2N}\bigg( a^*(c_x) a^*(c_y) a(c_y) a(c_x) + 4 a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) \\
-				      & \qquad\qquad + 2 a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x) + 2 a^*(c_x) a^*(s_x) a(s_y) a(c_y) \\
-				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \\
-				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \\
-& + \frac{1}{N}\bigg(   a^*(c_x) a^*(c_y) \Big( r(y,x) + \scal{p_y}{s_x} \Big) + a^*(c_x) a^*(p_y) k(y,x) \\
-      & \qquad\qquad + a^*(c_x) a(c_y) \scal{s_y}{s_x} + a^*(s_y) a(s_y) \scal{s_x}{s_x} + a^*(s_y) a(s_x) \scal{s_y}{s_x}\\
-      & \qquad\qquad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} + a^*(s_y) a^*(s_x) \scal{s_x}{c_y}\\
-      & \qquad\qquad + 2a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} + a^*(c_y) a(s_x) \scal{c_y}{s_x}    \bigg) \\
-& + \ph(x)\ph(y) \Big( a^*(c_x) a^*(p_y) + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big) \\
-& + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \\
-& + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) \\
-					    & \qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y) + a^*(s_y) a(s_x) a(c_x)\\
-					    & \qquad\qquad + a^*(s_x) a^*(s_y) a(s_x) + a^*(s_x) a(s_x) a(c_y) + a(s_x) a(c_x) a(c_y)  \bigg) \\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + 							a(c_x) \scal{s_x}{s_y} \\
-					    & \qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
+& \times \Big[   \frac{1}{2N}\bigg( a^*(c_x) a^*(c_y) a(c_y) a(c_x) + 4 a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) \label{l10}\\
+				      & \qquad\qquad + 2 a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x) + 2 a^*(c_x) a^*(s_x) a(s_y) a(c_y) \label{l11}\\
+				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \label{l12}\\
+				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \label{l13}\\
+& + \frac{1}{N}\bigg(   a^*(c_x) a^*(c_y) \Big( r(y,x) + \scal{p_y}{s_x} \Big) + a^*(c_x) a^*(p_y) k(y,x) \label{l14} \\
+      & \qquad\qquad + a^*(c_x) a(c_y) \scal{s_y}{s_x} + a^*(s_y) a(s_y) \scal{s_x}{s_x} + a^*(s_y) a(s_x) \scal{s_y}{s_x} \label{l15}\\
+      & \qquad\qquad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} + a^*(s_y) a^*(s_x) \scal{s_x}{c_y} \label{l16}\\
+      & \qquad\qquad + 2a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} + a^*(c_y) a(s_x) \scal{c_y}{s_x}    \bigg) \label{l17}\\
+& + \ph(x)\ph(y) \Big( a^*(c_x) a^*(p_y) + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big) \label{l18}\\
+& + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \label{l19}\\
+& + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \label{l20}\\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) \label{l21}\\
+					    & \qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y) + a^*(s_y) a(s_x) a(c_x) \label{l22}\\
+					    & \qquad\qquad + a^*(s_x) a^*(s_y) a(s_x) + a^*(s_x) a(s_x) a(c_y) + a(s_x) a(c_x) a(c_y)  \bigg) \label{l23}\\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + 							a(c_x) \scal{s_x}{s_y} \label{l24}\\
+					    & \qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc \label{l25}
 \end{align}
 The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
 
 
 \section{Estimates for the terms of the generator}
-ToDo: Type all the estimates here.
+\begin{lem}
+The following basic estimates are often used (where $a^\#$ stands for $a^\ast$ or $a$):
+\bd
+\int \di x\, \norm{a(c_x)\psi}^2 \leq 2(1+\norm{p}^2)\scal{\psi}{\Ncal\psi}
+\ed
+\bd
+\int \di x\di y\, NV_N(x-y) \norm{a(c_x)\psi}^2 \leq b_0 2(1+\norm{p}^2) \scal{\psi}{\Ncal\psi}
+\ed
+\bd
+\int \di x\di y\, NV_N(x-y) \norm{a^\#(s_x)\psi}^2 \leq b_0 \norm{s}^2 \scal{\psi}{(\Ncal+1)\psi}
+\ed
+We also make use of the following estimates (with $C$ independent of $N$ and $t$): \marginpar{this ests should be put in the right place in the document}
+\bd
+\sup_{x} \norm{s_x}_2^2 \leq C \norm{\ph}_{H^2}^2, \quad \sup_{x} \norm{p_x}_2^2 \leq C \norm{\ph}_{H^2}^2
+\ed
+\end{lem}
+\begin{proof}
+Trivial.
+\end{proof}
+
+We define
+\bd
+\tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
+\ed
+
+We now have the following list of estimates for all terms of the generator (here, $C$ is always a constant independent of $N$ and $t$; the expectation value is $\ev{A} = \scal{\psi}{A\psi}$):\newline
+\estlist{7}{1}
+\begin{align*}
+& \lvert \scal{\psi}{\frac{1}{2}\int \di x a^\ast(c_x) \int \di y a^\ast_y \left( N\nabla_x w_n(x_y)\nabla_x \ph(x) 2\ph(y)\right) \psi}\rvert \\
+\leq & \lvert \int \di x \di y\, Nw_N(x-y) \nabla_x \ph(x)  \nabla_y \ph(y) \scal{a_y\psi}{a^\ast_x\psi} \rvert \\
+& + \lvert \int \di x \di y\,  Nw_N(x-y) \nabla_x \ph(x) \ph(y)  \scal{(\nabla_y a_y)\psi}{a^\ast \psi} \rvert \\
+& + \lvert \int \di x \di y\, Nw_N(x-y) \nabla_x  \ph(x) \nabla_y \ph(y) \scal{a_y \psi}{a^\ast(p_x)\psi} \rvert \\
+& + \lvert \int \di x \di y\, Nw_N(x-y) \nabla_x \ph(x) \ph(y) \scal{(\nabla_y a_y)\psi}{a^\ast(p_x)\psi} \rvert \\
+\leq & \int \di y \lvert \nabla_y \ph(y)\rvert \norm{a_y \psi} \norm{a^\ast(Nw_N(\cdot -y)\nabla\ph(\cdot))\psi} \\
+& + \int \di y \lvert \ph(y)\rvert \norm{(\nabla_y a_y)\psi} \norm{a^\ast(Nw_N(\cdot-y)\nabla\varphi(\cdot))\psi} \\
+& + \int \di x\di y\, \frac{C}{\lvert x-y\rvert} \lvert \nabla_x\ph(x)\rvert \lvert \nabla_y \ph(y)\rvert \norm{a_y \psi} \norm{p_x} \norm{(\Ncal+1)^{1/2}\psi} \\
+& + \int \di x\di y\, \frac{C}{{x-y}} \lvert \nabla_x\ph(x)\rvert \lvert \ph(y)\rvert \norm{(\nabla_y a_y)\psi} \norm{p_x} \norm{(\Ncal+1)^{1/2}\psi} \\
+\leq & C \norm{\Delta\ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \int \di y \lvert \nabla_y \ph(y) \rvert \norm{a_y \psi} \\
+& + C \norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \int \di y \frac{1}{\sqrt{\varepsilon}} \lvert \ph(y)\rvert \sqrt{\varepsilon} \norm{(\nabla_y a_y)\psi} \\
+& + \norm{(\Ncal+1)^{1/2}\psi} C \left( \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\nabla_y \ph(y)}{\lvert x-y \rvert^2} \right)^{1/2} \left( \di x\di y\, \norm{a_y \psi}^2 \norm{p_x}^2 \right)^{1/2} \\
+& + \norm{(\Ncal+1)^{1/2}\psi} C \left( \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert \ph(y)\rvert^2}{\lvert x-y\rvert^2} \right)^{1/2} \left( \di x\di y\, \norm{(\nabla_y a_y)\psi}^2 \norm{p_x}^2 \right)^{1/2} \\
+\leq & C \norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2} \norm{\Ncal^{1/2}\psi} \\
+& + C\norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \frac{1}{\sqrt{\varepsilon}}\norm{\ph}_{L^2} \sqrt{\varepsilon}\norm{\Kcal^{1/2}\psi} \\
+& + C \norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2} \norm{\Delta \ph}_{L^2} \norm{p} \norm{\Ncal^{1/2}\psi} \\
+& + C \frac{1}{\sqrt{\varepsilon}}\norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2}^2 \norm{p} \sqrt{\varepsilon}\norm{\Kcal^{1/2}\psi} \\
+\leq & C \norm{\ph}_{H^2} \left( \ev{\Ncal+1}(1+\frac{1}{\varepsilon}) + \ev{\Kcal}\varepsilon \right) + C \left( \frac{1}{\varepsilon}\ev{\Ncal+1} + \varepsilon \ev{\Kcal} \right).
+\end{align*}
+\estlist{8}{1}
+\begin{align*}
+&\lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, N w_N(x-y) a^\ast(c_x) a^\ast_y \Delta_x \ph(x) \ph(y) \psi}\rvert\\
+\leq & \frac{1}{2} \int \di x\, \norm{a(c_x)\psi} \lvert \Delta_x \ph(x)\rvert \norm{a^\ast(Nw_N(x-\cdot)\ph(\cdot))\psi} \\
+\leq & \frac{1}{2} \int \di x\, \norm{a(c_x)\psi} \lvert \Delta_x \ph(x)\rvert \norm{N w_N(x-\cdot)\ph(\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \\
+\leq & \frac{1}{2} C \norm{\nabla\ph}_{L^2} \norm{(\Ncal+1)^{1/2} \psi} \left( \int \di x\, \lvert \Delta_x \ph(x)\rvert^2 \right)^{1/2} \left( \int \di x\, \norm{a(c_x)\psi}^2 \right)^{1/2} \\
+\leq & \frac{1}{2} C \norm{\ph}_{H^1} \norm{\ph}_{H^2} \ev{\Ncal+1} \\
+\leq & C \norm{\ph}_{H^2} \ev{\Ncal+1}
+\end{align*}
 
 
 \section{A-priori estimates}
