@@ -138,13 +138,6 @@ We will make use of operator valued distributions $a_x^*$ and $a_x$, with $x
       a(f) & = \int \di x\, \cc{f(x)} a_x.
   \end{aligned}
 \end{equation}
-It is also convenient to introduce the notation
-\marginpar{Either this or $a(\nabla f)$. I'll think about it.}
-\bd
-\mbox{For } (\nabla a)(f) := \int \di x\, \cc{f(x)}\nabla_x a_x, \mbox{ we
-have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
-\ed
-
 
 \begin{lem}
   \label{l:a}
@@ -153,11 +146,14 @@ have } \norm{(\nabla a)(f)\psi} \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
     \label{aNorm}
     \begin{aligned}
       \norm{a(f)\psi} & \leq \norm{f}_{L^2} \norm{\Ncal^{1/2}\psi}, \\
-      \norm{a(\nabla f)\psi} & \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}, \\
       \norm{a^*(f)\psi} & \leq \norm{f}_{L^2} \norm{(\Ncal+1)^{1/2}\psi}, \\
-      \norm{\phi(f) \psi} & \leq 2 \norm{f}_{L^2} \norm{(\N+1)^{1/2} \psi}.
+      \norm{\phi(f) \psi} & \leq 2 \norm{f}_{L^2} \norm{(\N+1)^{1/2} \psi}
     \end{aligned}
   \end{equation}
+and
+\be{agradnorm}
+\norm{a(\nabla f)\psi}  \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
+\ee
 \end{lem}
 
 
@@ -417,6 +413,16 @@ $c$ and $s$, respectively.
   \end{equation}
   where $C_1$ is a constant that depends only on $\| \varphi \|_{H^1}$, and
   $a_0$ and $\rho$ from Lemma \ref{l:w}.
+
+INSERTED: -------------------------------------------------------\\
+We also make use of the following estimates (with $C$ independent of $N$ and $t$): \marginpar{I have a proof for this, but we should discuss first who edits the proof in the file.}
+\bd
+\sup_{x} \norm{s_x}_2^2 \leq C \norm{\ph}_{H^2}^2, \quad \sup_{x} \norm{p_x}_2^2 \leq C \norm{\ph}_{H^2}^2,
+\ed
+\bd
+\lvert r(x,y)\rvert \leq C \lvert\ph(x)\rvert \lvert\ph(y)\rvert, \quad \lvert k(x,y)\rvert \leq N \lvert \ph(x)\rvert \lvert \ph(y)\rvert.
+\ed
+-------------------------------------------------------
 \end{prp}
 
 
@@ -663,39 +669,23 @@ The cancellations enable us to give estimates for all terms, only using $\Ncal$,
 
 
 \section{Estimates for the terms of the generator}
-\begin{lem}
-The following basic estimates are often used (where $a^\#$ stands for $a^\ast$ or $a$):
+In this chapter we denote the expectation value $\scal{\psi}{A\psi}$ by $\ev{A}$. In this chapter, $C$ is a constant which can change from line to line in inequalities, but which is always independent of $N$ and $t$.
+
+For convenience, we remind the reader of the simple but useful estimate
 \bd
-\int \di x\, \norm{a(c_x)\psi}^2 \leq 2(1+\norm{p}^2)\scal{\psi}{\Ncal\psi}
+\int \di x\, \norm{a(c_x)\psi}^2 \leq 2(1+\norm{p}^2)\scal{\psi}{\Ncal\psi} \leq C\ev{\Ncal}.
 \ed
-\bd
-\int \di x\di y\, NV_N(x-y) \norm{a(c_x)\psi}^2 \leq b_0 2(1+\norm{p}^2) \scal{\psi}{\Ncal\psi}
-\ed
-\bd
-\int \di x\di y\, NV_N(x-y) \norm{a^\#(s_x)\psi}^2 \leq b_0 \norm{s}^2 \scal{\psi}{(\Ncal+1)\psi}
-\ed
-We also make use of the following estimates (with $C$ independent of $N$ and $t$): \marginpar{this ests should be put in the right place in the document}
-\bd
-\sup_{x} \norm{s_x}_2^2 \leq C \norm{\ph}_{H^2}^2, \quad \sup_{x} \norm{p_x}_2^2 \leq C \norm{\ph}_{H^2}^2,
-\ed
-\bd
-\lvert r(x,y)\rvert \leq C \lvert\ph(x)\rvert \lvert\ph(y)\rvert, \quad \lvert k(x,y)\rvert \leq N \lvert \ph(x)\rvert \lvert \ph(y)\rvert.
-\ed
-\end{lem}
-\begin{proof}
-Trivial.
-\end{proof}
 
 We define
 \bd
 \tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
 \ed
 
-We now have the following list of estimates for all terms of the generator (here, $C$ is always a constant independent of $N$ and $t$; the expectation value is $\ev{A} = \scal{\psi}{A\psi}$).\newline
+We now have the following list of estimates for all terms of the generator.\newline
 \underline{We start with estimates for the kinetic terms:}\newline
 \estlist{7}{1}
 \begin{align*}
-& \lvert \scal{\psi}{\frac{1}{2}\int \di x a^\ast(c_x) \int \di y a^\ast_y \left( N\nabla_x w_n(x_y)\nabla_x \ph(x) 2\ph(y)\right) \psi}\rvert \\
+& \lvert \scal{\psi}{\frac{1}{2}\int \di x\,a^\ast(c_x) \int \di y\,a^\ast_y N\nabla_x w_N(x-y)\nabla_x \ph(x) 2\ph(y) \psi}\rvert \\
 \leq & \lvert \int \di x \di y\, Nw_N(x-y) \nabla_x \ph(x)  \nabla_y \ph(y) \scal{a_y\psi}{a^\ast_x\psi} \rvert \\
 & + \lvert \int \di x \di y\,  Nw_N(x-y) \nabla_x \ph(x) \ph(y)  \scal{(\nabla_y a_y)\psi}{a^\ast \psi} \rvert \\
 & + \lvert \int \di x \di y\, Nw_N(x-y) \nabla_x  \ph(x) \nabla_y \ph(y) \scal{a_y \psi}{a^\ast(p_x)\psi} \rvert \\
@@ -703,20 +693,20 @@ We now have the following list of estimates for all terms of the generator (here
 \leq & \int \di y \lvert \nabla_y \ph(y)\rvert \norm{a_y \psi} \norm{a^\ast(Nw_N(\cdot -y)\nabla\ph(\cdot))\psi} \\
 & + \int \di y \lvert \ph(y)\rvert \norm{(\nabla_y a_y)\psi} \norm{a^\ast(Nw_N(\cdot-y)\nabla\varphi(\cdot))\psi} \\
 & + \int \di x\di y\, \frac{C}{\lvert x-y\rvert} \lvert \nabla_x\ph(x)\rvert \lvert \nabla_y \ph(y)\rvert \norm{a_y \psi} \norm{p_x} \norm{(\Ncal+1)^{1/2}\psi} \\
-& + \int \di x\di y\, \frac{C}{{x-y}} \lvert \nabla_x\ph(x)\rvert \lvert \ph(y)\rvert \norm{(\nabla_y a_y)\psi} \norm{p_x} \norm{(\Ncal+1)^{1/2}\psi} \\
+& + \int \di x\di y\, \frac{C}{\lvert x-y\rvert} \lvert \nabla_x\ph(x)\rvert \lvert \ph(y)\rvert \norm{(\nabla_y a_y)\psi} \norm{p_x} \norm{(\Ncal+1)^{1/2}\psi} \\
 \leq & C \norm{\Delta\ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \int \di y \lvert \nabla_y \ph(y) \rvert \norm{a_y \psi} \\
 & + C \norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \int \di y \frac{1}{\sqrt{\varepsilon}} \lvert \ph(y)\rvert \sqrt{\varepsilon} \norm{(\nabla_y a_y)\psi} \\
-& + \norm{(\Ncal+1)^{1/2}\psi} C \left( \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\nabla_y \ph(y)}{\lvert x-y \rvert^2} \right)^{1/2} \left( \di x\di y\, \norm{a_y \psi}^2 \norm{p_x}^2 \right)^{1/2} \\
-& + \norm{(\Ncal+1)^{1/2}\psi} C \left( \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert \ph(y)\rvert^2}{\lvert x-y\rvert^2} \right)^{1/2} \left( \di x\di y\, \norm{(\nabla_y a_y)\psi}^2 \norm{p_x}^2 \right)^{1/2} \\
+& + \norm{(\Ncal+1)^{1/2}\psi} C \left(\int \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\nabla_y \ph(y)}{\lvert x-y \rvert^2} \right)^{1/2} \left(\int \di x\di y\, \norm{a_y \psi}^2 \norm{p_x}^2 \right)^{1/2} \\
+& + \norm{(\Ncal+1)^{1/2}\psi} C \left(\int \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert \ph(y)\rvert^2}{\lvert x-y\rvert^2} \right)^{1/2} \left(\int \di x\di y\, \norm{(\nabla_y a_y)\psi}^2 \norm{p_x}^2 \right)^{1/2} \\
 \leq & C \norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2} \norm{\Ncal^{1/2}\psi} \\
 & + C\norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \frac{1}{\sqrt{\varepsilon}}\norm{\ph}_{L^2} \sqrt{\varepsilon}\norm{\Kcal^{1/2}\psi} \\
 & + C \norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2} \norm{\Delta \ph}_{L^2} \norm{p} \norm{\Ncal^{1/2}\psi} \\
 & + C \frac{1}{\sqrt{\varepsilon}}\norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2}^2 \norm{p} \sqrt{\varepsilon}\norm{\Kcal^{1/2}\psi} \\
-\leq & C \norm{\ph}_{H^2} \left( \ev{\Ncal+1}(1+\frac{1}{\varepsilon}) + \ev{\Kcal}\varepsilon \right) + C \left( \frac{1}{\varepsilon}\ev{\Ncal+1} + \varepsilon \ev{\Kcal} \right).
+\leq & C \norm{\ph}_{H^2} \left( \ev{\Ncal+1}(1+\frac{1}{\varepsilon}) + \varepsilon\ev{\Kcal} \right) + C \left( \frac{1}{\varepsilon}\ev{\Ncal+1} + \varepsilon \ev{\Kcal} \right).
 \end{align*}
 \estlist{8}{1}
 \begin{align*}
-&\lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, N w_N(x-y) a^\ast(c_x) a^\ast_y \Delta_x \ph(x) \ph(y) \psi}\rvert\\
+&\lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\,a^\ast(c_x) a^\ast_y N w_N(x-y) \Delta_x \ph(x) \ph(y) \psi}\rvert\\
 \leq & \frac{1}{2} \int \di x\, \norm{a(c_x)\psi} \lvert \Delta_x \ph(x)\rvert \norm{a^\ast(Nw_N(x-\cdot)\ph(\cdot))\psi} \\
 \leq & \frac{1}{2} \int \di x\, \norm{a(c_x)\psi} \lvert \Delta_x \ph(x)\rvert \norm{N w_N(x-\cdot)\ph(\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \\
 \leq & \frac{1}{2} C \norm{\nabla\ph}_{L^2} \norm{(\Ncal+1)^{1/2} \psi} \left( \int \di x\, \lvert \Delta_x \ph(x)\rvert^2 \right)^{1/2} \left( \int \di x\, \norm{a(c_x)\psi}^2 \right)^{1/2} \\
@@ -729,11 +719,11 @@ For this estimate, it is useful to know that
  & \int \di x\, \norm{\nabla_x a(c_x)\psi}^2 \leq 2 \int \di x\, \norm{\nabla_x a_x \psi}^2 + 2\int \di x\, \norm{a(\nabla_x p_x)\psi}^2 \\
  \leq & 2\ev{\Kcal} + 2\int \di x\, \norm{\nabla_x p_x}^2 \norm{\Ncal^{1/1}\psi}^{1/2} = 2\ev{\Kcal}+ 2\norm{\nabla_x p}^2 \ev{\Ncal}.
 \end{align*}
-Using this, we get
+Using this (and integration by parts), we get
 \begin{align*}
  & \lvert \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) \int \di y\, (-\Delta_x r(y,x))\psi} \rvert \\
-= & \lvert \scal{\psi}{\frac{1}{2}\int \di x\, \nabla_x a^\ast(c_x) \int \di y\, a^\ast_y (\nabla_x r(y,x))\psi}\rvert \\
-\leq & \frac{1}{2}\int \di x\, \norm{\nabla_x a(c_x)} \norm{a^\ast(\nabla_xr_x)\psi} \\
+= & \lvert \scal{\psi}{\frac{1}{2}\int \di x\, \nabla_x a^\ast(c_x) \int \di y\, a^\ast_y \nabla_x r(y,x) \psi}\rvert \\
+\leq & \frac{1}{2}\int \di x\, \norm{\nabla_x a(c_x)\psi} \norm{a^\ast(\nabla_x r_x)\psi} \\
 \leq & \frac{1}{2}\left( \varepsilon \int \di x\, \norm{\nabla_x a(c_x) \psi}^2 \right)^{1/2} \left( \int \di x\, \norm{\nabla_x r_x}^2 \right)^{1/2} \frac{1}{\sqrt{\varepsilon}} \norm{(\Ncal+1)^{1/2}\psi} \\
 \leq & \frac{1}{2}\norm{\nabla_x r} \left( \varepsilon 2\ev{\Kcal} + \varepsilon 2 \norm{\nabla_x p}^2 \ev{\Ncal} + \frac{1}{\varepsilon}\ev{\Ncal+1} \right) \\
 \leq & C \left( \varepsilon \ev{\Kcal} + (\varepsilon+\frac{1}{\varepsilon})\ev{\Ncal+1} \right).
@@ -742,14 +732,14 @@ Using this, we get
 This term we bound in two different ways. We start with an equality:
 \begin{align*}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} = \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(\nabla_x c_x)a(\nabla_x c_x)\psi} \\
-= & \scal{\psi}{\frac{1}{2}\int \di x \left( \nabla_x a^\ast_x a^\ast(\nabla_x p_x) \right)\left(  \nabla_x a_x + a(\nabla_x p_x) \right) \psi} \\
+= & \scal{\psi}{\frac{1}{2}\int \di x \left( \nabla_x a^\ast_x + a^\ast(\nabla_x p_x) \right)\left(  \nabla_x a_x + a(\nabla_x p_x) \right) \psi} \\
 = & \scal{\psi}{\frac{1}{2}\Kcal \psi} + \frac{1}{2}\int \di x\scal{\nabla_x a_x \psi}{a(\nabla_x p_x)\psi} + \frac{1}{2}\int \di x\, \scal{a(\nabla_x p_x)\psi}{\nabla_x a_x \psi} + \frac{1}{2}\int \di x\, \norm{a(\nabla_x p_x)\psi}^2.
 \end{align*}
 The first estimate we get from this (leaving away the last summand, which is positive) is
 \begin{align*}
  \ev{\Kcal} & \leq \scal{\psi}{\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} + 2\int \di x\, \sqrt{\varepsilon} \norm{\nabla_x a_x \psi} \frac{1}{\sqrt{\varepsilon}} \norm{a(\nabla_x p_x)\psi} \\
 & \leq \scal{\psi}{\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} + 2\left( \varepsilon \ev{\Kcal} + \frac{1}{\varepsilon}  \norm{\nabla_x p}^2 \ev{\Ncal}\right) \\
-& \leq \scal{\psi}{\int \di x a^\ast(c_x) a(-\Delta_x c_x)\psi} + C\left( \varepsilon \ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right),
+& \leq \scal{\psi}{\int \di x\,a^\ast(c_x) a(-\Delta_x c_x)\psi} + C\left( \varepsilon \ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right),
 \end{align*}
 where the term of the generator appears on the rhs.\\
 For the second estimate, we proceed as follows:
@@ -760,15 +750,16 @@ For the second estimate, we proceed as follows:
 \end{align*}
 \estlist{9}{2} For this term we need two estimates, too. The first one is just that the term is non-negative. For the second estimate, notice that, using the product rule, integration by parts and the fact that $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$, we have
 \begin{align*}
- a(\nabla_x s_x) & = \cc{\ph(x)} a(-Nw_N(x-\cdot)\nabla\ph(\cdot)) + \cc{\ph{x}} (\nabla a)(- N w_N(x-\cdot)\ph(\cdot)) \\
+ a(\nabla_x s_x) & = \cc{\ph(x)} a(-Nw_N(x-\cdot)\nabla\ph(\cdot)) + \cc{\ph(x)}\,a\left(\nabla(-N w_N(x-\cdot)\ph(\cdot))\right) \\
  & + \cc{\nabla_x \ph(x)} a(-Nw_N(x-\cdot)\ph(\cdot)) + a(\nabla_x r_x).
 \end{align*}
+(the $\nabla$ in the second summand has to be understood with respect to the 'dot'-variable of $a$)
 Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 \begin{align*}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
-\leq & \frac{1}{2} \int \di x \bigg( \lvert \ph(x)\rvert \norm{a(-Nw_N(x-\cdot)\nabla\ph(\cdot))\psi} + \lvert \ph(x)\rvert \norm{(\nabla a)(-N w_N(x-\cdot)\ph(\cdot))\psi} \\
+\leq & \frac{1}{2} \int \di x \bigg( \lvert \ph(x)\rvert \norm{a(-Nw_N(x-\cdot)\nabla\ph(\cdot))\psi} + \lvert \ph(x)\rvert \norm{a\left(\nabla(-N w_N(x-\cdot)\ph(\cdot))\right)\psi} \\
 & \qquad + \lvert \nabla_x \ph(x)\rvert \norm{a(-Nw_N(x-\cdot)\ph(\cdot))\psi} + \norm{a(\nabla_x r_x)\psi}  \bigg)^2 \\
-\leq & 2\int \di x\, \bigg( \lvert \ph(x)\rvert^2 \norm{-N w_N(x-\cdot)\nabla\ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2 + \lvert \ph(x)\rvert^2 \norm{-Nw_N(x-\cdot) \ph(\cdot)}_{L^2}^2 \norm{\Kcal^{1/2}\psi}^2  \\
+\stackrel{\eqr{agradnorm}}{\leq} & 2\int \di x\, \bigg( \lvert \ph(x)\rvert^2 \norm{-N w_N(x-\cdot)\nabla\ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2 + \lvert \ph(x)\rvert^2 \norm{-Nw_N(x-\cdot) \ph(\cdot)}_{L^2}^2 \norm{\Kcal^{1/2}\psi}^2  \\
 & \qquad + \lvert \nabla_x \ph(x)\rvert^2 \norm{-N w_N(x-\cdot) \ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2 + \norm{\nabla_x r_x}^2 \norm{\Ncal^{1/2}\psi}^2 \bigg) \\
 & \leq 2 \int \di x\, \left( \lvert \ph(x)\rvert^2 \norm{\Delta \ph}_{L^2}^2 C \norm{\Ncal^{1/2}\psi}^2 \right) + 2 \int \di x \left( \lvert \ph(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 C \norm{\Kcal^{1/2}\psi}^2 \right) \\
 & \qquad + 2 \int \di x\, \left( \lvert \nabla_x \ph(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 C \norm{\Ncal^{1/2}\psi}^2 \right) + 2 \int \di x\, \norm{\nabla_x r_x}^2 \norm{\Ncal^{1/2}\psi}^2\\
@@ -794,56 +785,56 @@ By definition of $\tilV$, we have
 \ed
 \estlist{10}{2}
 \begin{align*}
- & \lvert \scal{\psi}{\frac{1}{4}\int \di x\di y\, V_N(x-y) 4 a^\ast(c_x)a^\ast(c_y) a^\ast(s_x)a(c_y)\psi}\rvert \\
+ & \lvert \scal{\psi}{\dxyNV \frac{1}{2N} 4 a^\ast(c_x)a^\ast(c_y) a^\ast(s_x)a(c_y)\psi}\rvert \\
 \leq & \int \di x\di y\, \sqrt{V_N(x-y)}^2 \frac{\sqrt{\varepsilon}}{2} \norm{a(c_y) a(c_x)\psi} \frac{2}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)a(c_y)\psi} \\
 \leq & \varepsilon \frac{1}{4} \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_x)a^\ast(c_y)a(c_y)a(c_x)\psi} + \frac{4}{\varepsilon} \int \di x\di y\, V_N(x-y) \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
 \leq & \varepsilon \ev{\tilV} + \frac{4}{\varepsilon}\int \di x\di y\, V_N(x-y) \norm{s_x}^2 \norm{a(c_y)\Ncal^{1/2}\psi}^2 \\
 \leq & \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \int \di x\, V_N(x-y) \\
 \leq & \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \frac{b_0}{N} 2 (1+\norm{p}^2)\ev{\Ncal^2} \\
-\leq & \varepsilon \ev{\tilV} + \norm{\ph}_{H^2}^2 \frac{C}{\varepsilon} \frac{1}{N}\ev{\Ncal^2}.
+\leq & \varepsilon \ev{\tilV} + C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon} \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
 \estlist{11}{1}
 \begin{align*}
-& \lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, NV_N(x-y) \frac{1}{2N}2a^\ast(c_x)a^\ast(c_y) a^\ast(s_y) a^\ast(s_x) \psi}\rvert \\
-\leq & 2\frac{1}{4}\int \di x\di y\, \sqrt{V_N(x-y)}^2  \norm{a(c_y)a(c_x)\psi} \norm{a^\ast(s_y)a^\ast(s_x)\psi} \\
+& \lvert \scal{\psi}{\dxyNV \frac{1}{2N}2a^\ast(c_x)a^\ast(c_y) a^\ast(s_y) a^\ast(s_x) \psi}\rvert \\
+\leq & 2\frac{1}{4}\int \di x\di y\, V_N(x-y)  \norm{a(c_y)a(c_x)\psi} \norm{a^\ast(s_y)a^\ast(s_x)\psi} \\
 \leq & \varepsilon 2 \ev{\tilV} + \frac{1}{2\varepsilon} \int \di x\di y\, V_N(x-y) \norm{a^\ast(s_y)a^\ast(s_x)\psi}^2 \\
 \leq & \varepsilon 2 \ev{\tilV} + \frac{1}{2\varepsilon} \int \di x\di y\, V_N(x-y) \norm{s_y}^2 \norm{s_x}^2 \ev{(\Ncal+2)^2} \\
 \leq & \varepsilon 2 \ev{\tilV} + \frac{1}{2\varepsilon} \sup_x \norm{s_x}^2 \underbrace{\int \di y\, \norm{s_y}^2 \int \di x\, V_N(x-y)}_{=\, \norm{s}^2 b_0/N} \ev{(\Ncal+2)^2} \\
-\leq & \varepsilon 2\ev{\tilV} + \norm{\ph}_{H^2}^2 \frac{C}{\varepsilon} \frac{1}{N}\ev{(\Ncal+2)^2}.
+\leq & \varepsilon 2\ev{\tilV} + C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon} \frac{1}{N}\ev{(\Ncal+2)^2}.
 \end{align*}
 \estlist{11}{2}
 \begin{align*}
-& \lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, N V_N(x-y) \frac{1}{2N} 2 a^\ast(c_x) a^\ast(s_x) a(s_y) a(c_y)\psi}\rvert \\
-\leq & \frac{1}{2}\int \di x\di y\, \sqrt{V_N(x-y)}^2 \norm{a(s_x) a(c_x) \psi} \norm{a(s_y) a(c_y)\psi} \\
+& \lvert \scal{\psi}{\dxyNV \frac{1}{2N} 2 a^\ast(c_x) a^\ast(s_x) a(s_y) a(c_y)\psi}\rvert \\
+\leq & \frac{1}{2}\int \di x\di y\, V_N(x-y) \norm{a(s_x) a(c_x) \psi} \norm{a(s_y) a(c_y)\psi} \\
 \leq & \int \di x\di y\, V_N(x-y) \norm{s_y}^2 \norm{a(c_y) \Ncal^{1/2}\psi}^2\\
 \leq & \sup_y \norm{s_y}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \int \di x\, V_N(x-y)\\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N}\ev{\Ncal^2}.
+\leq & C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
 Here we made use of the fact that both summand from the Hoelder inequality are equal (just rename the integration variables $x$ as $y$ and $y$ as $x$).\newline
 \estlist{12}{1}
 \begin{align*}
-& \lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, N V_N(x-y) \frac{1}{2N}2a^\ast(c_x)a^\ast(s_y)a(s_y)a(c_x)\psi}\rvert \\
+& \lvert \scal{\psi}{\dxyNV \frac{1}{2N}2a^\ast(c_x)a^\ast(s_y)a(s_y)a(c_x)\psi}\rvert \\
 \leq & \frac{1}{2}\int \di x\di y\, V_N(x-y) \norm{a(s_y)a(c_x)\psi}^2 \\
 \leq & \frac{1}{2}\int \di x\di y\, V_N(x-y) \norm{s_y}^2 \norm{a(c_x)\Ncal^{1/2}\psi}^2 \\
 \leq & \frac{1}{2}\sup_y \norm{s_y}^2 \int \di x\, \norm{a(c_x)\Ncal^{1/2}\psi}^2 \int \di y\,V_N(x-y) \\
-\leq & \frac{1}{2}C\norm{\ph}_{H^2}^2 \frac{b_0}{N} 2(1+\norm{p}^2)\ev{\Ncal^2} \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N} \ev{\Ncal^2}.
+\leq & \frac{1}{2}C\norm{\ph}_{H^2}^2 2(1+\norm{p}^2)\ev{\Ncal^2} \frac{b_0}{N} \\
+\leq & C \norm{\ph}_{H^2}^2 \frac{1}{N} \ev{\Ncal^2}.
 \end{align*}
 \estlist{12}{2}
 \begin{align*}
- & \lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, NV_N(x-y) \frac{1}{2N} 4 a^\ast(c_x) a^\ast(s_y) a^\ast(s_x) a(s_y) \psi}\rvert \\
+ & \lvert \scal{\psi}{\dxyNV \frac{1}{2N} 4 a^\ast(c_x) a^\ast(s_y) a^\ast(s_x) a(s_y) \psi}\rvert \\
 \leq & \int \di x\di y\, V_N(x-y) \norm{a(s_y)a(c_x)\psi}{a^\ast(s_x)a(s_y)\psi} \\
 \leq & \int \di x\di y\, V_N(x-y) \left( \norm{s_y}^2 \norm{a(c_x)\Ncal^{1/2}\psi}^2 + \norm{s_x}^2 \norm{a(s_y)\Ncal{1/2}\psi}^{1/2}\right) \\
 \leq & C \norm{\ph}_{H^2}^2 2(1+\norm{p}^2)\frac{b_0}{N}\ev{\Ncal^2} + C\norm{\ph}_{H^2}^2 \norm{s}^2 \frac{b_0}{N} \ev{\Ncal^2} \\
-\leq & \norm{\ph}_{H^2}C \frac{1}{N}\ev{\Ncal^2}.
+\leq & C\norm{\ph}_{H^2} \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
 \estlist{13}{1}
 \begin{align*}
-& \lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\, NV_N(x-y) \frac{1}{2N} a^\ast(s_y) a^\ast(s_x) a(s_x)a(s_y)\psi} \rvert \\
+& \lvert \scal{\psi}{\dxyNV \frac{1}{2N} a^\ast(s_y) a^\ast(s_x) a(s_x)a(s_y)\psi} \rvert \\
 = & \frac{1}{4} \int \di x\di y\, V_N(x-y) \norm{a(s_x)a(s_y)\psi}^2 \\
 \leq & \frac{1}{4} \int \di x\di y\, V_N(x-y) \norm{s_x}^2 \norm{s_y}^2 \norm{\Ncal\psi}^2 \\
 \leq & \frac{1}{4} \sup_x \norm{s_x}^2 \underbrace{\int \di y \norm{s_y}^2 \int \di x V_N(x-y)}_{=\, \norm{s}^2 b_0/N} \ev{\Ncal^2}\\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N}\ev{\Ncal^2}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
 We now have estimated all summands which are quartic in $a^\#$.\\
 \estlist{14}{1}
@@ -851,8 +842,8 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a^\ast(c_y) \left( r(y,x)+\scal{p_y}{s_x} \right)\psi} \rvert \\
 \leq & \varepsilon \dxyV \norm{a(c_y)a(c_x)\psi}^2 + \frac{1}{\varepsilon} \dxyV \lvert r(y,x)+\scal{p_y}{s_x} \rvert^2 \\
 \leq & \varepsilon 2\ev{\tilV} + \frac{1}{\varepsilon} \int \di x\di y\, V_N(x-y) \left( C\lvert\ph(x)\rvert^2\lvert\ph(y)\rvert^2 +\norm{p_y}^2\norm{s_x}^2 \right) \\
-\leq & \varepsilon 2\ev{\tilV} + \frac{C}{\varepsilon} \norm{\ph}_\infty^2 \int \di y\int \di x\, \lvert \ph(y)\rvert^2 V_N(x-y) + \frac{1}{\varepsilon} \sup_x\norm{s_x}^2 \int \di x\int \di y\, \norm{p_y}^2 V_N(x-y) \\
-\leq & \varepsilon 2\ev{tilV} + \norm{\ph}_{H^2}^2 \frac{C}{\varepsilon N}.
+\leq & \varepsilon 2\ev{\tilV} + \frac{C}{\varepsilon} \norm{\ph}_\infty^2 \int \di x \di y\, \lvert \ph(y)\rvert^2 V_N(x-y) + \frac{1}{\varepsilon} \sup_x\norm{s_x}^2 \int \di x\di y\, \norm{p_y}^2 V_N(x-y) \\
+\leq & \varepsilon 2\ev{\tilV} + C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon N}.
 \end{align*}
 \estlist{14}{2}
 \begin{align*}
@@ -869,7 +860,7 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \dxyV \norm{s_y} \norm{s_x} \norm{a(c_x)\psi} \norm{a(c_y)\psi} \\
 \leq & \int \di x \di y\, V_N(x-y) \norm{s_y}^2 \norm{a(c_y)\psi}^2 \\
 \leq & \frac{b_0}{N} \sup_y \norm{s_y}^2 \int \di x \norm{a(c_x)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C\frac{1}{N}\ev{\Ncal}. 
+\leq & C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}. 
 \end{align*}
 \estlist{15}{2}
 \begin{align*}
@@ -884,49 +875,49 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(s_y) a(s_x) \scal{s_y}{s_x}\psi} \rvert \\
 \leq & \dxyV \norm{s_x} \norm{s_y} \norm{a(s_y)\psi} \norm{a(s_x)\psi} \\
 \leq & \dxyV \norm{s_x}^2 \norm{s_y}^2 \ev{\Ncal} \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N}\ev{\Ncal}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}.
 \end{align*}
 \estlist{16}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a(s_y) \scal{c_y}{s_x}\psi} \rvert \\
 \leq & \dxyV \norm{a(c_x)\psi} \norm{a(s_y)\psi} \left( s(y,x)+\scal{p_y}{s_x} \right)\\
 \leq & C\dxyNV \norm{a(c_x)\psi}^2 \lvert \ph(x)\rvert^2 + C \dxyNV \norm{a(s_y)\psi}^2 \lvert \ph(y)\rvert^2\\
-& \qquad + \dxyV \norm{a(c_x)\psi}^2 \norm{s_x}^2 + \dxyV \norm{a(s_y)\psi}^2 \norm{p_y}^2 \\
+& \quad + \dxyV \norm{a(c_x)\psi}^2 \norm{s_x}^2 + \dxyV \norm{a(s_y)\psi}^2 \norm{p_y}^2 \\
 \leq & \frac{C}{2} \norm{\ph}_\infty^2 \int \di x\, \norm{a(c_x)\psi}^2 \int \di y\, NV_N(x-y) + \frac{C}{2} \norm{\ph}_\infty^2 \int \di y\, \norm{a(s_y)\psi}^2 b_0 \\
 \leq & \frac{1}{2}\sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\psi}^2 \frac{b_0}{N} + \frac{1}{2} \sup_y \norm{p_y}^2 \int \di y\, \norm{a(s_y)\psi}^2 b_0/N \\
 \leq & \frac{C b_0}{2} \norm{\ph}_{H^2}^2(1+\frac{1}{N})\left( \int \di x\,\norm{a(c_x)\psi}^2 + \int \di y\,\norm{a(s_y)\psi}^2 \right) \\
-\leq & \norm{\ph}_{H^2}^2 C(1+\frac{1}{N})\ev{\Ncal}.
+\leq & C\norm{\ph}_{H^2}^2 (1+\frac{1}{N})\ev{\Ncal}.
 \end{align*}
 \estlist{16}{2}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(c_x) a(c_x)\scal{s_y}{s_y}\psi} \rvert \\
 \leq & \dxyV \norm{s_y}^2 \norm{a(c_x)\psi}^2 \\
 \leq & \frac{1}{2} \sup_y \norm{s_y}^2 \int \di x\, \norm{a(c_x)\psi}^2 \int \di y\, V_N(x-y) \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N}\ev{\Ncal}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}.
 \end{align*}
 \estlist{16}{3}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(s_y)a^\ast(s_x)\scal{s_x}{c_y}\psi} \rvert \\
 \leq & \dxyV \norm{a(s_y)\psi} \norm{a^\ast(s_x)\psi} \lvert\scal{s_x}{c_y}\rvert \\
 \leq & C \dxyNV \norm{a(s_y)\psi}^2 \lvert\ph(y)\rvert^2 + C \dxyNV \norm{a^\ast(s_x)\psi}^2 \lvert \ph(x)\rvert^2 \\
-& \qquad + \dxyV \norm{a(s_y)\psi}^2 \norm{p_y}^2 + \dxyV \norm{a^\ast(s_x)\psi}^2 \norm{s_x}^2 \\
-\leq & C\norm{\ph}_\infty^2\frac{b_0}{2} \int \di y\, \norm{s_y}^2 \ev{\Ncal} + C \norm{\ph}_\infty^2 \frac{b_0}{2} \int \di x\, \norm{s_x}^2 \ev{(\Ncal+1)} \\
-& \qquad + \frac{1}{2} \sup_y \norm{p_y}^2 \frac{b_0}{N} \int \di y\, \norm{s_y}^2 \ev{\Ncal} + \frac{1}{2} \sup_x \norm{s_x}^2 \frac{b_0}{N} \int \di x\, \norm{s_x}^2 \ev{(\Ncal+1)}\\
-\leq & \norm{\ph}_{H^2}^2 C(1+\frac{1}{N})\ev{\Ncal+1}.
+& \quad + \dxyV \norm{a(s_y)\psi}^2 \norm{p_y}^2 + \dxyV \norm{a^\ast(s_x)\psi}^2 \norm{s_x}^2 \\
+\leq & C\norm{\ph}_\infty^2\frac{b_0}{2} \int \di y\, \norm{s_y}^2 \ev{\Ncal} + C \norm{\ph}_\infty^2 \frac{b_0}{2} \int \di x\, \norm{s_x}^2 \ev{\Ncal+1} \\
+& \quad + \frac{1}{2} \sup_y \norm{p_y}^2 \frac{b_0}{N} \int \di y\, \norm{s_y}^2 \ev{\Ncal} + \frac{1}{2} \sup_x \norm{s_x}^2 \frac{b_0}{N} \int \di x\, \norm{s_x}^2 \ev{\Ncal+1}\\
+\leq & C \norm{\ph}_{H^2}^2 (1+\frac{1}{N})\ev{\Ncal+1}.
 \end{align*}
 \estlist{17}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{1}{N}2 a^\ast(c_x)a^\ast(s_x) \scal{s_y}{s_y}\psi} \rvert \\
 \leq & \int \di x\di y\, V_N(x-y) \norm{s_y}^2 \lvert \scal{a(c_x)\psi}{a^\ast(s_x)\psi}\rvert \\
 \leq & \sup_y \norm{s_y}^2 \int \di x\, \frac{b_0}{N} \norm{a(c_x)\psi}^2 + \sup_y \norm{s_y}^2 \int \di x\, \frac{b_0}{N} \norm{a^\ast(s_x)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N}\ev{\Ncal+1}.
+\leq & C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal+1}.
 \end{align*}
 \estlist{17}{2}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} 2 a^\ast(c_x) a^\ast(s_y) \scal{s_y}{s_x} \psi} \rvert \\
 \leq & \int \di x\di y\, V_N(x-y) \norm{s_x}^2 \norm{a(c_x)\psi}^2 + 
 \int \di x\di y\, V_N(x-y) \norm{s_y}^2 \norm{a^\ast(s_y)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{N}\ev{\Ncal+1}.
+\leq & C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal+1}.
 \end{align*}
 \estlist{17}{3}
 \begin{align*}
@@ -934,33 +925,33 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \dxyV \lvert \scal{c_y}{s_x} \rvert \norm{a(c_y)\psi} \norm{a(s_x)\psi} \\
 \leq & C \dxyNV \norm{a(c_y)\psi}^2 \lvert\ph(y)\rvert^2 + C \dxyNV \norm{a(s_x)\psi}^2 \lvert \ph(x)\rvert^2 \\
 & \qquad + \dxyV \norm{a(c_y)\psi}^2 \norm{p_y}^2 + \dxyV \norm{a(s_x)\psi}^2 \norm{s_x}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C(1+\frac{1}{N})\ev{\Ncal}.
+\leq & C \norm{\ph}_{H^2}^2 (1+\frac{1}{N})\ev{\Ncal}.
 \end{align*}
 \estlist{18}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \ph(x)\ph(y) a^\ast(c_x) a^\ast(p_y)\psi} \rvert \\
 \leq & \dxyNV \lvert\ph(x)\rvert \lvert\ph(y)\rvert \norm{a(c_x)\psi} \norm{a^\ast(p_y)\psi}\\
 \leq & \dxyNV \lvert \ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert\ph(y)\rvert^2 \norm{a^\ast(p_y)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal+1}. 
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}. 
 \end{align*}
 \estlist{18}{2} like the previous estimate
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \ph(x)\ph(y) 2a^\ast(c_x)a(s_y)\psi} \rvert \\
 \leq & \dxyNV \lvert\ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C\ev{\Ncal}.
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal}.
 \end{align*}
 \estlist{18}{3}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \ph(x)\ph(y) a(s_x) a(s_y)\psi} \rvert \\
 \leq & \dxyNV \lvert \ph(x)\rvert^2 \norm{a^\ast(s_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal+1}
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}
 \end{align*}
 \estlist{19}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \ph(x) \cc{\ph(y)} a^\ast(c_x)a(c_y)\psi} \rvert \\
 \leq & \dxyNV \lvert \ph(x)\rvert \lvert\ph(y)\rvert \norm{a(c_x)\psi} \norm{a(c_y)\psi} \\
 \leq & \int \di x \di y\, NV_N(x-y) \lvert \ph(x)\rvert^2 \norm{a(c_x)\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C\ev{\Ncal}.
+\leq & C \norm{\ph}_{H^2}^2 \ev{\Ncal}.
 \end{align*}
 \estlist{19}{2}
 \begin{align*}
@@ -968,14 +959,14 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(x)\rvert \lvert \ph(y)\rvert \norm{a(c_x)\psi} \norm{a^\ast(s_y)\psi}\\
 \leq & \int \di x\di y\, NV_NV(x-y) \lvert \ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \int \di x\di y\, NV_N(x-y) \lvert\ph(y)\rvert^2 \norm{a^\ast(s_y)\psi}^2 \\
 \leq & \norm{\ph}_\infty^2 b_0 C \ev{\Ncal+1} \\
-\leq & \norm{\ph}_{H^2}^2 C\ev{\Ncal+1}.
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
 \end{align*}
 \estlist{19}{3}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \ph(x)\cc{\ph(y)}a^\ast(s_y)a(s_x)\psi}\rvert \\
 \leq & \int \di x \di y\, N V_N(x-y) \lvert \ph(x)\rvert^2 \norm{a(s_x)\psi}^2 \\
 \leq & b_0 \norm{\ph}_\infty^2 \norm{s}^2 \ev{\Ncal}\\
-\leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal}.
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal}.
 \end{align*}
 \estlist{20}{1}
 \begin{align*}
@@ -988,14 +979,14 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 & \lvert \scal{\psi}{\dxyNV \lvert\ph(y)\rvert^2 2 a^\ast(c_x) a^\ast(s_x)\psi} \rvert \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert\ph(y)\rvert^2 \norm{a(c_x)\psi} \norm{a^\ast(s_x)\psi} \\
 \leq & \norm{\ph}_\infty^2 \left( \int \di x\, \norm{a(c_x)\psi}^2 + \int \di x \norm{a^\ast(s_x)\psi}^2\right) b_0 \\
-\leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal+1}.
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
 \end{align*}
 \estlist{20}{3}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \lvert \ph(y)\rvert^2 a^\ast(s_x) a(s_x)\psi} \rvert \\
 \leq & \dxyNV \lvert\ph(y)\rvert^2 \norm{a(s_x)\psi}^2\\
 \leq & \frac{1}{2} \norm{\ph}_\infty^2 b_0 \norm{s}^2 \ev{\Ncal} \\
-\leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal}.
+\leq & C\norm{\ph}_{H^2}^2 \ev{\Ncal}.
 \end{align*}
 \estlist{21}{1}
 \begin{align*}
@@ -1003,28 +994,28 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert\ph(y)\rvert \norm{a(c_x)\psi}\frac{1}{\sqrt{N}}\norm{a^\ast(s_x)a^\ast(s_y)\psi} \\
 \leq & \norm{\ph}_\infty^2 \int \di x\di y\, NV_N(x-y) \norm{a(c_x)\psi}^2 + \int \di x\di y\, NV_N(x-y) \frac{1}{N} \norm{a^\ast(s_x)a^\ast(s_y)\psi}^2 \\
 \leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \int \di x\di y\, NV_N(x-y) \norm{s_x}^2 \norm{s_y}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \left( \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \right).
+\leq & C\norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \right).
 \end{align*}
 \estlist{21}{2} like previous term
 \begin{align*}
- & \lvert \scal{\psi}{\dxyNV \cc{\ph(y)} \frac{2}{\sqrt{N}}a^\ast(c_x) a^\ast(s_x) a(c_y)\psi } \rvert \\
+ & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x) a^\ast(s_x) a(c_y)\psi } \rvert \\
 \leq & \norm{\ph}_\infty^2 \int \di x\di y\, N V_N(x-y) \norm{a(c_x)\psi}^2 + \int \di x\di y\, NV_N(x-y) \frac{1}{N} \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
 \leq & \norm{\ph}_{H^2}^2 C \ev{\Ncal} + \frac{1}{N} \sup_x \norm{s_x}^2 \int \di x\di y\, NV_N(x-y) \norm{a(c_y)\Ncal^{1/2}\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2} \right).
+\leq & C\norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2} \right).
 \end{align*}
 \estlist{22}{1} like previous term
 \begin{align*}
-& \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y) a^\ast(c_x) a^\ast(s_y) a(c_x)\psi} } \rvert \\
+& \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x) a^\ast(s_y) a(c_x)\psi } \rvert \\
 \leq & \norm{\ph}_\infty^2 C \ev{\Ncal} + \frac{1}{N} \int \di x\di y\, NV_N(x-y) \norm{a^\ast(s_y)a(c_x)\psi}^2 \\
 \leq & \norm{\ph}_\infty^2 C \ev{\Ncal} + \frac{1}{N}\sup_y \norm{s_y}^2 b_0 2(1+\norm{p}^2) \ev{\Ncal^2} \\
-\leq & \norm{\ph}_{H^2}^2 C \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2} \right).
+\leq & C\norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2} \right).
 \end{align*}
 \estlist{22}{2} insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$, use Hoelder and $\tilV$:
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x)a(c_x)a(c_y)\psi} \rvert \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{\varepsilon}} \norm{a(c_x)\psi} \norm{a(c_x)a(c_y)\psi} \frac{1}{\sqrt{N}}\sqrt{\varepsilon} \\
 \leq & \frac{1}{\varepsilon}\int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert^2 \norm{a(c_x)\psi}^2 + \varepsilon \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_y)a^\ast(c_x)a(c_x)a(c_y) \psi} \\
-\leq & \norm{\ph}_{H^2}^2 \frac{1}{\varepsilon}C\ev{\Ncal} + \varepsilon 4\ev{\tilV}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon}\ev{\Ncal} + \varepsilon 4\ev{\tilV}.
 \end{align*}
 \estlist{22}{3}
 \begin{align*}
@@ -1032,13 +1023,13 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \norm{a(s_y)\psi} \norm{a(s_x)a(c_x)\psi}\frac{1}{\sqrt{N}} \\
 \leq & \int \di x \di y\, NV_N(x-y) \lvert\ph(y)\rvert^2 \norm{a(s_y)\psi}^2 + \int \di x\di y\, NV_N(x-y) \norm{a(s_x)a(c_x)\psi}^2 \frac{1}{N} \\
 \leq & \norm{\ph}_\infty^2 b_0 \norm{s}^2 \ev{\Ncal} + \frac{1}{N}b_0 \sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\Ncal^{1/2}\psi}^2 \\
-\leq & \norm{\ph}_{H^2}^2 C \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2}\right). 
+\leq & C \norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2}\right). 
 \end{align*}
 \estlist{23}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(s_x) a^\ast(s_y)a(s_x)\psi} \rvert \\
 \leq & \int \di x\di y NV_N(x-y) \lvert \ph(y)\rvert \norm{a(s_x)\psi} \frac{1}{\sqrt{N}}\norm{a^\ast(s_y)a(s_x)\psi} \\
-\leq & \norm{\ph}_{H^2}^2 C \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2} \right).
+\leq & C \norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2} \right).
 \end{align*}
 \estlist{23}{2}
 \begin{align*}
@@ -1053,7 +1044,7 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)\psi} \norm{a(c_x)a(c_y)\psi}\frac{1}{\sqrt{N}}\sqrt{\varepsilon} \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert^2 \norm{a^\ast(s_x)\psi}^2\frac{1}{\varepsilon} + \int \di x\di y\, NV_N(x-y) \frac{1}{N} \scal{\psi}{a^\ast(c_y)a^\ast(c_x)a(c_x)a(c_y)\psi}\varepsilon \\
 \leq & \frac{1}{\varepsilon} \norm{\ph}_\infty^2 b_0 \int \di x\, \norm{s_x}^2 \ev{\Ncal+1} + \varepsilon 4 \ev{\tilV}\\
-\leq & \varepsilon 4 \ev{\tilV} + \norm{\ph}_{H^2}^2 \frac{1}{\varepsilon}C\ev{\Ncal+1}.
+\leq & \varepsilon 4 \ev{\tilV} + C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon}\ev{\Ncal+1}.
 \end{align*}
 \estlist{24}{1}
 \begin{align*}
@@ -1062,28 +1053,28 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{N}} \norm{s_x}^2 \norm{s_y} \norm{\Ncal^{1/2}\psi} \norm{\psi} \\
 \leq & \sup_x \norm{s_x}^2 \frac{1}{\sqrt{N}} \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \norm{s_y} \ev{\Ncal+1} \\
 \leq & \sup_x \norm{s_x}^2 \frac{1}{\sqrt{N}} b_0 \ev{\Ncal+1} \left( \int \di y\, \lvert \ph(y)\rvert^2 \right)^{1/2} \left( \int \di y\, \norm{s_y}^2 \right)^{1/2} \\
-\leq & \norm{\ph}_{H^2}^2 C\frac{1}{\sqrt{N}}\ev{\Ncal+1}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}.
 \end{align*}
 \estlist{24}{2} like previous estimate
 \begin{align*}
-& \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(s_y) \norm{s_x}^2 \psi}\rvert \\
+& \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(s_y) \scal{s_x}{s_x} \psi}\rvert \\
 \leq &\int \di x\di y\, N V_N(x-y) \lvert \ph(y)\rvert \norm{s_x}^2 \norm{s_y} \frac{1}{\sqrt{N}}\ev{\Ncal+1} \\
 \leq & \sup_x \norm{s_x}^2 \frac{1}{\sqrt{N}} b_0 \norm{\ph}_{L^2} \norm{s} \ev{\Ncal+1} \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{\sqrt{N}}\ev{\Ncal+1}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}.
 \end{align*}
 \estlist{24}{3}
 \begin{align*}
-& \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a(c_y)\norm{s_x}^2\psi}\rvert \\
+& \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a(c_y) \scal{s_x}{s_x} \psi}\rvert \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert\ph(y)\rvert \norm{s_x}^2 \frac{1}{\sqrt{N}} \norm{\psi} \norm{a(c_y)\psi} \\
 \leq & \sup_x \norm{s_x}^2 b_0 \frac{1}{\sqrt{N}} \norm{\psi} \norm{\ph}_{L^2} \left( \int \di y \norm{a(c_y)\psi}^2 \right)^{1/2}\\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{\sqrt{N} \ev{\Ncal+1}}.  
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}} \ev{\Ncal+1}.  
 \end{align*}
 \estlist{24}{4} like previous estimate
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}} \cc{\ph(y)} a(c_x)\scal{s_x}{s_y}\psi} \rvert \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \norm{s_x} \norm{s_y} \frac{1}{\sqrt{N}} \norm{\psi} \norm{a(c_x)\psi} \\
 \leq & \left( \int \di x\di y\, NV_N(x-y) \norm{a(c_x)\psi}^2 \norm{s_x}^2 \right)^{1/2} \left( \int \di x\di y\, N V_N(x-y) \norm{s_y}^2 \lvert \ph(y)\rvert^2 \right)^{1/2} \frac{1}{\sqrt{N}} \norm{\psi} \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{\sqrt{N}}\ev{\Ncal+1}. 
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}. 
 \end{align*}
 \estlist{25}{1}
 \begin{align*}
@@ -1101,16 +1092,15 @@ We now have estimated all summands which are quartic in $a^\#$.\\
 \estlist{25}{3} similar to the previous two estimates:
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)}a(s_x)r(x,y)\psi} \rvert \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{\sqrt{N}} \ev{\Ncal+1}.
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}} \ev{\Ncal+1}.
 \end{align*}
 \estlist{25}{4} similar to the previous three estimates:
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a(s_x) \scal{p_x}{s_y} \psi} \rvert \\
-\leq & \norm{\ph}_{H^2}^2 C \frac{1}{\sqrt{N}}\ev{\Ncal+1}. 
+\leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}. 
 \end{align*}
-That's it.
 
-\section{A-priori estimates}
+\iffalse
 \begin{lem}
  \bd
   \norm{k} \leq C, \quad \norm{\nabla k} \leq \sqrt{N}
@@ -1129,7 +1119,6 @@ That's it.
 \ed
 \end{lem}
 
-
 \begin{lem}
 \label{lem:nsquaredbound}
 For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{\cdot} = \scal{U_N(t)T^*\Omega}{\cdot U_N(t)T^*\Omega}$, we have \marginpar{$\Ncal\Kcal$ not needed anymore?}
@@ -1137,7 +1126,9 @@ For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{
  \frac{1}{N}\ev{\Ncal^2} \leq C \ev{\Ncal}, \quad \frac{1}{N}\ev{\Ncal \Kcal} \leq \ev{\Kcal}
  \ed
 \end{lem}
+\fi
 
+Of the generator, the following part is left to be estimated:
 \begin{lem}
  \bd
   \ev{(\partial_t T^*_t)T_t} \leq C \ev{\Ncal}
@@ -1190,23 +1181,7 @@ and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic i
 (rhs can have also other terms for which lemma \ref{lem:kvbounds} holds)
 \end{lem}
 \begin{proof}
-We have \marginpar{I have to retype this, but in priciple done}
-\begin{align*}
-& [T^*_t \Lcal_N^{(0)}(t) T_t,\Ncal] = \\ 
-& \int \di x\, \bigg[ a(c_x) \int \di y\, a_y \Big( N \nabla w_N(x-y) \cc{\nabla_x \ph(x)} 2 \cc{\ph(y)} \\
-& \qquad\qquad \qquad\qquad						+ Nw_N(x-y) \cc{\Delta_x \ph(x) \ph(y)} - \cc{\Delta_x r(y,x)} \Big) \bigg]\\
-& + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
-& \times \Big[   \frac{4}{N}\bigg( a^*(c_y)a(s_x)a(c_y)a(c_x) + a(s_x)a(s_y)a(c_y)a(c_x) + a^*(s_y)a(s_x)a(s_y)a(c_x) \bigg) \\
-& + \frac{2}{N}\bigg(  a(c_x) a_y \Big( \cc{r(y,x)} + \scal{s_x}{p_y} \Big) + a(c_x) a(p_y) \Big( \cc{s(y,x)} + \scal{s_x}{p_y} \Big) \\
-			& \qquad\qquad + 2 a(c_x) a(s_x) \scal{s_y}{s_y} + 2 a(c_x)a(s_y) \scal{s_x}{s_y} + a(s_y) a(s_x) \scal{c_y}{s_x} \bigg)\\
-& + \ph(x)\ph(y) 2\Big(  a(c_x) a(p_y) + a(s_x) a(s_y) \Big) \\
-& + \ph(x) \cc{\ph(y)} 4 a(c_x) a(s_y) \qquad \qquad + \lvert \ph(y) \rvert^2 4 a(c_x) a(s_x) \\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(   3 a(s_y)a(s_x)a(c_x) + a^*(c_y)a(s_x)a(c_x) \\
-					    & \qquad\qquad + a^*(c_x)a(s_y)a(c_x) + a^*(c_x) a(c_x) a(c_y) + a^*(s_y) a(s_x) a(c_x)\\
-					    & \qquad\qquad + a^*(s_x)a(s_y)a(s_x) + a^*(s_x) a(s_x) a(c_y) + 3 a(s_x) a(c_x) a(c_y) \bigg) \\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a(s_x) \scal{s_y}{s_x} + a(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y} \\
-					    & \qquad\qquad + a(c_x)\cc{r(x,y)} + a(c_x)\scal{s_y}{p_x} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}  \bigg)    \Big] - \hc
-\end{align*}
+only terms which do not conserve the particle number appear here. estimates above, so proof is short.
 \end{proof}
 
 
@@ -1227,16 +1202,8 @@ We have \marginpar{I have to retype this, but in priciple done}
  Convergence of reduced density matrix for factorized initial state.
 \end{thm}
 
-
-\section{Uniform regularity for the Hartree equation}
-\begin{lem}[Uniform $H^2$-regularity]
- XYZ
-\end{lem}
-\begin{lem}[Convergence of $\ph$ to $\varphi_t$ in $L^2$]
- XZY
-\end{lem}
-
 \begin{lem}
+\marginpar{might fit somewhere else better, if it's worth a lemma}
  Convergence of $\Tr \lvert \project{\ph} - \project{\varphi_t} \rvert$.
 \end{lem}
 
@@ -1997,7 +1964,7 @@ Gronwall)}
   $\text{supp }V$ and $\| \varphi \|_{H^2}$.
 \end{proof}
 
-
+\iffalse
 \subsection{$\varphi_t^{(N)}$ converges to $\varphi_t$ in $L^2$ (using
 Strichartz) (to be deleted)}
 
@@ -2161,7 +2128,7 @@ Strichartz) (to be deleted)}
   }V$, $\| \varphi^{(N)} \|_{H^1}$ and $\| \varphi \|_{H^1}$. In view of
   \eqref{endproof}, this completes the proof.
 \end{proof}
-
+\fi
 
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
