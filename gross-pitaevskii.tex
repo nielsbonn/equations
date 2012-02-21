@@ -1241,7 +1241,7 @@ We have \marginpar{I have to retype this, but in priciple done}
 \end{lem}
 
 
-\section{Operator inequalities (or a priori estimates)}
+\section{Operator inequalities (or a-priori estimates)}
 
 
 Let $f(x,y)$ be a function of two variables. To simplify the notation we write
@@ -1289,7 +1289,10 @@ prove first.
     \label{TN2T} \tag{ii} \\
     T^* \K T & \apprle \K + (\| \nabla_1 p \|_{L^2}^2 + \| \nabla_1 s
     \|_{L^2}^2) (\N+1), \label{TKT} \tag{iii} \\
-    T^* \K \N T & \apprle \label{TKNT} \tag{iv}
+    \langle \psi, T^* \K \N T \psi \rangle & \apprle |\langle \psi, T^* \K T
+    \N \psi \rangle| + \langle \psi, \K \psi \rangle + (\| \nabla_1 p
+    \|_{L^2}^2 + \| \nabla_1 s \|_{L^2}^2) \langle \psi, (\N+1) \psi \rangle.
+    \label{TKNT} \tag{iv}
   \end{align}
 \end{prp}
 
@@ -1346,8 +1349,11 @@ prove first.
     & = \int dx \, \langle \psi, (a_x^* + a^*(p_x) + a(s_x)) T^* \N T (a_x +
     a(p_x) + a^*(s_x)) \psi \rangle + \langle \psi, T^* \N T \psi \rangle.
   \end{align*}
-  Then, applying part (i) and Cauchy-Schwarz inequality, using that $a_x
-  \N^{1/2} = (\N+1)^{1/2} a_x$, and using Lemma \ref{l:a}, we obtain
+  \marginpar{Should we say a few words about this pull-through formula with
+  sqrt?}
+  Then, applying part (i) and Cauchy-Schwarz inequality, and using the
+  pull-through formula $a_x \N^{1/2} = (\N+1)^{1/2} a_x$, and Lemma \ref{l:a},
+  we obtain
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
     & \le 5C \int dx \, \| (\N+1)^{1/2} (a_x + a(p_x) + a^*(s_x)) \psi \|^2 + C
@@ -1379,11 +1385,66 @@ prove first.
     & \le 5 \langle \psi, \K \psi \rangle + 5 (\| \nabla_1 p \|_{L^2}^2 + \|
     \nabla_1 s \|_{L^2}^2) \langle \psi, (\N+1) \psi \rangle.
   \end{align*}
+
+
+  (iv) First observe that
+  \begin{align*}
+    \K \N & = \int dx dy \, \nabla_x a_x^* \nabla_x a_x a_y^* a_y \\
+    & = \int dx dy \, \nabla_x a_x^* a_y^* \nabla_x a_x a_y + \int dx dy \,
+    \nabla_x a_x^* a_y \nabla_x \delta(x-y) \\
+    & = \int dx \, \nabla_x a_x^* \N \nabla_x a_x + \K.
+  \end{align*}
+  Now, by part (i),
+  \marginpar{Is this correct? Is this a legal operation pointwise in $x$?}
+  \begin{align*}
+    \left \langle \psi, T^* \int dx \, \nabla_x a_x^* \N \nabla_x a_x T \psi
+    \right \rangle & = \int dx \, \langle T^* \nabla_x a_x T \psi, T^* \N T
+    T^* \nabla_x a_x T \psi \rangle, \\
+    & \le C \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T
+    \psi \rangle + C \langle \psi, T^* \K T \psi \rangle.
+  \end{align*}
+  Thus, combining these two expressions,
+  \begin{equation}
+    \label{ep5}
+    \langle \psi, T^* \K \N T \psi \rangle \le C \int dx \, \langle T^*
+    \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi \rangle + 2C \langle \psi,
+    T^* \K T \psi \rangle.
+  \end{equation}
+  Next, in order to estimate the first term in this inequality we write
+  \begin{align*}
+    & \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi
+    \rangle \\
+    & = \int dx \, \langle T^* \nabla_x a_x T \psi, \N ( a(\nabla_x c_x) +
+    a^*(\nabla_x s_x) ) \psi \rangle \\
+    & = \int dx \, \langle T^* \nabla_x a_x T \psi, ( a(\nabla_x c_x) (\N-1) +
+    a^*(\nabla_x s_x) (\N+1) ) \psi \rangle \\
+    & = \int dx \, \langle T^* \nabla_x a_x T \psi, \big( (a(\nabla_x c_x) +
+    a^*(\nabla s_x)) \N - (a(\nabla_x c_x) - a^*(\nabla_x s_x)) \big) \psi
+    \rangle \\
+    & = \int dx \, \langle T^* \nabla_x a_x T \psi, ( T^* \nabla_x a_x T \N -
+    T \nabla_x a_x T^* ) \psi \rangle \\
+    & = \langle \psi, T^* \K T \N \psi \rangle - \int dx \, \langle T^*
+    \nabla_x a_x T \psi, T \nabla_x a_x T^* \psi \rangle.
+  \end{align*}
+  Hence, by triangle inequality,
+  \begin{align*}
+    \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi
+    \rangle & \le |\langle \psi, T^* \K T \N \psi \rangle| + \int dx \,
+    |\langle T^* \nabla_x a_x T \psi, T \nabla_x a_x T^* \psi \rangle| \\
+    & \le |\langle \psi, T^* \K T \N \psi \rangle| + \langle \psi, T^* \K T
+    \psi \rangle + \langle \psi, T \K T^* \rangle.
+  \end{align*}
+  Therefore, combining this with \eqref{ep5}, and using part (iii),
+  \[
+    \langle \psi, T^* \K \N T \psi \rangle \apprle |\langle \psi, T^* \K T \N
+    \psi \rangle| + \langle \psi, \K \psi \rangle + (\| \nabla_1 p \|_{L^2}^2
+    + \| \nabla_1 s \|_{L^2}^2) \langle \psi, (\N+1) \psi \rangle.
+  \]
 \end{proof}
 
 
 \begin{proof}[Proof of Lemma \ref{l:N2}]
-  Let $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. By Proposition
+  (i) Let $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. By Proposition
   \ref{p:TNT},
   \begin{equation}
     \label{ep4}
@@ -1458,6 +1519,7 @@ prove first.
     & \quad + N C^3 \| \varphi \|_{L^2}^2 \langle \psi, (\N+1) \psi \rangle +
     C^4 \langle \psi, (\N+1)^2 \psi \rangle.
   \end{align*}
+  This completes the proof of part (i).
 \end{proof}
 
 
