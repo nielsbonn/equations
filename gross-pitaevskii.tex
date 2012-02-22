@@ -625,18 +625,18 @@ Now we apply Lemma \ref{l:bt} everywhere and expand all the terms, normal order 
 				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \\
 				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \\
 & + \frac{1}{N}\bigg(   \boxed{a^*(c_x)a^*(c_y) \scal{c_y}{s_x}} + a^*(c_x) a(c_y) \scal{s_y}{s_x} \tagg{cancellation_normalorder} \\
-			& \qquad\qquad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} \\
-			& \qquad\qquad + 2 a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \\
-			& \qquad\qquad + a^*(c_y) a(s_x) \scal{c_y}{s_x} +  a^*(s_y) a(s_y) \scal{s_x}{s_x}\\
-			& \qquad\qquad + a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + a^*(s_y) a(s_x) \scal{s_y}{s_x}   \bigg) \\
+			& \qquad\quad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} \\
+			& \qquad\quad + 2 a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \\
+			& \qquad\quad + a^*(c_y) a(s_x) \scal{c_y}{s_x} +  a^*(s_y) a(s_y) \scal{s_x}{s_x}\\
+			& \qquad\quad + a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + a^*(s_y) a(s_x) \scal{s_y}{s_x}   \bigg) \\
 & + \ph(x)\ph(y) \Big( \boxed{a^*(c_x) a^*(c_y)} + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big) \tagg{cancellation_standard} \\
 & + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \\
 & + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) + a^*(s_x) a^*(s_y) a(s_x)\\
-					    & \qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y)+ a^*(s_x) a(s_x) a(c_y) \\
-					    & \qquad\qquad + a^*(s_y) a(s_x) a(c_x) + a(s_x) a(c_x) a(c_y)    \bigg) \\
+					    & \qquad\qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y)+ a^*(s_x) a(s_x) a(c_y) \\
+					    & \qquad\qquad\qquad + a^*(s_y) a(s_x) a(c_x) + a(s_x) a(c_x) a(c_y)    \bigg) \\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y} \\
-					    & \qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
+					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
 \end{align*}
 We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scatteringequation} appears. There are however 6 remainder terms left (see final result for the generator below).
 
@@ -663,7 +663,7 @@ Then the final result for the generator is:
 					    & \qquad\qquad\qquad + a^*(s_x) a^*(s_y) a(s_x) + a^*(s_x) a(s_x) a(c_y) + a(s_x) a(c_x) a(c_y)  \bigg) \label{l23}\\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + 							a(c_x) \scal{s_x}{s_y} \label{l24}\\
 					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] \label{l25}\\
-+ \hc
+&+ \hc
 \end{align}
 The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
 
@@ -859,7 +859,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 \leq & \frac{1}{4} \sup_x \norm{s_x}^2 \int \di y\, \norm{s_y}^2 \int \di x\, V_N(x-y) \ev{\Ncal^2}\\
 \leq & C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
-\estlist{14}{1} \marginpar{this term could also be bounded by $\ev{\Ncal}$, if we distribute the $a^\ast$ equally to both arguments, I suppose}
+\estlist{14}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a^\ast(c_y) \left( r(y,x)+\scal{p_y}{s_x} \right)\psi} \rvert \\
 \leq & \varepsilon \dxyV \norm{a(c_y)a(c_x)\psi}^2 + \frac{1}{\varepsilon} \dxyV \lvert r(y,x)+\scal{p_y}{s_x} \rvert^2 \\
@@ -1177,7 +1177,9 @@ remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are compli
  \bd
 \ev{\Kcal} \leq  C \ev{\Lcal + \Ncal}
 \ed
-and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic in annihilation and creation operators, we also need bounds by $\Lcal$.
+ \bd
+\ev{\tilV} \leq  C \ev{\Lcal + \Ncal}
+\ed
 \end{lem}
 \begin{proof}
  done
@@ -1198,12 +1200,30 @@ and for terms in $T^*_t \Vcal T_t$ of the form $A^* A$, where $A$ is quadratic i
 \begin{lem}
 \label{lem:lncommutatorbound}
  \bd
-  \frac{\di}{\di t}\ev{\Ncal} = \ev{[\Lcal,\Ncal]} \leq C \left( \ev{N} + \frac{1}{N}\ev{\Ncal^2} + \frac{1}{N} \ev{\Ncal \Kcal} \right)
+  \frac{\di}{\di t}\ev{\Ncal} = \ev{[\Lcal,\Ncal]} \leq C \left( \ev{N} + \frac{1}{N}\ev{\Ncal^2} + \ev{\tilV} + \ev{\Kcal} \right)
  \ed
-(rhs can have also other terms for which lemma \ref{lem:kvbounds} holds)
+and the rhs can be further bounded by lemma \ref{lem:kvbounds} and \ref{l:N2}.
 \end{lem}
 \begin{proof}
-only terms which do not conserve the particle number appear here. estimates above, so proof is short.
+We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop. The other summands get numerical prefactors, but except of that stay unchanged. Because of these prefactors, the sign of the $+\hc$-part changes. So we get
+\begin{align*}
+& [T^\ast_t \Lcal_N^{(0)}(t) T_t,\Ncal] = \\ 
+& \frac{1}{2} \int \di x\, \bigg[(-2) a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \\
+& \qquad\qquad \qquad\qquad \qquad	+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big)\bigg] \\
+& + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
+& \times \Big[   \frac{1}{2N}\bigg( 4(-2) a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) + 2(-4) a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x)\\
+				      & \qquad\qquad + 4(-2) a^*(c_x) a^*(s_y) a^*(s_x) a(s_y)\bigg) \\
+& + \frac{1}{N}\bigg(  (-2) a^*(c_x) a^*(c_y) \Big( r(y,x) + \scal{p_y}{s_x} \Big) + (-2)a^*(c_x) a^*(p_y) k(y,x) \\
+      & \qquad\quad + (-2)a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + 2(-2)a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2(-2)a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \bigg)\\
+& + \ph(x)\ph(y) \Big( (-2) a^*(c_x) a^*(p_y) +(+2)a(s_x) a(s_y) \Big)\\
+& + \ph(x) \cc{\ph(y)} 2(-2) a^*(c_x) a^*(s_y) + \lvert \ph(y) \rvert^2 2(-2) a^*(c_x) a^*(s_x)\\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-3)a^*(c_x) a^*(s_x) a^*(s_y) + (-1)a^*(c_x) a^*(s_x) a(c_y)\\
+					    & \qquad\qquad\qquad + (-1)a^*(c_x) a^*(s_y) a(c_x) + (+1)a^*(c_x) a(c_x) a(c_y) + (+1)a^*(s_y) a(s_x) a(c_x)\\
+					    & \qquad\qquad\qquad + (-1)a^*(s_x) a^*(s_y) a(s_x) + (+1)a^*(s_x) a(s_x) a(c_y) + (+3)a(s_x) a(c_x) a(c_y)  \bigg)\\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-1)a^*(s_x) \scal{s_x}{s_y} + (-1)a^*(s_y) \scal{s_x}{s_x}  + (+1)a(c_y) \scal{s_x}{s_x} + (+1)a(c_x) \scal{s_x}{s_y}\\
+					    & \qquad\qquad\qquad + (-1)a^*(c_x)r(x,y) + (-1)a^*(c_x)\scal{p_x}{s_y} + (+1)a(s_x)r(x,y) + (+1)a(s_x)\scal{p_x}{s_y}	\bigg)    \Big]\\
+&- \hc
+\end{align*}
 \end{proof}
 
 
@@ -1248,7 +1268,7 @@ all $\psi \in \mathcal{F}$.
 
 \begin{lem}
   \label{l:N2}
-  Let $U_t$ be the unitary evolution defined in (X). Then,
+  Let $U_t$ be the unitary evolution defined in (X). Then, \marginpar{could we have an explicit sentence here which says $\frac{1}{N}\ev{(\Ncal+2)^2} \leq C \ev{\Ncal+1}$, please? (where $C$ does not depend on $t$)}
 %  \begin{align}
 %    \langle U_t \psi, \N^2 U_t \psi \rangle & \apprle N \langle U_t \psi,
 %    (\N+1) U_t \psi \rangle + N \langle \psi, (\N+1) \psi \rangle + \langle
