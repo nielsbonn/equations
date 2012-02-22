@@ -49,6 +49,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%% Notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\fock}{\mathcal{F}}		% fock space symbol
 \newcommand{\di}{\textrm{d}}		% differential (for integrals)
 \newcommand{\Lcal}{\mathcal{L}}		% calligraphic L
 \newcommand{\Ncal}{\mathcal{N}}		% calligraphic N
@@ -669,7 +670,10 @@ The cancellations enable us to give estimates for all terms, only using $\Ncal$,
 
 
 \section{Estimates for the terms of the generator}
+\label{ch:generatorestimates}
 In this chapter we denote the expectation value $\scal{\psi}{A\psi}$ by $\ev{A}$. In this chapter, $C$ is a constant which can change from line to line in inequalities, but which is always independent of $N$ and $t$.
+
+All bounds proven in this chapter hold as operator inequalities, independent of the choice of $\psi$. In particular, the structure of the time evolution $\psi_N(t) = U_N(t)\psi_0$ is not used in this chapter.
 
 For convenience, we remind the reader of the simple but useful estimate
 \bd
@@ -1152,6 +1156,7 @@ For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{
 
 Of the generator, the following part is left to be estimated:
 \begin{lem}
+\label{lm:timederivative}
  \bd
   \ev{(\partial_t T^*_t)T_t} \leq C \ev{\Ncal}
  \ed
@@ -1199,10 +1204,10 @@ remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are compli
 
 \begin{lem}
 \label{lem:lncommutatorbound}
+For any arbitrary $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies the estimate
  \bd
-  \frac{\di}{\di t}\ev{\Ncal} = \ev{[\Lcal,\Ncal]} \leq C \left( \ev{N} + \frac{1}{N}\ev{\Ncal^2} + \ev{\tilV} + \ev{\Kcal} \right)
+  \lvert \ev{[\Lcal_N(t),\Ncal]} \rvert \leq C \norm{\ph}_{H^2}^2 \left( \ev{N+1} + \frac{1}{N}\ev{\Ncal^2} + \ev{\tilV} + \ev{\Kcal} \right).
  \ed
-and the rhs can be further bounded by lemma \ref{lem:kvbounds} and \ref{l:N2}.
 \end{lem}
 \begin{proof}
 We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop. The other summands get numerical prefactors, but except of that stay unchanged. Because of these prefactors, the sign of the $+\hc$-part changes. So we get
@@ -1224,6 +1229,7 @@ We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which c
 					    & \qquad\qquad\qquad + (-1)a^*(c_x)r(x,y) + (-1)a^*(c_x)\scal{p_x}{s_y} + (+1)a(s_x)r(x,y) + (+1)a(s_x)\scal{p_x}{s_y}	\bigg)    \Big]\\
 &- \hc
 \end{align*}
+Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:generatorestimates} to bound all summand of the commutator. Together with lemma \ref{lm:timederivative} for bounding $\ev{(\partial_t T^\ast_t) T_t}$, the theorem is now proven.
 \end{proof}
 
 
