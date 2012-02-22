@@ -1260,13 +1260,6 @@ all $\psi \in \mathcal{F}$.
 \begin{lem}
   \label{l:N2}
   Let $U_t$ be the unitary evolution defined in (X). Then,
-%  \begin{align}
-%    \langle U_t \psi, \N^2 U_t \psi \rangle & \apprle N \langle U_t \psi,
-%    (\N+1) U_t \psi \rangle + N \langle \psi, (\N+1) \psi \rangle + \langle
-%    \psi, (\N+1)^2 \psi \rangle, \tag{i} \\
-%    \langle U_t \psi, \N \K U_t \psi \rangle & \apprle \tag{ii}
-%  \end{align}
-%  (Or we can state as an operator inequality on $\mathcal{F}$)
   \begin{align}
     U_t^* \N^2 U_t & \apprle N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2, \tag{i}
     \\
@@ -1283,17 +1276,14 @@ prove first.
   \label{p:TNT}
   Let $p, s \in L^2(\R^3 \times \R^3)$. Then,
   \begin{align}
-    T^* \N T & \apprle (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) (\N+1),
-    \label{TNT} \tag{i} \\
-    T^* \N^2 T & \apprle (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2)^2 (\N+1)^2,
-    \label{TN2T} \tag{ii} \\
-    T^* \K T & \apprle \K + (\| \nabla_1 p \|_{L^2}^2 + \| \nabla_1 s
-    \|_{L^2}^2) (\N+1), \label{TKT} \tag{iii} \\
-    \langle \psi, T^* \K \N T \psi \rangle & \apprle |\langle \psi, T^* \K T
-    \N \psi \rangle| + \langle \psi, \K \psi \rangle + (\| \nabla_1 p
-    \|_{L^2}^2 + \| \nabla_1 s \|_{L^2}^2) \langle \psi, (\N+1) \psi \rangle.
-    \label{TKNT} \tag{iv}
+    T^* \N T & \apprle C (\N+1), \label{TNT} \tag{i} \\
+    T^* \N^2 T & \apprle C^2 (\N+1)^2, \label{TN2T} \tag{ii} \\
+    T^* \K T & \apprle C \K + \| \nabla_1 s \|_{L^2}^2, \label{TKT} \tag{iii}
+    \\
+    T^* \K \N T & \apprle \frac{C}{N} \N T^* \K T \N + C N T^* \K T + C^2 \K +
+    C \| \nabla_1 s \|_{L^2}^2, \label{TKNT} \tag{iv}
   \end{align}
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 \end{prp}
 
 
@@ -1332,43 +1322,43 @@ prove first.
   \begin{align*}
     \langle \psi, T^* \N T \psi \rangle & \le 5 \int dx \, \| a_x \psi \|^2 +
     5 \int dx \, \| a(p_x) \psi \|^2 + 5 \int dx \, \| a^*(s_x) \psi \|^2 \\
-    & \le 5 \langle \psi, \N \psi \rangle + 5 \int dx \, \| p_x \|_{L^2}^2
-    \langle \psi, \N \psi \rangle + 5 \int dx \, \| s_x \|_{L^2}^2 \langle
+    & \apprle \langle \psi, \N \psi \rangle + \int dx \, \| p_x \|_{L^2}^2
+    \langle \psi, \N \psi \rangle + \int dx \, \| s_x \|_{L^2}^2 \langle
     \psi, (\N+1) \psi \rangle \\
-    & \le 5 (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, (\N+1) \psi
+    & \apprle (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, (\N+1) \psi
     \rangle.
   \end{align*}
 
 
-  (ii) Write
+  (ii) Observe that
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
     & = \int dxdy \, \langle \psi, T^* a_x^* a_x a_y^* a_y T \psi \rangle \\
     & = \int dx \, \langle \psi, T^* a_x^* \N a_x T \psi \rangle + \langle
     \psi, T^* \N T \psi \rangle \\
-    & = \int dx \, \langle \psi, (a_x^* + a^*(p_x) + a(s_x)) T^* \N T (a_x +
+    & = \int dx \, \langle (a_x + a(p_x) + a^*(s_x)) \psi, T^* \N T (a_x +
     a(p_x) + a^*(s_x)) \psi \rangle + \langle \psi, T^* \N T \psi \rangle.
   \end{align*}
+  \marginpar{Applying (i) pointwise in $x$}
   \marginpar{Should we say a few words about this pull-through formula with
   sqrt?}
-  Then, applying part (i) and Cauchy-Schwarz inequality, and using the
-  pull-through formula $a_x \N^{1/2} = (\N+1)^{1/2} a_x$, and Lemma \ref{l:a},
+  Thus, applying part (i) and Cauchy-Schwarz inequality, and using the
+  pull-through formula $a_x \N^{1/2} = (\N+1)^{1/2} a_x$ and Lemma \ref{l:a},
   we obtain
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
     & \le 5C \int dx \, \| (\N+1)^{1/2} (a_x + a(p_x) + a^*(s_x)) \psi \|^2 + C
     \langle \psi, (\N+1) \psi \rangle \\
-    & \le 25C \int dx \, ( \langle a_x^* a_x \psi, \N \psi \rangle + \| a(p_x)
-    \N^{1/2} \psi \|^2 + \| a^*(s_x) (\N+2)^{1/2} \psi \|^2 ) + C \langle
-    \psi, (\N+1) \psi \rangle \\
-    & \le (5C)^2 \langle \psi, (\N+2)^2 \psi \rangle \le 4(5C)^2 \langle \psi,
+    & \le 25C \int dx \, ( \langle a_x^* a_x \psi, \N \psi \rangle + \|
+    a(p_x) \N^{1/2} \psi \|^2 + \| a^*(s_x) (\N+2)^{1/2} \psi \|^2 ) + C
+    \langle \psi, (\N+1) \psi \rangle \\
+    & \apprle C^2 \langle \psi, (\N+2)^2 \psi \rangle \apprle C^2 \langle \psi,
     (\N+1)^2 \psi \rangle,
   \end{align*}
   where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 
 
-  \marginpar{Proof of (iii) is similar to proof of (i); we could omit.} (iii)
-  Similarly as in the proof of (i), write
+  (iii) Similarly as in the proof of (i), write
   \[
     \langle \psi, T^* \K T \psi \rangle = \int dx \, \langle T^* \nabla_x a_x
     T \psi, T^* \nabla_x a_x T \psi \rangle = \int dx \, \| (\nabla a_x +
@@ -1379,11 +1369,14 @@ prove first.
     \langle \psi, T^* \K T \psi \rangle & \le 5 \int dx \, \| \nabla_x a_x
     \psi \|^2 + 5 \int dx \, \| a(\nabla_x p_x) \psi \|^2 + 5 \int dx \, \|
     a^*(\nabla_x s_x) \psi \|^2 \\
-    & \le 5 \langle \psi, \K \psi \rangle + 5 \int dx \, \| \nabla_x p_x
-    \|_{L^2}^2 \langle \psi, \N \psi \rangle + 5 \int dx \, \| \nabla_x s_x
-    \|_{L^2}^2 \langle \psi, (\N+1) \psi \rangle \\
-    & \le 5 \langle \psi, \K \psi \rangle + 5 (\| \nabla_1 p \|_{L^2}^2 + \|
-    \nabla_1 s \|_{L^2}^2) \langle \psi, (\N+1) \psi \rangle.
+    & \apprle \langle \psi, \K \psi \rangle + \int dx \, \| p_x \|_{L^2}^2
+    \langle \psi, \K \psi \rangle + \int dx \, \langle \psi, a(\nabla_x s_x)
+    a^*(\nabla_x s_x) \psi \rangle \\
+    & = \langle \psi, \K \psi \rangle + \| \nabla_1 p \|_{L^2}^2 \langle \psi,
+    \K \psi \rangle + \int dx \, \| a(\nabla_x s_x) \psi \|^2 + \| \nabla_1 s
+    \|_{L^2}^2 \\
+    & \le (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, \K \psi
+    \rangle + \| \nabla_1 s \|_{L^2}^2.
   \end{align*}
 
 
@@ -1395,7 +1388,7 @@ prove first.
     & = \int dx \, \nabla_x a_x^* \N \nabla_x a_x + \K.
   \end{align*}
   Now, by part (i),
-  \marginpar{Is this correct? Is this a legal operation pointwise in $x$?}
+  \marginpar{Again part (i) pointwise in $x$}
   \begin{align*}
     \left \langle \psi, T^* \int dx \, \nabla_x a_x^* \N \nabla_x a_x T \psi
     \right \rangle & = \int dx \, \langle T^* \nabla_x a_x T \psi, T^* \N T
@@ -1403,14 +1396,14 @@ prove first.
     & \le C \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T
     \psi \rangle + C \langle \psi, T^* \K T \psi \rangle.
   \end{align*}
-  Thus, combining these two expressions,
+  Hence, combining these two expressions,
   \begin{equation}
     \label{ep5}
     \langle \psi, T^* \K \N T \psi \rangle \le C \int dx \, \langle T^*
     \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi \rangle + 2C \langle \psi,
     T^* \K T \psi \rangle.
   \end{equation}
-  Next, in order to estimate the first term in this inequality we write
+  Next, in order to estimate the first term in this inequality, we first write
   \begin{align*}
     & \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi
     \rangle \\
@@ -1426,20 +1419,29 @@ prove first.
     & = \langle \psi, T^* \K T \N \psi \rangle - \int dx \, \langle T^*
     \nabla_x a_x T \psi, T \nabla_x a_x T^* \psi \rangle.
   \end{align*}
-  Hence, by triangle inequality,
+  Thus, by triangle inequality,
   \begin{align*}
     \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi
     \rangle & \le |\langle \psi, T^* \K T \N \psi \rangle| + \int dx \,
     |\langle T^* \nabla_x a_x T \psi, T \nabla_x a_x T^* \psi \rangle| \\
     & \le |\langle \psi, T^* \K T \N \psi \rangle| + \langle \psi, T^* \K T
-    \psi \rangle + \langle \psi, T \K T^* \rangle.
+    \psi \rangle + \langle \psi, T \K T^* \psi \rangle.
   \end{align*}
-  Therefore, combining this with \eqref{ep5}, and using part (iii),
+  Furthermore, by Cauchy-Schwarz inequality,
+  \begin{align*}
+    | \langle \psi, T^* \K T \N \psi \rangle| & = |\langle (T^* \K T)^{1/2}
+    \psi, (T^* \K T)^{1/2} \N \psi \rangle| \\
+    & \le N \langle \psi, T^* \K T \psi \rangle + \frac{1}{N} \langle \psi, \N
+    T^* K T \N \psi \rangle.
+  \end{align*}
+  Therefore, combining the last two inequalities with \eqref{ep5}, and using
+  part (iii),
   \[
-    \langle \psi, T^* \K \N T \psi \rangle \apprle |\langle \psi, T^* \K T \N
-    \psi \rangle| + \langle \psi, \K \psi \rangle + (\| \nabla_1 p \|_{L^2}^2
-    + \| \nabla_1 s \|_{L^2}^2) \langle \psi, (\N+1) \psi \rangle.
+    \langle \psi, T^* \K \N T \psi \rangle \apprle \frac{C}{N} \langle \psi,
+    \N T^* \K T \N \psi \rangle + C N \langle \psi, T^* \K T \psi \rangle +
+    C^2 \langle \psi, \K \psi \rangle + C \| \nabla_1 s \|_{L^2}^2,
   \]
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. This completes the proof.
 \end{proof}
 
 
