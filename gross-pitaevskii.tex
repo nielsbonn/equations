@@ -639,7 +639,7 @@ Now we apply Lemma \ref{l:bt} everywhere and expand all the terms, normal order 
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y} \\
 					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
 \end{align*}
-We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scatteringequation} appears. There are however 6 remainder terms left (see final result for the generator below).
+We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scatteringequation} appears. There are however some (more regular) remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator.
 
 Then the final result for the generator is:
 \begin{align}
@@ -666,8 +666,7 @@ Then the final result for the generator is:
 					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] \label{l25}\\
 &+ \hc
 \end{align}
-The cancellations enable us to give estimates for all terms, only using $\Ncal$, $\Ncal^2$, never $\Kcal^2$, which we expect to be too large due to the singular short scale structure of the two-particle correlations.
-
+The cancellations enable us to give the necessary estimates for all terms, see chapter \ref{ch:generatorestimates}.
 
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
@@ -1155,14 +1154,14 @@ For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{
 \fi
 
 Of the generator, the following part is left to be estimated:
-\begin{lem}
+\begin{lem}\marginpar{I think I now have a good strategy for this proof.}
 \label{lm:timederivative}
  \bd
   \ev{(\partial_t T^*_t)T_t} \leq C \ev{\Ncal}
  \ed
 \end{lem}
 \begin{proof}
-remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are complicated. TODO.
+remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are complicated. TODO. 
 \end{proof}
 
 
@@ -1229,7 +1228,7 @@ We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which c
 					    & \qquad\qquad\qquad + (-1)a^*(c_x)r(x,y) + (-1)a^*(c_x)\scal{p_x}{s_y} + (+1)a(s_x)r(x,y) + (+1)a(s_x)\scal{p_x}{s_y}	\bigg)    \Big]\\
 &- \hc
 \end{align*}
-Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:generatorestimates} to bound all summand of the commutator. Together with lemma \ref{lm:timederivative} for bounding $\ev{(\partial_t T^\ast_t) T_t}$, the theorem is now proven.
+Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:generatorestimates} to bound all summands of the commutator. Together with lemma \ref{lm:timederivative} for bounding $\ev{(\partial_t T^\ast_t) T_t}$, the theorem is now proven.
 \end{proof}
 
 
