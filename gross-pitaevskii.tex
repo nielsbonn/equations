@@ -1,12 +1,12 @@
 %\documentclass[11pt,a4paper,twoside,headsepline]{scrartcl}
-\documentclass[11pt,a4paper]{scrartcl} % Added by GBdO
-\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry} % Added by GBdO
+\documentclass[11pt,a4paper]{scrartcl}
+\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry}
 \usepackage[utf8x]{inputenc}
-\usepackage[bookmarksnumbered=true]{hyperref} % Added by GBdO
-\usepackage[color,notref,notcite]{showkeys} % Added by GBdO
+%\usepackage[bookmarksnumbered=true]{hyperref}
+\usepackage[color,notref,notcite]{showkeys}
 \usepackage{scrtime}
 \usepackage{amsmath, amsthm, amssymb}
-\usepackage{dsfont,wasysym} % added by GBdO
+\usepackage{dsfont,wasysym}
 
 % Original header
 %\usepackage{scrpage2}
@@ -169,7 +169,7 @@ x\, a^*_x a_x
 \ed
 
 
-For $f \in L^2(\R^3)$, we define the Weyl operator on $\mathcal{F}$ as
+For $f \in L^2(\R^3)$, we define the Weyl operator as
 \bd
 %A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
 W(f) = \exp(a^*(f) - a(f)).
@@ -587,6 +587,8 @@ where
 		& + N b(N,t),
 \end{align*}
 with a phase (which, like all phases, will be dropped from now on without any further comment)
+\marginpar{It's clear, but perhaps we should mention that these functions
+converge as $N \to \infty$. Is $b(N,t) \to 0$ as $N \to \infty$?}
 \bd
 b(N,t) = \norm{\nabla \ph}_{L^2}^2 - \Im \scal{\ph}{\phdot} + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y) \rvert^2.
 \ed
@@ -1276,15 +1278,16 @@ all $\psi \in \mathcal{F}$.
   \label{l:N2}
   Let $U_t$ be the unitary evolution defined in (X). Then, \marginpar{could we have an explicit sentence here which says $\frac{1}{N}\ev{(\Ncal+2)^2} \leq C \ev{\Ncal+1}$, please? (where $C$ does not depend on $t$)}
   \begin{align}
-    U_t^* \N^2 U_t & \apprle N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2, \tag{i}
-    \\
+    U_t^* \N^2 U_t & \apprle C^4 \big( N U_t^* (\N+1) U_t + N (\N+1) +
+    (\N+1)^2 \big), \tag{i} \\
     U_t^* \N \K U_t & \apprle \tag{ii}
   \end{align}
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 \end{lem}
 
 
-The proof of Lemma \ref{l:N2} is based on the next two propositions, which we
-prove first.
+The proof of Lemma \ref{l:N2} is based on two propositions, which we prove
+first.
 
 
 \begin{prp}
@@ -1292,13 +1295,14 @@ prove first.
   Let $p, s \in L^2(\R^3 \times \R^3)$. Then,
   \begin{align}
     T^* \N T & \apprle C (\N+1), \label{TNT} \tag{i} \\
-    T^* \N^2 T & \apprle C^2 (\N+1)^2, \label{TN2T} \tag{ii} \\
-    T^* \K T & \apprle C \K + \| \nabla_1 s \|_{L^2}^2, \label{TKT} \tag{iii}
+    T^* \K T & \apprle C \K + \| \nabla_1 s \|_{L^2}^2, \label{TKT} \tag{ii}
     \\
-    T^* \K \N T & \apprle \frac{C}{N} \N T^* \K T \N + C N T^* \K T + C^2 \K +
-    C \| \nabla_1 s \|_{L^2}^2, \label{TKNT} \tag{iv}
+    T^* \N^2 T & \apprle C^2 (\N+1)^2, \label{TN2T} \tag{iii} \\
+    T^* \N \K T & \apprle \frac{C}{N} \N T^* \K T \N + C N T^* \K T + C T \K
+    T^*, \label{TKNT} \tag{iv}
   \end{align}
-  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. Moreover, the same
+  inequalities hold with $T$ replaced by $T^*$.
 \end{prp}
 
 
@@ -1308,9 +1312,9 @@ prove first.
   pull-through formulae hold true:
   \begin{align}
     \N W(\sqrt{N} \varphi)^* & = W(\sqrt{N} \varphi)^* (\N - \sqrt{N}
-    \psi(\varphi) + N), \tag{i} \\
+    \phi(\varphi) + N), \tag{i} \\
     \N W(\sqrt{N} \varphi) & = W(\sqrt{N} \varphi) (\N + \sqrt{N}
-    \psi(\varphi) + N), \tag{ii} \\
+    \phi(\varphi) + N), \tag{ii} \\
     W(\sqrt{N} \varphi)^* \phi(\varphi) & = (\phi(\varphi) + 2 \sqrt{N})
     W(\sqrt{N} \varphi)^*, \tag{iii} \\
     \phi(\varphi) T & = T \phi(C \varphi + S \overline{\varphi}). \tag{iv}
@@ -1321,8 +1325,8 @@ prove first.
 \begin{proof}[Proof of Proposition \ref{p:formulae}]
   \marginpar{This seems clear; we might be brief here.}
   Recall that $\phi(\varphi) = a(\varphi) + a^*(\varphi)$. Parts (i), (ii) and
-  (iii) follow by a short calculation using parts (ii) and (iii) of Lemma
-  \ref{l:W}. Similarly, part (iv) follows by Lemma \ref{l:bt}.
+  (iii) follow easily by a short calculation using parts (ii) and (iii) of
+  Lemma \ref{l:W}. Similarly, part (iv) follows from Lemma \ref{l:bt}.
 \end{proof}
 
 
@@ -1335,8 +1339,8 @@ prove first.
   \]
   Then, by Cauchy-Schwarz inequality, and Lemma \ref{l:a},
   \begin{align*}
-    \langle \psi, T^* \N T \psi \rangle & \le 5 \int dx \, \| a_x \psi \|^2 +
-    5 \int dx \, \| a(p_x) \psi \|^2 + 5 \int dx \, \| a^*(s_x) \psi \|^2 \\
+    \langle \psi, T^* \N T \psi \rangle & \apprle \int dx \, \| a_x \psi \|^2
+    + \int dx \, \| a(p_x) \psi \|^2 + \int dx \, \| a^*(s_x) \psi \|^2 \\
     & \apprle \langle \psi, \N \psi \rangle + \int dx \, \| p_x \|_{L^2}^2
     \langle \psi, \N \psi \rangle + \int dx \, \| s_x \|_{L^2}^2 \langle
     \psi, (\N+1) \psi \rangle \\
@@ -1345,7 +1349,26 @@ prove first.
   \end{align*}
 
 
-  (ii) Observe that
+  (ii) Similarly, first observe that
+  \[
+    \langle \psi, T^* \K T \psi \rangle = \int dx \, \langle T^* \nabla_x a_x
+    T \psi, T^* \nabla_x a_x T \psi \rangle = \int dx \, \| (\nabla a_x +
+    a(\nabla_x p_x) + a^*(\nabla_x s_x)) \psi \|^2.
+  \]
+  Thus, by Cauchy-Schwarz inequality, and Lemma \ref{l:a},
+  \begin{align*}
+    \langle \psi, T^* \K T \psi \rangle & \apprle \int dx \, \| \nabla_x a_x
+    \psi \|^2 + \int dx \, \| a(\nabla_x p_x) \psi \|^2 + \int dx \, \|
+    a^*(\nabla_x s_x) \psi \|^2 \\
+    & = \langle \psi, \K \psi \rangle + \int dx \, \| a(\nabla_x p_x) \psi
+    \|^2 + \int dx \, \| a(\nabla_x s_x) \psi \|^2 + \| \nabla_1 s \|_{L^2}^2
+    \\
+    & \apprle (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, \K \psi
+    \rangle + \| \nabla_1 s \|_{L^2}^2.
+  \end{align*}
+
+
+  (iii) Write
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
     & = \int dxdy \, \langle \psi, T^* a_x^* a_x a_y^* a_y T \psi \rangle \\
@@ -1357,52 +1380,29 @@ prove first.
   \marginpar{Applying (i) pointwise in $x$}
   \marginpar{Should we say a few words about this pull-through formula with
   sqrt?}
-  Thus, applying part (i) and Cauchy-Schwarz inequality, and using the
+  Then, applying part (i) and Cauchy-Schwarz inequality, and using the
   pull-through formula $a_x \N^{1/2} = (\N+1)^{1/2} a_x$ and Lemma \ref{l:a},
   we obtain
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
-    & \le 5C \int dx \, \| (\N+1)^{1/2} (a_x + a(p_x) + a^*(s_x)) \psi \|^2 + C
-    \langle \psi, (\N+1) \psi \rangle \\
-    & \le 25C \int dx \, ( \langle a_x^* a_x \psi, \N \psi \rangle + \|
-    a(p_x) \N^{1/2} \psi \|^2 + \| a^*(s_x) (\N+2)^{1/2} \psi \|^2 ) + C
-    \langle \psi, (\N+1) \psi \rangle \\
-    & \apprle C^2 \langle \psi, (\N+2)^2 \psi \rangle \apprle C^2 \langle \psi,
-    (\N+1)^2 \psi \rangle,
+    & \apprle C \int dx \, \| (\N+1)^{1/2} (a_x + a(p_x) + a^*(s_x)) \psi \|^2
+    + C \langle \psi, (\N+1) \psi \rangle \\
+    & \apprle C \int dx \, (\| a_x \N \psi \|^2 + \| a(p_x) \N^{1/2} \psi \|^2
+    + \| a^*(s_x) (\N+2)^{1/2} \psi \|^2 ) + C \langle \psi, (\N+1) \psi
+    \rangle \\
+    & \apprle C^2 \langle \psi, (\N+1)^2 \psi \rangle,
   \end{align*}
   where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 
 
-  (iii) Similarly as in the proof of (i), write
-  \[
-    \langle \psi, T^* \K T \psi \rangle = \int dx \, \langle T^* \nabla_x a_x
-    T \psi, T^* \nabla_x a_x T \psi \rangle = \int dx \, \| (\nabla a_x +
-    a(\nabla_x p_x) + a^*(\nabla_x s_x)) \psi \|^2.
-  \]
-  Then, by Cauchy-Schwarz inequality, and Lemma \ref{l:a},
-  \begin{align*}
-    \langle \psi, T^* \K T \psi \rangle & \le 5 \int dx \, \| \nabla_x a_x
-    \psi \|^2 + 5 \int dx \, \| a(\nabla_x p_x) \psi \|^2 + 5 \int dx \, \|
-    a^*(\nabla_x s_x) \psi \|^2 \\
-    & \apprle \langle \psi, \K \psi \rangle + \int dx \, \| p_x \|_{L^2}^2
-    \langle \psi, \K \psi \rangle + \int dx \, \langle \psi, a(\nabla_x s_x)
-    a^*(\nabla_x s_x) \psi \rangle \\
-    & = \langle \psi, \K \psi \rangle + \| \nabla_1 p \|_{L^2}^2 \langle \psi,
-    \K \psi \rangle + \int dx \, \| a(\nabla_x s_x) \psi \|^2 + \| \nabla_1 s
-    \|_{L^2}^2 \\
-    & \le (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, \K \psi
-    \rangle + \| \nabla_1 s \|_{L^2}^2.
-  \end{align*}
-
-
-  (iv) First observe that
+  (iv) Write
   \begin{align*}
     \K \N & = \int dx dy \, \nabla_x a_x^* \nabla_x a_x a_y^* a_y \\
     & = \int dx dy \, \nabla_x a_x^* a_y^* \nabla_x a_x a_y + \int dx dy \,
     \nabla_x a_x^* a_y \nabla_x \delta(x-y) \\
     & = \int dx \, \nabla_x a_x^* \N \nabla_x a_x + \K.
   \end{align*}
-  Now, by part (i),
+  Then, by part (i),
   \marginpar{Again part (i) pointwise in $x$}
   \begin{align*}
     \left \langle \psi, T^* \int dx \, \nabla_x a_x^* \N \nabla_x a_x T \psi
@@ -1449,12 +1449,11 @@ prove first.
     & \le N \langle \psi, T^* \K T \psi \rangle + \frac{1}{N} \langle \psi, \N
     T^* K T \N \psi \rangle.
   \end{align*}
-  Therefore, combining the last two inequalities with \eqref{ep5}, and using
-  part (iii),
+  Therefore, combining the last two inequalities with \eqref{ep5}, we obtain
   \[
     \langle \psi, T^* \K \N T \psi \rangle \apprle \frac{C}{N} \langle \psi,
     \N T^* \K T \N \psi \rangle + C N \langle \psi, T^* \K T \psi \rangle +
-    C^2 \langle \psi, \K \psi \rangle + C \| \nabla_1 s \|_{L^2}^2,
+    C \langle \psi, T \K T^* \psi \rangle,
   \]
   where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. This completes the proof.
 \end{proof}
@@ -1464,7 +1463,6 @@ prove first.
   (i) Let $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. By Proposition
   \ref{p:TNT},
   \begin{equation}
-    \label{ep4}
     \begin{aligned}
       \langle U_t \psi, \N^2 U_t \psi \rangle & = \langle T_t U_t \psi, T_t
       \N^2 T_t^* T_t U_t \psi \rangle \\
@@ -1473,6 +1471,16 @@ prove first.
       & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^3
       \langle U_t \psi, (\N+1) U_t \psi \rangle. \\
     \end{aligned}
+    \end{equation} 
+  \begin{equation}
+    \label{ep4}
+    \begin{split}
+      \langle U_t \psi, \N^2 U_t \psi \rangle & = \langle T_t U_t \psi, T_t
+      \N^2 T_t^* T_t U_t \psi \rangle \\
+      & \apprle C^2 \langle T_t U_t \psi, (\N+1)^2 T_t U_t \psi \rangle \\
+      & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^2
+      \langle T_t U_t \psi, (\N+1) T_t U_t \psi \rangle. \\
+    \end{split}
     \end{equation} 
   Now, by Proposition \ref{p:formulae}, and observing that $\N$ commutes with
   $\mathcal{H}_N$,
@@ -1507,34 +1515,32 @@ prove first.
     \psi \| ) \\
     & \le \| \N T_t U_t \psi \| ( 2 \sqrt{N} \| \varphi_t \|_{L^2} \|
     (\N+1)^{1/2} T_t U_t \psi \| \\
-    & \quad + 2 \sqrt{N} ( 1 + \| c \|_{L^2} + \| s \|_{L^2}) \| \varphi
+    & \quad + 2 \sqrt{N} ( 1 + \| p \|_{L^2} + \| s \|_{L^2}) \| \varphi
     \|_{L^2} \| (\N+1)^{1/2} \psi \| + \| \N T \psi \| ) \\
-    & \le \frac{3}{4} \| \N T_t U_t \psi \|^2 + 16N \| \varphi_t \|_{L^2}^2
-    \| (\N + 1)^{1/2} T_t U_t \psi \|^2 \\
-    & \quad + 16N (1 + \| c \|_{L^2} + \| s \|_{L^2})^2 \| \varphi \|_{L^2}^2
-    \| (\N + 1)^{1/2} \psi \|^2 + 4\| \N T \psi \|^2.
+    & \le \frac{3}{4} \| \N T_t U_t \psi \|^2 + 16N \| (\N + 1)^{1/2} T_t U_t
+    \psi \|^2 \\
+    & \quad + 16N (1 + \| p \|_{L^2} + \| s \|_{L^2})^2 \| (\N + 1)^{1/2} \psi
+    \|^2 + 4\| \N T \psi \|^2,
   \end{align*}
+  where we have used that $\| \varphi_t \|_{L^2} = \| \varphi \|_{L^2} = 1$.
   Thus, using again Proposition \ref{p:TNT},
   \begin{align*}
     & \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle \\
-    & \apprle N \| \varphi_t \|_{L^2}^2 \langle U_t \psi, T_t^* (\N+1) T_t U_t
-    \psi \rangle \\
-    & \quad + N (1 + \| c \|_{L^2}^2 + \| s \|_{L^2}^2) \| \varphi
-    \|_{L^2}^2 \langle \psi, (\N+1) \psi \rangle + \langle \psi, T^* \N^2 T
-    \psi \rangle \\
-    & \apprle N C \| \varphi_t \|_{L^2}^2 \langle U_t \psi, (\N+1) U_t \psi
-    \rangle + N C \| \varphi \|_{L^2}^2 \langle \psi, (\N+1) \psi \rangle +
-    C^2 \langle \psi, (\N+1)^2 \psi \rangle.
+    & \apprle N \langle U_t \psi, T_t^* (\N+1) T_t U_t \psi \rangle \\
+    & \quad + N (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, (\N+1)
+    \psi \rangle + \langle \psi, T^* \N^2 T \psi \rangle \\
+    & \apprle N C \langle U_t \psi, (\N+1) U_t \psi \rangle + N C \langle
+    \psi, (\N+1) \psi \rangle + C^2 \langle \psi, (\N+1)^2 \psi \rangle,
   \end{align*}
-  Therefore, recalling \eqref{ep4},
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. Therefore, recalling
+  \eqref{ep4},
   \begin{align*}
     \langle U_t \psi, \N^2 U_t \psi \rangle 
     & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^3
     \langle U_t \psi, (\N+1) U_t \psi \rangle. \\
-    & \apprle N C^3 (\| \varphi_t \|_{L^2}^2+1) \langle U_t \psi, (\N+1) U_t
-    \psi \rangle \\
-    & \quad + N C^3 \| \varphi \|_{L^2}^2 \langle \psi, (\N+1) \psi \rangle +
-    C^4 \langle \psi, (\N+1)^2 \psi \rangle.
+    & \apprle N C^3 \langle \psi, U_t^* (\N+1) U_t \psi \rangle + N C^3
+    \langle \psi, (\N+1) \psi \rangle + C^4 \langle \psi, (\N+1)^2 \psi
+    \rangle.
   \end{align*}
   This completes the proof of part (i).
 \end{proof}
