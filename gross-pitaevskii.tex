@@ -1279,7 +1279,7 @@ all $\psi \in \mathcal{F}$.
   \begin{align}
     U_t^* \N^2 U_t & \apprle C^4 \big( N U_t^* (\N+1) U_t + N (\N+1) +
     (\N+1)^2 \big), \tag{i} \\
-    U_t^* \N \K U_t & \apprle \tag{ii}
+    U_t^* \K \N U_t & \apprle \tag{ii}
   \end{align}
   where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 \end{lem}
@@ -1291,17 +1291,20 @@ first.
 
 \begin{prp}
   \label{p:TNT}
-  Let $p, s \in L^2(\R^3 \times \R^3)$. Then,
+  Let $p, s \in L^2(\R^3 \times \R^3)$ and $\varphi \in H^1(\R^3)$. Then,
   \begin{align}
     T^* \N T & \apprle C (\N+1), \label{TNT} \tag{i} \\
     T^* \K T & \apprle C \K + \| \nabla_1 s \|_{L^2}^2, \label{TKT} \tag{ii}
     \\
     T^* \N^2 T & \apprle C^2 (\N+1)^2, \label{TN2T} \tag{iii} \\
-    T^* \N \K T & \apprle \frac{C}{N} \N T^* \K T \N + C N T^* \K T + C T \K
-    T^*, \label{TKNT} \tag{iv}
+    \langle \psi, T^* \K \N T \psi \rangle & \apprle C |\langle \psi, T^* \K T
+    \N \psi \rangle| + C^2 \langle \psi, \K \psi \rangle + C \| \nabla_1 s
+    \|_{L^2}^2, \label{TKNT} \tag{iv} \\
+    \phi(\varphi) \K \phi(\varphi) & \apprle \| \varphi \|_{L^2}^2 \K (\N+1) +
+    \| \nabla \varphi \|_{L^2}^2 (\N + 1), \label{fkf} \tag{v}
   \end{align}
   where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. Moreover, the same
-  inequalities hold with $T$ replaced by $T^*$.
+  inequalities hold true with $T$ replaced by $T^*$.
 \end{prp}
 
 
@@ -1323,9 +1326,10 @@ first.
 
 \begin{proof}[Proof of Proposition \ref{p:formulae}]
   \marginpar{This seems clear; we might be brief here.}
-  Recall that $\phi(\varphi) = a(\varphi) + a^*(\varphi)$. Parts (i), (ii) and
-  (iii) follow easily by a short calculation using parts (ii) and (iii) of
-  Lemma \ref{l:W}. Similarly, part (iv) follows from Lemma \ref{l:bt}.
+  We only give an outline of the proof. Recall that $\phi(\varphi) =
+  a(\varphi) + a^*(\varphi)$. Then, parts (i), (ii) and (iii) follow easily by
+  a short calculation using parts (ii) and (iii) of Lemma \ref{l:W}.
+  Similarly, part (iv) follows from Lemma \ref{l:bt}.
 \end{proof}
 
 
@@ -1441,20 +1445,36 @@ first.
     & \le |\langle \psi, T^* \K T \N \psi \rangle| + \langle \psi, T^* \K T
     \psi \rangle + \langle \psi, T \K T^* \psi \rangle.
   \end{align*}
-  Furthermore, by Cauchy-Schwarz inequality,
+  Therefore, combining this with \eqref{ep5}, and using part (iii), we obtain
   \begin{align*}
-    | \langle \psi, T^* \K T \N \psi \rangle| & = |\langle (T^* \K T)^{1/2}
-    \psi, (T^* \K T)^{1/2} \N \psi \rangle| \\
-    & \le N \langle \psi, T^* \K T \psi \rangle + \frac{1}{N} \langle \psi, \N
-    T^* K T \N \psi \rangle.
+    \langle \psi, T^* \K \N T \psi \rangle & \apprle C |\langle \psi, T^* \K T
+    \N \psi \rangle| + C \langle \psi, T^* \K T \psi \rangle + C \langle \psi,
+    T \K T^* \psi \rangle \\
+    & \apprle C |\langle \psi, T^* \K T \N \psi \rangle| + C^2 \langle \psi,
+    \K \psi \rangle + C \| \nabla_1 s \|_{L^2}^2,
   \end{align*}
-  Therefore, combining the last two inequalities with \eqref{ep5}, we obtain
-  \[
-    \langle \psi, T^* \K \N T \psi \rangle \apprle \frac{C}{N} \langle \psi,
-    \N T^* \K T \N \psi \rangle + C N \langle \psi, T^* \K T \psi \rangle +
-    C \langle \psi, T \K T^* \psi \rangle,
-  \]
-  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. This completes the proof.
+  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
+
+
+  (v) By the Cauchy-Schwarz inequality, a brief calculation, and Lemma
+  \ref{l:a}, we obtain
+  \begin{align*}
+    \langle \psi, \phi(\varphi) \K \phi(\varphi) \psi \rangle & = \| \K^{1/2}
+    (a^*(\varphi) + a(\varphi) ) \psi \|^2 \\
+    & \apprle \langle \psi, a(\varphi) \K a^*(\varphi) \psi \rangle + \langle
+    \psi, a^*(\varphi) \K a(\varphi) \psi \rangle \\
+    & = \int dx \, \| a^*(\varphi) \nabla_x a_x \psi \|^2 + \int dx \, \|
+    a(\varphi) \nabla_x a_x \psi \|^2 + \int dx \, |\nabla \varphi(x)|^2 \\
+    & \quad - 2 \Re \int dx dy \, \langle \nabla \varphi(x) a_y \psi, f(y)
+    \nabla_x a_x \psi \rangle \\
+    & \apprle \| \varphi \|_{L^2}^2 \int dx \, \| (\N + 1)^{1/2} \nabla_x a_x
+    \psi \|^2 + \int dx \, | \nabla \varphi(x) |^2 \\
+    & \quad + \int dx dy \, | \nabla \varphi(x)|^2 \| a_y \psi \|^2 + \int dx
+    dy \, |f(y)|^2 \| \nabla_x a_x \psi \|^2 \\
+    & = \| \varphi \|_{L^2}^2 \langle \psi, \K (\N + 1) \psi \rangle + \|
+    \nabla \varphi \|_{L^2}^2 \langle \psi, (\N + 1) \psi \rangle.
+  \end{align*}
+  This completes the proof of the proposition.
 \end{proof}
 
 
@@ -1462,23 +1482,13 @@ first.
   (i) Let $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. By Proposition
   \ref{p:TNT},
   \begin{equation}
-    \begin{aligned}
-      \langle U_t \psi, \N^2 U_t \psi \rangle & = \langle T_t U_t \psi, T_t
-      \N^2 T_t^* T_t U_t \psi \rangle \\
-      & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^2
-      \langle T_t U_t \psi, \N T_t U_t \psi \rangle + C^2 \\
-      & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^3
-      \langle U_t \psi, (\N+1) U_t \psi \rangle. \\
-    \end{aligned}
-    \end{equation} 
-  \begin{equation}
     \label{ep4}
     \begin{split}
       \langle U_t \psi, \N^2 U_t \psi \rangle & = \langle T_t U_t \psi, T_t
       \N^2 T_t^* T_t U_t \psi \rangle \\
       & \apprle C^2 \langle T_t U_t \psi, (\N+1)^2 T_t U_t \psi \rangle \\
-      & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^2
-      \langle T_t U_t \psi, (\N+1) T_t U_t \psi \rangle. \\
+      & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^3
+      \langle U_t \psi, (\N+1) U_t \psi \rangle. \\
     \end{split}
     \end{equation} 
   Now, by Proposition \ref{p:formulae}, and observing that $\N$ commutes with
@@ -1542,6 +1552,55 @@ first.
     \rangle.
   \end{align*}
   This completes the proof of part (i).
+
+
+  (ii) Applying parts (iv) and (iii) of Proposition \ref{p:TNT}, we find that
+  \begin{align*}
+    \langle \psi, U_t^* \K \N U_t \psi \rangle & = \langle T_t U_t \psi, T_t
+    \K \N T_t^* T_t U_t \psi \rangle \\
+    & \apprle C | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle |
+    + C^2 \langle T_t U_t \psi, \K T_t U_t \psi \rangle + C \| \nabla_1 s
+    \|_{L^2}^2 \\
+    & \apprle C | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle |
+    + C^3 \langle U_t \psi, \K U_t \psi \rangle + C^2 \| \nabla_1 s
+    \|_{L^2}^2.
+  \end{align*}
+  Hence, we are left to estimating $| \langle T_t U_t \psi, T_t \K T_t^* \N
+  T_t U_t \psi \rangle |$.
+
+
+  Using the pull-through formulae from Proposition \ref{p:formulae}, and
+  recalling that $\N$ commutes with $\mathcal{H}_N$, we get
+  \begin{align*}
+    & | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle | \\
+    & = | \langle T_t U_t \psi, T_t \K T_t^* W_t^* (\N - \sqrt{N}
+    \phi(\varphi_t) + N) e^{-it \mathcal{H}_N} WT \psi \rangle | \\
+    & \le N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t U_t
+    \psi, T_t \K T_t^* ( \phi(\varphi_t) + 2 \sqrt{N} ) T_t U_t \psi \rangle |
+    \\
+    & \quad + | \langle T_t U_t \psi, T_t \K T_t^* W_t^* e^{-it \mathcal{H}_N}
+    W (\N + \sqrt{N} \phi(\varphi) + N) T \psi \rangle | \\
+    & \le 4 N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t
+    U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t \psi \rangle | \\
+    & \quad + | \langle T_t U_t \psi, T_t \K T_t^* T_t U_t T^* (\N + \sqrt{N}
+    \phi(\varphi) ) T \psi \rangle|.
+  \end{align*}
+  We next estimate the last two terms in this inequality.
+
+
+  First, by Cauchy-Schwarz inequality and Proposition \ref{p:TNT}(v),
+  \begin{align*}
+    & \sqrt{N} | \langle T_t U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t
+    \psi \rangle | \\
+    & = | \langle \sqrt{N} (T_t \K T_t^*)^{1/2} T_t U_t \psi, (T_t \K
+    T_t^*)^{1/2} \phi(\varphi_t) T_t U_t \psi \rangle | \\
+    & \le \frac{N}{\varepsilon} \langle U_t \psi, \K U_t \psi \rangle +
+    \varepsilon \langle U_t \psi, T_t^* \phi(\varphi_t) T_t \K T_t^*
+    \phi(\varphi_t) T_t U_t \psi \rangle \\
+    & = \frac{N}{\varepsilon} \langle U_t \psi, \K U_t \psi \rangle +
+    \varepsilon \langle U_t \psi, \phi(C \varphi_t + S \overline{\varphi_t})
+    \K \phi(C \varphi_t + S \overline{\varphi_t}) U_t \psi \rangle
+  \end{align*}
 \end{proof}
 
 
