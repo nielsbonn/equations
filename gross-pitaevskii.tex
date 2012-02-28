@@ -49,6 +49,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%% Notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\ad}{\operatorname{ad}}	% abbreviation for iterated commutators
 \newcommand{\fock}{\mathcal{F}}		% fock space symbol
 \newcommand{\di}{\textrm{d}}		% differential (for integrals)
 \newcommand{\Lcal}{\mathcal{L}}		% calligraphic L
@@ -333,10 +334,6 @@ a^\ast(q_y) := \int \di z\, q(z,y) a^*_z = a^*(q(\cdot,y)) , \quad a(q_y) :=
 
 
 \begin{lem}[Formula in Fock space \cite{RS2009}]
-\bd
-\left(\partial_t e^{C(t)} \right) e^{-C(t)} = \dot C(t) +
-\frac{1}{2!}[C(t),\dot C(t)]+ \frac{1}{3!}[C(t),[C(t),\dot C(t)]] + \dots
-\ed
 %\bd
 %e^{C(t)} H e^{-C(t)} = H + [C(t),H] + \frac{1}{2!}[C(t),[C(t),H]] + \dots
 %\ed
@@ -1155,15 +1152,117 @@ For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{
 \end{lem}
 \fi
 
-Of the generator, the following part is left to be estimated:
-\begin{lem}\marginpar{I think I now have a good strategy for this proof.}
-\label{lm:timederivative}
+We still have to give a bound for the $\ev{(\partial_t T^*_t)T_t}$ part of the generator. We start with a number of simple lemmata.
+\begin{lem}
+\label{lm:Bbound}
+Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then
  \bd
-  \ev{(\partial_t T^*_t)T_t} \leq C \ev{\Ncal}
+\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
+\ed
+and
+ \bd
+\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \frac{1}{2} \left\lvert \int \di x\, f_2(x,x) \right\rvert \scal{\psi}{\psi}.
+\ed
+\end{lem}
+\begin{proof} Proof of the first estimate:
+ \begin{align*}
+  & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \\
+\leq & \frac{1}{2} \sum_{i=1}^2 \lvert \scal{\psi}{\int \di x\di y\, b_i(x,y) a^\ast_x a^\ast_y \psi }\rvert \\
+\leq & \frac{1}{2} \sum_{i=1}^2 \int \di y \norm{a_y \psi} \norm{a^\ast(b_i(\cdot,y))\psi} \\
+\leq & \frac{1}{2} \sum_{i=1}^2 \left( \int \di y_1\, \norm{a_{y_1}\psi}^2 \int \di y_2\, \norm{b_i(\cdot,y_2)}^2 \norm{(\Ncal+1)^{1/2} \psi}^2 \right)^{1/2} \\
+\leq & \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
+ \end{align*}
+Proof of the second estimate:
+ \begin{align*}
+& \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert\\
+\leq & \frac{1}{2} \lvert \scal{\psi}{\int \di x\di y\, f_1(x,y) \psi} \rvert + \frac{1}{2}\lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) \psi}\rvert + \frac{1}{2} \lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) \delta(x-y) \psi}\rvert \\
+\leq & \frac{1}{2} \int \di x\, \norm{a_x \psi} \norm{a(f_1(x,\cdot))\psi} + \frac{1}{2} \int \di y\, \norm{a_y\psi} \norm{a(f_2(\cdot,y))\psi} + \frac{1}{2} \lvert \int \di x f_2(x,x) \rvert \scal{\psi}{\psi} \\
+\leq & \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_1(x_2,\cdot)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2}\\  & \quad + \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_2(\cdot,x_2)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2} + \frac{1}{2}\lvert \int \di x\, f_2(x,x) \rvert \scal{\psi}{\psi} \\
+\leq & \frac{1}{2}\ev{\Ncal} \left(\left(\int \di x \norm{f_1(x,\cdot)}^2 \right) + \left(\int \di x \norm{f_2(\cdot,x)}^2 \right) \right) + \frac{1}{2}\lvert \int \di x\, f_2(x,x) \rvert \scal{\psi}{\psi}. 	\qedhere
+ \end{align*}
+\end{proof}
+
+\begin{lem}[Regularity of $\phdot$]
+\label{lm:phdotregularity}
+Let $\ph$ be a solution of the modified Hartree equation. Then
+ \bd
+\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2.
+\ed
+For $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, we have the bound
+\bd
+\norm{\dot k} \leq 4 \max\{R,a_0\} \norm{\ph}_{H^1} \left( \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2\right) \leq C \norm{\ph}_{H^2}^2.
+\ed
+\end{lem}
+\begin{proof} The modified Hartree equation reads
+\bd
+i \phdot = -\Delta \ph + \left(N F_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
+\ed
+It follows that
+\bd
+\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}.
+\ed
+Now we calculate
+\begin{align*}
+& \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2} \\
+= & \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
+\leq & \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \norm{\ph}_\infty^2 \int \di y\, N f_N V_N(x-y) \right\rvert^2 \\
+\leq & \norm{\ph}_{L^2}^2 \norm{\ph}_\infty^4 (8\pi a_0)^2.
+\end{align*}
+We now prove the bound for $\norm{\dot k}$:
+\begin{align*}
+\norm{\dot k}^2 & = \int \di x\di y\, \lvert \frac{\di}{\di t} \left( -N w_N(x-y) \ph(x)\ph(y) \right) \rvert^2 \\
+& \leq 2 \int \di x\di y\, \lvert N w_N(x-y) \phdot(x) \ph(y) \rvert^2 + 2 \int \di x \di y\, \lvert N w_N(x-y) \ph(x) \phdot(y) \rvert^2 \\
+& \leq 4 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \frac{\lvert\ph(y)\rvert^2}{\lvert x-y\rvert^2} \\
+& \leq 16 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \lvert \nabla_y \ph(y)\rvert^2 \\
+& \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2.
+\end{align*}
+Now use the estimate from the first part of the lemma.
+\end{proof}
+
+\begin{lem}
+\label{lm:highercommutators}
+ For each $n \in \Nbb$ and each $i \in \{1,2\}$, there exists $f_{n,i} \in L^2(\Rbb^3 \times \Rbb^3)$ such that
+\begin{itemize}
+ \item \underline{for $n$ even we have}
+\bd
+\ad^n_B(\dot B) = \frac{1}{2} \int \di x\di y\left( f_{n,1}(x,y) a^\ast_y a^\ast_x + f_{n,2}(x,y) a_x a_y \right)
+\ed
+and $\norm{f_{n,i}} \leq 2 \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
+ \item \underline{for $n$ odd we have}
+\bd
+\ad^n_B(\dot B) = \frac{1}{2} \int \di x\di y\left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right)
+\ed
+and the following bounds hold: $\norm{f_{n,i}} \leq 2 \norm{\dot k} (2\norm{k})^n$ and $\int \lvert f_{n,i}(x,x)\rvert \di x \leq 2 \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
+\end{itemize}
+\end{lem}
+\begin{proof} The proof is by induction in $n$. In the inductive step, we have to treat the cases of even $n$ and odd $n$ separately (though the calculations are similar).\\
+\underline{basis:}\\
+We take the case of $n=0$ as the basis. For
+\bd
+\ad^0_B(\dot B) = \dot B = \frac{1}{2}\int \di x\di y\left( \dot k(x,y) a^\ast_x a^\ast_y - \cc{\dot k(x,y)} a_x a_y \right)
+\ed
+the estimate stated in the even case is clearly fulfilled.\\
+\underline{inductive step, case of even $n$:}\\
+TO BE TYPED
+\underline{inductive step, case of odd $n$:}\\
+TO BE TYPED
+\end{proof}
+
+
+\begin{lem}
+\label{lm:timederivative}
+There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$:
+ \bd
+  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq 2\norm{\dot k} \ev{\Ncal+1} e^{2\norm{k}} \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
  \ed
 \end{lem}
 \begin{proof}
-remark: contains only quadratic terms $a^* a$ and $a a$. coefficients are complicated. TODO. 
+This theorem is proved by expanding the time derivative as a series,
+\bd
+\left(\partial_t e^{-B(t)} \right) e^{B(t)} = - \dot B(t) +
+\frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(n+1)!} \ad^n_B(\dot B),
+\ed
+and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:phdotregularity}.
 \end{proof}
 
 
