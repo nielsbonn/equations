@@ -332,20 +332,6 @@ a^\ast(q_y) := \int \di z\, q(z,y) a^*_z = a^*(q(\cdot,y)) , \quad a(q_y) :=
 \ed
 \end{lem}
 
-
-\begin{lem}[Formula in Fock space \cite{RS2009}]
-%\bd
-%e^{C(t)} H e^{-C(t)} = H + [C(t),H] + \frac{1}{2!}[C(t),[C(t),H]] + \dots
-%\ed
-\bd
-W^*(f) a_x W(f) = a_x + f(x), \quad W^*(f)a^*_x W(f) = a^*_x + \cc{f(x)}
-\ed
-\bd
-[a_x,a^*_y] = \delta(x-y), \quad [a(f),a^*(g)] = \scal{f}{g}
-\ed
-\end{lem}
-
-
 Let
 \[
   T = e^{B(k)}
@@ -1243,9 +1229,54 @@ We take the case of $n=0$ as the basis. For
 \ed
 the estimate stated in the even case is clearly fulfilled.\\
 \underline{inductive step, case of even $n$:}\\
-TO BE TYPED
+We calculate (by using the CCR and appropriately renaming integration variables)
+\begin{align*}
+\ad^{n+1}_B(\dot B) & = [B,\ad^n_B(\dot B)] \\
+& = \left[\frac{1}{2} \int \di x\di y\left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)}a_x a_y \right), \frac{1}{2}\int \di x\di y\left( f_{n,1}(x,y) a^\ast_x a^\ast_y + f_{n,2}(x,y) a_x a_y \right)\right] \\
+& = \frac{1}{2} \int \di x\di z \left(f_{n+1,1}(x,z) a^\ast_x a_z + f_{n+1,2}(x,z) a_x a^\ast_z \right),
+\end{align*}
+where
+\begin{align*}
+f_{n+1,1}(x,z) & = -\frac{1}{2} \int \di y \left( k(x,y) \left( f_{n,2}(z,y) + f_{n,2}(y,z) \right) + \cc{k(y,z)}\left( f_{n,2}(x,y) + f_{n,2}(y,x)\right) \right)\\
+f_{n+1,2}(x,z) & = -\frac{1}{2} \int \di y \left( k(y,z) \left( f_{n,1}(x,y) + f_{n,1}(y,x) \right) + \cc{k(x,y)}\left( f_{n,1}(z,y) + f_{n,1}(y,z)\right) \right), 
+\end{align*}
+so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot B)$. We still have to check validity of the estimates.
+Clearly
+\be{normnorm}
+\begin{split}
+\norm{f_{n+1,1}}_{L^2} & \leq \frac{1}{2} \bigg( \norm{\int \di y\, k(x,y) f_{n,2}(z,y)}_{L^2} + \norm{\int \di y\, k(x,y) f_{n,2}(y,z)}_{L^2} \\
+& \quad + \norm{\int \di y\, \cc{k(y,z)}f_{n,2}(x,y)}_{L^2} + \norm{\int \di y\, \cc{k(y,z)} f_{n,2}(y,x)}_{L^2} \bigg),
+\end{split}
+\ee
+where by abuse of notation, $x$ and $z$ are actually the variables which are integrated over in calculating the $L^2(\Rbb^3\times \Rbb^3)$-norm (see next equation).
+Using Hoelder's inequality we get
+\begin{align*}
+\norm{\int \di y k(x,y) f_{n,2}(z,y)}^2 &= \int \di x\di z \left\lvert \int \di y k(x,y) f_{n,2}(z,y) \right\rvert^2 \\
+& \leq \int \di x \di z \int \di y_1 \lvert k(x,y_1) \rvert^2 \int \di y_2 \lvert f_{n,2}(z,y_2) \rvert^2 = \norm{k}^2 \norm{f_{n,2}}^2. 
+\end{align*}
+The other three summands in \eqr{normnorm} obey the same bound, so by making use of the inductive hypothesis, we obtain
+\bd
+\norm{f_{n+1,1}}_{L^2} \leq 2\norm{\dot k} (2\norm{k})^{n+1},
+\ed
+which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the same way. We still have to proof the second extimate of the lemma, so we calculate using Hoelder's inequality that
+\bd
+\int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq 2\norm{\dot k} (2\norm{k})^2
+\ed
+and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x$. Herewith the inductive step startin from even $n$ is proven.\\
 \underline{inductive step, case of odd $n$:}\\
-TO BE TYPED
+We calculate (by using the CCR and appropriately renaming integration variables)
+\begin{align*}
+\ad^{n+1}_B(\dot B) & = \left[ \frac{1}{2}\int \di x \di y \left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)} a_x a_y \right) , \frac{1}{2}\int \di x\di y \left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right) \right] \\
+& = \frac{1}{2} \int \di x\di z \left( a^\ast_x a^\ast_z f_{n+1,1}(x,z) + a_x a_z f_{n+1,2}(x,z) \right)
+\end{align*}
+where
+\begin{align*}
+f_{n+1,1}(x,z) & = - \int \di y\, k(x,y)\left( f_{n,1}(z,y) + f_{n,2}(y,z) \right) \\
+f_{n+1,2}(x,z) & = - \int \di y\, \cc{k(x,y)}\left( f_{n,1}(y,z) + f_{n,2}(z,y) \right), 
+\end{align*}
+so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for the $\norm{f_{n+1},1}$ and $\norm{f_{n+1},2}$ again follows by invoking Hoelder's inequality and the inductive hypothesis.\newline
+
+The induction is now complete.
 \end{proof}
 
 
@@ -1298,7 +1329,7 @@ and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{
  \ed
 \end{lem}
 \begin{proof}
- TODO.
+ TODO. \marginpar{TODO.}
 \end{proof}
 
 
@@ -1334,7 +1365,7 @@ Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:
 
 
 \begin{prp}
- $N$-independent bound on $\ev{\Ncal}$ by employing all the above and Gronwall.
+ $N$-independent bound on $\ev{\Ncal}$ by employing all the above and Gronwall. \marginpar{TODO}
 \end{prp}
 \begin{proof}
  By lemma \ref{lem:lncommutatorbound}, lemma \ref{l:N2} and lemma \ref{lem:kvbounds}, $\ev{[\Lcal,\Ncal]}$ is bounded by $\ev{\Lcal+\Ncal}$. So by lemma \ref{lem:ldotbounds}, the sum $\Lcal+C \Ncal$ is bounded above, and for $C$ large enough, it is positive, so we get a bound for $\Ncal$.
@@ -2177,6 +2208,7 @@ Gronwall)}
   $\text{supp }V$ and $\| \varphi \|_{H^2}$.
 \end{proof}
 
+\marginpar{Strichartz version can be removed?}
 \iffalse
 \subsection{$\varphi_t^{(N)}$ converges to $\varphi_t$ in $L^2$ (using
 Strichartz) (to be deleted)}
