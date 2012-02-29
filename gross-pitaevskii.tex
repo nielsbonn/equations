@@ -1277,11 +1277,13 @@ all $\psi \in \mathcal{F}$.
   \label{l:N2}
   Let $U_t$ be the unitary evolution defined in (X). Then, \marginpar{could we have an explicit sentence here which says $\frac{1}{N}\ev{(\Ncal+2)^2} \leq C \ev{\Ncal+1}$, please? (where $C$ does not depend on $t$)}
   \begin{align}
-    U_t^* \N^2 U_t & \apprle C^4 \big( N U_t^* (\N+1) U_t + N (\N+1) +
-    (\N+1)^2 \big), \tag{i} \\
-    U_t^* \K \N U_t & \apprle \tag{ii}
+    U_t^* \N^2 U_t & \le C_1 \big( N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2
+    \big), \tag{i} \\
+    U_t^* \K \N U_t & \le C_2 \tag{ii}
   \end{align}
-  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
+  where $C_1$ is a constant that depends only on $\| p \|_{L^2}$ and $\| s
+  \|_{L^2}$, and $C_2$ is a constant that depends only on $\| p \|_{L^2}$, $\|
+  s \|_{L^2}$, $\| \varphi_t \|_{H^2}$ and $\| \nabla_1 p \|_{L^2}$.
 \end{lem}
 
 
@@ -1310,13 +1312,12 @@ first.
 
 \begin{prp}
   \label{p:formulae}
-  Let $\varphi \in L^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. The following
-  pull-through formulae hold true:
+  Let $\varphi \in L^2(\R^3)$. The following pull-through formulae hold true:
   \begin{align}
     \N W(\sqrt{N} \varphi)^* & = W(\sqrt{N} \varphi)^* (\N - \sqrt{N}
-    \phi(\varphi) + N), \tag{i} \\
+    \phi(\varphi) + N \| \varphi \|_{L^2}^2), \tag{i} \\
     \N W(\sqrt{N} \varphi) & = W(\sqrt{N} \varphi) (\N + \sqrt{N}
-    \phi(\varphi) + N), \tag{ii} \\
+    \phi(\varphi) + N\| \varphi \|_{L^2}^2), \tag{ii} \\
     W(\sqrt{N} \varphi)^* \phi(\varphi) & = (\phi(\varphi) + 2 \sqrt{N})
     W(\sqrt{N} \varphi)^*, \tag{iii} \\
     \phi(\varphi) T & = T \phi(C \varphi + S \overline{\varphi}). \tag{iv}
@@ -1490,9 +1491,9 @@ first.
       & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^3
       \langle U_t \psi, (\N+1) U_t \psi \rangle. \\
     \end{split}
-    \end{equation} 
-  Now, by Proposition \ref{p:formulae}, and observing that $\N$ commutes with
-  $\mathcal{H}_N$,
+  \end{equation} 
+  Now, using the formulae in Proposition \ref{p:formulae}, and noting that
+  $\N$ commutes with $\mathcal{H}_N$,
   \begin{align*}
     & \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle \\
     & = \langle T_t U_t \psi, \N^2 W_t^* e^{-it \mathcal{H}_N} WT \psi \rangle
@@ -1516,7 +1517,7 @@ first.
     & \quad + \langle \N T_t U_t \psi, T_t U_t T^* \N T \psi \rangle.
   \end{align*}
   Hence, applying Cauchy-Schwarz inequality and Lemma \ref{l:a}, and observing
-  that the operator norm is controlled by the Hilbert-Schmidt norm,
+  that the operator norm is controlled by the Hilbert-Schmidt norm, we get
   \begin{align*}
     & \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle \\
     & \le \| \N T_t U_t \psi \| ( \sqrt{N} \| \phi(\varphi_t) T_t U_t \psi \|
@@ -1529,9 +1530,8 @@ first.
     & \le \frac{3}{4} \| \N T_t U_t \psi \|^2 + 16N \| (\N + 1)^{1/2} T_t U_t
     \psi \|^2 \\
     & \quad + 16N (1 + \| p \|_{L^2} + \| s \|_{L^2})^2 \| (\N + 1)^{1/2} \psi
-    \|^2 + 4\| \N T \psi \|^2,
+    \|^2 + 4\| \N T \psi \|^2.
   \end{align*}
-  where we have used that $\| \varphi_t \|_{L^2} = \| \varphi \|_{L^2} = 1$.
   Thus, using again Proposition \ref{p:TNT},
   \begin{align*}
     & \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle \\
@@ -1541,8 +1541,7 @@ first.
     & \apprle N C \langle U_t \psi, (\N+1) U_t \psi \rangle + N C \langle
     \psi, (\N+1) \psi \rangle + C^2 \langle \psi, (\N+1)^2 \psi \rangle,
   \end{align*}
-  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. Therefore, recalling
-  \eqref{ep4},
+  Therefore, recalling \eqref{ep4},
   \begin{align*}
     \langle U_t \psi, \N^2 U_t \psi \rangle 
     & \apprle C^2 \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + C^3
@@ -1554,52 +1553,139 @@ first.
   This completes the proof of part (i).
 
 
-  (ii) Applying parts (iv) and (iii) of Proposition \ref{p:TNT}, we find that
-  \begin{align*}
-    \langle \psi, U_t^* \K \N U_t \psi \rangle & = \langle T_t U_t \psi, T_t
-    \K \N T_t^* T_t U_t \psi \rangle \\
-    & \apprle C | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle |
-    + C^2 \langle T_t U_t \psi, \K T_t U_t \psi \rangle + C \| \nabla_1 s
-    \|_{L^2}^2 \\
-    & \apprle C | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle |
-    + C^3 \langle U_t \psi, \K U_t \psi \rangle + C^2 \| \nabla_1 s
-    \|_{L^2}^2.
-  \end{align*}
+  (ii) Applying parts (iv) and (iii) of Proposition \ref{p:TNT}, we get
+  \begin{equation}
+    \label{nk1}
+    \begin{split}
+      \langle U_t \psi, \K \N U_t \psi \rangle & = \langle T_t U_t \psi, T_t
+      \K \N T_t^* T_t U_t \psi \rangle \\
+      & \apprle C | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle
+      | + C^2 \langle T_t U_t \psi, \K T_t U_t \psi \rangle + C \| \nabla_1 s
+      \|_{L^2}^2 \\
+      & \apprle C | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle
+      | + C^3 \langle U_t \psi, \K U_t \psi \rangle + C^2 \| \nabla_1 s
+      \|_{L^2}^2.
+    \end{split}
+  \end{equation}
   Hence, we are left to estimating $| \langle T_t U_t \psi, T_t \K T_t^* \N
   T_t U_t \psi \rangle |$.
 
 
   Using the pull-through formulae from Proposition \ref{p:formulae}, and
-  recalling that $\N$ commutes with $\mathcal{H}_N$, we get
-  \begin{align*}
-    & | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle | \\
-    & = | \langle T_t U_t \psi, T_t \K T_t^* W_t^* (\N - \sqrt{N}
-    \phi(\varphi_t) + N) e^{-it \mathcal{H}_N} WT \psi \rangle | \\
-    & \le N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t U_t
-    \psi, T_t \K T_t^* ( \phi(\varphi_t) + 2 \sqrt{N} ) T_t U_t \psi \rangle |
-    \\
-    & \quad + | \langle T_t U_t \psi, T_t \K T_t^* W_t^* e^{-it \mathcal{H}_N}
-    W (\N + \sqrt{N} \phi(\varphi) + N) T \psi \rangle | \\
-    & \le 4 N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t
-    U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t \psi \rangle | \\
-    & \quad + | \langle T_t U_t \psi, T_t \K T_t^* T_t U_t T^* (\N + \sqrt{N}
-    \phi(\varphi) ) T \psi \rangle|.
-  \end{align*}
+  recalling that $\N$ commutes with $\mathcal{H}_N$, we find that
+  \begin{equation}
+    \label{nk2}
+    \begin{split}
+      & | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle | \\
+      & = | \langle T_t U_t \psi, T_t \K T_t^* W_t^* (\N - \sqrt{N}
+      \phi(\varphi_t) + N) e^{-it \mathcal{H}_N} WT \psi \rangle | \\
+      & \le N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t
+      U_t \psi, T_t \K T_t^* ( \phi(\varphi_t) + 2 \sqrt{N} ) T_t U_t \psi
+      \rangle | \\
+      & \quad + | \langle T_t U_t \psi, T_t \K T_t^* W_t^* e^{-it
+      \mathcal{H}_N} W (\N + \sqrt{N} \phi(\varphi) + N) T \psi \rangle | \\
+      & \le 4 N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t
+      U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t \psi \rangle | \\
+      & \quad + | \langle T_t U_t \psi, T_t \K T_t^* T_t U_t T^* (\N +
+      \sqrt{N} \phi(\varphi) ) T \psi \rangle|.
+    \end{split}
+  \end{equation}
   We next estimate the last two terms in this inequality.
 
 
-  First, by Cauchy-Schwarz inequality and Proposition \ref{p:TNT}(v),
+  By Cauchy-Schwarz inequality and Proposition \ref{p:TNT}(v), for any
+  $\varepsilon > 0$,
   \begin{align*}
     & \sqrt{N} | \langle T_t U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t
     \psi \rangle | \\
     & = | \langle \sqrt{N} (T_t \K T_t^*)^{1/2} T_t U_t \psi, (T_t \K
     T_t^*)^{1/2} \phi(\varphi_t) T_t U_t \psi \rangle | \\
-    & \le \frac{N}{\varepsilon} \langle U_t \psi, \K U_t \psi \rangle +
+    & \le \varepsilon^{-1} N \langle U_t \psi, \K U_t \psi \rangle +
     \varepsilon \langle U_t \psi, T_t^* \phi(\varphi_t) T_t \K T_t^*
     \phi(\varphi_t) T_t U_t \psi \rangle \\
-    & = \frac{N}{\varepsilon} \langle U_t \psi, \K U_t \psi \rangle +
+    & = \varepsilon^{-1} N \langle U_t \psi, \K U_t \psi \rangle +
     \varepsilon \langle U_t \psi, \phi(C \varphi_t + S \overline{\varphi_t})
-    \K \phi(C \varphi_t + S \overline{\varphi_t}) U_t \psi \rangle
+    \K \phi(C \varphi_t + S \overline{\varphi_t}) U_t \psi \rangle \\
+    & \le ( \varepsilon^{-1} N + \varepsilon C) \langle U_t \psi, \K U_t \psi
+    \rangle + \varepsilon C \langle U_t \psi, \K \N U_t \psi \rangle \\
+    & \quad + ( \| \nabla \varphi \|_{L^2}^2 + \| \nabla_1 p \|_{L^2}^2 + \|
+    \nabla_1 s \|_{L^2}^2) \langle U_t \psi, (\N + 1) U_t \psi \rangle
+  \end{align*}
+  and
+  \begin{align*}
+    & | \langle T_t U_t \psi, T_t \K T_t^* T_t U_t T^* (\N + \sqrt{N}
+    \phi(\varphi) ) T \psi \rangle| \\
+    & = | \langle (T_t \K T_t^*)^{1/2} T_t U_t \psi, (T_t \K T_t^*)^{1/2} T_t
+    U_t T^* (\N + \sqrt{N} \phi(\varphi) ) T \psi \rangle| \\
+    & \le N \langle U_t \psi, K U_t \psi \rangle + \frac{1}{N} \| (T_t \K
+    T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi \|^2.
+  \end{align*}
+  Thus, combining this with \eqref{nk2} and \eqref{nk1}, and choosing
+  $\varepsilon$ so that $\varepsilon C < 1/2$, we obtain
+  \begin{equation}
+    \label{nk3}
+    \begin{split}
+      \langle U_t \psi, \K \N U_t \psi \rangle & \le C_1 N \langle U_t \psi,
+      \K U_t \psi \rangle + C_1 (1 + \| \nabla_1 s \|_{L^2}^2) \langle U_t
+      \psi, (\N+1) U_t \psi \rangle \\
+      & \qquad + \frac{C_1}{N} \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N +
+      \sqrt{N} \phi(\varphi) ) T \psi \|^2,
+    \end{split}
+  \end{equation}
+  where $C_1$ is a constant that depends only on $\| p \|_{L^2}$, $\| s
+  \|_{L^2}$, $\| \varphi \|_{H^1}$ and $\| \nabla_1 p \|_{L^2}$. In order to
+  conclude the proof, we need a few more estimates.
+
+  
+  By Proposition \ref{p:TNT}(ii), Cauchy-Schwarz inequality, and Lemma
+  \ref{l:a},
+  \begin{align*}
+    & \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
+    \psi \|^2 \\
+    & \apprle C \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi
+    \|^2 + \| \nabla_1 s \|_{L^2}^2 ( \| \N T \psi \|^2 + N \| \phi(\varphi) T
+    \psi \|^2) \\
+    & \apprle C \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi
+    \|^2 + C^2 \| \nabla_1 s \|_{L^2}^2 \langle \psi, (\N^2 + N(\N+1)) \psi
+    \rangle.
+  \end{align*}
+  Now, since $V \ge 0$, observe that $\K \le \mathcal{H}_N$. Hence, using
+  again the formulae in Proposition \ref{p:formulae}, and Proposition
+  \ref{p:TNT},
+  \begin{align*}
+    & \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi \|^2 \\
+    & = \langle e^{-it \mathcal{H}_N} W (\N + \sqrt{N} \phi(\varphi)) T \psi,
+    W_t \K W_t^* e^{-it \mathcal{H}_N} W (\N + \sqrt{N} \psi(\varphi)) T \psi
+    \rangle \\
+    & = N \| \nabla \varphi_t \|_{L^2}^2 \| (\N + \sqrt{N} \phi(\varphi)) T
+    \psi \|^2 + \| \K^{1/2} e^{-it \mathcal{H}_N} W (\N + \sqrt{N}
+    \psi(\varphi) ) T \psi \|^2 \\
+    & \quad + \sqrt{N} \langle e^{-it \mathcal{H}_N} W (\N + \sqrt{N}
+    \phi(\varphi)) T \psi, \phi(\Delta \varphi_t) e^{-it \mathcal{H}_N} W (\N
+    + \sqrt{N} \psi(\varphi)) T \psi \rangle \\
+    & \apprle N C^2 \| \nabla \varphi_t \|_{L^2}^2 \langle \psi, (\N^2 + N (\N
+    + 1)) \psi \rangle + \| \mathcal{H}_{N}^{1/2} W (\N + \sqrt{N} \phi
+    (\varphi) ) T \psi \|^2 \\
+    & \quad + \sqrt{N} \| \Delta \varphi_t \|_{L^2}^2 \| (\N + \sqrt{N}
+    \psi(\varphi) ) T \psi \| \, \| (\N+1)^{1/2} W (\N + \sqrt{N}
+    \phi(\varphi) ) T \psi \| \\
+    & \apprle N C^2 \| \varphi_t \|_{H^1}^2 \langle \psi, (\N^2 + N (\N + 1))
+    \psi \rangle + N \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N) W
+    \phi(\varphi) T \psi \rangle \\
+    & \quad + \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T \psi \rangle.
+  \end{align*}
+  Therefore, combining the last two inequalities with \eqref{nk3}, we find
+  that
+  \begin{align*}
+    \langle U_t \psi, \K \N U_t \psi \rangle & \le C_2 \Big[ N \langle U_t
+    \psi, \K U_t \psi \rangle + (1 + \| \nabla_1 s \|_{L^2}^2) \langle U_t
+    \psi, (\N+1) U_t \psi \rangle \\
+    & \quad + \big( 1 + \frac{1}{N} \| \nabla_1 s \|_{L^2}^2 \big) \langle
+    \psi, (\N^2 + N (\N + 1)) \psi \rangle \\
+    & \quad + \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N) W
+    \phi(\varphi) T \psi \rangle \\
+    & \quad + \frac{1}{N} \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T
+    \psi \rangle \Big],
   \end{align*}
 \end{proof}
 
