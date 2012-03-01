@@ -59,6 +59,7 @@
 \newcommand{\Hcal}{\mathcal{H}}		% calligraphic H
 \newcommand{\Ocal}{\mathcal{O}}		% big-O, order-of
 \newcommand{\tilV}{\tilde{\mathcal{V}}_N}		% symbol for the smeared potential energy part of the hamiltonian
+\newcommand{\tilK}{\tilde{\mathcal{K}}}		% smeared kinetic energy
 \newcommand{\estlist}[2]{\underline{Line \ref{l#1}, summand #2:}}
 \newcommand{\hc}{\mbox{h.c.}}		%hermitian conjugate
 \newcommand{\scal}[2]{\big<#1,#2\big>} % scalaer product
@@ -694,7 +695,7 @@ We now have the following list of estimates for all terms of the generator.\newl
 \leq & \frac{1}{2} C \norm{\ph}_{H^1} \norm{\ph}_{H^2} \ev{\Ncal+1} \\
 \leq & C \norm{\ph}_{H^2} \ev{\Ncal+1}
 \end{align*}
-where $\norm{Nw_N(x-\cdot)\ph(\cdot)}_{L^2} \leq C\norm{\nabla \ph}_{L^2}$ (rhs independent of $x$) was used, which is a consequence of lemma \ref{l:w} and Hardy's inequality.
+where $\norm{Nw_N(x-\cdot)\ph(\cdot)}_{L^2} \leq C\norm{\nabla \ph}_{L^2}$ (rhs independent of $x$) was used, which is a consequence of lemma \ref{l:w} and Hardy's inequality.\\
 \estlist{8}{2}
 For this estimate, it is useful to know that
 \begin{align*}
@@ -711,7 +712,7 @@ Using this (and integration by parts), we get
 \leq & C \left( \varepsilon \ev{\Kcal} + (\varepsilon+\frac{1}{\varepsilon})\ev{\Ncal+1} \right).
 \end{align*}
 \estlist{9}{1}
-This term we bound in two different ways. We start with an equality:
+For this term we prove to different estimates. First notive that
 \begin{align*}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} = \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(\nabla_x c_x)a(\nabla_x c_x)\psi} \\
 = & \scal{\psi}{\frac{1}{2}\int \di x \left( \nabla_x a^\ast_x + a^\ast(\nabla_x p_x) \right)\left(  \nabla_x a_x + a(\nabla_x p_x) \right) \psi} \\
@@ -738,17 +739,8 @@ For the second estimate, we proceed as follows:
 \leq & C\left( \ev{\Kcal} + \ev{\Ncal} \right).
 \end{split}
 \end{equation}
-\estlist{9}{2} For this term we need two estimates, too. The first one is just that the term is non-negative:
-\begin{equation}
-\tag{A}
-\label{eq:bound2A}
-\begin{split}
-& \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x)a(s_x)\psi} \\
-= & \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \geq 0. 
-\end{split}
-\end{equation}
-
-For the second estimate, notice that, using the product rule, integration by parts and the fact that $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$, we have
+\estlist{9}{2}
+First, notice that, using the product rule, integration by parts and the fact that $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$, we have
 \begin{align*}
  a(\nabla_x s_x) & = \cc{\ph(x)} a(-Nw_N(x-\cdot)\nabla\ph(\cdot)) + \cc{\ph(x)}\,a\left(\nabla(-N w_N(x-\cdot)\ph(\cdot))\right) \\
  & + \cc{\nabla_x \ph(x)} a(-Nw_N(x-\cdot)\ph(\cdot)) + a(\nabla_x r_x).
@@ -756,7 +748,7 @@ For the second estimate, notice that, using the product rule, integration by par
 (the $\nabla$ in the second summand has to be understood with respect to the 'dot'-variable of $a$)
 Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 \begin{equation}
-\tag{B}
+%\tag{B}
 \label{eq:bound2B}
 \begin{split}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
@@ -1236,28 +1228,56 @@ and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{
 
 \section{Estimating the number of fluctuations}
 \begin{lem}
+\label{lem:kvbounds}
+There exists a constant $C$ independent of $N$ and $t$ (but possibly depending on $\norm{\ph}_{H^1}$) such that for all $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies
 \bd
--c\ev{\Ncal} \leq \ev{\Lcal}
+\ev{K} + \ev{\tilV} \leq 2 \ev{\Lcal_N(t)} + C \norm{\ph}_{H^2}^4 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1}.
+\ed
+As $\Kcal$ and $\tilV$ are non-negative operators, the same upper bound holds for each of $\Kcal$ and $\tilV$ individually.
+\end{lem}
+\begin{proof}
+We know that $\Lcal_N(t) = (i\partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t$ and we have explictly calculated and bounded $T^\ast_t \Lcal_N^{(0)}(t)T_t$. We now only write line \eqref{l9} and the first summand in line \eqref{l10} explicitly, all the other terms we collect in $\Lcal_{\textrm{rest}}$:
+\begin{align*}
+\Lcal_N(t) & = \frac{1}{2} \int \di x\, a^\ast(c_x) a(-\Delta_x c_x) + \frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x)a(s_x) \\
+& \quad + \frac{1}{2}\int \di x\di y\, NV_N(x-y) \frac{1}{2N} a^\ast(c_x) a^\ast(c_y) a(c_y) a(c_x) + \Lcal_{\textrm{rest}}.
+\end{align*}
+We define $\tilK := \frac{1}{2} \int \di x\, a^\ast(c_x) a(-\Delta_x c_x)$ and observe that
+\bd
+\ev{\frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x)a(s_x)} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \geq 0,
+\ed
+so by leaving away this non-negative term we obtain
+\be{Lcalbound}
+\ev{\Lcal_N(t)} \geq \ev{\tilK + \tilV} - \lvert\ev{\Lcal_{\textrm{rest}}}\rvert.
+\ee
+We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from chapter \ref{ch:generatorestimates} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rest}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rest}}}\rvert$.
+(To simplify the notation we insert factors of $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ in some places, leave away prefactors $\frac{1}{N}$ and $\frac{1}{\sqrt{N}}$ where there does not follow a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$. Numerical prefactors are absorbed into $C$.)
+\bd
+\lvert\ev{\Lcal_{\textrm{rest}}}\rvert \leq C \norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} + \varepsilon\ev{\Kcal+\tilV} \right).
+\ed
+So using \eqr{Lcalbound} we conclude that
+\bd
+\ev{\Lcal_N(t)} \geq \ev{\tilK+\tilV} - C\norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 +\Ncal+1} + \varepsilon \ev{\Kcal+\tilV} \right).
+\ed
+Combining this with $\ev{\tilK} \geq \ev{\Kcal} - C\left(\varepsilon\ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right)$ from \eqref{eq:bound1A}, we arrive at (where $C$ is being redefined)
+\bd
+\ev{\Lcal_N(t)} \geq  \ev{\Kcal+\tilV} - C\norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 +\Ncal+1} + \varepsilon \ev{\Kcal+\tilV} \right).
+\ed
+Now choose $\varepsilon = 1/(2C\norm{\ph}_{H^2}^2)$ (with $C$ having the same value as in the previous equation) to conclude
+\bd
+\ev{\Lcal_N(t)} + 2\left( C \norm{\ph}_{H^2}^2 \right)^2 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} \geq \frac{1}{2}\ev{\Kcal+\tilV},
+\ed
+thus the proof is finished.
+\end{proof}
+
+\begin{lem}
+There exists a constant $C$ independent of $N$ and $t$ (but possibly depending on $\norm{\ph}_{H^1}$) such that for all $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies
+\bd
+\ev{\Lcal_N(t)} \geq -C \norm{\ph}_{H^2}^4 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1}.
 \ed 
 \end{lem}
 \begin{proof}
- done
+As $\ev{\Kcal} \geq 0$ and $\ev{\tilV} \geq 0$, this lemma is an easy corollary of lemma \ref{lem:kvbounds}.
 \end{proof}
-
-
-\begin{lem}
-\label{lem:kvbounds}
- \bd
-\ev{\Kcal} \leq  C \ev{\Lcal + \Ncal}
-\ed
- \bd
-\ev{\tilV} \leq  C \ev{\Lcal + \Ncal}
-\ed
-\end{lem}
-\begin{proof}
- done
-\end{proof}
-
 
 \begin{lem}
 \label{lem:ldotbounds}
@@ -1272,7 +1292,7 @@ and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{
 
 \begin{lem}
 \label{lem:lncommutatorbound}
-For any arbitrary $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies the estimate
+There exists a constant $C$ independent of $N$ and $t$ (but possibly depending on $\norm{\ph}_{H^1}$) such that for all $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies
  \bd
   \lvert \ev{[\Lcal_N(t),\Ncal]} \rvert \leq C \norm{\ph}_{H^2}^2 \left( \ev{N+1} + \frac{1}{N}\ev{\Ncal^2} + \ev{\tilV} + \ev{\Kcal} \right).
  \ed
