@@ -1387,7 +1387,7 @@ Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:
 \end{lem}
 
 
-\section{Operator inequalities (or a-priori estimates)}
+\section{A-priori estimates}
 
 
 Let $f(x,y)$ be a function of two variables. To simplify the notation we write
@@ -1406,14 +1406,25 @@ all $\psi \in \mathcal{F}$.
 \begin{lem}
   \label{l:N2}
   Let $U_t$ be the unitary evolution defined in (X). Then, \marginpar{could we have an explicit sentence here which says $\frac{1}{N}\ev{(\Ncal+2)^2} \leq C \ev{\Ncal+1}$, please? (where $C$ does not depend on $t$)}
-  \begin{align}
-    U_t^* \N^2 U_t & \le C_1 \big( N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2
-    \big), \tag{i} \\
-    U_t^* \K \N U_t & \le C_2 \tag{ii}
-  \end{align}
+  \begin{equation}
+    U_t^* \N^2 U_t \le C_1 \big[ N U_t^* (\N+1) U_t + N (\N+1) + (\N+1)^2
+    \big], \tag{i}
+  \end{equation}
   where $C_1$ is a constant that depends only on $\| p \|_{L^2}$ and $\| s
-  \|_{L^2}$, and $C_2$ is a constant that depends only on $\| p \|_{L^2}$, $\|
-  s \|_{L^2}$, $\| \varphi_t \|_{H^2}$ and $\| \nabla_1 p \|_{L^2}$.
+  \|_{L^2}$. Furthermore,
+  \begin{equation}
+    \begin{split}
+      U_t^* \K \N U_t & \le C_2 \big[ N U_t^* \K U_t + (1 + \| \nabla_1 s
+      \|_{L^2}^2) U_t^* (\N+1) U_t \\
+      & \quad + ( 1 + N^{-1} \| \nabla_1 s \|_{L^2}^2) (\N^2 + N(\N+1)) \\
+      & \quad + T^* \phi(\varphi) W^*( \mathcal{H}_N + \N ) W \psi(\varphi) T
+      \\
+      & \quad + N^{-1} T^* N W^*( \mathcal{H}_N + \N ) W \N T \big]
+    \end{split}
+    \tag{ii}
+  \end{equation}
+  where $C_2$ is a constant that depends only on $\| p \|_{L^2}$, $\| s
+  \|_{L^2}$, $\| \varphi_t \|_{H^2}$ and $\| \nabla_1 p \|_{L^2}$.
 \end{lem}
 
 
@@ -1423,31 +1434,32 @@ first.
 
 \begin{prp}
   \label{p:TNT}
-  Let $p, s \in L^2(\R^3 \times \R^3)$ and $\varphi \in H^1(\R^3)$. Then,
+  Let $p, s \in L^2(\R^3 \times \R^3)$ and $f \in H^1(\R^3)$. Then,
   \begin{align}
     T^* \N T & \apprle C (\N+1), \label{TNT} \tag{i} \\
     T^* \K T & \apprle C \K + \| \nabla_1 s \|_{L^2}^2, \label{TKT} \tag{ii}
     \\
     T^* \N^2 T & \apprle C^2 (\N+1)^2, \label{TN2T} \tag{iii} \\
-    \langle \psi, T^* \K \N T \psi \rangle & \apprle C |\langle \psi, T^* \K T
-    \N \psi \rangle| + C^2 \langle \psi, \K \psi \rangle + C \| \nabla_1 s
-    \|_{L^2}^2, \label{TKNT} \tag{iv} \\
-    \phi(\varphi) \K \phi(\varphi) & \apprle \| \varphi \|_{L^2}^2 \K (\N+1) +
-    \| \nabla \varphi \|_{L^2}^2 (\N + 1), \label{fkf} \tag{v}
+    \langle \psi, T^* \K \N T \psi \rangle & \apprle C^2 \big( |\langle \psi,
+    T^* \K T \N \psi \rangle| + \langle \psi, \K \psi \rangle + \| \nabla_1 s
+    \|_{L^2}^2 \big), \label{TKNT} \tag{iv} \\
+    \phi(f) \K \phi(f) & \apprle \| f \|_{L^2}^2 \K (\N+1) + \| \nabla f
+    \|_{L^2}^2 (\N + 1), \label{fkf} \tag{v}
   \end{align}
-  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. Moreover, the same
-  inequalities hold true with $T$ replaced by $T^*$.
+  with $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. Moreover, the same
+  inequalities hold true with $T$ replaced by~$T^*$.
 \end{prp}
 
 
 \begin{prp}
   \label{p:formulae}
-  Let $\varphi \in L^2(\R^3)$. The following pull-through formulae hold true:
+  Let $\varphi \in L^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. The following
+  pull-through formulae hold true:
   \begin{align}
     \N W(\sqrt{N} \varphi)^* & = W(\sqrt{N} \varphi)^* (\N - \sqrt{N}
-    \phi(\varphi) + N \| \varphi \|_{L^2}^2), \tag{i} \\
+    \phi(\varphi) + N), \tag{i} \\
     \N W(\sqrt{N} \varphi) & = W(\sqrt{N} \varphi) (\N + \sqrt{N}
-    \phi(\varphi) + N\| \varphi \|_{L^2}^2), \tag{ii} \\
+    \phi(\varphi) + N), \tag{ii} \\
     W(\sqrt{N} \varphi)^* \phi(\varphi) & = (\phi(\varphi) + 2 \sqrt{N})
     W(\sqrt{N} \varphi)^*, \tag{iii} \\
     \phi(\varphi) T & = T \phi(C \varphi + S \overline{\varphi}). \tag{iv}
@@ -1457,7 +1469,7 @@ first.
 
 \begin{proof}[Proof of Proposition \ref{p:formulae}]
   \marginpar{This seems clear; we might be brief here.}
-  We only give an outline of the proof. Recall that $\phi(\varphi) =
+  We give only an outline of the proof. Recall that $\phi(\varphi) =
   a(\varphi) + a^*(\varphi)$. Then, parts (i), (ii) and (iii) follow easily by
   a short calculation using parts (ii) and (iii) of Lemma \ref{l:W}.
   Similarly, part (iv) follows from Lemma \ref{l:bt}.
@@ -1511,9 +1523,6 @@ first.
     & = \int dx \, \langle (a_x + a(p_x) + a^*(s_x)) \psi, T^* \N T (a_x +
     a(p_x) + a^*(s_x)) \psi \rangle + \langle \psi, T^* \N T \psi \rangle.
   \end{align*}
-  \marginpar{Applying (i) pointwise in $x$}
-  \marginpar{Should we say a few words about this pull-through formula with
-  sqrt?}
   Then, applying part (i) and Cauchy-Schwarz inequality, and using the
   pull-through formula $a_x \N^{1/2} = (\N+1)^{1/2} a_x$ and Lemma \ref{l:a},
   we obtain
@@ -1537,7 +1546,6 @@ first.
     & = \int dx \, \nabla_x a_x^* \N \nabla_x a_x + \K.
   \end{align*}
   Then, by part (i),
-  \marginpar{Again part (i) pointwise in $x$}
   \begin{align*}
     \left \langle \psi, T^* \int dx \, \nabla_x a_x^* \N \nabla_x a_x T \psi
     \right \rangle & = \int dx \, \langle T^* \nabla_x a_x T \psi, T^* \N T
@@ -1576,19 +1584,19 @@ first.
     & \le |\langle \psi, T^* \K T \N \psi \rangle| + \langle \psi, T^* \K T
     \psi \rangle + \langle \psi, T \K T^* \psi \rangle.
   \end{align*}
-  Therefore, combining this with \eqref{ep5}, and using part (iii), we obtain
+  Therefore, combining this with \eqref{ep5}, and using part (iii), we find
+  that
   \begin{align*}
     \langle \psi, T^* \K \N T \psi \rangle & \apprle C |\langle \psi, T^* \K T
     \N \psi \rangle| + C \langle \psi, T^* \K T \psi \rangle + C \langle \psi,
     T \K T^* \psi \rangle \\
-    & \apprle C |\langle \psi, T^* \K T \N \psi \rangle| + C^2 \langle \psi,
-    \K \psi \rangle + C \| \nabla_1 s \|_{L^2}^2,
+    & \apprle C^2 \big( |\langle \psi, T^* \K T \N \psi \rangle| + \langle
+    \psi, \K \psi \rangle + \| \nabla_1 s \|_{L^2}^2 \big).
   \end{align*}
-  where $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$.
 
 
   (v) By the Cauchy-Schwarz inequality, a brief calculation, and Lemma
-  \ref{l:a}, we obtain
+  \ref{l:a},
   \begin{align*}
     \langle \psi, \phi(\varphi) \K \phi(\varphi) \psi \rangle & = \| \K^{1/2}
     (a^*(\varphi) + a(\varphi) ) \psi \|^2 \\
@@ -1610,8 +1618,15 @@ first.
 
 
 \begin{proof}[Proof of Lemma \ref{l:N2}]
-  (i) Let $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. By Proposition
-  \ref{p:TNT},
+  Let $C = 1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2$. To simplify the notation we
+  write
+  \[
+    U_t = T_t^* W_t^* e^{-it \mathcal{H}_N} WT
+  \]
+  with $W_t = W(\sqrt{N} \varphi_t)$, $W = W(\sqrt{N} \varphi)$ and $T = T_0$.
+
+
+  (i) By Proposition \ref{p:TNT},
   \begin{equation}
     \label{ep4}
     \begin{split}
@@ -1669,7 +1684,7 @@ first.
     & \quad + N (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, (\N+1)
     \psi \rangle + \langle \psi, T^* \N^2 T \psi \rangle \\
     & \apprle N C \langle U_t \psi, (\N+1) U_t \psi \rangle + N C \langle
-    \psi, (\N+1) \psi \rangle + C^2 \langle \psi, (\N+1)^2 \psi \rangle,
+    \psi, (\N+1) \psi \rangle + C^2 \langle \psi, (\N+1)^2 \psi \rangle.
   \end{align*}
   Therefore, recalling \eqref{ep4},
   \begin{align*}
@@ -1683,7 +1698,7 @@ first.
   This completes the proof of part (i).
 
 
-  (ii) Applying parts (iv) and (iii) of Proposition \ref{p:TNT}, we get
+  (ii) Applying parts (iv) and (iii) of Proposition \ref{p:TNT},
   \begin{equation}
     \label{nk1}
     \begin{split}
@@ -1747,10 +1762,10 @@ first.
     \phi(\varphi) ) T \psi \rangle| \\
     & = | \langle (T_t \K T_t^*)^{1/2} T_t U_t \psi, (T_t \K T_t^*)^{1/2} T_t
     U_t T^* (\N + \sqrt{N} \phi(\varphi) ) T \psi \rangle| \\
-    & \le N \langle U_t \psi, K U_t \psi \rangle + \frac{1}{N} \| (T_t \K
+    & \le N \langle U_t \psi, \K U_t \psi \rangle + \frac{1}{N} \| (T_t \K
     T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi \|^2.
   \end{align*}
-  Thus, combining this with \eqref{nk2} and \eqref{nk1}, and choosing
+  Hence, combining this with \eqref{nk2} and \eqref{nk1}, and choosing
   $\varepsilon$ so that $\varepsilon C < 1/2$, we obtain
   \begin{equation}
     \label{nk3}
@@ -1804,8 +1819,7 @@ first.
     \phi(\varphi) T \psi \rangle \\
     & \quad + \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T \psi \rangle.
   \end{align*}
-  Therefore, combining the last two inequalities with \eqref{nk3}, we find
-  that
+  Therefore, combining the last two inequalities with \eqref{nk3}, we obtain
   \begin{align*}
     \langle U_t \psi, \K \N U_t \psi \rangle & \le C_2 \Big[ N \langle U_t
     \psi, \K U_t \psi \rangle + (1 + \| \nabla_1 s \|_{L^2}^2) \langle U_t
@@ -1817,6 +1831,8 @@ first.
     & \quad + \frac{1}{N} \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T
     \psi \rangle \Big],
   \end{align*}
+  where $C_2$ is a constant that depends only on $\| p \|_{L^2}$, $\| s
+  \|_{L^2}$, $\| \varphi_t \|_{H^2}$ and $\| \nabla_1 p \|_{L^2}$.
 \end{proof}
 
 
@@ -2082,7 +2098,7 @@ For $T > 0$ set
   We next estimate each term in this inequality.
   
   
-  Applying Sobolev's inequality, the Leibniz rule, and H\"older's inequality,
+  Applying Sobolev's inequality, Leibniz' rule, and H\"older's inequality,
   we find that
   \begin{displaymath}
     \| \varphi_t^2 \|_{L^3} = \| \varphi_t \|_{L^6}^2 \apprle \| \varphi_t
@@ -2138,8 +2154,7 @@ For $T > 0$ set
 \end{proof}
 
 
-\subsection{$\varphi_t^{(N)}$ converges to $\varphi_t$ in $L^2$ (using
-Gronwall)}
+\subsection{$\varphi_t^{(N)}$ converges to $\varphi_t$ in $L^2$}
 
 
 \begin{lem}
@@ -2169,7 +2184,7 @@ Gronwall)}
 
 \begin{proof}
   Observing that $\langle \Delta \varphi_t, \varphi_t^{(N)} \rangle = \langle
-  \varphi_t, \Delta \varphi_t^{(N)} \rangle$, one easily finds that
+  \varphi_t, \Delta \varphi_t^{(N)} \rangle$, one easily finds
   \begin{equation}
     \label{ddt}
     \begin{aligned}
@@ -2184,8 +2199,8 @@ Gronwall)}
       |\varphi_t|^2) (\varphi_t - \varphi_t^{(N)}) \rangle.
     \end{aligned}
   \end{equation}
-  We next estimate each term in this expression in order to apply Gronwall's
-  inequality.
+  In order to apply Gronwall's inequality, we next estimate each term in this
+  expression.
 
 
   By H\"older's inequality, and Sobolev's inequality,
@@ -2279,7 +2294,7 @@ Gronwall)}
   \end{align*}
   where $C$ is a constant that depends only on $\| fV \|_{L^1}$, $\text{supp
   }V$ and $\| \varphi \|_{H^1}$. Substituting this into \eqref{endproof2}, we
-  find that
+  obtain
   \begin{displaymath}
     \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C e^{Kt} \|
     \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + \frac{C}{N} e^{Kt}.
