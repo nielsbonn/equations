@@ -381,7 +381,8 @@ $c$ and $s$, respectively.
     \|_{H^1}^{4n}, \tag{iv}
   \end{align}
   where $C$ is a constant that depends only on $a_0$ and $\rho$ from Lemma
-  \ref{l:w}. Consequently,
+  \ref{l:w}. Consequently, there is a constant $C_1$ that depends only on $\| \varphi \|_{H^1}$, and
+  $a_0$ and $\rho$ from Lemma \ref{l:w} such that
   \begin{equation}
     \begin{alignedat}{2}
       \| p \|_{L^2} & \le C_1, \qquad & \| \nabla_1 p \|_{L^2} & \le C_1, \\
@@ -394,18 +395,14 @@ $c$ and $s$, respectively.
     \| s \|_{L^2} \le C_1, \qquad \| \nabla_1 s \|_{L^2} \apprle \| \varphi
     \|_{H^1}^2 \sqrt{N}, \tag{vi}
   \end{equation}
-  where $C_1$ is a constant that depends only on $\| \varphi \|_{H^1}$, and
-  $a_0$ and $\rho$ from Lemma \ref{l:w}.
-
-INSERTED \marginpar{please integrate in a way you like}: ------------------------------------------------------\\
-We also make use of the following estimates (with $C$ independent of $N$ and $t$): \marginpar{I have a proof for this, but we should discuss first who edits the proof in the file.}
+ and
 \bd
-\sup_{x} \norm{s_x}_2^2 \leq C \norm{\ph}_{H^2}^2, \quad \sup_{x} \norm{p_x}_2^2 \leq C \norm{\ph}_{H^2}^2,
+\sup_{x} \norm{s_x}_2^2 \leq C \norm{\varphi}_{H^2}^2, \quad \sup_{x} \norm{p_x}_2^2 \leq C \norm{\varphi}_{H^2}^2,
 \ed
 \bd
-\lvert r(x,y)\rvert \leq C \lvert\ph(x)\rvert \lvert\ph(y)\rvert, \quad \lvert k(x,y)\rvert \leq N \lvert \ph(x)\rvert \lvert \ph(y)\rvert.
+\lvert r(x,y)\rvert \leq C \lvert\varphi(x)\rvert \lvert\varphi(y)\rvert, \quad \lvert k(x,y)\rvert \leq N \lvert \varphi(x)\rvert \lvert \varphi(y)\rvert.
 \ed
-------------------------------------------------------
+We emphasize that $C$ and $C_1$ do not depend on $N$.
 \end{prp}
 
 
@@ -546,11 +543,15 @@ We also make use of the following estimates (with $C$ independent of $N$ and $t$
 
 
   (vi) Recall that $s = k + r$. Observe that part (vi) follows from (i), (ii)
-  and (v).
+  and (v). \marginpar{my part of the proof has to be added. N}
 \end{proof}
 
 
 \section{The generator}
+Define
+\bd
+U_N(t) := T^\ast_t W^\ast_t e^{-it \Hcal_N} W_0 T_0.
+\ed
 The generator $\Lcal_N(t)$ is defined by
 \bd
 \Lcal_N(t) U_N(t) = i \partial_t U_N(t).
@@ -570,8 +571,6 @@ where
 		& + N b(N,t),
 \end{align*}
 with a phase (which, like all phases, will be dropped from now on without any further comment)
-\marginpar{It's clear, but perhaps we should mention that these functions
-converge as $N \to \infty$. Is $b(N,t) \to 0$ as $N \to \infty$?}
 \bd
 b(N,t) = \norm{\nabla \ph}_{L^2}^2 - \Im \scal{\ph}{\phdot} + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y) \rvert^2.
 \ed
@@ -655,7 +654,7 @@ The cancellations enable us to give the necessary estimates for all terms, see c
 
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
-In this chapter we denote the expectation value $\scal{\psi}{A\psi}$ by $\ev{A}$. In this chapter, $C$ is a constant which can change from line to line in inequalities, but which is always independent of $N$ and $t$.
+In this chapter we denote the expectation value $\scal{\psi}{A\psi}$ by $\ev{A}$. In this chapter, $C$ is a constant which can change from line to line in inequalities, but which is always independent of $N$ and $t$. The constant $C$ can depend on $\norm{\ph}_{H^1}$.
 
 All bounds proven in this chapter hold as operator inequalities, independent of the choice of $\psi$. In particular, the structure of the time evolution $\psi_N(t) = U_N(t)\psi_0$ is not used in this chapter.
 
@@ -1110,33 +1109,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 \leq & C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}. 
 \end{align*}
 
-\iffalse
-\begin{lem}
- \bd
-  \norm{k} \leq C, \quad \norm{\nabla k} \leq \sqrt{N}
- \ed
- \bd
-  \lvert p(x,y) \rvert \leq C \lvert \ph(x) \rvert\cdot \lvert \ph(y) \rvert, \quad \norm{p} \leq C, \quad \norm{\nabla p} \leq C
- \ed
-\bd
-\mbox{maybe } \sup_x \norm{s_x}_2^2 \leq C \mbox{ (can be used ?)}
-\ed
-\end{lem}
-
-\begin{lem}
-\bd
-\Ncal \leq C T^*_t (\Ncal + 1) T_t, \quad \Ncal^2 \leq C T^*_t (\Ncal + 1)^2 T_t, \quad T^*_t (\Ncal + 1) T_t \leq \Ncal
-\ed
-\end{lem}
-
-\begin{lem}
-\label{lem:nsquaredbound}
-For $\ev{\cdot} = \scal{U_N(t)\Omega}{\cdot U_N(t)\Omega}$ or maybe easier $\ev{\cdot} = \scal{U_N(t)T^*\Omega}{\cdot U_N(t)T^*\Omega}$, we have \marginpar{$\Ncal\Kcal$ not needed anymore?}
- \bd
- \frac{1}{N}\ev{\Ncal^2} \leq C \ev{\Ncal}, \quad \frac{1}{N}\ev{\Ncal \Kcal} \leq \ev{\Kcal}
- \ed
-\end{lem}
-\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We still have to give a bound for the $\ev{(\partial_t T^*_t)T_t}$ part of the generator. We start with a number of simple lemmata.
 \begin{lem}
@@ -1147,62 +1120,27 @@ Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then
 \ed
 and
  \bd
-\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \frac{1}{2} \left\lvert \int \di x\, f_2(x,x) \right\rvert \scal{\psi}{\psi}.
+\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \frac{1}{2} \left\lvert \int f_2(x,x) \di x \right\rvert \scal{\psi}{\psi}.
 \ed
 \end{lem}
-\begin{proof} Proof of the first estimate:
+\begin{proof} Proof of the first estimate, using Hoelder's inequality:
  \begin{align*}
   & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \\
-\leq & \frac{1}{2} \sum_{i=1}^2 \lvert \scal{\psi}{\int \di x\di y\, b_i(x,y) a^\ast_x a^\ast_y \psi }\rvert \\
-\leq & \frac{1}{2} \sum_{i=1}^2 \int \di y \norm{a_y \psi} \norm{a^\ast(b_i(\cdot,y))\psi} \\
-\leq & \frac{1}{2} \sum_{i=1}^2 \left( \int \di y_1\, \norm{a_{y_1}\psi}^2 \int \di y_2\, \norm{b_i(\cdot,y_2)}^2 \norm{(\Ncal+1)^{1/2} \psi}^2 \right)^{1/2} \\
-\leq & \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
+& \leq \frac{1}{2} \sum_{i=1}^2 \lvert \scal{\psi}{\int \di x\di y\, f_i(x,y) a^\ast_x a^\ast_y \psi }\rvert \\
+& \leq \frac{1}{2} \sum_{i=1}^2 \int \di y \norm{a_y \psi} \norm{a^\ast(f_i(\cdot,y))\psi} \\
+& \leq \frac{1}{2} \sum_{i=1}^2 \left( \int \di y_1\, \norm{a_{y_1}\psi}^2 \int \di y_2\, \norm{f_i(\cdot,y_2)}^2 \norm{(\Ncal+1)^{1/2} \psi}^2 \right)^{1/2} \\
+& \leq \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
  \end{align*}
-Proof of the second estimate:
+Proof of the second estimate, using the CCR and Hoelder's inequality:
  \begin{align*}
 & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert\\
-\leq & \frac{1}{2} \lvert \scal{\psi}{\int \di x\di y\, f_1(x,y) \psi} \rvert + \frac{1}{2}\lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) \psi}\rvert + \frac{1}{2} \lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) \delta(x-y) \psi}\rvert \\
-\leq & \frac{1}{2} \int \di x\, \norm{a_x \psi} \norm{a(f_1(x,\cdot))\psi} + \frac{1}{2} \int \di y\, \norm{a_y\psi} \norm{a(f_2(\cdot,y))\psi} + \frac{1}{2} \lvert \int \di x f_2(x,x) \rvert \scal{\psi}{\psi} \\
-\leq & \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_1(x_2,\cdot)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2}\\  & \quad + \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_2(\cdot,x_2)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2} + \frac{1}{2}\lvert \int \di x\, f_2(x,x) \rvert \scal{\psi}{\psi} \\
-\leq & \frac{1}{2}\ev{\Ncal} \left(\left(\int \di x \norm{f_1(x,\cdot)}^2 \right) + \left(\int \di x \norm{f_2(\cdot,x)}^2 \right) \right) + \frac{1}{2}\lvert \int \di x\, f_2(x,x) \rvert \scal{\psi}{\psi}. 	\qedhere
+& \leq \frac{1}{2} \lvert \scal{\psi}{\int \di x\di y\, f_1(x,y) a^\ast_x a_y \psi} \rvert + \frac{1}{2}\lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) a^\ast_y a_x \psi}\rvert \\
+&\quad + \frac{1}{2} \lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) \delta(x-y) \psi}\rvert \\
+& \leq \frac{1}{2} \int \di x\, \norm{a_x \psi} \norm{a(f_1(x,\cdot))\psi} + \frac{1}{2} \int \di y\, \norm{a_y\psi} \norm{a(f_2(\cdot,y))\psi} + \frac{1}{2} \lvert \int f_2(x,x) \di x \rvert \scal{\psi}{\psi} \\
+& \leq \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_1(x_2,\cdot)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2}\\
+& \quad + \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_2(\cdot,x_2)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2} + \frac{1}{2}\lvert \int f_2(x,x) \di x\rvert \scal{\psi}{\psi} \\
+& \leq \frac{1}{2}\ev{\Ncal} \left(\left(\int \di x \norm{f_1(x,\cdot)}^2 \right)^{1/2} + \left(\int \di x \norm{f_2(\cdot,x)}^2 \right)^{1/2} \right) + \frac{1}{2}\lvert \int f_2(x,x) \di x\rvert \scal{\psi}{\psi}. 	\qedhere
  \end{align*}
-\end{proof}
-
-\begin{lem}[Regularity of $\phdot$]
-\label{lm:phdotregularity}
-Let $\ph$ be a solution of the modified Hartree equation. Then
- \bd
-\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2.
-\ed
-For $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, we have the bound
-\bd
-\norm{\dot k} \leq 4 \max\{R,a_0\} \norm{\ph}_{H^1} \left( \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2\right) \leq C \norm{\ph}_{H^2}^2.
-\ed
-\end{lem}
-\begin{proof} The modified Hartree equation reads
-\bd
-i \phdot = -\Delta \ph + \left(N F_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
-\ed
-It follows that
-\bd
-\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}.
-\ed
-Now we calculate
-\begin{align*}
-& \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2} \\
-= & \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
-\leq & \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \norm{\ph}_\infty^2 \int \di y\, N f_N V_N(x-y) \right\rvert^2 \\
-\leq & \norm{\ph}_{L^2}^2 \norm{\ph}_\infty^4 (8\pi a_0)^2.
-\end{align*}
-We now prove the bound for $\norm{\dot k}$:
-\begin{align*}
-\norm{\dot k}^2 & = \int \di x\di y\, \lvert \frac{\di}{\di t} \left( -N w_N(x-y) \ph(x)\ph(y) \right) \rvert^2 \\
-& \leq 2 \int \di x\di y\, \lvert N w_N(x-y) \phdot(x) \ph(y) \rvert^2 + 2 \int \di x \di y\, \lvert N w_N(x-y) \ph(x) \phdot(y) \rvert^2 \\
-& \leq 4 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \frac{\lvert\ph(y)\rvert^2}{\lvert x-y\rvert^2} \\
-& \leq 16 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \lvert \nabla_y \ph(y)\rvert^2 \\
-& \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2.
-\end{align*}
-Now use the estimate from the first part of the lemma.
 \end{proof}
 
 \begin{lem}
@@ -1221,17 +1159,17 @@ and $\norm{f_{n,i}} \leq 2 \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and
 and the following bounds hold: $\norm{f_{n,i}} \leq 2 \norm{\dot k} (2\norm{k})^n$ and $\int \lvert f_{n,i}(x,x)\rvert \di x \leq 2 \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
 \end{itemize}
 \end{lem}
-\begin{proof} The proof is by induction in $n$. In the inductive step, we have to treat the cases of even $n$ and odd $n$ separately (though the calculations are similar).\\
+\begin{proof} The proof is by induction in $n$. In the inductive step, we have to treat the cases of even $n$ and odd $n$ separately (but the calculations are similar).\\
 \underline{basis:}\\
 We take the case of $n=0$ as the basis. For
 \bd
 \ad^0_B(\dot B) = \dot B = \frac{1}{2}\int \di x\di y\left( \dot k(x,y) a^\ast_x a^\ast_y - \cc{\dot k(x,y)} a_x a_y \right)
 \ed
 the estimate stated in the even case is clearly fulfilled.\\
-\underline{inductive step, case of even $n$:}\\
+\underline{inductive step, starting from even $n$:}\\
 We calculate (by using the CCR and appropriately renaming integration variables)
 \begin{align*}
-\ad^{n+1}_B(\dot B) & = [B,\ad^n_B(\dot B)] \\
+& \ad^{n+1}_B(\dot B) = [B,\ad^n_B(\dot B)] \\
 & = \left[\frac{1}{2} \int \di x\di y\left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)}a_x a_y \right), \frac{1}{2}\int \di x\di y\left( f_{n,1}(x,y) a^\ast_x a^\ast_y + f_{n,2}(x,y) a_x a_y \right)\right] \\
 & = \frac{1}{2} \int \di x\di z \left(f_{n+1,1}(x,z) a^\ast_x a_z + f_{n+1,2}(x,z) a_x a^\ast_z \right),
 \end{align*}
@@ -1240,7 +1178,7 @@ where
 f_{n+1,1}(x,z) & = -\frac{1}{2} \int \di y \left( k(x,y) \left( f_{n,2}(z,y) + f_{n,2}(y,z) \right) + \cc{k(y,z)}\left( f_{n,2}(x,y) + f_{n,2}(y,x)\right) \right)\\
 f_{n+1,2}(x,z) & = -\frac{1}{2} \int \di y \left( k(y,z) \left( f_{n,1}(x,y) + f_{n,1}(y,x) \right) + \cc{k(x,y)}\left( f_{n,1}(z,y) + f_{n,1}(y,z)\right) \right), 
 \end{align*}
-so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot B)$. We still have to check validity of the estimates.
+so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot B)$. We still have to check for validity of the estimates.
 Clearly
 \be{normnorm}
 \begin{split}
@@ -1248,25 +1186,26 @@ Clearly
 & \quad + \norm{\int \di y\, \cc{k(y,z)}f_{n,2}(x,y)}_{L^2} + \norm{\int \di y\, \cc{k(y,z)} f_{n,2}(y,x)}_{L^2} \bigg),
 \end{split}
 \ee
-where by abuse of notation, $x$ and $z$ are actually the variables which are integrated over in calculating the $L^2(\Rbb^3\times \Rbb^3)$-norm (see next equation).
+where by abuse of notation, $x$ and $z$ are actually the variables which are integrated over in calculating the $L^2(\Rbb^3\times \Rbb^3)$-norm (cf.\ next equation).
 Using Hoelder's inequality we get
 \begin{align*}
-\norm{\int \di y k(x,y) f_{n,2}(z,y)}^2 &= \int \di x\di z \left\lvert \int \di y k(x,y) f_{n,2}(z,y) \right\rvert^2 \\
-& \leq \int \di x \di z \int \di y_1 \lvert k(x,y_1) \rvert^2 \int \di y_2 \lvert f_{n,2}(z,y_2) \rvert^2 = \norm{k}^2 \norm{f_{n,2}}^2. 
+\norm{\int \di y\,k(x,y) f_{n,2}(z,y)}^2 &= \int \di x\di z \left\lvert \int \di y\,k(x,y) f_{n,2}(z,y) \right\rvert^2 \\
+& \leq \int \di x \di z \int \di y_1\,\lvert k(x,y_1) \rvert^2 \int \di y_2\,\lvert f_{n,2}(z,y_2) \rvert^2 = \norm{k}^2 \norm{f_{n,2}}^2. 
 \end{align*}
 The other three summands in \eqr{normnorm} obey the same bound, so by making use of the inductive hypothesis, we obtain
 \bd
 \norm{f_{n+1,1}}_{L^2} \leq 2\norm{\dot k} (2\norm{k})^{n+1},
 \ed
-which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the same way. We still have to proof the second extimate of the lemma, so we calculate using Hoelder's inequality that
+which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the same way. We still have to proof the second estimate of the lemma, so we calculate using Hoelder's inequality that
 \bd
-\int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq 2\norm{\dot k} (2\norm{k})^2
+\int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq 2\norm{\dot k} (2\norm{k})^{n+1}
 \ed
-and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x$. Herewith the inductive step startin from even $n$ is proven.\\
-\underline{inductive step, case of odd $n$:}\\
+and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x$.\\
+\underline{inductive step, starting from odd $n$:}\\
 We calculate (by using the CCR and appropriately renaming integration variables)
 \begin{align*}
-\ad^{n+1}_B(\dot B) & = \left[ \frac{1}{2}\int \di x \di y \left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)} a_x a_y \right) , \frac{1}{2}\int \di x\di y \left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right) \right] \\
+& \ad^{n+1}_B(\dot B)\\
+& = \left[ \frac{1}{2}\int \di x \di y \left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)} a_x a_y \right) , \frac{1}{2}\int \di x\di y \left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right) \right] \\
 & = \frac{1}{2} \int \di x\di z \left( a^\ast_x a^\ast_z f_{n+1,1}(x,z) + a_x a_z f_{n+1,2}(x,z) \right)
 \end{align*}
 where
@@ -1274,9 +1213,7 @@ where
 f_{n+1,1}(x,z) & = - \int \di y\, k(x,y)\left( f_{n,1}(z,y) + f_{n,2}(y,z) \right) \\
 f_{n+1,2}(x,z) & = - \int \di y\, \cc{k(x,y)}\left( f_{n,1}(y,z) + f_{n,2}(z,y) \right), 
 \end{align*}
-so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for the $\norm{f_{n+1},1}$ and $\norm{f_{n+1},2}$ again follows by invoking Hoelder's inequality and the inductive hypothesis.\newline
-
-The induction is now complete.
+so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for $\norm{f_{n+1,1}}$ and $\norm{f_{n+1,2}}$ again follows by invoking Hoelder's inequality and the inductive hypothesis.
 \end{proof}
 
 
@@ -1284,7 +1221,7 @@ The induction is now complete.
 \label{lm:timederivative}
 There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$:
  \bd
-  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq 2\norm{\dot k} \ev{\Ncal+1} e^{2\norm{k}} \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
+  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq 2\norm{\dot k} e^{2\norm{k}} \ev{\Ncal+1} \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
  \ed
 \end{lem}
 \begin{proof}
@@ -1468,7 +1405,6 @@ first.
 
 
 \begin{proof}[Proof of Proposition \ref{p:formulae}]
-  \marginpar{This seems clear; we might be brief here.}
   We give only an outline of the proof. Recall that $\phi(\varphi) =
   a(\varphi) + a^*(\varphi)$. Then, parts (i), (ii) and (iii) follow easily by
   a short calculation using parts (ii) and (iii) of Lemma \ref{l:W}.
@@ -2309,172 +2245,44 @@ For $T > 0$ set
   $\text{supp }V$ and $\| \varphi \|_{H^2}$.
 \end{proof}
 
-\marginpar{Strichartz version can be removed?}
-\iffalse
-\subsection{$\varphi_t^{(N)}$ converges to $\varphi_t$ in $L^2$ (using
-Strichartz) (to be deleted)}
-
-
-\begin{prp}
-  \label{p:httogp}
-  For $N > 0$, let $\varphi^{(N)}, \varphi \in H^2(\R^3)$ with $\|
-  \varphi^{(N)} \|_{L^2} = 1$ and $\| \varphi \|_{L^2} = 1$. Suppose that $f
-  \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. Consider a
-  solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear Hartree equation
-  \begin{displaymath}
-    i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
-    |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
-  \end{displaymath}
-  with initial data $\varphi^{(N)}_0 = \varphi^{(N)}$, where $f_N V_N(x) = N^2
-  f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
-  nonlinear Gross-Pitaevskii equation
-  \begin{displaymath}
-    i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
-    \varphi_t
-  \end{displaymath}
-  with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$. Then,
-  there exist a real number $T > 0$ such that
-  \begin{displaymath}
-    \| \varphi_t - \varphi_t^{(N)} \|_{L^2} \le \| \varphi - \varphi^{(N)}
-    \|_{L^2} + \frac{C}{N}\| \varphi^{(N)} \|_{H^2}
-  \end{displaymath}
-  for all $t \in [0,T]$, where $C$ is a constant that depends only on $\| fV
-  \|_{L^1}$, $\text{supp }V$, $\| \varphi^{(N)} \|_{H^1}$ and $\| \varphi
-  \|_{H^1}$, and $T$ depends only on $\| fV \|_{L^1}$, $\| \varphi^{(N)}
-  \|_{H^1}$ and $\| \varphi \|_{H^1}$.
-\end{prp}
-
-
-\begin{proof}
-  Write
-  \begin{align*}
-    \varphi_t - \varphi_t^{(N)} & = e^{it\Delta}(\varphi - \varphi^{(N)}) + i
-    \int_0^t ds \, e^{i(t-s) \Delta} [ (N f_N V_N * |\varphi_s^{(N)}|^2)
-    \varphi_s^{(N)} - 8 \pi a_0 |\varphi_s|^2 \varphi_s ] \\
-    & = e^{it\Delta}(\varphi - \varphi^{(N)}) + i \int_0^t ds \, e^{i(t-s)
-    \Delta} [ (N f_N V_N * |\varphi_s|^2 - 8 \pi a_0 |\varphi_s|^2) \varphi_s
-    \\
-    & \quad + (N f_N V_N * |\varphi_s^{(N)}|^2)(\varphi_s^{(N)} - \varphi_s) +
-    (N f_N V_N * (|\varphi_s^{(N)}|^2 - |\varphi|^2)) \varphi_s].
-  \end{align*}
-  As in the proof of Proposition \ref{p:reg1}, by Strichartz estimates,
-  \begin{equation}
-    \begin{aligned}
-      & \| \varphi_{(\cdot)} - \varphi_{(\cdot)}^{(N)} \|_{L_t^\infty L_x^2}
-      \apprle \| \varphi - \varphi^{(N)} \|_{L^2} + \| (N f_N V_N *
-      |\varphi_{(\cdot)}|^2 - 8 \pi a_0 |\varphi_{(\cdot)}|^2)
-      \varphi_{(\cdot)} \\
-      & \qquad \qquad + (N f_N V_N *
-      |\varphi_{(\cdot)}^{(N)}|^2)(\varphi_{(\cdot)}^{(N)} -
-      \varphi_{(\cdot)})+ (N f_N V_N * (|\varphi_{(\cdot)}^{(N)}|^2 -
-      |\varphi_{(\cdot)}|^2) \varphi_{(\cdot)} \|_{L_t^2 L_x^{6/5}}.
-    \end{aligned}
-    \label{diff}
-  \end{equation}
-  We next estimate each term in this inequality.
-
-
-  By H\"older's inequality and conservation of mass,
-  \begin{displaymath}
-    \| (N f_N V_N * |\varphi_{(\cdot)}|^2 - 8 \pi a_0 |\varphi_{(\cdot)}|^2)
-    \varphi_{(\cdot)} \|_{L_t^2 L_x^{6/5}} \le T^{1/2} \sup_{t \in [0,T]} \| N
-    f_N V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3}.
-  \end{displaymath}
-  By Lemma \ref{l:interp} and Sobolev's inequality,
-  \begin{align*}
-    & \| (N f_N V_N * |\varphi_{(\cdot)}^{(N)}|^2)(\varphi_{(\cdot)}^{(N)} -
-    \varphi_{(\cdot)}) \|_{L_t^2 L_x^{6/5}} \\
-    & \qquad \le \| fV \|_{L^1} T^{1/2} \sup_{t \in [0,T]} \|
-    |\varphi_t^{(N)}|^2 \|_{L^3} \sup_{t \in [0,T]} \| \varphi_t^{(N)} -
-    \varphi_t \|_{L^2} \\
-    & \qquad \apprle \| fV \|_{L^1} T^{1/2} \sup_{t \in [0,T]} \|
-    \varphi_t^{(N)} \|_{H^1}^2 \sup_{t \in [0,T]} \| \varphi_t^{(N)} -
-    \varphi_t \|_{L^2},
-  \end{align*}
-  and also by H\"older's inequality and triangle inequality,
-  \begin{align*}
-    & \| (N f_N V_N * (|\varphi_{(\cdot)}^{(N)}|^2 - |\varphi_{(\cdot)}|^2))
-    \varphi_{(\cdot)}) \|_{L_t^2 L_x^{6/5}} \\
-    & \qquad \le \| fV \|_{L^1} T^{1/2} \sup_{t \in [0,T]} \|
-    |\varphi_t^{(N)}|^2 - |\varphi_t|^2 \|_{L^{3/2}} \sup_{t \in [0,T]} \|
-    \varphi_t \|_{L^6} \\
-    & \qquad \le \| fV \|_{L^1} T^{1/2} \sup_{t \in [0,T]} \|
-    \varphi_t^{(N)} - \varphi_t \|_{L^2} \sup_{t \in [0,T]} (\|
-    \varphi_t^{(N)} \|_{H^1} + \| \varphi_t \|_{H^1}) \| \varphi_t \|_{H^1}.
-  \end{align*}
-  Recall that $V \ge 0$. By conservation of mass and energy, and by
-  Proposition \ref{p:energy},
-  \begin{align*}
-    \| \varphi_t^{(N)} \|_{H^1}^2 & \le \| \varphi_t^{(N)} \|_{L^2}^2 +
-    \mathcal{E}_N(\varphi_t^{(N)}) = 1 + \mathcal{E}_N(\varphi^{(N)}) \le C_1,
-    \\
-    \| \varphi_t \|_{H^1}^2 & \le \| \varphi_t \|_{L^2}^2 +
-    \mathcal{E}_{GP}(\varphi_t) = 1 + \mathcal{E}_{GP}(\varphi) \le C_2,
-  \end{align*}
-  where $C_1$ and $C_2$ are constants that depend only on $\| fV \|_{L^1}$,
-  and $\| \varphi^{(N)} \|_{H^1}$ and $\| \varphi \|_{H^1}$, respectively.
-  Thus, substituting all this into \eqref{diff}, and choosing $T > 0$
-  sufficiently small, but depending only on $\| fV \|_{L^1}$, $\|
-  \varphi^{(N)} \|_{H^1}$ and $\| \varphi \|_{H^1}$, we obtain
-  \begin{equation}
-    \sup_{t \in [0,T]} \| \varphi_t - \varphi_t^{(N)} \|_{L^2} \le \| \varphi
-    - \varphi^{(N)} \|_{L^2} + C \sup_{t \in [0,T]} \| N f_N V_N *
-    |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3},
-    \label{endproof}
-  \end{equation}
-  where $C$ is a constant that depends only on $\| fV \|_{L^1}$, $\|
-  \varphi^{(N)} \|_{H^1}$ and $\| \varphi \|_{H^1}$. We are left to estimating
-  the right hand side of \eqref{endproof}.
-
-
-  Write
-  \begin{align*}
-    N f_N V_N * |\varphi_t|^2(x) - 8 \pi a_0 |\varphi_t|^2(x) & = \int dy
-    \big( |\varphi_t(x-y)|^2 - |\varphi_t(x)|^2 \big) N^3 fV(Ny) \\
-    & = \int dz \big( |\varphi_t(x-z/N)|^2 - |\varphi_t(x)|^2 \big) fV(z).
-  \end{align*}
-  Let $R$ be such that $\text{supp }V \subset \{ x \in \R^3 \; | \;\; |x| \le
-  R \}$. By Minkowski's, H\"older's, and Sobolev's inequalities,
-  \begin{align*}
-    \| N f_N V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3} & \le \int
-    dz \, \| |\varphi_t(\, \cdot \, -z/N)|^2 - |\varphi_t|^2 \|_{L^3} |fV(z)|
-    \\
-    & \le \| fV \|_{L^1} \sup_{|z| \le R} \| |\varphi_t(\, \cdot \, - z/N)|^2
-    - |\varphi_t|^2 \|_{L^3}.
-  \end{align*}
-  Given $\varepsilon = 1/N$, there exists $\psi_t \in C^\infty(\R^3)$ such
-  that $\| \varphi_t - \psi_t \|_{H^2} < 1/N$. Hence, by H\"older's
-  inequality, Sobolev's inequality and an $\varepsilon/3$-argument, the mean
-  value theorem (with some constant $0 \le c \le 1$), and Sobolev's inequality
-  again,
-  \begin{align*}
-    \| |\varphi_t(\, \cdot \, - z/N)|^2 - |\varphi_t|^2 \|_{L^3} & \le 2 \|
-    \varphi_t \|_{L^6} \| |\varphi_t(\, \cdot \, - z/N)| - |\varphi_t|
-    \|_{L^6} \\
-    & \apprle \| \varphi_t \|_{H^1} \big( 1/N + \| |\psi_t(\, \cdot \, - z/N)|
-    - |\psi_t| \|_{L^6} \big) \\
-    & \apprle \| \varphi_t \|_{H^1} \big( 1/N + |z|/N \| \nabla |\psi_t(\,
-    \cdot \, - c z/N)| \|_{L^6} \big) \\
-    & \apprle \| \varphi_t \|_{H^1} \big( 1/N + |z|/N \| \psi_t \|_{H^2} \big)
-    \\
-    & \apprle \| \varphi_t \|_{H^1} \big( 1/N + |z|/N^2 + |z|/N \| \varphi_t
-    \|_{H^2} \big).
-  \end{align*}
-  Therefore, substituting this into the above inequality, and applying
-  Proposition \ref{p:reg1} (possibly after choosing a smaller $T$), we obtain
-  \begin{align*}
-    & \sup_{t \in [0,T]} \| N f_N V_N * |\varphi_t|^2 - 8 \pi a_0
-    |\varphi_t|^2 \|_{L^3} \\
-    & \apprle \| fV \|_{L^1} \| \varphi_t \|_{H^1} \Big( \frac{1}{N} +
-    \frac{R}{N^2} + \frac{R}{N} \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \Big)
-    \le \frac{C}{N}(1 + \| \varphi \|_{H^2}) \le \frac{2C}{N}\| \varphi
-    \|_{H^2},
-  \end{align*}
-  where $C$ is a constant that depends only on $\| fV \|_{L^1}$, $\text{supp
-  }V$, $\| \varphi^{(N)} \|_{H^1}$ and $\| \varphi \|_{H^1}$. In view of
-  \eqref{endproof}, this completes the proof.
+\subsection{Regularity of $\phdot$}
+\begin{lem}[$L^2$-bound for $\phdot$]
+\label{lm:phdotregularity}
+Let $\ph$ be a solution of the modified Hartree equation. Then
+ \bd
+\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2.
+\ed
+For $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, we have the bound
+\bd
+\norm{\dot k} \leq 4 \max\{R,a_0\} \norm{\ph}_{H^1} \left( \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2\right) \leq C \norm{\ph}_{H^2}^2,
+\ed
+where $C$ is a constant independent of $N$ and $t$.
+\end{lem}
+\begin{proof} The modified Hartree equation reads
+\bd
+i \phdot = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
+\ed
+It follows that
+\bd
+\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}.
+\ed
+Now we calculate
+\begin{align*}
+& \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2} \\
+& = \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
+& \leq \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \norm{\ph}_\infty^2 \int \di y\, N f_N V_N(x-y) \right\rvert^2 \\
+& \leq \norm{\ph}_{L^2}^2 \norm{\ph}_\infty^4 (8\pi a_0)^2.
+\end{align*}
+We now prove the bound for $\norm{\dot k}$ using Hardy's inequality.
+\begin{align*}
+\norm{\dot k}^2 & = \int \di x\di y\, \left\lvert \frac{\di}{\di t} \left( -N w_N(x-y) \ph(x)\ph(y) \right) \right\rvert^2 \\
+& \leq 2 \int \di x\di y\, \lvert N w_N(x-y) \phdot(x) \ph(y) \rvert^2 + 2 \int \di x \di y\, \lvert N w_N(x-y) \ph(x) \phdot(y) \rvert^2 \\
+& \leq 4 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \frac{\lvert\ph(y)\rvert^2}{\lvert x-y\rvert^2} \\
+& \leq 16 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \lvert \nabla_y \ph(y)\rvert^2 \\
+& \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2.
+\end{align*}
+Now use the estimate from the first part of the lemma to estimate $\norm{\phdot}_{L^2}^2$ and the proof is complete.
 \end{proof}
-\fi
 
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
