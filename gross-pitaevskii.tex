@@ -73,6 +73,7 @@
 \newcommand{\ev}[1]{\big<#1\big>}	%expectation value
 \newcommand{\ph}{\varphi_t^{(N)}}	% solution of N-dependent Hartree equation
 \newcommand{\phdot}{\dot{\varphi}_t^{(N)}}	% time derivative of solution of N-dependent Hartree equation
+\newcommand{\phddot}{\ddot{\varphi}_t^{(N)}}	% second time derivative of solution of N-de Hartree equaution
 \newcommand{\sqn}{\sqrt{N}}		% square root of N
 \newcommand{\project}[1]{\lvert #1 \big>\big< #1\rvert}	% orthogonal projection operator
 \newcommand{\Tr}{\operatorname{Tr}}	% Trace
@@ -1143,12 +1144,12 @@ Proof of the second estimate, using the CCR and Hoelder's inequality:
 \bd
 \ad^n_B(\dot B) = \frac{1}{2} \int \di x\di y\left( f_{n,1}(x,y) a^\ast_y a^\ast_x + f_{n,2}(x,y) a_x a_y \right)
 \ed
-and $\norm{f_{n,i}} \leq 2 \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
+and $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
  \item \underline{for $n$ odd we have}
 \bd
 \ad^n_B(\dot B) = \frac{1}{2} \int \di x\di y\left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right)
 \ed
-and the following bounds hold: $\norm{f_{n,i}} \leq 2 \norm{\dot k} (2\norm{k})^n$ and $\int \lvert f_{n,i}(x,x)\rvert \di x \leq 2 \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
+and the following bounds hold: $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and $\int \lvert f_{n,i}(x,x)\rvert \di x \leq \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
 \end{itemize}
 \end{lem}
 \begin{proof} The proof is by induction in $n$. In the inductive step, we have to treat the cases of even $n$ and odd $n$ separately (but the calculations are similar).\\
@@ -1166,10 +1167,13 @@ We calculate (by using the CCR and appropriately renaming integration variables)
 & = \frac{1}{2} \int \di x\di z \left(f_{n+1,1}(x,z) a^\ast_x a_z + f_{n+1,2}(x,z) a_x a^\ast_z \right),
 \end{align*}
 where
-\begin{align*}
+\begin{equation}
+\label{eq:even}
+\begin{split}
 f_{n+1,1}(x,z) & = -\frac{1}{2} \int \di y \left( k(x,y) \left( f_{n,2}(z,y) + f_{n,2}(y,z) \right) + \cc{k(y,z)}\left( f_{n,2}(x,y) + f_{n,2}(y,x)\right) \right)\\
 f_{n+1,2}(x,z) & = -\frac{1}{2} \int \di y \left( k(y,z) \left( f_{n,1}(x,y) + f_{n,1}(y,x) \right) + \cc{k(x,y)}\left( f_{n,1}(z,y) + f_{n,1}(y,z)\right) \right), 
-\end{align*}
+\end{split}
+\end{equation}
 so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot B)$. We still have to check for validity of the estimates.
 Clearly
 \be{normnorm}
@@ -1186,11 +1190,11 @@ Using Hoelder's inequality we get
 \end{align*}
 The other three summands in \eqr{normnorm} obey the same bound, so by making use of the inductive hypothesis, we obtain
 \bd
-\norm{f_{n+1,1}}_{L^2} \leq 2\norm{\dot k} (2\norm{k})^{n+1},
+\norm{f_{n+1,1}}_{L^2} \leq \norm{\dot k} (2\norm{k})^{n+1},
 \ed
 which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the same way. We still have to proof the second estimate of the lemma, so we calculate using Hoelder's inequality that
 \bd
-\int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq 2\norm{\dot k} (2\norm{k})^{n+1}
+\int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq \norm{\dot k} (2\norm{k})^{n+1}
 \ed
 and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x$.\\
 \underline{inductive step, starting from odd $n$:}\\
@@ -1201,28 +1205,53 @@ We calculate (by using the CCR and appropriately renaming integration variables)
 & = \frac{1}{2} \int \di x\di z \left( a^\ast_x a^\ast_z f_{n+1,1}(x,z) + a_x a_z f_{n+1,2}(x,z) \right)
 \end{align*}
 where
-\begin{align*}
+\begin{equation}
+\label{eq:odd}
+\begin{split}
 f_{n+1,1}(x,z) & = - \int \di y\, k(x,y)\left( f_{n,1}(z,y) + f_{n,2}(y,z) \right) \\
-f_{n+1,2}(x,z) & = - \int \di y\, \cc{k(x,y)}\left( f_{n,1}(y,z) + f_{n,2}(z,y) \right), 
-\end{align*}
+f_{n+1,2}(x,z) & = - \int \di y\, \cc{k(x,y)}\left( f_{n,1}(y,z) + f_{n,2}(z,y) \right),
+\end{split}
+\end{equation}
 so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for $\norm{f_{n+1,1}}$ and $\norm{f_{n+1,2}}$ again follows by invoking Hoelder's inequality and the inductive hypothesis.
 \end{proof}
 
+The second estimate in the following lemma is only needed for odd $n$.
+\begin{lem}
+\label{lm:deldelt}
+For all $n \in \Nbb$ and all $i \in \{1,2\}$, we have the estimates
+\bd
+\norm{\dot f_{n,i}} \leq 2n \norm{\dot k}^2 (2\norm{k})^{n-1} + \norm{\ddot k}(2\norm{k})^n.
+\ed
+For odd $n$, we have the estimate
+\bd
+\int \lvert \dot f_{n,i}(x,x) \rvert \di x \leq 2n \norm{\dot k}^2 (2\norm{k})^{n-1} + \norm{\ddot k}(2\norm{k})^n .
+\ed
+\end{lem}
+\begin{proof}
+The first estimate is proved by induction. The basis is trivial. For the inductive step, we again have to treat the cases of even and odd $n$ separately: We employ \eqref{eq:even} respectively \eqref{eq:odd}, use Hoelder's inequality, then make use of $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and finally apply the inductive hypothesis.
+
+For the second estimate, we use \eqref{eq:even} to express $f_{n,i}$ in terms of the $f_{n-1,i}$, use Hoelder's inequality and apply the first estimate.
+\end{proof}
 
 \begin{lem}
 \label{lm:timederivative}
-There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$:
+There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$ (where $\ev{\cdot}= \scal{\psi}{\cdot\psi}$):
  \bd
-  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq 2\norm{\dot k} e^{2\norm{k}} \ev{\Ncal+1} \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
+  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq \norm{\dot k} e^{2\norm{k}} \ev{\Ncal+1} \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
+ \ed
+Furthermore
+ \bd
+    \lvert \scal{\psi}{\partial_t \left[ \left(\partial_t T^\ast_t\right) T_t \right] \psi} \rvert \leq \left( 2\norm{\dot k}^2 + \norm{\ddot k} \right) e^{2\norm{k}} \ev{\Ncal+1}.
  \ed
 \end{lem}
 \begin{proof}
-This theorem is proved by expanding the time derivative as a series,
+The first estimate is proved by expanding the time derivative as a series,
 \bd
 \left(\partial_t e^{-B(t)} \right) e^{B(t)} = - \dot B(t) +
 \frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(n+1)!} \ad^n_B(\dot B),
 \ed
-and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:phdotregularity}.
+and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:phdotregularity}.\\
+For the second estimate, differentiate the summands individually (i.\,e. place a dot on the respective $f_{n,i}$) and then estimate all summands like before, now using lemma \ref{lm:deldelt}.
 \end{proof}
 
 
@@ -1231,12 +1260,12 @@ and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{
 \label{lem:kvbounds}
 There exists a constant $C$ independent of $N$ and $t$ (but possibly depending on $\norm{\ph}_{H^1}$) such that for all $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies
 \bd
-\ev{K} + \ev{\tilV} \leq 2 \ev{\Lcal_N(t)} + C \norm{\ph}_{H^2}^4 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1}.
+\ev{\Kcal} + \ev{\tilV} \leq 2 \ev{\Lcal_N(t)} + C \norm{\ph}_{H^2}^4 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1}.
 \ed
 As $\Kcal$ and $\tilV$ are non-negative operators, the same upper bound holds for each of $\Kcal$ and $\tilV$ individually.
 \end{lem}
 \begin{proof}
-We know that $\Lcal_N(t) = (i\partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t$ and we have explictly calculated and bounded $T^\ast_t \Lcal_N^{(0)}(t)T_t$. We now only write line \eqref{l9} and the first summand in line \eqref{l10} explicitly, all the other terms we collect in $\Lcal_{\textrm{rest}}$:
+We know that $\Lcal_N(t) = (i\partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t$ and we have explictly calculated and bounded $T^\ast_t \Lcal_N^{(0)}(t)T_t$. We now write only line \eqref{l9} and the first summand in line \eqref{l10} explicitly, all the other terms we collect in $\Lcal_{\textrm{rest}}$:
 \begin{align*}
 \Lcal_N(t) & = \frac{1}{2} \int \di x\, a^\ast(c_x) a(-\Delta_x c_x) + \frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x)a(s_x) \\
 & \quad + \frac{1}{2}\int \di x\di y\, NV_N(x-y) \frac{1}{2N} a^\ast(c_x) a^\ast(c_y) a(c_y) a(c_x) + \Lcal_{\textrm{rest}}.
@@ -1286,6 +1315,7 @@ As $\ev{\Kcal} \geq 0$ and $\ev{\tilV} \geq 0$, this lemma is an easy corollary 
  \ed
 \end{lem}
 \begin{proof}
+We can almost control $\lvert \scal{\psi}{\partial_t \left[ \left(\partial_t T^\ast_t\right) T_t \right] \psi} \rvert$ (regularity of $\phddot$ ist still missing).
  TODO. \marginpar{TODO.}
 \end{proof}
 
@@ -2302,6 +2332,13 @@ We now prove the bound for $\norm{\dot k}$ using Hardy's inequality.
 & \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2.
 \end{align*}
 Now use the estimate from the first part of the lemma to estimate $\norm{\phdot}_{L^2}^2$ and the proof is complete.
+\end{proof}
+
+\begin{lem}
+We need estimates for $\norm{\ddot k}$.\marginpar{TODO}
+\end{lem}
+\begin{proof}
+To prove this lemma, we need higher regularity (probably $H^4$) of $\ph$, because bounding $\ddot k$ needs $\norm{\phddot}_{L^2}$.  
 \end{proof}
 
 \bibliographystyle{plain}
