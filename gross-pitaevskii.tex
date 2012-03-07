@@ -652,7 +652,32 @@ Then the final result for the generator is:
 					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + 			a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] \label{l25}\\
 &+ \hc
 \end{align}
-The cancellations enable us to give the necessary estimates for all terms, see chapter \ref{ch:generatorestimates}.
+
+\begin{rem}[This is the punch line of the paper!]The cancellations enable us to give the necessary estimates for all terms, see chapter \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, the best estimates with which the authors were able to come up with were (focusing on the most singular contributions):\\
+\underline{for \eqref{eq:cancellation_kinetic}}
+\bd
+\scal{\psi}{\int \di x\, a^\ast(c_x) a^\ast(-\Delta_x s_x) \psi}
+= \int \di x\, \scal{\nabla_x a_x \psi}{a^\ast(\nabla_x s_x)} + \mbox{reg.} 
+\leq \ev{\Kcal} + \norm{\nabla_x s}^2 \ev{\Ncal+1} + \mbox{reg.}, 
+\ed
+where $\norm{\nabla_x s}^2 = \mathcal{O}(N^1)$.\\
+\underline{for \eqref{eq:cancellation_normalorder}}
+\begin{align*}
+& \scal{\psi}{\frac{1}{2}\int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y) \scal{c_y}{s_x}\psi} \\
+& \leq \frac{1}{2} \int \di x\di y\, V_N(x-y) \lvert k(y,x)\rvert \lvert \scal{a(c_y)a(c_x)\psi}{\psi} \rvert + \mbox{reg.} \\
+& \leq \frac{1}{2} \int \di x\di y\, V_N(x-y) N\lvert \ph(x)\rvert \lvert \ph(x)\rvert \norm{a(c_y)a(c_x)\psi} \norm{\psi} + \mbox{reg.} \\
+& \leq 2 \varepsilon \ev{\tilV} + N \frac{1}{2}\int \di x\di y\, NV_N(x-y) \lvert\ph(x)\rvert^2 \lvert \ph(y)\rvert^2 \norm{\psi}^2 \frac{1}{\varepsilon}  + \mbox{reg.},
+\end{align*}
+where the second term is just a number, but of order $N^1$. (One could add a constant to $\Lcal_N(t)$ which compensates the term here, but this won't help for $[\Lcal_N(t),\Ncal]$, because constant drop from the commutator.)\\
+\underline{for \eqref{eq:cancellation_standard}}
+\begin{align*}
+& \scal{\psi}{\frac{1}{2}\int \di x\di y\, NV_N(x-y) \ph(x)\ph(y) a^\ast(c_x) a^\ast(c_y) \psi} \\
+& \leq 2 \varepsilon \ev{\tilV} + N \frac{1}{2}\int \di x\di y\, NV_N(x-y) \lvert\ph(x)\rvert^2 \lvert \ph(y)\rvert^2 \norm{\psi}^2 \frac{1}{\varepsilon},
+\end{align*}
+same problem as the previous estimate.
+
+In lemma \ref{lem:lncommutatorbound}, an upper bound for $\ev{[\Lcal_N(t),\Ncal]}$ of order $N^1$ would ruin the application of Gronwall's lemma. \marginpar{even though we add $\Lcal$ before applying Gronwall?}
+\end{rem}
 
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
@@ -666,7 +691,7 @@ For convenience, we remind the reader of the simple but useful estimate
 \ed
 We now have the following list of estimates for all terms of the generator.\newline
 \underline{We start with estimates for the kinetic terms:}\newline
-\estlist{7}{1}
+\estlist{7}{1} (here, the cancellation is important!)
 \begin{align*}
 & \lvert \scal{\psi}{\frac{1}{2}\int \di x\,a^\ast(c_x) \int \di y\,a^\ast_y N\nabla_x w_N(x-y)\nabla_x \ph(x) 2\ph(y) \psi}\rvert \\
 \leq & \lvert \int \di x \di y\, Nw_N(x-y) \nabla_x \ph(x)  \nabla_y \ph(y) \scal{a_y\psi}{a^\ast_x\psi} \rvert \\
@@ -687,7 +712,7 @@ We now have the following list of estimates for all terms of the generator.\newl
 & + C \frac{1}{\sqrt{\varepsilon}}\norm{(\Ncal+1)^{1/2}\psi} \sqrt{\varepsilon}\norm{\Kcal^{1/2}\psi} \norm{\nabla \ph}_{L^2}^2 \norm{p} \\
 \leq & C \norm{\ph}_{H^2} \left( (1+\frac{1}{\varepsilon})\ev{\Ncal+1} + \varepsilon\ev{\Kcal} \right) + C \left( \frac{1}{\varepsilon}\ev{\Ncal+1} + \varepsilon \ev{\Kcal} \right).
 \end{align*}
-\estlist{8}{1}
+\estlist{8}{1} (here, the cancellation is important!)
 \begin{align*}
 &\lvert \scal{\psi}{\frac{1}{2}\int \di x\di y\,a^\ast(c_x) a^\ast_y N w_N(x-y) \Delta_x \ph(x) \ph(y) \psi}\rvert\\
 \leq & \frac{1}{2} \int \di x\, \norm{a(c_x)\psi} \lvert \Delta_x \ph(x)\rvert \norm{a^\ast(Nw_N(x-\cdot)\ph(\cdot))\psi} \\
@@ -839,7 +864,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 \leq & \frac{1}{4} \sup_x \norm{s_x}^2 \int \di y\, \norm{s_y}^2 \int \di x\, V_N(x-y) \ev{\Ncal^2}\\
 \leq & C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
-\estlist{14}{1}
+\estlist{14}{1} (here, cancellation is important!)
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a^\ast(c_y) \left( r(y,x)+\scal{p_y}{s_x} \right)\psi} \rvert \\
 \leq & \varepsilon \dxyV \norm{a(c_y)a(c_x)\psi}^2 + \frac{1}{\varepsilon} \dxyV \lvert r(y,x)+\scal{p_y}{s_x} \rvert^2 \\
@@ -929,7 +954,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 & \quad + \dxyV \norm{a(c_y)\psi}^2 \norm{p_y}^2 + \dxyV \norm{a(s_x)\psi}^2 \norm{s_x}^2 \\
 \leq & C \norm{\ph}_{H^2}^2 (1+\frac{1}{N})\ev{\Ncal}.
 \end{align*}
-\estlist{18}{1}
+\estlist{18}{1} (here, cancellation is important!)
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \ph(x)\ph(y) a^\ast(c_x) a^\ast(p_y)\psi} \rvert \\
 \leq & \dxyNV \lvert\ph(x)\rvert \lvert\ph(y)\rvert \norm{a(c_x)\psi} \norm{a^\ast(p_y)\psi}\\
