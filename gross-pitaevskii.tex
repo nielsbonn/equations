@@ -1284,7 +1284,9 @@ In this section, we collect the estimates for all the terms of $\dot \Lcal_N(t)$
 
 What is already done:\marginpar{overview of current status}\\
 The term $\partial_t ((\partial _t T^\ast)T)$ is bounded by $\ev{\Ncal+1}$ (see lemma in previous chapter).\\
-The time derivatives of the terms in lines \eqref{l10} through \eqref{l15} are bounded by $\Ncal^2/N$, $\Ncal$ and $\tilV$ (and as a consequence, by $\Ncal$ and $\Lcal$). (I'll type these estimates when I'm back. The method of proof is the same as in chapter \ref{ch:generatorestimates}, but easier because $a^\ast(\dot p_x) = \partial_t a^\ast(c_x)$ is regular while $a^\ast(c_x)$ is singular.)
+The time derivatives of the terms in lines \eqref{l7}, and \eqref{l10} through \eqref{l15} are bounded by $\Ncal^2/N$, $\Ncal$, $\Kcal$ and $\tilV$ (and as a consequence, by $\Ncal$ and $\Lcal$). (I'll type these estimates when I'm back. The method of proof is the same as in chapter \ref{ch:generatorestimates}, but easier because $a^\ast(\dot p_x) = \partial_t a^\ast(c_x)$ is regular while $a^\ast(c_x)$ is singular.)
+
+However, lots of regularity estimates are needed, and so far not proven (I think $\ph \in H^4$ shoudl be sufficient).
 
 \section{Estimating the number of fluctuations}
 \begin{lem}
@@ -2097,7 +2099,7 @@ For $T > 0$ set
 
   The $L_t^\infty L_x^2$-norm of the above expression can be controlled using
   Strichartz estimates for the free Schr\"odinger evolution $e^{it\Delta}$
-  (see \cite[Theorem 1.2]{KT}). By these estimates, and Lemma~\ref{l:interp},
+  (see \cite[Theorem 1.2]{KT}). By these estimates, and Lemma~\ref{l:interp}, \marginpar{in the following equations, is it really $\varphi^2$ or maybe $\lvert \varphi\rvert^2$?}
   \begin{align}
     & \| \Delta \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} \notag \\
     & \apprle \| \Delta \varphi \|_{L^2} + \| (V * |\varphi_{(\cdot)}|^2)
