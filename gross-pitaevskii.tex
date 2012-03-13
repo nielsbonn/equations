@@ -5,7 +5,7 @@
 %\usepackage[bookmarksnumbered=true]{hyperref}
 \usepackage[color,notref,notcite]{showkeys}
 \usepackage{scrtime}
-\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{dsfont,wasysym}
 
 % Original header
@@ -23,6 +23,10 @@
 \lfoot{{\footnotesize GP equation}}
 \cfoot{\thepage}
 \rfoot{{\footnotesize \today, \thistime}}
+
+% Set enumerate environment using roman counters
+\renewcommand{\theenumi}{{\rm (\roman{enumi})}}
+\renewcommand{\labelenumi}{\theenumi}
 
 % Nicer marginpar with smaller font
 \let\oldmarginpar\marginpar
@@ -90,7 +94,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% main content %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%\allowdisplaybreaks    % Let's try to avoid this. GBdO.
+%\allowdisplaybreaks
 
 
 \begin{document}
@@ -105,8 +109,7 @@
 \section{Fock space representation}
 
 
-We define the bosonic Fock space $\mathcal{F}$ over $L^2(\R^3)$ as the Hilbert
-space
+The bosonic Fock space over $L^2(\R^3)$ is the Hilbert space
 \[
   \mathcal{F} = \bigoplus_{n \ge 0} L^2(\R^3)^{\otimes_s n} = \mathds{C}
   \oplus \bigoplus_{n \ge 1} L^2_s(\R^{3n}),
@@ -116,35 +119,99 @@ $L^2_s(\R^{3n})$ is the subspace of $L^2(\R^{3n})$ consisting of all functions
 that are symmetric with respect to arbitrary permutations of the $n$
 variables. Vectors in $\mathcal{F}$ are sequences $\psi = \{ \psi^{(n)} \}_{n
 \ge 0}$ of $n$-particle wave functions $\psi^{(n)} \in L^2_s(\R^{3n})$. The
-scalar product on $\mathcal{F}$ is defined as
+inner product on $\mathcal{F}$ is defined as
 \begin{align*}
   \langle \psi_1, \psi_2 \rangle & = \sum_{n \ge 0} \langle \psi_1^{(n)},
   \psi_2^{(n)} \rangle_{L^2(\R^{3n})} \\
   & = \overline{\psi_1^{(0)}} \psi_2^{(0)} + \sum_{n \ge 1} \int dx_1 \cdots
   dx_n \overline{\psi_1^{(n)}}(x_1, \dots, x_n) \psi_2^{(n)}(x_1, \dots, x_n).
 \end{align*}
-An $N$ particle state with wave function $\psi_N$ is described on
-$\mathcal{F}$ by the sequence $\{ \psi^{(n)} \}_{n \ge 0}$ where $\psi^{(n)}
-= 0$ for all $n \neq N$ and $\psi^{(N)} = \psi_N$. The vector $\{ 1, 0, 0,
-\dots \} \in \mathcal{F}$ is called the vacuum, and will be denote by
-$\Omega$.
+An $N$-particle state with wave function $\psi_N$ is described on
+$\mathcal{F}$ by a sequence $\{ \psi^{(n)} \}_{n \ge 0}$ where $\psi^{(n)} =
+0$ for all $n \neq N$ and $\psi^{(N)} = \psi_N$. The vector $\{ 1, 0, 0, \dots
+\} \in \mathcal{F}$ is called the vacuum, and is denoted by $\Omega$.
 
 
-We will make use of operator valued distributions $a_x^*$ and $a_x$, with $x
+For $f \in L^2(\R^3)$, the creation operator $a^*(f)$ and the annihilation
+operator $a(f)$ on $\mathcal{F}$ are defined as
+\[
+  \begin{split}
+    (a^*(f) \psi)^{(n)}(x_1, \dots, x_n) & = \frac{1}{\sqrt{n}} \sum_{j=1}^n
+    f(x_j) \psi^{(n-1)}(x_1, \dots, x_{j-1}, x_{j+1}, \dots, x_n), \\
+    (a(f) \psi)^{(n)}(x_1, \dots, x_n) & = \sqrt{n+1} \int dx \,
+    \overline{f(x)} \psi^{(n+1)}(x, x_1, \dots, x_n).
+  \end{split}
+\]
+The operators $a^*(f)$ and $a(f)$ are unbounded, densely defined, and closed.
+Note that $a^*(f)$ is linear in $f$, while $a(f)$ is anti-linear. The creation
+operator $a^*(f)$ is the adjoint of the annihilation operator $a(f)$, and they
+satisfy the canonical commutation relations
+\[
+  [a(f), a^*(g)] = \langle f, g \rangle_{L^2} \qquad \text{and} \qquad [a(f),
+  a(g)] = [a^*(f), a^*(g)] = 0
+\]
+for $f,g \in L^2(\R^3)$. It is useful to introduce the self-adjoint operator
+\[
+  \phi(f) = a^*(f) + a(f).
+\]
+
+
+We will make use of operator-valued distributions $a_x^*$ and $a_x$, with $x
 \in \R^3$, defined so that
-\begin{equation}
-  \label{a}
-  \begin{aligned}
-    a^*(f) & = \int \di x\, f(x) a^*_x, \\
-      a(f) & = \int \di x\, \cc{f(x)} a_x.
-  \end{aligned}
-\end{equation}
+\[
+  a^*(f) = \int \di x\, f(x) a^*_x \qquad \text{and} \qquad a(f) = \int \di
+  x\, \cc{f(x)} a_x
+\]
+for $f \in L^2(\R^3)$. For these distributions, the canonical commutation
+relations assume the form
+\[
+  [a_x, a_y^*] = \delta(x-y) \qquad \text{and} \qquad [a_x, a_y] = [a_x^*,
+  a_y^*] = 0,
+\]
+where $\delta$ is the Dirac delta distribution.
 
-\begin{lem}
-  \label{l:a}
-  Let $f \in H^1(\R^3)$. Then, for any $\psi \in \mathcal{F}$,
-  \begin{equation}
-    \label{aNorm}
+
+The number of particles operator $\mathcal{N}$ on $\mathcal{F}$ is defined as
+$(\N \psi)^{(n)} = n \psi^{(n)}$. Eigenvectors of $\N$ are vectors of the form
+$\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
+
+
+The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
+\psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
+\[
+  \Hcal_N^{(n)} = \sum_{j=1}^n \Delta_{x_j} + \sum_{i<j}^n V_N(x_i - x_j).
+\]
+By definition, the Hamiltonian $\Hcal_N$ leaves sectors of $\mathcal{F}$ with
+a fixed number of particles invariant. This is just a restatement of the fact
+that $\Hcal_N$ and $\N$ commute.
+
+
+Using the distributions $a_x^*$ and $a_x$, we can express the operators $\N$
+and $\Hcal_N$ as
+\[
+  \N = \int dx \, a_x^* a_x
+\]
+and
+\[
+  \Hcal_N = \int dx \, \nabla_x a_x^* \nabla_x a_x + \frac{1}{2} \int dx dy \,
+  V_N(x-y) a_x^* a_y^* a_y a_x.
+\]
+The operator
+\[
+  \K = \int dx \, \nabla_x a_x^* \nabla_x a_x
+\]
+is called the kinetic energy operator.
+
+
+The following lemma provides some useful bounds to control creation and
+annihilation operators in terms of the number of particles operator $\N$ and
+the kinetic energy operator $\K$.
+
+
+\begin{lem} \label{l:a}
+  Let $f \in L^2(\R^3)$ and $g \in H^1(\R^3)$. Then, for any $\psi \in
+  \mathcal{F}$,
+  \begin{equation} \label{aNorm}
     \begin{aligned}
       \norm{a(f)\psi} & \leq \norm{f}_{L^2} \norm{\Ncal^{1/2}\psi}, \\
       \norm{a^*(f)\psi} & \leq \norm{f}_{L^2} \norm{(\Ncal+1)^{1/2}\psi}, \\
@@ -153,7 +220,7 @@ We will make use of operator valued distributions $a_x^*$ and $a_x$, with $x
   \end{equation}
 and
 \be{agradnorm}
-\norm{a(\nabla f)\psi}  \leq \norm{f}_{L^2} \norm{\Kcal^{1/2}\psi}.
+\norm{a(\nabla g)\psi}  \leq \norm{g}_{L^2} \norm{\Kcal^{1/2}\psi}.
 \ee
 \end{lem}
 
@@ -170,39 +237,44 @@ x\, a^*_x a_x
 \ed
 
 
+\section{Weyl operator and coherent states}
+
+
 For $f \in L^2(\R^3)$, we define the Weyl operator as
-\bd
-%A(f) := a^*(f) - a(f), \quad W(f) := \exp(A(f))
-W(f) = \exp(a^*(f) - a(f)).
-\ed
+\[
+  W(f) = e^{A(f)}
+\]
+with
+\[
+  A(f) = a^*(f) - a(f).
+\]
 
 
-\begin{lem}
-  \label{l:W}
-  Let $f, g \in L^2(\R^3)$.
-  \begin{itemize}
-    \item[(i)] The Weyl operator satisfies the relations
+\begin{lem}[Weyl operator and coherent states] \label{l:W}
+  Let $f, g \in L^2(\R^3)$. The following hold.
+  \begin{enumerate}
+    \item \label{lW1} The Weyl operator satisfies the relations
       \[
         W(f) W(g) = W(g) W(f) e^{-2i \Im \langle f, g \rangle_{L^2}} = W(f+g)
         e^{-i \Im \langle f, g \rangle_{L^2}}.
       \]
-    \item[(ii)] The operator $W(f)$ is unitary on $\mathcal{F}$ and
+    \item \label{lW2} The operator $W(f)$ is unitary on $\mathcal{F}$ and
       \[
         W(f)^* = W(f)^{-1} = W(-f).
       \]
-    \item[(iii)] We have
+    \item \label{lW3} We have
       \[
         W(f)^* a_x W(f) = a_x + f(x) \qquad \text{and} \qquad W(f)^* a_x^* W(f)
         = a_x^* + \overline{f(x)}.
       \]
-    \item[(iv)] It follows from (iii) that coherent states are eigenvectors of
-      anihilation operators:
+    \item \label{lW4} It follows from \ref{lW3} that coherent states are
+      eigenvectors of anihilation operators:
       \[
         a_x \psi(f) = f(x) \psi(f) \qquad \text{so that} \qquad a(g) \psi(f)
         = \langle g, f \rangle_{L^2} \psi.
       \]
-    \item[(v)] The expectation of the number of particles in the coherent
-      state $\psi(f)$ is given by $\| f \|_{L^2}^2$, that is,
+    \item \label{lW5} The expectation of the number of particles in the
+      coherent state $\psi(f)$ is given by $\| f \|_{L^2}^2$, that is,
       \[
         \langle \psi(f), \N^2 \psi(f) \rangle = \| f \|_{L^2}^2.
       \]
@@ -212,15 +284,15 @@ W(f) = \exp(a^*(f) - a(f)).
         \langle \psi(f), \N^2 \psi(f) \rangle - \langle \psi(f), \N \psi(f)
         \rangle^2 = \| f \|_{L^2}^2.
       \]
-    \item[(vi)] Coherent states are normalized but not orthogonal to each
-      other. In fact,
+    \item \label{lW6} Coherent states are normalized but not orthogonal to
+      each other. In fact,
       \[
         \langle \psi(f), \psi(g) \rangle = e^{-\frac{1}{2} (\| f \|_{L^2}^2 +
         \| g \|_{L^2}^2 - 2 \langle f, g \rangle_{L^2} )} \qquad \text{so
         that} \qquad |\langle \psi(f), \psi(g) \rangle| = e^{-\frac{1}{2} \| f
         - g \|_{L^2}^2}.
       \]
-    \end{itemize}
+    \end{enumerate}
 \end{lem}
 
 
@@ -253,17 +325,15 @@ R \}$. From the zero-energy scattering equation, we also have the identity
 By scaling, the scattering length of the potential $V_N(x) = N^2 V(Nx)$ is
 $a_N = a_0/N$, and the zero-energy scattering equation for the potential $V_N$
 is
-\begin{equation}
-  \label{eq:scatteringequation}
+\begin{equation} \label{eq:scatteringequation}
   \left( -\Delta + \frac{1}{2} V_N \right) f_N = 0,
 \end{equation}
 where $f_N(x) = 1 - w_N(x)$ with $w_N(x) = w(Nx)$. Note that $w_N(x) =
 a_N/|x|$ for $|x| \ge R/N$.
 
 
-\begin{lem}[\cite{ESY2010}]
+\begin{lem}[Zero-energy scattering equation \cite{ESY2010}] \label{l:w}
 \marginpar{We might clean up this lemma if we don't use everything}
-  \label{l:w}
   Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
   spherical symmetric with scattering length $a_0$. Let
   \[
@@ -272,25 +342,25 @@ a_N/|x|$ for $|x| \ge R/N$.
   and consider the solution $f_N = 1-w_N$ of the zero-energy scattering
   equation with scaled potential $V_N$. Then, the following hold with
   constants uniform in $N$.
-  \begin{itemize}
-    \item[(i)] There exists a constant $C_0 > 0$, which depends on the
+  \begin{enumerate}
+    \item \label{lw1} There exists a constant $C_0 > 0$, which depends on the
       unscaled potential $V$, such that
       \[
         C_0 \le 1 - w_N(x) \le 1 \qquad \text{for all } x \in \R^3.
       \]
-    \item[(ii)] Let $R$ be such that $\text{supp }V \subset \{ x \in \R^3 \; |
-      \;\; |x| \le R \}$. Then,
+    \item \label{lw2} Let $R$ be such that $\text{supp }V \subset \{ x \in
+      \R^3 \; | \;\; |x| \le R \}$. Then,
       \[
         w_N(x) = \frac{a_0}{N|x|} \qquad \text{for all } x \in \R^3 \text{
         with } |x| > R/N.
       \]
-    \item[(iii)] From (i) and (ii) it follows that
-    \[
-      |w_N(x)| \le \max\{a_0, R\} \frac{1}{N|x|} \qquad \text{for all } x \in
-      \R^3.
-    \]
-    \item[(iv)] There exist constants $C_1$ and $C_2$, depending only on $V$,
-      such that
+    \item \label{lw3} From \ref{lw1} and \ref{lw2} it follows that
+      \[
+        |w_N(x)| \le \max\{a_0, R\} \frac{1}{N|x|} \qquad \text{for all } x \in
+        \R^3.
+      \]
+    \item \label{lw4} There exist constants $C_1$ and $C_2$, depending only on
+      $V$, such that
       \[
         |\nabla w_N(x)| \le C_1 N \qquad \text{and} \qquad | \nabla^2 w_N(x)|
         \le C_2 N^2
@@ -303,247 +373,347 @@ a_N/|x|$ for $|x| \ge R/N$.
         |x|^2}
       \]
       for all $x \in \R^3$.
-    \item[(v)] From (iv) it follows that
+    \item \label{lw5} From \ref{lw4} it follows that
       \[
         |\nabla w_N(x)| \le \max\{ C_1, C a_0 \} \frac{2N}{N^2|x|^2 + 1}
         \qquad \text{for all } x \in \R^3.
       \]
-  \end{itemize}
+  \end{enumerate}
 \end{lem}
 
 
 \section{Bogoliubov transformation}
 
 
-\bd
-a^\ast(q_y) := \int \di z\, q(z,y) a^*_z = a^*(q(\cdot,y)) , \quad a(q_y) :=
-\int \di z\, \cc{q(z,y)} a_z = a(q(\cdot,y))
-\ed
-
-
-\begin{lem}[Bogoliubov transformation \cite{GMM2010}]
-\label{l:bt}
- \bd
- T_t^* a^*_x T_t = \int \left( \cc{s(y,x)} a_y + c(y,x) a^*_y \right) \di y =
- a^*(c_x) + a(s_x).
- \ed
-\bd
- T_t^* a_x T_t = a(c_x) + a^*(s_x).
-\ed
-\end{lem}
-
-Let
+Let $f(x,y)$ be a function of two variables. To simplify the notation we write
 \[
-  T = e^{B(k)}
+  f_x(y) = f(x,y)
 \]
-with
+so that
+\[
+  a(f_x) = a(f(x, \,\cdot\,)) \qquad \text{and} \qquad a^*(f_x) = a^*(f(x,
+  \,\cdot\,)).
+\]
+For notational convenience, it will be useful to slightly abuse notation and
+write
+\[
+  a_x + a(f_x) = a(\delta_x + f_x).
+\]
+
+
+For $k \in L^2(\R^3 \times \R^3)$, define the operators $B(k)$ and $T(k)$ on
+$\mathcal{F}$ as
 \[
   B(k) = \frac{1}{2} \int dxdy \, (k(x,y) a_x^* a_y^* - \overline{k(x,y)} a_x
-  a_y).
+  a_y)
 \]
-Then,
-\begin{align*}
-  T^* a_x T & = a(c(\,\cdot\,,x)) + a^*(s(\,\cdot\,,x)) \\
-  & = a_x + a(p(\,\cdot\,,x)) + a^*(s(\,\cdot\,,x))
-\end{align*}
-with
-\begin{alignat*}{2}
-  c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!} \big( k
-  \overline{k} \big)^n, \\
-  s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!} \big( k
-  \overline{k} \big)^n k,
-\end{alignat*}
-where $\delta$ is the Dirac delta, and the product of functions in the power
-series is the convolution of integral kernels, that is, $fg(x,y) = \int dz \,
-f(x,z) g(z,y)$. Consequently, for $f \in L^2(\R^3)$,
+and
 \[
-  T^* a(f) T = a(Cf) + a^*(S\overline{f}),
+  T(k) = e^{B(k)}.
 \]
-where $C$ and $S$ are integral operators on $L^2(\R^3)$ with integral kernels
-$c$ and $s$, respectively.
 
 
-\begin{prp}
-  \label{p:psr}
+\begin{lem}[Bogoliubov transformation] \label{l:bt}
+  Let $k \in L^2(\R^3 \times \R^3)$.
+  \begin{enumerate}
+    \item \label{l:bt1} The operator $T(k)$ is unitary on $\mathcal{F}$ and
+      \[
+        T(k)^* = T(k)^{-1} = T(-k).
+      \]
+    \item \label{l:bt2} We have
+      \[
+        T(k)^* a_x T(k) = a(c_x) + a^*(s_x) \qquad \text{and} \qquad T(k)^*
+        a_x^* T(k) = a^*(c_x) + a(s_x)
+      \]
+      with
+      \begin{alignat*}{2}
+        c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
+        \big( k \overline{k} \big)^n, \\
+        s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!} k
+        \big( \overline{k} k \big)^n,
+      \end{alignat*}
+      where $\delta$ is the Dirac delta, and the product of functions in the
+      power series is the convolution of integral kernels, that is, $fg(x,y) =
+      \int dz \, f(x,z) g(z,y)$. Furthermore,
+      \[
+        \| p \|_{L^2} \le e^{\| k \|_{L^2}} \qquad \text{and} \qquad \| s
+        \|_{L^2} \le e^{\| k \|_{L^2}}.
+      \]
+    \item \label{l:bt3} It follows from \ref{l:bt2} that, for $f \in
+      L^2(\R^3)$,
+      \[
+        T(k)^* a(f) T(k) = a(Cf) + a^*(S\overline{f}) \qquad \text{and} \qquad
+        T(k)^* a^*(f) T(k) = a^*(Cf) + a(S\overline{f}),
+      \]
+      where $C$ and $S$ are integral operators on $L^2(\R^3)$, with integral
+      kernels $c$ and $s$, respectively. Moreover, if we write $C = I + P$,
+      where $I$ is the identity operator and $P$ has integral kernel $p$, then
+      \[
+        \| P \|_{HS} \le e^{\| k \|_{L^2}} \qquad \text{and} \qquad \| S
+        \|_{HS} \le e^{\| k \|_{L^2}},
+      \]
+      where $\| \, \cdot \, \|_{HS}$ is the Hilbert-Schmidt norm for operators
+      on $L^2(\R^3)$.
+  \end{enumerate}
+\end{lem}
+
+
+\begin{lem}[Estimates for integral kernels] \label{l:kernels}
   Let $\varphi \in H^1(\R^3)$, and let $f_N=1-w_N$ be the solution of the
   zero-energy scattering equation as in Lemma \ref{l:w}. Let
   \[
-    k(x,y) = - N w_N(x-y) \varphi(x) \varphi(y).
+    k(x,y) = - N w_N(x-y) \varphi(x) \varphi(y),
   \]
-  Then, for $N \ge 1$ and $n \ge 1$,
-  \begin{align}
-    \| k \|_{L^2} & \apprle \| \varphi \|_{H^1}^2, \label{k} \tag{i} \\
-    \| \nabla_1 k \|_{L^2} & \apprle \| \varphi \|_{H^1}^2 \sqrt{N},
-    \label{gradk} \tag{ii} \\
-    \| (k \overline{k})^n \|_{L^2} & \le C^n \| \varphi \|_{H^1}^{4n},
-    \tag{iii} \\
-    \| (\nabla_1 k \overline{k})^n \|_{L^2} & \le C^n \| \varphi
-    \|_{H^1}^{4n}, \tag{iv}
-  \end{align}
-  where $C$ is a constant that depends only on $a_0$ and $\rho$ from Lemma
-  \ref{l:w}. Consequently, there is a constant $C_1$ that depends only on $\| \varphi \|_{H^1}$, and
-  $a_0$ and $\rho$ from Lemma \ref{l:w} such that
-  \begin{equation}
-    \begin{alignedat}{2}
-      \| p \|_{L^2} & \le C_1, \qquad & \| \nabla_1 p \|_{L^2} & \le C_1, \\
-      \| r \|_{L^2} & \le C_1, \qquad & \| \nabla_1 r \|_{L^2} & \le C_1,
-    \end{alignedat}
-    \tag{v}
+  and consider the integral kernels $p$, $r$ and $s$ as in Lemma \ref{l:bt}.
+  Then, there exists a constant $C$, uniform in $N$, that depends only on the
+  unscaled potential $V$, such that, for almost all $x,y \in \R^3$,
+    \begin{alignat}{2}
+      \| k \|_{L^2} & \le C \| \varphi \|_{H^1}^2, \qquad & 
+      \| \nabla_1 k \|_{L^2} & \le C \| \varphi \|_{H^1}^2 \sqrt{N}, \tag{i}
+      \label{k} \\
+      |k(x,y)| & < N |\varphi(x)| \, |\varphi(y)|, \qquad & \| \nabla_1 k
+      \overline{k} \|_{L^2} & \le C \| \varphi \|_{H^1}^2, \notag \\
+      \| p \|_{L^2} & \le e^{C \| \varphi \|_{H^1}^2}, \qquad & 
+      \| \nabla_1 p \|_{L^2} & \le e^{C \| \varphi \|_{H^1}^2}, 
+      \tag{ii} \label{p} \\
+      \| r \|_{L^2} & \le e^{C \| \varphi \|_{H^1}^2}, \qquad & 
+      \| \nabla_1 r \|_{L^2} & \le e^{C \| \varphi \|_{H^1}^2}, 
+      \tag{iii} \label{r} \\
+      |r(x,y)| & \le e^{C \| \varphi \|_{H^1}} |\varphi(x)| \, |\varphi(y)|,
+      \qquad & \notag \\
+      \| s \|_{L^2} & \le e^{C \| \varphi \|_{H^1}^2}, \qquad & 
+      \| \nabla_1 s \|_{L^2} & \le 2 e^{C \| \varphi \|_{H^1}^2} \sqrt{N}.
+      \tag{iv} \label{s}
+    \end{alignat}
+  Furthermore, if $\varphi \in H^2(\R^3)$, then
+  \begin{equation} \label{sup}
+    \sup_{x \in \R^3} \, \norm{p_x}_{L^2} \apprle e^{C \| \varphi \|_{H^1}^2}
+    \norm{\varphi}_{H^2} \qquad \text{and} \qquad \sup_{x \in \R^3}
+    \norm{s_x}_{L^2} \apprle e^{C \| \varphi \|_{H^1}^2}
+    \norm{\varphi}_{H^2}. \tag{v}
   \end{equation}
-  and
-  \begin{equation}
-    \| s \|_{L^2} \le C_1, \qquad \| \nabla_1 s \|_{L^2} \apprle \| \varphi
-    \|_{H^1}^2 \sqrt{N}, \tag{vi}
-  \end{equation}
- and
-\bd
-\sup_{x} \norm{s_x}_2^2 \leq C \norm{\varphi}_{H^2}^2, \quad \sup_{x} \norm{p_x}_2^2 \leq C \norm{\varphi}_{H^2}^2,
-\ed
-\bd
-\lvert r(x,y)\rvert \leq C \lvert\varphi(x)\rvert \lvert\varphi(y)\rvert, \quad \lvert k(x,y)\rvert \leq N \lvert \varphi(x)\rvert \lvert \varphi(y)\rvert.
-\ed
-We emphasize that $C$ and $C_1$ do not depend on $N$.
+\end{lem}
+
+
+\begin{prp} \label{p:wphi}
+  Let $\varphi \in H^1(\R^3)$, and let $f_N=1-w_N$ be the solution of the
+  zero-energy scattering equation as in Lemma \ref{l:w}. Then, for almost all
+  $x,y \in \R^3$,
+  \begin{align*}
+    \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 & \le C^2 \| \nabla \varphi
+    \|_{L^2}^2, \\
+    \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2 & \le C^2 \| \nabla \varphi
+    \|_{L^2}^2, \\
+    \int dx dy \, N^2 |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 & \le
+    C^2 N \| \varphi \|_{H^1}^2,
+  \end{align*}
+  where $C$ is a constant, uniform in $N$, that depends only on the unscaled
+  potential $V$.
 \end{prp}
 
 
-\begin{proof}
-  (i) Using Lemma \ref{l:w}(iii), and the operator inequality $-4 \Delta \ge
+\begin{proof}[Proof of Proposition \ref{p:wphi}]
+  Using Lemma \ref{l:w}\ref{lw3}, and the operator inequality $-4 \Delta \ge
   |x|^{-2}$ on $L^2(\R^3)$, we find that
-  \begin{equation}
-    \begin{aligned}
-      \int dy \, N^2 w_N(x-\,\cdot\,)^2 |\varphi(y)|^2 & \apprle \int dy \,
-      |x-y|^{-2} |\varphi(y)|^2 \\
-      & = \langle \varphi(\,\cdot\,+x), |\,\cdot\,|^{-2} \varphi(\,\cdot\,+x)
-      \rangle_{L^2} \\
-      & \le -4 \langle \varphi(\,\cdot\,+x), \Delta \varphi(\,\cdot\,+x)
-      \rangle_{L^2} = 4 \| \nabla \varphi \|_{L^2}^2.
-    \end{aligned}
-    \label{w}
-  \end{equation}
-  Thus,
-  \[
-    \| k \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, N^2
-    w_N(x-\,\cdot\,)^2 |\varphi(y)|^2 \apprle \| \varphi \|_{L^2}^2 \| \nabla
-    \varphi \|_{L^2}^2 \apprle \| \varphi \|_{H^1}^4.
-  \]
-
-
-  (ii) By the Leibniz rule and triangle inequality, there are two terms to be
-  estimated:
-  \[
-    \| \nabla_1 k \|_{L^2} \le \| N w_N(x-y) \nabla \varphi(x) \varphi(y)
-    \|_{L^2} + \| N \nabla w_N(x-y) \varphi(x) \varphi(y) \|_{L^2}.
-  \]
-  For the first term, similarly as in part (i), we have
-  \[
-    \| N w_N(x-y) \nabla \varphi(x) \varphi(y) \|_{L^2} \apprle \| \nabla
-    \varphi \|_{L^2}^2 \apprle \| \varphi \|_{H^1}^2.
-  \]
-  To bound the second term, we apply Young's inequality, Sobolev's inequality,
-  and Lemma \ref{l:w}(v), to find
   \begin{align*}
-    \| N \nabla w_N(x-y) \varphi(x) \varphi(y) \|_{L^2}^2 & = N^2 \int dx dy
-    \, |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 \\
-    & \le N^2 \| | \nabla w_N|^2 \|_{L^1} \| \varphi \|_{L^4}^4 \\
-    & \apprle N \| \varphi \|_{H^1}^4 \int dx \, \frac{N^3}{(|Nx|^2 + 1)^2}
-    \apprle N \| \varphi \|_{H^1}^4.
+    \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 & \le C_1^2 \int dz \, |x-z|^{-2}
+    |\varphi(z)|^2 \\
+    & = C_1^2 \langle \varphi(\,\cdot\,+x), |\,\cdot\,|^{-2}
+    \varphi(\,\cdot\,+x) \rangle_{L^2} \\
+    & \le -4 C_1^2 \langle \varphi(\,\cdot\,+x), \Delta \varphi(\,\cdot\,+x)
+    \rangle_{L^2} = 4 C_1^2 \| \nabla \varphi \|_{L^2}^2,
   \end{align*}
-  Therefore,
+  where $C_1 = \max\{a_0, R\}$ is a constant from Lemma \ref{l:w}. This proves
+  the first estimate.
+
+
+  Now, by H\"older's inequality, and the above estimate,
+  \begin{align*}
+    & \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2 \\
+    & \le \left( \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 \right)^{1/2} \left(
+    \int dz \, N^2 w_N(z-y)^2 |\varphi(z)|^2 \right)^{1/2} \le 4C_1^2 \|
+    \nabla \varphi \|_{L^2}^2.
+  \end{align*}
+  This gives the second estimate in the proposition.
+
+
+  Finally, by Young's inequality, Sobolev's inequality, and Lemma
+  \ref{l:w}\ref{lw5},
+  \begin{align*}
+    \int dx dy \, N^2 |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 & \le
+    N^2 \| | \nabla w_N|^2 \|_{L^1} \| \varphi \|_{L^4}^4 \\
+    & \apprle C_2 N \| \varphi \|_{H^1}^4 \int dx \, \frac{N^3}{(|Nx|^2 +
+    1)^2} \apprle C_2 N \| \varphi \|_{H^1}^4,
+  \end{align*}
+  where $C_2$ is a constant from Lemma \ref{l:w}, that depends only on $V$ and
+  $a_0$. This proves the third estimate and concludes the proof of the
+  proposition.
+\end{proof}
+
+
+\begin{proof}[Proof of Lemma \ref{l:kernels}]
+  \eqref{k} We will repeteadly apply Proposition \ref{p:wphi}, Sobolev's
+  inequality, Leibinz' rule, and triangle inequality. We begin with
   \[
-    \| \nabla_1 k \|_{L^2} \apprle \| \varphi \|_{H^1}^2 + \sqrt{N} \| \varphi
-    \|_{H^1}^2 \apprle \sqrt{N} \| \varphi \|_{H^1}^2.
+    \| k \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, N^2 w_N(x-y)^2
+    |\varphi(y)|^2 \le C^2 \| \varphi \|_{L^2}^2 \| \nabla \varphi \|_{L^2}^2
+    \apprle C^2 \| \varphi \|_{H^1}^4
   \]
-
-
-  (iii) The proof is by induction on $n$. We first prove the estimate for
-  $n=1$. We begin observing that, by H\"older's inequality and \eqref{w},
-  \begin{equation}
-    \begin{aligned}
-      & \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2 \\
-      & \le \left( \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 \right)^{1/2} \left(
-      \int dz \, N^2 w_N(z-y)^2 |\varphi(z)|^2 \right)^{1/2} \apprle \| \nabla
-      \varphi \|_{L^2}^2.
-    \end{aligned}
-    \label{ww}
-  \end{equation}
-  Hence,
+  and
   \begin{align*}
-    \| k \overline{k} \|_{L^2}^2 & = \int dx \, |\varphi(x)|^2 \int dy \,
-    |\varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
-    \right|^2 \le C^2 \| \varphi \|_{H^1}^8.
+    \| \nabla_1 k \|_{L^2} & \le \| N w_N(x-y) \nabla \varphi(x) \varphi(y)
+    \|_{L^2} + \| N \nabla w_N(x-y) \varphi(x) \varphi(y) \|_{L^2} \\
+    & \le C \| \nabla \varphi \|_{L^2}^2 + C \sqrt{N} \| \varphi \|_{H^1}^2
+    \apprle C \sqrt{N} \| \varphi \|_{H^1}^2.
   \end{align*}
-  Now, suppose that $\| (k \overline{k})^n \|_{L^2} \le C^{2n} \| \varphi
-  \|_{H^1}^{4n}$. Then, by interchanging the integration order, and applying
-  H\"older's inequality twice,
-  \begin{align*}
-    & \| (k \overline{k})^{n+1} \|_{L^2}^2 = \int dz_1 dz_2 \int dx \,
-    k\overline{k}(x,z_1) \overline{ k \overline{k}}(x,z_2) \int dy \,
-    (k\overline{k})^n(z_1,y) \overline{ (k \overline{k})^n}(z_2,y) \\
-    & \le \int dz_1 \, \left( \int dx \, | k\overline{k}(x,z_1)|^2
-    \right)^{1/2} \left( \int dy \, | (k\overline{k})^n(z_1,y)|^2
-    \right)^{1/2} \\
-    & \qquad \times \int dz_2 \left( \int dx \, | k\overline{k}(x,z_2)|^2
-    \right)^{1/2} \left( \int dy \, | (k\overline{k})^n(z_2,y)|^2
-    \right)^{1/2} \\
-    & \le \| k \overline{k} \|_{L^2}^2 \| (k \overline{k})^n \|_{L_2}^2 \le
-    C^{2(n+1)} \| \varphi \|_{H^1}^{8(n+1)}.
-  \end{align*}
-  This completes the induction step and proves the desired estimate.
-
-
-  (iv) We first prove the estimate for $n=1$. By the Leibniz rule and triangle
-  inequality,
-  \[
-    \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2},
-  \]
-  where, using \eqref{ww},
-  \begin{align*}
-    \| I \|_{L^2}^2 & = \int dx \, |\nabla \varphi(x)|^2 \int dy \,
-    |\varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
-    \right|^2 \apprle \| \varphi \|_{H^1}^8,
-  \end{align*}
-  and by parts (iii) and (iv) of Lemma \ref{l:w}, and estimates \eqref{w} and
-  \eqref{ww}, \begin{align*}
-    \| J \|_{L^2}^2 & = \int dx \, |\varphi(x)|^2 \int dy \, |\varphi(y)|^2
-    \left| \int dz \, N^2 \nabla w_N(x-z) w_N(z-y) |\varphi(z)|^2 \right|^2 \\
-    & \apprle \int dx \, |\varphi(x)|^2 \int dz_1
-    \frac{|\varphi(z_1)|^2}{|x-z_1|^2} \int dz_2
-    \frac{|\varphi(z_2)|^2}{|x-z_2|^2} \int dy \,
-    \frac{|\varphi(y)|^2}{|z_1-y| \, |z_2-y|} \\
-    & \apprle \| \varphi \|_{L^2}^2 \| \nabla \varphi \|_{L^2}^6 \apprle \|
-    \varphi \|_{H^1}^8.
-  \end{align*}
-  Thus,
+  This proves the first two estimates of part \eqref{k}. Now,
   \[
     \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
-    \le C^2 \| \varphi \|_{H^1}^4.
   \]
-  Consequently, by H\"older's inequality (similarly as in the proof of part
-  (iii)), and then applying part (iii),
+  with
+  \[
+    \| I \|_{L^2}^2 = \int dx \, |\nabla \varphi(x)|^2 \int dy \,
+    |\varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
+    \right|^2 \apprle C^4 \| \varphi \|_{H^1}^8
+  \]
+  and
+  \[
+    \| J \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, |\varphi(y)|^2
+    \left| \int dz \, N^2 \nabla w_N(x-z) w_N(z-y) |\varphi(z)|^2 \right|^2
+    \apprle C^4 \| \varphi \|_{H^1}^8.
+  \]
+  Therefore,
+  \[
+    \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
+    \apprle C^2 \| \varphi \|_{H^1}^4.
+  \]
+  This gives the third estimate. To prove the forth estimate, observe that
+  Lemma \ref{l:w}\ref{lw1} says that $w_N < 1$. Hence,
+  \[
+    |k(x,y)| = N w_N(x-y) |\varphi(x)| \, |\varphi(y)| < |\varphi(x)| \,
+    |\varphi(y)|.
+  \]
+  This completes the proof of part \eqref{k}.
+
+
+  \eqref{p} The first bound follows directly from Lemma \ref{l:bt}\ref{l:bt2}
+  and part \eqref{k}:
+  \[
+    \| p \|_{L^2} \le e^{\| k \|_{L^2}} \le e^{C \| \varphi \|_{H^1}^2}.
+  \]
+  Now, by H\"older's inequality, and part \eqref{k},
   \[
     \| \nabla_1 (k \overline{k})^n \|_{L^2} = \| (\nabla_1 k \overline{k}) (k
-    \overline{k})^{n-1} \|_{L^2} \le \| \nabla_1 k \overline{k} \|_{L^2} \| (k
-    \overline{k})^{n-1} \|_{L_2} \le C^{2n} \| \varphi \|_{H_1}^{8n}.
+    \overline{k})^{n-1} \|_{L^2} \le \| \nabla_1 k \overline{k} \|_{L^2} \| k
+    \|_{L^2}^{2(n-1)} \le C^{2n} \| \varphi \|_{H_1}^{4n}.
   \]
-
-
-  \marginpar{Unfinished}
-  (v) By H\"older's inequality (as in the proof of (iii)) and then by (i) and
-  (iii) we have that
+  \marginpar{Exchanging limits here\dots}
+  Consequently, 
   \[
-    \sum_{n=1}^\infty \left \| \frac{(k \overline{k})^n k}{(1+2n)!} \right
-    \|_{L^2}^2 \le \sum_{n=1}^\infty \frac{C^n \| \varphi
-    \|_{H^1}^{4n+2}}{(1+2n)!} \le e^{C \| \varphi \|_{H^1}^6}.
+    \| \nabla_1 p \|_{L^2} \le \sum_{n=1}^\infty \frac{1}{(2n)!} \| \nabla_1
+    (k \overline{k})^n \|_{L^2} \le e^{C \| \varphi \|_{H^1}^2}.
   \]
-  Hence, by the dominated convergence theorem (or something easier ?) we find
-  that $r \in L^2$ and $\| r \|_{L^2} \le e^{C \| \varphi \|_{H^1}^6}$.
-  Similarly for $p$ \dots. Furthermore, since \dots \dots, we can interchange
-  differentiation with summation to obtain $\nabla_1 p \in L^2$, \dots \dots,
-  with $\| \nabla_1 p \|_{L^2} \le \dots$ \dots
 
 
-  (vi) Recall that $s = k + r$. Observe that part (vi) follows from (i), (ii)
-  and (v). \marginpar{my part of the proof has to be added. N}
+  \eqref{r} The proof of the estimates for $\| r \|_{L^2}$ and $\| \nabla_1 r
+  \|_{L^2}$ is essentially the same as the proof of part \eqref{p}. We omit
+  the details. To bound $|r(x,y)|$, first observe that, by H\"older's
+  inequality, Proposition \ref{p:wphi}, and part \eqref{k},
+  \begin{align*}
+    & |k( \overline{k} k)^n (x,y)| = | k ( \overline{k} k)^{n-1} \overline{k}
+    k(x,y)| \\
+    & = |\varphi(x)| \, |\varphi(y)| \, \left| \int dz_1 dz_2 \, N^2
+    w_N(x-z_1) w_N(z_2-y) \varphi(z_1) \varphi(z_2) (\overline{k}
+    k)^{n-1}k(z_1,z_2) \right| \\
+    & \le |\varphi(x)| \, |\varphi(y)| \, \| (\overline{k} k)^{n-1} k \|_{L^2}
+    \\
+    & \quad \times \left( \int dz_1 N^2 w_N(x-z_1)^2 |\varphi(z_1)|^2 \int
+    dz_2 \, N^2 w_N(z_2-y) |\varphi(z_2)|^2 \right)^{1/2} \\
+    & \le |\varphi(x)| \, |\varphi(y)| \, C^2 \| \nabla \varphi \|_{L^2}^2 \|
+    k \|_{L^2}^{2n-1} \le |\varphi(x)| \, |\varphi(y)| \, C^{2n} \| \varphi
+    \|_{H^1}^{4n}.
+  \end{align*}
+  Thus,
+  \[
+    |r(x,y)| \le \sum_{n=1}^\infty \frac{|k( \overline{k} k)^n
+    (x,y)|}{(2n+1)!} \le |\varphi(x)| \, |\varphi(y)| e^{C \| \varphi
+    \|_{H^1}^2}.
+  \]
+  This completes the proof of part \eqref{r}.
+
+
+  \eqref{s} Recall that $s = k + r$. Then the estimates for $\| s \|_{L^2}$
+  and $\| \nabla_1 s \|_{L^2}$ follow by applying triangle inequality and
+  parts \eqref{k} and \eqref{r}.
+
+
+  \eqref{sup} We give the proof of the estimate for $\sup_{x \in \R^3} \| s_x
+  \|_{L^2}$. The proof for $\sup_{x \in \R^3} \| p_x \|_{L^2}$ is similar.
+  First, by H\"older's inequality, and Proposition \ref{p:wphi},
+  \begin{align*}
+    |k(\overline{k} k)^n(x,y)| & = \left| \varphi(x) \int dz \, N w_N(x-z)
+    \varphi(z) (\overline{k} k)^n(z,y) \right| \\
+    & \le |\varphi(x)| \left( \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2
+    \right)^{1/2} \| (\overline{k} k)^n(\, \cdot\,, y) \|_{L^2} \\
+    & \le C \| \nabla \varphi \|_{L^2} | \varphi(x)| \, \| (\overline{k}
+    k)^n(\, \cdot\,, y) \|_{L^2}.
+  \end{align*}
+  Hence, using the series representation for $s = k+r$, and part \eqref{k},
+  \[
+    \| s_x \|_{L^2} \le \sum_{n=0}^\infty \frac{\| k (\overline{k} k)^n(x,\,
+    \cdot\,) \|_{L^2}}{(2n+1)!} \le |\varphi(x)| \sum_{n=0}^\infty
+    \frac{C^{2n+1} \| \varphi \|_{H^1}^{2n+1}}{(2n+1)!} \le e^{C \|
+    \varphi\|_{H^1}^2} |\varphi(x)|.
+  \]
+  Therefore, by Sobolev's inequality,
+  \[
+    \sup_{x \in \R^3} \| s_x \|_{L^2} \le e^{C \| \varphi \|_{H^1}^2} \sup_{x
+    \in \R^3} |\varphi(x)| \apprle e^{C \| \varphi \|_{H^1}^2} \| \varphi
+    \|_{H^2}.
+  \]
+  This proves part \eqref{sup} and completes the proof of the lemma.
+\end{proof}
+
+
+\begin{proof}[Proof of Lemma \ref{l:bt}]
+  \ref{l:bt1} The operator $B(k)$ is unbounded, densely defined, and
+  anti-self-adjoint. Hence, by the spectral theorem, the unitary operator
+  $T(k) = e^{B(k)}$ is well-defined and $T(k)^* = T(k)^{-1} = T(-k)$.
+
+
+  \ref{l:bt2} Let $\chi$ be the characteristic function, and consider a real
+  number $M > 0$. We give a proof of the formula on the subspace $\chi(\N \le
+  M) \mathcal{F}$, and then we indicate how to extend it to the whole
+  $\mathcal{F}$. First, note that $B(k)$ and $a(f)$ are bounded operators on
+  $\chi(\N \le M) \mathcal{F}$. Recall the formula
+  \[
+    e^X Y e^{-X} = Y + [X,Y] + \frac{1}{2!} [X,[X,Y]] + \cdots
+  \]
+  Then, observing that $[a_x a_y, a_z] = [a_x^* a_y^*, a_z^*] = 0$ and
+  \[
+    [a_x a_y, a_z^*] = \delta(x-z) a_y + \delta(y-z) a_x \qquad \text{and}
+    \qquad [a_x^* a_y^*, a_z] = -\delta(z-x) a_y^* + \delta(z-y) a_x^*,
+  \]
+  one easily finds the expression
+  \begin{align*}
+    T(x)^* a_x T(k) & = e^{-B(k)} a_x e^{B(k)} = a_x - [B(k), a_x] +
+    \frac{1}{2!} [B(k), [B(k), a_x]] + \cdots \\
+    & = a_x + \int dy \, \sum_{n=1}^\infty \frac{1}{(2n)!} \big( k
+    \overline{k} \big)^n(x,y) a_y + \int dy \, \sum_{n=0}^\infty
+    \frac{1}{(2n+1)!} k \big( \overline{k} k \big)^n(x,y) a_y^* \\
+    & = a_x + a(p_x) + a(s_x) = a(c_x) + a(s_x).
+  \end{align*}
+  Furthermore, applying H\"older's inequality, we get
+  \[
+    \| p \|_{L^2} \le \sum_{n=1}^\infty \frac{1}{(2n)!} \| k \|_{L^2}^{2n} \le
+    e^{\| k \|_{L^2}},
+  \]
+  and similarly $\| s \|_{L^2} \le e^{\| k \|_{L^2}}$.
+
+
+  \ref{l:bt3} Recall that the Hilbert-Schmidt norm of an operator is equal to
+  the $L^2$-norm of its integral kernel. Then part \ref{l:bt3} is just a
+  restatement of part \ref{l:bt2}.
 \end{proof}
 
 
