@@ -181,11 +181,12 @@ $\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
 The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
 \psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
 \[
-  \Hcal_N^{(n)} = \sum_{j=1}^n \Delta_{x_j} + \sum_{i<j}^n V_N(x_i - x_j).
+  \Hcal_N^{(n)} = \sum_{j=1}^n \Delta_{x_j} + \sum_{i<j}^n V_N(x_i - x_j),
 \]
-By definition, the Hamiltonian $\Hcal_N$ leaves sectors of $\mathcal{F}$ with
-a fixed number of particles invariant. This is just a restatement of the fact
-that $\Hcal_N$ and $\N$ commute.
+where $V_N(x) = N^2 V(Nx)$ with $V \in C_c^\infty(\R^3)$. By definition, the
+Hamiltonian $\Hcal_N$ leaves sectors of $\mathcal{F}$ with a fixed number of
+particles invariant. This is just a restatement of the fact that $\Hcal_N$ and
+$\N$ commute.
 
 
 Using the distributions $a_x^*$ and $a_x$, we can express the operators $\N$
@@ -195,19 +196,20 @@ and $\Hcal_N$ as
 \]
 and
 \[
-  \Hcal_N = \int dx \, \nabla_x a_x^* \nabla_x a_x + \frac{1}{2} \int dx dy \,
-  V_N(x-y) a_x^* a_y^* a_y a_x.
+  \Hcal_N = \K + \mathcal{V}_N
 \]
-The operator
+with
 \[
-  \K = \int dx \, \nabla_x a_x^* \nabla_x a_x
+  \K = \int dx \, \nabla_x a_x^* \nabla_x a_x \qquad \text{and} \qquad
+  \mathcal{V}_N = \frac{1}{2} \int dx dy \, V_N(x-y) a_x^* a_y^* a_y a_x.
 \]
-is called the kinetic energy operator.
+We call $\K$ the kinetic energy operator, and $\mathcal{V}_N$ the potential
+energy operator.
 
 
 The following lemma provides some useful bounds to control creation and
-annihilation operators in terms of the number of particles operator $\N$ and
-the kinetic energy operator $\K$.
+annihilation operators in terms of the number of particles operator and the
+kinetic energy operator.
 
 
 \begin{lem} \label{l:a}
@@ -225,18 +227,6 @@ and
 \norm{a(\nabla g)\psi}  \leq \norm{g}_{L^2} \norm{\Kcal^{1/2}\psi}.
 \ee
 \end{lem}
-
-
-Hamiltonian etc.
-\bd
-\Kcal := \int \di x\, \nabla_x a^*_x \nabla_x a_x,
-\quad
-\Vcal_N := \frac{1}{2}\int\di x \di y\, V_N(x-y) a^*_x a^*_y a_y a_x
-\ed
-\bd
-V_N(x) := N^2V(Nx), \quad \Hcal := \Kcal + \Vcal_N, \quad \Ncal := \int \di
-x\, a^*_x a_x
-\ed
 
 
 \section{Weyl operator and coherent states}
