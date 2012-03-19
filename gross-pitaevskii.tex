@@ -905,7 +905,9 @@ For this term we prove to different estimates. First notive that
 \begin{align*}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} = \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(\nabla_x c_x)a(\nabla_x c_x)\psi} \\
 = & \scal{\psi}{\frac{1}{2}\int \di x \left( \nabla_x a^\ast_x + a^\ast(\nabla_x p_x) \right)\left(  \nabla_x a_x + a(\nabla_x p_x) \right) \psi} \\
-= & \scal{\psi}{\frac{1}{2}\Kcal \psi} + \frac{1}{2}\int \di x\scal{\nabla_x a_x \psi}{a(\nabla_x p_x)\psi} + \frac{1}{2}\int \di x\, \scal{a(\nabla_x p_x)\psi}{\nabla_x a_x \psi} + \frac{1}{2}\int \di x\, \norm{a(\nabla_x p_x)\psi}^2.
+= & \scal{\psi}{\frac{1}{2}\Kcal \psi} + \frac{1}{2}\int \di x\scal{\nabla_x
+a_x \psi}{a(\nabla_x p_x)\psi} \\
++ & \frac{1}{2}\int \di x\, \scal{a(\nabla_x p_x)\psi}{\nabla_x a_x \psi} + \frac{1}{2}\int \di x\, \norm{a(\nabla_x p_x)\psi}^2.
 \end{align*}
 The first estimate we get from this (leaving away the last summand, which is positive) is
 \begin{equation}
@@ -952,7 +954,7 @@ Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 \leq & C \norm{\ph}_{H^2}^2 \ev{\Ncal} + C\ev{\Kcal} + C\ev{\Ncal}.
 \end{split} 
 \end{equation}
-Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $\int \norm{\nabla_x r_x}^2 \di x= \norm{\nabla_x r}^2 \leq C$. (The first two are consequences of lemma \ref{l:w} and Hardy's inequality.)\newline
+Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $\int \norm{\nabla_x r_x}^2 \di x= \norm{\nabla_x r}^2 \leq C$. (The first two are consequences of lemma \ref{l:w} and Hardy's inequality.)
 
 \underline{Estimates for the non-kinetic terms:}\newline
 In proving the following estimates, the important observations are
@@ -1204,7 +1206,9 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x)a(c_x)a(c_y)\psi} \rvert \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{\varepsilon}} \norm{a(c_x)\psi} \norm{a(c_x)a(c_y)\psi} \frac{1}{\sqrt{N}}\sqrt{\varepsilon} \\
-\leq & \frac{1}{\varepsilon}\int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert^2 \norm{a(c_x)\psi}^2 + \varepsilon \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_y)a^\ast(c_x)a(c_x)a(c_y) \psi} \\
+\leq & \frac{1}{\varepsilon}\int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert^2
+  \norm{a(c_x)\psi}^2 \\
+  + & \varepsilon \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_y)a^\ast(c_x)a(c_x)a(c_y) \psi} \\
 \leq & C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon}\ev{\Ncal} + \varepsilon 4\ev{\tilV}.
 \end{align*}
 \estlist{22}{3}
@@ -1232,7 +1236,9 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}} \cc{\ph(y)} a(s_x) a(c_x) a(c_y)\psi} \rvert \\
 \leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)\psi} \norm{a(c_x)a(c_y)\psi}\frac{1}{\sqrt{N}}\sqrt{\varepsilon} \\
-\leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert^2 \norm{a^\ast(s_x)\psi}^2\frac{1}{\varepsilon} + \int \di x\di y\, NV_N(x-y) \frac{1}{N} \scal{\psi}{a^\ast(c_y)a^\ast(c_x)a(c_x)a(c_y)\psi}\varepsilon \\
+\leq & \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert^2
+  \norm{a^\ast(s_x)\psi}^2\frac{1}{\varepsilon} \\
+  + & \int \di x\di y\, NV_N(x-y) \frac{1}{N} \scal{\psi}{a^\ast(c_y)a^\ast(c_x)a(c_x)a(c_y)\psi}\varepsilon \\
 \leq & \frac{1}{\varepsilon} \norm{\ph}_\infty^2 b_0 \int \di x\, \norm{s_x}^2 \ev{\Ncal+1} + \varepsilon 4 \ev{\tilV}\\
 \leq & \varepsilon 4 \ev{\tilV} + C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon}\ev{\Ncal+1}.
 \end{align*}
@@ -1300,9 +1306,11 @@ Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then
 \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
 \ed
 and
- \bd
-\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \frac{1}{2} \left\lvert \int f_2(x,x) \di x \right\rvert \scal{\psi}{\psi}.
-\ed
+\begin{align*}
+  & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x
+a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert \\
+& \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \frac{1}{2} \left\lvert \int f_2(x,x) \di x \right\rvert \scal{\psi}{\psi}.
+\end{align*}
 \end{lem}
 \begin{proof} Proof of the first estimate, using Hoelder's inequality:
  \begin{align*}
@@ -1533,14 +1541,18 @@ We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which c
 & \times \Big[   \frac{1}{2N}\bigg( 4(-2) a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) + 2(-4) a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x)\\
 				      & \qquad\qquad + 4(-2) a^*(c_x) a^*(s_y) a^*(s_x) a(s_y)\bigg) \\
 & + \frac{1}{N}\bigg(  (-2) a^*(c_x) a^*(c_y) \Big( r(y,x) + \scal{p_y}{s_x} \Big) + (-2)a^*(c_x) a^*(p_y) k(y,x) \\
-      & \qquad\quad + (-2)a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + 2(-2)a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2(-2)a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \bigg)\\
+      & \qquad\quad + (-2)a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + 2(-2)a^*(c_x)
+  a^*(s_x) \scal{s_y}{s_y} \\
+& + 2(-2)a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \bigg)\\
 & + \ph(x)\ph(y) \Big( (-2) a^*(c_x) a^*(p_y) +(+2)a(s_x) a(s_y) \Big)\\
 & + \ph(x) \cc{\ph(y)} 2(-2) a^*(c_x) a^*(s_y) + \lvert \ph(y) \rvert^2 2(-2) a^*(c_x) a^*(s_x)\\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-3)a^*(c_x) a^*(s_x) a^*(s_y) + (-1)a^*(c_x) a^*(s_x) a(c_y)\\
 					    & \qquad\qquad\qquad + (-1)a^*(c_x) a^*(s_y) a(c_x) + (+1)a^*(c_x) a(c_x) a(c_y) + (+1)a^*(s_y) a(s_x) a(c_x)\\
 					    & \qquad\qquad\qquad + (-1)a^*(s_x) a^*(s_y) a(s_x) + (+1)a^*(s_x) a(s_x) a(c_y) + (+3)a(s_x) a(c_x) a(c_y)  \bigg)\\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-1)a^*(s_x) \scal{s_x}{s_y} + (-1)a^*(s_y) \scal{s_x}{s_x}  + (+1)a(c_y) \scal{s_x}{s_x} + (+1)a(c_x) \scal{s_x}{s_y}\\
-					    & \qquad\qquad\qquad + (-1)a^*(c_x)r(x,y) + (-1)a^*(c_x)\scal{p_x}{s_y} + (+1)a(s_x)r(x,y) + (+1)a(s_x)\scal{p_x}{s_y}	\bigg)    \Big]\\
+& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-1)a^*(s_x) \scal{s_x}{s_y} +
+  (-1)a^*(s_y) \scal{s_x}{s_x}  + (+1)a(c_y) \scal{s_x}{s_x} \\
+  & \qquad \qquad \qquad + (+1)a(c_x) \scal{s_x}{s_y} + (-1)a^*(c_x)r(x,y) + (-1)a^*(c_x)\scal{p_x}{s_y} \\
+& \qquad \qquad \qquad + (+1)a(s_x)r(x,y) + (+1)a(s_x)\scal{p_x}{s_y}	\bigg)    \Big]\\
 &- \hc
 \end{align*}
 Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:generatorestimates} to bound all summands of the commutator. Together with lemma \ref{lm:timederivative} for bounding $\ev{(\partial_t T^\ast_t) T_t}$, the theorem is now proven.
