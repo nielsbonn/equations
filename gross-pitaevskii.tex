@@ -146,7 +146,7 @@ operator $a(f)$ on $\mathcal{F}$ are defined as
 \]
 The operators $a^*(f)$ and $a(f)$ are unbounded, densely defined, and closed.
 Note that $a^*(f)$ is linear in $f$, while $a(f)$ is anti-linear. The creation
-operator $a^*(f)$ is the adjoint of the annihilation operator $a(f)$, and they
+operator $a^*(f)$ is the adjoint of the annihilation operator $a(f)$ and they
 satisfy the canonical commutation relations
 \[
   [a(f), a^*(g)] = \langle f, g \rangle_{L^2} \qquad \text{and} \qquad [a(f),
@@ -329,7 +329,7 @@ $|x| \ge R/N$.
 
 
 \begin{lem}[Zero-energy scattering equation \cite{ESY2010}] \label{l:w}
-  Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$ and suppose that $V$ is
+  Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
   spherical symmetric with scattering length $a_0$. Let
   \[
     \rho = \sup_{r \ge 0} r^2 V(r) + \int_0^\infty dr \, r V(r),
@@ -392,6 +392,11 @@ write
 \[
   a_x + a(f_x) = a(\delta_x + f_x).
 \]
+The notation
+\[
+  A \apprle B
+\]
+means that $A \le C B$ for some universal constant $C$.
 
 
 For $k \in L^2(\R^3 \times \R^3)$, define the operators $B(k)$ and $T(k)$ on
@@ -483,7 +488,7 @@ and
         \varphi \|_{H^1}} |\varphi(x)| |\varphi(y)|.
       \] 
     \item \label{sup} Let $p$ and $s$ be the integral kernels in Lemma
-      \ref{l:bt}. If $\varphi \in H^2(\R^3)$, then
+      \ref{l:bt}, and suppose further that $\varphi \in H^2(\R^3)$. Then,
       \[
         \sup_{x \in \R^3} \, \norm{p_x}_{L^2} \apprle e^{C \| \varphi
         \|_{H^1}^2} \norm{\varphi}_{H^2}, \qquad \sup_{x \in \R^3}
@@ -578,12 +583,14 @@ and
     \frac{1}{(2n+1)!} k \big( \overline{k} k \big)^n(x,y) a_y^* \\
     & = a_x + a(p_x) + a(s_x) = a(c_x) + a(s_x).
   \end{align*}
+  We next prove the estimates for the integral kernels $p$, $r$ and $s$. 
 
 
-  We now prove the estimates for the integral kernels $p$, $r$ and $s$. Let
-  $fg$ be a product of integral kernels. Then, by H\"older's inequality, $\| f
-  g \|_{L^2} \le \| f \|_{L^2} \| g \|_{L^2}$. Hence, applying this to the
-  series for $p$, we obtain
+  Let $fg$ be a product of integral kernels. Then, by H\"older's inequality,
+  \[
+    \| f g \|_{L^2} \le \| f \|_{L^2} \| g \|_{L^2}.
+  \]
+  Hence, applying this to the series for $p$, we get
   \[
     \| p \|_{L^2} \le \sum_{n=1}^\infty \frac{1}{(2n)!} \| k \|_{L^2}^{2n} \le
     e^{\| k \|_{L^2}},
@@ -597,9 +604,9 @@ and
     \nabla_1 r & = \nabla_1 k \overline{k} \sum_{n=1}^\infty \frac{1}{(2n+1)!}
     k ( \overline{k} k)^{n-1}, \\
     \nabla_1 s & = \nabla_1 k + \nabla_1 k \sum_{n=1}^\infty \frac{1}{(2n+1)!}
-    (\overline{k} k)^n,
+    (\overline{k} k)^n.
   \end{align*}
-  so that
+  Thus, similarly as above,
   \begin{align*}
     \| \nabla_1 p \|_{L^2} & \le 2^{-1} e^{1+\| k \|_{L^2}} \| \nabla_1 k
     \overline{k} \|_{L^2}, \\
@@ -661,8 +668,9 @@ and
     |k(x,y)| = N w_N(x-y) |\varphi(x)| |\varphi(y)| < N |\varphi(x)|
     |\varphi(y)|.
   \]
-  This proves the first estimate. To bound $|r(x,y)|$, first observe that, by
-  H\"older's inequality, Proposition \ref{p:wphi}, and part \ref{k},
+  This proves the first estimate in \ref{kr}. To bound $|r(x,y)|$, first
+  observe that, by H\"older's inequality, Proposition \ref{p:wphi}, and part
+  \ref{k},
   \begin{align*}
     & |k( \overline{k} k)^n (x,y)| = | k ( \overline{k} k)^{n-1} \overline{k}
     k(x,y)| \\
@@ -1633,7 +1641,7 @@ first.
 \begin{prp} \label{p:TNT}
   Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_1 k \in L^2(\R^3 \times
   \R^3)$, and let $f \in H^1(\R^3)$. Then, there exists a universal constant
-  $C_1$, and constant $C$, that depends only on $\| k \|_{L^2}$, such that
+  $C_1$, and constant $C$, that depends only on $\| k \|_{L^2}$, such that:
   \begin{align}
     T^* \N T & \le C (\N+1), \label{TNT} \tag{i} \\
     T^* \K T & \le C (\K + \| \nabla_1 k \|_{L^2}^2), \label{TKT} \tag{ii} \\
@@ -1712,10 +1720,11 @@ first.
   Furthermore, by Lemma \ref{l:bt}\ref{l:bt2}, there exists a universal
   constant $C_1$ such that
   \begin{equation} \label{c1}
-    1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le e^{C_1 (1+\| k \|_{L^2})}
+    1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le e^{C_1 (1+\| k \|_{L^2})} \qquad
+    \text{and} \qquad \| \nabla_1 s \|_{L^2}^2 \le e^{C_1 (1+\|k \|_{L^2})} \|
+    \nabla_1 k \|_{L^2}^2.
   \end{equation}
-  and $\| \nabla_1 s \|_{L^2}^2 \le e^{C_1 (1+\|k \|_{L^2})} \| \nabla_1 k
-  \|_{L^2}^2$. All this together proves parts \eqref{TNT} and \eqref{TKT}.
+  All this together proves parts \eqref{TNT} and \eqref{TKT}.
   
 
   \eqref{TN2T} Write
@@ -1797,7 +1806,7 @@ first.
     & \apprle C |\langle \psi, T^* \K T \N \psi \rangle| + C^2 \langle \psi,
     \K \psi \rangle + C^2 \| \nabla_1 k \|_{L^2}^2.
   \end{align*}
-  This is the desired estimate.
+  This gives the desired estimate.
 
 
   \eqref{fKf} By Cauchy-Schwarz inequality, a brief calculation, and Lemma
@@ -1823,7 +1832,7 @@ first.
 
 
 \begin{proof}[Proof of Lemma \ref{l:ap}]
-  To simplify the notation write
+  We begin with some general remarks. To simplify the notation write
   \[
     U_t = T_t^* W_t^* e^{-it \mathcal{H}_N} WT
   \]
@@ -1831,12 +1840,16 @@ first.
   T(k_t)$ and $T = T(k_0)$.
 
 
-  Observe that, by Propositions \ref{l:kernels}\ref{k} and \ref{p:energy},
-  there exists a constant $C$, uniform in $N$ and $t$, that depends only on
-  $\| \varphi \|_{H^1}$ and $V$, such that
+  Observe that, by Lemmata \ref{l:kernels} and \ref{l:bt}, and Proposition
+  \ref{p:energy}, there exists a constant $C$, uniform in $N$ and $t$, that
+  depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
-    \| k_t \|_{L^2} \le C, \qquad \| \nabla_1 k_t \|_{L^2} \le C \sqrt{N},
-    \qquad \| \nabla_1 k_t \overline{k_t} \|_{L^2} \le C.
+    \begin{gathered}
+      \| k_t \|_{L^2} \le C, \qquad \| \nabla_1 k_t \|_{L^2} \le C \sqrt{N},
+      \qquad \| \nabla_1 k_t \overline{k_t} \|_{L^2} \le C. \\
+      \| \nabla \varphi_t \|_{L^2}^2 + \| \nabla_1 p_t \|_{L^2}^2 \le C,
+      \qquad \| \nabla_1 s_t \|_{L^2}^2 \le C N.
+    \end{gathered}
   \end{equation}
 
 
@@ -1902,7 +1915,7 @@ first.
     \psi, (\N+1) \psi \rangle + \langle \psi, (\N+1)^2 \psi \rangle \big),
   \end{align*}
   for some constants $C_1$ and $C_2$ that depend only on $\| k_t \|_{L^2}$.
-  Therefore, recalling \eqref{ep4},
+  Combining this with \eqref{ep4} we obtain
   \begin{align*}
     \langle U_t \psi, \N^2 U_t \psi \rangle 
     & \le C \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + 2 C^2
@@ -1910,10 +1923,10 @@ first.
     & \le C_3 \big( N \langle U_t \psi, (\N+1) U_t \psi \rangle + N \langle
     \psi, (\N+1) \psi \rangle + \langle \psi, (\N+1)^2 \psi \rangle \big),
   \end{align*}
-  for some constant $C_3$ that depends only on $\| k_t \|_{L^2}$. In view of
-  \eqref{c2}, there is a constant $C_4$, uniform in $N$ and $t$, that depends
-  only on $\| \varphi \|_{H^1}$ and $V$, such that $C_3 < C_4$. This concludes
-  the proof of part \ref{l:ap1}.
+  for some constant $C_3$ that depends only on $\| k_t \|_{L^2}$. Finally, in
+  view of \eqref{c2}, there exists a constant $C_4$, uniform in $N$ and $t$,
+  that depends only on $\| \varphi \|_{H^1}$ and $V$, such that $C_3 < C_4$.
+  This concludes the proof of part \ref{l:ap1}.
 
 
   \ref{l:ap2} By parts \eqref{TKNT} and \eqref{TN2T} of Proposition
@@ -1986,20 +1999,19 @@ first.
     T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi \|^2.
   \end{align*}
   Thus, combining the last two estimates with \eqref{nk2} and \eqref{nk1},
-  choosing $\varepsilon$ so that $\varepsilon C < 1/2$, applying Lemma
-  \ref{l:kernels} to bound $\| \nabla_1 p \|_{L^2}$ and $\| \nabla_1 s
-  \|_{L^2}$, and recalling \eqref{c2}, we obtain
+  choosing $\varepsilon$ so that $\varepsilon C < 1/2$, and observing
+  \eqref{c2}, we obtain
   \begin{equation}
     \label{nk3}
     \begin{split}
-      \langle U_t \psi, \K \N U_t \psi \rangle & \le C N \langle U_t \psi,
-      \K U_t \psi \rangle + C (1 + \| \nabla_1 s \|_{L^2}^2) \langle U_t
-      \psi, (\N+1) U_t \psi \rangle \\
-      & \qquad + \frac{C}{N} \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N +
-      \sqrt{N} \phi(\varphi) ) T \psi \|^2,
+      \langle U_t \psi, \K \N U_t \psi \rangle & \le C_1 \big( N \langle U_t
+      \psi, \K U_t \psi \rangle + N \langle U_t \psi, (\N+1) U_t \psi \rangle
+      \\
+      & \qquad + \frac{1}{N} \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N +
+      \sqrt{N} \phi(\varphi) ) T \psi \|^2 \big)
     \end{split}
   \end{equation}
-  where $C$ is a constant, uniform in $N$ and $t$, that depends only on $\|
+  where $C_1$ is a constant, uniform in $N$ and $t$, that depends only on $\|
   \varphi \|_{H^1}$ and $V$. In order to conclude the proof, we need a few
   more estimates.
 
@@ -2009,13 +2021,13 @@ first.
   \begin{align*}
     & \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
     \psi \|^2 \\
-    & \le C_1 \big( \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
-    \psi \|^2 + \| \nabla_1 k \|_{L^2}^2 ( \| \N T \psi \|^2 + N \|
+    & \le C_0 \big( \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
+    \psi \|^2 + \| \nabla_1 k_t \|_{L^2}^2 ( \| \N T \psi \|^2 + N \|
     \phi(\varphi) T \psi \|^2) \big) \\
-    & \le C \big( \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
+    & \le C_1 \big( \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
     \psi \|^2 + N \langle \psi, (\N^2 + N(\N+1)) \psi \rangle \big),
   \end{align*}
-  for some constant $C$ as above. Now, since $V \ge 0$, note that $\K \le
+  for some constant $C_1$ as above. Now, since $V \ge 0$, note that $\K \le
   \mathcal{H}_N$. Hence, using again the formulae in Proposition \ref{p:f},
   Proposition \ref{p:TNT}, and Sobolev's inequality,
   \begin{align*}
@@ -2029,20 +2041,22 @@ first.
     & \quad + \sqrt{N} \langle e^{-it \mathcal{H}_N} W (\N + \sqrt{N}
     \phi(\varphi)) T \psi, \phi(\Delta \varphi_t) e^{-it \mathcal{H}_N} W (\N
     + \sqrt{N} \phi(\varphi)) T \psi \rangle \\
-    & \le C_1 \big( N \| \nabla \varphi_t \|_{L^2}^2 \langle \psi, (\N^2 + N
+    & \le C_0 \big( N \| \nabla \varphi_t \|_{L^2}^2 \langle \psi, (\N^2 + N
     (\N + 1)) \psi \rangle + \| \mathcal{H}_{N}^{1/2} W (\N + \sqrt{N} \phi
     (\varphi) ) T \psi \|^2 \\
     & \quad + \sqrt{N} \| \Delta \varphi_t \|_{L^2}^2 \| (\N + \sqrt{N}
     \phi(\varphi) ) T \psi \| \, \| (\N+1)^{1/2} W (\N + \sqrt{N}
     \phi(\varphi) ) T \psi \| \big) \\
-    & \le C \| \varphi_t \|_{H^2}^2 \big( N \langle \psi, (\N^2 + N (\N + 1))
-    \psi \rangle + N \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N)
+    & \le C_1 \| \varphi_t \|_{H^2}^2 \big( N \langle \psi, (\N^2 + N (\N +
+    1)) \psi \rangle + N \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N)
     W \phi(\varphi) T \psi \rangle \\
     & \quad + \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T \psi \rangle
     \big),
   \end{align*}
-  for some constant $C$ as above. Therefore, combining the last two
-  inequalities with \eqref{nk3},
+  for some constant $C_1$ as above.
+  
+  
+  Therefore, combining the last two inequalities with \eqref{nk3},
   \begin{align*}
     \langle U_t \psi, \K \N U_t \psi \rangle & \le C \big( N \langle U_t
     \psi, \K U_t \psi \rangle + N \langle U_t
