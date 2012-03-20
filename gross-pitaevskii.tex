@@ -2122,50 +2122,49 @@ Nonlinear Hartree equation
   i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2) \varphi_t
 \]
 with initial data $\varphi_0 = \varphi$, and energy
-\begin{displaymath}
+\[
   \mathcal{E}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + \frac{1}{2} \int
   dx \, (V * |\varphi|^2)(x) |\varphi(x)|^2.
-\end{displaymath}
+\]
 
 
 Nonlinear Gross-Pitaevskii equation
-\begin{displaymath}
+\[
   i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
   \varphi_t
-\end{displaymath}
+\]
 with initial data $\varphi_0 = \varphi$, and energy
-\begin{displaymath}
+\[
   \mathcal{E}_{GP}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + 4 \pi a_0
   \int dx \, |\varphi(x)|^4,
-\end{displaymath}
+\]
 where $8 \pi a_0 = \int f V$.
 
 
-\begin{prp}
-  \label{p:energy}
+\begin{prp} \label{p:energy}
   Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$. Then,
-  \begin{displaymath}
+  \[
     \mathcal{E}(\varphi) \apprle \| \varphi \|_{H^1}^2 + \| V \|_{L^1} \|
     \varphi \|_{H^1}^4 \qquad \text{and} \qquad \mathcal{E}_{GP}(\varphi)
     \apprle \| \varphi \|_{H^1}^2 + |a_0| \| \varphi \|_{L^2} \| \varphi
     \|_{H^1}^3.
-  \end{displaymath}
+  \]
 \end{prp}
 
 
 \begin{proof}
   By Young's inequality, Sobolev's inequality, and H\"older's inequality, 
-  \begin{displaymath}
+  \[
     \int dx \, (V * |\varphi|^2)(x) |\varphi(x)|^2 \le \| V \|_{L^1} \|
     \varphi^2 \|_{L^2}^2 = \| V \|_{L^1} \| \varphi \|_{L^4}^4 \apprle \| V
     \|_{L^1} \| \varphi \|_{H^1}^4
-  \end{displaymath}
+  \]
   and
-  \begin{displaymath}
+  \[
     \int dx \, |\varphi(x)|^4 \le \| \varphi \|_{L^2} \| \varphi^3 \|_{L^2} =
     \| \varphi \|_{L^2} \| \varphi \|_{L^6}^3 \apprle \| \varphi \|_{L^2} \|
     \varphi \|_{H^1}^3.
-  \end{displaymath}
+  \]
   Observing that $\| \varphi \|_{H^1}^2 = \| \varphi \|_{L^2}^2 + \| \nabla
   \varphi \|_{L^2}^2$, we obtain the desired estimates.
 \end{proof}
@@ -2174,33 +2173,32 @@ where $8 \pi a_0 = \int f V$.
 \subsection{$H^2$-regularity}
 
 
-\begin{prp}
-  \label{p:reg1}
+\begin{prp} \label{p:reg1}
   Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and $V \in
   L^1(\R^3)$ with $V \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of
   the nonlinear Hartree equation
-  \begin{displaymath}
+  \[
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
     \varphi_t
-  \end{displaymath}
+  \]
   with initial data $\varphi_0 = \varphi$. Then, there exist a real number $T
   > 0$ and a constant $C$, which depend only on $\| V \|_{L^1}$ and $\|
   \varphi \|_{H^1}$, such that
-  \begin{displaymath}
+  \[
     \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}
-  \end{displaymath}
+  \]
   for all $t \in [0,T]$.
 \end{prp}
 
 
-\begin{cor}
-  \label{c:reg1}
-  Under the hypothesis of Proposition \ref{p:reg1}, there exists a constant
-  $K$, that depends only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$, such
-  that
-  \begin{displaymath}
-    \| \varphi_t \|_{H^2} \le \| \varphi \|_{H^2} e^{Kt}
-  \end{displaymath}
+\begin{cor} \label{c:reg1}
+  Under the hypothesis of Proposition \ref{p:reg1}, there exist constants $C$
+  and $K$, which depend only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$,
+  such that
+  \[
+    \| \varphi_t \|_{H^1} \le C \qquad \text{and} \qquad \| \varphi_t \|_{H^2}
+    \le \| \varphi \|_{H^2} e^{Kt}
+  \]
   for all $t \ge 0$.
 \end{cor}
 
@@ -2208,57 +2206,57 @@ where $8 \pi a_0 = \int f V$.
 \begin{proof}
   Recall that $V \ge 0$. By conservation of mass and energy, and by
   Proposition \ref{p:energy},
-  \begin{displaymath}
+  \[
     \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
     \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \apprle \| \varphi
     \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4.
-  \end{displaymath}
-  Hence, by Proposition \ref{p:reg1}, given $t > 0$, there are constants $C$
-  and $T$, depending only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$, such
-  that
-  \begin{displaymath}
-    \| \varphi_t \|_{H^2} \le C \| \varphi_{nT} \|_{H^2}
-  \end{displaymath}
-  for some $n \ge 0$ with $nT < t$. Iterating this argument backwards in time
-  (and again noticing that $C$ and $T$ can be chosen uniformly in time) one
-  easily finds that
-  \begin{displaymath}
+  \]
+  This proves the first estimate in the corollary. Consequently, by
+  Proposition \ref{p:reg1}, given $t > 0$, one can find constants $C$ and $T$,
+  and an integer $n \ge 0$, depending only on $\| V \|_{L^1}$ and $\| \varphi
+  \|_{H^1}$, such that
+  \[
+    \| \varphi_t \|_{H^2} \le C \| \varphi_{nT} \|_{H^2} \qquad \text{with}
+    \qquad nT < t.
+  \]
+  Iterating this argument backwards in time (and again noticing that $C$ and
+  $T$ can be chosen uniformly in time) one easily finds that
+  \[
     \| \varphi_t \|_{H^2} \le C \| \varphi_{nT} \|_{H^2} \le C^{n+1} \|
-    \varphi \|_{H^2} = (C^{1/T})^{(n+1)T}
-    \| \varphi \|_{H^2} \le e^{Kt} \| \varphi \|_{H^2},
-  \end{displaymath}
+    \varphi \|_{H^2} = (C^{1/T})^{(n+1)T} \| \varphi \|_{H^2} \le e^{Kt} \|
+    \varphi \|_{H^2},
+  \]
   for some constant $K$ depending only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$.
+  \|_{H^1}$. This completes the proof.
 \end{proof}
 
 
-\begin{prp}
-  \label{p:reg2}
-  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$ and $a_0 \in \R$
+\begin{prp} \label{p:reg2}
+  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and $a_0 \in \R$
   with $a_0 \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of the
   nonlinear Gross-Pitaevskii equation
-  \begin{displaymath}
+  \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
     \varphi_t
-  \end{displaymath}
-  with initial data $\varphi_0 = \varphi$. Then, there exists a real number $T
-  > 0$ such that
-  \begin{displaymath}
+  \]
+  with initial data $\varphi_0 = \varphi$. Then, there exist a real number $T
+  > 0$ and a constant $C$, which depend only on $a_0$ and $\| \varphi
+  \|_{H^1}$, such that
+  \[
     \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}
-  \end{displaymath}
-  for all $t \in [0,T]$, where the constants $C$ and $T$ depend only on $a_0$
-  and $\| \varphi \|_{H^1}$.
+  \]
+  for all $t \in [0,T]$.
 \end{prp}
 
 
-\begin{cor}
-  \label{c:reg2}
-  Under the hypothesis of Proposition \ref{p:reg2}, for all $t \ge 0$,
-  \begin{displaymath}
-    \| \varphi_t \|_{H^2} \le \| \varphi \|_{H^2} e^{Kt},
-  \end{displaymath}
-  where $K$ is a constant that depends only on $a_0$ and $\| \varphi
-  \|_{H^1}$.
+\begin{cor} \label{c:reg2}
+  Under the hypothesis of Proposition \ref{p:reg2}, there exist constants $C$
+  and $K$, which depend only on $a_0$ and $\| \varphi \|_{H^1}$, such that
+  \[
+    \| \varphi_t \|_{H^1} \le C \qquad \text{and} \qquad \| \varphi_t \|_{H^2}
+    \le \| \varphi \|_{H^2} e^{Kt}
+  \]
+  for all $t \ge 0$.
 \end{cor}
 
 
@@ -2268,37 +2266,36 @@ following lemma.
 
 
 For $T > 0$ set
-\begin{displaymath}
+\[
   L_t^q L_x^r = L^q([0,T], L^r(\R^3)).
-\end{displaymath}
+\]
 
 
-\begin{lem}
-  \label{l:interp}
+\begin{lem} \label{l:interp}
   Let $V \in L^1(\R^3)$, $f \in L_t^{q_1} L_x^{r_1}$ and $g \in L_t^{q_2}
   L_x^{r_2}$ with $q_j, r_j \in [1,\infty]$ for $j \in \{1,2\}$. Then $(V * f)
   g \in L_t^q L_x^r$ with $q^{-1} = s^{-1} + q_1^{-1} + q_2^{-1}$ and $r^{-1}
   = r_1^{-1} + r_2^{-1}$ for $s \in [1, \infty]$. Furthermore,
-  \begin{displaymath}
+  \[
     \| (V * f)g \|_{L_t^q L_x^r} \le \| V \|_{L^1} T^{1/s} \| f \|_{L_t^{q_1}
     L_x^{r_1}} \| g \|_{L_t^{q_2} L_x^{r_2}}.
-  \end{displaymath}
+  \]
 \end{lem}
 
 
 \begin{proof}
   Applying H\"older's inequality in space, and then in time, we find that
-  \begin{displaymath}
+  \[
     \| (V * f) g \|_{L_t^q L_x^r} \le \| V * f \|_{L_t^u L_x^{r_1}} \| g
     \|_{L_t^{q_2} L_x^{r_2}}
-  \end{displaymath}
+  \]
   with $q^{-1} = u^{-1} + q_2^{-1}$ and $r^{-1} = r_1^{-1} + r_2^{-1}$. Now,
   applying Young's inequality in space, H\"older's inequality in time, and
   observing that $V$ is time-independent, we get
-  \begin{displaymath}
+  \[
     \| V * f \|_{L_t^u L_x^{r_1}} \le \| V \|_{L^1} T^{1/s} \| f \|_{L_t^{q_1}
     L_x^{r_1}}
-  \end{displaymath}
+  \]
   with $u^{-1} = s^{-1} + q_1^{-1}$. Combining all this we obtain the desired
   result.
 \end{proof}
@@ -2306,22 +2303,24 @@ For $T > 0$ set
 
 \begin{proof}[Proof of Proposition \ref{p:reg1}]
   Write
-  \begin{displaymath}
+  \[
     \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
     |\varphi_s|^2) \varphi_s.
-  \end{displaymath}
+  \]
   Differentiating this equation and using integration by parts we find that
-  \begin{displaymath}
+  \[
     \Delta \varphi_t = e^{it \Delta} \Delta \varphi - i \int_0^t ds \,
     e^{i(t-s) \Delta} \big[ (V * |\varphi_s|^2) \Delta \varphi_s + 2(V *
     \nabla |\varphi_s|^2) \nabla \varphi_s + (V * \Delta |\varphi_s|^2)
     \varphi_s \big].
-  \end{displaymath}
+  \]
 
 
   The $L_t^\infty L_x^2$-norm of the above expression can be controlled using
   Strichartz estimates for the free Schr\"odinger evolution $e^{it\Delta}$
-  (see \cite[Theorem 1.2]{KT}). By these estimates, and Lemma~\ref{l:interp}, \marginpar{in the following equations, is it really $\varphi^2$ or maybe $\lvert \varphi\rvert^2$?}
+  (see \cite[Theorem 1.2]{KT}). By these estimates, and Lemma~\ref{l:interp},
+  \marginpar{in the following equations, is it really $\varphi^2$ or maybe
+  $\lvert \varphi\rvert^2$? Ans: $\| z^2 \| = \| |z|^2 \|$}
   \begin{align}
     & \| \Delta \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} \notag \\
     & \apprle \| \Delta \varphi \|_{L^2} + \| (V * |\varphi_{(\cdot)}|^2)
@@ -2341,16 +2340,16 @@ For $T > 0$ set
   
   Applying Sobolev's inequality, Leibniz' rule, and H\"older's inequality,
   we find that
-  \begin{displaymath}
+  \[
     \| \varphi_t^2 \|_{L^3} = \| \varphi_t \|_{L^6}^2 \apprle \| \varphi_t
     \|_{H^1}^2
-  \end{displaymath}
+  \]
   and
-  \begin{displaymath}
+  \[
     \| \nabla |\varphi_t|^2 \|_{L^{3/2}} \le 2 \| \overline{\varphi_t} \nabla
     \varphi_t \|_{L^{3/2}} \le 2 \| \varphi_t \|_{L^6} \| \nabla \varphi_t
     \|_{L^2} \apprle \| \varphi_t \|_{H^1}^2
-  \end{displaymath}
+  \]
   and
   \begin{align*}
     \| \Delta |\varphi_t|^2 \|_{L^{3/2}} & \le 2 \| \overline{\varphi_t}
@@ -2360,15 +2359,10 @@ For $T > 0$ set
     \varphi_t \|_{L^2} \| \nabla \varphi_t \|_{L^6} \apprle \| \varphi_t
     \|_{H^1} \| \varphi_t \|_{H^2}.
   \end{align*}
-  Recall that $V \ge 0$. By conservation of mass and energy, and by
-  Proposition \ref{p:energy},
-  \begin{displaymath}
-    \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
-    \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \le C,
-  \end{displaymath}
-  where $C$ is a constant that depends only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$. Thus, substituting all this into \eqref{Lap}, and using Sobolev's
-  inequality again, we get
+  Furthermore, by Corollary \ref{c:reg1}, there is a constant $C$ depending
+  only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$ such that $\| \varphi_t
+  \|_{H^1} \le C$. Thus, substituting all this into \eqref{Lap}, and using
+  Sobolev's inequality again, we get
   \begin{align*}
     \sup_{t \in [0,T]} \| \Delta \varphi_t \|_{L^2} & \apprle \| \Delta
     \varphi \|_{L^2} + \| V \|_{L^1} T^{1/2} \sup_{t \in [0,T]} \| \varphi_t
@@ -2386,10 +2380,10 @@ For $T > 0$ set
   \end{align*}
   Hence, by choosing $T > 0$ sufficiently small, but depending only on $\| V
   \|_{L^1}$ and $\| \varphi \|_{H^1}$, we conclude that
-  \begin{displaymath}
+  \[
     \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \le C (1 + \| \Delta \varphi
     \|_{L^2}) \le 2C \| \varphi \|_{H^2},
-  \end{displaymath}
+  \]
   where $C$ is a constant that depends only on $\| V \|_{L^1}$ and $\| \varphi
   \|_{H^1}$.
 \end{proof}
@@ -2403,25 +2397,26 @@ For $T > 0$ set
   \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N > 0$,
   consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear Hartree
   equation
-  \begin{displaymath}
+  \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
-  \end{displaymath}
+  \]
   with initial data $\varphi^{(N)}_0 = \varphi$, where $f_N V_N(x) = N^2
   f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
   nonlinear Gross-Pitaevskii equation
-  \begin{displaymath}
+  \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
     \varphi_t
-  \end{displaymath}
+  \]
   with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$. Then,
   for all $N > 0$ and $t \ge 0$,
-  \begin{displaymath}
+  \[
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}},
-  \end{displaymath}
+  \]
   where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$,
   $\text{supp }V$ and $\| \varphi \|_{H^2}$. 
 \end{lem}
+
 
 \begin{proof}
   Observing that $\langle \Delta \varphi_t, \varphi_t^{(N)} \rangle = \langle
@@ -2444,7 +2439,7 @@ For $T > 0$ set
   expression.
 
 
-  By H\"older's inequality, and Sobolev's inequality,
+  By H\"older's and Sobolev's inequalities,
   \begin{align*}
     & |\langle \varphi_t, (N f_N V_N * |\varphi_t|^2 - 8 \pi a_0
     |\varphi_t|^2) (\varphi_t - \varphi_t^{(N)}) \rangle| \\
@@ -2468,19 +2463,10 @@ For $T > 0$ set
     \varphi_t \|_{H^2} ) \| fV \|_{L^1} \| \varphi_t^{(N)} - \varphi_t
     \|_{L^2}^2.
   \end{align*}
-  Recall that $V \ge 0$. By conservation of mass and energy, and by
-  Proposition \ref{p:energy},
-  \begin{align*}
-    \| \varphi_t^{(N)} \|_{H^1}^2 & \le \| \varphi_t^{(N)} \|_{L^2}^2 +
-    \mathcal{E}_N(\varphi_t^{(N)}) = 1 + \mathcal{E}_N(\varphi) \apprle \|
-    \varphi \|_{H^1}^2 + \| fV \|_{L^1} \| \varphi \|_{H^1}^4, \\
-    \| \varphi_t \|_{H^1}^2 & \le \| \varphi_t \|_{L^2}^2 +
-    \mathcal{E}_{GP}(\varphi_t) = 1 + \mathcal{E}_{GP}(\varphi) \apprle \|
-    \varphi \|_{H^1}^2 + \| fV \|_{L^1} \| \varphi \|_{H^1}^4.
-  \end{align*}
   Thus, substituting all this into \eqref{ddt}, and using Corollaries
-  \ref{c:reg1} and \ref{c:reg2} to bound $\| \varphi_t^{(N)} \|_{H^2}$ and $\|
-  \varphi_t \|_{H^2}$, we obtain
+  \ref{c:reg1} and \ref{c:reg2} to bound $\| \varphi_t^{(N)} \|_{H^1}$, $\|
+  \varphi_t^{(N)} \|_{H^2}$, $\| \varphi_t \|_{H^1}$ and $\| \varphi_t
+  \|_{H^2}$, we obtain
   \begin{equation}
     \label{endproof2}
     \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C \| \varphi
@@ -2496,10 +2482,10 @@ For $T > 0$ set
   \begin{align*}
     N f_N V_N * |\varphi_t|^2(x) - 8 \pi a_0 |\varphi_t|^2(x) & = \int dy
     \big( |\varphi_t(x-y)|^2 - |\varphi_t(x)|^2 \big) N^3 fV(Ny) \\
-    & = \int dz \big( |\varphi_t(x-z/N)|^2 - |\varphi_t(x)|^2 \big) fV(z).
+    & = \int dz \big( |\varphi_t(x-z/N)|^2 - |\varphi_t(x)|^2 \big) fV(z),
   \end{align*}
-  Let $R$ be such that $\text{supp }V \subset \{ x \in \R^3 \; | \;\; |x| \le
-  R \}$. By Minkowski's, H\"older's, and Sobolev's inequalities,
+  and let $R$ be such that $\text{supp }V \subset \{ x \in \R^3 \; | \;\; |x|
+  \le R \}$. By Minkowski's, H\"older's, and Sobolev's inequalities,
   \begin{align*}
     \| N f_N V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3} & \le \int
     dz \, \| |\varphi_t(\, \cdot \, -z/N)|^2 - |\varphi_t|^2 \|_{L^3} |fV(z)|
@@ -2507,6 +2493,8 @@ For $T > 0$ set
     & \le \| fV \|_{L^1} \sup_{|z| \le R} \| |\varphi_t(\, \cdot \, - z/N)|^2
     - |\varphi_t|^2 \|_{L^3}.
   \end{align*}
+  \marginpar{This could be omitted; or perhaps made shorter using the weak
+  derivative\dots}
   Given $\varepsilon = 1/N$, there exists $\psi_t \in C^\infty(\R^3)$ such
   that $\| \varphi_t - \psi_t \|_{H^2} < 1/N$. Hence, by H\"older's
   inequality, Sobolev's inequality and an $\varepsilon/3$-argument, the mean
@@ -2536,19 +2524,20 @@ For $T > 0$ set
   where $C$ is a constant that depends only on $\| fV \|_{L^1}$, $\text{supp
   }V$ and $\| \varphi \|_{H^1}$. Substituting this into \eqref{endproof2}, we
   obtain
-  \begin{displaymath}
+  \[
     \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C e^{Kt} \|
     \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + \frac{C}{N} e^{Kt}.
-  \end{displaymath}
-  By Gronwall's inequality,
-  \begin{displaymath}
+  \]
+  Finally, by Gronwall's inequality,
+  \[
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le e^{K^{-1} C e^{Kt}} \Big( \|
     \varphi_0^{(N)} - \varphi_0 \|_{L^2} + \frac{C}{KN} e^{Kt} \Big) \le
     \frac{C_2}{N} e^{e^{K_2 t}},
-  \end{displaymath}
+  \]
   for some constants $C_2$ and $K_2$ depending only on $\| fV \|_{L^1}$,
   $\text{supp }V$ and $\| \varphi \|_{H^2}$.
 \end{proof}
+
 
 \subsection{Regularity of $\phdot$}
 \begin{lem}[$L^2$-bound for $\phdot$]
@@ -2595,6 +2584,7 @@ We need estimates for $\norm{\ddot k}$.\marginpar{TODO}
 \begin{proof}
 To prove this lemma, we need higher regularity (probably $H^4$) of $\ph$, because bounding $\ddot k$ needs $\norm{\phddot}_{L^2}$.  
 \end{proof}
+
 
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
