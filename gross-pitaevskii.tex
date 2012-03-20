@@ -338,23 +338,23 @@ $|x| \ge R/N$.
   equation \eqref{eq:scattering} with scaled potential $V_N$. Then, the
   following hold with constants uniform in $N$.
   \begin{enumerate}
-    \item \label{lw1} There exists a constant $C_0 > 0$, which depends on the
+    \item \label{l:w1} There exists a constant $C_0 > 0$, which depends on the
       unscaled potential $V$, such that, for all $x \in \R^3$,
       \[
         C_0 \le 1 - w_N(x) \le 1.
       \]
-    \item \label{lw2} Let $R$ be such that $\text{supp }V \subset \{ x \in
+    \item \label{l:w2} Let $R$ be such that $\text{supp }V \subset \{ x \in
       \R^3 \; | \;\; |x| \le R \}$. Then, for all $x \in \R^3$ with $|x| >
       R/N$,
       \[
         w_N(x) = \frac{a_0}{N|x|}. 
       \]
-    \item \label{lw3} It follows from \ref{lw1} and \ref{lw2} that, for all $x
-      \in \R^3$,
+    \item \label{l:w3} It follows from \ref{l:w1} and \ref{l:w2} that, for all
+      $x \in \R^3$,
       \[
         |w_N(x)| \le \max\{a_0, R\} \frac{1}{N|x|}.
       \]
-    \item \label{lw4} There exist constants $C_1$ and $C_2$, depending only on
+    \item \label{l:w4} There exist constants $C_1$ and $C_2$, depending only on
       $V$, such that, for all $x \in \R^3$,
       \[
         |\nabla w_N(x)| \le C_1 N \qquad \text{and} \qquad | \nabla^2 w_N(x)|
@@ -367,7 +367,7 @@ $|x| \ge R/N$.
         \frac{C \rho}{|x|}, \qquad |\nabla^2 w_N(x)| \le \frac{C \rho}{N^2
         |x|^2}.
       \]
-    \item \label{lw5} It follows from \ref{lw4} that, for all $x \in \R^3$,
+    \item \label{l:w5} It follows from \ref{l:w4} that, for all $x \in \R^3$,
       \[
         |\nabla w_N(x)| \le \max\{ C_1, C a_0 \} \frac{2N}{N^2|x|^2 + 1}.
       \]
@@ -485,7 +485,7 @@ and
     \item \label{kr} For almost all $x,y \in \R^3$,
       \[
         |k(x,y)| < N |\varphi(x)| |\varphi(y)|, \qquad |r(x,y)| \le e^{C \|
-        \varphi \|_{H^1}} |\varphi(x)| |\varphi(y)|.
+        \varphi \|_{H^1}^2} |\varphi(x)| |\varphi(y)|.
       \] 
     \item \label{sup} Let $p$ and $s$ be the integral kernels in Lemma
       \ref{l:bt}, and suppose further that $\varphi \in H^2(\R^3)$. Then,
@@ -517,7 +517,7 @@ and
 
 
 \begin{proof}[Proof of Proposition \ref{p:wphi}]
-  Using Lemma \ref{l:w}\ref{lw3}, and the operator inequality $-4 \Delta \ge
+  Using Lemma \ref{l:w}\ref{l:w3}, and the operator inequality $-4 \Delta \ge
   |x|^{-2}$ on $L^2(\R^3)$, we find that
   \begin{align*}
     \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 & \le C_1^2 \int dz \, |x-z|^{-2}
@@ -542,7 +542,7 @@ and
 
 
   Finally, by Young's inequality, Sobolev's inequality, and Lemma
-  \ref{l:w}\ref{lw5},
+  \ref{l:w}\ref{l:w5},
   \begin{align*}
     \int dx dy \, N^2 |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 & \le
     N^2 \| | \nabla w_N|^2 \|_{L^1} \| \varphi \|_{L^4}^4 \\
@@ -639,7 +639,7 @@ and
     & \le C \| \nabla \varphi \|_{L^2}^2 + C \sqrt{N} \| \varphi \|_{H^1}^2
     \apprle C \sqrt{N} \| \varphi \|_{H^1}^2.
   \end{align*}
-  This proves the first two estimates of part \ref{k}. Now,
+  This proves the first two estimates in \ref{k}. Now,
   \[
     \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
   \]
@@ -663,7 +663,7 @@ and
   This completes the proof of part \ref{k}.
 
 
-  \ref{kr} From Lemma \ref{l:w}\ref{lw1}, it follows that $w_N < 1$. Hence,
+  \ref{kr} From Lemma \ref{l:w}\ref{l:w1}, it follows that $w_N < 1$. Hence,
   \[
     |k(x,y)| = N w_N(x-y) |\varphi(x)| |\varphi(y)| < N |\varphi(x)|
     |\varphi(y)|.
@@ -1612,22 +1612,23 @@ all $\psi \in \mathcal{F}$.
 
 \begin{lem} \label{l:ap}
   \marginpar{could we have an explicit sentence here which says $\frac{1}{N}\ev{(\Ncal+2)^2} \leq C \ev{\Ncal+1}$, please? (where $C$ does not depend on $t$)}
-  Let $U_t$ be the unitary evolution defined in (X).
+  Let $U_t$ be the unitary evolution on $\mathcal{F}$ defined in (X).
   \begin{enumerate}
     \item \label{l:ap1} There exists a constant $C_1$, uniform in $N$ and $t$,
       that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
         \[
-          U_t^* \N^2 U_t \le C_1 \big( N U_t^* (\N+1) U_t + N (\N+1) +
-          (\N+1)^2 \big).
+          U_t^* \N^2 U_t \le C_1 \big( N U_t^* \N U_t + N (\N+1) + (\N+1)^2
+          \big).
         \]
     \item \label{l:ap2} There exists a constant $C_2$, uniform in $N$, that
       depends only on $\| \varphi_t \|_{H^2}$ and $V$, such that
       \[
         \begin{split}
-          U_t^* \K \N U_t & \le C_2 \big( N U_t^* \K U_t + N U_t^* (\N+1) U_t
-          +  (\N^2 + N(\N+1)) \\
+          U_t^* \K \N U_t & \le C_2 \big( N U_t^* \K U_t + N U_t^* \N U_t +
+          \N^2 + N(\N+1) \\
           & \quad + T^* \phi(\varphi) W^*( \mathcal{H}_N + \N ) W
-        \phi(\varphi) T + N^{-1} T^* \N W^*( \mathcal{H}_N + \N ) W \N T \big).
+          \phi(\varphi) T + N^{-1} T^* \N W^*( \mathcal{H}_N + \N ) W \N T
+          \big).
         \end{split}
       \]
   \end{enumerate}
@@ -1670,20 +1671,26 @@ first.
     \tag{iv} \label{f4} 
   \end{align}
   where $C$ and $S$ are integral operators on $L^2(\R^3)$, with integral
-  kernels $c$ and $s$, respectively, as in Lemma \ref{l:bt}\ref{l:bt2}.
+  kernels $c$ and $s$ as in Lemma \ref{l:bt}\ref{l:bt2}, respectively.
 \end{prp}
 
 
 \begin{proof}[Proof of Proposition \ref{p:f}]
   We give only an outline of the proof. Recall that $\phi(\varphi) =
   a^*(\varphi) + a(\varphi)$. Then parts \eqref{f1}, \eqref{f2} and \eqref{f3}
-  follow easily by a short calculation using parts \ref{l:W1} and \ref{l:W3}
+  follow easily by a brief calculation using parts \ref{l:W1} and \ref{l:W3}
   of Lemma \ref{l:W}. Similarly, part \eqref{f4} follows from Lemma
   \ref{l:bt}.
 \end{proof}
 
 
 \begin{proof}[Proof of Proposition \ref{p:TNT}]
+  We first remark that it is clear that all the steps in the proof hold with
+  $T$ replaced by $T^*$ because $T^* a_x T = a(c_x) + a^*(s_x)$ and $T a_x T^*
+  = a(c_x) - a^*(s_x)$ differ only by a minus sign. We make no further
+  comments about this.
+
+
   \eqref{TNT} and \eqref{TKT} Write
   \[
     \langle \psi, T^* \N T \psi \rangle = \int dx \, \langle T^* a_x T \psi,
@@ -1718,7 +1725,7 @@ first.
     \rangle + \| \nabla_1 s \|_{L^2}^2.
   \end{align*}
   Furthermore, by Lemma \ref{l:bt}\ref{l:bt2}, there exists a universal
-  constant $C_1$ such that
+  constant $C_1$, such that
   \begin{equation} \label{c1}
     1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le e^{C_1 (1+\| k \|_{L^2})} \qquad
     \text{and} \qquad \| \nabla_1 s \|_{L^2}^2 \le e^{C_1 (1+\|k \|_{L^2})} \|
@@ -1840,15 +1847,16 @@ first.
   T(k_t)$ and $T = T(k_0)$.
 
 
-  Observe that, by Lemmata \ref{l:kernels} and \ref{l:bt}, and Proposition
-  \ref{p:energy}, there exists a constant $C$, uniform in $N$ and $t$, that
-  depends only on $\| \varphi \|_{H^1}$ and $V$, such that
+  Observe that, by Lemmata \ref{l:bt}\ref{l:bt2}, \ref{l:kernels}\ref{k} and
+  \ref{l:pdes}\eqref{H1}, there exists a constant $C$, uniform in $N$ and $t$,
+  that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
     \begin{gathered}
       \| k_t \|_{L^2} \le C, \qquad \| \nabla_1 k_t \|_{L^2} \le C \sqrt{N},
       \qquad \| \nabla_1 k_t \overline{k_t} \|_{L^2} \le C. \\
-      \| \nabla \varphi_t \|_{L^2}^2 + \| \nabla_1 p_t \|_{L^2}^2 \le C,
-      \qquad \| \nabla_1 s_t \|_{L^2}^2 \le C N.
+      \| p_t \|_{L^2}^2 + \| s_t \|_{L^2}^2 \le C, \qquad \| \nabla \varphi_t
+      \|_{L^2}^2 + \| \nabla_1 p_t \|_{L^2}^2 \le C, \qquad \| \nabla_1 s_t
+      \|_{L^2}^2 \le C N.
     \end{gathered}
   \end{equation}
 
@@ -1905,7 +1913,7 @@ first.
     & \quad + 16N (1 + \| p_t \|_{L^2} + \| s_t \|_{L^2})^2 \| (\N + 1)^{1/2}
     \psi \|^2 + 4\| \N T \psi \|^2.
   \end{align*}
-  Thus, using again Proposition \ref{p:TNT}, and recalling \eqref{c1},
+  Thus, using again Proposition \ref{p:TNT}, and recalling \eqref{c2},
   \begin{align*}
     & \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle \\
     & \le C_1 \big( N \langle U_t \psi, T_t^* (\N+1) T_t U_t \psi \rangle + N
@@ -1914,19 +1922,17 @@ first.
     & \le C_2 \big( N \langle U_t \psi, (\N+1) U_t \psi \rangle + N \langle
     \psi, (\N+1) \psi \rangle + \langle \psi, (\N+1)^2 \psi \rangle \big),
   \end{align*}
-  for some constants $C_1$ and $C_2$ that depend only on $\| k_t \|_{L^2}$.
-  Combining this with \eqref{ep4} we obtain
+  for some constants $C_1$ and $C_2$ that depend only on $\| \varphi \|_{H^1}$
+  and $V$. Combining this with \eqref{ep4}, we obtain
   \begin{align*}
     \langle U_t \psi, \N^2 U_t \psi \rangle 
     & \le C \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle + 2 C^2
     \langle U_t \psi, \N U_t \psi \rangle + C. \\
-    & \le C_3 \big( N \langle U_t \psi, (\N+1) U_t \psi \rangle + N \langle
+    & \le C_3 \big( N \langle U_t \psi, \N U_t \psi \rangle + N \langle
     \psi, (\N+1) \psi \rangle + \langle \psi, (\N+1)^2 \psi \rangle \big),
   \end{align*}
-  for some constant $C_3$ that depends only on $\| k_t \|_{L^2}$. Finally, in
-  view of \eqref{c2}, there exists a constant $C_4$, uniform in $N$ and $t$,
-  that depends only on $\| \varphi \|_{H^1}$ and $V$, such that $C_3 < C_4$.
-  This concludes the proof of part \ref{l:ap1}.
+  for some constant $C_3$ as above. This concludes the proof of part
+  \ref{l:ap1}.
 
 
   \ref{l:ap2} By parts \eqref{TKNT} and \eqref{TN2T} of Proposition
@@ -2008,7 +2014,7 @@ first.
       \psi, \K U_t \psi \rangle + N \langle U_t \psi, (\N+1) U_t \psi \rangle
       \\
       & \qquad + \frac{1}{N} \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N +
-      \sqrt{N} \phi(\varphi) ) T \psi \|^2 \big)
+      \sqrt{N} \phi(\varphi) ) T \psi \|^2 \big),
     \end{split}
   \end{equation}
   where $C_1$ is a constant, uniform in $N$ and $t$, that depends only on $\|
@@ -2053,17 +2059,14 @@ first.
     & \quad + \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T \psi \rangle
     \big),
   \end{align*}
-  for some constant $C_1$ as above.
-  
-  
-  Therefore, combining the last two inequalities with \eqref{nk3},
+  for some constant $C_1$ as above. Therefore, combining the last two
+  inequalities with \eqref{nk3},
   \begin{align*}
     \langle U_t \psi, \K \N U_t \psi \rangle & \le C \big( N \langle U_t
-    \psi, \K U_t \psi \rangle + N \langle U_t
-    \psi, (\N+1) U_t \psi \rangle \\
-    & \quad + \langle \psi, (\N^2 + N (\N + 1)) \psi \rangle + \langle W
-    \phi(\varphi) T \psi, (\mathcal{H}_N + \N) W \phi(\varphi) T \psi \rangle
-    \\
+    \psi, \K U_t \psi \rangle + N \langle U_t \psi, \N U_t \psi \rangle +
+    \langle \psi, (\N^2 + N (\N + 1)) \psi \rangle \\
+    & \quad + \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N) W
+    \phi(\varphi) T \psi \rangle \\
     & \quad + \frac{1}{N} \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T
     \psi \rangle \big),
   \end{align*}
@@ -2076,37 +2079,37 @@ first.
 \section{Nonlinear Hartree and Gross-Pitaevskii equations}
 
 
-\begin{lem}
+\begin{lem} \label{l:pdes}
   Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that $f
   \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N > 0$,
   consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear Hartree
   equation
-  \begin{displaymath}
+  \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
-  \end{displaymath}
+  \]
   with initial data $\varphi^{(N)}_0 = \varphi$, where $f_N V_N(x) = N^2
   f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
   nonlinear Gross-Pitaevskii equation
-  \begin{displaymath}
+  \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
     \varphi_t
-  \end{displaymath}
+  \]
   with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$. Then,
   for all $N > 0$ and $t \ge 0$,
   \begin{alignat}{2}
-    \| \varphi_t^{(N)} \|_{H^1} & \le C, & \qquad \| \varphi_t \|_{H^1} &
-    \le C, \tag{i} \\
-    \| \varphi_t^{(N)} \|_{H^2} & \le \| \varphi \|_{H^2} e^{K t}, & \qquad
-    \| \varphi_t \|_{H^2} & \le \| \varphi \|_{H^2} e^{K t}, \tag{ii}
+    \| \varphi_t^{(N)} \|_{H^1} & \le C_1, & \qquad \| \varphi_t \|_{H^1} &
+    \le C_1, \tag{i} \label{H1} \\
+    \| \varphi_t^{(N)} \|_{H^2} & \le \| \varphi \|_{H^2} e^{K_1 t}, & \qquad
+    \| \varphi_t \|_{H^2} & \le \| \varphi \|_{H^2} e^{K_1 t}, \tag{ii}
   \end{alignat}
-  where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$,
+  where $C_1$ and $K_1$ are constants that depend only on $\| fV \|_{L^1}$,
   $\text{supp }V$ and $\| \varphi \|_{H^1}$. Furthermore,
   \begin{equation}
-    \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}},
+    \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C_2}{N} e^{e^{K_2 t}},
     \tag{iii}
   \end{equation}
-  where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$,
+  where $C_2$ and $K_2$ are constants that depend only on $\| fV \|_{L^1}$,
   $\text{supp }V$ and $\| \varphi \|_{H^2}$.
 \end{lem}
 
@@ -2115,9 +2118,9 @@ first.
 
 
 Nonlinear Hartree equation
-\begin{displaymath}
+\[
   i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2) \varphi_t
-\end{displaymath}
+\]
 with initial data $\varphi_0 = \varphi$, and energy
 \begin{displaymath}
   \mathcal{E}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + \frac{1}{2} \int
@@ -2173,31 +2176,32 @@ where $8 \pi a_0 = \int f V$.
 
 \begin{prp}
   \label{p:reg1}
-  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$ and $V \in
+  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and $V \in
   L^1(\R^3)$ with $V \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of
   the nonlinear Hartree equation
   \begin{displaymath}
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
     \varphi_t
   \end{displaymath}
-  with initial data $\varphi_0 = \varphi$. Then, there exists a real number $T
-  > 0$ such that
+  with initial data $\varphi_0 = \varphi$. Then, there exist a real number $T
+  > 0$ and a constant $C$, which depend only on $\| V \|_{L^1}$ and $\|
+  \varphi \|_{H^1}$, such that
   \begin{displaymath}
     \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}
   \end{displaymath}
-  for all $t \in [0,T]$, where the constants $C$ and $T$ depend only on $\| V
-  \|_{L^1}$ and $\| \varphi \|_{H^1}$.
+  for all $t \in [0,T]$.
 \end{prp}
 
 
 \begin{cor}
   \label{c:reg1}
-  Under the hypothesis of Proposition \ref{p:reg1}, for all $t \ge 0$,
+  Under the hypothesis of Proposition \ref{p:reg1}, there exists a constant
+  $K$, that depends only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$, such
+  that
   \begin{displaymath}
-    \| \varphi_t \|_{H^2} \le \| \varphi \|_{H^2} e^{Kt},
+    \| \varphi_t \|_{H^2} \le \| \varphi \|_{H^2} e^{Kt}
   \end{displaymath}
-  where $K$ is a constant that depends only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$.
+  for all $t \ge 0$.
 \end{cor}
 
 
