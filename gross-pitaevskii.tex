@@ -2321,8 +2321,8 @@ For $T > 0$ set
   (see \cite[Theorem 1.2]{KT}). By these estimates, and Lemma~\ref{l:interp},
   \marginpar{in the following equations, is it really $\varphi^2$ or maybe
   $\lvert \varphi\rvert^2$? Ans: $\| z^2 \| = \| |z|^2 \|$}
-  \begin{align}
-    & \| \Delta \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} \notag \\
+  \begin{align} \label{Lap}
+     \| \Delta \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} \notag \\
     & \apprle \| \Delta \varphi \|_{L^2} + \| (V * |\varphi_{(\cdot)}|^2)
     \Delta \varphi_{(\cdot)} + 2(V * \nabla |\varphi_{(\cdot)}|^2) \nabla
     \varphi_{(\cdot)} + (V * \Delta |\varphi_{(\cdot)}|^2) \varphi_{(\cdot)}
@@ -2333,7 +2333,6 @@ For $T > 0$ set
     & \quad + \sup_{t \in [0,T]} \| \nabla |\varphi_t|^2 \|_{L^{3/2}} \sup_{t
     \in [0,T]} \| \nabla \varphi_t \|_{L^6} + \sup_{t \in [0,T]} \| \Delta
     |\varphi_t|^2 \|_{L^{3/2}} \sup_{t \in [0,T]} \| \varphi_t \|_{L^6} \Big].
-    \label{Lap}
   \end{align}
   We next estimate each term in this inequality.
   
@@ -2421,8 +2420,7 @@ For $T > 0$ set
 \begin{proof}
   Observing that $\langle \Delta \varphi_t, \varphi_t^{(N)} \rangle = \langle
   \varphi_t, \Delta \varphi_t^{(N)} \rangle$, one easily finds
-  \begin{equation}
-    \label{ddt}
+  \begin{equation}\label{ddt}
     \begin{aligned}
       \partial_t \| \varphi_t - \varphi_t^{(N)} \|_{L^2}^2 & = -2 \Im \langle
       \varphi_t, (N f_N V_N * |\varphi_t^{(N)}|^2 - 8 \pi a_0 |\varphi_t|^2)
@@ -2467,8 +2465,7 @@ For $T > 0$ set
   \ref{c:reg1} and \ref{c:reg2} to bound $\| \varphi_t^{(N)} \|_{H^1}$, $\|
   \varphi_t^{(N)} \|_{H^2}$, $\| \varphi_t \|_{H^1}$ and $\| \varphi_t
   \|_{H^2}$, we obtain
-  \begin{equation}
-    \label{endproof2}
+  \begin{equation} \label{endproof2}
     \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C \| \varphi
     \|_{H^2}^2 e^{Kt} \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + C \| N f_N
     V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3},
