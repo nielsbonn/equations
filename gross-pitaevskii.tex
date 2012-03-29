@@ -381,17 +381,17 @@ $|x| \ge R/N$.
 
 Let $f(x,y)$ be a function of two variables. To simplify the notation we write
 \[
-  f_x(y) = f(x,y)
+  f_y(x) = f(x,y)
 \]
 so that
 \[
-  a(f_x) = a(f(x, \,\cdot\,)) \qquad \text{and} \qquad a^*(f_x) = a^*(f(x,
-  \,\cdot\,)).
+  a(f_y) = a(f(\,\cdot\,,y)) \qquad \text{and} \qquad a^*(f_y) =
+  a^*(f(\,\cdot\,,y)).
 \]
 For notational convenience, it will be useful to slightly abuse notation and
 write
 \[
-  a_x + a(f_x) = a(\delta_x + f_x).
+  a_y + a(f_y) = a(\delta_y + f_y).
 \]
 The notation
 \[
@@ -422,15 +422,15 @@ and
       \]
     \item \label{l:bt2} We have
       \[
-        T(k)^* a_x T(k) = a(c_x) + a^*(s_x) \qquad \text{and} \qquad T(k)^*
-        a_x^* T(k) = a^*(c_x) + a(s_x)
+        T(k)^* a_y T(k) = a(c_y) + a^*(s_y) \qquad \text{and} \qquad T(k)^*
+        a_y^* T(k) = a^*(c_y) + a(s_y)
       \]
       with
       \begin{alignat*}{2}
         c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
         \big( k \overline{k} \big)^n, \\
-        s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!} k
-        \big( \overline{k} k \big)^n,
+        s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!} \big(
+        k \overline{k} \big)^n k,
       \end{alignat*}
       where $\delta$ is the Dirac delta, and the product of functions in the
       power series is the convolution of integral kernels, that is, $fg(x,y) =
@@ -570,19 +570,20 @@ and
   \[
     e^X Y e^{-X} = Y + [X,Y] + \frac{1}{2!} [X,[X,Y]] + \cdots
   \]
-  Then, observing that $[a_x a_y, a_z] = [a_x^* a_y^*, a_z^*] = 0$ and
+  Then, observing that $[a_w a_z, a_y] = [a_w^* a_z^*, a_y^*] = 0$ and
   \[
-    [a_x a_y, a_z^*] = \delta(x-z) a_y + \delta(y-z) a_x \qquad \text{and}
-    \qquad [a_x^* a_y^*, a_z] = -\delta(z-x) a_y^* + \delta(z-y) a_x^*,
+    [a_w a_z, a_y^*] = \delta(w-y) a_z + \delta(z-y) a_w \qquad \text{and}
+    \qquad [a_w^* a_z^*, a_y] = -\delta(y-w) a_z^* - \delta(y-z) a_w^*,
   \]
   one easily finds the expression
   \begin{align*}
-    T(k)^* a_x T(k) & = e^{-B(k)} a_x e^{B(k)} = a_x - [B(k), a_x] +
-    \frac{1}{2!} [B(k), [B(k), a_x]] + \cdots \\
-    & = a_x + \int dy \, \sum_{n=1}^\infty \frac{1}{(2n)!} \big( k
-    \overline{k} \big)^n(x,y) a_y + \int dy \, \sum_{n=0}^\infty
-    \frac{1}{(2n+1)!} k \big( \overline{k} k \big)^n(x,y) a_y^* \\
-    & = a_x + a(p_x) + a(s_x) = a(c_x) + a(s_x).
+    T(k)^* a_y T(k) & = e^{-B(k)} a_y e^{B(k)} = a_y - [B(k), a_y] +
+    \frac{1}{2!} [B(k), [B(k), a_y]] + \cdots \\
+    & = a_y + \int dx \, \sum_{n=1}^\infty \frac{1}{(2n)!} \big( 
+    \overline{k} k \big)^n(x,y) a_x + \int dx \, \sum_{n=0}^\infty
+    \frac{1}{(2n+1)!} \big( k \overline{k} \big)^n k(x,y) a_x^* \\
+    & = a_y + \int dx \, \overline{p(x,y)} a_x + \int dx \, s(x,y) a_x^* \\
+    & = a_y + a(p_y) + a(s_y) = a(c_y) + a(s_y).
   \end{align*}
   We next prove the estimates for the integral kernels $p$, $r$ and $s$. 
 
@@ -669,16 +670,20 @@ and
     |k(x,y)| = N w_N(x-y) |\varphi(x)| |\varphi(y)| < N |\varphi(x)|
     |\varphi(y)|.
   \]
-  This proves the first estimate in \ref{kr}. To bound $|r(x,y)|$, first
-  observe that, by H\"older's inequality, Proposition \ref{p:wphi}, and part
+  This proves the first estimate in \ref{kr}.
+  
+  
+  To bound $|r(x,y)|$, first observe that, by H\"older's inequality,
+  Proposition \ref{p:wphi}, and part
   \ref{k},
   \begin{align*}
-    & |k( \overline{k} k)^n (x,y)| = | k ( \overline{k} k)^{n-1} \overline{k}
+    & |( k \overline{k})^n k(x,y)| = | k \overline{k} ( k \overline{k})^{n-1}
     k(x,y)| \\
     & = |\varphi(x)| |\varphi(y)| \, \left| \int dz_1 dz_2 \, N^2 w_N(x-z_1)
-    w_N(z_2-y) \varphi(z_1) \varphi(z_2) (\overline{k} k)^{n-1}k(z_1,z_2)
-    \right| \\
-    & \le |\varphi(x)| |\varphi(y)| \, \| (\overline{k} k)^{n-1} k \|_{L^2} \\
+    w_N(z_2-y) \varphi(z_1) \varphi(z_2) \overline{k}(k
+    \overline{k})^{n-1}(z_1,z_2) \right| \\
+    & \le |\varphi(x)| |\varphi(y)| \, \| \overline{k} (k \overline{k})^{n-1}
+    \|_{L^2} \\
     & \quad \times \left( \int dz_1 N^2 w_N(x-z_1)^2 |\varphi(z_1)|^2 \int
     dz_2 \, N^2 w_N(z_2-y) |\varphi(z_2)|^2 \right)^{1/2} \\
     & \le |\varphi(x)| |\varphi(y)| C \| \nabla \varphi \|_{L^2}^2 \| k
@@ -687,34 +692,34 @@ and
   \end{align*}
   Thus,
   \[
-    |r(x,y)| \le \sum_{n=1}^\infty \frac{1}{(2n+1)!} |k( \overline{k} k)^n
+    |r(x,y)| \le \sum_{n=1}^\infty \frac{1}{(2n+1)!} |( k \overline{k})^n k
     (x,y)|\le |\varphi(x)| |\varphi(y)| e^{C \| \varphi \|_{H^1}^2}.
   \]
   This completes the proof of part \ref{kr}.
 
 
-  \ref{sup} We give a proof of the estimate for $\sup_{x \in \R^3} \| s_x
-  \|_{L^2}$. The proof for $\sup_{x \in \R^3} \| p_x \|_{L^2}$ is similar.
+  \ref{sup} We give a proof of the estimate for $\sup_{y \in \R^3} \| s_y
+  \|_{L^2}$. The proof for $\sup_{y \in \R^3} \| p_y \|_{L^2}$ is similar.
   First, by H\"older's inequality, and Proposition \ref{p:wphi},
   \begin{align*}
-    |k(\overline{k} k)^n(x,y)| & = \left| \varphi(x) \int dz \, N w_N(x-z)
-    \varphi(z) (\overline{k} k)^n(z,y) \right| \\
-    & \le |\varphi(x)| \left( \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2
-    \right)^{1/2} \| (\overline{k} k)^n(\, \cdot\,, y) \|_{L^2} \\
-    & \le C \| \nabla \varphi \|_{L^2} | \varphi(x)| \, \| (\overline{k}
-    k)^n(\, \cdot\,, y) \|_{L^2}.
+    |(k \overline{k})^n k(x,y)| & = \left| \varphi(y) \int dz \, N w_N(z-y)
+    \varphi(z) (k \overline{k})^n(x,z) \right| \\
+    & \le |\varphi(y)| \left( \int dz \, N^2 w_N(z-y)^2 |\varphi(z)|^2
+    \right)^{1/2} \| (k \overline{k})^n(x,\, \cdot\,) \|_{L^2} \\
+    & \le C \| \nabla \varphi \|_{L^2} | \varphi(y)| \, \| (k \overline{k}
+    )^n(x,\, \cdot\,) \|_{L^2}.
   \end{align*}
   Hence, using part \ref{k},
   \[
-    \| s_x \|_{L^2} \le \sum_{n=0}^\infty \frac{\| k (\overline{k} k)^n(x,\,
-    \cdot\,) \|_{L^2}}{(2n+1)!} \le |\varphi(x)| \sum_{n=0}^\infty
+    \| s_y \|_{L^2} \le \sum_{n=0}^\infty \frac{\| (k \overline{k})^n k(\,
+    \cdot\,,y) \|_{L^2}}{(2n+1)!} \le |\varphi(y)| \sum_{n=0}^\infty
     \frac{C^{2n+1} \| \varphi \|_{H^1}^{2n+1}}{(2n+1)!} \le e^{C \|
-    \varphi\|_{H^1}^2} |\varphi(x)|.
+    \varphi\|_{H^1}^2} |\varphi(y)|.
   \]
   Therefore, by Sobolev's inequality,
   \[
-    \sup_{x \in \R^3} \| s_x \|_{L^2} \le e^{C \| \varphi \|_{H^1}^2} \sup_{x
-    \in \R^3} |\varphi(x)| \apprle e^{C \| \varphi \|_{H^1}^2} \| \varphi
+    \sup_{y \in \R^3} \| s_y \|_{L^2} \le e^{C \| \varphi \|_{H^1}^2} \sup_{y
+    \in \R^3} |\varphi(y)| \apprle e^{C \| \varphi \|_{H^1}^2} \| \varphi
     \|_{H^2}.
   \]
   This proves part \ref{sup} and completes the proof of the lemma.
