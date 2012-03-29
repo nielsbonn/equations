@@ -2110,13 +2110,13 @@ first.
     \| \varphi_t \|_{H^2} & \le \| \varphi \|_{H^2} e^{K_1 t}, \tag{ii}
   \end{alignat}
   where $C_1$ and $K_1$ are constants that depend only on $\| fV \|_{L^1}$,
-  $\text{supp} \ V$ and $\| \varphi \|_{H^1}$. Furthermore,
+  $\text{supp} \ V$, and $\| \varphi \|_{H^1}$. Furthermore,
   \begin{equation}
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C_2}{N} e^{e^{K_2 t}},
     \tag{iii}
   \end{equation}
   where $C_2$ and $K_2$ are constants that depend only on $\| fV \|_{L^1}$,
-  $\text{supp} \ V$ and $\| \varphi \|_{H^2}$.
+  $\text{supp} \ V$, and $\| \varphi \|_{H^2}$.
 \end{lem}
 
 
@@ -2191,21 +2191,19 @@ where $8 \pi a_0 = \int f V$.
   > 0$ and a constant $C$, which depend only on $\| V \|_{L^1}$ and $\|
   \varphi \|_{H^1}$, such that
   \[
-    \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}.
   \]
-  for all $t \in [0,T]$.
 \end{prp}
 
 
 \begin{cor} \label{c:reg1}
   Under the hypothesis of Proposition \ref{p:reg1}, there exist constants $C$
   and $K$, which depend only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$,
-  such that
+  such that, for all $t \ge 0$,
   \[
     \| \varphi_t \|_{H^1} \le C \qquad \text{and} \qquad \| \varphi_t \|_{H^2}
-    \le \| \varphi \|_{H^2} e^{Kt}
+    \le \| \varphi \|_{H^2} e^{Kt}.
   \]
-  for all $t \ge 0$.
 \end{cor}
 
 
@@ -2218,7 +2216,7 @@ where $8 \pi a_0 = \int f V$.
     \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4.
   \]
   This proves the first estimate in the corollary. Consequently, by
-  Proposition \ref{p:reg1}, given $t > 0$, one can find constants $C$ and $T$,
+  Proposition \ref{p:reg1}, given $t > 0$, we can find constants $C$ and $T$
   and an integer $n \ge 0$, depending only on $\| V \|_{L^1}$ and $\| \varphi
   \|_{H^1}$, such that
   \[
@@ -2226,7 +2224,7 @@ where $8 \pi a_0 = \int f V$.
     \qquad nT < t.
   \]
   Iterating this argument backwards in time (and again noticing that $C$ and
-  $T$ can be chosen uniformly in time) one easily finds that
+  $T$ can be chosen uniformly in time) we easily find that
   \[
     \| \varphi_t \|_{H^2} \le C \| \varphi_{nT} \|_{H^2} \le C^{n+1} \|
     \varphi \|_{H^2} = (C^{1/T})^{(n+1)T} \| \varphi \|_{H^2} \le e^{Kt} \|
@@ -2249,20 +2247,19 @@ where $8 \pi a_0 = \int f V$.
   > 0$ and a constant $C$, which depend only on $a_0$ and $\| \varphi
   \|_{H^1}$, such that
   \[
-    \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}.
   \]
-  for all $t \in [0,T]$.
 \end{prp}
 
 
 \begin{cor} \label{c:reg2}
   Under the hypothesis of Proposition \ref{p:reg2}, there exist constants $C$
-  and $K$, which depend only on $a_0$ and $\| \varphi \|_{H^1}$, such that
+  and $K$, which depend only on $a_0$ and $\| \varphi \|_{H^1}$, such that,
+  for all $t \ge 0$,
   \[
     \| \varphi_t \|_{H^1} \le C \qquad \text{and} \qquad \| \varphi_t \|_{H^2}
-    \le \| \varphi \|_{H^2} e^{Kt}
+    \le \| \varphi \|_{H^2} e^{Kt}.
   \]
-  for all $t \ge 0$.
 \end{cor}
 
 
@@ -2419,13 +2416,13 @@ For $T > 0$ set
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}},
   \]
   where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$,
-  $\text{supp} \ V$ and $\| \varphi \|_{H^2}$.
+  $\text{supp} \ V$, and $\| \varphi \|_{H^2}$.
 \end{lem}
 
 
 \begin{proof}
   Observing that $\langle \Delta \varphi_t, \varphi_t^{(N)} \rangle = \langle
-  \varphi_t, \Delta \varphi_t^{(N)} \rangle$, one easily finds
+  \varphi_t, \Delta \varphi_t^{(N)} \rangle$, we easily find
   \begin{equation}\label{ddt}
     \begin{aligned}
       \partial_t \| \varphi_t - \varphi_t^{(N)} \|_{L^2}^2 & = -2 \Im \langle
@@ -2525,7 +2522,7 @@ For $T > 0$ set
     \|_{H^2} e^{Kt},
   \end{align*}
   where $C$ is a constant that depends only on $\| fV \|_{L^1}$, $\text{supp
-  }V$ and $\| \varphi \|_{H^1}$. Substituting this into \eqref{endproof2}, we
+  }V$, and $\| \varphi \|_{H^1}$. Substituting this into \eqref{endproof2}, we
   obtain
   \[
     \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C e^{Kt} \|
@@ -2538,7 +2535,7 @@ For $T > 0$ set
     \frac{C_2}{N} e^{e^{K_2 t}},
   \]
   for some constants $C_2$ and $K_2$ depending only on $\| fV \|_{L^1}$,
-  $\text{supp} \ V$ and $\| \varphi \|_{H^2}$.
+  $\text{supp} \ V$, and $\| \varphi \|_{H^2}$.
 \end{proof}
 
 
