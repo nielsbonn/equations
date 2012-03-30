@@ -1460,18 +1460,9 @@ The first estimate is proved by expanding the time derivative as a series,
 \left(\partial_t e^{-B(t)} \right) e^{B(t)} = - \dot B(t) +
 \frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(n+1)!} \ad^n_B(\dot B),
 \ed
-and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:phdotregularity}.\\
+and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:kbounds}.\\
 For the second estimate, differentiate the summands individually (i.\,e. place a dot on the respective $f_{n,i}$) and then estimate all summands like before, now using lemma \ref{lm:deldelt}.
 \end{proof}
-
-\section{Estimates for the terms of $\partial_t \Lcal_N(t)$}
-In this section, we collect the estimates for all the terms of $\dot \Lcal_N(t)$.
-
-What is already done:\marginpar{overview of current status}\\
-The term $\partial_t ((\partial _t T^\ast)T)$ is bounded by $\ev{\Ncal+1}$ (see lemma in previous chapter).\\
-The time derivatives of the terms in lines \eqref{l7}, and \eqref{l10} through \eqref{l15} are bounded by $\Ncal^2/N$, $\Ncal$, $\Kcal$ and $\tilV$ (and as a consequence, by $\Ncal$ and $\Lcal$). (I'll type these estimates when I'm back. The method of proof is the same as in chapter \ref{ch:generatorestimates}, but easier because $a^\ast(\dot p_x) = \partial_t a^\ast(c_x)$ is regular while $a^\ast(c_x)$ is singular.)
-
-However, lots of regularity estimates are needed, and so far not proven (I think $\ph \in H^4$ shoudl be sufficient).
 
 \section{Estimating the number of fluctuations}
 \begin{lem}
@@ -2673,35 +2664,77 @@ For $T > 0$ set
 \end{proof}
 
 
-\subsection{Regularity of $\phdot$}
+\subsection{Regularity of $\phdot$ and $\phddot$}
 \begin{lem}[$L^2$-bound for $\phdot$]
 \label{lm:phdotregularity}
-Let $\ph$ be a solution of the modified Hartree equation. Then
+\begin{enumerate}
+ \item Let $\ph$ be a solution of the modified Hartree equation. Then there exists a constant $C$ independent of $N$ and $t$ such that
  \bd
-\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2.
+\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2 \leq C \norm{\ph}_{H^2}^2.
 \ed
-For $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, we have the bound
+\item Furthermore, $C$ can be chosen such that also
 \bd
-\norm{\dot k} \leq 4 \max\{R,a_0\} \norm{\ph}_{H^1} \left( \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2\right) \leq C \norm{\ph}_{H^2}^2,
+\norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2 \qquad \mbox{and} \qquad
+\norm{\Delta \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3
 \ed
-where $C$ is a constant independent of $N$ and $t$.
+\item
+and for the second time derivative
+\bd
+\norm{\phddot}_{L^2} \leq C \norm{\ph}_{H^4}^4.
+\ed
+\end{enumerate}
 \end{lem}
-\begin{proof} The modified Hartree equation reads
+\begin{proof}(i) The modified Hartree equation reads
 \bd
 i \phdot = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
 \ed
-It follows that
+Therefore
 \bd
 \norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}.
 \ed
 Now we calculate
 \begin{align*}
-& \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2} \\
+& \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}^2 \\
 & = \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
 & \leq \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \norm{\ph}_\infty^2 \int \di y\, N f_N V_N(x-y) \right\rvert^2 \\
 & \leq \norm{\ph}_{L^2}^2 \norm{\ph}_\infty^4 (8\pi a_0)^2.
 \end{align*}
-We now prove the bound for $\norm{\dot k}$ using Hardy's inequality.
+(ii)
+Applying the gradient $\nabla$ to the modified Hartree equation, the product rule yields
+\begin{align}
+i \nabla \phdot = - \nabla \Delta \ph & + \left( N f_N V_N \ast \lvert \ph \rvert^2 \right) \nabla \ph \label{eq:firstline}\\
+& + \left( N f_N \ast \cc{\ph} \nabla \ph \right) \ph \label{eq:secondline}\\
+& + \left( N f_N V_N \ast \cc{\nabla \ph} \ph \right) \ph. \label{eq:thirdline}
+\end{align}
+Clearly, $\norm{\nabla \Delta \ph}_{L^2} \leq \norm{\ph}_{H^3}$. Now for line \eqref{eq:firstline}, we have the estimate
+\begin{align*}
+\norm{\left( N f_N V_N \ast \lvert \ph \rvert^2 \right)\nabla \ph}_{L^2}^2 & = \int \di x \lvert \nabla \ph(x)\rvert^2 \lvert \int \di y N f_N V_N(y) \lvert\ph(x-y) \rvert^2\rvert^2\\
+& \leq \int \di x \lvert \nabla \ph(x)\rvert^2 \norm{\ph}_\infty^4 \lvert \int \di y N f_N V_N(y) \rvert^2 \\
+& = \norm{\nabla \ph}_{L^2}^2 \norm{\ph}_\infty^4 (8 \pi a_0)^2. 
+\end{align*}
+Similarly, we show that the $L^2$-norms of \eqref{eq:secondline} and \eqref{eq:thirdline} are bounded by $C \norm{\ph}_{H^2}^2 \norm{\ph}_{H^3}^2$. We then conclude that
+\bd
+\norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
+\ed
+The bound for $\norm{\Delta \phdot}_{L^2}$ is proven by the same strategy.
+
+(iii) \marginpar{to be typed}
+TODO
+\end{proof}
+
+\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$.
+\begin{enumerate}
+\item Then there exists a constant $C$ independent of $N$ and $t$ such that
+\bd
+\norm{\dot k} \leq 4 \max\{R,a_0\} \norm{\ph}_{H^1} \left( \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2\right) \leq C \norm{\ph}_{H^2}^2
+\ed
+\item and furthermore
+\bd
+\norm{\ddot k} \leq C \norm{\ph}_{H^4}^4.
+\ed
+\end{enumerate}
+\end{lem}
+\begin{proof} (i) We use Hardy's inequality to estimate
 \begin{align*}
 \norm{\dot k}^2 & = \int \di x\di y\, \left\lvert \frac{\di}{\di t} \left( -N w_N(x-y) \ph(x)\ph(y) \right) \right\rvert^2 \\
 & \leq 2 \int \di x\di y\, \lvert N w_N(x-y) \phdot(x) \ph(y) \rvert^2 + 2 \int \di x \di y\, \lvert N w_N(x-y) \ph(x) \phdot(y) \rvert^2 \\
@@ -2709,14 +2742,13 @@ We now prove the bound for $\norm{\dot k}$ using Hardy's inequality.
 & \leq 16 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \lvert \nabla_y \ph(y)\rvert^2 \\
 & \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2.
 \end{align*}
-Now use the estimate from the first part of the lemma to estimate $\norm{\phdot}_{L^2}^2$ and the proof is complete.
-\end{proof}
+Now use (i) from lemma \ref{lm:phdotregularity} to estimate $\norm{\phdot}_{L^2}^2$.
 
-\begin{lem}
-We need estimates for $\norm{\ddot k}$.\marginpar{TODO}
-\end{lem}
-\begin{proof}
-To prove this lemma, we need higher regularity (probably $H^4$) of $\ph$, because bounding $\ddot k$ needs $\norm{\phddot}_{L^2}$.  
+(ii) First, we use $\lvert N w_N(x-y) \rvert \leq \max \{R,a_0\} \lvert x-y\rvert^{-1}$ and Hardy's inequality to show
+\bd
+\norm{\ddot k} \leq C \norm{\phddot}_{L^2} + C \norm{\phdot}_{L^2} \norm{\nabla \phdot}_{L^2}.
+\ed
+Employing (ii) and (iii) from lemma \ref{lm:phdotregularity}, the proof is finished.
 \end{proof}
 
 
