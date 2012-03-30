@@ -2542,7 +2542,24 @@ For $T > 0$ set
 \subsection{$H^n$-regularity}
 
 
-\begin{proof}
+\begin{prp} \label{p:regn}
+  Let $\varphi \in H^n(\R^3)$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider a
+  solution $\varphi_t \in H^1(\R^3)$ of the nonlinear Hartree equation
+  \[
+    i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
+    \varphi_t
+  \]
+  with initial data $\varphi_0 = \varphi$. Then, there exist a real number $T
+  > 0$ and a constant $C$, which depend only on $\| V \|_{L^1}$, $\| \varphi
+  \|_{H^1}$, and $n$, such that
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C \| \varphi \|_{H^n} + C
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3.
+  \]
+\end{prp}
+
+
+\begin{proof}[Proof of Proposition \ref{p:regn}]
   Write
   \[
     \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
@@ -2557,8 +2574,8 @@ For $T > 0$ set
     \partial^{\alpha - \beta} \varphi_s.
   \]
   Here $\alpha$ is a three-dimensional multi-index of non-negative integers,
-  and we are using standard multi-index notation and conventions. According to
-  this we have $|\alpha| = \alpha_1 + \alpha_2 + \alpha_3$.
+  and we are using standard multi-index notation. The length of a multi-index
+  $\gamma$ is defined as $|\gamma| = \gamma_1 + \gamma_2 + \gamma_3$.
 
 
   The $L_t^\infty L_x^2$-norm of the above expression can be controlled using
@@ -2602,31 +2619,57 @@ For $T > 0$ set
   \[
     \| \partial^\gamma \varphi_t \|_{L^2} \le \| \varphi_t \|_{H^{|\gamma|}}.
   \]
+
+
   Now, consider a term that has a factor with derivative of highest order
   $|\alpha| - k$, where $k$ is an integer such that $0 \le k \le |\alpha| -
   2$, and let $\gamma_1$ and $\gamma_2$ be the multi-indexes in the
   derivatives of the other two factors in this term. Note that $|\gamma_1 +
-  \gamma_2|=k$ so that $|\gamma_1| \le k$ and $|\gamma_2| \le k$. Thus, using
+  \gamma_2|=k$ so that $|\gamma_1| \le k$ and $|\gamma_2| \le k$. Hence, using
   the above estimates to bound the factor with highest order derivative and
-  the other two factors, we conclude that the term that we are considering is
+  the other two factors, we conclude that the term under consideration is
   bounded by
   \begin{align*}
     & \apprle \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\gamma_1|+1}} \sup_{t
     \in [0,T]} \| \varphi_t \|_{H^{|\gamma_2|+1}} \sup_{t \in [0,T]} \|
     \varphi_t \|_{H^{|\alpha|-k}} \\
     & \le \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|k|+1}}^2 \sup_{t \in [0,T]}
-    \| \varphi_t \|_{H^{|\alpha|-k}}
+    \| \varphi_t \|_{H^{|\alpha|-k}}.
   \end{align*}
-  for $0 \le k \le |\alpha|-2$. Observe that by varying $k$ in this range, we
-  can estimate all possible terms in \eqref{Dphi}. In fact, it follows that
-  \begin{align*}
-    \sup_{t \in [0,T]} \| \partial^\alpha \varphi_t \|_{L^2} & \le \|
-    \partial^\alpha \varphi \|_{L^2} + C 4^{|\alpha|} \| V \|_{L^1} T^{1/2}
-    \times \\
-    & \quad \times \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^2 \sup_{t
-    \in [0,T]} \| \varphi_t \|_{H^{|\alpha|}} + \sup_{t \in [0,T]} \|
-    \varphi_t \|_{H^{|\alpha|-1}}^3 \Big].
-  \end{align*}
+  Observe that, by varying $k$ in the range $0 \le k \le |\alpha|-2$, we can
+  estimate all terms in \eqref{Dphi}. In fact, it follows that
+  \begin{equation} \label{dal}
+    \begin{split}
+      & \sup_{t \in [0,T]} \| \partial^\alpha \varphi_t \|_{L^2} \\
+      & \le \| \partial^\alpha \varphi \|_{L^2} + C_1 4^{|\alpha|} \| V
+      \|_{L^1} T^{1/2} \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^2
+      \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\alpha|}} + \sup_{t \in [0,T]}
+      \| \varphi_t \|_{H^{|\alpha|-1}}^3 \Big]
+    \end{split}
+  \end{equation}
+  for some universal constant $C_1$. By Corollary \ref{c:reg1}, there is a
+  constant $C_2$, depending only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$,
+  such that $\| \varphi_t \|_{H^1} \le C_2$. Furthermore, there are universal
+  constants $c$ and $C$, such that
+  \[
+    c \sum_{|\alpha| \le n} \| \partial^\alpha f \|_{L^2} \le \| f \|_{H^n}
+    \le C \sum_{|\alpha| \le n} \| \partial^\alpha f \|_{L^2}.
+  \]
+  Thus, by summing \eqref{dal} over $|\alpha| \le n$, we obtain
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C_1 \| \varphi \|_{H^n} + C_2
+    T^{1/2} 4^n n \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} + \sup_{t \in
+    [0,T]} \| \varphi_t \|_{H^{n-1}}^3 \Big]
+  \]
+  for some constants $C_1$ and $C_2$ as above. Therefore, by choosing $T > 0$
+  sufficiently small, but depending only on $\| V \|_{L^1}$, $\| \varphi
+  \|_{H^1}$, and $n$, we conclude that
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C_3 \| \varphi \|_{H^n} + C_3
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3,
+  \]
+  where $C_3$ is a constant that depends only on $\| V \|_{L^1}$, $\| \varphi
+  \|_{H^1}$, and $n$.
 \end{proof}
 
 
