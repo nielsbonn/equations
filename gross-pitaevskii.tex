@@ -7,7 +7,7 @@
 \usepackage{scrtime}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{dsfont,wasysym}
-%\usepackage{gitinfo}			% ENABLE FOR GITINFO (install package from CTAN). see also footer
+\usepackage{gitinfo}
 
 % Original header
 %\usepackage{scrpage2}
@@ -21,11 +21,11 @@
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\lfoot{{\footnotesize GP equation}}
-\cfoot{\thepage}
-\rfoot{{\footnotesize \LaTeX: \today, \thistime
-%\\ git commit: \gitAuthorIsoDate		% ENABLE FOR GITINFO
-}}
+%\lfoot{{\footnotesize GP equation}}
+\rfoot{Page \thepage}
+%\rfoot{{\footnotesize \LaTeX: \today, \thistime
+%\\ git commit: \gitAuthorIsoDate }}
+\lfoot{Commit \gitAbbrevHash \ on \gitCommitterIsoDate}
 
 % Set enumerate environment using roman counters
 \renewcommand{\theenumi}{{\rm (\roman{enumi})}}
