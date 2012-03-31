@@ -2694,35 +2694,48 @@ Therefore
 \ed
 Now we calculate
 \begin{align*}
-& \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}^2 \\
-& = \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
+\norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}^2 & = \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
 & \leq \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \norm{\ph}_\infty^2 \int \di y\, N f_N V_N(x-y) \right\rvert^2 \\
 & \leq \norm{\ph}_{L^2}^2 \norm{\ph}_\infty^4 (8\pi a_0)^2.
 \end{align*}
 (ii)
 Applying the gradient $\nabla$ to the modified Hartree equation, the product rule yields
 \begin{align}
-i \nabla \phdot = - \nabla \Delta \ph & + \left( N f_N V_N \ast \lvert \ph \rvert^2 \right) \nabla \ph \label{eq:firstline}\\
-& + \left( N f_N \ast \cc{\ph} \nabla \ph \right) \ph \label{eq:secondline}\\
-& + \left( N f_N V_N \ast \cc{\nabla \ph} \ph \right) \ph. \label{eq:thirdline}
+i \nabla \phdot & = - \nabla \Delta \ph + \left( N f_N V_N \ast \lvert \ph \rvert^2 \right) \nabla \ph \label{eq:firstline}\\
+& \quad + \left( N f_N \ast \cc{\ph} \nabla \ph \right) \ph + \left( N f_N V_N \ast \cc{\nabla \ph} \ph \right) \ph. \label{eq:secondline}
 \end{align}
 Clearly, $\norm{\nabla \Delta \ph}_{L^2} \leq \norm{\ph}_{H^3}$. Now for line \eqref{eq:firstline}, we have the estimate
 \begin{align*}
-\norm{\left( N f_N V_N \ast \lvert \ph \rvert^2 \right)\nabla \ph}_{L^2}^2 & = \int \di x \lvert \nabla \ph(x)\rvert^2 \lvert \int \di y N f_N V_N(y) \lvert\ph(x-y) \rvert^2\rvert^2\\
-& \leq \int \di x \lvert \nabla \ph(x)\rvert^2 \norm{\ph}_\infty^4 \lvert \int \di y N f_N V_N(y) \rvert^2 \\
+\norm{\left( N f_N V_N \ast \lvert \ph \rvert^2 \right)\nabla \ph}_{L^2}^2 & = \int \di x \lvert \nabla \ph(x)\rvert^2 \left\lvert \int \di y N f_N V_N(y) \lvert\ph(x-y) \rvert^2\right\rvert^2\\
+& \leq \int \di x \lvert \nabla \ph(x)\rvert^2 \norm{\ph}_\infty^4 \left\lvert \int \di y N f_N V_N(y) \right\rvert^2 \\
 & = \norm{\nabla \ph}_{L^2}^2 \norm{\ph}_\infty^4 (8 \pi a_0)^2. 
 \end{align*}
-Similarly, we show that the $L^2$-norms of \eqref{eq:secondline} and \eqref{eq:thirdline} are bounded by $C \norm{\ph}_{H^2}^2 \norm{\ph}_{H^3}^2$. We then conclude that
+Similarly, we show that the $L^2$-norms of the summands in line \eqref{eq:secondline} are both bounded by $C \norm{\ph}_{H^2}^2 \norm{\ph}_{H^3}^2$. We then conclude that
 \bd
 \norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
 \ed
 The bound for $\norm{\Delta \phdot}_{L^2}$ is proven by the same strategy.
 
-(iii) \marginpar{to be typed}
-TODO
+(iii) To prove that $\phddot$ is in $L^2$, we apply the time derivative $\partial_t$ (and multiply by $i$) to the modified Hartree equation and get
+\begin{align*}
+ii\phddot & = - \Delta i \phdot + \left( N f_N V_N \ast \cc{\ph}i \phdot \right) \ph \\
+& \quad + \left( N f_N V_N \ast \cc{(-i\phdot)} \ph \right) \ph + \left( N f_N V_N \ast \lvert\ph\rvert^2 \right) i\phdot.
+\end{align*}
+Now for $i\phdot$ we plug in the modified Hartree equation and arrive at
+\begin{align*}
+ii \phddot & = \Delta^2 \ph - \Delta \left( (N f_N V_N \ast \lvert \ph\rvert^2)\ph \right) + \left( N f_N V_N \ast \lvert \ph\rvert^2 \right)^2 \ph \\
+& + (N f_N V_N \ast \cc{\ph}(-\Delta \ph))\ph + 2 \left[ N f_N V_N \ast \left( \lvert \ph\rvert^2 (N f_N V_N \ast \lvert \ph\rvert^2) \right) \right] \ph \\
+& + (N f_N V_N \ast \cc{(-\Delta \ph)} \ph)\ph + \left( N f_N V_N \ast \lvert \ph \rvert^2 \right)(-\Delta \ph).
+\end{align*}
+The $L^2$-norms of the summands on the right hand side can be estimated by the same methods as in (i) and (ii), e.\,g.\ 
+\begin{align*}
+ \norm{\left( N f_N V_N \ast \lvert \ph\rvert^2 \right) \Delta \ph}^2 & = \int \di x \lvert \Delta \ph(x)\rvert^2 \left\lvert \int \di y\, N f_N V_N(y) \lvert \ph(x-y) \rvert^2 \right\rvert^2 \\
+& \leq \norm{\ph}_\infty^4 (8 \pi a_0)^2 \norm{\Delta \ph}_{L^2}^2 \leq C \norm{\ph}_{H^4}^6.
+\end{align*}
+(Actually, the $H^2$-norm would have been enough for this term, but we need the $H^4$-norm anyway for some of the other summands.)
 \end{proof}
 
-\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$.
+\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modfied Hartree equation.
 \begin{enumerate}
 \item Then there exists a constant $C$ independent of $N$ and $t$ such that
 \bd
