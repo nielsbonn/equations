@@ -2688,10 +2688,10 @@ For $T > 0$ set
  \bd
 \norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2 \leq C \norm{\ph}_{H^2}^2.
 \ed
-\item Furthermore, $C$ can be chosen such that also
+\item Furthermore, for $i, j \in \{1,2,3\}$, the constant $C$ can be chosen such that also
 \bd
-\norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2 \qquad \mbox{and} \qquad
-\norm{\Delta \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3
+\norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad
+\norm{\partial^i \partial^j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3
 \ed
 \item
 and for the second time derivative
@@ -2730,7 +2730,7 @@ Similarly, we show that the $L^2$-norms of the summands in line \eqref{eq:second
 \bd
 \norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
 \ed
-The bound for $\norm{\Delta \phdot}_{L^2}$ is proven by the same strategy.
+The bound for $\norm{\partial^i \partial_j \phdot}_{L^2}$ is proven by the same strategy.
 
 (iii) To prove that $\phddot$ is in $L^2$, we apply the time derivative $\partial_t$ (and multiply by $i$) to the modified Hartree equation and get
 \begin{align*}
