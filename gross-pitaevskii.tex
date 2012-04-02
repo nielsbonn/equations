@@ -758,6 +758,32 @@ and
 For $f_n = k$ or $f_n = \cc{k}$, we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C \lvert \ph(x) \rvert^2 \norm{\nabla \ph}^2$. For $f_n = \cc{\dot k}$, we use the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C\lvert \ph(x)\rvert^2 \norm{\nabla \phdot}^2 + C \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}^2$. Then use the Lemmata \ref{lm:phdotregularity} and \ref{lm:kbounds}.
 \end{proof}
 
+\begin{lem}
+Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modified Hartree equation. Then there exists a constant $C$ independent of $N$ and $t$ such that
+\begin{enumerate}
+ \item
+\bd
+\int \di x \di y \frac{1}{N} V_N(x-y) \lvert \dot k(x,y)\rvert^2 \leq C \norm{\ph}_{H^2}^4
+\ed 
+ \item
+\bd
+\int \di x\di y\, V_N(x-y) \lvert \dot r(x,y)\rvert^2 \leq \frac{C}{N} \norm{\ph}_{H^3}^4 \norm{\ph}_{H^2}^2
+\ed
+ \item
+\bd
+\int \di x\di y\frac{1}{N} V_N(x-y) \lvert \dot s(x,y)\rvert^2 \leq C \norm{\ph}_{H^2}^4 + \frac{C}{N^2} \norm{\ph}_{H^3}^4 \norm{\ph}_{H^2}^2.
+\ed
+\end{enumerate}
+Notice that for $\dot s$, an additional $1/N$ is required, because $s$ is more singular than $r$.
+\end{lem}
+\begin{proof} (iii) is a trivial corollary from (i) and (ii).
+
+(i) to be typed on tuesday.
+
+(ii) to be typed on tuesday.
+\end{proof}
+
+
 \section{The generator}
 Define
 \bd
