@@ -728,6 +728,19 @@ and
   This proves part \ref{sup} and completes the proof of the lemma.
 \end{proof}
 
+\begin{lem}
+ For $p$ and $s$ defined as above, the following estimates hold:
+\bd
+\norm{\dot p} \leq \norm{\dot k} \cosh(\norm{k}) \quad \mbox{and} \quad \norm{\dot s} \leq \norm{\dot k} \cosh(\norm{k}).
+\ed
+If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ independent of $N$ and $t$ such that
+\bd
+\norm{\dot p} \leq C \norm{\ph}_{H^2}^2 \quad \mbox{and} \quad \norm{\dot s} \leq C \norm{\ph}_{H^2}^2.
+\ed
+\end{lem}
+\begin{proof}
+ To prove this theorem, differentiate the summands of the series individually and make use of the estimate $\norm{fg}_{L^2} \leq \norm{f}_{L^2} \norm{g}_{L^2}$ for $f,g \in L^2(\Rbb^3\times \Rbb^3)$. Then employ the estimates $\norm{k} \leq C$ and $\norm{\dot k} \leq C \norm{\ph}_{H^2}^2$ (see Lemma \ref{lm:kbounds}).
+\end{proof}
 
 \section{The generator}
 Define
@@ -2668,7 +2681,7 @@ For $T > 0$ set
 
 
 \subsection{Regularity of $\phdot$ and $\phddot$}
-\begin{lem}[$L^2$-bound for $\phdot$]
+\begin{lem}
 \label{lm:phdotregularity}
 \begin{enumerate}
  \item Let $\ph$ be a solution of the modified Hartree equation. Then there exists a constant $C$ independent of $N$ and $t$ such that
