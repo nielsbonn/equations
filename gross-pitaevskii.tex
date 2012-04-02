@@ -729,17 +729,33 @@ and
 \end{proof}
 
 \begin{lem}
- For $p$ and $s$ defined as above, the following estimates hold:
+\begin{enumerate}
+\item For $p$ and $s$ defined as above, the following estimates hold:
 \bd
 \norm{\dot p} \leq \norm{\dot k} \cosh(\norm{k}) \quad \mbox{and} \quad \norm{\dot s} \leq \norm{\dot k} \cosh(\norm{k}).
 \ed
-If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ independent of $N$ and $t$ such that
+\item If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ independent of $N$ and $t$ such that
 \bd
-\norm{\dot p} \leq C \norm{\ph}_{H^2}^2 \quad \mbox{and} \quad \norm{\dot s} \leq C \norm{\ph}_{H^2}^2.
+\norm{\dot p} \leq C \norm{\ph}_{H^2}^2 \quad \mbox{and} \quad \norm{\dot s} \leq C \norm{\ph}_{H^2}^2
 \ed
+\item
+and
+\bd
+\sup_x \norm{\dot p_x}_{L^(\Rbb^3)} \leq C \norm{\ph}_{H^4}^3 \quad \mbox{and} \quad \sup_x \norm{\dot s_x} \leq C \norm{\ph}_{H^4}^3.
+\ed
+\end{enumerate}
 \end{lem}
-\begin{proof}
- To prove this theorem, differentiate the summands of the series individually and make use of the estimate $\norm{fg}_{L^2} \leq \norm{f}_{L^2} \norm{g}_{L^2}$ for $f,g \in L^2(\Rbb^3\times \Rbb^3)$. Then employ the estimates $\norm{k} \leq C$ and $\norm{\dot k} \leq C \norm{\ph}_{H^2}^2$ (see Lemma \ref{lm:kbounds}).
+\begin{proof} (i) Differentiate the summands of the series individually and make use of the estimate $\norm{fg}_{L^2} \leq \norm{f}_{L^2} \norm{g}_{L^2}$ for $f,g \in L^2(\Rbb^3\times \Rbb^3)$.
+
+(ii) Use (i) and employ the estimates $\norm{k} \leq C$ and $\norm{\dot k} \leq C \norm{\ph}_{H^2}^2$ (see Lemma \ref{lm:kbounds}).
+
+(iii) Notice that for functions $f_i \in L^2(\Rbb^3 \times \Rbb^3)$, $i=1,\dots n$, by Hoelder's inequality we have the estimate
+\begin{align*}
+\norm{\left[ f_1 f_2 \cdots f_n\right]_x}^2 & = \int \di y \left\lvert \int \di z_1 \cdots \di z_{n-1}\ f_1(y,z_1) f_2(z_1,z_2) \cdots f_n(z_{n-1},x) \right\rvert^2 \\
+& \leq \norm{f_1}^2 \norm{f_2}^2 \cdots \norm{f_{n-1}}^2 \int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 
+\end{align*}
+(notice that on the lhs $\norm{\cdot}= \norm{\cdot}_{L^2(\Rbb^3)}$, while on the rhs $\norm{\cdot} = \norm{\cdot}_{L^2(\Rbb^3\times\Rbb^3)}$).
+For $f_n = k$ or $f_n = \cc{k}$, we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C \lvert \ph(x) \rvert^2 \norm{\nabla \ph}^2$. For $f_n = \cc{\dot k}$, we use the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C\lvert \ph(x)\rvert^2 \norm{\nabla \phdot}^2 + C \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}^2$. Then use the Lemmata \ref{lm:phdotregularity} and \ref{lm:kbounds}.
 \end{proof}
 
 \section{The generator}
@@ -2691,10 +2707,11 @@ For $T > 0$ set
 \item Furthermore, for $i, j \in \{1,2,3\}$, the constant $C$ can be chosen such that also
 \bd
 \norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad
-\norm{\partial^i \partial^j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3
+\norm{\partial^i \partial^j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3,
 \ed
+especially $\norm{\ph}_\infty \leq C \norm{\ph}_{H^4}^3$.
 \item
-and for the second time derivative
+For the second time derivative we have an estimate
 \bd
 \norm{\phddot}_{L^2} \leq C \norm{\ph}_{H^4}^4.
 \ed
@@ -2730,7 +2747,7 @@ Similarly, we show that the $L^2$-norms of the summands in line \eqref{eq:second
 \bd
 \norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
 \ed
-The bound for $\norm{\partial^i \partial_j \phdot}_{L^2}$ is proven by the same strategy.
+The bound for $\norm{\partial^i \partial_j \phdot}_{L^2}$ is proven by the same strategy. Now the bound for $\norm{\ph}_\infty$ is a consequence of the fact that the $L^\infty$-norm can be estimated by the $H^2$-norm.
 
 (iii) To prove that $\phddot$ is in $L^2$, we apply the time derivative $\partial_t$ (and multiply by $i$) to the modified Hartree equation and get
 \begin{align*}
@@ -2748,7 +2765,7 @@ The $L^2$-norms of the summands on the right hand side can be estimated by the s
  \norm{\left( N f_N V_N \ast \lvert \ph\rvert^2 \right) \Delta \ph}^2 & = \int \di x \lvert \Delta \ph(x)\rvert^2 \left\lvert \int \di y\, N f_N V_N(y) \lvert \ph(x-y) \rvert^2 \right\rvert^2 \\
 & \leq \norm{\ph}_\infty^4 (8 \pi a_0)^2 \norm{\Delta \ph}_{L^2}^2 \leq C \norm{\ph}_{H^4}^6.
 \end{align*}
-(Actually, the $H^2$-norm would have been enough for this term, but we need the $H^4$-norm anyway for some of the other summands.)
+(Actually, the $H^2$-norm is enough for this term, but we need the $H^4$-norm anyway for some of the other summands.)
 \end{proof}
 
 \begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modfied Hartree equation.
