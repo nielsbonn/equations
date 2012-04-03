@@ -6,7 +6,7 @@
 \usepackage[color,notref,notcite]{showkeys}
 \usepackage{scrtime}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
-\usepackage{dsfont,wasysym}
+\usepackage{dsfont,wasysym,mathtools}
 \usepackage{gitinfo}
 
 % Original header
@@ -2608,6 +2608,18 @@ For $T > 0$ set
 \end{prp}
 
 
+\begin{prp} \label{p:regn}
+  Under the hypothesis of Proposition \ref{p:lregn}, there exist constants
+  $B_n$ and $K_n$, where $B_n$ depends only on $\| \varphi \|_{H^n}$, $\| V
+  \|_{L^1}$ and $n$, and $K_n$ depends only on $\| \varphi \|_{H^1}$, $\| V
+  \|_{L^1}$ and $n$, such that, for all $t \ge 0$,
+  \[
+    \| \varphi_t \|_{H^1} \le B_1 \qquad \text{and} \qquad \| \varphi_t
+    \|_{H^n} \le B_n e^{K_n t}.
+  \]
+\end{prp}
+
+
 \begin{proof}[Proof of Proposition \ref{p:lregn}]
   Write
   \[
@@ -2723,14 +2735,54 @@ For $T > 0$ set
 
 
 \begin{proof}[Proof of Proposition \ref{p:regn}]
-  Recall that $V \ge 0$. By conservation of mass and energy, and by
-  Proposition \ref{p:energy},
+  For simplicity, we will omit the dependence of the constants with respect to
+  $\| V \|_{L^1}$. Recall that $V \ge 0$. By conservation of mass and energy,
+  and by Proposition \ref{p:energy},
   \[
     \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
     \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \apprle \| \varphi
-    \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4 \eqqcolon B_1.
+    \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4 \eqqcolon B_1^2.
   \]
-  This proves the first estimate in the corollary.
+  This proves the first estimate in the proposition.
+
+
+  We now prove that $\| \varphi_t \|_{H^n} \le B_n e^{K_n t}$ by induction in
+  $n$. First observe that, from the above estimate, it follows trivially that
+  $\| \varphi_t \|_{H^1} \le B_1 e^{K_1 t}$ for some constants $B_1$ and $K_1$
+  that depend only on $\| \varphi \|_{H^1}$. This proves the desired estimate
+  for $n=1$.
+
+
+  To prove the induction step, suppose that $\| \varphi_t \|_{H^{n-1}} \le
+  B_{n-1} e^{K_{n-1} t}$, where $B_{n-1}$ is a constant that depends only on
+  $\| \varphi \|_{H^{n-1}}$ and $n-1$, and $K_{n-1}$ is a constant that
+  depends only on $\| \varphi \|_{H^1}$ and $n-1$. In view of Proposition
+  \ref{p:lregn}, for any $t > 0$, we can find an integer $j$ sufficiently
+  large, depending only on $\| \varphi_{(j-1)T_n} \|_{H^1}$ and $n$, such that
+  $0 < t/j < T_n$. Consequently,
+  \begin{align*}
+    \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T_n, jT_n]} \| \varphi_s
+    \|_{H^n} \\
+    & \le C_n \| \varphi_{(j-1)T_n} \|_{H^n} + C_n \sup_{s \in [(j-1)T_n,
+    jT_n]} \| \varphi_s \|_{H^{n-1}}^3 \\
+    & \le C_n \| \varphi_{(j-1)T_n} \|_{H^n} + C_n B_{n-1}^3 e^{3 K_{n-1} j
+    T_n},
+  \end{align*}
+  where $C_n$ is a constant that depends only on $\| \varphi_{(j-1)T_n}
+  \|_{H^1}$ and $n$. Now observe that, since $\| \varphi_{(j-1)T_n} \|_{H^1}
+  \le B_1$, the constants $T_n$ and $C_n$ can be chosen uniformly in time, and
+  thus we can iterate de above expression $j$ times to cover the interval
+  $[0,t]$ and obtain
+  \begin{align*}
+    \| \varphi_t \|_{H^n} & \le C_n^j \| \varphi \|_{H^n} + C_n B_n^3
+    \sum_{l=1}^j e^{3 K_{n-1} (j-l+1)T_n} \\
+    & \le (C_n^{2T_n^{-1}})^t \| \varphi \|_{H^n} + C_n B_{n-1}^3
+    \frac{2t}{T_n} e^{3 K_{n-1} t} \le B_n e^{K_n t},
+  \end{align*}
+  for some constant $B_n$ depending only on $\| V \|_{L^1}$, $\| \varphi
+  \|_{H^n}$ and $n$, and some constant $K_n$ depending only on $\| V
+  \|_{L^1}$, $\| \varphi \|_{H^1}$ and $n$. This completes the induction step
+  and the proof of the proposition.
 \end{proof}
 
 
