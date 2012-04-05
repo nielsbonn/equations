@@ -1632,6 +1632,7 @@ Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:
 
 
 \begin{prp}
+\label{prp:Nbound}
  $N$-independent bound on $\ev{\Ncal}$ by employing all the above and Gronwall. \marginpar{TODO}
 \end{prp}
 \begin{proof}
@@ -1640,19 +1641,34 @@ Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:
 
 
 \section{Main result}
-\begin{thm}
- Convergence of reduced density matrix for Bogoliubov state.
-\end{thm}
+\begin{lem}
+\label{lem:TrJ}
+Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J$ be a Hilbert-Schmidt operator (a one-particle observable). Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
+\bd
+\left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}_{HS} \left( \scal{U_t T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_t T^\ast_0 \Psi} \right)^{1/2},
+\ed
+where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)}(x;y) = d_N^2 \scal{e^{-it \Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x e^{-it \Hcal_N} P_N W_0 \Psi}$.
+
+Remark: $\ph$ needn't be a solution of the Hartree equation here.
+\end{lem}
+\begin{proof}
+to be typed asap.
+\end{proof}
 
 \begin{thm}
- Convergence of reduced density matrix for factorized initial state.
+Main result.
 \end{thm}
+\begin{proof}
+This theorem is proven by combining Lemma \ref{lem:TrJ}, Lemma \ref{lem:phNtoph} and Proposition \ref{prp:Nbound}. Notice that $d_N \leq TODO$.
+\end{proof}
 
 \begin{lem}
-\marginpar{might fit somewhere else better, if it's worth a lemma}
- Convergence of $\Tr \lvert \project{\ph} - \project{\varphi_t} \rvert$.
+\label{lem:phNtoph}
+ Convergence of $\Tr \lvert \project{\ph} - \project{\varphi_t} \rvert$ or something like that.
 \end{lem}
-
+\begin{proof}
+elementary.
+\end{proof}
 
 \section{A-priori estimates}
 
@@ -1675,7 +1691,6 @@ all $\psi \in \mathcal{F}$.
 
 
 \begin{lem} \label{l:ap}
-  \marginpar{could we have an explicit sentence here which says $\frac{1}{N}\ev{(\Ncal+2)^2} \leq C \ev{\Ncal+1}$, please? (where $C$ does not depend on $t$)}
   Let $U_t$ be the unitary evolution on $\mathcal{F}$ defined in (X).
   \begin{enumerate}
     \item \label{l:ap1} There exists a constant $C_1$, uniform in $N$ and $t$,
@@ -2139,6 +2154,15 @@ first.
   the lemma.
 \end{proof}
 
+\begin{cor}
+If $\Psi \in \fock$ with a constant $C_1$ such that $\scal{\Psi}{\left( \frac{1}{N}\Ncal^2+\Ncal \right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$, then there exists a constant $C_2$ such that
+\bd
+\frac{1}{N}\scal{U_t T^\ast_0 \Psi}{\Ncal^2 U_t T^\ast_0 \Psi} \leq C_2 \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi}.
+\ed
+\end{cor}
+\begin{proof}
+This is evident from Lemma \ref{l:ap} \ref{l:ap1} and Proposition \ref{p:TNT}.
+\end{proof}
 
 \section{Nonlinear Hartree and Gross-Pitaevskii equations}
 
