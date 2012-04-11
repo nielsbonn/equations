@@ -729,6 +729,7 @@ and
 \end{proof}
 
 \begin{lem}
+\label{lem:dottedests1}
 \begin{enumerate}
 \item For $p$ and $s$ defined as above, the following estimates hold:
 \bd
@@ -759,6 +760,7 @@ For $f_n = k$ or $f_n = \cc{k}$, we have the estimate $\int \di z_{n-1} \lvert f
 \end{proof}
 
 \begin{lem}
+\label{lem:dottedests2}
 Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modified Hartree equation. Then there exists a constant $C$ independent of $N$ and $t$ such that
 \begin{enumerate}
  \item
@@ -778,19 +780,108 @@ Notice that for $\dot s$, an additional $1/N$ is required, because $s$ is more s
 \end{lem}
 \begin{proof} (iii) is a trivial corollary from (i) and (ii).
 
-(i) to be typed asap. Niels
+(i) The calculation works as follows:
+\begin{align*}
+& \int \di x\di y \frac{1}{N}V_N(x-y) \lvert \dot k(x,y)\rvert^2 \\
+& = \int \di x\di y \frac{1}{N} V_N(x-y) \lvert -N w_N(x-y) \phdot(x) \ph(y) - N w_N(x-y) \ph(x) \phdot(y)\rvert^2 \\
+& \leq \frac{4}{N} \int \di x\di y V_N(x-y) \lvert N w_N(x-y) \rvert^2 \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
+& = 4 \int \di x \di y N^3V(N(x-y)) w(N(x-y))^2 \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
+& \leq 4 \norm{N^3 V(N(\cdot))w(N(\cdot))^2}_{L^1} \norm{\lvert\phdot\rvert^2}_{L^2} \norm{\lvert \ph\rvert^2}_{L^2}.
+\end{align*}
+In the last step, Young's inequality was used. Now by substituting $Nx = z$ and using $\lvert w(z)\rvert \leq 1$ we have
+\bd
+\norm{N^3 V(N(\cdot))w(N(\cdot))^2}_{L^1} = \int \di z V(z) w(z)^2 \leq \int \di z V(z) = b_0.
+\ed
+Furthermore, by Sobolev inequality and using the Lemma \ref{lm:phdotregularity} on regularity of $\phdot$
+\bd
+\norm{\lvert \phdot\rvert^2}_{L^2} = \norm{\phdot}_{L^4}^2 \leq C \norm{\phdot}_{H^1}^2 \leq C(\norm{\ph}_{H^2}^2 + \norm{\ph}_{H^3}^2)^2 \leq C \norm{\ph}_{H^3}^4.
+\ed
+Also by a Sobolev inequality $\norm{\lvert \ph\rvert^2}_{L^2} \leq C$.
 
-(ii) to be typed asap. Niels
+(ii) By induction in $n$, one first proves that for the concetanation of integral kernels $f_1, \dots f_n \in L^2(\Rbb^3\times\Rbb^3)$ the following estimate holds:
+\bd
+\lvert (f_1 \cdots f_N)(x,y)\rvert \leq \left( \int \di z \lvert f_1(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert f_n(x,y)\rvert^2\right)^{1/2} \norm{f_2} \cdots \norm{f_{n-1}}.
+\ed
+We now apply this to
+\begin{align*}
+& \lvert \dot r(x,y) \rvert = \lvert \sum_{n=1}^\infty \frac{1}{(2n+1)!} \partial_t \left(k(\cc k k)^n \right)(x,y)\rvert \\
+& \leq \sum_{n=1}^\infty \frac{1}{(2n+1)!} \left\lvert\left( \dot k(\cc k k)^n + \sum_{j=1}^{n-1} k(\cc k k)^{j-1}(\cc{\dot k}k + \cc k \dot k)(\cc k k)^{n-j} + k (\cc k k)^{n-1} \cc{\dot k} k + k(\cc{k}k)^{n-1}\cc{k}\dot k \right)(x,y)\right\rvert \\
+& \leq \left(\int \di z \lvert \dot k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!} \\
+& \quad + \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert \dot k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!} \\
+& \quad + \norm{\dot k} \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-2}}{(2n+1)!} (2n-1).
+\end{align*}
+As $\norm{k}$ can be bounded by a constant $C$ independent of $N$ and $t$, so can the series appearing here (clearly, the series are summable). Using Hardy's inequality, one can easily show that
+\bd
+\int \di z \lvert k(x,z)\rvert^2 \leq \lvert \ph(x)\rvert^2 C
+\ed
+and
+\bd
+\int \di z \lvert \dot k(x,z)\rvert^2 \leq \lvert \ph(x)\rvert^2 C \norm{\nabla \phdot}_{L^2}^2 + \lvert \phdot(x)\rvert^2 C \norm{\nabla \ph}_{L^2}^2.
+\ed
+The estimate for $\lvert \dot r(x,y)\rvert$ is now used to conclude
+\begin{align*}
+& \int \di x \di y V_N(x-y) \lvert \dot r(x,y)\rvert^2 \\
+& \leq C \int \di x \di y V_N(x-y) \int \di z_1 \lvert \dot k(x,z_1)\rvert^2 \int \di z_2 \lvert k(z_2,y)\rvert^2 \\
+& \quad + C \norm{\ph}_{H^2}^4 \int \di x \di y V_N(x-y) \int \di z_1 \lvert k(x,z_1)\rvert^2 \int \di z_2 \lvert k(z_2,y)\rvert^2 \\
+& \leq C \norm{\nabla \phdot}_{L^2}^2 \int \di x \di y V_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
+& \quad + C \norm{\nabla \ph}_{L^2}^2 \int \di x \di y V_N(x-y) \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
+& \quad + C \norm{\ph}_{H^2}^4 \int \di x\ di y V_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y)\rvert^2.
+\end{align*}
+In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phdotregularity} to conclude the proof.
 \end{proof}
 
 \begin{lem}
+\label{lem:dottedests3}
  We have the following estimates:
 \bd
 \norm{\nabla_1 \dot p} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad \norm{\nabla _1 \dot r} \leq C \norm{\ph}_{H^3}^2.
 \ed
 \end{lem}
 \begin{proof}
- to be typed asap. Niels
+ This is an application of Hoelder's inequality for convolution of integral kernels
+\be{hoelder}
+\norm{f_1 \cdots f_n} \leq \norm{f_1} \cdot \norm{f_n}.
+\ee
+It has to be noticed, that $\norm{\nabla_1 k} \sim N^{1/2}$, which is not desired. Therefore, we always have to keep $\norm{\nabla_1 k \cc k}$, which is of order $N^0$ according to Lemma \ref{l:kernels} \ref{k}.
+
+We start with $\nabla_1 \dot p$ (the proof for $\nabla_1 \dot r$ works similarly and will be omitted):
+\bd
+\nabla_1 \dot p = \frac{\partial}{\partial_t} \left( \sum_{n=1}^\infty (\nabla_1 k)\cc k (k \cc k)^{n-1} \frac{1}{(2n)!} \right).
+\ed
+Notice that $\nabla_1$ acts only on the first $k$. After using the product rule for the time derivative and \eqr{hoelder} we have the estimate
+\bd
+\norm{\nabla_1 \dot p} \leq C \left(\norm{\nabla_1 \dot k \cc k} + \norm{\nabla_1 k \cc{\dot k}} + \norm{\nabla_1 k \cc{k}}\norm{\dot k} \right),
+\ed
+where summable series depending on $\norm{k}$ where absorbed in $C$.
+
+We are left with the task of giving an estimate for $\nabla_1 \dot k \cc k$ (an estimate for $\nabla_1 k \cc{\dot k}$ is proven in the same way). We start by applying the product rule:
+\begin{align}
+& \norm{\nabla_1 \dot k \cc k}^2 \nonumber \\
+& = \int \di x \di y \bigg\lvert \int \nabla_x\left( N w_N(x-z) \phdot(x) \ph(z) + N w_N(x-z) \ph(x) \phdot(z) \right) \times \nonumber \\
+& \qquad\qquad\qquad\qquad \times N w_N(z-y) \cc{\ph(z)} \cc{\ph(y)} \di z \bigg\rvert^2 \nonumber \\
+& \leq 4 \int \di x \di y \left\lvert \int N \nabla w_N(x-z) \phdot(x) \lvert\ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk1} \\
+& \quad + 4 \int \di x \di y \left\lvert N w_N(x-z) \nabla_x \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk2}\\
+& \quad + 4 \int \di x \di y \left\lvert N \nabla w_N(x-z) \ph(x) \phdot(z) \cc{\ph(z)} \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk3}\\
+& \quad + 4 \int \di x \di y \left\lvert N w_N(x-z) \nabla \ph(x) \phdot(z)\cc{\ph(z)} \cc{\ph(y)} N w_N(z-y) \right\rvert^2. \label{eq:kk4}
+\end{align}
+
+We now prove estimates for these four terms. For the summands \eqref{eq:kk2} and \eqref{eq:kk4}, this is the usual application of Hardy's inequality; both terms are bounded by $C \norm{\nabla \phdot}_{L^2}^2$.
+For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity. We will show the proof for \eqref{eq:kk1}; the proof for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.\\
+\underline{Bound for \eqref{eq:kk1}}:\\
+\begin{align*}
+\eqref{eq:kk1} = & \int \di x \di y \left\lvert \int N \nabla w_N(x-z) \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \\
+& \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert x-z\rvert^2} \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} \frac{1}{\lvert z-y\rvert} \right\rvert^2 \\
+& = C \int \di x \di y \di z_1 \di z_2 \frac{\lvert\phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 -y\rvert \lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \\
+& = C \int \di x \lvert\phdot(x)\rvert^2 \int \di z_1 \di z_2 \frac{\lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \int \di y \frac{\lvert \ph(y)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 - y\rvert}
+\end{align*}
+The integral w.\,r.\ to $y$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2 \leq C$ using Hoelder's inequality and then Hardy's inequality. So we get
+\bd
+\eqref{eq:kk1} \leq C \int \di x \lvert\phdot(x)\rvert^2 \int \di z_1 \frac{\lvert \ph(z_1)\rvert^2 }{\lvert x-z_1\rvert^2 } \int \di z_2 \frac{\lvert \ph(z_2)\rvert^2}{\lvert x-z_2\rvert^2}
+\ed
+and by Hardy's inequality, this is bounded by
+\bd
+\leq C \int \di x \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 \norm{\nabla \ph}_{L^2}^2 \leq C \norm{\phdot}_{L^2}^2.
+\ed
 \end{proof}
 
 
@@ -1586,13 +1677,28 @@ As $\ev{\Kcal} \geq 0$ and $\ev{\tilV} \geq 0$, this lemma is an easy corollary 
 \end{proof}
 
 \begin{lem}
-\label{lem:ldotbounds} There exists a constant $C$ independent of $N$ and $t$ such that
+\label{lem:ldotbounds} There exists a constant $C$ independent of $N$ and $t$ such that for all $\psi$
  \bd
   \lvert \scal{\psi}{\dot \Lcal_N(t) \psi} \rvert \leq C \norm{\ph}_{H^4}^8 \scal{\psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal + 1 + \Kcal + \tilV \right)\psi}.
  \ed
 \end{lem}
 \begin{proof}
-This is certainly the most terribble clumsy ugly proof ever. to be typed ASAP. Niels
+Combining Lemma \ref{lm:timederivative} and Lemma \ref{lm:kbounds}, we obtain the estimate
+\bd
+\lvert\scal{\psi}{\partial_t\left((\partial_t T^\ast_t) T_t \right)\psi}\rvert \leq C \norm{\ph}_{H^4}^4 \ev{\Ncal+1}.
+\ed
+(We make no effort to optimize the appearance of $H^n$ norms, just take $n$ and the power as high as you like.)
+
+The term $\scal{\psi}{\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t )\psi}$ can be estimated by the same methods which where already used for estimating $\scal{\psi}{ T^\ast_t \Lcal_N^{(0)}(t) T_t \psi}$, however, additionally the following objects are used:
+$\norm{\nabla_1 \dot p}$, $\norm{\nabla_1 \dot r}$, $\norm{\dot s}$, $\norm{\dot p}$, $\sup_x \norm{\dot p_x}$, $\sup_x \norm{\dot s_x}$, $\int \di x\di y V_N(x-y) \lvert \dot r(x,y)\rvert^2$, $\int \di x \di y V_N(x-y) \lvert \dot s(x,y)\rvert^2/N$ and different norms of $\phdot$. These quantities are then estimated using the Lemmata \ref{lem:dottedests1}, \ref{lem:dottedests2} and \ref{lem:dottedests3}.
+
+(Remarkt: In $\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t)$ there are four times as many terms as in $T^\ast_t \Lcal_N^{(0)}(t) T_t$ because of the product rule, but many of them are easy to estimate because $\partial_t a^\ast(c_x) = a^\ast(\dot p_x)$ is regular while $a^\ast(c_x)$ is singular.)
+
+We arrive at
+\bd
+\lvert \scal{\psi}{\dot \Lcal_N(t)\psi} \rvert \leq C \norm{\ph}_{H^4}^8 \scal{\psi}{\left(\frac{\Ncal^2}{N}+\Ncal+1+\Kcal+\tilV \right)\psi}.
+\ed
+(Again, we made no effort to optimize the appearance of $H^n$ norms.)
 \end{proof}
 
 
@@ -1647,12 +1753,52 @@ Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}
 \bd
 \left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}_{HS} \left( \scal{U_t T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_t T^\ast_0 \Psi} \right)^{1/2},
 \ed
-where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)}(x;y) = d_N^2 \scal{e^{-it \Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x e^{-it \Hcal_N} P_N W_0 \Psi}$.
+where $d_N = \norm{P_N W_0\Psi}^{-1}$ and 
+\bd
+\gamma_{N,t}^{(1)}(x;y) = \frac{\scal{e^{-it \Hcal_N} d_N P_N W_0 \Psi}{a^\ast_y a_x e^{-it \Hcal_N} d_N P_N W_0 \Psi}}{\scal{d_N P_N W_0 \Psi}{\Ncal d_N P_N W_0 \Psi}}.
+\ed
+The operator $P_N$ is the projection on the $N$-particle subspace of Fock space.
 
 Remark: $\ph$ needn't be a solution of the Hartree equation here.
 \end{lem}
 \begin{proof}
-to be typed asap.
+In the first step we use that $P_N$ commutes with $e^{-it \Hcal_N}$ (because $\Hcal_N$ conserves the particle number) and that $P_N$ commutes with $a^\ast_y a_x$, so because of $P_N^2 = P_N$, one of the projections $P_N$ can be eliminated. After that, we insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}.
+\begin{align}
+& \Tr\left(J\gamma_{N,t}^{(1)}\right) \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}P_N W_0 \Psi} J(x,y) \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}W_0 \Psi} J(x,y) \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_y + \sqrt{N} \ph(y) \right)\left(a_x + \sqrt{N} \ph(x) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} J(x,y) \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:quad}\\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:lin1} \\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_x W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi}. \label{eq:gamma}
+\end{align}
+The last line, \eqref{eq:gamma}, is the expectation value of the factorized state:
+\begin{align*}
+& \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{P_N W_0 \Psi}{W_0 \Psi} \\
+& = \int \di x\di y J(x,y) \cc{\ph(y)} \ph(x) = \Tr\left( J\project{\ph} \right).
+\end{align*}
+Summands \eqref{eq:quad} - \eqref{eq:lin2} have to be estimated. We start with line \eqref{eq:lin1}:
+\begin{align*}
+& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \right\rvert \\
+& \leq \frac{d_N^2}{N} \int \di x \sqrt{N} \lvert \ph(x)\rvert \norm{W^\ast_t e^{-it \Hcal_N} P_N W_0 \Psi} \norm{ a^\ast(J(x,\cdot))W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \\
+& \leq \frac{d_N}{\sqrt{N}} \int \di x \lvert \ph(x)\rvert \norm{J(x,\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2}W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
+& \leq \frac{d_N}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{\textrm{HS}} \left( \scal{W^\ast_t e^{-it \Hcal_N}W_0 \Psi}{(\Ncal+1)W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \right)^{1/2} \\
+& \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left(C \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi} \right)^{1/2}.
+\end{align*}
+Line \eqref{eq:lin2} can be estimated in the same way as line \eqref{eq:lin1}.
+
+Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{Operator}} \norm{\Ncal \zeta}$ for all $\zeta \in D(\Ncal) \subset \fock$. We now estimate line \eqref{eq:quad}.
+\begin{align*}
+& \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \\
+& = \frac{d_N^2}{N} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\di\Gamma(J) W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
+& \leq \frac{d_N^2}{N} \underbrace{\norm{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}}_{=\norm{P_N W_0 \Psi}= d_N^{-1}} \norm{\di\Gamma(J)W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \\
+& \leq \frac{d_N}{N} \norm{J}_{\textrm{HS}} \norm{\Ncal W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
+& \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{1}{N} \scal{W^\ast_t e^{-it\Hcal_N}W_0 \Psi}{\Ncal^2 W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \right)^{1/2} \\
+& \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{C}{N} \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)^2 U_t T^\ast_0 \Psi} \right)^{1/2}.
+\end{align*}
+In the last step, Proposition \ref{p:TNT} (\ref{TN2T}) has been used. Now we use the assumption on $\Psi$ and Corollary \ref{cor:N2} to finish the proof.
 \end{proof}
 
 \begin{thm}
@@ -1664,10 +1810,19 @@ This theorem is proven by combining Lemma \ref{lem:TrJ}, Lemma \ref{lem:phNtoph}
 
 \begin{lem}
 \label{lem:phNtoph}
- Convergence of $\Tr \lvert \project{\ph} - \project{\varphi_t} \rvert$ or something like that.
+Let $J$ be a Hilbert-Schmidt operator. Then there exists a constant $C$ independent of $N$ and $t$ such that
+\bd
+\left\lvert \Tr\left(J \project{\ph}\right) - \Tr\left(J \project{\varphi_t}\right) \right\rvert \leq \norm{J}_{\textrm{HS}} \frac{C}{N} e^{e^{Kt}}.
+\ed
 \end{lem}
 \begin{proof}
-elementary.
+Using Hoelder's inequality, we calculate that
+\begin{align*}
+& \left\lvert \int \di x \di y J(x,y) \cc{\ph(y)} \ph(x) - \int \di x\di y J(x,y) \cc{\varphi_t(y)} \varphi_t(x) \right\rvert \\ 
+& \leq \int \di x \di y \lvert J(x,y)\rvert \lvert \ph(y) - \varphi_t(y)\rvert \lvert \ph(x)\rvert + \int \di x \di y \lvert J(x,y) \rvert \lvert \varphi_t(y)\rvert \lvert \ph(x)-\varphi_t(x)\rvert \\
+& \leq \norm{\ph}_{L^2} \norm{J}_{\textrm{HS}} \norm{\ph - \varphi_t}_{L^2} + \norm{\varphi_t}_{L^2} \norm{J}_{\textrm{HS}} \norm{\ph - \varphi_t}_{L^2}. 
+\end{align*}
+The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} = 1$ and, by Lemma \ref{lem:phitN2phit}, $\norm{\ph - \varphi_t}_{L^2} \leq C e^{e^{KT}}/N$.
 \end{proof}
 
 \section{A-priori estimates}
@@ -2155,6 +2310,7 @@ first.
 \end{proof}
 
 \begin{cor}
+\label{cor:N2}
 If $\Psi \in \fock$ with a constant $C_1$ such that $\scal{\Psi}{\left( \frac{1}{N}\Ncal^2+\Ncal \right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$, then there exists a constant $C_2$ such that
 \bd
 \frac{1}{N}\scal{U_t T^\ast_0 \Psi}{\Ncal^2 U_t T^\ast_0 \Psi} \leq C_2 \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi}.
@@ -2497,10 +2653,11 @@ For $T > 0$ set
 \end{proof}
 
 
-\subsection{$\varphi_t^{(N)}$ converges to $\varphi_t$ in $L^2$}
+\subsection{$\ph$ converges to $\varphi_t$ in $L^2$}
 
 
 \begin{lem}
+\label{lem:phitN2phit}
   Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that $f
   \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N > 0$,
   consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear Hartree
