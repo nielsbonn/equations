@@ -9,13 +9,6 @@
 \usepackage{dsfont,wasysym,mathtools}
 \usepackage{gitinfo}
 
-% Original header
-%\usepackage{scrpage2}
-%\ihead{Gross-Pitaevskii Equation}
-%\chead{Page: \thepage}
-%\ohead{Version: \today, \thistime}
-%\pagestyle{scrheadings}
-
 % How about this footer?
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -184,11 +177,11 @@ $\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
 The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
 \psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
 \[
-  \Hcal_N^{(n)} = \sum_{j=1}^n \Delta_{x_j} + \sum_{i<j}^n V_N(x_i - x_j),
+  \Hcal_N^{(n)} = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{i<j}^n V_N(x_i - x_j) = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{j=1}^n \sum_{i=1}^{j-1} V_N(x_i - x_j),
 \]
-where $V_N(x) = N^2 V(Nx)$ with $V \in C_c^\infty(\R^3)$. By definition, the
-Hamiltonian $\Hcal_N$ leaves sectors of $\mathcal{F}$ with a fixed number of
-particles invariant.
+where $V_N(x) = N^2 V(Nx)$ with $V \in C_c^\infty(\R^3)$. We assume that $V$ is non-negative and spherically symmetric. By definition, the
+Hamiltonian $\Hcal_N$ leaves sectors of $\fock$ with a fixed number of
+particles invariant and $[\Hcal_N,\Ncal] = 0$.
 
 
 Using the distributions $a_x^*$ and $a_x$, we can express the operators $\N$
@@ -230,6 +223,7 @@ and
 \ee
 \end{lem}
 
+A remark on notation: We use the symbol $C$ throughout the paper for constants which might differ in value, but which are always independent of $N$ and of time $t$.
 
 \section{Weyl operator and coherent states}
 
@@ -238,11 +232,7 @@ For $f \in L^2(\R^3)$, define the Weyl operator on $\mathcal{F}$ as
 \[
   W(f) = e^{a^*(f) - a(f)}.
 \]
-The coherent state $\psi(f) \in \mathcal{F}$ with one-particle wave function
-$f$ is defined as
-\[
-  \psi(f) = W(f) \Omega.
-\]
+States $W(f)\Omega$ are called coherent states.
 
 
 In the following lemma we collect some well-known properties of Weyl operators
@@ -298,7 +288,7 @@ and coherent states.
 \section{Zero-energy scattering equation}
 
 
-Consider $V \in C_c^\infty(\R^3)$, and let $f$ be the solution of the
+Let $f$ be the solution of the
 zero-energy scattering equation
 \[
   \left( -\Delta + \frac{1}{2} V \right) f = 0
@@ -383,9 +373,9 @@ $|x| \ge R/N$.
 
 
 Let $f(x,y)$ be a function of two variables. To simplify the notation we write
-\[
+\be{no1}
   f_y(x) = f(x,y)
-\]
+\ee
 so that
 \[
   a(f_y) = a(f(\,\cdot\,,y)) \qquad \text{and} \qquad a^*(f_y) =
@@ -409,7 +399,7 @@ $\mathcal{F}$ as
   B(k) = \frac{1}{2} \int dxdy \, (k(x,y) a_x^* a_y^* - \overline{k(x,y)} a_x
   a_y)
 \]
-and
+and (cf.\ \cite{GMM2010})
 \[
   T(k) = e^{B(k)}.
 \]
@@ -418,16 +408,16 @@ and
 \begin{lem}[Bogoliubov transformation] \label{l:bt}
   Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_1 k \in L^2(\R^3 \times
   \R^3)$.
-  \begin{enumerate}
-    \item \label{l:bt1} The operator $T(k)$ is unitary on $\mathcal{F}$ and
+ 
+  The operator $T(k)$ is unitary on $\mathcal{F}$ and
       \[
         T(k)^* = T(k)^{-1} = T(-k).
       \]
-    \item \label{l:bt2} We have
-      \[
+  The creation and annihilation operators transform as
+      \be{no4}
         T(k)^* a_y T(k) = a(c_y) + a^*(s_y) \qquad \text{and} \qquad T(k)^*
         a_y^* T(k) = a^*(c_y) + a(s_y)
-      \]
+      \ee
       with
       \begin{alignat*}{2}
         c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
@@ -448,27 +438,10 @@ and
         \| s \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_1 s \|_{L^2}
         & \le 2 e^{1+\| k \|_{L^2}} \| \nabla_1 k \|_{L^2}.
       \end{alignat*}
-    \item \label{l:bt3} It follows from \ref{l:bt2} that, for $f \in
-      L^2(\R^3)$,
-      \[
-        T(k)^* a(f) T(k) = a(Cf) + a^*(S\overline{f}) \qquad \text{and} \qquad
-        T(k)^* a^*(f) T(k) = a^*(Cf) + a(S\overline{f}),
-      \]
-      where $C$ and $S$ are integral operators on $L^2(\R^3)$, with integral
-      kernels $c$ and $s$, respectively. Moreover, if we write $C = I + P$,
-      where $I$ is the identity operator, and $P$ has integral kernel $p$,
-      then
-      \begin{alignat*}{2}
-        \| P \|_{HS} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla P \|_{HS} &
-        \le 2^{-1} e^{1+ \| k \|_{L^2}} \| \nabla_1 k \overline{k} \|_{L^2},
-        \\
-        \| S \|_{HS} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla S \|_{HS} &
-        \le 2e^{1+\| k \|_{L^2}} \| \nabla_1 k \|_{L^2},
-      \end{alignat*}
-      where $\| \, \cdot \, \|_{HS}$ is the Hilbert-Schmidt norm for operators
-      on $L^2(\R^3)$.
-  \end{enumerate}
 \end{lem}
+\begin{rem}
+Notice that $c$ and $s$ are defined by series like those of the hyperbolic cosine respectively the hyperbolic sine. 
+\end{rem}
 
 
 \begin{lem} \label{l:kernels}
@@ -488,10 +461,10 @@ and
       \]
     \item \label{kr} For almost all $x,y \in \R^3$,
       \[
-        |k(x,y)| < N |\varphi(x)| |\varphi(y)|, \qquad |r(x,y)| \le e^{C \|
+        |k(x,y)| \leq N |\varphi(x)| |\varphi(y)|, \qquad |r(x,y)| \le e^{C \|
         \varphi \|_{H^1}^2} |\varphi(x)| |\varphi(y)|.
       \] 
-    \item \label{sup} Let $p$ and $s$ be the integral kernels in Lemma
+    \item \label{sup} Let $p$ and $s$ be the integral kernels defined in Lemma
       \ref{l:bt}, and suppose further that $\varphi \in H^2(\R^3)$. Then,
       \[
         \sup_{x \in \R^3} \, \norm{p_x}_{L^2} \apprle e^{C \| \varphi
@@ -499,6 +472,7 @@ and
         \norm{s_x}_{L^2} \apprle e^{C \| \varphi \|_{H^1}^2}
         \norm{\varphi}_{H^2}.
       \]
+(Notice that in the whole paper, we use $\sup_x$ as a short-hand for $\operatorname{esssup}_{x\in \Rbb^3}$. In accordance with \eqr{no1}, our notation has to be read as $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$.)
   \end{enumerate}
 \end{lem}
 
@@ -508,11 +482,11 @@ and
   zero-energy scattering equation as in Lemma \ref{l:w}. Then, for almost all
   $x,y \in \R^3$,
   \begin{align*}
-    \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 & \le C \| \nabla \varphi
+    \norm{N w_N(x-\cdot)\varphi(\cdot)}_{L^2}^2 & = \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 \le C \| \nabla \varphi
     \|_{L^2}^2, \\
-    \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2 & \le C \| \nabla \varphi
+    \norm{N w_N(x-\cdot)w_N(\cdot - y)\varphi(\cdot)}_{L^2}^2 & = \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2 \le C \| \nabla \varphi
     \|_{L^2}^2, \\
-    \int dx dy \, N^2 |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 & \le
+    \norm{N \nabla w_N(x-y)\varphi(x)\varphi(y)}_{L^2(\di x\di y)}^2 & =  \int dx dy \, N^2 |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 \le
     C N \| \varphi \|_{H^1}^2,
   \end{align*}
   where $C$ is a constant, uniform in $N$, that depends only on the unscaled
@@ -521,16 +495,11 @@ and
 
 
 \begin{proof}[Proof of Proposition \ref{p:wphi}]
-  Using Lemma \ref{l:w}\ref{l:w3}, and the operator inequality $-4 \Delta \ge
-  |x|^{-2}$ on $L^2(\R^3)$, we find that
-  \begin{align*}
-    \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 & \le C_1^2 \int dz \, |x-z|^{-2}
-    |\varphi(z)|^2 \\
-    & = C_1^2 \langle \varphi(\,\cdot\,+x), |\,\cdot\,|^{-2}
-    \varphi(\,\cdot\,+x) \rangle_{L^2} \\
-    & \le -4 C_1^2 \langle \varphi(\,\cdot\,+x), \Delta \varphi(\,\cdot\,+x)
-    \rangle_{L^2} = 4 C_1^2 \| \nabla \varphi \|_{L^2}^2,
-  \end{align*}
+  Using Lemma \ref{l:w}\ref{l:w3} and Hardy's inequality we find that
+  \bd
+    \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2  \le C_1^2 \int dz \, |x-z|^{-2}
+    |\varphi(z)|^2 \leq 4 C_1^2 \| \nabla \varphi \|_{L^2}^2,
+  \ed
   where $C_1 = \max\{a_0, R\}$ is a constant from Lemma \ref{l:w}. This proves
   the first estimate.
 
@@ -560,12 +529,12 @@ and
 
 
 \begin{proof}[Proof of Lemma \ref{l:bt}]
-  \ref{l:bt1} The operator $B(k)$ is unbounded, densely defined, and
+  The operator $B(k)$ is unbounded, densely defined, and
   anti-self-adjoint. Hence, by the spectral theorem, the unitary operator
   $T(k) = e^{B(k)}$ is well-defined and $T(k)^* = T(k)^{-1} = T(-k)$.
 
 
-  \ref{l:bt2} Let $\chi$ be the characteristic function, and consider a real
+  Let $\chi$ be the characteristic function, and consider a real
   number $M > 0$. We give a proof of the formula on the subspace $\chi(\N \le
   M) \mathcal{F}$, and then we indicate how to extend it to the whole
   $\mathcal{F}$. First, note that $B(k)$ and $a(f)$ are bounded operators on
@@ -620,18 +589,13 @@ and
     \| \nabla_1 s \|_{L^2} & \le 2 e^{1+ \| k \|_{L^2}} \| \nabla_1 k
     \|_{L^2}.
   \end{align*}
-  This proves part \ref{l:bt2}.
-
-
-  \ref{l:bt3} Recall that the Hilbert-Schmidt norm of an operator is equal to
-  the $L^2$-norm of its integral kernel. Then part \ref{l:bt3} is just a
-  restatement of part \ref{l:bt2}.
+The proof is now complete.
 \end{proof}
 
 
 \begin{proof}[Proof of Lemma \ref{l:kernels}]
-  \ref{k} We will repeteadly apply Proposition \ref{p:wphi}, Sobolev's
-  inequality, Leibinz' rule, and triangle inequality. We begin with
+  \ref{k} We will repeatedly apply Proposition \ref{p:wphi}, Sobolev's
+  inequality, Leibniz' rule, and triangle inequality. We begin with
   \[
     \| k \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, N^2 w_N(x-y)^2
     |\varphi(y)|^2 \le C \| \varphi \|_{L^2}^2 \| \nabla \varphi \|_{L^2}^2
@@ -648,7 +612,7 @@ and
   \[
     \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
   \]
-  with
+  with \marginpar{I think the J-estimate is non-trivial? more details maybe? cf. estimate for \eqref{eq:kk1}.}
   \[
     \| I \|_{L^2}^2 = \int dx \, |\nabla \varphi(x)|^2 \int dy \,
     |\varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
@@ -668,9 +632,9 @@ and
   This completes the proof of part \ref{k}.
 
 
-  \ref{kr} From Lemma \ref{l:w}\ref{l:w1}, it follows that $w_N < 1$. Hence,
+  \ref{kr} From Lemma \ref{l:w}\ref{l:w1}, it follows that $w_N \leq 1$. Hence,
   \[
-    |k(x,y)| = N w_N(x-y) |\varphi(x)| |\varphi(y)| < N |\varphi(x)|
+    |k(x,y)| = N w_N(x-y) |\varphi(x)| |\varphi(y)| \leq N |\varphi(x)|
     |\varphi(y)|.
   \]
   This proves the first estimate in \ref{kr}.
@@ -730,9 +694,9 @@ and
 
 \begin{lem}
 \label{lem:dottedests1}
+Let $p$ and $s$ be the integral kernels defined in Lemma \ref{l:bt}. Then, the following estimates hold:
 \begin{enumerate}
-\item For $p$ and $s$ defined as above, the following estimates hold:
-\bd
+\item \bd
 \norm{\dot p} \leq \norm{\dot k} \cosh(\norm{k}) \quad \mbox{and} \quad \norm{\dot s} \leq \norm{\dot k} \cosh(\norm{k}).
 \ed
 \item If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ independent of $N$ and $t$ such that
@@ -742,7 +706,7 @@ and
 \item
 and
 \bd
-\sup_x \norm{\dot p_x}_{L^(\Rbb^3)} \leq C \norm{\ph}_{H^4}^3 \quad \mbox{and} \quad \sup_x \norm{\dot s_x} \leq C \norm{\ph}_{H^4}^3.
+\sup_x \norm{\dot p_x}_{L^2} \leq C \norm{\ph}_{H^4}^3 \quad \mbox{and} \quad \sup_x \norm{\dot s_x}_{L^2} \leq C \norm{\ph}_{H^4}^3.
 \ed
 \end{enumerate}
 \end{lem}
@@ -756,7 +720,7 @@ and
 & \leq \norm{f_1}^2 \norm{f_2}^2 \cdots \norm{f_{n-1}}^2 \int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 
 \end{align*}
 (notice that on the lhs $\norm{\cdot}= \norm{\cdot}_{L^2(\Rbb^3)}$, while on the rhs $\norm{\cdot} = \norm{\cdot}_{L^2(\Rbb^3\times\Rbb^3)}$).
-For $f_n = k$ or $f_n = \cc{k}$, we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C \lvert \ph(x) \rvert^2 \norm{\nabla \ph}^2$. For $f_n = \cc{\dot k}$, we use the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C\lvert \ph(x)\rvert^2 \norm{\nabla \phdot}^2 + C \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}^2$. Then use the Lemmata \ref{lm:phdotregularity} and \ref{lm:kbounds}.
+For $f_n = k$ or $f_n = \cc{k}$, by Hardy's inequality we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C \lvert \ph(x) \rvert^2 \norm{\nabla \ph}^2$. For $f_n = \cc{\dot k}$, again by Hardy's inequality we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C\lvert \ph(x)\rvert^2 \norm{\nabla \phdot}^2 + C \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}^2$. Then use the Lemmata \ref{lm:phdotregularity} and \ref{lm:kbounds} and the fact that $\norm{\ph}_{H^1} \leq C$ by Corollary \ref{c:regn}.
 \end{proof}
 
 \begin{lem}
@@ -765,7 +729,7 @@ Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modif
 \begin{enumerate}
  \item
 \bd
-\int \di x \di y \frac{1}{N} V_N(x-y) \lvert \dot k(x,y)\rvert^2 \leq C \norm{\ph}_{H^2}^4
+\int \di x \di y \frac{1}{N} V_N(x-y) \lvert \dot k(x,y)\rvert^2 \leq C \norm{\ph}_{H^3}^4
 \ed 
  \item
 \bd
@@ -773,10 +737,10 @@ Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modif
 \ed
  \item
 \bd
-\int \di x\di y\frac{1}{N} V_N(x-y) \lvert \dot s(x,y)\rvert^2 \leq C \norm{\ph}_{H^2}^4 + \frac{C}{N^2} \norm{\ph}_{H^3}^4 \norm{\ph}_{H^2}^2.
+\int \di x\di y\frac{1}{N} V_N(x-y) \lvert \dot s(x,y)\rvert^2 \leq C \norm{\ph}_{H^3}^4 + \frac{C}{N^2} \norm{\ph}_{H^3}^4 \norm{\ph}_{H^2}^2.
 \ed
 \end{enumerate}
-Notice that for $\dot s$, an additional $1/N$ is required, because $s$ is more singular than $r$.
+Notice that in (i) and (iii) compared to (ii) an additional $1/N$ is required because $s$ is more singular than $r$.
 \end{lem}
 \begin{proof} (iii) is a trivial corollary from (i) and (ii).
 
@@ -790,27 +754,29 @@ Notice that for $\dot s$, an additional $1/N$ is required, because $s$ is more s
 \end{align*}
 In the last step, Young's inequality was used. Now by substituting $Nx = z$ and using $\lvert w(z)\rvert \leq 1$ we have
 \bd
-\norm{N^3 V(N(\cdot))w(N(\cdot))^2}_{L^1} = \int \di z V(z) w(z)^2 \leq \int \di z V(z) = b_0.
+\norm{N^3 V(N(\cdot))w(N(\cdot))^2}_{L^1} = \int \di x N^3 V(Nx)w(Nx)^2 = \int \di z V(z) w(z)^2 \leq \int \di z V(z) = b_0.
 \ed
-Furthermore, by Sobolev inequality and using the Lemma \ref{lm:phdotregularity} on regularity of $\phdot$
+Furthermore, by Sobolev inequality and using the Lemma \ref{lm:phdotregularity} on regularity of $\phdot$ we get
 \bd
 \norm{\lvert \phdot\rvert^2}_{L^2} = \norm{\phdot}_{L^4}^2 \leq C \norm{\phdot}_{H^1}^2 \leq C(\norm{\ph}_{H^2}^2 + \norm{\ph}_{H^3}^2)^2 \leq C \norm{\ph}_{H^3}^4.
 \ed
-Also by a Sobolev inequality $\norm{\lvert \ph\rvert^2}_{L^2} \leq C$.
+Also by a Sobolev inequality $\norm{\lvert \ph\rvert^2}_{L^2} \leq C$ because $\norm{\ph}_{H^1} \leq C$.
 
 (ii) By induction in $n$, one first proves that for the concetanation of integral kernels $f_1, \dots f_n \in L^2(\Rbb^3\times\Rbb^3)$ the following estimate holds:
 \bd
-\lvert (f_1 \cdots f_N)(x,y)\rvert \leq \left( \int \di z \lvert f_1(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert f_n(x,y)\rvert^2\right)^{1/2} \norm{f_2} \cdots \norm{f_{n-1}}.
+\lvert (f_1 \cdots f_N)(x,y)\rvert \leq \left( \int \di z \lvert f_1(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert f_n(z,y)\rvert^2\right)^{1/2} \norm{f_2} \cdots \norm{f_{n-1}}.
 \ed
 We now apply this to
-\begin{align*}
-& \lvert \dot r(x,y) \rvert = \lvert \sum_{n=1}^\infty \frac{1}{(2n+1)!} \partial_t \left(k(\cc k k)^n \right)(x,y)\rvert \\
-& \leq \sum_{n=1}^\infty \frac{1}{(2n+1)!} \left\lvert\left( \dot k(\cc k k)^n + \sum_{j=1}^{n-1} k(\cc k k)^{j-1}(\cc{\dot k}k + \cc k \dot k)(\cc k k)^{n-j} + k (\cc k k)^{n-1} \cc{\dot k} k + k(\cc{k}k)^{n-1}\cc{k}\dot k \right)(x,y)\right\rvert \\
+\be{no2}
+\begin{split}
+& \lvert \dot r(x,y) \rvert = \left\lvert \sum_{n=1}^\infty \frac{1}{(2n+1)!} \partial_t \left(k(\cc k k)^n \right)(x,y)\right\rvert \\
+& \leq \sum_{n=1}^\infty \frac{1}{(2n+1)!} \bigg\lvert\Big( \dot k(\cc k k)^n + \sum_{j=1}^{n-1} k(\cc k k)^{j-1}(\cc{\dot k}k + \cc k \dot k)(\cc k k)^{n-j} + k (\cc k k)^{n-1} \cc{\dot k} k + k(\cc{k}k)^{n-1}\cc{k}\dot k \Big)(x,y)\bigg\rvert \\
 & \leq \left(\int \di z \lvert \dot k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!} \\
-& \quad + \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert \dot k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!} \\
-& \quad + \norm{\dot k} \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-2}}{(2n+1)!} (2n-1).
-\end{align*}
-As $\norm{k}$ can be bounded by a constant $C$ independent of $N$ and $t$, so can the series appearing here (clearly, the series are summable). Using Hardy's inequality, one can easily show that
+& \quad + \norm{\dot k} \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-2}}{(2n+1)!} (2n-1) \\
+& \quad + \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert \dot k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!}.
+\end{split}
+\ee
+As $\norm{k}$ can be bounded by a constant $C$ independent of $N$ and $t$, so can the series appearing here (clearly, the series are summable). From Lemma \ref{lm:kbounds} we know that $\norm{\dot k} \leq C \norm{\ph}_{H^2}^2$. Using Hardy's inequality, one can easily show that
 \bd
 \int \di z \lvert k(x,z)\rvert^2 \leq \lvert \ph(x)\rvert^2 C
 \ed
@@ -818,14 +784,14 @@ and
 \bd
 \int \di z \lvert \dot k(x,z)\rvert^2 \leq \lvert \ph(x)\rvert^2 C \norm{\nabla \phdot}_{L^2}^2 + \lvert \phdot(x)\rvert^2 C \norm{\nabla \ph}_{L^2}^2.
 \ed
-The estimate for $\lvert \dot r(x,y)\rvert$ is now used to conclude
+These estimates and the estimate \eqr{no2} for $\lvert \dot r(x,y)\rvert$ are now used to conclude
 \begin{align*}
 & \int \di x \di y V_N(x-y) \lvert \dot r(x,y)\rvert^2 \\
 & \leq C \int \di x \di y V_N(x-y) \int \di z_1 \lvert \dot k(x,z_1)\rvert^2 \int \di z_2 \lvert k(z_2,y)\rvert^2 \\
 & \quad + C \norm{\ph}_{H^2}^4 \int \di x \di y V_N(x-y) \int \di z_1 \lvert k(x,z_1)\rvert^2 \int \di z_2 \lvert k(z_2,y)\rvert^2 \\
 & \leq C \norm{\nabla \phdot}_{L^2}^2 \int \di x \di y V_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
 & \quad + C \norm{\nabla \ph}_{L^2}^2 \int \di x \di y V_N(x-y) \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
-& \quad + C \norm{\ph}_{H^2}^4 \int \di x\ di y V_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y)\rvert^2.
+& \quad + C \norm{\ph}_{H^2}^4 \int \di x \di y V_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y)\rvert^2.
 \end{align*}
 In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phdotregularity} to conclude the proof.
 \end{proof}
@@ -840,11 +806,11 @@ In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phd
 \begin{proof}
  This is an application of Hoelder's inequality for convolution of integral kernels
 \be{hoelder}
-\norm{f_1 \cdots f_n} \leq \norm{f_1} \cdot \norm{f_n}.
+\norm{f_1 \cdots f_n} \leq \norm{f_1} \cdots \norm{f_n}.
 \ee
 It has to be noticed, that $\norm{\nabla_1 k} \sim N^{1/2}$, which is not desired. Therefore, we always have to keep $\norm{\nabla_1 k \cc k}$, which is of order $N^0$ according to Lemma \ref{l:kernels} \ref{k}.
 
-We start with $\nabla_1 \dot p$ (the proof for $\nabla_1 \dot r$ works similarly and will be omitted):
+Estimate for $\nabla_1 \dot p$ (the proof for $\nabla_1 \dot r$ works similarly and will be omitted):
 \bd
 \nabla_1 \dot p = \frac{\partial}{\partial_t} \left( \sum_{n=1}^\infty (\nabla_1 k)\cc k (k \cc k)^{n-1} \frac{1}{(2n)!} \right).
 \ed
@@ -852,7 +818,7 @@ Notice that $\nabla_1$ acts only on the first $k$. After using the product rule 
 \bd
 \norm{\nabla_1 \dot p} \leq C \left(\norm{\nabla_1 \dot k \cc k} + \norm{\nabla_1 k \cc{\dot k}} + \norm{\nabla_1 k \cc{k}}\norm{\dot k} \right),
 \ed
-where summable series depending on $\norm{k}$ where absorbed in $C$.
+where summable series depending on $\norm{k}$ where absorbed in $C$ because $\norm{k} \leq C$.
 
 We are left with the task of giving an estimate for $\nabla_1 \dot k \cc k$ (an estimate for $\nabla_1 k \cc{\dot k}$ is proven in the same way). We start by applying the product rule:
 \begin{align}
@@ -866,26 +832,30 @@ We are left with the task of giving an estimate for $\nabla_1 \dot k \cc k$ (an 
 \end{align}
 
 We now prove estimates for these four terms. For the summands \eqref{eq:kk2} and \eqref{eq:kk4}, this is the usual application of Hardy's inequality; both terms are bounded by $C \norm{\nabla \phdot}_{L^2}^2$.
-For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity. We will show the proof for \eqref{eq:kk1}; the proof for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.\\
+For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity than $w_N$. We will show the proof for \eqref{eq:kk1}; the proof for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.\\
 \underline{Bound for \eqref{eq:kk1}}:\\
 \begin{align*}
-\eqref{eq:kk1} = & \int \di x \di y \left\lvert \int N \nabla w_N(x-z) \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \\
-& \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert x-z\rvert^2} \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} \frac{1}{\lvert z-y\rvert} \right\rvert^2 \\
+\eqref{eq:kk1} & \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert x-z\rvert^2} \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} \frac{1}{\lvert z-y\rvert} \right\rvert^2 \\
 & = C \int \di x \di y \di z_1 \di z_2 \frac{\lvert\phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 -y\rvert \lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \\
 & = C \int \di x \lvert\phdot(x)\rvert^2 \int \di z_1 \di z_2 \frac{\lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \int \di y \frac{\lvert \ph(y)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 - y\rvert}
 \end{align*}
-The integral w.\,r.\ to $y$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2 \leq C$ using Hoelder's inequality and then Hardy's inequality. So we get
+The integral w.\,r.\ to $y$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2$ using Hoelder's inequality and then Hardy's inequality. Using $\norm{\nabla \ph}_{L^2}^2 \leq C$ we get
 \bd
 \eqref{eq:kk1} \leq C \int \di x \lvert\phdot(x)\rvert^2 \int \di z_1 \frac{\lvert \ph(z_1)\rvert^2 }{\lvert x-z_1\rvert^2 } \int \di z_2 \frac{\lvert \ph(z_2)\rvert^2}{\lvert x-z_2\rvert^2}
 \ed
 and by Hardy's inequality, this is bounded by
 \bd
-\leq C \int \di x \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 \norm{\nabla \ph}_{L^2}^2 \leq C \norm{\phdot}_{L^2}^2.
+\leq C \int \di x \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 \norm{\nabla \ph}_{L^2}^2 \leq C \norm{\phdot}_{L^2}^2. \qedhere
 \ed
 \end{proof}
 
 
 \section{The generator}
+We use the short-hand $T_t = T(k)$ with
+\bd
+k(x,y) = - N w_N(x-y) \ph(x) \ph(y),
+\ed
+where $\ph$ is a solution of the modified Hartree equation. We also write $W_t = W(\sqrt{N}\ph)$.
 Define
 \bd
 U_N(t) := T^\ast_t W^\ast_t e^{-it \Hcal_N} W_0 T_0.
@@ -900,27 +870,28 @@ We calculate that
 		& =: (i \partial_t T^*_t) T_t + T^*_t \Lcal^{(0)}_N(t) T_t
 \end{align*}
 where
-\begin{align*}
-& \Lcal^{(0)}_N(t) = \Kcal + \Vcal_N \\
-		& + N^{1/2} \left(  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right) + \hc  \right) \\
-		& + N^0	    \left(  \frac{1}{2}\int \di x \di y\, NV_N(x-y)\left( \cc{\ph(x)} \cc{\ph(y)} a_y a_x + \hc \right) \right) \\
-		& + N^0	    \left(  \int \di x \di y\, NV_N(x-y)\left( \lvert \ph(x) \rvert^2 a^*_y a_y + \cc{\ph(x)} \ph(y) a^*_y a_x \right) \right) \\
-		& + N^{-1/2}\left(  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right) \\
-		& + N b(N,t),
-\end{align*}
-with a phase (which, like all phases, will be dropped from now on without any further comment)
-\bd
-b(N,t) = \norm{\nabla \ph}_{L^2}^2 - \Im \scal{\ph}{\phdot} + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y) \rvert^2.
-\ed
-Here we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation
+\be{no3}
+\begin{split}
+\Lcal^{(0)}_N(t) & = \Kcal + \Vcal_N \\
+		& \quad + N^{1/2} \left(  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right) + \hc  \right) \\
+		& \quad + N^0	    \left(  \frac{1}{2}\int \di x \di y\, NV_N(x-y)\left( \cc{\ph(x)} \cc{\ph(y)} a_y a_x + \hc \right) \right) \\
+		& \quad + N^0	    \left(  \int \di x \di y\, NV_N(x-y)\left( \lvert \ph(x) \rvert^2 a^*_y a_y + \cc{\ph(x)} \ph(y) a^*_y a_x \right) \right) \\
+		& \quad + N^{-1/2}\left(  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right) \\
+		& \quad + N b(N,t),
+\end{split}
+\ee
+with a phase $b(N,t)$ which, like all phases, will be dropped from now on without any further comment.
+
+In \eqr{no3} we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation
 \bd
 i\partial_t \ph = -\Delta \ph + \left(f_N N V_N \ast \lvert \ph \rvert^2 \right) \ph.
 \ed
-Compare \cite{RS2009}, but notice that due to the factor $f_N$ in the Hartree equation, in our case the cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ and ensures further cancelation with the cubic terms. This cancelation is revealed through the Bogoliubov transformation, to be calculated now.
+Compare \cite{RS2009}, but notice that due to the factor $f_N$ in the Hartree equation, in our case the cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ in the Gross-Pitaevskii equation and ensures further cancelation with the cubic terms (see below). This cancelation is revealed through the Bogoliubov transformation, to be calculated now.
 
-We now identify cancellations between linear terms stemming from the transformation of linear terms and linear terms stemming from normal-ordering transformed cubic operators:
+We now identify cancellations between linear terms stemming from the transformation of linear terms and linear terms stemming from normal-ordering the transformation of cubic terms
 \begin{align*}
-& T^*_t \Lcal^{(0)}_N(t) T_t = \int \di x\, T^*_t a^*_x T_t \bigg[   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
+T^*_t \Lcal^{(0)}_N(t) T_t \\
+= \int \di x\, T^*_t a^*_x T_t \bigg[ &   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
 & + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
 & + N^{1/2} \ph(x) \int \di y\, w_N N V_N(x-y) \lvert \ph(y) \rvert^2 \tagg{linearterm} \\
 & + \frac{1}{2} \int \di y\, NV_N(x-y)  \ph(x) \ph(y)  T^*_t a^*_y T_t \\
@@ -928,7 +899,7 @@ We now identify cancellations between linear terms stemming from the transformat
 & + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} T^*_t a_x a_y T_t  \bigg]\tagg{cubicterm} \\
 & + \hc
 \end{align*}
-Between the term \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and plugging in $c = \delta + p$ and $s = k + r$, we find that the linear term is cancelled up to two remainder terms (the $N^{1/2}$-term is completely cancelled, i.\,e.\ line \eqr{linearterm}). Result:
+Between the term \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and plugging in $c = \delta + p$ and $s = k + r$, we find that the linear term is cancelled up to two remainder terms (the $N^{1/2}$-term, line \eqr{linearterm}, is completely cancelled). Result:
 \begin{align*}
 & T^*_t \Lcal^{(0)}_N(t) T_t = \int \di x\, T^*_t a^*_x T_t \bigg[   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
 & + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
@@ -938,7 +909,7 @@ Between the term \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and
 & \qquad \qquad  a^*(s_x) a^*(s_y) + a^*(s_x) a(c_y)  + a^*(s_y) a(c_x) + a(c_x) a(c_y)  \bigg)  \bigg] \\
 & + \hc
 \end{align*}
-Now we apply Lemma \ref{l:bt} everywhere and expand all the terms, normal order all terms, and observe that many terms appear twice (maybe in the hermitian conjugate or with $x$ and $y$ interchanged):
+Now we apply the Bogoliubov transform \eqr{no4} everywhere, multiply out all the terms and normal order all terms. To simplify the expression a bit, notice that many terms appear twice, e.\,g.\ in the hermitian conjugate or with $x$ and $y$ interchanged:
 \begin{align*}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
 & \frac{1}{2} \int \di x\, \left[ a^*(c_x) a(-\Delta_x c_x) + \boxed{2 a^*(c_x) a^*(-\Delta_x s_x)} + a^*(-\Delta_x s_x) a(s_x) \right] \tagg{cancellation_kinetic} \\
@@ -961,9 +932,9 @@ Now we apply Lemma \ref{l:bt} everywhere and expand all the terms, normal order 
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y} \\
 					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
 \end{align*}
-We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scattering} appears. There are however some (more regular) remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator.
+We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scattering} appears. There are however some more regular remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator.
 
-Then the final result for the generator is:
+Our final result for the generator is:
 \begin{align}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \nonumber \\ 
 & \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \label{l7}\\
@@ -989,30 +960,7 @@ Then the final result for the generator is:
 &+ \hc
 \end{align}
 
-\begin{rem}[This is the punch line of the paper!]The cancellations enable us to give the necessary estimates for all terms, see chapter \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, the best estimates with which the authors were able to come up with were (focusing on the most singular contributions):\\
-\underline{for \eqref{eq:cancellation_kinetic}}
-\bd
-\scal{\psi}{\int \di x\, a^\ast(c_x) a^\ast(-\Delta_x s_x) \psi}
-= \int \di x\, \scal{\nabla_x a_x \psi}{a^\ast(\nabla_x s_x)} + \mbox{reg.} 
-\leq \ev{\Kcal} + \norm{\nabla_x s}^2 \ev{\Ncal+1} + \mbox{reg.}, 
-\ed
-where $\norm{\nabla_x s}^2 = \mathcal{O}(N^1)$.\\
-\underline{for \eqref{eq:cancellation_normalorder}}
-\begin{align*}
-& \scal{\psi}{\frac{1}{2}\int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y) \scal{c_y}{s_x}\psi} \\
-& \leq \frac{1}{2} \int \di x\di y\, V_N(x-y) \lvert k(y,x)\rvert \lvert \scal{a(c_y)a(c_x)\psi}{\psi} \rvert + \mbox{reg.} \\
-& \leq \frac{1}{2} \int \di x\di y\, V_N(x-y) N\lvert \ph(x)\rvert \lvert \ph(x)\rvert \norm{a(c_y)a(c_x)\psi} \norm{\psi} + \mbox{reg.} \\
-& \leq 2 \varepsilon \ev{\tilV} + N \frac{1}{2}\int \di x\di y\, NV_N(x-y) \lvert\ph(x)\rvert^2 \lvert \ph(y)\rvert^2 \norm{\psi}^2 \frac{1}{\varepsilon}  + \mbox{reg.},
-\end{align*}
-where the second term is just a number, but of order $N^1$. (One could add a constant to $\Lcal_N(t)$ which compensates the term here, but this won't help for $[\Lcal_N(t),\Ncal]$, because constant drop from the commutator.)\\
-\underline{for \eqref{eq:cancellation_standard}}
-\begin{align*}
-& \scal{\psi}{\frac{1}{2}\int \di x\di y\, NV_N(x-y) \ph(x)\ph(y) a^\ast(c_x) a^\ast(c_y) \psi} \\
-& \leq 2 \varepsilon \ev{\tilV} + N \frac{1}{2}\int \di x\di y\, NV_N(x-y) \lvert\ph(x)\rvert^2 \lvert \ph(y)\rvert^2 \norm{\psi}^2 \frac{1}{\varepsilon},
-\end{align*}
-same problem as the previous estimate.
-
-In lemma \ref{lem:lncommutatorbound}, an upper bound for $\ev{[\Lcal_N(t),\Ncal]}$ of order $N^1$ would ruin the application of Gronwall's lemma. \marginpar{even though we add $\Lcal$ before applying Gronwall?}
+\begin{rem}The cancellations enable us to give the necessary estimates for all terms, see chapter \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, there would be contributions of order $N^1$.
 \end{rem}
 
 \section{Estimates for the terms of the generator}
@@ -1057,14 +1005,16 @@ We now have the following list of estimates for all terms of the generator.\newl
 \leq & \frac{1}{2} C \norm{\ph}_{H^1} \norm{\ph}_{H^2} \ev{\Ncal+1} \\
 \leq & C \norm{\ph}_{H^2} \ev{\Ncal+1}
 \end{align*}
-where $\norm{Nw_N(x-\cdot)\ph(\cdot)}_{L^2} \leq C\norm{\nabla \ph}_{L^2}$ (rhs independent of $x$) was used, which is a consequence of lemma \ref{l:w} and Hardy's inequality.\\
+where $\norm{Nw_N(x-\cdot)\ph(\cdot)}_{L^2} \leq C\norm{\nabla \ph}_{L^2}$ was used.\\
 \estlist{8}{2}
 For this estimate, it is useful to know that
-\begin{align*}
- & \int \di x\, \norm{\nabla_x a(c_x)\psi}^2 \leq 2 \int \di x\, \norm{\nabla_x a_x \psi}^2 + 2\int \di x\, \norm{a(\nabla_x p_x)\psi}^2 \\
- \leq & 2\ev{\Kcal} + 2\int \di x\, \norm{\nabla_x p_x}^2 \norm{\Ncal^{1/2}\psi}^2 = 2\ev{\Kcal}+ 2\norm{\nabla_x p}^2 \ev{\Ncal}.
-\end{align*}
-Using this (and integration by parts), we get
+\begin{equation} \label{eq:bound1B}                                     
+\begin{split}
+ & \scal{\psi}{\frac{1}{2}\int \di x a^\ast(c_x) a(-\Delta_x c_x)\psi} = \int \di x\, \norm{\nabla_x a(c_x)\psi}^2 \leq 2 \int \di x\, \norm{\nabla_x a_x \psi}^2 + 2\int \di x\, \norm{a(\nabla_x p_x)\psi}^2 \\
+ & \leq 2\ev{\Kcal} + 2\int \di x\, \norm{\nabla_x p_x}^2 \norm{\Ncal^{1/2}\psi}^2 = 2\ev{\Kcal}+ 2\norm{\nabla_x p}^2 \ev{\Ncal} \leq C\ev{\Kcal + \Ncal}.
+\end{split}
+\end{equation}
+Using \eqref{eq:bound1B} and integration by parts we get
 \begin{align*}
  & \lvert \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) \int \di y\, (-\Delta_x r(y,x))\psi} \rvert \\
 = & \lvert \scal{\psi}{\frac{1}{2}\int \di x\, \nabla_x a^\ast(c_x) \int \di y\, a^\ast_y \nabla_x r(y,x) \psi}\rvert \\
@@ -1074,7 +1024,7 @@ Using this (and integration by parts), we get
 \leq & C \left( \varepsilon \ev{\Kcal} + (\varepsilon+\frac{1}{\varepsilon})\ev{\Ncal+1} \right).
 \end{align*}
 \estlist{9}{1}
-For this term we prove to different estimates. First notive that
+First notice that
 \begin{align*}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} = \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(\nabla_x c_x)a(\nabla_x c_x)\psi} \\
 = & \scal{\psi}{\frac{1}{2}\int \di x \left( \nabla_x a^\ast_x + a^\ast(\nabla_x p_x) \right)\left(  \nabla_x a_x + a(\nabla_x p_x) \right) \psi} \\
@@ -1082,9 +1032,8 @@ For this term we prove to different estimates. First notive that
 a_x \psi}{a(\nabla_x p_x)\psi} \\
 + & \frac{1}{2}\int \di x\, \scal{a(\nabla_x p_x)\psi}{\nabla_x a_x \psi} + \frac{1}{2}\int \di x\, \norm{a(\nabla_x p_x)\psi}^2.
 \end{align*}
-The first estimate we get from this (leaving away the last summand, which is positive) is
+Leaving away the last summand, which is positive, we get
 \begin{equation}
-\tag{A}
 \label{eq:bound1A}
 \begin{split}
  \ev{\Kcal} & \leq \scal{\psi}{\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} + 2\int \di x\, \sqrt{\varepsilon} \norm{\nabla_x a_x \psi} \frac{1}{\sqrt{\varepsilon}} \norm{a(\nabla_x p_x)\psi} \\
@@ -1093,23 +1042,13 @@ The first estimate we get from this (leaving away the last summand, which is pos
 \end{split}
 \end{equation}
 where the term of the generator appears on the rhs.\\
-For the second estimate, we proceed as follows:
-\begin{equation}
-\tag{B}
-\label{eq:bound1B}
-\begin{split}
- & \scal{\psi}{\frac{1}{2} \int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} \\
-\leq & \frac{1}{2}\ev{\Kcal} + \left( \ev{\Kcal} + \norm{\nabla_x p}^2 \ev{\Ncal}\right) + \frac{1}{2}\norm{\nabla_x p}^2 \ev{\Ncal} \\
-\leq & C\left( \ev{\Kcal} + \ev{\Ncal} \right).
-\end{split}
-\end{equation}
 \estlist{9}{2}
 First, notice that, using the product rule, integration by parts and the fact that $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$, we have
 \begin{align*}
  a(\nabla_x s_x) & = \cc{\ph(x)} a(-Nw_N(x-\cdot)\nabla\ph(\cdot)) + \cc{\ph(x)}\,a\left(\nabla(-N w_N(x-\cdot)\ph(\cdot))\right) \\
  & + \cc{\nabla_x \ph(x)} a(-Nw_N(x-\cdot)\ph(\cdot)) + a(\nabla_x r_x).
 \end{align*}
-(the $\nabla$ in the second summand has to be understood with respect to the 'dot'-variable of $a$)
+(The $\nabla$ in the second summand has to be understood with respect to the 'dot'-variable.)
 Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 \begin{equation}
 %\tag{B}
@@ -1127,17 +1066,17 @@ Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 \leq & C \norm{\ph}_{H^2}^2 \ev{\Ncal} + C\ev{\Kcal} + C\ev{\Ncal}.
 \end{split} 
 \end{equation}
-Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $\int \norm{\nabla_x r_x}^2 \di x= \norm{\nabla_x r}^2 \leq C$. (The first two are consequences of lemma \ref{l:w} and Hardy's inequality.)
+Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $\int \norm{\nabla_x r_x}^2 \di x= \norm{\nabla_x r}^2 \leq C$.
 
 \underline{Estimates for the non-kinetic terms:}\newline
-In proving the following estimates, the important observations are
+In proving the following estimates, the important ideas are
 \begin{itemize}
- \item $a^*(c_x)\psi$ is ill-defined because $c_x = \delta_x + p_x$, thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$.
+ \item $a^*(c_x)\psi$ is ill-defined because $c_x = \delta_x + p_x$, thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$
  \item for summands containing $a(c_x) a(c_y) \psi$, insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$ and then use Hoelder, so that $\varepsilon\ev{\tilV}$ is obtained
- \item $a^\#(s_x)$ is always ok, and can easily be estimated using the $L^2$-Norm of $s_x$. with $p$ instead of $s$, this is okay, too.
- \item use $\sup_x \norm{s_x}^2$, $\sup_x \norm{p_x}^2$ and $\norm{\ph}_\infty$ to simplify integrals such that $\int \di y\, NV_N(x-y) = b_0$ (independent of $x$) can be used
-\item always use Cauchy-Schwarz, in such away that at most two operators $a^\#$ act on each $\psi$. Usually Hoelder (with $p=q=2$) is applied to all integrals, so that we get an upper bound by a sum of two terms. In using Hoelder, we always split $V_N$ into two square roots, so that we get $V_N$ in each integral, not $V_N^2$. ($\int N V_N$ scales like $N^0$, but for other powers of $N V_N$ integrals do depend on $N$ non-trivially.)
-\item for $a^\# a^\# a^\#$ and $a^\# a^\# a^\# a^\#$, we need $\Ncal^2$, so a prefactor $1/N$ is necessary. 
+ \item $a^\#(s_x)$ and $a^\#(p_x)$ is always ok, and can easily be estimated using the $L^2$-Norm of $s_x$ respectively $p_x$
+ \item pull out $\sup_x \norm{s_x}^2$, $\sup_x \norm{p_x}^2$ and $\norm{\ph}_\infty$ from the integrals integrals, then $\int \di y\, NV_N(x-y) = b_0$ (independent of $x$) can be used
+\item use Cauchy-Schwarz in such a way that at most two operators $a^\#$ act on each $\psi$. Usually Hoelder (with $p=q=2$) is applied to all integrals, so that we get an upper bound by a sum of two terms. In using Hoelder, we always split $V_N$ into two square roots, so that we get $V_N$ in each integral, never $V_N^2$. ($\int N V_N$ scales like $N^0$, but for other powers of $N V_N$ integrals do depend on $N$ non-trivially.)
+\item for terms containing $a^\# a^\# a^\#$ or $a^\# a^\# a^\# a^\#$ we need $\Ncal^2$, so a prefactor $1/N$ is necessary. 
 \end{itemize}
 We define
 \bd
@@ -1471,7 +1410,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We still have to give a bound for the $\ev{(\partial_t T^*_t)T_t}$ part of the generator. We start with a number of simple lemmata.
+We still have to give a bound for the $(\partial_t T^*_t)T_t$-part of the generator. We start with a number of simple lemmata.
 \begin{lem}
 \label{lm:Bbound}
 Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then
@@ -1479,11 +1418,11 @@ Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then
 \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
 \ed
 and
-\begin{align*}
-  & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x
-a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert \\
-& \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \frac{1}{2} \left\lvert \int f_2(x,x) \di x \right\rvert \scal{\psi}{\psi}.
-\end{align*}
+\bd
+ \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x
+a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert
+ \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
+\ed
 \end{lem}
 \begin{proof} Proof of the first estimate, using Hoelder's inequality:
  \begin{align*}
@@ -1690,15 +1629,9 @@ Combining Lemma \ref{lm:timederivative} and Lemma \ref{lm:kbounds}, we obtain th
 (We make no effort to optimize the appearance of $H^n$ norms, just take $n$ and the power as high as you like.)
 
 The term $\scal{\psi}{\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t )\psi}$ can be estimated by the same methods which where already used for estimating $\scal{\psi}{ T^\ast_t \Lcal_N^{(0)}(t) T_t \psi}$, however, additionally the following objects are used:
-$\norm{\nabla_1 \dot p}$, $\norm{\nabla_1 \dot r}$, $\norm{\dot s}$, $\norm{\dot p}$, $\sup_x \norm{\dot p_x}$, $\sup_x \norm{\dot s_x}$, $\int \di x\di y V_N(x-y) \lvert \dot r(x,y)\rvert^2$, $\int \di x \di y V_N(x-y) \lvert \dot s(x,y)\rvert^2/N$ and different norms of $\phdot$. These quantities are then estimated using the Lemmata \ref{lem:dottedests1}, \ref{lem:dottedests2} and \ref{lem:dottedests3}.
+$\norm{\nabla_1 \dot p}$, $\norm{\nabla_1 \dot r}$, $\norm{\dot s}$, $\norm{\dot p}$, $\sup_x \norm{\dot p_x}$, $\sup_x \norm{\dot s_x}$, $\int \di x\di y V_N(x-y) \lvert \dot r(x,y)\rvert^2$, $\int \di x \di y V_N(x-y) \lvert \dot s(x,y)\rvert^2/N$ and Sobolev norms of $\phdot$. These quantities are then estimated using the Lemmata \ref{lem:dottedests1}, \ref{lem:dottedests2} and \ref{lem:dottedests3}.
 
-(Remarkt: In $\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t)$ there are four times as many terms as in $T^\ast_t \Lcal_N^{(0)}(t) T_t$ because of the product rule, but many of them are easy to estimate because $\partial_t a^\ast(c_x) = a^\ast(\dot p_x)$ is regular while $a^\ast(c_x)$ is singular.)
-
-We arrive at
-\bd
-\lvert \scal{\psi}{\dot \Lcal_N(t)\psi} \rvert \leq C \norm{\ph}_{H^4}^8 \scal{\psi}{\left(\frac{\Ncal^2}{N}+\Ncal+1+\Kcal+\tilV \right)\psi}.
-\ed
-(Again, we made no effort to optimize the appearance of $H^n$ norms.)
+(Remark: In $\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t)$ there are four times as many terms as in $T^\ast_t \Lcal_N^{(0)}(t) T_t$ because of the product rule, but many of them are easy to estimate because $\partial_t a^\ast(c_x) = a^\ast(\dot p_x)$ is regular while $a^\ast(c_x)$ is singular.)
 \end{proof}
 
 
@@ -1706,34 +1639,14 @@ We arrive at
 \label{lem:lncommutatorbound}
 There exists a constant $C$ independent of $N$ and $t$ (but possibly depending on $\norm{\ph}_{H^1}$) such that for all $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies
  \bd
-  \lvert \ev{[\Lcal_N(t),\Ncal]} \rvert \leq C \norm{\ph}_{H^2}^2 \left( \ev{N+1} + \frac{1}{N}\ev{\Ncal^2} + \ev{\tilV} + \ev{\Kcal} \right).
+  \lvert \ev{[\Lcal_N(t),\Ncal]} \rvert \leq C \norm{\ph}_{H^2}^2 \left( \ev{\Ncal+1} + \frac{1}{N}\ev{\Ncal^2} + \ev{\tilV} + \ev{\Kcal} \right).
  \ed
 \end{lem}
 \begin{proof}
-We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop. The other summands get numerical prefactors, but except of that stay unchanged. Because of these prefactors, the sign of the $+\hc$-part changes. So we get
-\begin{align*}
-& [T^\ast_t \Lcal_N^{(0)}(t) T_t,\Ncal] = \\ 
-& \frac{1}{2} \int \di x\, \bigg[(-2) a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \\
-& \qquad\qquad \qquad\qquad \qquad	+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big)\bigg] \\
-& + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
-& \times \Big[   \frac{1}{2N}\bigg( 4(-2) a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) + 2(-4) a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x)\\
-				      & \qquad\qquad + 4(-2) a^*(c_x) a^*(s_y) a^*(s_x) a(s_y)\bigg) \\
-& + \frac{1}{N}\bigg(  (-2) a^*(c_x) a^*(c_y) \Big( r(y,x) + \scal{p_y}{s_x} \Big) + (-2)a^*(c_x) a^*(p_y) k(y,x) \\
-      & \qquad\quad + (-2)a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + 2(-2)a^*(c_x)
-  a^*(s_x) \scal{s_y}{s_y} \\
-& + 2(-2)a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \bigg)\\
-& + \ph(x)\ph(y) \Big( (-2) a^*(c_x) a^*(p_y) +(+2)a(s_x) a(s_y) \Big)\\
-& + \ph(x) \cc{\ph(y)} 2(-2) a^*(c_x) a^*(s_y) + \lvert \ph(y) \rvert^2 2(-2) a^*(c_x) a^*(s_x)\\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-3)a^*(c_x) a^*(s_x) a^*(s_y) + (-1)a^*(c_x) a^*(s_x) a(c_y)\\
-					    & \qquad\qquad\qquad + (-1)a^*(c_x) a^*(s_y) a(c_x) + (+1)a^*(c_x) a(c_x) a(c_y) + (+1)a^*(s_y) a(s_x) a(c_x)\\
-					    & \qquad\qquad\qquad + (-1)a^*(s_x) a^*(s_y) a(s_x) + (+1)a^*(s_x) a(s_x) a(c_y) + (+3)a(s_x) a(c_x) a(c_y)  \bigg)\\
-& + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    (-1)a^*(s_x) \scal{s_x}{s_y} +
-  (-1)a^*(s_y) \scal{s_x}{s_x}  + (+1)a(c_y) \scal{s_x}{s_x} \\
-  & \qquad \qquad \qquad + (+1)a(c_x) \scal{s_x}{s_y} + (-1)a^*(c_x)r(x,y) + (-1)a^*(c_x)\scal{p_x}{s_y} \\
-& \qquad \qquad \qquad + (+1)a(s_x)r(x,y) + (+1)a(s_x)\scal{p_x}{s_y}	\bigg)    \Big]\\
-&- \hc
-\end{align*}
-Now choose e.\,g.\ $\varepsilon = 1$ and use the estimates from chapter \ref{ch:generatorestimates} to bound all summands of the commutator. Together with lemma \ref{lm:timederivative} for bounding $\ev{(\partial_t T^\ast_t) T_t}$, the theorem is now proven.
+We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop. The other summands get numerical prefactors, but except of that stay unchanged. (Because of these prefactors, the sign of the $+\hc$-part changes, but this is not important for our estimates.)
+Now use the estimates from chapter \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
+
+The contribution $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form as $(\partial_t T^\ast_t)T_t$, only the particle-number conserving summands of the series drop out. Thus, the term can be estimated in the same way as $(\partial_t T^\ast_t)T_t$ in Lemma \ref{lm:timederivative}.
 \end{proof}
 
 
@@ -1827,45 +1740,22 @@ The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} =
 
 \section{A-priori estimates}
 
-
-Let $f(x,y)$ be a function of two variables. To simplify the notation we write
+We use short-hands for the operators at time $t=0$:
 \[
-  f_y(x) = f(x,y).
-\]
-Recall also that
-\[
-  W = W(\sqrt{N} \varphi) \qquad \text{and} \qquad T = T(k_0).
+  W = W_0 = W(\sqrt{N} \varphi) \qquad \text{and} \qquad T = T_0 = T(k_0).
 \]
 Consider two operators $A$ and $B$ on the Fock space $\mathcal{F}$. The
-notation
-\[
-  A \le B
-\]
-means that $\langle \psi, A \psi \rangle \le \langle \psi, B \psi \rangle$ for
+notation $ A \le B$ means that $\langle \psi, A \psi \rangle \le \langle \psi, B \psi \rangle$ for
 all $\psi \in \mathcal{F}$.
 
 
 \begin{lem} \label{l:ap}
-  Let $U_t$ be the unitary evolution on $\mathcal{F}$ defined in (X).
-  \begin{enumerate}
-    \item \label{l:ap1} There exists a constant $C_1$, uniform in $N$ and $t$,
+There exists a constant $C$, uniform in $N$ and $t$,
       that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
         \[
-          U_t^* \N^2 U_t \le C_1 \big( N U_t^* \N U_t + N (\N+1) + (\N+1)^2
+          U_t^* \N^2 U_t \le C \big( N U_t^* \N U_t + N (\N+1) + (\N+1)^2
           \big).
         \]
-    \item \label{l:ap2} There exists a constant $C_2$, uniform in $N$, that
-      depends only on $\| \varphi_t \|_{H^2}$ and $V$, such that
-      \[
-        \begin{split}
-          U_t^* \K \N U_t & \le C_2 \big( N U_t^* \K U_t + N U_t^* \N U_t +
-          \N^2 + N(\N+1) \\
-          & \quad + T^* \phi(\varphi) W^*( \mathcal{H}_N + \N ) W
-          \phi(\varphi) T + N^{-1} T^* \N W^*( \mathcal{H}_N + \N ) W \N T
-          \big).
-        \end{split}
-      \]
-  \end{enumerate}
 \end{lem}
 
 
@@ -1881,9 +1771,6 @@ first.
     T^* \N T & \le C (\N+1), \label{TNT} \tag{i} \\
     T^* \K T & \le C (\K + \| \nabla_1 k \|_{L^2}^2), \label{TKT} \tag{ii} \\
     T^* \N^2 T & \le C (\N+1)^2, \label{TN2T} \tag{iii} \\
-    \langle \psi, T^* \K \N T \psi \rangle & \le C \big( |\langle \psi,
-    T^* \K T \N \psi \rangle| + \langle \psi, \K \psi \rangle + \| \nabla_1 k
-    \|_{L^2}^2 \big), \label{TKNT} \tag{iv} \\
     \phi(f) \K \phi(f) & \le C_1 \big( \| f \|_{L^2}^2 \K (\N+1) + \| \nabla f
     \|_{L^2}^2 (\N + 1) \big). \label{fKf} \tag{v}
   \end{align}
@@ -1905,7 +1792,7 @@ first.
     \tag{iv} \label{f4} 
   \end{align}
   where $C$ and $S$ are integral operators on $L^2(\R^3)$, with integral
-  kernels $c$ and $s$ as in Lemma \ref{l:bt}\ref{l:bt2}, respectively.
+  kernels $c$ and $s$ as in Lemma \ref{l:bt}, respectively.
 \end{prp}
 
 
@@ -1958,7 +1845,7 @@ first.
     & \apprle (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, \K \psi
     \rangle + \| \nabla_1 s \|_{L^2}^2.
   \end{align*}
-  Furthermore, by Lemma \ref{l:bt}\ref{l:bt2}, there exists a universal
+  Furthermore, by Lemma \ref{l:bt}, there exists a universal
   constant $C_1$, such that
   \begin{equation} \label{c1}
     \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le e^{C_1 (1+\| k \|_{L^2})} \qquad
@@ -1993,64 +1880,7 @@ first.
   Recalling \eqref{c1}, this proves part \eqref{TN2T}.
 
 
-  \eqref{TKNT} Write
-  \begin{align*}
-    \K \N & = \int dx dy \, \nabla_x a_x^* \nabla_x a_x a_y^* a_y \\
-    & = \int dx dy \, \nabla_x a_x^* a_y^* \nabla_x a_x a_y + \int dx dy \,
-    \nabla_x a_x^* a_y \nabla_x \delta(x-y) \\
-    & = \int dx \, \nabla_x a_x^* \N \nabla_x a_x + \K.
-  \end{align*}
-  Then, by part \eqref{TNT},
-  \begin{align*}
-    \left \langle \psi, T^* \int dx \, \nabla_x a_x^* \N \nabla_x a_x T \psi
-    \right \rangle & = \int dx \, \langle T^* \nabla_x a_x T \psi, T^* \N T
-    T^* \nabla_x a_x T \psi \rangle, \\
-    & \le C \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x
-    T \psi \rangle + C \langle \psi, T^* \K T \psi \rangle.
-  \end{align*}
-  Hence, combining these two expressions,
-  \begin{equation}
-    \label{ep5}
-    \langle \psi, T^* \K \N T \psi \rangle \le C \int dx \, \langle T^*
-    \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi \rangle + 2C \langle
-    \psi, T^* \K T \psi \rangle.
-  \end{equation}
-  Next, in order to estimate the first term in this inequality, we first write
-  \begin{align*}
-    & \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi
-    \rangle \\
-    & = \int dx \, \langle T^* \nabla_x a_x T \psi, \N ( a(\nabla_x c_x) +
-    a^*(\nabla_x s_x) ) \psi \rangle \\
-    & = \int dx \, \langle T^* \nabla_x a_x T \psi, ( a(\nabla_x c_x) (\N-1) +
-    a^*(\nabla_x s_x) (\N+1) ) \psi \rangle \\
-    & = \int dx \, \langle T^* \nabla_x a_x T \psi, \big( (a(\nabla_x c_x) +
-    a^*(\nabla s_x)) \N - (a(\nabla_x c_x) - a^*(\nabla_x s_x)) \big) \psi
-    \rangle \\
-    & = \int dx \, \langle T^* \nabla_x a_x T \psi, ( T^* \nabla_x a_x T \N -
-    T \nabla_x a_x T^* ) \psi \rangle \\
-    & = \langle \psi, T^* \K T \N \psi \rangle - \int dx \, \langle T^*
-    \nabla_x a_x T \psi, T \nabla_x a_x T^* \psi \rangle.
-  \end{align*}
-  Thus, by triangle inequality,
-  \begin{align*}
-    \int dx \, \langle T^* \nabla_x a_x T \psi, \N T^* \nabla_x a_x T \psi
-    \rangle & \le |\langle \psi, T^* \K T \N \psi \rangle| + \int dx \,
-    |\langle T^* \nabla_x a_x T \psi, T \nabla_x a_x T^* \psi \rangle| \\
-    & \le |\langle \psi, T^* \K T \N \psi \rangle| + \langle \psi, T^* \K T
-    \psi \rangle + \langle \psi, T \K T^* \psi \rangle.
-  \end{align*}
-  Therefore, combining this with \eqref{ep5}, and using part \eqref{TKT},
-  \begin{align*}
-    \langle \psi, T^* \K \N T \psi \rangle & \apprle C |\langle \psi, T^* \K T
-    \N \psi \rangle| + C \langle \psi, T^* \K T \psi \rangle + C \langle
-    \psi, T \K T^* \psi \rangle \\
-    & \apprle C |\langle \psi, T^* \K T \N \psi \rangle| + C^2 \langle \psi,
-    \K \psi \rangle + C^2 \| \nabla_1 k \|_{L^2}^2.
-  \end{align*}
-  This gives the desired estimate.
-
-
-  \eqref{fKf} By Cauchy-Schwarz inequality, a brief calculation, and Lemma
+   \eqref{fKf} By Cauchy-Schwarz inequality, a brief calculation, and Lemma
   \ref{l:a},
   \begin{align*}
     \langle \psi, \phi(\varphi) \K \phi(\varphi) \psi \rangle & = \| \K^{1/2}
@@ -2081,7 +1911,7 @@ first.
   T(k_t)$ and $T = T(k_0)$.
 
 
-  Observe that, by Lemmata \ref{l:bt}\ref{l:bt2}, \ref{l:kernels}\ref{k} and
+  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels}\ref{k} and
   \ref{l:pdes}\eqref{H1}, there exists a constant $C$, uniform in $N$ and $t$,
   that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
@@ -2095,7 +1925,7 @@ first.
   \end{equation}
 
 
-  \ref{l:ap1} By parts \eqref{TNT} and \eqref{TN2T} of Proposition \ref{p:TNT},
+  By parts \eqref{TNT} and \eqref{TN2T} of Proposition \ref{p:TNT},
   \begin{equation}
     \label{ep4}
     \begin{split}
@@ -2165,148 +1995,7 @@ first.
     & \le C_3 \big( N \langle U_t \psi, \N U_t \psi \rangle + N \langle
     \psi, (\N+1) \psi \rangle + \langle \psi, (\N+1)^2 \psi \rangle \big),
   \end{align*}
-  for some constant $C_3$ as above. This concludes the proof of part
-  \ref{l:ap1}.
-
-
-  \ref{l:ap2} By parts \eqref{TKNT} and \eqref{TN2T} of Proposition
-  \ref{p:TNT}, and recalling \eqref{c2}, there is a constant $C_1$, uniform in
-  $N$ and $t$, such that,
-  \begin{equation}
-    \label{nk1}
-    \begin{split}
-      \langle U_t \psi, \K \N U_t \psi \rangle & = \langle T_t U_t \psi, T_t
-      \K \N T_t^* T_t U_t \psi \rangle \\
-      & \le C \big( | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle
-      | + \langle T_t U_t \psi, \K T_t U_t \psi \rangle + N \big) \\
-      & \le C_1 \big( | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi
-      \rangle | + \langle U_t \psi, \K U_t \psi \rangle + N \big).
-    \end{split}
-  \end{equation}
-  Hence, we are left to estimating $| \langle T_t U_t \psi, T_t \K T_t^* \N
-  T_t U_t \psi \rangle |$.
-
-
-  Using the pull-through formulae from Proposition \ref{p:f}, and
-  recalling that $\N$ commutes with $\mathcal{H}_N$, we find that
-  \begin{equation}
-    \label{nk2}
-    \begin{split}
-      & | \langle T_t U_t \psi, T_t \K T_t^* \N T_t U_t \psi \rangle | \\
-      & = | \langle T_t U_t \psi, T_t \K T_t^* W_t^* (\N - \sqrt{N}
-      \phi(\varphi_t) + N) e^{-it \mathcal{H}_N} WT \psi \rangle | \\
-      & \le N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t
-      U_t \psi, T_t \K T_t^* ( \phi(\varphi_t) + 2 \sqrt{N} ) T_t U_t \psi
-      \rangle | \\
-      & \quad + | \langle T_t U_t \psi, T_t \K T_t^* W_t^* e^{-it
-      \mathcal{H}_N} W (\N + \sqrt{N} \phi(\varphi) + N) T \psi \rangle | \\
-      & \le 4 N \langle U_t \psi, \K U_t \psi \rangle + \sqrt{N} | \langle T_t
-      U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t \psi \rangle | \\
-      & \quad + | \langle T_t U_t \psi, T_t \K T_t^* T_t U_t T^* (\N +
-      \sqrt{N} \phi(\varphi) ) T \psi \rangle|.
-    \end{split}
-  \end{equation}
-  We next estimate the last two terms in this inequality.
-
-
-  First, by Cauchy-Schwarz inequality and Proposition \ref{p:TNT}\eqref{fKf},
-  for any $\varepsilon > 0$,
-  \begin{align*}
-    & \sqrt{N} | \langle T_t U_t \psi, T_t \K T_t^* \phi(\varphi_t) T_t U_t
-    \psi \rangle | \\
-    & = | \langle \sqrt{N} (T_t \K T_t^*)^{1/2} T_t U_t \psi, (T_t \K
-    T_t^*)^{1/2} \phi(\varphi_t) T_t U_t \psi \rangle | \\
-    & \le \varepsilon^{-1} N \langle U_t \psi, \K U_t \psi \rangle +
-    \varepsilon \langle U_t \psi, T_t^* \phi(\varphi_t) T_t \K T_t^*
-    \phi(\varphi_t) T_t U_t \psi \rangle \\
-    & = \varepsilon^{-1} N \langle U_t \psi, \K U_t \psi \rangle +
-    \varepsilon \langle U_t \psi, \phi(C \varphi_t + S \overline{\varphi_t})
-    \K \phi(C \varphi_t + S \overline{\varphi_t}) U_t \psi \rangle \\
-    & \le ( \varepsilon^{-1} N + \varepsilon C) \langle U_t \psi, \K U_t \psi
-    \rangle + \varepsilon C \langle U_t \psi, \K \N U_t \psi \rangle \\
-    & \quad + ( \| \nabla \varphi_t \|_{L^2}^2 + \| \nabla_1 p_t \|_{L^2}^2 +
-    \| \nabla_1 s_t \|_{L^2}^2) \langle U_t \psi, (\N + 1) U_t \psi \rangle,
-  \end{align*}
-  where we have used that $\| \nabla P_t \| \le \| \nabla P_t \|_{HS} = \|
-  \nabla_1 p_t \|_{L^2}$, and similarly for $\| \nabla S_t \|$. Furthermore,
-  applying again Cauchy-Schwarz inequality,
-  \begin{align*}
-    & | \langle T_t U_t \psi, T_t \K T_t^* T_t U_t T^* (\N + \sqrt{N}
-    \phi(\varphi) ) T \psi \rangle| \\
-    & = | \langle (T_t \K T_t^*)^{1/2} T_t U_t \psi, (T_t \K T_t^*)^{1/2} T_t
-    U_t T^* (\N + \sqrt{N} \phi(\varphi) ) T \psi \rangle| \\
-    & \le N \langle U_t \psi, \K U_t \psi \rangle + \frac{1}{N} \| (T_t \K
-    T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi \|^2.
-  \end{align*}
-  Thus, combining the last two estimates with \eqref{nk2} and \eqref{nk1},
-  choosing $\varepsilon$ so that $\varepsilon C < 1/2$, and observing
-  \eqref{c2}, we obtain
-  \begin{equation}
-    \label{nk3}
-    \begin{split}
-      \langle U_t \psi, \K \N U_t \psi \rangle & \le C_1 \big( N \langle U_t
-      \psi, \K U_t \psi \rangle + N \langle U_t \psi, (\N+1) U_t \psi \rangle
-      \\
-      & \qquad + \frac{1}{N} \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N +
-      \sqrt{N} \phi(\varphi) ) T \psi \|^2 \big),
-    \end{split}
-  \end{equation}
-  where $C_1$ is a constant, uniform in $N$ and $t$, that depends only on $\|
-  \varphi \|_{H^1}$ and $V$. In order to conclude the proof, we need a few
-  more estimates.
-
-  
-  By Proposition \ref{p:TNT}\eqref{TKT}, Cauchy-Schwarz inequality, Lemma
-  \ref{l:a}, and Lemma \ref{l:kernels},
-  \begin{align*}
-    & \| (T_t \K T_t^*)^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
-    \psi \|^2 \\
-    & \le C_0 \big( \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
-    \psi \|^2 + \| \nabla_1 k_t \|_{L^2}^2 ( \| \N T \psi \|^2 + N \|
-    \phi(\varphi) T \psi \|^2) \big) \\
-    & \le C_1 \big( \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T
-    \psi \|^2 + N \langle \psi, (\N^2 + N(\N+1)) \psi \rangle \big),
-  \end{align*}
-  for some constant $C_1$ as above. Now, since $V \ge 0$, note that $\K \le
-  \mathcal{H}_N$. Hence, using again the formulae in Proposition \ref{p:f},
-  Proposition \ref{p:TNT}, and Sobolev's inequality,
-  \begin{align*}
-    & \| \K^{1/2} T_t U_t T^* ( \N + \sqrt{N} \phi(\varphi) ) T \psi \|^2 \\
-    & = \langle e^{-it \mathcal{H}_N} W (\N + \sqrt{N} \phi(\varphi)) T \psi,
-    W_t \K W_t^* e^{-it \mathcal{H}_N} W (\N + \sqrt{N} \phi(\varphi)) T \psi
-    \rangle \\
-    & = N \| \nabla \varphi_t \|_{L^2}^2 \| (\N + \sqrt{N} \phi(\varphi)) T
-    \psi \|^2 + \| \K^{1/2} e^{-it \mathcal{H}_N} W (\N + \sqrt{N}
-    \phi(\varphi) ) T \psi \|^2 \\
-    & \quad + \sqrt{N} \langle e^{-it \mathcal{H}_N} W (\N + \sqrt{N}
-    \phi(\varphi)) T \psi, \phi(\Delta \varphi_t) e^{-it \mathcal{H}_N} W (\N
-    + \sqrt{N} \phi(\varphi)) T \psi \rangle \\
-    & \le C_0 \big( N \| \nabla \varphi_t \|_{L^2}^2 \langle \psi, (\N^2 + N
-    (\N + 1)) \psi \rangle + \| \mathcal{H}_{N}^{1/2} W (\N + \sqrt{N} \phi
-    (\varphi) ) T \psi \|^2 \\
-    & \quad + \sqrt{N} \| \Delta \varphi_t \|_{L^2}^2 \| (\N + \sqrt{N}
-    \phi(\varphi) ) T \psi \| \, \| (\N+1)^{1/2} W (\N + \sqrt{N}
-    \phi(\varphi) ) T \psi \| \big) \\
-    & \le C_1 \| \varphi_t \|_{H^2}^2 \big( N \langle \psi, (\N^2 + N (\N +
-    1)) \psi \rangle + N \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N)
-    W \phi(\varphi) T \psi \rangle \\
-    & \quad + \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T \psi \rangle
-    \big),
-  \end{align*}
-  for some constant $C_1$ as above. Therefore, combining the last two
-  inequalities with \eqref{nk3},
-  \begin{align*}
-    \langle U_t \psi, \K \N U_t \psi \rangle & \le C \big( N \langle U_t
-    \psi, \K U_t \psi \rangle + N \langle U_t \psi, \N U_t \psi \rangle +
-    \langle \psi, (\N^2 + N (\N + 1)) \psi \rangle \\
-    & \quad + \langle W \phi(\varphi) T \psi, (\mathcal{H}_N + \N) W
-    \phi(\varphi) T \psi \rangle \\
-    & \quad + \frac{1}{N} \langle W \N T \psi, (\mathcal{H}_N + \N) W \N T
-    \psi \rangle \big),
-  \end{align*}
-  where $C$ is a constant, uniform in $N$, that depends only on $\| \varphi_t
-  \|_{H^2}$ and $V$. This proves part \ref{l:ap2} and completes the proof of
-  the lemma.
+  for some constant $C_3$ as above. This concludes the proof.
 \end{proof}
 
 \begin{cor}
@@ -2317,7 +2006,7 @@ If $\Psi \in \fock$ with a constant $C_1$ such that $\scal{\Psi}{\left( \frac{1}
 \ed
 \end{cor}
 \begin{proof}
-This is evident from Lemma \ref{l:ap} \ref{l:ap1} and Proposition \ref{p:TNT}.
+This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 \end{proof}
 
 \section{Nonlinear Hartree and Gross-Pitaevskii equations}
@@ -2803,39 +2492,37 @@ For $T > 0$ set
 
 
 \begin{lem} \label{lm:phdotregularity}
-\
+Let $\ph$ be a solution of the modified Hartree equation
+\be{modHartree}
+i \phdot = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
+\ee
+Then there exists a constant $C$ independent of $N$ and $t$ such that:
 \begin{enumerate}
- \item Let $\ph$ be a solution of the modified Hartree equation. Then there exists a constant $C$ independent of $N$ and $t$ such that
- \bd
+ \item \bd
 \norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2 \leq C \norm{\ph}_{H^2}^2.
 \ed
-\item Furthermore, for $i, j \in \{1,2,3\}$, the constant $C$ can be chosen such that also
+\item Furthermore, for $i, j \in \{1,2,3\}$,
 \bd
-\norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad
-\norm{\partial^i \partial^j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3,
+\norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2, \quad
+\norm{\partial^i \partial^j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3, \quad \norm{\phdot}_\infty \leq C \norm{\ph}_{H^4}^3.
 \ed
-especially $\norm{\ph}_\infty \leq C \norm{\ph}_{H^4}^3$.
-\item
-For the second time derivative we have an estimate
-\bd
+\item \bd
 \norm{\phddot}_{L^2} \leq C \norm{\ph}_{H^4}^4.
 \ed
 \end{enumerate}
 \end{lem}
-\begin{proof}(i) The modified Hartree equation reads
-\bd
-i \phdot = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
-\ed
-Therefore
-\bd
+\begin{proof}(i) According to \eqr{modHartree}, we get
+\be{no11}
 \norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}.
-\ed
+\ee
 Now we calculate
 \begin{align*}
 \norm{\left(N f_N V_N \ast \lvert \ph\rvert^2 \right)\ph}_{L^2}^2 & = \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \int \di y\, N f_NV_N(x-y) \lvert \ph(y)\rvert^2 \right\rvert^2 \\
 & \leq \int \di x\, \lvert \ph(x)\rvert^2 \left\lvert \norm{\ph}_\infty^2 \int \di y\, N f_N V_N(x-y) \right\rvert^2 \\
 & \leq \norm{\ph}_{L^2}^2 \norm{\ph}_\infty^4 (8\pi a_0)^2.
 \end{align*}
+This combined with \eqr{no11} proves (i).
+
 (ii)
 Applying the gradient $\nabla$ to the modified Hartree equation, the product rule yields
 \begin{align}
@@ -2852,9 +2539,9 @@ Similarly, we show that the $L^2$-norms of the summands in line \eqref{eq:second
 \bd
 \norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
 \ed
-The bound for $\norm{\partial^i \partial_j \phdot}_{L^2}$ is proven by the same strategy. Now the bound for $\norm{\ph}_\infty$ is a consequence of the fact that the $L^\infty$-norm can be estimated by the $H^2$-norm.
+The bound for $\norm{\partial^i \partial_j \phdot}_{L^2}$ is proven by the same strategy. Now the bound for $\norm{\phdot}_\infty$ is a consequence of the fact that the $L^\infty$-norm can be estimated by the $H^2$-norm through a Sobolev inequality.
 
-(iii) To prove that $\phddot$ is in $L^2$, we apply the time derivative $\partial_t$ (and multiply by $i$) to the modified Hartree equation and get
+(iii) To prove that $\phddot$ is in $L^2$, we apply $i\partial_t$ to the modified Hartree equation \eqr{modHartree} and get
 \begin{align*}
 ii\phddot & = - \Delta i \phdot + \left( N f_N V_N \ast \cc{\ph}i \phdot \right) \ph \\
 & \quad + \left( N f_N V_N \ast \cc{(-i\phdot)} \ph \right) \ph + \left( N f_N V_N \ast \lvert\ph\rvert^2 \right) i\phdot.
@@ -2873,209 +2560,28 @@ The $L^2$-norms of the summands on the right hand side can be estimated by the s
 (Actually, the $H^2$-norm is enough for this term, but we need the $H^4$-norm anyway for some of the other summands.)
 \end{proof}
 
-\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modfied Hartree equation.
-\begin{enumerate}
-\item Then there exists a constant $C$ independent of $N$ and $t$ such that
+\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation \eqr{modHartree}. Then there exists a constant $C$ independent of $N$ and $t$ such that:
 \bd
-\norm{\dot k} \leq 4 \max\{R,a_0\} \norm{\ph}_{H^1} \left( \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2\right) \leq C \norm{\ph}_{H^2}^2
-\ed
-\item and furthermore
-\bd
+\norm{\dot k} \leq C \norm{\ph}_{H^2}^2
+ \quad \mbox{and} \quad
 \norm{\ddot k} \leq C \norm{\ph}_{H^4}^4.
 \ed
-\end{enumerate}
 \end{lem}
-\begin{proof} (i) We use Hardy's inequality to estimate
+\begin{proof} (i) We use Hardy's inequality and Lemma \ref{lm:phdotregularity} to estimate
 \begin{align*}
 \norm{\dot k}^2 & = \int \di x\di y\, \left\lvert \frac{\di}{\di t} \left( -N w_N(x-y) \ph(x)\ph(y) \right) \right\rvert^2 \\
 & \leq 2 \int \di x\di y\, \lvert N w_N(x-y) \phdot(x) \ph(y) \rvert^2 + 2 \int \di x \di y\, \lvert N w_N(x-y) \ph(x) \phdot(y) \rvert^2 \\
 & \leq 4 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \frac{\lvert\ph(y)\rvert^2}{\lvert x-y\rvert^2} \\
 & \leq 16 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \lvert \nabla_y \ph(y)\rvert^2 \\
-& \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2.
+& \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2 \leq C \norm{\ph}_{H^2}^4.
 \end{align*}
-Now use (i) from lemma \ref{lm:phdotregularity} to estimate $\norm{\phdot}_{L^2}^2$.
 
 (ii) First, we use $\lvert N w_N(x-y) \rvert \leq \max \{R,a_0\} \lvert x-y\rvert^{-1}$ and Hardy's inequality to show
 \bd
 \norm{\ddot k} \leq C \norm{\phddot}_{L^2} + C \norm{\phdot}_{L^2} \norm{\nabla \phdot}_{L^2}.
 \ed
-Employing (ii) and (iii) from lemma \ref{lm:phdotregularity}, the proof is finished.
+Employing Lemma \ref{lm:phdotregularity} the proof is finished.
 \end{proof}
-
-
-\subsection{$H^2$-regularity}
-
-
-\begin{prp} \label{p:reg1}
-  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and $V \in
-  L^1(\R^3)$ with $V \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of
-  the nonlinear Hartree equation
-  \[
-    i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
-    \varphi_t
-  \]
-  with initial data $\varphi_0 = \varphi$. Then, there exist a real number $T
-  > 0$ and a constant $C$, which depend only on $\| V \|_{L^1}$ and $\|
-  \varphi \|_{H^1}$, such that
-  \[
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}.
-  \]
-\end{prp}
-
-
-\begin{cor} \label{c:reg1}
-  Under the hypothesis of Proposition \ref{p:reg1}, there exist constants $C$
-  and $K$, which depend only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$,
-  such that, for all $t \ge 0$,
-  \[
-    \| \varphi_t \|_{H^1} \le C \qquad \text{and} \qquad \| \varphi_t \|_{H^2}
-    \le \| \varphi \|_{H^2} e^{Kt}.
-  \]
-\end{cor}
-
-
-\begin{prp} \label{p:reg2}
-  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and $a_0 \in \R$
-  with $a_0 \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of the
-  nonlinear Gross-Pitaevskii equation
-  \[
-    i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
-    \varphi_t
-  \]
-  with initial data $\varphi_0 = \varphi$. Then, there exist a real number $T
-  > 0$ and a constant $C$, which depend only on $a_0$ and $\| \varphi
-  \|_{H^1}$, such that
-  \[
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \le C \| \varphi \|_{H^2}.
-  \]
-\end{prp}
-
-
-\begin{cor} \label{c:reg2}
-  Under the hypothesis of Proposition \ref{p:reg2}, there exist constants $C$
-  and $K$, which depend only on $a_0$ and $\| \varphi \|_{H^1}$, such that,
-  for all $t \ge 0$,
-  \[
-    \| \varphi_t \|_{H^1} \le C \qquad \text{and} \qquad \| \varphi_t \|_{H^2}
-    \le \| \varphi \|_{H^2} e^{Kt}.
-  \]
-\end{cor}
-
-
-\begin{proof}[Proof of Proposition \ref{p:reg1}]
-  Write
-  \[
-    \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
-    |\varphi_s|^2) \varphi_s.
-  \]
-  Differentiating this equation and using integration by parts we find that
-  \[
-    \Delta \varphi_t = e^{it \Delta} \Delta \varphi - i \int_0^t ds \,
-    e^{i(t-s) \Delta} \big[ (V * |\varphi_s|^2) \Delta \varphi_s + 2(V *
-    \nabla |\varphi_s|^2) \nabla \varphi_s + (V * \Delta |\varphi_s|^2)
-    \varphi_s \big].
-  \]
-
-
-  The $L_t^\infty L_x^2$-norm of the above expression can be controlled using
-  Strichartz estimates for the free Schr\"odinger evolution $e^{it\Delta}$
-  (see \cite[Theorem 1.2]{KT}). By these estimates, and Lemma~\ref{l:interp},
-  \marginpar{in the following equations, is it really $\varphi^2$ or maybe
-  $\lvert \varphi\rvert^2$? Ans: $\| z^2 \| = \| |z|^2 \|$}
-  \begin{align} \label{Lap}
-    & \| \Delta \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} \notag \\
-    & \apprle \| \Delta \varphi \|_{L^2} + \| (V * |\varphi_{(\cdot)}|^2)
-    \Delta \varphi_{(\cdot)} + 2(V * \nabla |\varphi_{(\cdot)}|^2) \nabla
-    \varphi_{(\cdot)} + (V * \Delta |\varphi_{(\cdot)}|^2) \varphi_{(\cdot)}
-    \|_{L_t^2 L_x^{6/5}} \notag \\
-    & \apprle \| \Delta \varphi \|_{L^2} + \| V \|_{L^1} T^{1/2} \Big[ \sup_{t
-    \in [0,T]} \| \varphi_t^2 \|_{L^3} \sup_{t \in [0,T]} \| \Delta \varphi_t
-    \|_{L^2} \notag \\
-    & \quad + \sup_{t \in [0,T]} \| \nabla |\varphi_t|^2 \|_{L^{3/2}} \sup_{t
-    \in [0,T]} \| \nabla \varphi_t \|_{L^6} + \sup_{t \in [0,T]} \| \Delta
-    |\varphi_t|^2 \|_{L^{3/2}} \sup_{t \in [0,T]} \| \varphi_t \|_{L^6} \Big].
-  \end{align}
-  We next estimate each term in this inequality.
-  
-  
-  Applying Sobolev's inequality, Leibniz' rule, and H\"older's inequality,
-  we find that
-  \[
-    \| \varphi_t^2 \|_{L^3} = \| \varphi_t \|_{L^6}^2 \apprle \| \varphi_t
-    \|_{H^1}^2
-  \]
-  and
-  \[
-    \| \nabla |\varphi_t|^2 \|_{L^{3/2}} \le 2 \| \overline{\varphi_t} \nabla
-    \varphi_t \|_{L^{3/2}} \le 2 \| \varphi_t \|_{L^6} \| \nabla \varphi_t
-    \|_{L^2} \apprle \| \varphi_t \|_{H^1}^2
-  \]
-  and
-  \begin{align*}
-    \| \Delta |\varphi_t|^2 \|_{L^{3/2}} & \le 2 \| \overline{\varphi_t}
-    \Delta \varphi_t \|_{L^{3/2}} + 2 \| \nabla \overline{\varphi_t} \nabla
-    \varphi_t \|_{L^{3/2}} \\
-    & \le 2 \| \varphi_t \|_{L^6} \| \Delta \varphi_t \|_{L^2} + 2\| \nabla
-    \varphi_t \|_{L^2} \| \nabla \varphi_t \|_{L^6} \apprle \| \varphi_t
-    \|_{H^1} \| \varphi_t \|_{H^2}.
-  \end{align*}
-  Furthermore, by Corollary \ref{c:reg1}, there is a constant $C$ depending
-  only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$ such that $\| \varphi_t
-  \|_{H^1} \le C$. Thus, substituting all this into \eqref{Lap}, and using
-  Sobolev's inequality again, we get
-  \begin{align*}
-    \sup_{t \in [0,T]} \| \Delta \varphi_t \|_{L^2} & \apprle \| \Delta
-    \varphi \|_{L^2} + \| V \|_{L^1} T^{1/2} \sup_{t \in [0,T]} \| \varphi_t
-    \|_{H^1}^2 \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \\ & \apprle \|
-    \Delta \varphi \|_{L^2} + \| V \|_{L^1} T^{1/2} C \sup_{t \in [0,T]} \|
-    \varphi_t \|_{H^2}.
-  \end{align*}
-  Therefore,
-  \begin{align*}
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} & \apprle \sup_{t \in [0,T]}
-    \big( \| \varphi \|_{L^2} + \| \nabla \varphi_t \|_{L^2} + \| \Delta
-    \varphi_t \|_{L^2} \big) \\
-    & \apprle 1 + C^{1/2} + \| \Delta \varphi \|_{L^2} + \| V \|_{L^1} T^{1/2}
-    C \sup_{t \in [0,T]} \| \varphi_t \|_{H^2}.
-  \end{align*}
-  Hence, by choosing $T > 0$ sufficiently small, but depending only on $\| V
-  \|_{L^1}$ and $\| \varphi \|_{H^1}$, we conclude that
-  \[
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2} \le C (1 + \| \Delta \varphi
-    \|_{L^2}) \le 2C \| \varphi \|_{H^2},
-  \]
-  where $C$ is a constant that depends only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$.
-\end{proof}
-
-
-\begin{proof}[Proof of Corollary \ref{c:reg1}]
-  Recall that $V \ge 0$. By conservation of mass and energy, and by
-  Proposition \ref{p:energy},
-  \[
-    \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
-    \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \apprle \| \varphi
-    \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4.
-  \]
-  This proves the first estimate in the corollary. Consequently, by
-  Proposition \ref{p:reg1}, given $t > 0$, we can find constants $C$ and $T$
-  and an integer $n \ge 0$, depending only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$, such that
-  \[
-    \| \varphi_t \|_{H^2} \le C \| \varphi_{nT} \|_{H^2} \qquad \text{with}
-    \qquad nT < t.
-  \]
-  Iterating this argument backwards in time (and again noticing that $C$ and
-  $T$ can be chosen uniformly in time) we easily find that
-  \[
-    \| \varphi_t \|_{H^2} \le C \| \varphi_{nT} \|_{H^2} \le C^{n+1} \|
-    \varphi \|_{H^2} = (C^{1/T})^{(n+1)T} \| \varphi \|_{H^2} \le e^{Kt} \|
-    \varphi \|_{H^2},
-  \]
-  for some constant $K$ depending only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$. This completes the proof.
-\end{proof}
-
 
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
