@@ -79,6 +79,8 @@
 \newcommand{\Tr}{\operatorname{Tr}}	% Trace
 \newcommand{\dxyNV}{\frac{1}{2}\int \di x\di y N V_N(x-y)} % abbreviation for the one-half integral dx dy NV_N(x-y) which appears everywhere
 \newcommand{\dxyV}{\frac{1}{2}\int \di x\di y V_N(x-y)} % abbreviation for the one-half integral dx dy V_N(x-y) which appears everywhere
+\newcommand{\tLcal}{\tilde \Lcal_N(t)}
+\newcommand{\tLcalo}{\tilde \Lcal_N(0)}
 
 \newcommand{\be}[1]{\begin{equation}\label{eq:#1}}	%begin equation with label
 \newcommand{\ee}{\end{equation}}
@@ -1082,6 +1084,7 @@ We define
 \bd
 \tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
 \ed
+(Notive that through $c$, the operator $\tilV$ is time-dependent. However, as this does not play any role in our proof, we do not indicate this time-dependence and $\tilV$ should always be read as belonging to the same time $t$ like the other objects in the equation where it appears.)
 We now give the estimates for all the terms explicitly.
 \newline\estlist{10}{1}
 By definition of $\tilV$, we have
@@ -1606,6 +1609,7 @@ thus the proof is finished.
 \end{proof}
 
 \begin{lem}
+\label{lem:Llowerbound}
 There exists a constant $C$ independent of $N$ and $t$ (but possibly depending on $\norm{\ph}_{H^1}$) such that for all $\psi \in \fock$, the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ satisfies
 \bd
 \ev{\Lcal_N(t)} \geq -C \norm{\ph}_{H^2}^4 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1}.
@@ -1651,12 +1655,67 @@ The contribution $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form as $(\pa
 
 
 \begin{prp}
-\label{prp:Nbound}
- $N$-independent bound on $\ev{\Ncal}$ by employing all the above and Gronwall. \marginpar{TODO}
+\label{prp:Nbound} \marginpar{to be doublechecked}
+Let $\scal{\Psi}{\left(\frac{\Ncal^2}{N} + \Ncal \right)\Psi} \leq C$ and $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$, where $C$ is independent of $N$. Then
+\bd
+0 \leq \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}},
+\ed
+where $K_1$, $C$, $K_2$ are independent of $N$ and $t$.
 \end{prp}
 \begin{proof}
- By lemma \ref{lem:lncommutatorbound}, lemma \ref{l:ap} and lemma \ref{lem:kvbounds}, $\ev{[\Lcal,\Ncal]}$ is bounded by $\ev{\Lcal+\Ncal}$. So by lemma \ref{lem:ldotbounds}, the sum $\Lcal+C \Ncal$ is bounded above, and for $C$ large enough, it is positive, so we get a bound for $\Ncal$.
+By Lemma \ref{lem:Llowerbound}, Corollary \ref{cor:N2} and Corollary \ref{c:reg1}, we obtain
+\bd
+\scal{U_t T^\ast_0 \Psi}{\Lcal_N(t) U_t T^\ast_0 \Psi} \geq - C_1 e^{M_1 t}\scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi},
+\ed
+whith fixed constants $C_1$ and $M_1$. Therefore
+\bd
+\tLcal := \Lcal_N(t) + C_1 e^{M_1 t}(\Ncal+1)
+\ed
+is a non-negative operator, and so it is sufficient to prove an upper bound for $u(t) := \scal{U_t T^\ast_0 \Psi}{(\tLcal+\Ncal+1)U_t T^\ast_0 \Psi}$. We want to apply Gronwall's Lemma, so we calculate the derivative:
+\begin{align*}
+ u'(t) & = \scal{U_t T^\ast_0 \Psi}{\dot \Lcal_N(t)U_t T^\ast_0 \Psi} + C_1 M_1 e^{M_1 t}\scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi} \\
+& \quad + (C_1 e^{M_1 t}+1)\scal{U_t T^\ast_0 \Psi}{i[\Lcal_N(t),\Ncal]U_t T^\ast_0 \Psi}.
+\end{align*}
+This expectation values can be bounded using Lemma \ref{lem:ldotbounds}, Lemma \ref{lem:lncommutatorbound} and Corollary \ref{c:reg1}:
+\bd
+u'(t) \leq C e^{M t} \scal{U_t T^\ast_0 \Psi}{\left(\frac{\Ncal^2}{N}+\Ncal+1+\Kcal+\tilV \right)U_t T^\ast_0 \Psi}.
+\ed
+By Lemma \ref{lm:kbounds} and Corollary \ref{cor:N2} we can eliminate $\Kcal$, $\tilV$ and $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then, we add non-negative summands $\Ncal+1$ to produce a $\tLcal$ on the right hand side and arrive at
+\bd
+u'(t) \leq \tilde C e^{\tilde K t} u(t).
+\ed
+We now apply Gronwall's Lemma to conclude that
+\bd
+u(t) \leq u(0) \exp(C e^{Kt})
+\ed
+for some constants $C$ and $K$, both independent of $N$. The factor $u(0)$ is given by
+\bd
+u(0) = \scal{T^\ast_0 \Psi}{(\tLcalo + \Ncal+1)T^\ast_0 \Psi}.
+\ed
+By Proposition \ref{p:TNT}, we know that $\scal{T^\ast_0 \Psi}{(\Ncal+1)T^\ast_0 \Psi} \leq C\scal{\Psi}{(\Ncal+1)\Psi}$. Now by assumption we see that $u(0) \leq C$.
 \end{proof}
+
+\begin{rem}\marginpar{to be doublechecked}
+ We have the following examples satisfying the assumptions of Proposition \ref{prp:Nbound}:
+\begin{itemize}
+ \item $\Psi = \Omega$. This corresponds to a factorized initial state.
+ \item $\Psi = T_0 \tilde \Psi$ where $\tilde \Psi$ satisfies $\scal{\tilde \Psi}{\Hcal_N \tilde \Psi} \leq C$. (This can be seen employing Lemma \ref{lem:tilV}.) We expect that states showing BEC can be treated in this way.
+\end{itemize}
+\end{rem}
+
+\begin{lem}\marginpar{to be doublechecked}
+\label{lem:tilV}
+ For all $t$, in every state $\zeta$ the expectation value of $\tilV = \tilV(t)$ can be estimated as follows:
+\bd
+\scal{\zeta}{\tilV \zeta} \leq C \scal{\zeta}{\Vcal_N \zeta} + C \norm{\ph}_{H^2}^2\scal{\zeta}{\frac{(\Ncal+1)^2}{N} \zeta}.
+\ed
+\end{lem}
+\begin{proof}
+Plug in $a(c_x) = a_x + a(p_x)$, multiply out and use Hoelder's inequality (sum version).
+\end{proof}
+
+
+
 
 
 \section{Main result}
@@ -1714,11 +1773,11 @@ Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimat
 In the last step, Proposition \ref{p:TNT} (\ref{TN2T}) has been used. Now we use the assumption on $\Psi$ and Corollary \ref{cor:N2} to finish the proof.
 \end{proof}
 
-\begin{thm}
-Main result.
+\begin{thm}[Main result]
+TODO
 \end{thm}
 \begin{proof}
-This theorem is proven by combining Lemma \ref{lem:TrJ}, Lemma \ref{lem:phNtoph} and Proposition \ref{prp:Nbound}. Notice that $d_N \leq TODO$.
+TODO
 \end{proof}
 
 \begin{lem}
