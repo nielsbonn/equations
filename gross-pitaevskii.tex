@@ -204,8 +204,8 @@ operator $a(f)$ on $\mathcal{F}$ are defined as
 \]
 The operators $a^*(f)$ and $a(f)$ are unbounded, densely defined, and closed.
 Note that $a^*(f)$ is linear in $f$, while $a(f)$ is anti-linear. The creation
-operator $a^*(f)$ is the adjoint of the annihilation operator $a(f)$ and they
-satisfy the canonical commutation relations
+operator $a^*(f)$ is the adjoint of the annihilation operator $a(f)$, and
+they satisfy the canonical commutation relations
 \[
   [a(f), a^*(g)] = \langle f, g \rangle_{L^2} \qquad \text{and} \qquad [a(f),
   a(g)] = [a^*(f), a^*(g)] = 0
@@ -239,11 +239,13 @@ $\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
 The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
 \psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
 \[
-  \Hcal_N^{(n)} = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{i<j}^n V_N(x_i - x_j) = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{j=1}^n \sum_{i=1}^{j-1} V_N(x_i - x_j),
+  \Hcal_N^{(n)} = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{j=1}^n
+  \sum_{i=1}^{j-1} V_N(x_i - x_j),
 \]
-where $V_N(x) = N^2 V(Nx)$ with $V \in C_c^\infty(\R^3)$. We assume that $V$ is non-negative and spherically symmetric. By definition, the
-Hamiltonian $\Hcal_N$ leaves sectors of $\fock$ with a fixed number of
-particles invariant and $[\Hcal_N,\Ncal] = 0$.
+where $V_N(x) = N^2 V(Nx)$ with $V \in C_c^\infty(\R^3)$. We assume that $V$
+is non-negative and spherically symmetric. By definition, the Hamiltonian
+$\Hcal_N$ leaves sectors of $\fock$ with a fixed number of particles
+invariant and $[\Hcal_N,\Ncal] = 0$.
 
 
 Using the distributions $a_x^*$ and $a_x$, we can express the operators $\N$
@@ -285,13 +287,14 @@ and
 \ee
 \end{lem}
 
+\marginpar{I think this remark is out of place.}
 A remark on notation: We use the symbol $C$ throughout the paper for constants which might differ in value, but which are always independent of $N$ and of time $t$.
 
 For $f \in L^2(\R^3)$, define the Weyl operator on $\mathcal{F}$ as
 \[
   W(f) = e^{a^*(f) - a(f)}.
 \]
-States $W(f)\Omega$ are called coherent states.
+A state of the form $W(f)\Omega$ is called a coherent state.
 
 
 In the following lemma we collect some well-known properties of Weyl operators
