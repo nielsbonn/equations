@@ -782,6 +782,8 @@ We calculate that
 		& =: (i \partial_t T^*_t) T_t + T^*_t \Lcal^{(0)}_N(t) T_t
 \end{align*}
 where
+\marginpar{What if we raise this to a prop.: ``$L_N^{(0)}$ does not contain
+linear terms is $a_x$, and is given by\dots''}
 \be{no3}
 \begin{split}
 \Lcal^{(0)}_N(t) & = \Kcal + \Vcal_N \\
@@ -792,6 +794,9 @@ where
 		& \quad + N b(N,t),
 \end{split}
 \ee
+\marginpar{What is a phase? An operator? \dots where $b(N,t)$ is a scalar
+function \dots I think this is the only phase dropped \dots More words about
+this I think \dots}
 with a phase $b(N,t)$ which, like all phases, will be dropped from now on without any further comment.
 
 In \eqr{no3} we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation
@@ -1275,8 +1280,10 @@ first.
   for some constant $C_3$ as above. This concludes the proof.
 \end{proof}
 
+
 \begin{cor}
 \label{cor:N2}
+\marginpar{I think this should go right under the lemma.}
 If $\Psi \in \fock$ with a constant $C_1$ such that $\scal{\Psi}{\left( \frac{1}{N}\Ncal^2+\Ncal \right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$, then there exists a constant $C_2$ such that
 \bd
 \frac{1}{N}\scal{U_t T^\ast_0 \Psi}{\Ncal^2 U_t T^\ast_0 \Psi} \leq C_2 \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi}.
@@ -1302,6 +1309,7 @@ where $d_N = \norm{P_N W_0\Psi}^{-1}$ and
 The operator $P_N$ is the projection on the $N$-particle subspace of Fock space.
 
 Remark: $\ph$ needn't be a solution of the Hartree equation here.
+\marginpar{So I think it should be stated with a arbitrary function \dots}
 \end{lem}
 \begin{proof}
 In the first step we use that $P_N$ commutes with $e^{-it \Hcal_N}$ (because $\Hcal_N$ conserves the particle number) and that $P_N$ commutes with $a^\ast_y a_x$, so because of $P_N^2 = P_N$, one of the projections $P_N$ can be eliminated. After that, we insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}.
@@ -1340,6 +1348,7 @@ Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimat
 & \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{1}{N} \scal{W^\ast_t e^{-it\Hcal_N}W_0 \Psi}{\Ncal^2 W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \right)^{1/2} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{C}{N} \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)^2 U_t T^\ast_0 \Psi} \right)^{1/2}.
 \end{align*}
+\marginpar{This is ending to quick to my taste\dots}
 In the last step, Proposition \ref{p:TNT} (\ref{TN2T}) has been used. Now we use the assumption on $\Psi$ and Corollary \ref{cor:N2} to finish the proof.
 \end{proof}
 
@@ -1359,6 +1368,7 @@ Using Hoelder's inequality, we calculate that
 & \leq \int \di x \di y \lvert J(x,y)\rvert \lvert \ph(y) - \varphi_t(y)\rvert \lvert \ph(x)\rvert + \int \di x \di y \lvert J(x,y) \rvert \lvert \varphi_t(y)\rvert \lvert \ph(x)-\varphi_t(x)\rvert \\
 & \leq \norm{\ph}_{L^2} \norm{J}_{\textrm{HS}} \norm{\ph - \varphi_t}_{L^2} + \norm{\varphi_t}_{L^2} \norm{J}_{\textrm{HS}} \norm{\ph - \varphi_t}_{L^2}. 
 \end{align*}
+\marginpar{I would write the last inequality and they say by Lemma\dots}
 The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} = 1$ and, by Lemma \ref{lem:phitN2phit}, $\norm{\ph - \varphi_t}_{L^2} \leq C e^{e^{KT}}/N$.
 \end{proof}
 
