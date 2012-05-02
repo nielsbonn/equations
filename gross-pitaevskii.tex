@@ -106,7 +106,7 @@
 \end{abstract}
 
 \section{Introduction and Main Result}
-We consider a system of $N$ bosons with repulsive interaction. This system is described on the Hilbert space $L^2_s(\Rbb^{3N})$ by the Hamiltonian
+We consider a system of $N$ identical bosons with repulsive interaction. This system is described on the Hilbert space $L^2_s(\Rbb^{3N})$ by the Hamiltonian
 \bd
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N N^3 V(N(x_i-x_j)).
 \ed
@@ -120,23 +120,23 @@ We are interested in the time evolution of factorized initial wave functions, wh
 \ed
 where $\varphi \in H^4(\Rbb^3)$ is a one-particle wave function normalized to $\norm{\varphi}_{L^2} = 1$. The time evolution is given by the solution to the Schroedinger equation 
 \bd
-i \partial_t \psi_{N,t} = H_N \psi_{N,t}\quad \mbox{, with inital data } \psi_{N,0} = \psi_N.
+i \partial_t \psi_{N,t} = H_N \psi_{N,t},\quad \mbox{with inital data } \psi_{N,0} = \psi_N.
 \ed
 
-The function $f_N = 1 - w_N$ is the solution to the zero-energy scattering equation
+The function $f_N = 1 - w_N: \Rbb^3 \to \Rbb$ is the solution to the zero-energy scattering equation
 \bd
 \left(-\Delta + \frac{1}{2}V_N \right) f_N = 0
 \ed
-with boundary condition $\lim_{\lvert x\rvert \to \infty} f_N(x) = 1$. The scattering length $a_0$ of the potential $V$ is defined as
+with boundary condition $\lim_{\lvert x\rvert \to \infty} f_N(x) = 1$. The scattering length $a_0$ of the potential $V$ is given by
 \bd
 8\pi a_0 = \int \di x NV_N(x)f_N(x),
 \ed
 which is clearly indepedent of $N$.
 
 The modified Hartree equation reads
-\bd
-i \partial_t \ph = -\Delta \ph + \left(f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
-\ed
+\be{modHartreeEqu}
+i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
+\ee
 where we denote by $\ph$ the solution to the modified Hartree equation with initial data $\varphi^{(N)}_0 = \varphi$.
 
 We expect that in the limiting case of large $N$, the dynamics of the Bose-Einstein condensate is well described by
@@ -149,14 +149,24 @@ i \partial_t \varphi_t = - \Delta \varphi_t + 8\pi a_0 \lvert \varphi_t\rvert^2 
 \ed
 with initial data $\varphi_0 = \varphi$.
 
+Note that for the unmodified Hartree equation
+\[
+i \partial_t \ph = -\Delta \ph + \left(N V_N \ast \lvert \ph\rvert^2 \right) \ph,
+\]
+so with $N V_N \to b_0 \delta$ we formally obtain the limiting equation
+\bd
+i \partial_t \varphi_t = - \Delta \varphi_t + b_0 \lvert \varphi_t\rvert^2 \varphi_t,
+\ed
+while in the modified Hartree equation $N f_N V_N \to 8 \pi a_0 \delta$, which by \cite{ESY2010} is expected to be the correct limiting equation.
+
 \begin{thm}[Time Evolution of Factorized States] \label{thm:main_factorized}
  Let $\psi_N(\xn) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schroedinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
 
  Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
 
- Then, there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any one-particle Hilbert-Schmidt operator $J$
+ Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any one-particle Hilbert-Schmidt operator $J$
 \bd
-\left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
+\left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
 \ed
 \end{thm}
 
@@ -168,6 +178,14 @@ Literature: BBGKY, Grillakis-Machedon-Margetis, Pickl, Rodnianski-Schlein.
 
 Organization: Lift to Fock Space. The Bogoliubov Transformation. Controlling the Number of Quantum Fluctuations by a Gronwall estimate. Time Evolution of Factorized States and Proof of the Main Theorem. Appendix on Generator-Estimates. Appendix on Hartree and Gross-Pitaevskii equation. Appendix: Bounds on the Bogoliubov Transformation.
 
+Remarks on notation: We use the symbol $C$ throughout the paper for constants which might be redefined from line to line, but which are always independent of $N$ and of time $t$.
+The notation
+\[
+  A \apprle B
+\]
+means that $A \le C B$ for some constant $C$.
+Notice that we use $\sup_x$ as a short-hand for $\operatorname{esssup}_{x\in \Rbb^3}$. In accordance with \eqr{no1}, our notation has to be read as $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$.
+
 \section{Fock Space Representation}
 The bosonic Fock space over $L^2(\R^3)$ is the Hilbert space
 \[
@@ -177,7 +195,7 @@ The bosonic Fock space over $L^2(\R^3)$ is the Hilbert space
 with the convention that $L^2(\R^3)^{\otimes_s 0} = \mathds{C}$. Here
 $L^2_s(\R^{3n})$ is the subspace of $L^2(\R^{3n})$ consisting of all functions
 that are symmetric with respect to arbitrary permutations of the $n$
-variables. Vectors in $\mathcal{F}$ are sequences $\psi = \{ \psi^{(n)} \}_{n
+variables. Vectors in $\mathcal{F}$ are sequences $\psi = (\psi^{(n)})_{n
 \ge 0}$ of $n$-particle wave functions $\psi^{(n)} \in L^2_s(\R^{3n})$. The
 inner product on $\mathcal{F}$ is defined as
 \begin{align*}
@@ -187,9 +205,9 @@ inner product on $\mathcal{F}$ is defined as
   dx_n \overline{\psi_1^{(n)}}(x_1, \dots, x_n) \psi_2^{(n)}(x_1, \dots, x_n).
 \end{align*}
 An $N$-particle state with wave function $\psi_N$ is described on
-$\mathcal{F}$ by a sequence $\{ \psi^{(n)} \}_{n \ge 0}$ where $\psi^{(n)} =
-0$ for all $n \neq N$ and $\psi^{(N)} = \psi_N$. The vector $\{ 1, 0, 0, \dots
-\} \in \mathcal{F}$ is called the vacuum, and is denoted by $\Omega$.
+$\mathcal{F}$ by a sequence $(\psi^{(n)})_{n \ge 0}$ where $\psi^{(n)} =
+0$ for all $n \neq N$ and $\psi^{(N)} = \psi_N$. The vector $(1, 0, 0, \dots
+) \in \mathcal{F}$ is called the vacuum, and is denoted by $\Omega$.
 
 
 For $f \in L^2(\R^3)$, the creation operator $a^*(f)$ and the annihilation
@@ -240,13 +258,15 @@ The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
 \psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
 \[
   \Hcal_N^{(n)} = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{j=1}^n
-  \sum_{i=1}^{j-1} V_N(x_i - x_j),
+  \sum_{i=1}^{j-1} V_N(x_i - x_j).
 \]
-where $V_N(x) = N^2 V(Nx)$ with $V \in C_c^\infty(\R^3)$. We assume that $V$
-is non-negative and spherically symmetric. By definition, the Hamiltonian
+By definition, the Hamiltonian
 $\Hcal_N$ leaves sectors of $\fock$ with a fixed number of particles
-invariant and $[\Hcal_N,\Ncal] = 0$.
-
+invariant and $[\Hcal_N,\Ncal] = 0$, i.\,e.\ $\Hcal_N$ conserves the number of particles. Clearly $\Hcal_N^{(N)} = H_N$, therefor
+\[
+e^{-it \Hcal_N} (0,\dots,0, \psi^{(N)},0,\dots) = (0,\dots,0, e^{-itH_N}\psi^{(N)},0,\dots), 
+\]
+so we have embedded the time evolution of the $N$ boson system in Fock space.
 
 Using the distributions $a_x^*$ and $a_x$, we can express the operators $\N$
 and $\Hcal_N$ as
@@ -287,10 +307,7 @@ and
 \ee
 \end{lem}
 
-\marginpar{I think this remark is out of place.}
-A remark on notation: We use the symbol $C$ throughout the paper for constants which might differ in value, but which are always independent of $N$ and of time $t$.
-
-For $f \in L^2(\R^3)$, define the Weyl operator on $\mathcal{F}$ as
+For $f \in L^2(\R^3)$, we define the Weyl operator on $\mathcal{F}$ as
 \[
   W(f) = e^{a^*(f) - a(f)}.
 \]
@@ -348,7 +365,7 @@ and coherent states.
 
 
 \section{Bogoliubov Transformation}
-Let $f(x,y)$ be a function of two variables. To simplify the notation we write
+Let $f(x,y)$ be a function of two variables, $f: \Rbb^3\times\Rbb^3 \to \Cbb$. To simplify the notation we write
 \be{no1}
   f_y(x) = f(x,y)
 \ee
@@ -362,12 +379,6 @@ write
 \[
   a_y + a(f_y) = a(\delta_y + f_y).
 \]
-The notation
-\[
-  A \apprle B
-\]
-means that $A \le C B$ for some universal constant $C$.
-
 
 For $k \in L^2(\R^3 \times \R^3)$, define the operators $B(k)$ and $T(k)$ on
 $\mathcal{F}$ as
@@ -407,7 +418,7 @@ Below is stated that $p, r, s \in L^3$}
         k \overline{k} \big)^n k,
       \end{alignat*}
       where $\delta$ is the Dirac delta, and the product of functions in the
-      power series is the convolution of integral kernels, that is, $fg(x,y) =
+      power series is the convolution of integral kernels, that is $fg(x,y) =
       \int dz \, f(x,z) g(z,y)$. Furthermore,
       \begin{alignat*}{2}
         \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_1 p \|_{L^2}
@@ -421,7 +432,7 @@ Below is stated that $p, r, s \in L^3$}
       \end{alignat*}
 \end{lem}
 \begin{rem}
-Notice that $c$ and $s$ are defined by series like those of the hyperbolic cosine respectively the hyperbolic sine. 
+Notice that the integral kernels $c$ and $s$ are defined by series similar to those of the hyperbolic cosine respectively the hyperbolic sine. 
 \end{rem}
 
 
@@ -442,7 +453,7 @@ Since $V$ has compact support, we have
 \[
   f(x) = 1 - \frac{a_0}{|x|} \qquad \text{for } |x| \ge R,
 \]
-where $R$ is such that $\text{supp} \ V \subset \{ x \in \R^3 \; | \;\; |x|
+where $R$ is such that $\text{supp} \ V \subset \{ x \in \R^3: |x|
 \le R \}$. From the zero-energy scattering equation, we also have the identity
 \[
   \int dx \, V(x) f(x) = 8 \pi a_0.
@@ -453,27 +464,23 @@ is
 \begin{equation} \label{eq:scattering}
   \left( -\Delta + \frac{1}{2} V_N \right) f_N = 0,
 \end{equation}
-where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$. Note that $w_N(x) = a_N/|x|$ for
-$|x| \ge R/N$.
+where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
+% Note that $w_N(x) = a_N/|x|$ for $|x| \ge R/N$.
 
 
 \begin{lem}[Zero-energy scattering equation \cite{ESY2010}] \label{l:w}
   Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
-  spherical symmetric with scattering length $a_0$. Let
-  \[
-    \rho = \sup_{r \ge 0} r^2 V(r) + \int_0^\infty dr \, r V(r),
-  \]
-  and consider the solution $f_N = 1-w_N$ of the zero-energy scattering
+  spherically symmetric with scattering length $a_0$. Let $f_N = 1 - w_N$ be the solution of the zero-energy scattering
   equation \eqref{eq:scattering} with scaled potential $V_N$. Then, the
   following hold with constants uniform in $N$.
   \begin{enumerate}
     \item \label{l:w1} There exists a constant $C_0 > 0$, which depends on the
-      unscaled potential $V$, such that,
+      unscaled potential $V$, such that
       \[
         C_0 \le 1 - w_N(x) \le 1 \qquad \text{for all} \ x \in \R^3.
       \]
     \item \label{l:w2} Let $R$ be such that $\text{supp} \ V \subset \{ x \in
-      \R^3 \; | \;\; |x| \le R \}$. Then,
+      \R^3 : |x| \le R \}$. Then,
       \[
         w_N(x) = \frac{a_0}{N|x|} \qquad \text{for all} \ x \in \R^3 \
         \text{with} \ |x| > R/N.
@@ -507,8 +514,8 @@ $|x| \ge R/N$.
 
 
 \begin{lem} \label{l:kernels}
-  Let $\varphi \in H^1(\R^3)$, and let $f_N=1-w_N$ be the solution of the
-  zero-energy scattering equation as in Lemma \ref{l:w}. Suppose that
+  Let $\varphi \in H^1(\R^3)$ and let $f_N=1-w_N$ be the solution of the
+  zero-energy scattering equation. Suppose that
   \[
     k(x,y) = - N w_N(x-y) \varphi(x) \varphi(y).
   \]
@@ -534,16 +541,13 @@ $|x| \ge R/N$.
         \norm{s_x}_{L^2} \apprle e^{C \| \varphi \|_{H^1}^2}
         \norm{\varphi}_{H^2}.
       \]
-\marginpar{I think all this comments should go in just one place if they go
-at all.}
-(Notice that in the whole paper, we use $\sup_x$ as a short-hand for $\operatorname{esssup}_{x\in \Rbb^3}$. In accordance with \eqr{no1}, our notation has to be read as $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$.)
   \end{enumerate}
 \end{lem}
 
 
 \begin{prp} \label{p:wphi}
   Let $\varphi \in H^1(\R^3)$, and let $f_N=1-w_N$ be the solution of the
-  zero-energy scattering equation as in Lemma \ref{l:w}. Then, for almost all
+  zero-energy scattering equation. Then, for almost all
   $x,y \in \R^3$,
   \begin{align*}
     \norm{N w_N(x-\cdot)\varphi(\cdot)}_{L^2}^2 & = \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 \le C \| \nabla \varphi
@@ -560,7 +564,7 @@ at all.}
 
 
 \begin{proof}[Proof of Proposition \ref{p:wphi}]
-  Using Lemma \ref{l:w}\ref{l:w3}, and Hardy's inequality, we find that
+  Using Lemma \ref{l:w}\ref{l:w3} and Hardy's inequality, we find that
   \bd
     \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2  \le C_1^2 \int dz \,
     |x-z|^{-2} |\varphi(z)|^2 \leq 4 C_1^2 \| \nabla \varphi \|_{L^2}^2,
@@ -569,14 +573,14 @@ at all.}
   the first estimate.
 
 
-  Now, by H\"older's inequality, and the above estimate,
+  Now, by H\"older's inequality and the above estimate,
   \begin{align*}
     & \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2 \\
     & \le \left( \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 \right)^{1/2} \left(
     \int dz \, N^2 w_N(z-y)^2 |\varphi(z)|^2 \right)^{1/2} \le 4C_1^2 \|
     \nabla \varphi \|_{L^2}^2.
   \end{align*}
-  This gives the second estimate in the proposition.
+  This proves the second estimate.
 
 
   Finally, by Young's inequality, Sobolev's inequality, and Lemma
@@ -596,13 +600,13 @@ at all.}
 % Funny behavior here. Forcing hyphenation...
 \marginpar{We might omit this first part? Isn't standard? We might well
 start just at the top of the next page.}
-  The operator $B(k)$ is unbounded, densely defined, and anti-self-ad\-joint.
+  The operator $B(k)$ is unbounded, densely defined and anti-self-ad\-joint.
   Hence, by the spectral theorem, the unitary operator $T(k) = e^{B(k)}$ is
   well-defined and $T(k)^* = T(k)^{-1} = T(-k)$.
 
 
   Let $\chi$ be the characteristic function, and consider a real number $M >
-  0$. We give a proof of the formula on the subspace $\chi(\N \le M)
+  0$. We give a proof of the formulae on the subspace $\chi(\N \le M)
   \mathcal{F}$, and then we indicate how to extend it to the whole
   $\mathcal{F}$. First, note that $B(k)$ and $a(f)$ are bounded operators on
   $\chi(\N \le M) \mathcal{F}$. Recall the formula
@@ -627,7 +631,7 @@ start just at the top of the next page.}
   We next prove the estimates for the integral kernels $p$, $r$ and $s$. 
 
 
-  Let $fg$ be a product of integral kernels. Then, by H\"older's inequality,
+  Let $fg$ be the convolution of integral kernels $f, g \in L^2(\Rbb^3\times\Rbb^3)$. Then, by H\"older's inequality,
   \[
     \| f g \|_{L^2} \le \| f \|_{L^2} \| g \|_{L^2}.
   \]
@@ -662,7 +666,7 @@ This completes the proof of the lemma.
 
 \begin{proof}[Proof of Lemma \ref{l:kernels}]
   \ref{k} We will repeatedly apply Proposition \ref{p:wphi}, Sobolev's
-  inequality, Leibniz' rule, and triangle inequality. We begin with
+  inequality, Leibniz' rule, and the triangle inequality. We begin with
   \[
     \| k \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, N^2 w_N(x-y)^2
     |\varphi(y)|^2 \le C \| \varphi \|_{L^2}^2 \| \nabla \varphi \|_{L^2}^2
@@ -700,7 +704,7 @@ This completes the proof of the lemma.
   This completes the proof of part \ref{k}.
 
 
-  \ref{kr} From Lemma \ref{l:w}\ref{l:w1}, it follows that $w_N \leq 1$. Hence,
+  \ref{kr} By Lemma \ref{l:w}\ref{l:w1} $w_N \leq 1$. Hence
   \[
     |k(x,y)| = N w_N(x-y) |\varphi(x)| |\varphi(y)| \leq N |\varphi(x)|
     |\varphi(y)|.
@@ -709,7 +713,7 @@ This completes the proof of the lemma.
   
   
   To bound $|r(x,y)|$, observe that, by H\"older's inequality, Proposition
-  \ref{p:wphi}, and part \ref{k},
+  \ref{p:wphi} and part \ref{k},
   \begin{align*}
     & |( k \overline{k})^n k(x,y)| = | k \overline{k} ( k \overline{k})^{n-1}
     k(x,y)| \\
@@ -734,7 +738,7 @@ This completes the proof of the lemma.
 
   \ref{sup} We give a proof of the estimate for $\sup_{y \in \R^3} \| s_y
   \|_{L^2}$. The proof for $\sup_{y \in \R^3} \| p_y \|_{L^2}$ is similar.
-  First, by H\"older's inequality, and Proposition \ref{p:wphi},
+  First, by H\"older's inequality and Proposition \ref{p:wphi},
   \begin{align*}
     |(k \overline{k})^n k(x,y)| & = \left| \varphi(y) \int dz \, N w_N(z-y)
     \varphi(z) (k \overline{k})^n(x,z) \right| \\
@@ -766,7 +770,7 @@ We use the short-hand $T_t = T(k)$ with
 k(x,y) = - N w_N(x-y) \ph(x) \ph(y),
 \ed
 where $\ph$ is a solution of the modified Hartree equation. We also write $W_t = W(\sqrt{N}\ph)$.
-Define the time evolution of quantum fluctuations by
+We define the time evolution of quantum fluctuations by
 \bd
 U_N(t) := T^\ast_t W^\ast_t e^{-it \Hcal_N} W_0 T_0.
 \ed
@@ -779,7 +783,7 @@ The generator $\Lcal_N(t)$ of quantum fluctuations is defined by
 We calculate that
 \begin{align*}
 \Lcal_N(t) 	& = (i \partial_t T^*_t) T_t + T^*_t \left( (i \partial_t W^*_t) W_t + W^*_t \Hcal_N W_t \right) T_t \\
-		& =: (i \partial_t T^*_t) T_t + T^*_t \Lcal^{(0)}_N(t) T_t
+		& = (i \partial_t T^*_t) T_t + T^*_t \Lcal^{(0)}_N(t) T_t
 \end{align*}
 where
 \marginpar{What if we raise this to a prop.: ``$L_N^{(0)}$ does not contain
@@ -787,25 +791,22 @@ linear terms is $a_x$, and is given by\dots''}
 \be{no3}
 \begin{split}
 \Lcal^{(0)}_N(t) & = \Kcal + \Vcal_N \\
-		& \quad + N^{1/2} \left(  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right) + \hc  \right) \\
-		& \quad + N^0	    \left(  \frac{1}{2}\int \di x \di y\, NV_N(x-y)\left( \cc{\ph(x)} \cc{\ph(y)} a_y a_x + \hc \right) \right) \\
-		& \quad + N^0	    \left(  \int \di x \di y\, NV_N(x-y)\left( \lvert \ph(x) \rvert^2 a^*_y a_y + \cc{\ph(x)} \ph(y) a^*_y a_x \right) \right) \\
-		& \quad + N^{-1/2}\left(  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right) \\
+		& \quad + N^{1/2} \left[  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right] + \hc  \right) \\
+		& \quad + N^0	    \left[  \frac{1}{2}\int \di x \di y\, NV_N(x-y)\left( \cc{\ph(x)} \cc{\ph(y)} a_y a_x + \hc \right) \right] \\
+		& \quad + N^0	    \left[  \int \di x \di y\, NV_N(x-y)\left( \lvert \ph(x) \rvert^2 a^*_y a_y + \cc{\ph(x)} \ph(y) a^*_y a_x \right) \right] \\
+		& \quad + N^{-1/2}\left[  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right] \\
 		& \quad + N b(N,t),
 \end{split}
 \ee
-\marginpar{What is a phase? An operator? \dots where $b(N,t)$ is a scalar
-function \dots I think this is the only phase dropped \dots More words about
-this I think \dots}
-with a phase $b(N,t)$ which, like all phases, will be dropped from now on without any further comment.
+with a phase $b(N,t) \in \Rbb$ which, like all phases appearing in $\Lcal_N(t)$, will be dropped from now on without any further comment. (Notice that $\scal{U_N(t)T^\ast_0 \Psi}{(\Ncal+1)U_t T_0^\ast \Psi} = \scal{\tilde U_N(t)T^\ast_0 \Psi}{(\Ncal+1)\tilde U_t T_0^\ast \Psi}$ for all $\tilde U_N(t) = e^{i\theta_N(t)} U_N(t)$ with $\theta_N(t) \in \Rbb$.)
 
-In \eqr{no3} we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation
-\bd
-i\partial_t \ph = -\Delta \ph + \left(f_N N V_N \ast \lvert \ph \rvert^2 \right) \ph.
-\ed
-Compare \cite{RS2009}, but notice that due to the factor $f_N$ in the Hartree equation, in our case the cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ in the Gross-Pitaevskii equation and ensures further cancelation with the cubic terms (see below). This cancelation is revealed through the Bogoliubov transformation, to be calculated now.
+In \eqr{no3} we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation \eqr{modHartreeEqu}.
+%\bd
+%i\partial_t \ph = -\Delta \ph + \left(f_N N V_N \ast \lvert \ph \rvert^2 \right) \ph.
+%\ed
+Compare to \cite{RS2009}, but notice that due to the factor $f_N$ in the modified Hartree equation, in our case the cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ instead of $b_0$ in the Gross-Pitaevskii equation and ensures important cancellations (see below). These cancellations are revealed through the Bogoliubov transformation, to be calculated now.
 
-We now identify cancellations between linear terms stemming from the transformation of linear terms and linear terms stemming from normal-ordering the transformation of cubic terms
+We first identify cancellations between linear terms originating from the transformation \eqr{no4} of linear terms and linear terms originating from normal-ordering the transformation of cubic terms
 \begin{align*}
 T^*_t \Lcal^{(0)}_N(t) T_t \\
 = \int \di x\, T^*_t a^*_x T_t \bigg[ &   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
@@ -816,7 +817,7 @@ T^*_t \Lcal^{(0)}_N(t) T_t \\
 & + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} T^*_t a_x a_y T_t  \bigg]\tagg{cubicterm} \\
 & + \hc
 \end{align*}
-Between the term \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and plugging in $c = \delta + p$ and $s = k + r$, we find that the linear term is cancelled up to two remainder terms (the $N^{1/2}$-term, line \eqr{linearterm}, is completely cancelled). Result:
+Between the terms \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and plugging in $c = \delta + p$ and $s = k + r$, we find that the linear term is cancelled up to two remainder terms (the $N^{1/2}$-term, line \eqr{linearterm}, is completely cancelled). The result is:
 \begin{align*}
 & T^*_t \Lcal^{(0)}_N(t) T_t = \int \di x\, T^*_t a^*_x T_t \bigg[   \frac{1}{2}(-\Delta_x T^*_t a_x T_t) \\
 & + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
@@ -844,12 +845,12 @@ Now we apply the Bogoliubov transform \eqr{no4} everywhere, multiply out all the
 & + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \\
 & + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) + a^*(s_x) a^*(s_y) a(s_x)\\
-					    & \qquad\qquad\qquad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y)+ a^*(s_x) a(s_x) a(c_y) \\
-					    & \qquad\qquad\qquad + a^*(s_y) a(s_x) a(c_x) + a(s_x) a(c_x) a(c_y)    \bigg) \\
+					    & \qquad\qquad\qquad\quad + a^*(c_x) a^*(s_y) a(c_x) + a^*(c_x) a(c_x) a(c_y)+ a^*(s_x) a(s_x) a(c_y) \\
+					    & \qquad\qquad\qquad\quad + a^*(s_y) a(s_x) a(c_x) + a(s_x) a(c_x) a(c_y)    \bigg) \\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(s_x) \scal{s_x}{s_y} + a^*(s_y) \scal{s_x}{s_x}  + a(c_y) \scal{s_x}{s_x} + a(c_x) \scal{s_x}{s_y} \\
-					    & \qquad\qquad\qquad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
+					    & \qquad\qquad\qquad\quad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big] + \hc
 \end{align*}
-We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scattering} appears. There are however some more regular remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator.
+We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scattering} appears. There are however some, more regular, remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator.
 
 Our final result for the generator is:
 \begin{align}
@@ -877,12 +878,18 @@ Our final result for the generator is:
 &+ \hc
 \end{align}
 
-\begin{rem}The cancellations enable us to give the necessary estimates for all terms, see chapter \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, there would be contributions of order $N^1$.
+\begin{rem}The cancellations enable us to give the necessary estimates for all terms of the generator, see appendix \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, there would be contributions of order $N^1$.
 \end{rem}
 
 
 \subsection{Estimating the number of fluctuations}
 The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
+
+We define
+\bd
+\tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
+\ed
+(Notive that through the $t$-dependence of $c$, the operator $\tilV$ is time-dependent. However, as this does not play any role in our proof, we do not indicate this time-dependence and $\tilV$ should always be read as belonging to the same time $t$ like the other objects in the equation where it appears.)
 
 \begin{lem}
 \label{lem:kvbounds}
@@ -893,7 +900,7 @@ There exists a constant $C$ such that
 As $\Kcal$ and $\tilV$ are non-negative operators, the same upper bound holds for each of $\Kcal$ and $\tilV$ individually.
 \end{lem}
 \begin{proof}
-We know that $\Lcal_N(t) = (i\partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t$ and we have explictly calculated and bounded $T^\ast_t \Lcal_N^{(0)}(t)T_t$ in appendix \ref{ch:generatorestimates}. We now write only line \eqref{l9} and the first summand in line \eqref{l10} explicitly, all the other terms we collect in $\Lcal_{\textrm{rest}}$:
+We know that $\Lcal_N(t) = (i\partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t$ with $T^\ast_t \Lcal_N^{(0)}(t)T_t$ written out in \eqref{l7} through \eqref{l25}. We now write only line \eqref{l9} and the first summand in line \eqref{l10} explicitly, all the other terms we collect in $\Lcal_{\textrm{rest}}$:
 \begin{align*}
 \Lcal_N(t) & = \frac{1}{2} \int \di x\, a^\ast(c_x) a(-\Delta_x c_x) + \frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x)a(s_x) \\
 & \quad + \frac{1}{2}\int \di x\di y\, NV_N(x-y) \frac{1}{2N} a^\ast(c_x) a^\ast(c_y) a(c_y) a(c_x) + \Lcal_{\textrm{rest}}.
@@ -906,8 +913,8 @@ so by leaving away this non-negative term we obtain
 \be{Lcalbound}
 \ev{\Lcal_N(t)} \geq \ev{\tilK + \tilV} - \lvert\ev{\Lcal_{\textrm{rest}}}\rvert.
 \ee
-We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from appendix \ref{ch:generatorestimates} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rest}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rest}}}\rvert$.
-(To simplify the notation we insert factors of $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ in some places, leave away prefactors $\frac{1}{N}$ and $\frac{1}{\sqrt{N}}$ where there does not follow a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$. Numerical prefactors are absorbed into $C$.)
+We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from appendix \ref{ch:generatorestimates} and use Lemma \ref{lm:timederivative} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rest}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rest}}}\rvert$.
+(To simplify the notation we insert factors of $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ in some places, leave away prefactors $\frac{1}{N}$ and $\frac{1}{\sqrt{N}}$ where they are not needed to controll a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$. Numerical prefactors are absorbed into $C$.)
 \bd
 \lvert\ev{\Lcal_{\textrm{rest}}}\rvert \leq C \norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} + \varepsilon\ev{\Kcal+\tilV} \right).
 \ed
@@ -915,7 +922,7 @@ So using \eqr{Lcalbound} we conclude that
 \bd
 \ev{\Lcal_N(t)} \geq \ev{\tilK+\tilV} - C\norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 +\Ncal+1} + \varepsilon \ev{\Kcal+\tilV} \right).
 \ed
-Combining this with $\ev{\tilK} \geq \ev{\Kcal} - C\left(\varepsilon\ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right)$ from \eqref{eq:bound1A}, we arrive at (where $C$ is being redefined)
+Combining this with $\ev{\tilK} \geq \ev{\Kcal} - C\left(\varepsilon\ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right)$ from \eqref{eq:bound1A}, we arrive at
 \bd
 \ev{\Lcal_N(t)} \geq  \ev{\Kcal+\tilV} - C\norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 +\Ncal+1} + \varepsilon \ev{\Kcal+\tilV} \right).
 \ed
@@ -965,16 +972,16 @@ There exists a constant $C$ such that
  \ed
 \end{lem}
 \begin{proof}
-We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop. The other summands get numerical prefactors, but except of that stay unchanged. (Because of these prefactors, the sign of the $+\hc$-part changes, but this is not important for our estimates.)
-Now use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
+We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop out. The other summands get numerical prefactors, but except for that stay unchanged. %(Because of these prefactors, the sign of the $+\hc$-part changes, but this is not important for our estimates.)
+Therefor we can use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
 
-The contribution $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form as $(\partial_t T^\ast_t)T_t$, only the particle-number conserving summands of the series drop out. Thus, the term can be estimated in the same way as $(\partial_t T^\ast_t)T_t$ in Lemma \ref{lm:timederivative}.
+The contribution $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form as $(\partial_t T^\ast_t)T_t$, the only difference being that the particle-number conserving summands of the series drop out. Thus, the term can be estimated in the same way as $(\partial_t T^\ast_t)T_t$ in Lemma \ref{lm:timederivative}.
 \end{proof}
 
 
-\begin{prp}
-\label{prp:Nbound}[Bound on Number of Fluctuations] \marginpar{to be doublechecked}
-Let $\Psi \in \fock$ with $\scal{\Psi}{\left(\frac{\Ncal^2}{N} + \Ncal \right)\Psi} \leq C$ and $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$ for some constant $C$ independent of $N$. Then
+\begin{prp}[Bound on Number of Fluctuations]
+\label{prp:Nbound}
+Let $\Psi \in \fock$ with $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal \right)\Psi} \leq C$ and $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$ for some constant $C$ independent of $N$. Then
 \bd
 0 \leq \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}},
 \ed
@@ -985,39 +992,39 @@ By Lemma \ref{lem:Llowerbound}, Corollary \ref{cor:N2} and Corollary \ref{c:reg1
 \bd
 \scal{U_t T^\ast_0 \Psi}{\Lcal_N(t) U_t T^\ast_0 \Psi} \geq - C_1 e^{M_1 t}\scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi},
 \ed
-whith fixed constants $C_1$ and $M_1$. Therefore
+whith fixed constants $C_1$ and $M_1$. Therefore the operator
 \bd
 \tLcal := \Lcal_N(t) + C_1 e^{M_1 t}(\Ncal+1)
 \ed
-is a non-negative operator, and so it is sufficient to prove an upper bound for $u(t) := \scal{U_t T^\ast_0 \Psi}{(\tLcal+\Ncal+1)U_t T^\ast_0 \Psi}$. We want to apply Gronwall's Lemma, so we calculate the derivative:
+has non-negative expectation value $\scal{U_t T^\ast_0 \Psi}{\tLcal U_t T^\ast_0 \Psi} \geq 0$, so it is sufficient to prove an upper bound for $u(t) := \scal{U_t T^\ast_0 \Psi}{(\tLcal+\Ncal+1)U_t T^\ast_0 \Psi}$. We want to apply Gronwall's Lemma, so we calculate the time derivative:
 \begin{align*}
  u'(t) & = \scal{U_t T^\ast_0 \Psi}{\dot \Lcal_N(t)U_t T^\ast_0 \Psi} + C_1 M_1 e^{M_1 t}\scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi} \\
 & \quad + (C_1 e^{M_1 t}+1)\scal{U_t T^\ast_0 \Psi}{i[\Lcal_N(t),\Ncal]U_t T^\ast_0 \Psi}.
 \end{align*}
-This expectation values can be bounded using Lemma \ref{lem:ldotbounds}, Lemma \ref{lem:lncommutatorbound} and Corollary \ref{c:reg1}:
+These expectation values can be bounded using Lemma \ref{lem:ldotbounds}, Lemma \ref{lem:lncommutatorbound} and Corollary \ref{c:reg1}:
 \bd
 u'(t) \leq C e^{M t} \scal{U_t T^\ast_0 \Psi}{\left(\frac{\Ncal^2}{N}+\Ncal+1+\Kcal+\tilV \right)U_t T^\ast_0 \Psi}.
 \ed
-By Lemma \ref{lm:kbounds} and Corollary \ref{cor:N2} we can eliminate $\Kcal$, $\tilV$ and $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then, we add non-negative summands $\Ncal+1$ to produce a $\tLcal$ on the right hand side and arrive at
+By Lemma \ref{lem:kvbounds} and Corollary \ref{cor:N2} we can eliminate first $\Kcal$, $\tilV$ and then $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then we use Lemma \ref{l:pdes} to estimate the $H^n$ norms. Then we add non-negative summands $\Ncal+1$ with an appropriate exponential prefactor to convert the $\Lcal_N(t)$ on the rhs into $\tLcal$ and arrive at
 \bd
-u'(t) \leq \tilde C e^{\tilde K t} u(t).
+u'(t) \leq \tilde C e^{\tilde M t} u(t).
 \ed
 We now apply Gronwall's Lemma to conclude that
 \bd
-u(t) \leq u(0) \exp(C e^{Kt})
+u(t) \leq u(0) \exp(K_1 e^{K_2 t})
 \ed
-for some constants $C$ and $K$, both independent of $N$. The factor $u(0)$ is given by
+for some constants $K_1$ and $K_2$, both independent of $N$. The factor $u(0)$ is given by
 \bd
 u(0) = \scal{T^\ast_0 \Psi}{(\tLcalo + \Ncal+1)T^\ast_0 \Psi}.
 \ed
-By Proposition \ref{p:TNT}, we know that $\scal{T^\ast_0 \Psi}{(\Ncal+1)T^\ast_0 \Psi} \leq C\scal{\Psi}{(\Ncal+1)\Psi}$. Now by assumption we see that $u(0) \leq C$.
+By Proposition \ref{p:TNT}, we know that $\scal{T^\ast_0 \Psi}{(\Ncal+1)T^\ast_0 \Psi} \leq C\scal{\Psi}{(\Ncal+1)\Psi}$. Now by assumption we see that $u(0) \leq C$ for some constant $C$.
 \end{proof}
 
-\begin{lem}\marginpar{to be doublechecked}
+\begin{lem}
 \label{lem:tilV}
- There exists $C$ such that
+ There exists a constant $C$ such that
 \bd
-\ev{\tilV} \leq C \ev{\Vcal_N} + C \norm{\ph}_{H^2}^2\ev{\frac{(\Ncal+1)^2}{N}}.
+\ev{\tilV} \leq C \ev{\Vcal_N} + C \norm{\ph}_{H^2}^2\ev{\frac{1}{N}(\Ncal+1)^2}.
 \ed
  Therefor we have the following example satisfying the assumptions of Proposition \ref{prp:Nbound}:
 $\Psi = T_0 \tilde \Psi$ where $\tilde \Psi$ satisfies $\scal{\tilde \Psi}{\Hcal_N \tilde \Psi} \leq C$. 
@@ -1030,7 +1037,7 @@ Plug in $a(c_x) = a_x + a(p_x)$, multiply out and use Hoelder's inequality.
 
 We use short-hands for the operators at time $t=0$:
 \[
-  W = W_0 = W(\sqrt{N} \varphi) \qquad \text{and} \qquad T = T_0 = T(k_0).
+  W = W_0 = W(\sqrt{N} \varphi) \qquad \text{and} \qquad T = T_0 = T(k\rvert_{t=0}).
 \]
 Consider two operators $A$ and $B$ on the Fock space $\mathcal{F}$. The
 notation $ A \le B$ means that $\langle \psi, A \psi \rangle \le \langle \psi, B \psi \rangle$ for
@@ -1295,7 +1302,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 
 
-\section{Time Evolution of Factorized States}
+\section{Convergence of Expectation Values}
 \begin{lem}
 \label{lem:TrJ}
 Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J$ be a Hilbert-Schmidt operator (a one-particle observable). Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
@@ -1317,7 +1324,8 @@ In the first step we use that $P_N$ commutes with $e^{-it \Hcal_N}$ (because $\H
 & \Tr\left(J\gamma_{N,t}^{(1)}\right) \nonumber\\
 & = \frac{d_N^2}{N} \int \di x\di y \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}P_N W_0 \Psi} J(x,y) \nonumber\\
 & = \frac{d_N^2}{N} \int \di x\di y \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}W_0 \Psi} J(x,y) \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_y + \sqrt{N} \ph(y) \right)\left(a_x + \sqrt{N} \ph(x) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} J(x,y) \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_y + \sqrt{N} \ph(y) \right) \times \nonumber\\
+& \qquad\qquad\qquad\qquad \times \left(a_x + \sqrt{N} \ph(x) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} J(x,y) \nonumber\\
 & = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:quad}\\
 & \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:lin1} \\
 & \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_x W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
@@ -1339,13 +1347,13 @@ Summands \eqref{eq:quad} - \eqref{eq:lin2} have to be estimated. We start with l
 \end{align*}
 Line \eqref{eq:lin2} can be estimated in the same way as line \eqref{eq:lin1}.
 
-Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{Operator}} \norm{\Ncal \zeta}$ for all $\zeta \in D(\Ncal) \subset \fock$. We now estimate line \eqref{eq:quad}.
+Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in D(\Ncal) \subset \fock$. We now estimate line \eqref{eq:quad}.
 \begin{align*}
-& \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \\
+& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \right\rvert \\
 & = \frac{d_N^2}{N} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\di\Gamma(J) W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N^2}{N} \underbrace{\norm{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}}_{=\norm{P_N W_0 \Psi}= d_N^{-1}} \norm{\di\Gamma(J)W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N}{N} \norm{J}_{\textrm{HS}} \norm{\Ncal W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
-& \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{1}{N} \scal{W^\ast_t e^{-it\Hcal_N}W_0 \Psi}{\Ncal^2 W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \right)^{1/2} \\
+& = \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{1}{N} \scal{W^\ast_t e^{-it\Hcal_N}W_0 \Psi}{\Ncal^2 W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \right)^{1/2} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{C}{N} \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)^2 U_t T^\ast_0 \Psi} \right)^{1/2}.
 \end{align*}
 \marginpar{This is ending to quick to my taste\dots}
@@ -1389,15 +1397,13 @@ The proof is completed by employing Lemma \ref{lem:phNtoph}.
 \appendix
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
-In this chapter we denote the expectation value $\scal{\psi}{A\psi}$ by $\ev{A}$. In this chapter, $C$ is a constant which can change from line to line in inequalities, but which is always independent of $N$ and $t$. The constant $C$ can depend on $\norm{\ph}_{H^1}$.
-
-All bounds proven in this chapter hold as operator inequalities, independent of the choice of $\psi$. In particular, the structure of the time evolution $\psi_N(t) = U_N(t)\psi_0$ is not used in this chapter.
+The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
 
 For convenience, we remind the reader of the simple but useful estimate
 \bd
 \int \di x\, \norm{a(c_x)\psi}^2 \leq 2(1+\norm{p}^2)\scal{\psi}{\Ncal\psi} \leq C\ev{\Ncal}.
 \ed
-We now have the following list of estimates for all terms of the generator.\newline
+We now have the following list of estimates for the terms of the generator.\newline
 \underline{We start with estimates for the kinetic terms:}\newline
 \estlist{7}{1} (here, the cancellation is important!)
 \begin{align*}
@@ -1463,17 +1469,16 @@ Leaving away the last summand, which is positive, we get
 \begin{split}
  \ev{\Kcal} & \leq \scal{\psi}{\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} + 2\int \di x\, \sqrt{\varepsilon} \norm{\nabla_x a_x \psi} \frac{1}{\sqrt{\varepsilon}} \norm{a(\nabla_x p_x)\psi} \\
 & \leq \scal{\psi}{\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} + 2\left( \varepsilon \ev{\Kcal} + \frac{1}{\varepsilon}  \norm{\nabla_x p}^2 \ev{\Ncal}\right) \\
-& \leq \scal{\psi}{\int \di x\,a^\ast(c_x) a(-\Delta_x c_x)\psi} + C\left( \varepsilon \ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right),
+& \leq \scal{\psi}{\int \di x\,a^\ast(c_x) a(-\Delta_x c_x)\psi} + C\left( \varepsilon \ev{\Kcal} + \frac{1}{\varepsilon}\ev{\Ncal} \right).
 \end{split}
 \end{equation}
-where the term of the generator appears on the rhs.\\
 \estlist{9}{2}
 First, notice that, using the product rule, integration by parts and the fact that $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$, we have
 \begin{align*}
  a(\nabla_x s_x) & = \cc{\ph(x)} a(-Nw_N(x-\cdot)\nabla\ph(\cdot)) + \cc{\ph(x)}\,a\left(\nabla(-N w_N(x-\cdot)\ph(\cdot))\right) \\
  & + \cc{\nabla_x \ph(x)} a(-Nw_N(x-\cdot)\ph(\cdot)) + a(\nabla_x r_x).
 \end{align*}
-(The $\nabla$ in the second summand has to be understood with respect to the 'dot'-variable.)
+(The $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable.)
 Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 \begin{equation}
 \label{eq:bound2B}
@@ -1493,26 +1498,20 @@ Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
 Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $\int \norm{\nabla_x r_x}^2 \di x= \norm{\nabla_x r}^2 \leq C$.
 
 \underline{Estimates for the non-kinetic terms:}\newline
-We define
-\bd
-\tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
-\ed
-(Notive that through the $t$-dependence of $c$, the operator $\tilV$ is time-dependent. However, as this does not play any role in our proof, we do not indicate this time-dependence and $\tilV$ should always be read as belonging to the same time $t$ like the other objects in the equation where it appears.)
-
 In proving the following estimates, the important ideas are
 \begin{itemize}
  \item $a^*(c_x)\psi$ is ill-defined because $c_x = \delta_x + p_x$, thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$
- \item for summands containing $a(c_x) a(c_y) \psi$, insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$ and then use Hoelder, so that $\varepsilon\ev{\tilV}$ is obtained
- \item $a^\#(s_x)$ and $a^\#(p_x)$ is always ok, and can easily be estimated using the $L^2$-Norm of $s_x$ respectively $p_x$
- \item pull out $\sup_x \norm{s_x}^2$, $\sup_x \norm{p_x}^2$ and $\norm{\ph}_\infty$ from the integrals, then $\int \di y\, NV_N(x-y) = b_0$ (independent of $x$) can be used
-\item use Cauchy-Schwarz in such a way that at most two operators $a^\#$ act on each $\psi$. Usually, we also apply Hoelder's inequality in the form
+\item use Cauchy-Schwarz in such a way that at most two operators $a^\#$ act on each $\psi$. Usually, following Cauchy-Schwarz we also apply Hoelder's inequality in the form
 \bd
 \begin{split}
 & \int \di x \di y\, V_N(x-y) f(x,y) g(x,y) = \int \di x \di y\, \sqrt{V_N(x-y)}^2 f(x,y) g(x,y)\\
 &  \leq \int \di x\di y\, V_N(x-y) \lvert f(x,y)\rvert^2 + \int \di x\di y\, V_N(x-y) \lvert g(x,y)\rvert^2.
 \end{split}
 \ed
-\item for terms containing $a^\# a^\# a^\#$ or $a^\# a^\# a^\# a^\#$ we need $\Ncal^2$, so a prefactor $1/N$ is necessary. 
+ \item for summands containing $a(c_x) a(c_y) \psi$, insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$ and then use Hoelder, so that $\varepsilon\ev{\tilV}$ is obtained
+ \item $a^\#(s_x)$ and $a^\#(p_x)$ are always ok, and can easily be estimated using Lemma \ref{l:a}.
+ \item pull out $\sup_x \norm{s_x}^2$, $\sup_x \norm{p_x}^2$ and $\norm{\ph}_\infty$ from the integrals, then $\int \di y\, NV_N(x-y) = b_0$ (independent of $x$) can be used
+\item for terms containing $a^\# a^\# a^\#$ or $a^\# a^\# a^\# a^\#$ we need $\Ncal^2$, so a prefactor $1/N$ is necessary. Cf.\ \ref{cor:N2}. 
 \end{itemize}
 
 \estlist{10}{1}
@@ -1523,8 +1522,8 @@ By definition of $\tilV$, we have
 \estlist{10}{2}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{1}{2N} 4 a^\ast(c_x)a^\ast(c_y) a^\ast(s_x)a(c_y)\psi}\rvert \\
-& \leq \int \di x\di y\, \sqrt{V_N(x-y)}^2 \frac{\sqrt{\varepsilon}}{2} \norm{a(c_y) a(c_x)\psi} \frac{2}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)a(c_y)\psi} \\
-& \leq \varepsilon \frac{1}{4} \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_x)a^\ast(c_y)a(c_y)a(c_x)\psi} + \frac{4}{\varepsilon} \int \di x\di y\, V_N(x-y) \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
+& \leq \int \di x\di y\, V_N(x-y) \frac{\sqrt{\varepsilon}}{2} \norm{a(c_y) a(c_x)\psi} \frac{2}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)a(c_y)\psi} \\
+& \leq \frac{\varepsilon}{4} \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_x)a^\ast(c_y)a(c_y)a(c_x)\psi} + \frac{4}{\varepsilon} \int \di x\di y\, V_N(x-y) \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon}\int \di x\di y\, V_N(x-y) \norm{s_x}^2 \norm{a(c_y)\Ncal^{1/2}\psi}^2 \\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \int \di x\, V_N(x-y)\\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \frac{b_0}{N}\\
@@ -1641,7 +1640,7 @@ like \nestlist{16}{1}
 \end{align*}
 \estlist{21}{2} 
 \estlist{22}{1} like \nestlist{21}{1}
-\estlist{22}{2} insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$, use Hoelder and $\tilV$:
+\estlist{22}{2}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x)a(c_x)a(c_y)\psi} \rvert \\
 & \leq \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{\varepsilon}} \norm{a(c_x)\psi} \norm{a(c_x)a(c_y)\psi} \frac{1}{\sqrt{N}}\sqrt{\varepsilon} \\
@@ -1660,7 +1659,7 @@ like \nestlist{16}{1}
 \end{align*}
 \estlist{23}{1} \estlist{23}{2} %34
 like \nestlist{22}{2}. \newline
-\estlist{23}{3} insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$, use Hoelder and $\tilV$:
+\estlist{23}{3}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}} \cc{\ph(y)} a(s_x) a(c_x) a(c_y)\psi} \rvert \\
 & \leq \int \di x\di y\, NV_N(x-y) \lvert \ph(y)\rvert \frac{1}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)\psi} \norm{a(c_x)a(c_y)\psi}\frac{1}{\sqrt{N}}\sqrt{\varepsilon} \\
@@ -1688,15 +1687,15 @@ thorugh
 We still have to give a bound for the $(\partial_t T^*_t)T_t$-part of the generator. We will expand $(\partial_t T^*_t)T_t$ as a series and bound the summands individually, usign the following lemma.
 \begin{lem}
 \label{lm:Bbound}
-Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then
+Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then for all $\psi \in \fock$
  \bd
-\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
+\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq scal{\psi}{(\Ncal+1)\psi} \frac{\norm{f_1}+\norm{f_2}}{2}.
 \ed
 and
 \bd
  \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x
 a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert
- \leq \ev{\Ncal} \frac{\norm{f_1}+\norm{f_2}}{2} + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
+ \leq \scal{\psi}{\Ncal\psi} \frac{\norm{f_1}+\norm{f_2}}{2} + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
 \ed
 \end{lem}
 \begin{proof} Proof of the first estimate, using Hoelder's inequality:
@@ -1763,14 +1762,13 @@ so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot B)$. W
 Clearly
 \be{normnorm}
 \begin{split}
-\norm{f_{n+1,1}}_{L^2} & \leq \frac{1}{2} \bigg( \norm{\int \di y\, k(x,y) f_{n,2}(z,y)}_{L^2} + \norm{\int \di y\, k(x,y) f_{n,2}(y,z)}_{L^2} \\
-& \quad + \norm{\int \di y\, \cc{k(y,z)}f_{n,2}(x,y)}_{L^2} + \norm{\int \di y\, \cc{k(y,z)} f_{n,2}(y,x)}_{L^2} \bigg),
+\norm{f_{n+1,1}}_{L^2} & \leq \frac{1}{2} \bigg( \norm{\int \di y\, k(x,y) f_{n,2}(z,y)}_{L^2(dxdz)} + \norm{\int \di y\, k(x,y) f_{n,2}(y,z)}_{L^2(dxdz)} \\
+& \quad + \norm{\int \di y\, \cc{k(y,z)}f_{n,2}(x,y)}_{L^2(dxdz)} + \norm{\int \di y\, \cc{k(y,z)} f_{n,2}(y,x)}_{L^2(dxdz)} \bigg),
 \end{split}
 \ee
-where by abuse of notation, $x$ and $z$ are actually the variables which are integrated over in calculating the $L^2(\Rbb^3\times \Rbb^3)$-norm (cf.\ next equation).
 Using Hoelder's inequality we get
 \begin{align*}
-\norm{\int \di y\,k(x,y) f_{n,2}(z,y)}^2 &= \int \di x\di z \left\lvert \int \di y\,k(x,y) f_{n,2}(z,y) \right\rvert^2 \\
+& \norm{\int \di y\,k(x,y) f_{n,2}(z,y)}^2_{L^2(dxdz)} = \int \di x\di z \left\lvert \int \di y\,k(x,y) f_{n,2}(z,y) \right\rvert^2 \\
 & \leq \int \di x \di z \int \di y_1\,\lvert k(x,y_1) \rvert^2 \int \di y_2\,\lvert f_{n,2}(z,y_2) \rvert^2 = \norm{k}^2 \norm{f_{n,2}}^2. 
 \end{align*}
 The other three summands in \eqr{normnorm} obey the same bound, so by making use of the inductive hypothesis, we obtain
@@ -1781,7 +1779,7 @@ which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the s
 \bd
 \int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq \norm{\dot k} (2\norm{k})^{n+1}
 \ed
-and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x$.\\
+and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x \leq \norm{\dot k}(2\norm{k})^{n+1}$.\\
 \underline{inductive step, starting from odd $n$:}\\
 We calculate (by using the CCR and appropriately renaming integration variables)
 \begin{align*}
@@ -1800,7 +1798,7 @@ f_{n+1,2}(x,z) & = - \int \di y\, \cc{k(x,y)}\left( f_{n,1}(y,z) + f_{n,2}(z,y) 
 so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for $\norm{f_{n+1,1}}$ and $\norm{f_{n+1,2}}$ again follows by invoking Hoelder's inequality and the inductive hypothesis.
 \end{proof}
 
-The operator $\partial_t\left((\partial_t T^*_t)T_t\right)$ can be bounded by applying $\partial_t$ to all summands of the series individually and then employing lemma \ref{lm:Bbound} and the following lemma. The second estimate is only needed for odd $n$.
+The operator $\partial_t\left((\partial_t T^*_t)T_t\right)$ can be bounded by applying $\partial_t$ to all summands of the series of $(\partial_t T^*_t)T_t$ individually and then employing lemma \ref{lm:Bbound} and the following lemma. The second estimate is only needed for odd $n$.
 \begin{lem}
 \label{lm:deldelt}
 For all $n \in \Nbb$ and all $i \in \{1,2\}$, we have the estimates
@@ -1821,13 +1819,13 @@ For the second estimate, we use \eqref{eq:even} to express $f_{n,i}$ in terms of
 We now combine the bounds on the individual summands to obtain an estimate for the series.
 \begin{lem}
 \label{lm:timederivative}
-There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$ (where $\ev{\cdot}= \scal{\psi}{\cdot\psi}$):
+There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$:
  \bd
-  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq \norm{\dot k} e^{2\norm{k}} \ev{\Ncal+1} \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
+  \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq \norm{\dot k} e^{2\norm{k}} \scal{\psi}{(\Ncal+1)\psi} \leq C \norm{\ph}_{H^2}^2 \scal{\psi}{(\Ncal+1)\psi}.
  \ed
 Furthermore
  \bd
-    \lvert \scal{\psi}{\partial_t \left[ \left(\partial_t T^\ast_t\right) T_t \right] \psi} \rvert \leq \left( 2\norm{\dot k}^2 + \norm{\ddot k} \right) e^{2\norm{k}} \ev{\Ncal+1}.
+    \lvert \scal{\psi}{\partial_t \left[ \left(\partial_t T^\ast_t\right) T_t \right] \psi} \rvert \leq \left( 2\norm{\dot k}^2 + \norm{\ddot k} \right) e^{2\norm{k}} \scal{\psi}{(\Ncal+1)\psi}.
  \ed
 \end{lem}
 \begin{proof}
@@ -1836,14 +1834,14 @@ The first estimate is proved by expanding the time derivative as a series,
 \left(\partial_t e^{-B(t)} \right) e^{B(t)} = - \dot B(t) +
 \frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(n+1)!} \ad^n_B(\dot B),
 \ed
-and then using the lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:kbounds}.\\
+and then using the Lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:kbounds}.\\
 For the second estimate, differentiate the summands individually (i.\,e. place a dot on the respective $f_{n,i}$) and then estimate all summands like before, now using lemma \ref{lm:deldelt}.
 \end{proof}
 
 \section{Nonlinear Hartree and Gross-Pitaevskii equations}
+The result of this appendix is the following corollary, which states uniform (i.\,e.\ independent of $N$) $H^n$ regularity for the solutions of the modified Hartree equation and, as the limiting case $N\to \infty$, the Gross-Pitaevskii equation. We will also state that solutions to the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation as $N \to \infty$.
 
-
-\begin{lem} \label{l:pdes}
+\begin{cor} \label{l:pdes} \label{c:reg1} \label{c:reg2}
   Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that $f
   \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N > 0$,
   consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear Hartree
@@ -1876,7 +1874,7 @@ For the second estimate, differentiate the summands individually (i.\,e. place a
   \end{equation}
   where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$, $a_0$
   and $\| \varphi \|_{H^2}$.
-\end{lem}
+\end{cor}
 
 Nonlinear Hartree equation
 \[
@@ -1962,23 +1960,6 @@ where $8 \pi a_0 = \int f V$.
   \]
 \end{cor}
 
-\begin{cor}[Uniform $H^n$-regularity for the modified Hartree equation] \label{c:reg1}
-ADD DETAILS
-  \[
-    \| \varphi_t \|_{H^1} \le B_1 \qquad \text{and} \qquad \| \varphi_t
-    \|_{H^n} \le B_n e^{K_n t}.
-  \]
-\end{cor}
-
-\begin{cor}[Uniform $H^n$-regularity for the Gross-Pitaevskii equation] \label{c:reg2}
-ADD DETAILS
-  \[
-    \| \varphi_t \|_{H^1} \le B_1 \qquad \text{and} \qquad \| \varphi_t
-    \|_{H^n} \le B_n e^{K_n t}.
-  \]
-\end{cor}
-
-
 The proof of Proposition \ref{p:lregn} is based on well-known Strichartz
 estimates for the free Schr\"odinger evolution and the following lemma.
 
@@ -2020,12 +2001,12 @@ For $T > 0$ set
 
 
 \begin{proof}[Proof of Proposition \ref{p:lregn}]
-  Write
+  By Duhamel's principle, the nonlinear Hartree equation is reformulated as an integral equation:
   \[
     \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
     |\varphi_s|^2) \varphi_s.
   \]
-  Differentiating this equation and using integration by parts we find that
+  Differentiating this equation w.\,r.\,t.\ the spatial variables and using integration by parts we find that
   \[
     \partial^\alpha \varphi_t = e^{it \Delta} \partial^\alpha \varphi - i
     \int_0^t ds \, e^{i(t-s) \Delta} \sum_{\beta \le \alpha} \sum_{\nu \le
@@ -2345,7 +2326,7 @@ Then there exists a constant $C$ independent of $N$ and $t$ such that:
 \item Furthermore, for $i, j \in \{1,2,3\}$,
 \bd
 \norm{\nabla \phdot}_{L^2} \leq C \norm{\ph}_{H^3}^2, \quad
-\norm{\partial^i \partial^j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3, \quad \norm{\phdot}_\infty \leq C \norm{\ph}_{H^4}^3
+\norm{\partial_i \partial_j \phdot}_{L^2} \leq C \norm{\ph}_{H^4}^3, \quad \norm{\phdot}_\infty \leq C \norm{\ph}_{H^4}^3
 \ed
 \item and \bd
 \norm{\phddot}_{L^2} \leq C \norm{\ph}_{H^4}^4.
@@ -2380,7 +2361,7 @@ Similarly, we show that the $L^2$-norms of the summands in line \eqref{eq:second
 \bd
 \norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
 \ed
-The bound for $\norm{\partial^i \partial_j \phdot}_{L^2}$ is proven by the same strategy. Now the bound for $\norm{\phdot}_\infty$ is a consequence of the fact that the $L^\infty$-norm can be estimated by the $H^2$-norm through a Sobolev inequality.
+The bound for $\norm{\partial_i \partial_j \phdot}_{L^2}$ is proven by the same strategy. Now the bound for $\norm{\phdot}_\infty$ is a consequence of the fact that the $L^\infty$-norm can be estimated by the $H^2$-norm through a Sobolev inequality.
 
 (iii) To prove that $\phddot$ is in $L^2$, we apply $i\partial_t$ to the modified Hartree equation \eqr{modHartree} and get
 \begin{align*}
@@ -2429,7 +2410,8 @@ Employing Lemma \ref{lm:phdotregularity} the proof is finished.
 \label{lem:dottedests1}
 Let $p$ and $s$ be the integral kernels defined in Lemma \ref{l:bt}. Then, the following estimates hold:
 \begin{enumerate}
-\item \bd
+\item If $k_t \in L^2(\Rbb^3\times\Rbb^3)$ is an arbitraty time-dependent integral kernel then
+\bd
 \norm{\dot p} \leq \norm{\dot k} \cosh(\norm{k}) \quad \mbox{and} \quad \norm{\dot s} \leq \norm{\dot k} \cosh(\norm{k}).
 \ed
 \item If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ independent of $N$ and $t$ such that
@@ -2531,7 +2513,7 @@ In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phd
 
 \begin{lem}
 \label{lem:dottedests3}
- We have the following estimates:
+Let $k(x,y) = -N w_N(x-y) \ph(x)\ph(y)$ where $\ph$ is a solution to the modified Hartree equation. Then there exists a constant $C$ such that
 \bd
 \norm{\nabla_1 \dot p} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad \norm{\nabla _1 \dot r} \leq C \norm{\ph}_{H^3}^2.
 \ed
@@ -2551,13 +2533,13 @@ Notice that $\nabla_1$ acts only on the first $k$. After using the product rule 
 \bd
 \norm{\nabla_1 \dot p} \leq C \left(\norm{\nabla_1 \dot k \cc k} + \norm{\nabla_1 k \cc{\dot k}} + \norm{\nabla_1 k \cc{k}}\norm{\dot k} \right),
 \ed
-where summable series depending on $\norm{k}$ where absorbed in $C$ because $\norm{k} \leq C$.
+where summable series depending on $\norm{k}$ where absorbed in $C$.
 
 We are left with the task of giving an estimate for $\nabla_1 \dot k \cc k$ (an estimate for $\nabla_1 k \cc{\dot k}$ is proven in the same way). We start by applying the product rule:
 \begin{align}
 & \norm{\nabla_1 \dot k \cc k}^2 \nonumber \\
 & = \int \di x \di y \bigg\lvert \int \nabla_x\left( N w_N(x-z) \phdot(x) \ph(z) + N w_N(x-z) \ph(x) \phdot(z) \right) \times \nonumber \\
-& \qquad\qquad\qquad\qquad \times N w_N(z-y) \cc{\ph(z)} \cc{\ph(y)} \di z \bigg\rvert^2 \nonumber \\
+& \qquad\qquad\qquad \times N w_N(z-y) \cc{\ph(z)} \cc{\ph(y)} \di z \bigg\rvert^2 \nonumber \\
 & \leq 4 \int \di x \di y \left\lvert \int N \nabla w_N(x-z) \phdot(x) \lvert\ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk1} \\
 & \quad + 4 \int \di x \di y \left\lvert N w_N(x-z) \nabla_x \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk2}\\
 & \quad + 4 \int \di x \di y \left\lvert N \nabla w_N(x-z) \ph(x) \phdot(z) \cc{\ph(z)} \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk3}\\
@@ -2566,7 +2548,7 @@ We are left with the task of giving an estimate for $\nabla_1 \dot k \cc k$ (an 
 
 We now prove estimates for these four terms. For the summands \eqref{eq:kk2} and \eqref{eq:kk4}, this is the usual application of Hardy's inequality; both terms are bounded by $C \norm{\nabla \phdot}_{L^2}^2$.
 For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity than $w_N$. We will show the proof for \eqref{eq:kk1}; the proof for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.\\
-\underline{Bound for \eqref{eq:kk1}}:\\
+\underline{Bound for \eqref{eq:kk1}}:
 \begin{align*}
 \eqref{eq:kk1} & \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert x-z\rvert^2} \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} \frac{1}{\lvert z-y\rvert} \right\rvert^2 \\
 & = C \int \di x \di y \di z_1 \di z_2 \frac{\lvert\phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 -y\rvert \lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \\
