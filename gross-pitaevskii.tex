@@ -2502,7 +2502,7 @@ In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phd
 \label{lem:dottedests3}
 Let $k(x,y) = -N w_N(x-y) \ph(x)\ph(y)$ where $\ph$ is a solution to the modified Hartree equation. Then there exists a constant $C$ such that
 \bd
-\norm{\nabla_1 \dot p} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad \norm{\nabla _1 \dot r} \leq C \norm{\ph}_{H^3}^2.
+\norm{\gradone \dot p} \leq C \norm{\ph}_{H^3}^2 \quad \mbox{and} \quad \norm{\gradone \dot r} \leq C \norm{\ph}_{H^3}^2.
 \ed
 \end{lem}
 \begin{proof}
@@ -2510,44 +2510,46 @@ Let $k(x,y) = -N w_N(x-y) \ph(x)\ph(y)$ where $\ph$ is a solution to the modifie
 \be{hoelder}
 \norm{f_1 \cdots f_n} \leq \norm{f_1} \cdots \norm{f_n}.
 \ee
-It has to be noticed, that $\norm{\nabla_1 k} \sim N^{1/2}$, which is not desired. Therefore, we always have to keep $\norm{\nabla_1 k \cc k}$, which is of order $N^0$ according to Lemma \ref{l:kernels} \ref{k}.
+It has to be noticed that $\norm{\gradone k} \sim N^{1/2}$, which is not desired. Therefore, we always have to keep $\norm{\gradone k \cc k}$, which is of order $N^0$ according to Lemma \ref{l:kernels} \ref{k}.
 
-Estimate for $\nabla_1 \dot p$ (the proof for $\nabla_1 \dot r$ works similarly and will be omitted):
+Estimate for $\gradone \dot p$ (the proof for $\gradone \dot r$ works similarly and will be omitted):
 \bd
-\nabla_1 \dot p = \frac{\partial}{\partial_t} \left( \sum_{n=1}^\infty (\nabla_1 k)\cc k (k \cc k)^{n-1} \frac{1}{(2n)!} \right).
+\gradone \dot p = \frac{\partial}{\partial_t} \left( \sum_{n=1}^\infty (k \cc k)^{n-1} \gradone(k \cc k) \frac{1}{(2n)!} \right).
 \ed
-Notice that $\nabla_1$ acts only on the first $k$. After using the product rule for the time derivative and \eqr{hoelder} we have the estimate
-\bd
-\norm{\nabla_1 \dot p} \leq C \left(\norm{\nabla_1 \dot k \cc k} + \norm{\nabla_1 k \cc{\dot k}} + \norm{\nabla_1 k \cc{k}}\norm{\dot k} \right),
-\ed
-where summable series depending on $\norm{k}$ where absorbed in $C$.
+After using the product rule for the time derivative and \eqr{hoelder} we have the estimate
+\begin{align*}
+\norm{\gradone \dot p} & \leq \sum_{n=1}^\infty \frac{1}{(2n)!} \sum_{j=0}^{n-2} \norm{k}^{2j} \norm{\partial_t(k \cc k)} \norm{k}^{2(n-2-j)} \norm{\gradone (k \cc k)} \\
+& \quad + \sum_{n=1}^\infty \frac{1}{(2n)!} \norm{k}^{2(n-1)} \norm{\gradone \partial_t (k \cc k)} \\
+& \leq C \norm{\dot k} \norm{\gradone(k \cc k)} \norm{k}^{-1} + C \norm{\gradone(k \cc{\dot k})} + C \norm{\gradone (\dot k \cc k)},
+\end{align*}
+where in the last step, summable series depending on $\norm{k}$ where absorbed in $C$.
 
-We are left with the task of giving an estimate for $\nabla_1 \dot k \cc k$ (an estimate for $\nabla_1 k \cc{\dot k}$ is proven in the same way). We start by applying the product rule:
+We are left with the task of giving an estimate for $\norm{\gradone(k \cc{\dot k})}$ (an estimate for $\norm{\gradone (\dot k \cc k)}$ is proven in the same way). We start by applying the product rule:
 \begin{align}
-& \norm{\nabla_1 \dot k \cc k}^2 \nonumber \\
-& = \int \di x \di y \bigg\lvert \int \nabla_x\left( N w_N(x-z) \phdot(x) \ph(z) + N w_N(x-z) \ph(x) \phdot(z) \right) \times \nonumber \\
-& \qquad\qquad\qquad \times N w_N(z-y) \cc{\ph(z)} \cc{\ph(y)} \di z \bigg\rvert^2 \nonumber \\
-& \leq 4 \int \di x \di y \left\lvert \int N \nabla w_N(x-z) \phdot(x) \lvert\ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk1} \\
-& \quad + 4 \int \di x \di y \left\lvert N w_N(x-z) \nabla_x \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk2}\\
-& \quad + 4 \int \di x \di y \left\lvert N \nabla w_N(x-z) \ph(x) \phdot(z) \cc{\ph(z)} \cc{\ph(y)} N w_N(z-y) \di z \right\rvert^2 \label{eq:kk3}\\
-& \quad + 4 \int \di x \di y \left\lvert N w_N(x-z) \nabla \ph(x) \phdot(z)\cc{\ph(z)} \cc{\ph(y)} N w_N(z-y) \right\rvert^2. \label{eq:kk4}
+& \norm{\gradone(k \cc{\dot k})}^2 \nonumber \\
+& = \int \di x \di y \bigg\lvert \int \nabla_y\left( N w_N(z-y) \cc{\phdot(y)} \cc{\ph(z)} + N w_N(z-y) \cc{\ph(y)} \cc{\phdot(z)} \right) \times \nonumber \\
+& \qquad\qquad\qquad \times N w_N(x-z) {\ph(z)} {\ph(x)} \di z \bigg\rvert^2 \nonumber \\
+& \leq 4 \int \di x \di y \left\lvert \int N \nabla w_N(z-y) \cc{\phdot(y)} \lvert\ph(z)\rvert^2 {\ph(x)} N w_N(x-z) \di z \right\rvert^2 \label{eq:kk1} \\
+& \quad + 4 \int \di x \di y \left\lvert N w_N(z-y) \cc{\nabla_y \phdot(y)} \lvert \ph(z)\rvert^2 {\ph(x)} N w_N(x-z) \di z \right\rvert^2 \label{eq:kk2}\\
+& \quad + 4 \int \di x \di y \left\lvert N \nabla w_N(z-y) \cc{\ph(y)} \cc{\phdot(z)} {\ph(z)} {\ph(x)} N w_N(x-z) \di z \right\rvert^2 \label{eq:kk3}\\
+& \quad + 4 \int \di x \di y \left\lvert N w_N(z-y) \cc{\nabla_y \ph(y)} \cc{\phdot(z)} {\ph(z)} {\ph(x)} N w_N(x-z) \right\rvert^2. \label{eq:kk4}
 \end{align}
 
 We now prove estimates for these four terms. For the summands \eqref{eq:kk2} and \eqref{eq:kk4}, this is the usual application of Hardy's inequality; both terms are bounded by $C \norm{\nabla \phdot}_{L^2}^2$.
 For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity than $w_N$. We will show the proof for \eqref{eq:kk1}; the proof for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.\\
 \underline{Bound for \eqref{eq:kk1}}:
 \begin{align*}
-\eqref{eq:kk1} & \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert x-z\rvert^2} \phdot(x) \lvert \ph(z)\rvert^2 \cc{\ph(y)} \frac{1}{\lvert z-y\rvert} \right\rvert^2 \\
-& = C \int \di x \di y \di z_1 \di z_2 \frac{\lvert\phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 -y\rvert \lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \\
-& = C \int \di x \lvert\phdot(x)\rvert^2 \int \di z_1 \di z_2 \frac{\lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert x-z_1\rvert^2 \lvert x-z_2\rvert^2} \int \di y \frac{\lvert \ph(y)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 - y\rvert}
+\eqref{eq:kk1} & \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert y-z\rvert^2} \cc{\phdot(y)} \lvert \ph(z)\rvert^2 {\ph(x)} \frac{1}{\lvert z-x\rvert} \right\rvert^2 \\
+& = C \int \di x \di y \di z_1 \di z_2 \frac{\lvert\phdot(y)\rvert^2 \lvert \ph(x)\rvert^2 \lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert z_1-x\rvert \lvert z_2 -x\rvert \lvert y-z_1\rvert^2 \lvert y-z_2\rvert^2} \\
+& = C \int \di y \lvert\phdot(y)\rvert^2 \int \di z_1 \di z_2 \frac{\lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert y-z_1\rvert^2 \lvert y-z_2\rvert^2} \int \di x \frac{\lvert \ph(x)\rvert^2}{\lvert z_1-x\rvert \lvert z_2 - x\rvert}
 \end{align*}
-The integral w.\,r.\ to $y$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2$ using Hoelder's inequality and then Hardy's inequality. Using $\norm{\nabla \ph}_{L^2}^2 \leq C$ we get
+The integral w.\,r.\ to $x$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2$ using Hoelder's inequality and then Hardy's inequality. Using $\norm{\nabla \ph}_{L^2}^2 \leq C$ we get
 \bd
-\eqref{eq:kk1} \leq C \int \di x \lvert\phdot(x)\rvert^2 \int \di z_1 \frac{\lvert \ph(z_1)\rvert^2 }{\lvert x-z_1\rvert^2 } \int \di z_2 \frac{\lvert \ph(z_2)\rvert^2}{\lvert x-z_2\rvert^2}
+\eqref{eq:kk1} \leq C \int \di y \lvert\phdot(y)\rvert^2 \int \di z_1 \frac{\lvert \ph(z_1)\rvert^2 }{\lvert y-z_1\rvert^2 } \int \di z_2 \frac{\lvert \ph(z_2)\rvert^2}{\lvert y-z_2\rvert^2}
 \ed
 and by Hardy's inequality, this is bounded by
 \bd
-\leq C \int \di x \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 \norm{\nabla \ph}_{L^2}^2 \leq C \norm{\phdot}_{L^2}^2. \qedhere
+\leq C \int \di y \lvert \phdot(y)\rvert^2 \norm{\nabla \ph}_{L^2}^2 \norm{\nabla \ph}_{L^2}^2 \leq C \norm{\phdot}_{L^2}^2. \qedhere
 \ed
 \end{proof}
 
