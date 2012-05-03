@@ -1,9 +1,8 @@
-%\documentclass[11pt,a4paper,twoside,headsepline]{scrartcl}
-\documentclass[11pt,a4paper,draft,DIV11]{scrartcl}
+\documentclass[11pt,a4paper,draft,DIV11]{scrartcl}	%twoside
 %\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage[bookmarksnumbered=true]{hyperref}
-\usepackage[color,notref,notcite]{showkeys}
+\usepackage[color]{showkeys}
 \usepackage{scrtime}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{dsfont,wasysym,mathtools}
@@ -963,7 +962,7 @@ Combining Lemma \ref{lm:timederivative} and Lemma \ref{lm:kbounds}, we obtain th
 (We make no effort to optimize the appearance of $H^n$ norms, just take $n$ and the power as high as you like.)
 
 The term $\ev{\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t )}$ can be estimated by the same methods which where already used for estimating $\ev{ T^\ast_t \Lcal_N^{(0)}(t) T_t}$ in appendix \ref{ch:generatorestimates}, however, additionally the following objects are used:
-$\norm{\nabla_1 \dot p}$, $\norm{\nabla_1 \dot r}$, $\norm{\dot s}$, $\norm{\dot p}$, $\sup_x \norm{\dot p_x}$, $\sup_x \norm{\dot s_x}$, $\int \di x\di y V_N(x-y) \lvert \dot r(x,y)\rvert^2$, $\int \di x \di y V_N(x-y) \lvert \dot s(x,y)\rvert^2/N$ and Sobolev norms of $\phdot$. These quantities are then estimated using the Lemmata \ref{lem:dottedests1}, \ref{lem:dottedests2} and \ref{lem:dottedests3}.
+$\norm{\gradone \dot p}$, $\norm{\gradone \dot r}$, $\norm{\dot s}$, $\norm{\dot p}$, $\sup_x \norm{\dot p_x}$, $\sup_x \norm{\dot s_x}$, $\int \di x\di y V_N(x-y) \lvert \dot r(x,y)\rvert^2$, $\int \di x \di y V_N(x-y) \lvert \dot s(x,y)\rvert^2/N$ and Sobolev norms of $\phdot$. These quantities are then estimated using the Lemmata \ref{lem:dottedests1}, \ref{lem:dottedests2} and \ref{lem:dottedests3}.
 
 (Remark: In $\partial_t( T^\ast_t \Lcal_N^{(0)}(t) T_t)$ there are four times as many terms as in $T^\ast_t \Lcal_N^{(0)}(t) T_t$ because of the product rule, but many of them are easy to estimate because $\partial_t a^\ast(c_x) = a^\ast(\dot p_x)$ is regular while $a^\ast(c_x)$ is singular.)
 \end{proof}
