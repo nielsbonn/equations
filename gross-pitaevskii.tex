@@ -59,6 +59,7 @@
 \newcommand{\tilK}{\tilde{\mathcal{K}}}		% smeared kinetic energy
 \newcommand{\estlist}[2]{\underline{Line \ref{l#1}, summand #2:}}
 \newcommand{\nestlist}[2]{line \ref{l#1}, summand #2}
+\newcommand{\Nestlist}[2]{Line \ref{l#1}, summand #2}
 \newcommand{\hc}{\mbox{h.c.}}		%hermitian conjugate
 \newcommand{\scal}[2]{\big<#1,#2\big>} % scalaer product
 \newcommand{\cc}[1]{\overline{#1}}	% complex conjugate
@@ -80,7 +81,7 @@
 \newcommand{\tLcal}{\tilde \Lcal_N(t)}
 \newcommand{\tLcalo}{\tilde \Lcal_N(0)}
 \newcommand{\xn}{\mathbf{x}}		% x = (x_1. dots x_N)
-\newcommand{\gradone}{\nabla_1}
+\newcommand{\gradone}{\nabla_2}
 
 \newcommand{\be}[1]{\begin{equation}\label{eq:#1}}	%begin equation with label
 \newcommand{\ee}{\end{equation}}
@@ -1315,7 +1316,6 @@ where $d_N = \norm{P_N W_0\Psi}^{-1}$ and
 The operator $P_N$ is the projection on the $N$-particle subspace of Fock space.
 %
 %Remark: $\ph$ needn't be a solution of the Hartree equation here.
-\marginpar{So I think it should be stated with a arbitrary function \dots}
 \end{lem}
 \begin{proof}
 In the first step we use that $P_N$ commutes with $e^{-it \Hcal_N}$ (because $\Hcal_N$ conserves the particle number) and that $P_N$ commutes with $a^\ast_y a_x$, so because of $P_N^2 = P_N$, one of the projections $P_N$ can be eliminated. After that, we insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}.
@@ -1355,8 +1355,7 @@ Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimat
 & = \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{1}{N} \scal{W^\ast_t e^{-it\Hcal_N}W_0 \Psi}{\Ncal^2 W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \right)^{1/2} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \left( \frac{C}{N} \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)^2 U_t T^\ast_0 \Psi} \right)^{1/2}.
 \end{align*}
-\marginpar{This is ending to quick to my taste\dots}
-In the last step, Proposition \ref{p:TNT} (\ref{TN2T}) has been used. Now we use the assumption on $\Psi$ and Corollary \ref{cor:N2} to finish the proof.
+In the last step, Proposition \ref{p:TNT} (\ref{TN2T}) has been used in the form of $\Ncal^2 \leq C T_t (\Ncal+1)^2 T^\ast_t$. The estimate is completed using Corollary \ref{cor:N2} to bound $\Ncal^2/N$ by $\Ncal+1$.
 \end{proof}
 
 \begin{lem}
@@ -1546,10 +1545,8 @@ By definition of $\tilV$, we have
 & \leq \sup_y \norm{s_y}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \int \di x\, V_N(x-y)\\
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
-Here we made use of the fact that both summand from the Hoelder inequality are equal (just rename the integration variables $x$ as $y$ and $y$ as $x$).\newline
-\estlist{12}{1}
-\estlist{12}{2}
-\estlist{13}{1} like \nestlist{11}{2}.\newline
+Here we made use of the fact that both summands originating from the Hoelder inequality are equal, as can be seen by interchanging the integration variables $x$ and $y$.\newline
+\underline{\Nestlist{12}{1}, \nestlist{12}{2} and \nestlist{13}{1}} can be estimated like \nestlist{11}{2}.\newline
 \estlist{14}{1} (here, cancellation is important!)
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a^\ast(c_y) \left( r(y,x)+\scal{p_y}{s_x} \right)\psi} \rvert \\
@@ -1575,8 +1572,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 %\leq & \frac{b_0}{N} \sup_y \norm{s_y}^2 \int \di x \norm{a(c_x)\psi}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}. 
 \end{align*}
-\estlist{15}{2}
-\estlist{15}{3} like \nestlist{15}{1}.\newline
+\underline{\Nestlist{15}{2} and \nestlist{15}{3}:} like \nestlist{15}{1}.\newline
 \estlist{16}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a(s_y) \scal{c_y}{s_x}\psi} \rvert \\
@@ -1595,8 +1591,7 @@ Here we made use of the fact that both summand from the Hoelder inequality are e
 & \leq \frac{1}{2} \sup_y \norm{s_y}^2 \int \di x\, \norm{a(c_x)\psi}^2 \int \di y\, V_N(x-y) \\
 & \leq C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}.
 \end{align*}
-\estlist{16}{3}
-like \nestlist{16}{1}
+\underline{\Nestlist{16}{3}:} like \nestlist{16}{1}.\newline
 \estlist{17}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{1}{N}2 a^\ast(c_x)a^\ast(s_x) \scal{s_y}{s_y}\psi} \rvert \\
@@ -1604,7 +1599,7 @@ like \nestlist{16}{1}
 & \leq \sup_y \norm{s_y}^2 \int \di x\, \frac{b_0}{N} \norm{a(c_x)\psi}^2 + \sup_y \norm{s_y}^2 \int \di x\, \frac{b_0}{N} \norm{a^\ast(s_x)\psi}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal+1}.
 \end{align*}
-\estlist{17}{2} like \nestlist{17}{1}.\newline
+\underline{\Nestlist{17}{2}:} like \nestlist{17}{1}.\newline
 \estlist{17}{3}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(c_y) a(s_x) \scal{c_y}{s_x} \psi} \rvert \\
@@ -1626,9 +1621,7 @@ like \nestlist{16}{1}
 & \leq \dxyNV \lvert\ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
 & \leq C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
 \end{align*}
-\estlist{18}{3}
- through
-\estlist{20}{3} like \nestlist{18}{2}. \newline
+\underline{\Nestlist{18}{3} through \estlist{20}{3}:} like \nestlist{18}{2}.\newline
 \estlist{21}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)}a^\ast(c_x)a^\ast(s_x)a^\ast(s_y)\psi} \rvert \\
@@ -1637,8 +1630,7 @@ like \nestlist{16}{1}
 & \leq \norm{\ph}_{H^2}^2 C \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \int \di x\di y\, NV_N(x-y) \norm{s_x}^2 \norm{s_y}^2 \\
 & \leq C\norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \right).
 \end{align*}
-\estlist{21}{2} 
-\estlist{22}{1} like \nestlist{21}{1}
+\underline{\Nestlist{21}{2} and \nestlist{22}{1}:} like \nestlist{21}{1}.\newline
 \estlist{22}{2}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x)a(c_x)a(c_y)\psi} \rvert \\
@@ -1656,8 +1648,8 @@ like \nestlist{16}{1}
 & \leq \norm{\ph}_\infty^2 b_0 \norm{s}^2 \ev{\Ncal} + \frac{1}{N}b_0 \sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\Ncal^{1/2}\psi}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2}\right). 
 \end{align*}
-\estlist{23}{1} \estlist{23}{2} %34
-like \nestlist{22}{2}. \newline
+\underline{\Nestlist{23}{1} and \nestlist{23}{2}:} %34
+like \nestlist{22}{2}.\newline
 \estlist{23}{3}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}} \cc{\ph(y)} a(s_x) a(c_x) a(c_y)\psi} \rvert \\
@@ -1677,13 +1669,11 @@ like \nestlist{22}{2}. \newline
 & \leq \sup_x \norm{s_x}^2 \frac{1}{\sqrt{N}} b_0 \ev{\Ncal+1} \left( \int \di y\, \lvert \ph(y)\rvert^2 \right)^{1/2} \left( \int \di y\, \norm{s_y}^2 \right)^{1/2} \\
 & \leq C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}.
 \end{align*}
-\estlist{24}{2} 
-thorugh
-\estlist{25}{4} like \nestlist{24}{1}.
-\estlist{25}{1}
+\underline{\Nestlist{24}{2} through \nestlist{25}{4}:} like \nestlist{24}{1}.\newline
+This completes the list of estimates for the terms of $T^*_t \Lcal_N^{(0)}(t) T_t$.\newline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We still have to give a bound for the $(\partial_t T^*_t)T_t$-part of the generator. We will expand $(\partial_t T^*_t)T_t$ as a series and bound the summands individually, usign the following lemma.
+We still have to give a bound for the $(\partial_t T^*_t)T_t$-part of the generator. We will expand $(\partial_t T^*_t)T_t$ as a series and bound the summands individually, using the following lemma.
 \begin{lem}
 \label{lm:Bbound}
 Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then for all $\psi \in \fock$
