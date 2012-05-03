@@ -326,7 +326,7 @@ In the following lemma we collect some well-known properties of Weyl operators
 and coherent states.
 
 
-\begin{lem}[Weyl operator and coherent states] \label{l:W}
+\begin{lem}[Weyl Operators and Coherent States] \label{l:W}
   Let $f, g \in L^2(\R^3)$.
   \begin{enumerate}
     \item \label{l:W1} The Weyl operator satisfies the relations
@@ -373,7 +373,7 @@ and coherent states.
 
 
 \section{Bogoliubov Transformation}
-Let $f(x,y)$ be a function of two variables, $f: \Rbb^3\times\Rbb^3 \to \Cbb$. To simplify the notation we write
+Let $f(x,y)$ be a function of two variables, $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$. To simplify the notation we write
 \be{no1}
   f_y(x) = f(x,y)
 \ee
@@ -1416,8 +1416,8 @@ We now have the following list of estimates for the terms of the generator.\newl
 & \quad + \int \di x\di y\, \frac{C}{\lvert x-y\rvert} \lvert \nabla_x\ph(x)\rvert \lvert \ph(y)\rvert \norm{(\nabla_y a_y)\psi} \norm{p_x} \norm{(\Ncal+1)^{1/2}\psi} \\
 &\leq C \norm{\Delta\ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \int \di y \lvert \nabla_y \ph(y) \rvert \norm{a_y \psi} \\
 & \quad + C \norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \int \di y \frac{1}{\sqrt{\varepsilon}} \lvert \ph(y)\rvert \sqrt{\varepsilon} \norm{(\nabla_y a_y)\psi} \\
-& \quad + \norm{(\Ncal+1)^{1/2}\psi} C \left(\int \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert\nabla_y \ph(y)\rvert^2}{\lvert x-y \rvert^2} \right)^{1/2} \left(\int \di x\di y\, \norm{a_y \psi}^2 \norm{p_x}^2 \right)^{1/2} \\
-& \quad + \norm{(\Ncal+1)^{1/2}\psi} C \left(\int \di x\di y\, \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert \ph(y)\rvert^2}{\lvert x-y\rvert^2} \right)^{1/2} \left(\int \di x\di y\, \norm{(\nabla_y a_y)\psi}^2 \norm{p_x}^2 \right)^{1/2} \\
+& \quad + C \norm{(\Ncal+1)^{1/2}\psi} \left(\int \di x\di y \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert\nabla_y \ph(y)\rvert^2}{\lvert x-y \rvert^2} \right)^{1/2} \left(\int \di x\di y \norm{a_y \psi}^2 \norm{p_x}^2 \right)^{1/2} \\
+& \quad + C \norm{(\Ncal+1)^{1/2}\psi} \left(\int \di x\di y \lvert \nabla_x\ph(x)\rvert^2 \frac{\lvert \ph(y)\rvert^2}{\lvert x-y\rvert^2} \right)^{1/2} \left(\int \di x\di y \norm{(\nabla_y a_y)\psi}^2 \norm{p_x}^2 \right)^{1/2} \\
 & \leq C \norm{\Delta \ph}_{L^2} \norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2} \norm{\Ncal^{1/2}\psi} \\
 & \quad + C\norm{\Delta \ph}_{L^2} \frac{1}{\sqrt{\varepsilon}} \norm{(\Ncal+1)^{1/2}\psi}  \sqrt{\varepsilon}\norm{\Kcal^{1/2}\psi} \norm{\ph}_{L^2} \\
 & \quad + C \norm{(\Ncal+1)^{1/2}\psi} \norm{\nabla \ph}_{L^2} \norm{\Delta \ph}_{L^2} \norm{p} \norm{\Ncal^{1/2}\psi} \\
@@ -1520,9 +1520,9 @@ By definition of $\tilV$, we have
 \estlist{10}{2}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{1}{2N} 4 a^\ast(c_x)a^\ast(c_y) a^\ast(s_x)a(c_y)\psi}\rvert \\
-& \leq \int \di x\di y\, V_N(x-y) \frac{\sqrt{\varepsilon}}{2} \norm{a(c_y) a(c_x)\psi} \frac{2}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)a(c_y)\psi} \\
-& \leq \frac{\varepsilon}{4} \int \di x\di y\, V_N(x-y) \scal{\psi}{a^\ast(c_x)a^\ast(c_y)a(c_y)a(c_x)\psi} + \frac{4}{\varepsilon} \int \di x\di y\, V_N(x-y) \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
-& \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon}\int \di x\di y\, V_N(x-y) \norm{s_x}^2 \norm{a(c_y)\Ncal^{1/2}\psi}^2 \\
+& \leq \int \di x\di y V_N(x-y) \frac{\sqrt{\varepsilon}}{2} \norm{a(c_y) a(c_x)\psi} \frac{2}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)a(c_y)\psi} \\
+& \leq \frac{\varepsilon}{4} \int \di x\di y V_N(x-y) \scal{\psi}{a^\ast(c_x)a^\ast(c_y)a(c_y)a(c_x)\psi} + \frac{4}{\varepsilon} \int \di x\di y V_N(x-y) \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
+& \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon}\int \di x\di y V_N(x-y) \norm{s_x}^2 \norm{a(c_y)\Ncal^{1/2}\psi}^2 \\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \int \di x\, V_N(x-y)\\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \frac{b_0}{N}\\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \frac{b_0}{N} 2 (1+\norm{p}^2)\ev{\Ncal^2} \\
@@ -1546,7 +1546,7 @@ By definition of $\tilV$, we have
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
 Here we made use of the fact that both summands originating from the Hoelder inequality are equal, as can be seen by interchanging the integration variables $x$ and $y$.\newline
-\underline{\Nestlist{12}{1}, \nestlist{12}{2} and \nestlist{13}{1}} can be estimated like \nestlist{11}{2}.\newline
+\underline{\Nestlist{12}{1}, \nestlist{12}{2} and \nestlist{13}{1}:} can be estimated in the same way as \nestlist{11}{2}.\newline
 \estlist{14}{1} (here, cancellation is important!)
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a^\ast(c_y) \left( r(y,x)+\scal{p_y}{s_x} \right)\psi} \rvert \\
@@ -1577,7 +1577,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a(s_y) \scal{c_y}{s_x}\psi} \rvert \\
 & \leq \dxyV \norm{a(c_x)\psi} \norm{a(s_y)\psi} \lvert s(y,x)+\scal{p_y}{s_x} \rvert \\
-& \leq \frac{C}{2}\int \di x\di y\, N V_N(x-y) \norm{a(c_x)\psi}^2 \lvert \ph(x)\rvert^2 + \frac{C}{2}\int \di x\di y\, N V_N(x-y) \norm{a(s_y)\psi}^2 \lvert \ph(y)\rvert^2\\
+& \leq \frac{C}{2}\int \di x\di y N V_N(x-y) \norm{a(c_x)\psi}^2 \lvert \ph(x)\rvert^2 + \frac{C}{2}\int \di x\di y N V_N(x-y) \norm{a(s_y)\psi}^2 \lvert \ph(y)\rvert^2\\
 & \quad + \dxyV \norm{a(c_x)\psi}^2 \norm{s_x}^2 + \dxyV \norm{a(s_y)\psi}^2 \norm{p_y}^2 \\
 & \leq \frac{C}{2} \norm{\ph}_\infty^2 \int \di x\, \norm{a(c_x)\psi}^2 \int \di y\, NV_N(x-y) + \frac{C}{2} \norm{\ph}_\infty^2 \int \di y\, \norm{a(s_y)\psi}^2 b_0 \\
 & \quad + \frac{1}{2}\sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\psi}^2 \frac{b_0}{N} + \frac{1}{2} \sup_y \norm{p_y}^2 \int \di y\, \norm{a(s_y)\psi}^2 b_0/N \\
@@ -1604,7 +1604,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(c_y) a(s_x) \scal{c_y}{s_x} \psi} \rvert \\
 & \leq \dxyV \lvert \scal{c_y}{s_x} \rvert \norm{a(c_y)\psi} \norm{a(s_x)\psi} \\
-& \leq \frac{C}{2}\int \di x\di y\, N V_N(x-y) \norm{a(c_y)\psi}^2 \lvert\ph(y)\rvert^2 + \frac{C}{2}\int \di x\di y\, N V_N(x-y) \norm{a(s_x)\psi}^2 \lvert \ph(x)\rvert^2 \\
+& \leq \frac{C}{2}\int \di x\di y N V_N(x-y) \norm{a(c_y)\psi}^2 \lvert\ph(y)\rvert^2 + \frac{C}{2}\int \di x\di y N V_N(x-y) \norm{a(s_x)\psi}^2 \lvert \ph(x)\rvert^2 \\
 & \quad + \dxyV \norm{a(c_y)\psi}^2 \norm{p_y}^2 + \dxyV \norm{a(s_x)\psi}^2 \norm{s_x}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \left(1+\frac{1}{N}\right)\ev{\Ncal}.
 \end{align*}
@@ -1621,7 +1621,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \dxyNV \lvert\ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
 & \leq C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
 \end{align*}
-\underline{\Nestlist{18}{3} through \estlist{20}{3}:} like \nestlist{18}{2}.\newline
+\underline{\Nestlist{18}{3} through \nestlist{20}{3}:} like \nestlist{18}{2}.\newline
 \estlist{21}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)}a^\ast(c_x)a^\ast(s_x)a^\ast(s_y)\psi} \rvert \\
@@ -1670,22 +1670,22 @@ like \nestlist{22}{2}.\newline
 & \leq C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}.
 \end{align*}
 \underline{\Nestlist{24}{2} through \nestlist{25}{4}:} like \nestlist{24}{1}.\newline
-This completes the list of estimates for the terms of $T^*_t \Lcal_N^{(0)}(t) T_t$.\newline
+This completes the list of estimates for the terms of $T^*_t \Lcal_N^{(0)}(t) T_t$.\vspace{1em}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We still have to give a bound for the $(\partial_t T^*_t)T_t$-part of the generator. We will expand $(\partial_t T^*_t)T_t$ as a series and bound the summands individually, using the following lemma.
 \begin{lem}
 \label{lm:Bbound}
 Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then for all $\psi \in \fock$
- \bd
-\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq scal{\psi}{(\Ncal+1)\psi} \frac{\norm{f_1}+\norm{f_2}}{2}.
-\ed
+ \[
+\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \scal{\psi}{(\Ncal+1)\psi} \frac{\norm{f_1}+\norm{f_2}}{2}.
+\]
 and
-\bd
+\[
  \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x
 a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert
  \leq \scal{\psi}{\Ncal\psi} \frac{\norm{f_1}+\norm{f_2}}{2} + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
-\ed
+\]
 \end{lem}
 \begin{proof} Proof of the first estimate, using Hoelder's inequality:
  \begin{align*}
@@ -2428,7 +2428,7 @@ and
 & \leq \norm{f_1}^2 \norm{f_2}^2 \cdots \norm{f_{n-1}}^2 \int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 
 \end{align*}
 (notice that on the lhs $\norm{\cdot}= \norm{\cdot}_{L^2(\Rbb^3)}$, while on the rhs $\norm{\cdot} = \norm{\cdot}_{L^2(\Rbb^3\times\Rbb^3)}$).
-For $f_n = k$ or $f_n = \cc{k}$, by Hardy's inequality we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C \lvert \ph(x) \rvert^2 \norm{\nabla \ph}^2$. For $f_n = \cc{\dot k}$, again by Hardy's inequality we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C\lvert \ph(x)\rvert^2 \norm{\nabla \phdot}^2 + C \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}^2$. Then use the Lemmata \ref{lm:phdotregularity} and \ref{lm:kbounds} and the fact that $\norm{\ph}_{H^1} \leq C$ by Corollary \ref{c:regn}.
+For $f_n = k$ or $f_n = \cc{k}$ we use Hardy's inequality to prove $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C \lvert \ph(x) \rvert^2 \norm{\nabla \ph}^2$. For $f_n = \cc{\dot k}$, again by Hardy's inequality, we have the estimate $\int \di z_{n-1} \lvert f_n(z_{n-1},x) \rvert^2 \leq C\lvert \ph(x)\rvert^2 \norm{\nabla \phdot}^2 + C \lvert \phdot(x)\rvert^2 \norm{\nabla \ph}^2$. Then use the Lemmata \ref{lm:phdotregularity} and \ref{lm:kbounds} and the fact that $\norm{\ph}_{H^1} \leq C$ by Corollary \ref{c:regn}.
 \end{proof}
 
 \begin{lem}
