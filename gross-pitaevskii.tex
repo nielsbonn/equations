@@ -393,7 +393,6 @@ $\mathcal{F}$ as
   B(k) = \frac{1}{2} \int dxdy \, (k(x,y) a_x^* a_y^* - \overline{k(x,y)} a_x
   a_y)
 \]
-\marginpar{I think this cf. 2 is out of place for two reasons.}
 and (cf.\ \cite{GMM2010})
 \[
   T(k) = e^{B(k)}.
@@ -404,8 +403,6 @@ and (cf.\ \cite{GMM2010})
   Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_1 k \in L^2(\R^3 \times
   \R^3)$.
  
-\marginpar{I would put the (i) and (ii) back to follow the editorial format
-of Lemma \ref{l:W} (or remove both)}
   The operator $T(k)$ is unitary on $\mathcal{F}$ and
       \[
         T(k)^* = T(k)^{-1} = T(-k).
@@ -415,8 +412,6 @@ of Lemma \ref{l:W} (or remove both)}
         T(k)^* a_y T(k) = a(c_y) + a^*(s_y) \qquad \text{and} \qquad T(k)^*
         a_y^* T(k) = a^*(c_y) + a(s_y)
       \ee
-\marginpar{Where is $p$ below? How about $c$? I would just write ``with''.
-Below is stated that $p, r, s \in L^3$}
       with $p, s \in L^2(\Rbb^3\times\Rbb^3)$ given by
       \begin{alignat*}{2}
         c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
@@ -558,7 +553,6 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
     & \quad  \int dx dy \, N^2 |\nabla w_N(x-y)|^2 |\varphi(x)|^2 |\varphi(y)|^2 \le
     C N \| \varphi \|_{H^1}^2,
   \end{align*}
-\marginpar{There is clearly a notation issue here.}
   where $C$ is a constant, uniform in $N$, that depends only on the unscaled
   potential $V$.
 \end{prp}
@@ -599,8 +593,6 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
 
 \begin{proof}[Proof of Lemma \ref{l:bt}]
 % Funny behavior here. Forcing hyphenation...
-\marginpar{We might omit this first part? Isn't standard? We might well
-start just at the top of the next page.}
   The operator $B(k)$ is unbounded, densely defined and anti-self-ad\-joint.
   Hence, by the spectral theorem, the unitary operator $T(k) = e^{B(k)}$ is
   well-defined and $T(k)^* = T(k)^{-1} = T(-k)$.
@@ -1373,7 +1365,6 @@ Using Hoelder's inequality, we calculate that
 & \leq \int \di x \di y \lvert J(x,y)\rvert \lvert \ph(y) - \varphi_t(y)\rvert \lvert \ph(x)\rvert + \int \di x \di y \lvert J(x,y) \rvert \lvert \varphi_t(y)\rvert \lvert \ph(x)-\varphi_t(x)\rvert \\
 & \leq \norm{\ph}_{L^2} \norm{J}_{\textrm{HS}} \norm{\ph - \varphi_t}_{L^2} + \norm{\varphi_t}_{L^2} \norm{J}_{\textrm{HS}} \norm{\ph - \varphi_t}_{L^2}. 
 \end{align*}
-\marginpar{I would write the last inequality and they say by Lemma\dots}
 The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} = 1$ and, by Lemma \ref{lem:phitN2phit}, $\norm{\ph - \varphi_t}_{L^2} \leq C e^{e^{KT}}/N$.
 \end{proof}
 
@@ -1834,10 +1825,10 @@ For the second estimate, differentiate the summands individually (i.\,e. place a
 The result of this appendix is the following corollary, which states uniform (i.\,e.\ independent of $N$) $H^n$ regularity for the solutions of the modified Hartree equation and, as the limiting case $N\to \infty$, the Gross-Pitaevskii equation. We will also state that solutions to the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation as $N \to \infty$.
 
 \begin{cor} \label{l:pdes} \label{c:reg1} \label{c:reg2}
-  Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that $f
-  \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N > 0$,
-  consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear Hartree
-  equation
+  Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that
+  $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
+  1$, consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the nonlinear
+  Hartree equation
   \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
@@ -1849,8 +1840,8 @@ The result of this appendix is the following corollary, which states uniform (i.
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
     \varphi_t
   \]
-  with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$. Then,
-  for all $N > 0$ and $t \ge 0$,
+  with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$.
+  Then, for all $N \ge 1$ and $t \ge 0$,
   \begin{alignat}{2}
     \| \varphi_t^{(N)} \|_{H^1} & \le C_1, & \qquad \| \varphi_t \|_{H^1} &
     \le C_1, \tag{i} \label{H1} \\
@@ -1868,23 +1859,27 @@ The result of this appendix is the following corollary, which states uniform (i.
   and $\| \varphi \|_{H^2}$.
 \end{cor}
 
-Nonlinear Hartree equation
+
+The initial value problem for the nonlinear Hartree equation
 \[
-  i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2) \varphi_t
+  i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
+  \varphi_t
 \]
-with initial data $\varphi_0 = \varphi$, and energy
+with initial data $\varphi_0 = \varphi$ in $H^1(\R^3)$ is known to be
+globally well-posed in $H^1(\R^3)$. This follows from the the conservation
+of mass $\| \varphi \|_{L^2}$ and energy
 \[
   \mathcal{E}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + \frac{1}{2} \int
   dx \, (V * |\varphi|^2)(x) |\varphi(x)|^2.
 \]
-
-
-Nonlinear Gross-Pitaevskii equation
+The exact same statement holds for the nonlinear
+Gross-Pitaevskii equation
 \[
   i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
   \varphi_t
 \]
-with initial data $\varphi_0 = \varphi$, and energy
+with initial data $\varphi_0 = \varphi$, mass $\| \varphi \|_{L^2}$, and
+energy
 \[
   \mathcal{E}_{GP}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + 4 \pi a_0
   \int dx \, |\varphi(x)|^4,
