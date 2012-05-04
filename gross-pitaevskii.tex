@@ -1001,7 +1001,7 @@ These expectation values can be bounded using Lemma \ref{lem:ldotbounds}, Lemma 
 \bd
 u'(t) \leq C e^{M t} \scal{U_t T^\ast_0 \Psi}{\left(\frac{\Ncal^2}{N}+\Ncal+1+\Kcal+\tilV \right)U_t T^\ast_0 \Psi}.
 \ed
-By Lemma \ref{lem:kvbounds} and Corollary \ref{cor:N2} we can eliminate first $\Kcal$, $\tilV$ and then $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then we use Lemma \ref{l:pdes} to estimate the $H^n$ norms. Then we add non-negative summands $\Ncal+1$ with an appropriate exponential prefactor to convert the $\Lcal_N(t)$ on the rhs into $\tLcal$ and arrive at
+By Lemma \ref{lem:kvbounds} and Corollary \ref{cor:N2} we can eliminate first $\Kcal$, $\tilV$ and then $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then we use Corollary \ref{l:pdes} to estimate the $H^n$ norms. Then we add non-negative summands $\Ncal+1$ with an appropriate exponential prefactor to convert the $\Lcal_N(t)$ on the rhs into $\tLcal$ and arrive at
 \bd
 u'(t) \leq \tilde C e^{\tilde M t} u(t).
 \ed
@@ -1204,7 +1204,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 
 \begin{proof}[Proof of Lemma \ref{l:ap}]
-  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels}\ref{k} and
+  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels}\ref{k} and Corollary
   \ref{l:pdes}\eqref{H1}, there exists a constant $C$, uniform in $N$ and $t$,
   that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
@@ -1548,7 +1548,8 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 \estlist{14}{2}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(c_x) a^\ast(p_y) k(y,x)\psi} \rvert \\
-& \leq \dxyV \norm{a(c_x)\psi} \norm{a^\ast(p_y)\psi} \underbrace{\lvert k(y,x)\rvert}_{\leq\, N\lvert \ph(x)\rvert\lvert \ph(y)\rvert} \\
+& \leq \dxyV \norm{a(c_x)\psi} \norm{a^\ast(p_y)\psi} \lvert k(y,x)\rvert \\
+\intertext{and using that $\lvert k(y,x)\rvert \leq N\lvert \ph(x)\rvert\lvert \ph(y)\rvert$ by Lemma \ref{l:kernels} \ref{kr}}
 & \leq \dxyNV \norm{a(c_x)\psi}^2 \lvert\ph(x)\rvert^2 + \dxyNV \norm{a^\ast(p_y)\psi}^2 \lvert \ph(y)\rvert^2\\
 & \leq \frac{1}{2} \norm{\ph}_\infty^2 \left( b_0 \int \di x\,\norm{a(c_x)\psi}^2 + b_0 \int \di y\,\norm{a^\ast(p_y)\psi}^2 \right) \\
 & \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
@@ -1885,6 +1886,8 @@ energy
   \int dx \, |\varphi(x)|^4,
 \]
 where $8 \pi a_0 = \int f V$.
+
+In this paper, we are mainly interested in what we call the modified Hartree equation, in which the potential $V$ is given by $N f_N V_N$. As we need regularity estimates which are independent of $N$, we must not use any other norm of $V$ than the $L^1$-norm, which is given by $\norm{N f_N V_N}_{L^1} = 8 \pi a_0$ and thus independent of $N$. The Gross-Pitaevskii equation formally can be seen as the limiting equation of the modified Hartree equation as $N f_N V_N \to 8 \pi a_0 \delta$ ($N \to \infty$).
 
 
 \begin{prp} \label{p:energy}
