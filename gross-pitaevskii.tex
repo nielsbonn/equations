@@ -2521,11 +2521,11 @@ Estimate for $\gradone \dot p$ (the proof for $\gradone \dot r$ works similarly 
 \ed
 After using the product rule for the time derivative and \eqr{hoelder} we have the estimate
 \begin{align*}
-\norm{\gradone \dot p} & \leq \sum_{n=1}^\infty \frac{1}{(2n)!} \sum_{j=0}^{n-2} \norm{k}^{2j} \norm{\partial_t(k \cc k)} \norm{k}^{2(n-2-j)} \norm{\gradone (k \cc k)} \\
+\norm{\gradone \dot p} & \leq \sum_{n=2}^\infty \frac{1}{(2n)!} \sum_{j=0}^{n-2} \norm{k}^{2j} \norm{\partial_t(k \cc k)} \norm{k}^{2(n-2-j)} \norm{\gradone (k \cc k)} \\
 & \quad + \sum_{n=1}^\infty \frac{1}{(2n)!} \norm{k}^{2(n-1)} \norm{\gradone \partial_t (k \cc k)} \\
-& \leq C \norm{\dot k} \norm{\gradone(k \cc k)} \norm{k}^{-1} + C \norm{\gradone(k \cc{\dot k})} + C \norm{\gradone (\dot k \cc k)},
+& \leq C \norm{\dot k} \norm{\gradone(k \cc k)} + C \norm{\gradone(k \cc{\dot k})} + C \norm{\gradone (\dot k \cc k)},
 \end{align*}
-where in the last step, summable series depending on $\norm{k}$ where absorbed in $C$.
+where in the last step, summable series depending on $\norm{k}$ were absorbed in $C$.
 
 We are left with the task of giving an estimate for $\norm{\gradone(k \cc{\dot k})}$ (an estimate for $\norm{\gradone (\dot k \cc k)}$ is proven in the same way). We start by applying the product rule:
 \begin{align}
