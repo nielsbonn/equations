@@ -372,7 +372,8 @@ and coherent states.
 
 
 \section{Bogoliubov Transformation}
-Let $f(x,y)$ be a function of two variables, $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$. To simplify the notation we write
+Consider a function $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$. To simplify the
+notation we write
 \be{no1}
   f_y(x) = f(x,y)
 \ee
@@ -400,38 +401,36 @@ and (cf.\ \cite{GMM2010})
 
 
 \begin{lem}[Bogoliubov transformation] \label{l:bt}
-  Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_1 k \in L^2(\R^3 \times
-  \R^3)$.
- 
-  The operator $T(k)$ is unitary on $\mathcal{F}$ and
-      \[
-        T(k)^* = T(k)^{-1} = T(-k).
-      \]
+  Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_2 k \in L^2(\R^3 \times
+  \R^3)$. The operator $T(k)$ is unitary on $\mathcal{F}$ and
+  \[
+    T(k)^* = T(k)^{-1} = T(-k).
+  \]
   The creation and annihilation operators transform as
-      \be{no4}
-        T(k)^* a_y T(k) = a(c_y) + a^*(s_y) \qquad \text{and} \qquad T(k)^*
-        a_y^* T(k) = a^*(c_y) + a(s_y)
-      \ee
-      with $p, s \in L^2(\Rbb^3\times\Rbb^3)$ given by
-      \begin{alignat*}{2}
-        c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
-        \big( k \overline{k} \big)^n, \\
-        s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!} \big(
-        k \overline{k} \big)^n k,
-      \end{alignat*}
-      where $\delta$ is the Dirac delta, and the product of functions in the
-      power series is the convolution of integral kernels, that is $fg(x,y) =
-      \int dz \, f(x,z) g(z,y)$. Furthermore,
-      \begin{alignat*}{2}
-        \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_1 p \|_{L^2}
-        & \le 2^{-1} e^{1 + \| k \|_{L^2}} \| \nabla_1 k \overline{k}
-        \|_{L^2}, \\
-        \| r \|_{L^2} & \le e^{1 + \| k \|_{L^2}}, \qquad & \| \nabla_1 r
-        \|_{L^2} & \le e^{1 + \| k \|_{L^2}} \| \nabla_1 k \overline{k}
-        \|_{L^2}, \\
-        \| s \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_1 s \|_{L^2}
-        & \le 2 e^{1+\| k \|_{L^2}} \| \nabla_1 k \|_{L^2}.
-      \end{alignat*}
+  \be{no4}
+    T(k)^* a_y T(k) = a(c_y) + a^*(s_y) \qquad \text{and} \qquad T(k)^*
+    a_y^* T(k) = a^*(c_y) + a(s_y)
+  \ee
+  with $p, s \in L^2(\Rbb^3\times\Rbb^3)$ given by
+  \begin{alignat*}{2}
+    c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
+    \big( k \overline{k} \big)^n, \\
+    s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!}
+    \big( k \overline{k} \big)^n k,
+  \end{alignat*}
+  where $\delta$ is the Dirac delta, and the product of functions in the
+  power series is the convolution of integral kernels, that is, $fg(x,y) =
+  \int dz \, f(x,z) g(z,y)$. Furthermore,
+  \begin{alignat*}{2}
+    \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 p
+    \|_{L^2} & \le 2^{-1} e^{1 + \| k \|_{L^2}} \| \nabla_2 k
+    \overline{k} \|_{L^2}, \\
+    \| r \|_{L^2} & \le e^{1 + \| k \|_{L^2}}, \qquad & \| \nabla_2 r
+    \|_{L^2} & \le e^{1 + \| k \|_{L^2}} \| \nabla_2 \overline{k} k
+    \|_{L^2}, \\
+    \| s \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 s
+    \|_{L^2} & \le 2 e^{1+\| k \|_{L^2}} \| \nabla_2 k \|_{L^2}.
+  \end{alignat*}
 \end{lem}
 \begin{rem}
 Notice that the integral kernels $c$ and $s$ are defined by series similar to those of the hyperbolic cosine respectively the hyperbolic sine. 
@@ -472,17 +471,18 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
 
 \begin{lem}[Zero-energy scattering equation \cite{ESY2010}] \label{l:w}
   Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
-  spherically symmetric with scattering length $a_0$. Let $f_N = 1 - w_N$ be the solution of the zero-energy scattering
-  equation \eqref{eq:scattering} with scaled potential $V_N$. Then, the
-  following hold with constants uniform in $N$.
+  spherically symmetric with scattering length $a_0$. Let $f_N = 1 - w_N$ be
+  the solution of the zero-energy scattering equation \eqref{eq:scattering}
+  with scaled potential $V_N$. Then, the following hold with constants
+  uniform in $N$.
   \begin{enumerate}
-    \item \label{l:w1} There exists a constant $C_0 > 0$, which depends on the
-      unscaled potential $V$, such that
+    \item \label{l:w1} There exists a constant $C_0 > 0$, which depends on
+    the unscaled potential $V$, such that
       \[
         C_0 \le 1 - w_N(x) \le 1 \qquad \text{for all} \ x \in \R^3.
       \]
-    \item \label{l:w2} Let $R$ be such that $\text{supp} \ V \subset \{ x \in
-      \R^3 : |x| \le R \}$. Then,
+    \item \label{l:w2} Let $R$ be such that $\text{supp} \ V \subset \{ x
+    \in \R^3 : |x| \le R \}$. Then,
       \[
         w_N(x) = \frac{a_0}{N|x|} \qquad \text{for all} \ x \in \R^3 \
         \text{with} \ |x| > R/N.
@@ -508,7 +508,6 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
 \end{lem}
 
 
-
 \begin{lem} \label{l:kernels}
   Let $\varphi \in H^1(\R^3)$ and let $f_N=1-w_N$ be the solution of the
   zero-energy scattering equation. Suppose that
@@ -520,8 +519,8 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   \begin{enumerate}
     \item \label{k}
       \[
-        \| k \|_{L^2} \le C \| \varphi \|_{H^1}^2, \qquad \| \nabla_1 k
-        \|_{L^2} \le C \| \varphi \|_{H^1}^2 \sqrt{N}, \qquad \| \nabla_1 k
+        \| k \|_{L^2} \le C \| \varphi \|_{H^1}^2, \qquad \| \nabla_2 k
+        \|_{L^2} \le C \| \varphi \|_{H^1}^2 \sqrt{N}, \qquad \| \nabla_2 k
         \overline{k} \|_{L^2} \le C \| \varphi \|_{H^1}^4.
       \]
     \item \label{kr} For almost all $x,y \in \R^3$,
@@ -543,8 +542,7 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
 
 \begin{prp} \label{p:wphi}
   Let $\varphi \in H^1(\R^3)$, and let $f_N=1-w_N$ be the solution of the
-  zero-energy scattering equation. Then, for almost all
-  $x,y \in \R^3$,
+  zero-energy scattering equation. Then, for almost all $x,y \in \R^3$,
   \begin{align*}
     \norm{N w_N(x-\cdot)\varphi(\cdot)}_{L^2}^2 & = \int dz \, N^2 w_N(x-z)^2 |\varphi(z)|^2 \le C \| \nabla \varphi
     \|_{L^2}^2, \\
@@ -637,20 +635,21 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   e^{\| k \|_{L^2}}$. Furthermore, since the series for $p$, $r$ and $s$ are
   absolutely convergent, we can write
   \begin{align*}
-    \nabla_1 p & = \frac{1}{2} \nabla_1 k \overline{k} + \nabla_1 k
-    \overline{k} \sum_{n=2}^\infty \frac{1}{(2n)!} (k \overline{k})^{n-1}, \\
-    \nabla_1 r & = \nabla_1 k \overline{k} \sum_{n=1}^\infty \frac{1}{(2n+1)!}
-    k ( \overline{k} k)^{n-1}, \\
-    \nabla_1 s & = \nabla_1 k + \nabla_1 k \sum_{n=1}^\infty \frac{1}{(2n+1)!}
-    (\overline{k} k)^n.
+    \nabla_2 p & = \frac{1}{2} \nabla_2 k \overline{k} + \left[
+    \sum_{n=2}^\infty \frac{1}{(2n)!} (k \overline{k})^{n-1} \right]
+    \nabla_2 k \overline{k} , \\
+    \nabla_2 r & = \left[ \sum_{n=1}^\infty \frac{1}{(2n+1)!} (k
+    \overline{k})^{n-1} k \right] \nabla_2 \overline{k} k, \\
+    \nabla_2 s & = \nabla_2 k + \left[ \sum_{n=1}^\infty \frac{1}{(2n+1)!}
+    (k \overline{k})^n \right] \nabla_2 k.
   \end{align*}
   Thus, similarly as above,
   \begin{align*}
-    \| \nabla_1 p \|_{L^2} & \le 2^{-1} e^{1+\| k \|_{L^2}} \| \nabla_1 k
+    \| \nabla_2 p \|_{L^2} & \le 2^{-1} e^{1+\| k \|_{L^2}} \| \nabla_2 k
     \overline{k} \|_{L^2}, \\
-    \| \nabla_1 r \|_{L^2} & \le e^{1+\| k \|_{L^2}} \| \nabla_1 k
-    \overline{k} \|_{L^2}, \\
-    \| \nabla_1 s \|_{L^2} & \le 2 e^{1+ \| k \|_{L^2}} \| \nabla_1 k
+    \| \nabla_2 r \|_{L^2} & \le e^{1+\| k \|_{L^2}} \| \nabla_2
+    \overline{k} k \|_{L^2}, \\
+    \| \nabla_2 s \|_{L^2} & \le 2 e^{1+ \| k \|_{L^2}} \| \nabla_2 k
     \|_{L^2}.
   \end{align*}
 This completes the proof of the lemma.
@@ -667,33 +666,35 @@ This completes the proof of the lemma.
   \]
   and
   \begin{align*}
-    \| \nabla_1 k \|_{L^2} & \le \| N w_N(x-y) \nabla \varphi(x) \varphi(y)
+    \| \nabla_2 k \|_{L^2} & \le \| N w_N(x-y) \varphi(x) \nabla \varphi(y)
     \|_{L^2} + \| N \nabla w_N(x-y) \varphi(x) \varphi(y) \|_{L^2} \\
     & \le C \| \nabla \varphi \|_{L^2}^2 + C \sqrt{N} \| \varphi \|_{H^1}^2
     \apprle C \sqrt{N} \| \varphi \|_{H^1}^2.
   \end{align*}
   This proves the first two estimates in \ref{k}. Now,
   \[
-    \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
+    \| \nabla_2 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
   \]
   with, by Proposition \ref{p:wphi},
   \[
-    \| I \|_{L^2}^2 = \int dx \, |\nabla \varphi(x)|^2 \int dy \,
-    |\varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
+    \| I \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, |\nabla
+    \varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
     \right|^2 \apprle C^2 \| \varphi \|_{H^1}^8
   \]
   and, using Hardy's inequality,
   \begin{align*}
     \| J \|_{L^2}^2 & = \int dx \, |\varphi(x)|^2 \int dy \, |\varphi(y)|^2
-    \left| \int dz \, N^2 \nabla w_N(x-z) w_N(z-y) |\varphi(z)|^2 \right|^2 \\
-& \apprle \int \di x\di y \lvert\varphi(x)\rvert^2 \lvert \varphi(y)\rvert^2 \left\lvert \int \di z \frac{\lvert\varphi(z)\rvert^2}{\lvert x-z\rvert^2 \lvert z-y\rvert} \right\rvert^2 \\
-& \apprle \int \di x\di z_1 \di z_2 \lvert \varphi(x)\rvert^2 \frac{\lvert \varphi(z_1)\rvert^2}{\lvert x-z_1\rvert^2} \frac{\lvert\varphi(z_2)\rvert^2}{\lvert x-z_2\rvert^2} \int \di y \frac{\lvert \varphi(y)\rvert^2}{\lvert z_1-y\rvert \lvert z_2 - y\rvert} \\
-& \apprle \int \di x \lvert \varphi(x)\rvert^2 \int \di z_1 \frac{\lvert \varphi(z_1)\rvert^2}{\lvert x-z_1\rvert^2} \int \di z_2 \frac{\lvert \varphi(z_2)\rvert^2}{\lvert x-z_2\rvert^2} \norm{\nabla \varphi}_{L^2}^2\\
+    \left| \int dz \, N^2 w_N(x-z) \nabla w_N(z-y) |\varphi(z)|^2 \right|^2 \\
+& \apprle \int \di x\di y \lvert\varphi(x)\rvert^2 \lvert \varphi(y)\rvert^2
+\left\lvert \int \di z \frac{\lvert\varphi(z)\rvert^2}{\lvert x-z\rvert
+\lvert z-y\rvert^2} \right\rvert^2 \\
+& \apprle \int \di y\di z_1 \di z_2 \lvert \varphi(y)\rvert^2 \frac{\lvert \varphi(z_1)\rvert^2}{\lvert y-z_1\rvert^2} \frac{\lvert\varphi(z_2)\rvert^2}{\lvert y-z_2\rvert^2} \int \di x \frac{\lvert \varphi(x)\rvert^2}{\lvert z_1-x\rvert \lvert z_2 - x\rvert} \\
+& \apprle \int \di y \lvert \varphi(y)\rvert^2 \int \di z_1 \frac{\lvert \varphi(z_1)\rvert^2}{\lvert y-z_1\rvert^2} \int \di z_2 \frac{\lvert \varphi(z_2)\rvert^2}{\lvert y-z_2\rvert^2} \norm{\nabla \varphi}_{L^2}^2\\
 & \apprle C \norm{\varphi}_{H^1}^8.
   \end{align*}
   Therefore,
   \[
-    \| \nabla_1 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
+    \| \nabla_2 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
     \apprle C \| \varphi \|_{H^1}^4.
   \]
   This completes the proof of part \ref{k}.
@@ -1055,12 +1056,12 @@ first.
 
 
 \begin{prp} \label{p:TNT}
-  Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_1 k \in L^2(\R^3 \times
+  Let $k \in L^2(\R^3 \times \R^3)$ with $\nabla_2 k \in L^2(\R^3 \times
   \R^3)$, and let $f \in H^1(\R^3)$. Then, there exists a universal constant
   $C_1$, and constant $C$, that depends only on $\| k \|_{L^2}$, such that:
   \begin{align}
     T^* \N T & \le C (\N+1), \label{TNT} \tag{i} \\
-    T^* \K T & \le C (\K + \| \nabla_1 k \|_{L^2}^2), \label{TKT} \tag{ii} \\
+    T^* \K T & \le C (\K + \| \nabla_2 k \|_{L^2}^2), \label{TKT} \tag{ii} \\
     T^* \N^2 T & \le C (\N+1)^2, \label{TN2T} \tag{iii} \\
     \phi(f) \K \phi(f) & \le C_1 \big( \| f \|_{L^2}^2 \K (\N+1) + \| \nabla f
     \|_{L^2}^2 (\N + 1) \big). \label{fKf} \tag{v}
@@ -1083,7 +1084,7 @@ first.
     \tag{iv} \label{f4} 
   \end{align}
   where $C$ and $S$ are integral operators on $L^2(\R^3)$, with integral
-  kernels $c$ and $s$ as in Lemma \ref{l:bt}, respectively.
+  kernels $c$ and $s$ as in Lemma \ref{l:bt}.
 \end{prp}
 
 \begin{cor}
@@ -1109,11 +1110,10 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 \begin{proof}[Proof of Proposition \ref{p:TNT}]
   We first remark that it is clear that all the steps in the proof hold with
   $T$ replaced by $T^*$ because $T^* a_x T = a(c_x) + a^*(s_x)$ and $T a_x T^*
-  = a(c_x) - a^*(s_x)$ differ only by a minus sign. We make no further
-  comments about this.
+  = a(c_x) - a^*(s_x)$ differ only by a minus sign.
 
 
-  \eqref{TNT} and \eqref{TKT} Write
+  Proof of \eqref{TNT} and \eqref{TKT}: Write
   \[
     \langle \psi, T^* \N T \psi \rangle = \int dx \, \langle T^* a_x T \psi,
     T^* a_x T \psi \rangle = \int dx \, \| (a_x + a(p_x) + a^*(s_x)) \psi
@@ -1141,22 +1141,22 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
     \psi \|^2 + \int dx \, \| a(\nabla_x p_x) \psi \|^2 + \int dx \, \|
     a^*(\nabla_x s_x) \psi \|^2 \\
     & = \langle \psi, \K \psi \rangle + \int dx \, \| a(\nabla_x p_x) \psi
-    \|^2 + \int dx \, \| a(\nabla_x s_x) \psi \|^2 + \| \nabla_1 s \|_{L^2}^2
+    \|^2 + \int dx \, \| a(\nabla_x s_x) \psi \|^2 + \| \nabla_2 s \|_{L^2}^2
     \\
     & \apprle (1 + \| p \|_{L^2}^2 + \| s \|_{L^2}^2) \langle \psi, \K \psi
-    \rangle + \| \nabla_1 s \|_{L^2}^2.
+    \rangle + \| \nabla_2 s \|_{L^2}^2.
   \end{align*}
-  Furthermore, by Lemma \ref{l:bt}, there exists a universal
-  constant $C_1$, such that
+  Furthermore, by Lemma \ref{l:bt}, there exists a universal constant $C_1$
+  such that
   \begin{equation} \label{c1}
     \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le e^{C_1 (1+\| k \|_{L^2})} \qquad
-    \text{and} \qquad \| \nabla_1 s \|_{L^2}^2 \le e^{C_1 (1+\|k \|_{L^2})} \|
-    \nabla_1 k \|_{L^2}^2.
+    \text{and} \qquad \| \nabla_2 s \|_{L^2}^2 \le e^{C_1 (1+\|k \|_{L^2})} \|
+    \nabla_2 k \|_{L^2}^2.
   \end{equation}
   All this together proves parts \eqref{TNT} and \eqref{TKT}.
   
 
-  \eqref{TN2T} Write
+  Proof of \eqref{TN2T}: Write
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
     & = \int dxdy \, \langle \psi, T^* a_x^* a_x a_y^* a_y T \psi \rangle \\
@@ -1181,8 +1181,8 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
   Recalling \eqref{c1}, this proves part \eqref{TN2T}.
 
 
-   \eqref{fKf} By Cauchy-Schwarz inequality, a brief calculation, and Lemma
-  \ref{l:a},
+  Proof of \eqref{fKf}: By Cauchy-Schwarz inequality, a brief calculation,
+  and Lemma \ref{l:a},
   \begin{align*}
     \langle \psi, \phi(\varphi) \K \phi(\varphi) \psi \rangle & = \| \K^{1/2}
     (a^*(\varphi) + a(\varphi) ) \psi \|^2 \\
@@ -1209,10 +1209,10 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
   that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
     \begin{gathered}
-      \| k \|_{L^2} \le C, \qquad \| \nabla_1 k \|_{L^2} \le C \sqrt{N},
-      \qquad \| \nabla_1 k \overline{k} \|_{L^2} \le C. \\
+      \| k \|_{L^2} \le C, \qquad \| \nabla_2 k \|_{L^2} \le C \sqrt{N},
+      \qquad \| \nabla_2 k \overline{k} \|_{L^2} \le C. \\
       \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le C, \qquad \| \nabla \ph
-      \|_{L^2}^2 + \| \nabla_1 p \|_{L^2}^2 \le C, \qquad \| \nabla_1 s
+      \|_{L^2}^2 + \| \nabla_2 p \|_{L^2}^2 \le C, \qquad \| \nabla_2 s
       \|_{L^2}^2 \le C N.
     \end{gathered}
   \end{equation}
