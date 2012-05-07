@@ -423,10 +423,10 @@ and (cf.\ \cite{GMM2010})
   \int dz \, f(x,z) g(z,y)$. Furthermore,
   \begin{alignat*}{2}
     \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 p
-    \|_{L^2} & \le 2^{-1} e^{1 + \| k \|_{L^2}} \| \nabla_2 k
-    \overline{k} \|_{L^2}, \\
+    \|_{L^2} & \le 2^{-1} e^{1 + \| k \|_{L^2}} \| \nabla_2 (k
+    \overline{k}) \|_{L^2}, \\
     \| r \|_{L^2} & \le e^{1 + \| k \|_{L^2}}, \qquad & \| \nabla_2 r
-    \|_{L^2} & \le e^{1 + \| k \|_{L^2}} \| \nabla_2 \overline{k} k
+    \|_{L^2} & \le e^{1 + \| k \|_{L^2}} \| \nabla_2 (\overline{k} k)
     \|_{L^2}, \\
     \| s \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 s
     \|_{L^2} & \le 2 e^{1+\| k \|_{L^2}} \| \nabla_2 k \|_{L^2}.
@@ -520,8 +520,8 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
     \item \label{k}
       \[
         \| k \|_{L^2} \le C \| \varphi \|_{H^1}^2, \qquad \| \nabla_2 k
-        \|_{L^2} \le C \| \varphi \|_{H^1}^2 \sqrt{N}, \qquad \| \nabla_2 k
-        \overline{k} \|_{L^2} \le C \| \varphi \|_{H^1}^4.
+        \|_{L^2} \le C \| \varphi \|_{H^1}^2 \sqrt{N}, \qquad \| \nabla_2 (k
+        \overline{k}) \|_{L^2} \le C \| \varphi \|_{H^1}^4.
       \]
     \item \label{kr} For almost all $x,y \in \R^3$,
       \[
@@ -637,18 +637,18 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   \begin{align*}
     \nabla_2 p & = \frac{1}{2} \nabla_2 k \overline{k} + \left[
     \sum_{n=2}^\infty \frac{1}{(2n)!} (k \overline{k})^{n-1} \right]
-    \nabla_2 k \overline{k} , \\
+    \nabla_2 (k \overline{k}) , \\
     \nabla_2 r & = \left[ \sum_{n=1}^\infty \frac{1}{(2n+1)!} (k
-    \overline{k})^{n-1} k \right] \nabla_2 \overline{k} k, \\
+    \overline{k})^{n-1} k \right] \nabla_2 (\overline{k} k), \\
     \nabla_2 s & = \nabla_2 k + \left[ \sum_{n=1}^\infty \frac{1}{(2n+1)!}
     (k \overline{k})^n \right] \nabla_2 k.
   \end{align*}
   Thus, similarly as above,
   \begin{align*}
-    \| \nabla_2 p \|_{L^2} & \le 2^{-1} e^{1+\| k \|_{L^2}} \| \nabla_2 k
-    \overline{k} \|_{L^2}, \\
+    \| \nabla_2 p \|_{L^2} & \le 2^{-1} e^{1+\| k \|_{L^2}} \| \nabla_2 (k
+    \overline{k}) \|_{L^2}, \\
     \| \nabla_2 r \|_{L^2} & \le e^{1+\| k \|_{L^2}} \| \nabla_2
-    \overline{k} k \|_{L^2}, \\
+    (\overline{k} k) \|_{L^2}, \\
     \| \nabla_2 s \|_{L^2} & \le 2 e^{1+ \| k \|_{L^2}} \| \nabla_2 k
     \|_{L^2}.
   \end{align*}
@@ -673,7 +673,7 @@ This completes the proof of the lemma.
   \end{align*}
   This proves the first two estimates in \ref{k}. Now,
   \[
-    \| \nabla_2 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
+    \| \nabla_2 (k \overline{k}) \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
   \]
   with, by Proposition \ref{p:wphi},
   \[
@@ -694,7 +694,7 @@ This completes the proof of the lemma.
   \end{align*}
   Therefore,
   \[
-    \| \nabla_2 k \overline{k} \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
+    \| \nabla_2 (k \overline{k}) \|_{L^2} \le \| I \|_{L^2} + \| J \|_{L^2}
     \apprle C \| \varphi \|_{H^1}^4.
   \]
   This completes the proof of part \ref{k}.
@@ -1064,7 +1064,7 @@ first.
     T^* \K T & \le C (\K + \| \nabla_2 k \|_{L^2}^2), \label{TKT} \tag{ii} \\
     T^* \N^2 T & \le C (\N+1)^2, \label{TN2T} \tag{iii} \\
     \phi(f) \K \phi(f) & \le C_1 \big( \| f \|_{L^2}^2 \K (\N+1) + \| \nabla f
-    \|_{L^2}^2 (\N + 1) \big). \label{fKf} \tag{v}
+    \|_{L^2}^2 (\N + 1) \big). \label{fKf} \tag{iv}
   \end{align}
   Moreover, the same inequalities hold with $T$ replaced by $T^*$.
 \end{prp}
@@ -1113,7 +1113,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
   = a(c_x) - a^*(s_x)$ differ only by a minus sign.
 
 
-  Proof of \eqref{TNT} and \eqref{TKT}: Write
+  \eqref{TNT} and \eqref{TKT} Write
   \[
     \langle \psi, T^* \N T \psi \rangle = \int dx \, \langle T^* a_x T \psi,
     T^* a_x T \psi \rangle = \int dx \, \| (a_x + a(p_x) + a^*(s_x)) \psi
@@ -1156,7 +1156,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
   All this together proves parts \eqref{TNT} and \eqref{TKT}.
   
 
-  Proof of \eqref{TN2T}: Write
+  \eqref{TN2T} Write
   \begin{align*}
     & \langle \psi, T^* \N^2 T \psi \rangle \\
     & = \int dxdy \, \langle \psi, T^* a_x^* a_x a_y^* a_y T \psi \rangle \\
@@ -1181,8 +1181,8 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
   Recalling \eqref{c1}, this proves part \eqref{TN2T}.
 
 
-  Proof of \eqref{fKf}: By Cauchy-Schwarz inequality, a brief calculation,
-  and Lemma \ref{l:a},
+  \eqref{fKf} By Cauchy-Schwarz inequality, a brief calculation, and Lemma
+  \ref{l:a},
   \begin{align*}
     \langle \psi, \phi(\varphi) \K \phi(\varphi) \psi \rangle & = \| \K^{1/2}
     (a^*(\varphi) + a(\varphi) ) \psi \|^2 \\
@@ -1210,7 +1210,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
   \begin{equation} \label{c2}
     \begin{gathered}
       \| k \|_{L^2} \le C, \qquad \| \nabla_2 k \|_{L^2} \le C \sqrt{N},
-      \qquad \| \nabla_2 k \overline{k} \|_{L^2} \le C. \\
+      \qquad \| \nabla_2 (k \overline{k}) \|_{L^2} \le C. \\
       \| p \|_{L^2}^2 + \| s \|_{L^2}^2 \le C, \qquad \| \nabla \ph
       \|_{L^2}^2 + \| \nabla_2 p \|_{L^2}^2 \le C, \qquad \| \nabla_2 s
       \|_{L^2}^2 \le C N.
