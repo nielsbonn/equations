@@ -175,7 +175,7 @@ while in the modified Hartree equation $N f_N V_N \to 8 \pi a_0 \delta$, which b
 $k$-particle densitys. 
 \end{rem}
 
-Literature: BBGKY, Grillakis-Machedon-Margetis, Pickl, Rodnianski-Schlein.
+Literature: BBGKY, Grillakis-Machedon-Margetis \cite{GMM2010}, Pickl, Rodnianski-Schlein.
 
 Organization: Lift to Fock Space. The Bogoliubov Transformation. Controlling the Number of Quantum Fluctuations by a Gronwall estimate. Time Evolution of Factorized States and Proof of the Main Theorem. Appendix on Generator-Estimates. Appendix on Hartree and Gross-Pitaevskii equation. Appendix: Bounds on the Bogoliubov Transformation.
 
@@ -372,7 +372,7 @@ and coherent states.
 
 
 \section{Bogoliubov Transformation}
-Consider a function $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$. To simplify the
+Consider a function $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$ (an integral kernel). To simplify the
 notation we write
 \be{no1}
   f_y(x) = f(x,y)
@@ -394,7 +394,7 @@ $\mathcal{F}$ as
   B(k) = \frac{1}{2} \int dxdy \, (k(x,y) a_x^* a_y^* - \overline{k(x,y)} a_x
   a_y)
 \]
-and (cf.\ \cite{GMM2010})
+and
 \[
   T(k) = e^{B(k)}.
 \]
@@ -411,15 +411,15 @@ and (cf.\ \cite{GMM2010})
     T(k)^* a_y T(k) = a(c_y) + a^*(s_y) \qquad \text{and} \qquad T(k)^*
     a_y^* T(k) = a^*(c_y) + a(s_y)
   \ee
-  with $p, s \in L^2(\Rbb^3\times\Rbb^3)$ given by
+  with integral kernels $c$ and $s$ given by
   \begin{alignat*}{2}
     c & = \delta + p, & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
     \big( k \overline{k} \big)^n, \\
     s & = k + r, & \qquad r & = \sum_{n=1}^\infty \frac{1}{(2n+1)!}
     \big( k \overline{k} \big)^n k,
   \end{alignat*}
-  where $\delta$ is the Dirac delta, and the product of functions in the
-  power series is the convolution of integral kernels, that is, $fg(x,y) =
+  where $\delta$ is the Dirac delta, and the product in the
+  power series is the convolution of integral kernels, that is $fg(x,y) =
   \int dz \, f(x,z) g(z,y)$. Furthermore,
   \begin{alignat*}{2}
     \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 p
