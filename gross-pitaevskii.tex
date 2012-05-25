@@ -2305,7 +2305,7 @@ Let $\ph$ be a solution of the modified Hartree equation
 \be{modHartree}
 i \phdot = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph \rvert^2 \right) \ph.
 \ee
-Then there exists a constant $C$ independent of $N$ and $t$ such that:
+Then there exists a constant $C$ such that:
 \begin{enumerate}
  \item $\norm{\phdot}_{L^2} \leq \norm{\ph}_{H^2} + 8\pi a_0 \norm{\ph}_{H^2}^2 \leq C \norm{\ph}_{H^2}^2.$
 \item Furthermore, for $i, j \in \{1,2,3\}$,
@@ -2343,10 +2343,11 @@ Clearly, $\norm{\nabla \Delta \ph}_{L^2} \leq \norm{\ph}_{H^3}$. Now for line \e
 & = \norm{\nabla \ph}_{L^2}^2 \norm{\ph}_\infty^4 (8 \pi a_0)^2. 
 \end{align*}
 Similarly, we show that the $L^2$-norms of the summands in line \eqref{eq:secondline} are both bounded by $C \norm{\ph}_{H^2}^2 \norm{\ph}_{H^3}^2$. We then conclude that
-\bd
+\[
 \norm{\nabla \phdot}_{L^2} \leq \norm{\ph}_{H^3} + C \norm{\nabla \ph}_{L^2} \norm{\ph}_\infty^2 + C \norm{\ph}_{H^2} \norm{\ph}_{H^3} \leq C \norm{\ph}_{H^3}^2.
-\ed
-The bound for $\norm{\partial_i \partial_j \phdot}_{L^2}$ is proven by the same strategy. Now the bound for $\norm{\phdot}_\infty$ is a consequence of the fact that the $L^\infty$-norm can be estimated by the $H^2$-norm through a Sobolev inequality.
+\]
+The bound for $\norm{\partial_i \partial_j \phdot}_{L^2}$ is proven by the same strategy.
+Then by a Sobolev inequality $\norm{\phdot}_\infty \leq C \norm{\phdot}_{H^2} \leq C \norm{\ph}_{H^4}^3$.
 
 (iii) To prove that $\phddot$ is in $L^2$, we apply $i\partial_t$ to the modified Hartree equation \eqr{modHartree} and get
 \begin{align*}
@@ -2362,12 +2363,12 @@ ii \phddot & = \Delta^2 \ph - \Delta \left( (N f_N V_N \ast \lvert \ph\rvert^2)\
 The $L^2$-norms of the summands on the right hand side can be estimated by the same methods as in (i) and (ii), e.\,g.\ 
 \begin{align*}
  \norm{\left( N f_N V_N \ast \lvert \ph\rvert^2 \right) \Delta \ph}^2 & = \int \di x \lvert \Delta \ph(x)\rvert^2 \left\lvert \int \di y\, N f_N V_N(y) \lvert \ph(x-y) \rvert^2 \right\rvert^2 \\
-& \leq \norm{\ph}_\infty^4 (8 \pi a_0)^2 \norm{\Delta \ph}_{L^2}^2 \leq C \norm{\ph}_{H^4}^6.
+& \leq \norm{\ph}_\infty^4 (8 \pi a_0)^2 \norm{\Delta \ph}_{L^2}^2 \leq C \norm{\ph}_{H^4}^6. \qedhere
 \end{align*}
-(Actually, the $H^2$-norm is enough for this term, but we need the $H^4$-norm anyway for some of the other summands.)
+%(Actually, the $H^2$-norm is enough for this term, but we need the $H^4$-norm anyway for some of the other summands.)
 \end{proof}
 
-\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation \eqr{modHartree}. Then there exists a constant $C$ independent of $N$ and $t$ such that:
+\begin{lem} \label{lm:kbounds} Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation. Then there exists a constant $C$ such that:
 \bd
 \norm{\dot k} \leq C \norm{\ph}_{H^2}^2
  \quad \mbox{and} \quad
@@ -2382,7 +2383,6 @@ The $L^2$-norms of the summands on the right hand side can be estimated by the s
 & \leq 16 \left( \max\{R,a_0\} \right)^2 \int \di x\di y\, \lvert \phdot(x)\rvert^2 \lvert \nabla_y \ph(y)\rvert^2 \\
 & \leq \left( 4 \max\{R,a_0\} \right)^2 \norm{\phdot}_{L^2}^2 \norm{\ph}_{H^1}^2 \leq C \norm{\ph}_{H^2}^4.
 \end{align*}
-
 (ii) First, we use $\lvert N w_N(x-y) \rvert \leq \max \{R,a_0\} \lvert x-y\rvert^{-1}$ and Hardy's inequality to show
 \bd
 \norm{\ddot k} \leq C \norm{\phddot}_{L^2} + C \norm{\phdot}_{L^2} \norm{\nabla \phdot}_{L^2}.
@@ -2395,11 +2395,11 @@ Employing Lemma \ref{lm:phdotregularity} the proof is finished.
 \label{lem:dottedests1}
 Let $p$ and $s$ be the integral kernels defined in Lemma \ref{l:bt}. Then, the following estimates hold:
 \begin{enumerate}
-\item If $k_t \in L^2(\Rbb^3\times\Rbb^3)$ is an arbitraty time-dependent integral kernel then
+\item If $k_t \in L^2(\Rbb^3\times\Rbb^3)$ is an arbitrary time-dependent integral kernel then
 \bd
 \norm{\dot p} \leq \norm{\dot k} \cosh(\norm{k}) \quad \mbox{and} \quad \norm{\dot s} \leq \norm{\dot k} \cosh(\norm{k}).
 \ed
-\item If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ independent of $N$ and $t$ such that
+\item If $k(x,y) = - N w_N(x-y) \ph(x) \ph(y)$ with $\ph$ a solution of the modified Hartree equation, then there exists a constant $C$ such that
 \bd
 \norm{\dot p} \leq C \norm{\ph}_{H^2}^2 \quad \mbox{and} \quad \norm{\dot s} \leq C \norm{\ph}_{H^2}^2
 \ed
@@ -2425,7 +2425,7 @@ For $f_n = k$ or $f_n = \cc{k}$ we use Hardy's inequality to prove $\int \di z_{
 
 \begin{lem}
 \label{lem:dottedests2}
-Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modified Hartree equation. Then there exists a constant $C$ independent of $N$ and $t$ such that
+Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modified Hartree equation. Then there exists a constant $C$ such that
 \begin{enumerate}
  \item
 \bd
@@ -2440,7 +2440,7 @@ Let $k(x,y) = -N w_N(x-y) \ph(x) \ph(y)$, where $\ph$ is a solution of the modif
 \int \di x\di y\frac{1}{N} V_N(x-y) \lvert \dot s(x,y)\rvert^2 \leq C \norm{\ph}_{H^3}^4 + \frac{C}{N^2} \norm{\ph}_{H^3}^4 \norm{\ph}_{H^2}^2.
 \ed
 \end{enumerate}
-Notice that in (i) and (iii) compared to (ii) an additional $1/N$ is required because $s$ is more singular than $r$.
+%Notice that in (i) and (iii) compared to (ii) an additional $1/N$ is required because $s$ is more singular than $r$.
 \end{lem}
 \begin{proof} (iii) is a trivial corollary from (i) and (ii).
 
@@ -2449,34 +2449,29 @@ Notice that in (i) and (iii) compared to (ii) an additional $1/N$ is required be
 & \int \di x\di y \frac{1}{N}V_N(x-y) \lvert \dot k(x,y)\rvert^2 \\
 & = \int \di x\di y \frac{1}{N} V_N(x-y) \lvert -N w_N(x-y) \phdot(x) \ph(y) - N w_N(x-y) \ph(x) \phdot(y)\rvert^2 \\
 & \leq \frac{4}{N} \int \di x\di y V_N(x-y) \lvert N w_N(x-y) \rvert^2 \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
-& = 4 \int \di x \di y N^3V(N(x-y)) w(N(x-y))^2 \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
-& \leq 4 \norm{N^3 V(N(\cdot))w(N(\cdot))^2}_{L^1} \norm{\lvert\phdot\rvert^2}_{L^2} \norm{\lvert \ph\rvert^2}_{L^2}.
+& = 4 \int \di x \di y NV_N(x-y) w_N(x-y)^2 \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
+& \leq 4 \norm{N V_N w_N^2}_{L^1} \norm{\lvert\phdot\rvert^2}_{L^2} \norm{\lvert \ph\rvert^2}_{L^2}.
 \end{align*}
-In the last step, Young's inequality was used. Now by substituting $Nx = z$ and using $\lvert w(z)\rvert \leq 1$ we have
-\bd
-\norm{N^3 V(N(\cdot))w(N(\cdot))^2}_{L^1} = \int \di x N^3 V(Nx)w(Nx)^2 = \int \di z V(z) w(z)^2 \leq \int \di z V(z) = b_0.
-\ed
-Furthermore, by Sobolev inequality and using the Lemma \ref{lm:phdotregularity} on regularity of $\phdot$ we get
+In the last step Young's inequality was used. Using $\lvert w_N\rvert \leq 1$ we get $\norm{N V_N w_N^2}_{L^1} \leq \norm{V}_{L^1} = b_0$.
+Furthermore, by a Sobolev inequality and Lemma \ref{lm:phdotregularity}, we get
 \bd
 \norm{\lvert \phdot\rvert^2}_{L^2} = \norm{\phdot}_{L^4}^2 \leq C \norm{\phdot}_{H^1}^2 \leq C(\norm{\ph}_{H^2}^2 + \norm{\ph}_{H^3}^2)^2 \leq C \norm{\ph}_{H^3}^4.
 \ed
-Also by a Sobolev inequality $\norm{\lvert \ph\rvert^2}_{L^2} \leq C$ because $\norm{\ph}_{H^1} \leq C$.
+Also by a Sobolev inequality $\norm{\lvert \ph\rvert^2}_{L^2} \leq C$ because $\norm{\ph}_{H^1} \leq C$. Putting all this together estimate (i) is obtained.
 
-(ii) By induction in $n$, one first proves that for the concetanation of integral kernels $f_1, \dots f_n \in L^2(\Rbb^3\times\Rbb^3)$ the following estimate holds:
-\bd
+(ii) By H\"older's inequality, one proves that for integral kernels $f_1, \dots f_n \in L^2(\Rbb^3\times\Rbb^3)$
+\[
 \lvert (f_1 \cdots f_N)(x,y)\rvert \leq \left( \int \di z \lvert f_1(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert f_n(z,y)\rvert^2\right)^{1/2} \norm{f_2} \cdots \norm{f_{n-1}}.
-\ed
-We now apply this to
-\be{no2}
-\begin{split}
+\]
+We now apply this to get
+\begin{align*}
 & \lvert \dot r(x,y) \rvert = \left\lvert \sum_{n=1}^\infty \frac{1}{(2n+1)!} \partial_t \left(k(\cc k k)^n \right)(x,y)\right\rvert \\
 & \leq \sum_{n=1}^\infty \frac{1}{(2n+1)!} \bigg\lvert\Big( \dot k(\cc k k)^n + \sum_{j=1}^{n-1} k(\cc k k)^{j-1}(\cc{\dot k}k + \cc k \dot k)(\cc k k)^{n-j} + k (\cc k k)^{n-1} \cc{\dot k} k + k(\cc{k}k)^{n-1}\cc{k}\dot k \Big)(x,y)\bigg\rvert \\
 & \leq \left(\int \di z \lvert \dot k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!} \\
-& \quad + \norm{\dot k} \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-2}}{(2n+1)!} (2n-1) \\
+& \quad + \norm{\dot k} \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-2}}{(2n+1)!} (2n-1) \tagg{no2}\\
 & \quad + \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert \dot k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!}.
-\end{split}
-\ee
-As $\norm{k}$ can be bounded by a constant $C$ independent of $N$ and $t$, so can the series appearing here (clearly, the series are summable). From Lemma \ref{lm:kbounds} we know that $\norm{\dot k} \leq C \norm{\ph}_{H^2}^2$. Using Hardy's inequality, one can easily show that
+\end{align*}
+As $\norm{k} \leq C$ the series appearing here can also be bounded by a constant $C$ (clearly, the series are summable). From Lemma \ref{lm:kbounds} we know that $\norm{\dot k} \leq C \norm{\ph}_{H^2}^2$. Using Hardy's inequality, one can easily show that
 \bd
 \int \di z \lvert k(x,z)\rvert^2 \leq \lvert \ph(x)\rvert^2 C
 \ed
@@ -2484,7 +2479,7 @@ and
 \bd
 \int \di z \lvert \dot k(x,z)\rvert^2 \leq \lvert \ph(x)\rvert^2 C \norm{\nabla \phdot}_{L^2}^2 + \lvert \phdot(x)\rvert^2 C \norm{\nabla \ph}_{L^2}^2.
 \ed
-These estimates and the estimate \eqr{no2} for $\lvert \dot r(x,y)\rvert$ are now used to conclude
+These estimates and the estimate \eqr{no2} are now used to conclude
 \begin{align*}
 & \int \di x \di y V_N(x-y) \lvert \dot r(x,y)\rvert^2 \\
 & \leq C \int \di x \di y V_N(x-y) \int \di z_1 \lvert \dot k(x,z_1)\rvert^2 \int \di z_2 \lvert k(z_2,y)\rvert^2 \\
@@ -2493,7 +2488,7 @@ These estimates and the estimate \eqr{no2} for $\lvert \dot r(x,y)\rvert$ are no
 & \quad + C \norm{\nabla \ph}_{L^2}^2 \int \di x \di y V_N(x-y) \lvert \phdot(x)\rvert^2 \lvert \ph(y)\rvert^2 \\
 & \quad + C \norm{\ph}_{H^2}^4 \int \di x \di y V_N(x-y) \lvert \ph(x)\rvert^2 \lvert \ph(y)\rvert^2.
 \end{align*}
-In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phdotregularity} to conclude the proof.
+In each summand, we can pull out $\norm{\ph}_\infty^2$ and use Lemma \ref{lm:phdotregularity} to complete the proof.
 \end{proof}
 
 \begin{lem}
@@ -2504,17 +2499,11 @@ Let $k(x,y) = -N w_N(x-y) \ph(x)\ph(y)$ where $\ph$ is a solution to the modifie
 \ed
 \end{lem}
 \begin{proof}
- This is an application of Hoelder's inequality for convolution of integral kernels
-\be{hoelder}
-\norm{f_1 \cdots f_n} \leq \norm{f_1} \cdots \norm{f_n}.
-\ee
-It has to be noticed that $\norm{\gradone k} \sim N^{1/2}$, which is not desired. Therefore, we always have to keep $\norm{\gradone k \cc k}$, which is of order $N^0$ according to Lemma \ref{l:kernels} \ref{k}.
-
-Estimate for $\gradone \dot p$ (the proof for $\gradone \dot r$ works similarly and will be omitted):
+For $\gradone \dot p$ we have (the proof for $\gradone \dot r$ works similarly and will be omitted):
 \bd
 \gradone \dot p = \frac{\partial}{\partial_t} \left( \sum_{n=1}^\infty (k \cc k)^{n-1} \gradone(k \cc k) \frac{1}{(2n)!} \right).
 \ed
-After using the product rule for the time derivative and \eqr{hoelder} we have the estimate
+Using the product rule for the time derivative and Lemma \ref{l:kernels} \ref{k} we obtain
 \begin{align*}
 \norm{\gradone \dot p} & \leq \sum_{n=2}^\infty \frac{1}{(2n)!} \sum_{j=0}^{n-2} \norm{k}^{2j} \norm{\partial_t(k \cc k)} \norm{k}^{2(n-2-j)} \norm{\gradone (k \cc k)} \\
 & \quad + \sum_{n=1}^\infty \frac{1}{(2n)!} \norm{k}^{2(n-1)} \norm{\gradone \partial_t (k \cc k)} \\
@@ -2533,15 +2522,15 @@ We are left with the task of giving an estimate for $\norm{\gradone(k \cc{\dot k
 & \quad + 4 \int \di x \di y \left\lvert N w_N(z-y) \cc{\nabla_y \ph(y)} \cc{\phdot(z)} {\ph(z)} {\ph(x)} N w_N(x-z) \right\rvert^2. \label{eq:kk4}
 \end{align}
 
-We now prove estimates for these four terms. For the summands \eqref{eq:kk2} and \eqref{eq:kk4}, this is the usual application of Hardy's inequality; both terms are bounded by $C \norm{\nabla \phdot}_{L^2}^2$.
-For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity than $w_N$. We will show the proof for \eqref{eq:kk1}; the proof for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.\\
-\underline{Bound for \eqref{eq:kk1}}:
+We now prove estimates for these four terms. For the summands \eqref{eq:kk2} and \eqref{eq:kk4} we apply Hardy's inequality; both terms are bounded by $C \norm{\nabla \phdot}_{L^2}^2$.
+%For \eqref{eq:kk1} and \eqref{eq:kk3} it is a non-trivial task to find an estimate because $\nabla w_N$ has a stronger singularity than $w_N$.
+We will show how to estimate \eqref{eq:kk1}; the calculation for \eqref{eq:kk3} works similarly and yields the bound $C \norm{\nabla \phdot}_{L^2}^2$.
 \begin{align*}
 \eqref{eq:kk1} & \leq C \int \di x \di y \left\lvert \int \di z \frac{1}{\lvert y-z\rvert^2} \cc{\phdot(y)} \lvert \ph(z)\rvert^2 {\ph(x)} \frac{1}{\lvert z-x\rvert} \right\rvert^2 \\
 & = C \int \di x \di y \di z_1 \di z_2 \frac{\lvert\phdot(y)\rvert^2 \lvert \ph(x)\rvert^2 \lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert z_1-x\rvert \lvert z_2 -x\rvert \lvert y-z_1\rvert^2 \lvert y-z_2\rvert^2} \\
 & = C \int \di y \lvert\phdot(y)\rvert^2 \int \di z_1 \di z_2 \frac{\lvert \ph(z_1)\rvert^2 \lvert \ph(z_2)\rvert^2}{\lvert y-z_1\rvert^2 \lvert y-z_2\rvert^2} \int \di x \frac{\lvert \ph(x)\rvert^2}{\lvert z_1-x\rvert \lvert z_2 - x\rvert}
 \end{align*}
-The integral w.\,r.\ to $x$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2$ using Hoelder's inequality and then Hardy's inequality. Using $\norm{\nabla \ph}_{L^2}^2 \leq C$ we get
+The integral w.\,r.\,t.\ $x$ can be bounded by $C \norm{\nabla \ph}_{L^2}^2$ using Hoelder's inequality and then Hardy's inequality. Using $\norm{\nabla \ph}_{L^2}^2 \leq C$ we get
 \bd
 \eqref{eq:kk1} \leq C \int \di y \lvert\phdot(y)\rvert^2 \int \di z_1 \frac{\lvert \ph(z_1)\rvert^2 }{\lvert y-z_1\rvert^2 } \int \di z_2 \frac{\lvert \ph(z_2)\rvert^2}{\lvert y-z_2\rvert^2}
 \ed
