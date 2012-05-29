@@ -1916,16 +1916,17 @@ In this paper, we are mainly interested in what we call the modified Hartree equ
 \end{proof}
 
 
-\subsection{Uniform $H^n$-regularity}
+\subsection{Uniform $H^n$-Regularity}
 
-\begin{prp} \label{p:reg1}
+\begin{prp}[$H^1$-Regularity] \label{p:reg1}
   Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider a
   solution $\varphi_t$ of the Hartree equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
     \varphi_t
   \]
-  with initial data $\varphi_0 = \varphi$. Then, there exists a constant $B_1$ such that for all $t \geq 0$
+  with initial data $\varphi_0 = \varphi$. Then, there exists a constant $B_1$, depending only on $\| V \|_{L^1}$ and $\| \varphi
+  \|_{H^1}$, such that for all $t \geq 0$
 \[
 \norm{\varphi_t}_{H^1} \leq B_1. 
 \]
@@ -1957,7 +1958,7 @@ In this paper, we are mainly interested in what we call the modified Hartree equ
 \end{prp}
 
 
-\begin{cor} \label{c:regn}
+\begin{cor}[$H^n$-Regularity] \label{c:regn}
   Under the hypothesis of Proposition \ref{p:lregn}, there exist constants
   $B_n$ and $K_n$, where $B_n$ depends only on $\| V \|_{L^1}$, $\| \varphi
   \|_{H^n}$ and $n$, and $K_n$ depends only on $\| V \|_{L^1}$, $\| \varphi
