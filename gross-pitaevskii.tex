@@ -778,23 +778,22 @@ The generator $\Lcal_N(t)$ of quantum fluctuations is defined by
 \ed
 We calculate that
 \begin{align*}
-\Lcal_N(t) 	& = (i \partial_t T^*_t) T_t + T^*_t \left( (i \partial_t W^*_t) W_t + W^*_t \Hcal_N W_t \right) T_t \\
+\Lcal_N(t) 	& = (i \partial_t T^*_t) T_t + T^*_t \big( (i \partial_t W^*_t) W_t + W^*_t \Hcal_N W_t \big) T_t \\
 		& = (i \partial_t T^*_t) T_t + T^*_t \Lcal^{(0)}_N(t) T_t
 \end{align*}
-where
+where, using $(i \partial_t W^*_t) W_t = i a(\sqrt{N} \phdot) - i a^\ast(\sqrt{N}\phdot) + N \Im \scal{\ph}{\phdot}$ and Lemma \ref{l:W} \ref{l:W3},
 \be{no3}
 \begin{split}
 \Lcal^{(0)}_N(t) & = \Kcal + \Vcal_N \\
-		& \quad + N^{1/2} \left[  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right] + \hc  \right) \\
+		& \quad + N^{1/2} \left[  a^*\left( (w_N N V_N \ast \lvert \ph \rvert^2)\ph \right) + \hc  \right] \\
 		& \quad + N^0	    \left[  \frac{1}{2}\int \di x \di y\, NV_N(x-y)\left( \cc{\ph(x)} \cc{\ph(y)} a_y a_x + \hc \right) \right] \\
 		& \quad + N^0	    \left[  \int \di x \di y\, NV_N(x-y)\left( \lvert \ph(x) \rvert^2 a^*_y a_y + \cc{\ph(x)} \ph(y) a^*_y a_x \right) \right] \\
-		& \quad + N^{-1/2}\left[  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right] \\
-		& \quad + N b(N,t),
+		& \quad + N^{-1/2}\left[  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right] + b(N,t).
 \end{split}
 \ee
-with a phase $b(N,t) \in \Rbb$ which, like all phases appearing in $\Lcal_N(t)$, will be dropped from now on without any further comment. (Notice that $\scal{U_N(t)T^\ast_0 \Psi}{(\Ncal+1)U_t T_0^\ast \Psi} = \scal{\tilde U_N(t)T^\ast_0 \Psi}{(\Ncal+1)\tilde U_t T_0^\ast \Psi}$ for all $\tilde U_N(t) = e^{i\theta_N(t)} U_N(t)$ with $\theta_N(t) \in \Rbb$.)
+The phase $b(N,t) \in \Rbb$, like all phases appearing in $\Lcal_N(t)$, will be dropped from now on without any further comment. (Notice that $\scal{U_N(t)T^\ast_0 \Psi}{(\Ncal+1)U_t T_0^\ast \Psi} = \scal{\tilde U_N(t)T^\ast_0 \Psi}{(\Ncal+1)\tilde U_t T_0^\ast \Psi}$ for all $\tilde U_N(t) = e^{i\theta_N(t)} U_N(t)$ with $\theta_N(t) \in \Rbb$.)
 
-In \eqr{no3} we have made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation \eqr{modHartreeEqu}.
+In \eqr{no3} we made use of a cancellation in the term $\Ocal({N^{1/2}})$ (term which is linear in creation/annihilation operators) due to $\ph$ satisfying the modified Hartree equation \eqr{modHartreeEqu}.
 %\bd
 %i\partial_t \ph = -\Delta \ph + \left(f_N N V_N \ast \lvert \ph \rvert^2 \right) \ph.
 %\ed
@@ -810,7 +809,7 @@ T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 & + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} T^*_t a_x a_y T_t  \bigg]\tagg{cubicterm} \\
 + \hc \qquad \quad
 \end{align*}
-Between the terms \eqr{linearterm} and \eqr{cubicterm}, after normal ordering and plugging in $c = \delta + p$ and $s = k + r$, we find that the linear term is cancelled up to two remainder terms (the $N^{1/2}$-term, line \eqr{linearterm}, is completely cancelled). The result is
+In line \eqr{cubicterm}, we use $T^\ast_t a_x a_y T_t = \left( a(c_x)+a^\ast (s_x) \right)\left( a(c_y) + a^\ast(s_y) \right)$ and normal-order these terms, thereby creating a commutator $\scal{c_x}{s_y}$. Now $\scal{c_x}{s_y} = \scal{\delta_x + p_x}{k_y + r_y} = k(x,y) + r(x,y) + \scal{p_x}{s_y}$, and the contribution of $k(x,y)$ cancels line \eqr{linearterm}. The result is
 \begin{align*}
 T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 = \int \di x\, T^*_t a^*_x T_t \bigg[ &   \frac{1}{2}(-\Delta_x T^*_t a_x T_t)  + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
@@ -820,21 +819,21 @@ T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 & \qquad \qquad \hspace{0.7cm}   a^*(s_x) a^*(s_y) + a^*(s_x) a(c_y)  + a^*(s_y) a(c_x) + a(c_x) a(c_y)  \bigg)  \bigg] \\
 + \hc \qquad \quad
 \end{align*}
-Now we apply the Bogoliubov transformation \eqr{no4} everywhere, multiply out all the terms and normal order all terms. To simplify the expression a bit, notice that many terms appear twice, e.\,g.\ in the hermitian conjugate or with $x$ and $y$ interchanged:
+As the next step, we expand the Bogoliubov transform everywhere using \eqr{no4}, then multiply out all the terms and normal-order them. To simplify the expression a bit, notice that many terms appear twice, e.\,g.\ in the hermitian conjugate or with $x$ and $y$ interchanged. We obtain
 \begin{align*}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
-& \frac{1}{2} \int \di x\, \left[ a^*(c_x) a(-\Delta_x c_x) + \boxed{2 a^*(c_x) a^*(-\Delta_x s_x)} + a^*(-\Delta_x s_x) a(s_x) \right] \tagg{cancellation_kinetic} \\
+& \frac{1}{2} \int \di x\, \left[ a^*(c_x) a(-\Delta_x c_x) + \boxed{2 a^*(c_x) a^*(-\Delta_x s_x)} + a^*(-\Delta_x s_x) a(s_x) \right]\\% \tagg{cancellation_kinetic} \\
 & + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \\
 & \times \Big[   \frac{1}{2N}\bigg( a^*(c_x) a^*(c_y) a(c_y) a(c_x) + 4 a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) \\
 				      & \qquad\qquad + 2 a^*(c_x) a^*(c_y) a^*(s_y) a^*(s_x) + 2 a^*(c_x) a^*(s_x) a(s_y) a(c_y) \\
 				      & \qquad\qquad + 2 a^*(c_x) a^*(s_y) a(s_y) a(c_x) + 4 a^*(c_x) a^*(s_y) a^*(s_x) a(s_y) \\
 				      & \qquad\qquad + a^*(s_y) a^*(s_x) a(s_x) a(s_y) \bigg) \\
-& + \frac{1}{N}\bigg(   \boxed{a^*(c_x)a^*(c_y) \scal{c_y}{s_x}} + a^*(c_x) a(c_y) \scal{s_y}{s_x} \tagg{cancellation_normalorder} \\
+& + \frac{1}{N}\bigg(   \boxed{a^*(c_x)a^*(c_y) \scal{c_y}{s_x}} + a^*(c_x) a(c_y) \scal{s_y}{s_x}\\% \tagg{cancellation_normalorder} \\
 			& \qquad\quad + a^*(c_x) a(s_y) \scal{c_y}{s_x} + a^*(c_x) a(c_x) \scal{s_y}{s_y} \\
 			& \qquad\quad + 2 a^*(c_x) a^*(s_x) \scal{s_y}{s_y} + 2a^*(c_x)a^*(s_y) \scal{s_y}{s_x} \\
 			& \qquad\quad + a^*(c_y) a(s_x) \scal{c_y}{s_x} +  a^*(s_y) a(s_y) \scal{s_x}{s_x}\\
 			& \qquad\quad + a^*(s_y) a^*(s_x) \scal{s_x}{c_y} + a^*(s_y) a(s_x) \scal{s_y}{s_x}   \bigg) \\
-& + \ph(x)\ph(y) \Big( \boxed{a^*(c_x) a^*(c_y)} + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big) \tagg{cancellation_standard} \\
+& + \ph(x)\ph(y) \Big( \boxed{a^*(c_x) a^*(c_y)} + 2 a^*(c_x) a(s_y) +a(s_x) a(s_y) \Big)\\% \tagg{cancellation_standard} \\
 & + \ph(x) \cc{\ph(y)} \Big( a^*(c_x) a(c_y) + 2 a^*(c_x) a^*(s_y) + a^*(s_y) a(s_x) \Big) \\
 & + \lvert \ph(y) \rvert^2 \Big( a^*(c_x) a(c_x) + 2 a^*(c_x) a^*(s_x) + a^*(s_x) a(s_x) \Big) \\
 & + \frac{2}{\sqrt{N}}\cc{\ph(y)} \bigg(    a^*(c_x) a^*(s_x) a^*(s_y) + a^*(c_x) a^*(s_x) a(c_y) + a^*(s_x) a^*(s_y) a(s_x)\\
@@ -844,13 +843,13 @@ Now we apply the Bogoliubov transformation \eqr{no4} everywhere, multiply out al
 					    & \qquad\qquad\qquad\quad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big]\\
 & + \hc
 \end{align*}
-We now proceed to identify a cancellation between the second summand in line \eqr{cancellation_kinetic}, the first summand in line \eqr{cancellation_normalorder} and the first summand in line \eqr{cancellation_standard}. To see the cancellation, we expand $c = \delta + p$ and $s = k + r$ and use the product rule for the Laplacian $-\Delta_x k(y,x)$, then notice that the lhs of the zero-energy scattering equation \eqr{scattering} appears. There are however some, more regular, remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator.
+We proceed to identify a cancellation among the boxed terms. We exhibit the cancellation by expanding $c = \delta + p$ and $s = k + r$ and applying the product rule to $-\Delta_x k(y,x)$. Thus the lhs of the zero-energy scattering equation \eqr{scattering} appears. However, there are some (more regular) remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator below.
 
-Our final result for the generator is:
+The final result is
 \begin{align}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \nonumber \\ 
-& \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big( N \nabla w_N(x-y) \nabla_x \ph(x) 2 \ph(y) \label{l7}\\
-& \qquad\qquad \qquad\qquad \qquad	+ Nw_N(x-y) \Delta_x \ph(x) \ph(y) - \Delta_x r(y,x) \Big) \label{l8}\\
+& \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big(4 N \nabla w_N(x-y) \nabla_x \ph(x) \ph(y) \label{l7}\\
+& \qquad\qquad \qquad\qquad \qquad \ \	+ 2Nw_N(x-y) \Delta_x \ph(x) \ph(y) - 2\Delta_x r(y,x) \Big) \label{l8}\\
 & \qquad\qquad 			+ a^*(c_x) a(-\Delta_x c_x) + a^*(-\Delta_x s_x) a(s_x) \bigg] \label{l9} \\
 & + \frac{1}{2}\int \di x \di y\, NV_N(x-y) \times \nonumber \\
 & \times \Big[   \frac{1}{2N}\bigg( a^*(c_x) a^*(c_y) a(c_y) a(c_x) + 4 a^*(c_x) a^*(c_y) a^*(s_x) a(c_y) \label{l10}\\
@@ -872,18 +871,18 @@ Our final result for the generator is:
 &+ \hc \nonumber
 \end{align}
 
-\begin{rem}The cancellations enable us to give the necessary estimates for all terms of the generator, see appendix \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, there would be contributions of order $N^1$.
+\begin{rem}The cancellations enable us to give estimates for all terms of the generator, see appendix \ref{ch:generatorestimates}. If we had not identified the cancellation between the boxed terms, there would be contributions of order $N^1$.
 \end{rem}
 
 
 \subsection{Estimating the number of fluctuations}
-The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
+The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
 
 We define
 \bd
 \tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
 \ed
-(Notice that through the $t$-dependence of $c$, the operator $\tilV$ is time-dependent. However, as this does not play any role in our proof, we do not indicate this time-dependence and $\tilV$ should always be read as belonging to the same time $t$ like the other objects in the equation where it appears.)
+(Notice that through the $t$-dependence of $c$, the operator $\tilV$ is time-dependent. However, as this does not play any role in our proof, we do not indicate this time-dependence and $\tilV$ should always be read as belonging to the same time $t$ as the other objects in the equation where it appears.)
 
 \begin{lem}
 \label{lem:kvbounds}
@@ -907,7 +906,7 @@ so by leaving away this non-negative term we obtain
 \be{Lcalbound}
 \ev{\Lcal_N(t)} \geq \ev{\tilK + \tilV} - \lvert\ev{\Lcal_{\textrm{rem}}}\rvert.
 \ee
-We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from appendix \ref{ch:generatorestimates} and use Lemma \ref{lm:timederivative} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$.
+We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from appendix \ref{ch:generatorestimates} and also use Lemma \ref{lm:timederivative} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$.
 (To simplify the notation we insert factors of $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ in some places, leave away prefactors $\frac{1}{N}$ and $\frac{1}{\sqrt{N}}$ where they are not needed to controll a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$. Numerical prefactors are absorbed into $C$.)
 \bd
 \lvert\ev{\Lcal_{\textrm{rem}}}\rvert \leq C \norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} + \varepsilon\ev{\Kcal+\tilV} \right).
@@ -947,7 +946,7 @@ As $\ev{\Kcal} \geq 0$ and $\ev{\tilV} \geq 0$, this lemma is an easy corollary 
 \begin{proof}
 Combining Lemma \ref{lm:timederivative} and Lemma \ref{lm:kbounds}, we obtain the estimate
 \bd
-\lvert\ev{\partial_t\left((\partial_t T^\ast_t) T_t \right)}\rvert \leq C \norm{\ph}_{H^4}^4 \ev{\Ncal+1}.
+\lvert\ev{\partial_t\big((\partial_t T^\ast_t) T_t \big)}\rvert \leq C \norm{\ph}_{H^4}^4 \ev{\Ncal+1}.
 \ed
 (We make no effort to optimize the appearance of $H^n$ norms, just take $n$ and the power as high as you like.)
 
