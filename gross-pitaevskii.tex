@@ -1817,10 +1817,18 @@ For the second estimate, differentiate the summands individually (i.\,e. place a
 \end{proof}
 
 \section{Hartree and Gross-Pitaevskii equations}
-This appendix proves uniform (i.\,e.\ independent of $N$) $H^n$ regularity for the solutions of the modified Hartree equation and the Gross-Pitaevskii equation. We will also prove that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation as $N \to \infty$. In subsection \ref{sec:phdotreg} we have collected some estimates on the regularity of $\phdot$ and $\phddot$.
+In this section we prove uniform (i.\,e.\ independent of $N$) $H^n$
+regularity for the solutions of the modified Hartree equation and the
+Gross-Pitaevskii equation. We also prove that solutions $\varphi_t^{(N)}$ of
+the modified Hartree equation converge to solutions $\varphi_t$ of the
+Gross-Pitaevskii equation as $N \to \infty$. In subsection
+\ref{sec:phdotreg}, we collect some estimates on the regularity of $\phdot$
+and $\phddot$.
 
+
+\marginpar{I think this should not be called a corollary.}
 \begin{cor} \label{l:pdes}% \label{c:reg2}
-  Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$ and $n \geq 1$. Suppose that
+  Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and suppose that
   $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
   1$, consider a solution $\ph$ of the modified Hartree equation
   \[
@@ -1834,22 +1842,19 @@ This appendix proves uniform (i.\,e.\ independent of $N$) $H^n$ regularity for t
     \varphi_t
   \]
   with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$.
-
-  Then,
-%
- there exist constants $C_1$ and $K_n$, which depend only on $\| fV \|_{L^1}$ resp.\
-  $a_0$ and $\| \varphi \|_{H^1}$, and a constant $C_n$ that depends only
-  on $\| fV \|_{L^1}$ resp.\ $a_0$ and $\| \varphi \|_{H^n}$, such that
-%
-for all $N \ge 1$ and $t \ge 0$
+  Then, there exist constants $C_1$ and $K_n$, which depend only on $\|
+  \varphi \|_{H^1}$ and $\| fV \|_{L^1}$, and a constant $C_n$, which
+  depends only on $\| \varphi \|_{H^n}$ and $\| fV \|_{L^1}$, such that, for
+  all $N \ge 1$ and $t \ge 0$,
   \begin{alignat}{2}
     \| \varphi_t^{(N)} \|_{H^1} & \le C_1, & \qquad \| \varphi_t \|_{H^1} &
     \le C_1, \tag{i} \label{H1} \\
     \| \varphi_t^{(N)} \|_{H^n} & \le C_n e^{K_n t}, & \qquad \| \varphi_t
     \|_{H^n} & \le C_n e^{K_n t}. \tag{ii}
   \end{alignat}
- Furthermore, there exist constants $C$ and $K$, which depend only on $\| fV \|_{L^1}$, $a_0$
-  and $\| \varphi \|_{H^2}$, such that for all $N \geq 1$ and $t \geq 0$
+ Furthermore, there exist constants $C$ and $K$, which depend only on $\| fV
+ \|_{L^1}$ and $\| \varphi \|_{H^2}$, such that, for all $N \geq 1$
+ and $t \geq 0$,
   \begin{equation}
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}}.
     \tag{iii}
@@ -1862,20 +1867,19 @@ The initial value problem for the Hartree equation
   i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
   \varphi_t
 \]
-with initial data $\varphi_0 = \varphi \in H^1(\R^3)$ is known to be
-globally well-posed in $H^1(\R^3)$. This follows from the the conservation
-of mass $\| \varphi \|_{L^2}$ and energy
+with initial data $\varphi_0 = \varphi$ is known to be globally well-posed
+in $H^1(\R^3)$. This follows from the conservation of mass $\| \varphi
+\|_{L^2}$ and energy
 \[
   \mathcal{E}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + \frac{1}{2} \int
   dx \, (V * |\varphi|^2)(x) |\varphi(x)|^2.
 \]
-The exact same statement holds for the
-Gross-Pitaevskii equation
+The exact same statement holds for the Gross-Pitaevskii equation
 \[
   i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
   \varphi_t
 \]
-with initial data $\varphi_0 = \varphi \in H^1(\Rbb^3)$, mass $\| \varphi \|_{L^2}$, and
+with initial data $\varphi_0 = \varphi$, mass $\| \varphi \|_{L^2}$, and
 energy
 \[
   \mathcal{E}_{GP}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + 4 \pi a_0
