@@ -172,7 +172,10 @@ while in the modified Hartree equation $N f_N V_N \to 8 \pi a_0 \delta$, which b
 \end{thm}
 
 \begin{rem}
-$k$-particle densitys. 
+\begin{enumerate}
+\item We remark that in the second-quantized setting we are working in it is actually more natural to consider the time evolution of squeezed coherent states instead of projecting them onto factorized states and thus a better bound on the rate of convergence can be obtained, cf.\ Theorem \ref{thm:main_squeezed}.
+\item Remark on $k$-particle density matrices.
+\end{enumerate}
 \end{rem}
 
 Literature: BBGKY, Grillakis-Machedon-Margetis \cite{GMM2010}, Pickl, Rodnianski-Schlein.
@@ -1372,6 +1375,63 @@ We want to apply Proposition \ref{prp:Nbound}. Clearly $\scal{\Omega}{\left(\fra
 According to \eqref{eq:no3}, $\Lcal_N^{(0)}(0)$ is normal-ordered and thus $\scal{\Omega}{\Lcal_N^{(0)}(0)\Omega} = 0$ (remember that the scalar term in $\Lcal_N^{(0)}(0)$ was dropped because it corresponds to an overall phase). The expectation value $\scal{\Omega}{T_0(i\partial_t T^\ast_t)\rvert_{t=0} \Omega}$ can be bounded by Lemma \ref{lm:timederivative} with $t=0$.
 
 The proof is completed by employing Lemma \ref{lem:phNtoph}.
+\end{proof}
+
+To formulate a theorem on the rate of convergence for squeezed coherent states let us define a one-particle density matrix $\Gamma_\psi$ by
+\[\Gamma_{\psi}(x;y) := \frac{\scal{\psi}{a^\ast_y a_x \psi}}{\scal{\psi}{\Ncal \psi}}.\]
+\begin{thm}[Time Evolution of Squeezed Coherent States] \label{thm:main_squeezed}
+ Let $\psi_{N} = W(\sqrt{N} \varphi) T_0 \Omega$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schroedinger equation with initial data $\psi_{N,0}= \psi_N$. Let $\Gamma_{N,t} := \Gamma_{\psi_{N,t}}$ be the corresponding one-particle density matrix.
+
+ Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
+
+ Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any one-particle Hilbert-Schmidt operator $J$
+\bd
+\left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
+\ed
+\end{thm}
+\begin{proof}
+Using Proposition \ref{p:f} \ref{f2} and \ref{f4} we easily calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Thus $1/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \leq 1/N$.
+
+The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_factorized} but the projection $P_N$ is now absent. We expand
+\begin{align}
+& \scal{\psi_{N,t}}{a^\ast_y a_x \psi_{N,t}} \nonumber \\
+& = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_y a_x W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \label{eq:squeez1} \\
+& + \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \label{eq:squeez2}\\
+& + \sqrt{N} \ph(x) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \label{eq:squeez3}\\
+& + N \ph(x) \cc{\ph(y)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}. \label{eq:squeez4}
+\end{align}
+Clearly line \eqref{eq:squeez4} is equal to $N \ph(x) \cc{\ph(y)}$. Using H\"older's inequality
+\[
+\left\lvert \frac{N}{\scal{\psi_{N,t}}{\Ncal \psi_{N,t}}} \int \di x \di y\, J(x,y) \ph(x) \cc{\ph(y)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}_{HS},
+\]
+and according to Lemma \ref{lem:phNtoph}
+\bd
+\left\lvert \Tr\left(J \project{\ph}\right) - \Tr\left(J \project{\varphi_t}\right) \right\rvert \leq \norm{J}_{\textrm{HS}} \frac{C}{N} e^{e^{Kt}}.
+\ed
+
+We have to prove bounds for lines \eqref{eq:squeez1} and \eqref{eq:squeez3}; line \eqref{eq:squeez2} is similar to line \eqref{eq:squeez3}.
+
+For line \eqref{eq:squeez3} we have the estimate
+\begin{align*}
+& \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(x) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_y W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
+& \leq \frac{\sqrt{N}}{\norm{s}^2+N}\left\lvert \int \di x\, \ph(x) \norm{a^\ast\big(J(x,\cdot)\big)W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \right\rvert\\
+& \leq \frac{C}{\sqrt{N}} \int \di x \lvert \ph(x)\rvert \norm{J(x,\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2} W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
+& \leq \frac{C}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{HS} \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{(\Ncal+1)W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}
+\intertext{and using Proposition \ref{p:TNT} (\ref{TNT}) we arrive at}
+& \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \scal{U_t \Omega}{(\Ncal+1)U_t \Omega}.
+\end{align*}
+
+For line \eqref{eq:squeez1} we have the estimate
+\begin{align*}
+& \left\lvert \frac{1}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_y a_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \right \rvert \\
+& \leq \frac{1}{\norm{s}^2+N} \norm{\di\Gamma(J) W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
+& \leq \frac{1}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{\Ncal^2 W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}}{N} \right)^{1/2}
+\intertext{and using Proposition \ref{p:TNT} (\ref{TN2T}) we get}
+& \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{U_t \Omega}{(\Ncal+1)^2 U_t \Omega}}{N} \right)^{1/2}
+\intertext{and using $N^{-1} \scal{\Omega}{U^\ast_t \Ncal^2 U_t \Omega} \leq C \scal{\Omega}{U^\ast_t \left(\Ncal + 1\right)U_t \Omega}$ (Corollary \ref{cor:N2}) we arrive at}
+& \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{U_t \Omega}{(\Ncal+1) U_t \Omega}}{N} \right)^{1/2}
+\end{align*}
+According to Proposition \ref{prp:Nbound} $\scal{U_t \Omega}{\left(\Ncal + 1\right) U_t \Omega} \leq C e^{K_1 e^{K_2 t}}$, so the proof is complete.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
