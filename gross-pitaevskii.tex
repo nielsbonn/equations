@@ -143,9 +143,9 @@ i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right)
 where we denote by $\ph$ the solution to the modified Hartree equation with initial data $\varphi^{(N)}_0 = \varphi$.
 
 We expect that in the limiting case of large $N$, the dynamics of the Bose-Einstein condensate is well described by
-\bd
+\be{approx_dyn}
 \psi_{N,t}(x_1,\ldots x_N) \simeq \prod_{j=1}^N \varphi_t(x_j),
-\ed
+\ee
 where $\varphi_t$ is the solution to the Gross-Pitaevskii equation
 \bd
 i \partial_t \varphi_t = - \Delta \varphi_t + 8\pi a_0 \lvert \varphi_t\rvert^2 \varphi_t
@@ -161,6 +161,20 @@ so with $N V_N \to b_0 \delta$ we formally obtain the limiting equation
 i \partial_t \varphi_t = - \Delta \varphi_t + b_0 \lvert \varphi_t\rvert^2 \varphi_t,
 \ed
 while in the modified Hartree equation $N f_N V_N \to 8 \pi a_0 \delta$, which by \cite{ESY2010} is expected to be the correct limiting equation.
+
+To make precise in which sense \eqr{approx_dyn} holds we have to introduce reduced density matrices, also called marginal densities.
+%Let us write
+%\[
+%\gamma_{N,t}(x_1, \ldots x_N; y_1, \ldots y_N) = \psi_{N,t}(x_1,\ldots x_N) \cc{\psi_{N,t}(y_1,\ldots y_N)}.
+%\]
+The $k$-particle reduced density matrix associated with a state $\psi_{N,t} \in L^2_s(\Rbb^{3N})$ is the positive trace-class operator on $L^2(\Rbb^{3k})$ given by the integral kernel
+\be{red_density}
+\begin{split}
+& \gamma_{N,t}^{(k)}(x_1,\ldots x_k;y_1,\ldots y_k) \\
+&  = \int \di x_{k+1} \cdots \di x_N \psi_{N,t}(x_1,\ldots x_k,x_{k+1},\ldots x_N) \cc{\psi_{N,t}(y_1,\ldots y_k,x_{k+1},\ldots x_N)}.
+\end{split}
+\ee
+The integration corresponds to taking the partial trace or 'tracing out' $N-k$ particles. It is obvious that $\Tr \gamma_{N,t}^{(k)} = 1$ if $\norm{\psi_{N,t}} = 1$.
 
 \begin{thm}[Time Evolution of Factorized States] \label{thm:main_factorized}
  Let $\psi_N(x_1, \ldots x_N) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schr\"odinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
@@ -297,6 +311,11 @@ with
 We call $\K$ the kinetic energy operator, and $\mathcal{V}_N$ the potential
 energy operator.
 
+We can extend the definition of one-particle reduced density matrices to states $\psi \in \fock$ by the following definition:
+\be{fock_density}
+\gamma_{\psi}^{(1)}(x;y) := \frac{1}{\scal{\psi}{\Ncal \psi}} \scal{\psi}{a^\ast_y a_x \psi}.
+\ee
+For $\psi$ in the $N$-particle subspace of $\fock$, $\psi \in L^2_s(\Rbb^{3N})$, this definition is equivalent to the definition in \eqr{red_density}.
 
 The following lemma provides some useful bounds to control creation and
 annihilation operators in terms of the number of particles operator and the
@@ -1320,47 +1339,45 @@ Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}
 \bd
 \left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}_{HS} \Big( \scal{U_N(t) T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_N(t) T^\ast_0 \Psi} \Big)^{1/2},
 \ed
-where $d_N = \norm{P_N W_0\Psi}^{-1}$ and 
-\bd
-\gamma_{N,t}^{(1)}(x;y) = \frac{\scal{e^{-it \Hcal_N} d_N P_N W_0 \Psi}{a^\ast_y a_x e^{-it \Hcal_N} d_N P_N W_0 \Psi}}{\scal{d_N P_N W_0 \Psi}{\Ncal d_N P_N W_0 \Psi}}.
-\ed
-The operator $P_N$ is the projection on the $N$-particle subspace of Fock space.
+where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)} := \gamma_{\psi_{N,t}}^{(1)}$ is the one-particle reduced density matrix associated with the state $\psi_{N,t} = e^{-it \Hcal_N} d_N P_N W_0 \Psi$ (the operator $P_N$ is the projection on the $N$-particle subspace of Fock space).
 %
 %Remark: $\ph$ needn't be a solution of the Hartree equation here.
 \end{lem}
 \begin{proof}
-The operator $P_N$ commutes with $e^{-it \Hcal_N}$ and with $a^\ast_y a_x$, so because of $P_N^2 = P_N$ one of the projections $P_N$ can be eliminated. We then insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}:
+We will use the definition \eqr{fock_density} of the reduced density matrix. 
+
+We start by rewriting $\Tr\left(J \gamma_{N,t}^{(1)} \right)$ in an appropriate way. The operator $P_N$ commutes with $e^{-it \Hcal_N}$ and with $a^\ast_x a_y$, so because of $P_N^2 = P_N$ one of the projections $P_N$ can be eliminated. We then insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}:
 \begin{align}
 & \Tr\left(J\gamma_{N,t}^{(1)}\right) \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}P_N W_0 \Psi} \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_y + \sqrt{N} \ph(y) \right) \times \nonumber\\
-& \qquad\qquad\qquad\quad \times \left(a_x + \sqrt{N} \ph(x) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:quad}\\
-& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:lin1} \\
-& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_x W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
-& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi}. \label{eq:gamma}
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_x a_y e^{-it\Hcal_N t}P_N W_0 \Psi} \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_x a_y e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_x + \sqrt{N} \cc{\ph(x)} \right) \times \nonumber\\
+& \qquad\qquad\qquad\quad \times \left(a_y + \sqrt{N} \ph(y) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a^\ast_x a_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:quad}\\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:lin1} \\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_y W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi}. \label{eq:gamma}
 \end{align}
 The last line, \eqref{eq:gamma}, is the expectation value in the factorized state:
 \begin{align*}
-& \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \norm{P_N W_0 \Psi}^2 \\
-& = \int \di x\di y J(x,y) \cc{\ph(y)} \ph(x) = \Tr\left( J\project{\ph} \right).
+& \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \norm{P_N W_0 \Psi}^2 \\
+& = \int \di x\di y J(x,y) \ph(y) \cc{\ph(x)} = \Tr\left( J\project{\ph} \right).
 \end{align*}
 Summands \eqref{eq:quad} - \eqref{eq:lin2} have to be estimated. We start with line \eqref{eq:lin1}:
 \begin{align*}
-& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \right\rvert \\
-& \leq \frac{d_N^2}{N} \int \di x \sqrt{N} \lvert \ph(x)\rvert \norm{W^\ast_t e^{-it \Hcal_N} P_N W_0 \Psi} \norm{ a^\ast(J(x,\cdot))W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \\
-& \leq \frac{d_N}{\sqrt{N}} \int \di x \lvert \ph(x)\rvert \norm{J(x,\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2}W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
+& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \right\rvert \\
+& \leq \frac{d_N^2}{N} \int \di y \sqrt{N} \lvert \ph(y)\rvert \norm{W^\ast_t e^{-it \Hcal_N} P_N W_0 \Psi} \norm{ a^\ast(J_y)W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \\
+& \leq \frac{d_N}{\sqrt{N}} \int \di y \lvert \ph(y)\rvert \norm{J_y}_{L^2} \norm{(\Ncal+1)^{1/2}W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{\textrm{HS}} \Big( \scal{W^\ast_t e^{-it \Hcal_N}W_0 \Psi}{(\Ncal+1)W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \Big)^{1/2} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \Big(C \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi} \Big)^{1/2},
 \end{align*}
 where in the last step Proposition \ref{p:TNT} (\ref{TNT}) has been used in the form of $\Ncal \leq C T_t (\Ncal+1)T^\ast_t$.
 Line \eqref{eq:lin2} can be estimated in the same way as line \eqref{eq:lin1}.
 
-We now estimate line \eqref{eq:quad}. Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in \fock$.
+We now estimate line \eqref{eq:quad}. Recall that $\di\Gamma(J) := \int \di x\di y J(x,y) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in \fock$.
 \begin{align*}
-& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \right\rvert \\
+& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x a_y W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \right\rvert \\
 %& = \frac{d_N^2}{N} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\di\Gamma(J) W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N^2}{N} \norm{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi} \norm{\di\Gamma(J)W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N^2}{N} d_N^{-1} \norm{J}_{\textrm{HS}} \norm{\Ncal W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
@@ -1392,7 +1409,7 @@ The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} =
 \begin{proof}[Proof of Theorem \ref{thm:main_factorized}]
 We choose $\Psi = \Omega$ in Lemma \ref{lem:TrJ}. Then $d_N P_N W_0 \Psi = \varphi^{\otimes N}$ and $d_N = \frac{\sqrt{N!}}{e^{-N/2}N^{N/2}} \simeq N^{1/4}$.
 
-We want to apply Proposition \ref{prp:Nbound}%. Clearly $\scal{\Omega}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Omega} = 0$ satisfies the assumption of the proposition.
+We want to apply Proposition \ref{prp:Nbound} %. Clearly $\scal{\Omega}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Omega} = 0$ satisfies the assumption of the proposition.
 so we have to check the condition on 
 \bd
 \scal{T^\ast_0 \Omega}{\Lcal_N(0)T^\ast_0 \Omega} = \scal{\Omega}{\left(T_0(i\partial_t T^\ast_t)\rvert_{t=0} + \Lcal_N^{(0)}(0)\right)\Omega}.
@@ -1402,12 +1419,11 @@ According to \eqref{eq:no3} $\Lcal_N^{(0)}(0)$ is normal-ordered and thus $\scal
 The proof is completed by employing Lemma \ref{lem:phNtoph}.
 \end{proof}
 
-To formulate a theorem on the rate of convergence for squeezed coherent states let us define a one-particle density matrix $\Gamma_\psi$ by
-\[\Gamma_{\psi}(x;y) := \frac{\scal{\psi}{a^\ast_y a_x \psi}}{\scal{\psi}{\Ncal \psi}}.\]
+To expose the naturalness of squeezed coherent states as initial data we prove the following theorem. (This theorem is not necessary for the proof of the main result.)
 \begin{thm}[Time Evolution of Squeezed Coherent States] \label{thm:main_squeezed}
  Let $\psi_{N} = W(\sqrt{N} \varphi) T_0 \Omega$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it \Hcal_N}\psi_N$ the solution to the second-quantized Schr\"odinger equation in Fock space
 \[i \partial_t \psi_{N,t} = \Hcal_N \psi_{N,t},\quad \mbox{with inital data } \psi_{N,0} = \psi_N.\]
-Let $\Gamma_{N,t} := \Gamma_{\psi_{N,t}}$ be the corresponding one-particle density matrix.
+Let $\Gamma_{N,t} := \gamma_{\psi_{N,t}}^{(1)}$ be the corresponding one-particle reduced density matrix.
 
  Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
 
@@ -1416,20 +1432,20 @@ Let $\Gamma_{N,t} := \Gamma_{\psi_{N,t}}$ be the corresponding one-particle dens
 \left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
 \ed
 \end{thm}
-\begin{proof}
-Using Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) we easily calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Thus $1/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \leq 1/N$.
+\begin{proof} Notice first that $e^{-it \Hcal_N}$ commutes with $\Ncal$. Thus
+using Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) and equation \eqr{no4} we easily calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Thus $1/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \leq 1/N$.
 
 The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_factorized} but the projection $P_N$ is now absent. We expand
 \begin{align}
-& \scal{\psi_{N,t}}{a^\ast_y a_x \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
-& = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_y a_x W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez1} \\
-& + \sqrt{N} \ph(x) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
-& + \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
-& + N \ph(x) \cc{\ph(y)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1}. \label{eq:squeez4}
+& \Gamma_{N,t}(y,x) = \scal{\psi_{N,t}}{a^\ast_x a_y \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
+& = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez1} \\
+& + \sqrt{N} \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
+& + \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
+& + N \ph(y) \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1}. \label{eq:squeez4}
 \end{align}
-Clearly line \eqref{eq:squeez4} is equal to $\frac{N}{\norm{s}^2+N} \ph(x) \cc{\ph(y)}$. Using H\"older's inequality
+Clearly line \eqref{eq:squeez4} is equal to $\frac{N}{\norm{s}^2+N} \ph(y) \cc{\ph(x)}$. Using H\"older's inequality
 \[
-\left\lvert \frac{N}{\norm{s}^2+N} \int \di x \di y\, J(x,y) \ph(x) \cc{\ph(y)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}_{HS},
+\left\lvert \frac{N}{\norm{s}^2+N} \int \di x \di y\, J(x,y) \ph(y) \cc{\ph(x)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}_{HS},
 \]
 and according to Lemma \ref{lem:phNtoph}
 \bd
@@ -1439,16 +1455,16 @@ and according to Lemma \ref{lem:phNtoph}
 We have to prove bounds for lines \eqref{eq:squeez1} and \eqref{eq:squeez3}; line \eqref{eq:squeez2} is similar to line \eqref{eq:squeez3}.
 For line \eqref{eq:squeez3} we have the estimate
 \begin{align*}
-& \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(x) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_y W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
-& \leq \frac{\sqrt{N}}{\norm{s}^2+N}\left\lvert \int \di x\, \ph(x) \norm{a^\ast\big(J(x,\cdot)\big)W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \right\rvert\\
-& \leq \frac{C}{\sqrt{N}} \int \di x \lvert \ph(x)\rvert \norm{J(x,\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2} W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
+& \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
+& \leq \frac{\sqrt{N}}{\norm{s}^2+N}\left\lvert \int \di y\, \ph(y) \norm{a^\ast(J_y)W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \right\rvert\\
+& \leq \frac{C}{\sqrt{N}} \int \di y \lvert \ph(y)\rvert \norm{J_y}_{L^2} \norm{(\Ncal+1)^{1/2} W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
 & \leq \frac{C}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{HS} \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{(\Ncal+1)W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
 & \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \scal{U_t \Omega}{(\Ncal+1)U_t \Omega},
 \end{align*}
 where in the last step Proposition \ref{p:TNT} (\ref{TNT}) has been used.
 For line \eqref{eq:squeez1} we have the estimate
 \begin{align*}
-& \left\lvert \frac{1}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_y a_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \right \rvert \\
+& \left\lvert \frac{1}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \right \rvert \\
 & \leq \frac{1}{\norm{s}^2+N} \norm{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}\norm{\di\Gamma(J) W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
 & \leq \frac{1}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{\Ncal^2 W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}}{N} \right)^{1/2} \\
 & \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{U_t \Omega}{(\Ncal+1)^2 U_t \Omega}}{N} \right)^{1/2} \\
@@ -1543,15 +1559,14 @@ Leaving away the last summand, which is non-negative, we get
 \end{split}
 \end{equation}
 \estlist{9}{2}
-Using the product rule, integration by parts and the identity $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$ we get
+Using the product rule and the identity $-\nabla_x w_N(y-x) = \nabla_y w_N(y-x)$ we get (where the $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable)
 \begin{align*}
- a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(x-\cdot)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\big(\nabla(-N w_N(x-\cdot)\ph(\cdot))\big) \\
- & + \cc{\nabla_x \ph(x)} a\big(-Nw_N(x-\cdot)\ph(\cdot)\big) + a(\nabla_x r_x).
+ a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(\cdot-x)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\big(\nabla\big(N w_N(\cdot-x)\ph(\cdot)\big)\big) \\
+ & + \cc{\nabla_x \ph(x)} a\big(-Nw_N(\cdot-x)\ph(\cdot)\big) + a(\nabla_x r_x).
 \end{align*}
-(The $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable.)
 Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and \eqr{agradnorm}, we now conclude
 \begin{align*}
- & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
+ & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
 & \leq \frac{1}{2} \int \di x \Big( \lvert \ph(x)\rvert \norm{a\big(-Nw_N(x-\cdot)\nabla\ph(\cdot)\big)\psi} \\
 & \qquad\qquad\quad + \lvert \ph(x)\rvert \norm{a\big(\nabla(-N w_N(x-\cdot)\ph(\cdot))\big)\psi} \\
 & \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert \norm{a\big(-Nw_N(x-\cdot)\ph(\cdot)\big)\psi} + \norm{a(\nabla_x r_x)\psi}  \Big)^2 \\
