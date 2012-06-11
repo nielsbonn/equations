@@ -189,8 +189,15 @@ The integration corresponds to taking the partial trace or 'tracing out' $N-k$ p
 
 \begin{rem}
 \begin{enumerate}
-\item We remark that in the second-quantized setting we are working in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
-\item Remark on $k$-particle density matrices.
+\item In the second-quantized setting we are working in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
+\item According to \cite{RS2009} $\Tr \left\lvert \gamma_{N}^{(1)} - \project{\varphi} \right\rvert \leq 2 \norm{\gamma_N^{(1)} - \project{\varphi}}_{HS}$ for any reduced density matrix $\gamma^{(1)}_N$. As the Hilbert-Schmidt operators form a Hilbert space with scalar product $\Tr A^\ast B$ we have $\norm{\gamma_N^{(1)} - \project{\varphi}}_{HS} \leq \sup_{\norm{J}_{HS}=1} \Tr \left( J \big( \gamma^{(1)}- \project{\varphi} \big) \right)$. Thus we have actually proven convergence in the trace norm
+\bd
+\Tr \left\lvert \gamma_{N}^{(1)} - \project{\varphi} \right\rvert \leq \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
+\ed
+\item It is a general fact that convergence of the one-particle reduced density matrix implies convergence of the $k$-particle reduced density matrix \cite{KP2009}. We thus obtain
+\bd
+\Tr \left\lvert \gamma_{N}^{(k)} - \project{\varphi}^{\otimes k} \right\rvert \leq C\sqrt{ \frac{k}{ N^{1/4} } }e^{K_1 e^{K_2 t}/2}.
+\ed
 \end{enumerate}
 \end{rem}
 
@@ -1348,7 +1355,7 @@ We will use the definition \eqr{fock_density} of the reduced density matrix.
 
 We start by rewriting $\Tr\left(J \gamma_{N,t}^{(1)} \right)$ in an appropriate way. The operator $P_N$ commutes with $e^{-it \Hcal_N}$ and with $a^\ast_x a_y$, so because of $P_N^2 = P_N$ one of the projections $P_N$ can be eliminated. We then insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}:
 \begin{align}
-& \Tr\left(J\gamma_{N,t}^{(1)}\right) \nonumber\\
+& \Tr\left(J\gamma_{N,t}^{(1)}\right) = \int \di x \di y\, J(x;y) \gamma_{N,t}^{(1)}(y;x) \nonumber\\
 & = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_x a_y e^{-it\Hcal_N t}P_N W_0 \Psi} \nonumber\\
 & = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_x a_y e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
 & = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_x + \sqrt{N} \cc{\ph(x)} \right) \times \nonumber\\
@@ -1437,7 +1444,7 @@ using Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) and equation \eqr{no4} we 
 
 The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_factorized} but the projection $P_N$ is now absent. We expand
 \begin{align}
-& \Gamma_{N,t}(y,x) = \scal{\psi_{N,t}}{a^\ast_x a_y \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
+& \Gamma_{N,t}(y;x) = \scal{\psi_{N,t}}{a^\ast_x a_y \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
 & = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez1} \\
 & + \sqrt{N} \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
 & + \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
@@ -1479,7 +1486,7 @@ According to Proposition \ref{prp:Nbound} $\scal{U_t \Omega}{\left(\Ncal + 1\rig
 \appendix
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
-The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
+The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
 
 In this section it is assumed that
 \[k(x,y) = - N w_N(x-y)\ph(x)\ph(y)\]
@@ -2651,7 +2658,7 @@ and by Hardy's inequality, this is bounded by
 \ed
 \end{proof}
 
-\cite{*}
+\cite{*} CITE ALL
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
 
