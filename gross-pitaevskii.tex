@@ -87,6 +87,8 @@
 \newcommand{\bd}{\begin{displaymath}}			% abbreviation begin displaymath
 \newcommand{\ed}{\end{displaymath}}
 
+\newcommand{\todo}[1]{}
+
 \newcommand{\tagg}[1]{ \stepcounter{equation} \tag{\theequation} \label{eq:#1} } % add tag and label in align*-environments
 
 \newcommand{\eqr}[1]{\eqref{eq:#1}}			%eqref with prefix :eq
@@ -264,7 +266,7 @@ $\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
 
 The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
 \psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
-\marginpar{Double sum inconsistent with single sum in other places.}
+\todo{Double sum inconsistent with single sum in other places.}
 \[
   \Hcal_N^{(n)} = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{j=1}^n
   \sum_{i=1}^{j-1} V_N(x_i - x_j).
@@ -416,7 +418,7 @@ and
     a_y^* T(k) = a^*(c_y) + a(s_y)
   \ee
   with integral kernels $c(x,y)$ and $s(x,y)$ given by
-  \marginpar{Why $(x,y)$ in some places and not in others? Why we need to
+  \todo{Why $(x,y)$ in some places and not in others? Why we need to
   evaulate the functions?}
   \begin{alignat*}{2}
     c(x,y) & = \delta(x-y) + p(x,y), & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
@@ -425,8 +427,7 @@ and
     \big( k \overline{k} \big)^n k,
   \end{alignat*}
   where the product in the power series is the convolution of integral
-  kernels, i.\,e.\ $fg(x,y) = \int dz \, f(x,z) g(z,y)$. Furthermore
-  \marginpar{Why i.e. instead of that is?}
+  kernels, that is $fg(x,y) = \int dz \, f(x,z) g(z,y)$. Furthermore
   \begin{alignat*}{2}
     \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 p
     \|_{L^2} & \le e^{\| k \|_{L^2}} \| \nabla_2 (k
@@ -887,8 +888,7 @@ The final result is
 
 \subsection{Estimating the number of fluctuations}
 The estimates in this section hold for the expectation value $\ev{\cdot} =
-\scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. \marginpar{This
-remark about $C$ was already made in page 3.}Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$. 
+\scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ here stands for constants which are also independent of $\psi$. 
 We define
 \bd
 \tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
@@ -920,9 +920,8 @@ so by leaving away this non-negative term we obtain
 \be{Lcalbound}
 \ev{\Lcal_N(t)} \geq \ev{\frac{1}{2}\tilK + \tilV} - \lvert\ev{\Lcal_{\textrm{rem}}}\rvert.
 \ee
-\marginpar{I would change this sentence\dots}
 We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from appendix \ref{ch:generatorestimates} and also use Lemma \ref{lm:timederivative} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$.
-\marginpar{How about just saying that $1/N \le 1$ \dots}(To simplify the notation we insert factors of $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ in some places, leave away prefactors $\frac{1}{N}$ and $\frac{1}{\sqrt{N}}$ where they are not needed to controll a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$. Numerical prefactors are absorbed into $C$.)
+(Notice that $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ and use $\frac{1}{N} \leq 1$, $\frac{1}{\sqrt{N}} \leq 1$ where they are not needed to controll a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$.)
 \bd
 \lvert\ev{\Lcal_{\textrm{rem}}}\rvert \leq C \norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} + \varepsilon\ev{\Kcal+\tilV} \right).
 \ed
@@ -941,7 +940,7 @@ Now choose $\varepsilon = 1/(4C\norm{\ph}_{H^2}^2)$ (with $C$ having the same va
 This completes the proof.
 \end{proof}
 
-\marginpar{I think this this lemma is not needed. Lemma 4.1 does the job.}
+For later reference we explicitly state the following simple Corollary.
 \begin{lem}
 \label{lem:Llowerbound}
 There exists a constant $C$ such that
@@ -987,7 +986,7 @@ Recall that
 \[\Lcal_N(t) = (i \partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t.\]
 
 We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop out. The other summands get numerical prefactors, but except for that stay unchanged. %(Because of these prefactors, the sign of the $+\hc$-part changes, but this is not important for our estimates.)
-Therefore we can use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
+Thus we can use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
 
 We expand $(\partial_t T^\ast_t)T_t$ as a series according to
 \bd
@@ -998,12 +997,11 @@ From this we can see that $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form
 \end{proof}
 
 
-\marginpar{$0 \ge$ is trivial\dots}
 \begin{prp}[Bound on Number of Fluctuations]
 \label{prp:Nbound}
 Let $\Psi \in \fock$ with $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$ and  $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal \right)\Psi} \leq C$ for some constant $C$ (independent of $N$). Then
 \bd
-0 \leq \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}}
+\scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}}
 \ed
 for some constants $C$, $K_1$ and $K_2$ (all independent of $N$ and $t$).
 \end{prp}
@@ -1943,6 +1941,9 @@ and $\phddot$.
   \end{equation}
 \end{thm}
 
+\begin{proof}
+Collect Lemmata... comment on $V = \delta$... TODO. \marginpar{TODO.} 
+\end{proof}
 
 The initial value problem for the Hartree equation
 \[
@@ -2099,7 +2100,7 @@ For $T > 0$ set
     \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
     |\varphi_s|^2) \varphi_s.
   \]
-  Differentiating this equation w.\,r.\,t.\ the spatial variables and using integration by parts we find that
+  Differentiating this equation w.\,r.\,t.\ the spatial variables we find that
   \[
     \partial^\alpha \varphi_t = e^{it \Delta} \partial^\alpha \varphi - i
     \int_0^t ds \, e^{i(t-s) \Delta} \sum_{\beta \le \alpha} \sum_{\nu \le
@@ -2221,9 +2222,8 @@ For $T > 0$ set
   Suppose that $\| \varphi_t \|_{H^{n-1}} \le B_{n-1} e^{K_{n-1} t}$, where
   $B_{n-1}$ is a constant that depends only on $\| \varphi \|_{H^{n-1}}$ and
   $n-1$, and $K_{n-1}$ is a constant that depends only on $\| \varphi
-  \|_{H^1}$ and $n-1$. In view of Proposition \ref{p:lregn}, for any $t > 0$,
-  we can find an integer $j$ sufficiently large, depending only on $\|
-  \varphi_{(j-1)T} \|_{H^1}$ and $n$, such that $0 < t/j < T$.
+  \|_{H^1}$ and $n-1$. In view of Proposition \ref{p:lregn}, for $t > 0$,
+  let $j \geq 1$ be the smallest integer such that $t/j \leq T$.
   Consequently,
   \begin{align*}
     \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
@@ -2240,7 +2240,7 @@ For $T > 0$ set
   and obtain
   \begin{align*}
     \| \varphi_t \|_{H^n} & \le C^j \| \varphi \|_{H^n} + C B_n^3
-    \sum_{l=1}^j e^{3 K_{n-1} (j-l+1)T} \\
+    \sum_{l=0}^{j-1} e^{3 K_{n-1} (j-l)T} \\
     & \le (C^{2T^{-1}})^t \| \varphi \|_{H^n} + C B_{n-1}^3
     \frac{2t}{T} e^{3 K_{n-1} t} \le B_n e^{K_n t},
   \end{align*}
