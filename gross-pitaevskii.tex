@@ -142,7 +142,7 @@ where we denote by $\ph$ the solution to the modified Hartree equation with init
 
 We expect that in the limiting case of large $N$, the dynamics of the Bose-Einstein condensate is well described by
 \bd
-\psi_{N,t}(\xn) \simeq \prod_{j=1}^N \varphi_t(x_j),
+\psi_{N,t}(x_1,\ldots x_N) \simeq \prod_{j=1}^N \varphi_t(x_j),
 \ed
 where $\varphi_t$ is the solution to the Gross-Pitaevskii equation
 \bd
@@ -666,10 +666,10 @@ This completes the proof of the lemma.
     |\varphi(y)|^2 \le C \| \varphi \|_{L^2}^2 \| \nabla \varphi \|_{L^2}^2
     \apprle C \| \varphi \|_{H^1}^4
   \]
-  and \marginpar{Notation!}
+  and
   \begin{align*}
     \| \nabla_2 k \|_{L^2} & \le \| N w_N(x-y) \varphi(x) \nabla \varphi(y)
-    \|_{L^2} + \| N \nabla w_N(x-y) \varphi(x) \varphi(y) \|_{L^2} \\
+    \|_{L^2(dx dy)} + \| N \nabla w_N(x-y) \varphi(x) \varphi(y) \|_{L^2(dx dy)} \\
     & \le C \| \nabla \varphi \|_{L^2}^2 + C \sqrt{N} \| \varphi \|_{H^1}^2
     \apprle C \sqrt{N} \| \varphi \|_{H^1}^2.
   \end{align*}
@@ -992,7 +992,7 @@ Let $\Psi \in \fock$ with $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$
 for some constants $C$, $K_1$ and $K_2$ (all independent of $N$ and $t$).
 \end{prp}
 \begin{proof}
-By Lemma \ref{lem:Llowerbound}, Corollary \ref{cor:N2} and Corollary \ref{l:pdes}, we obtain
+By Lemma \ref{lem:Llowerbound}, Corollary \ref{cor:N2} and Theorem \ref{t:pdes}, we obtain
 \bd
 \scal{U_t T^\ast_0 \Psi}{\Lcal_N(t) U_t T^\ast_0 \Psi} \geq - C_1 e^{M_1 t}\scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi},
 \ed
@@ -1005,11 +1005,11 @@ has non-negative expectation value $\scal{U_t T^\ast_0 \Psi}{\tLcal U_t T^\ast_0
  u'(t) & = \scal{U_t T^\ast_0 \Psi}{\dot \Lcal_N(t)U_t T^\ast_0 \Psi} + C_1 M_1 e^{M_1 t}\scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi} \\
 & \quad + (C_1 e^{M_1 t}+1)\scal{U_t T^\ast_0 \Psi}{i[\Lcal_N(t),\Ncal]U_t T^\ast_0 \Psi}.
 \end{align*}
-These expectation values can be bounded using Lemma \ref{lem:ldotbounds}, Lemma \ref{lem:lncommutatorbound} and Corollary \ref{l:pdes}:
+These expectation values can be bounded using Lemma \ref{lem:ldotbounds}, Lemma \ref{lem:lncommutatorbound} and Theorem \ref{t:pdes}:
 \bd
 u'(t) \leq C e^{M t} \scal{U_t T^\ast_0 \Psi}{\left(\frac{1}{N}\Ncal^2+\Ncal+1+\Kcal+\tilV \right)U_t T^\ast_0 \Psi}.
 \ed
-By Lemma \ref{lem:kvbounds} and Corollary \ref{cor:N2} we can eliminate first $\Kcal + \tilV$ and then $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then we use Corollary \ref{l:pdes} to estimate the $H^n$ norms. Then we add non-negative summands $\Ncal+1$ with an appropriate exponential prefactor to convert the $\Lcal_N(t)$ on the rhs into $\tLcal$ and arrive at
+By Lemma \ref{lem:kvbounds} and Corollary \ref{cor:N2} we can eliminate first $\Kcal + \tilV$ and then $\Ncal^2/N$ at the cost of $\Lcal_N(t)$ appearing. Then we use Theorem \ref{t:pdes} to estimate the $H^n$ norms. Then we add non-negative summands $\Ncal+1$ with an appropriate exponential prefactor to convert the $\Lcal_N(t)$ on the rhs into $\tLcal$ and arrive at
 \bd
 u'(t) \leq \tilde C e^{\tilde M t} u(t).
 \ed
@@ -1024,6 +1024,7 @@ u(0) = \scal{T^\ast_0 \Psi}{(\tLcalo + \Ncal+1)T^\ast_0 \Psi}.
 By Proposition \ref{p:TNT}, we know that $\scal{T^\ast_0 \Psi}{(\Ncal+1)T^\ast_0 \Psi} \leq C\scal{\Psi}{(\Ncal+1)\Psi}$. So by assumption $u(0) \leq C$ for some constant $C$.
 \end{proof}
 
+\iffalse
 \begin{lem}
 \label{lem:tilV}\marginpar{not needed for factorized states, but might become helpful for more general initial states}
 There exists a constant $C$ such that
@@ -1035,7 +1036,7 @@ $\Psi = T_0 \tilde \Psi$ where $\tilde \Psi$ satisfies $\scal{\tilde \Psi}{\Hcal
 \end{lem}
 \begin{proof}
 Plug in $a(c_x) = a_x + a(p_x)$, multiply out and use Hoelder's inequality.
-\end{proof}
+\end{proof}\fi
 
 \subsection{A-priori estimates}
 For $\varphi \in L^2(\Rbb^3)$ and $k \in L^2(\Rbb^3\times \Rbb^3)$, we use the short-hands
@@ -1208,8 +1209,8 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 
 \begin{proof}[Proof of Lemma \ref{l:ap}]
-  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels}\ref{k} and Corollary
-  \ref{l:pdes}\eqref{H1}, there exists a constant $C$, %uniform in $N$ and $t$,
+  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels} (\ref{k}) and Theorem
+  \ref{t:pdes}\eqref{H1}, there exists a constant $C$, %uniform in $N$ and $t$,
   that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
     %\begin{gathered}
@@ -1528,49 +1529,45 @@ Leaving away the last summand, which is non-negative, we get
 \end{split}
 \end{equation}
 \estlist{9}{2}
-Using the product rule, integration by parts and the fact that $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$ we get
+Using the product rule, integration by parts and the identity $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$ we get
 \begin{align*}
  a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(x-\cdot)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\big(\nabla(-N w_N(x-\cdot)\ph(\cdot))\big) \\
  & + \cc{\nabla_x \ph(x)} a\big(-Nw_N(x-\cdot)\ph(\cdot)\big) + a(\nabla_x r_x).
 \end{align*}
 (The $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable.)
-Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$, we now conclude
-\begin{equation}
-\label{eq:bound2B}
-\begin{split}
+Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and \eqr{agradnorm}, we now conclude
+\begin{align*}
  & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
-& \leq \frac{1}{2} \int \di x \bigg( \lvert \ph(x)\rvert \norm{a(-Nw_N(x-\cdot)\nabla\ph(\cdot))\psi} \\
-& \qquad\qquad\quad + \lvert \ph(x)\rvert \norm{a\left(\nabla(-N w_N(x-\cdot)\ph(\cdot))\right)\psi} \\
-& \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert \norm{a(-Nw_N(x-\cdot)\ph(\cdot))\psi} + \norm{a(\nabla_x r_x)\psi}  \bigg)^2 \\
-& \stackrel{\eqr{agradnorm}}{\leq} 2\int \di x\, \bigg( \lvert \ph(x)\rvert^2 \norm{-N w_N(x-\cdot)\nabla\ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2  \\
+& \leq \frac{1}{2} \int \di x \Big( \lvert \ph(x)\rvert \norm{a\big(-Nw_N(x-\cdot)\nabla\ph(\cdot)\big)\psi} \\
+& \qquad\qquad\quad + \lvert \ph(x)\rvert \norm{a\big(\nabla(-N w_N(x-\cdot)\ph(\cdot))\big)\psi} \\
+& \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert \norm{a\big(-Nw_N(x-\cdot)\ph(\cdot)\big)\psi} + \norm{a(\nabla_x r_x)\psi}  \Big)^2 \\
+& \leq 2\int \di x\, \Big( \lvert \ph(x)\rvert^2 \norm{-N w_N(x-\cdot)\nabla\ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2  \\
 & \qquad\qquad\quad + \lvert \ph(x)\rvert^2 \norm{-Nw_N(x-\cdot) \ph(\cdot)}_{L^2}^2 \norm{\Kcal^{1/2}\psi}^2  \\
-& \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert^2 \norm{-N w_N(x-\cdot) \ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2 + \norm{\nabla_x r_x}^2 \norm{\Ncal^{1/2}\psi}^2 \bigg) \\
-& \leq 2 \int \di x\, \bigg( \lvert \ph(x)\rvert^2 \norm{\Delta \ph}_{L^2}^2 C \norm{\Ncal^{1/2}\psi}^2 + \lvert \ph(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 C \norm{\Kcal^{1/2}\psi}^2 \\
-& \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 C \norm{\Ncal^{1/2}\psi}^2 + \norm{\nabla_x r_x}^2 \norm{\Ncal^{1/2}\psi}^2 \bigg)\\
-& \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal} + C\ev{\Kcal} + C\ev{\Ncal}.
-\end{split} 
-\end{equation}
-Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $ \norm{\gradone r} \leq C$.
+& \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert^2 \norm{-N w_N(x-\cdot) \ph(\cdot)}_{L^2}^2 \norm{\Ncal^{1/2}\psi}^2 + \norm{\nabla_x r_x}^2 \norm{\Ncal^{1/2}\psi}^2 \Big) \\
+& \leq 2 \int \di x\, \Big( \lvert \ph(x)\rvert^2 \norm{\Delta \ph}_{L^2}^2 C \norm{\Ncal^{1/2}\psi}^2 + \lvert \ph(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 C \norm{\Kcal^{1/2}\psi}^2 \\
+& \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert^2 \norm{\nabla \ph}_{L^2}^2 C \norm{\Ncal^{1/2}\psi}^2 + \norm{\nabla_x r_x}^2 \norm{\Ncal^{1/2}\psi}^2 \Big)\\
+& \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal} + C\ev{\Kcal} + C\ev{\Ncal}. \tagg{bound2B}
+\end{align*}
+Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $ \norm{\gradone r} \leq C$.\newline
 
-\underline{Estimates for the non-kinetic terms:}\newline
-In proving the following estimates, the important ideas are
+\underline{In proving the following estimates, the important ideas are:}
 \begin{itemize}
- \item $a^*(c_x)\psi$ is ill-defined because $c_x = \delta_x + p_x$, thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$
-\item use Cauchy-Schwarz in such a way that at most two operators $a^\#$ act on each $\psi$. Usually, following Cauchy-Schwarz we also apply Hoelder's inequality in the form
+ \item As $c_x = \delta_x + p_x$, $a^*(c_x)$ is only defined as an operator-valued distribution. Thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$ which is a well-defined operator.
+\item We use Cauchy-Schwarz so that at most two operators $a$ or $a^\ast$ act on each $\psi$. Usually following Cauchy-Schwarz we apply H\"older's inequality in the form
 \bd
 \begin{split}
 & \int \di x \di y\, V_N(x-y) f(x,y) g(x,y) = \int \di x \di y\, \sqrt{V_N(x-y)}^2 f(x,y) g(x,y)\\
 &  \leq \int \di x\di y\, V_N(x-y) \lvert f(x,y)\rvert^2 + \int \di x\di y\, V_N(x-y) \lvert g(x,y)\rvert^2.
 \end{split}
 \ed
- \item for summands containing $a(c_x) a(c_y) \psi$, insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$ and then use Hoelder, so that $\varepsilon\ev{\tilV}$ is obtained
- \item $a^\#(s_x)$ and $a^\#(p_x)$ are always ok, and can easily be estimated using Lemma \ref{l:a}.
- \item pull out $\sup_x \norm{s_x}^2$, $\sup_x \norm{p_x}^2$ and $\norm{\ph}_\infty$ from the integrals, then $\int \di y\, NV_N(x-y) = b_0$ (independent of $x$) can be used
-\item for terms containing $a^\# a^\# a^\#$ or $a^\# a^\# a^\# a^\#$ we need $\Ncal^2$, so a prefactor $1/N$ is necessary. Cf.\ \ref{cor:N2}. 
+ \item For summands containing $a(c_x) a(c_y) \psi$ we insert $\sqrt{\varepsilon} \frac{1}{\sqrt{\varepsilon}}$ and then use H\"older's inequality so that $\varepsilon\ev{\tilV}$ is obtained.
+ \item The operators $a^\ast(s_x)$, $a(s_x)$, $a^\ast(p_x)$ and $a(p_x)$ are well-defined and can be estimated using Lemma \ref{l:a}.
+ \item We can pull out $\sup_x \norm{s_x}^2$, $\sup_x \norm{p_x}^2$ and $\norm{\ph}_\infty$ from the integrals; then we can use that $\int \di y\, NV_N(x-y) = b_0$ is independent of $x$ (and of $N$).
+\item For terms containing three or four operators $a$ or $a^\ast$ our upper bounds use $\Ncal^2$, so a prefactor $1/N$ is necessary, cf.\ Corollary \ref{cor:N2}. 
 \end{itemize}
 
 \estlist{10}{1}
-By definition of $\tilV$, we have
+By definition of $\tilV$
 \bd
 \scal{\psi}{\frac{1}{2}\int \di x\di y\, NV_N(x-y)\frac{1}{2N} a^\ast(c_x) a^\ast(c_y) a(c_y) a(c_x)\psi} = \ev{\tilV}.
 \ed
@@ -1580,7 +1577,6 @@ By definition of $\tilV$, we have
 & \leq \int \di x\di y V_N(x-y) \frac{\sqrt{\varepsilon}}{2} \norm{a(c_y) a(c_x)\psi} \frac{2}{\sqrt{\varepsilon}} \norm{a^\ast(s_x)a(c_y)\psi} \\
 & \leq \frac{\varepsilon}{4} \int \di x\di y V_N(x-y) \scal{\psi}{a^\ast(c_x)a^\ast(c_y)a(c_y)a(c_x)\psi} + \frac{4}{\varepsilon} \int \di x\di y V_N(x-y) \norm{a^\ast(s_x)a(c_y)\psi}^2 \\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon}\int \di x\di y V_N(x-y) \norm{s_x}^2 \norm{a(c_y)\Ncal^{1/2}\psi}^2 \\
-& \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \int \di x\, V_N(x-y)\\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{a(c_y)\Ncal^{1/2}\psi}^2 \frac{b_0}{N}\\
 & \leq \varepsilon \ev{\tilV} + \frac{4}{\varepsilon} \sup_x \norm{s_x}^2 \frac{b_0}{N} 2 (1+\norm{p}^2)\ev{\Ncal^2} \\
 & \leq \varepsilon \ev{\tilV} + C\norm{\ph}_{H^2}^2 \frac{1}{\varepsilon} \frac{1}{N}\ev{\Ncal^2}.
@@ -1588,7 +1584,7 @@ By definition of $\tilV$, we have
 \estlist{11}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{2N}2a^\ast(c_x)a^\ast(c_y) a^\ast(s_y) a^\ast(s_x) \psi}\rvert \\
-& \leq 2\frac{1}{4}\int \di x\di y\, V_N(x-y)  \norm{a(c_y)a(c_x)\psi} \norm{a^\ast(s_y)a^\ast(s_x)\psi} \\
+& \leq \frac{1}{2}\int \di x\di y\, V_N(x-y)  \norm{a(c_y)a(c_x)\psi} \norm{a^\ast(s_y)a^\ast(s_x)\psi} \\
 & \leq \varepsilon 2 \ev{\tilV} + \frac{1}{2\varepsilon} \int \di x\di y\, V_N(x-y) \norm{a^\ast(s_y)a^\ast(s_x)\psi}^2 \\
 & \leq \varepsilon 2 \ev{\tilV} + \frac{1}{2\varepsilon} \int \di x\di y\, V_N(x-y) \norm{s_y}^2 \norm{s_x}^2 \ev{(\Ncal+2)^2} \\
 & \leq \varepsilon 2 \ev{\tilV} + \frac{1}{2\varepsilon} \sup_x \norm{s_x}^2 \int \di y\, \norm{s_y}^2 \int \di x\, V_N(x-y) \ev{(\Ncal+2)^2} \\
@@ -1616,7 +1612,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(c_x) a^\ast(p_y) k(y,x)\psi} \rvert \\
 & \leq \dxyV \norm{a(c_x)\psi} \norm{a^\ast(p_y)\psi} \lvert k(y,x)\rvert \\
-\intertext{and using that $\lvert k(y,x)\rvert \leq N\lvert \ph(x)\rvert\lvert \ph(y)\rvert$ by Lemma \ref{l:kernels} \ref{kr}}
+\intertext{and using that $\lvert k(y,x)\rvert \leq N\lvert \ph(x)\rvert\lvert \ph(y)\rvert$ by Lemma \ref{l:kernels} \ref{kr} we get}
 & \leq \dxyNV \norm{a(c_x)\psi}^2 \lvert\ph(x)\rvert^2 + \dxyNV \norm{a^\ast(p_y)\psi}^2 \lvert \ph(y)\rvert^2\\
 & \leq \frac{1}{2} \norm{\ph}_\infty^2 \left( b_0 \int \di x\,\norm{a(c_x)\psi}^2 + b_0 \int \di y\,\norm{a^\ast(p_y)\psi}^2 \right) \\
 & \leq C \norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
@@ -1624,7 +1620,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 \estlist{15}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x)a(c_y) \scal{s_y}{s_x}\psi} \rvert \\
-& \leq \dxyV \lvert \scal{s_y}{s_x}\rvert \norm{a(c_x)\psi} \norm{a(c_y)\psi} \\
+%& \leq \dxyV \lvert \scal{s_y}{s_x}\rvert \norm{a(c_x)\psi} \norm{a(c_y)\psi} \\
 & \leq \dxyV \norm{s_y} \norm{s_x} \norm{a(c_x)\psi} \norm{a(c_y)\psi} \\
 & \leq \int \di x \di y\, V_N(x-y) \norm{s_y}^2 \norm{a(c_y)\psi}^2 \\
 %\leq & \frac{b_0}{N} \sup_y \norm{s_y}^2 \int \di x \norm{a(c_x)\psi}^2 \\
@@ -1638,8 +1634,8 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \frac{C}{2}\int \di x\di y N V_N(x-y) \norm{a(c_x)\psi}^2 \lvert \ph(x)\rvert^2 + \frac{C}{2}\int \di x\di y N V_N(x-y) \norm{a(s_y)\psi}^2 \lvert \ph(y)\rvert^2\\
 & \quad + \dxyV \norm{a(c_x)\psi}^2 \norm{s_x}^2 + \dxyV \norm{a(s_y)\psi}^2 \norm{p_y}^2 \\
 & \leq \frac{C}{2} \norm{\ph}_\infty^2 \int \di x\, \norm{a(c_x)\psi}^2 \int \di y\, NV_N(x-y) + \frac{C}{2} \norm{\ph}_\infty^2 \int \di y\, \norm{a(s_y)\psi}^2 b_0 \\
-& \quad + \frac{1}{2}\sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\psi}^2 \frac{b_0}{N} + \frac{1}{2} \sup_y \norm{p_y}^2 \int \di y\, \norm{a(s_y)\psi}^2 b_0/N \\
-& \leq \frac{C b_0}{2} \norm{\ph}_{H^2}^2(1+\frac{1}{N})\left( \int \di x\,\norm{a(c_x)\psi}^2 + \int \di y\,\norm{a(s_y)\psi}^2 \right) \\
+& \quad + \frac{1}{2}\sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\psi}^2 \frac{b_0}{N} + \frac{1}{2} \sup_y \norm{p_y}^2 \int \di y\, \norm{a(s_y)\psi}^2 \frac{b_0}{N} \\
+& \leq \frac{C b_0}{2} \norm{\ph}_{H^2}^2 \left(1+\frac{1}{N}\right) \left( \int \di x\,\norm{a(c_x)\psi}^2 + \int \di y\,\norm{a(s_y)\psi}^2 \right) \\
 & \leq C\norm{\ph}_{H^2}^2 \left(1+\frac{1}{N}\right)\ev{\Ncal}.
 \end{align*}
 \estlist{16}{2}
@@ -1673,13 +1669,13 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \dxyNV \lvert \ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert\ph(y)\rvert^2 \norm{a^\ast(p_y)\psi}^2 \\
 & \leq C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}. 
 \end{align*}
-\estlist{18}{2} %29.2
-\begin{align*}
-& \lvert \scal{\psi}{\dxyNV \ph(x)\ph(y) 2a^\ast(c_x)a(s_y)\psi} \rvert \\
-& \leq \dxyNV \lvert\ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
-& \leq C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
-\end{align*}
-\underline{\Nestlist{18}{3} through \nestlist{20}{3}:} like \nestlist{18}{2}.\newline
+%\estlist{18}{2} %29.2
+%\begin{align*}
+%& \lvert \scal{\psi}{\dxyNV \ph(x)\ph(y) 2a^\ast(c_x)a(s_y)\psi} \rvert \\
+%& \leq \dxyNV \lvert\ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
+%& \leq C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
+%\end{align*}
+\underline{\Nestlist{18}{2} through \nestlist{20}{3}:} like \nestlist{18}{1}.\newline
 \estlist{21}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)}a^\ast(c_x)a^\ast(s_x)a^\ast(s_y)\psi} \rvert \\
@@ -1745,7 +1741,7 @@ a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert
  \leq \scal{\psi}{\Ncal\psi} \frac{\norm{f_1}+\norm{f_2}}{2} + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
 \]
 \end{lem}
-\begin{proof} Proof of the first estimate, using Hoelder's inequality:
+\begin{proof} Using H\"older's inequality we prove the first estimate as follows:
  \begin{align*}
   & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \\
 & \leq \frac{1}{2} \sum_{i=1}^2 \lvert \scal{\psi}{\int \di x\di y\, f_i(x,y) a^\ast_x a^\ast_y \psi }\rvert \\
@@ -1753,15 +1749,15 @@ a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert
 & \leq \frac{1}{2} \sum_{i=1}^2 \left( \int \di y_1\, \norm{a_{y_1}\psi}^2 \int \di y_2\, \norm{f_i(\cdot,y_2)}^2 \norm{(\Ncal+1)^{1/2} \psi}^2 \right)^{1/2} \\
 & \leq \ev{\Ncal+1} \frac{\norm{f_1}+\norm{f_2}}{2}.
  \end{align*}
-Proof of the second estimate, using the CCR and Hoelder's inequality:
+To prove the second estimate we use the CCR and H\"older's inequality:
  \begin{align*}
 & \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert\\
 & \leq \frac{1}{2} \lvert \scal{\psi}{\int \di x\di y\, f_1(x,y) a^\ast_x a_y \psi} \rvert + \frac{1}{2}\lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) a^\ast_y a_x \psi}\rvert \\
 &\quad + \frac{1}{2} \lvert \scal{\psi}{\int \di x \di y\, f_2(x,y) \delta(x-y) \psi}\rvert \\
-& \leq \frac{1}{2} \int \di x\, \norm{a_x \psi} \norm{a(f_1(x,\cdot))\psi} + \frac{1}{2} \int \di y\, \norm{a_y\psi} \norm{a(f_2(\cdot,y))\psi} + \frac{1}{2} \lvert \int f_2(x,x) \di x \rvert \scal{\psi}{\psi} \\
+& \leq \frac{1}{2} \int \di x\, \norm{a_x \psi} \norm{a\big(f_1(x,\cdot)\big)\psi} + \frac{1}{2} \int \di y\, \norm{a_y\psi} \norm{a\big(f_2(\cdot,y)\big)\psi} + \frac{1}{2} \left\lvert \int f_2(x,x) \di x \right\rvert \scal{\psi}{\psi} \\
 & \leq \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_1(x_2,\cdot)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2}\\
-& \quad + \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_2(\cdot,x_2)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2} + \frac{1}{2}\lvert \int f_2(x,x) \di x\rvert \scal{\psi}{\psi} \\
-& \leq \frac{1}{2}\ev{\Ncal} \left(\left(\int \di x \norm{f_1(x,\cdot)}^2 \right)^{1/2} + \left(\int \di x \norm{f_2(\cdot,x)}^2 \right)^{1/2} \right) + \frac{1}{2}\lvert \int f_2(x,x) \di x\rvert \scal{\psi}{\psi}. 	\qedhere
+& \quad + \frac{1}{2} \left( \int \di x_1 \norm{a_{x_1}\psi}^2 \int \di x_2 \norm{f_2(\cdot,x_2)}^2 \norm{\Ncal^{1/2}\psi}^2 \right)^{1/2} + \frac{1}{2}\left\lvert \int f_2(x,x) \di x\right\rvert \scal{\psi}{\psi} \\
+& \leq \frac{1}{2}\ev{\Ncal} \left(\left(\int \di x \norm{f_1(x,\cdot)}^2 \right)^{1/2} + \left(\int \di x \norm{f_2(\cdot,x)}^2 \right)^{1/2} \right) + \frac{1}{2}\left\lvert \int f_2(x,x) \di x\right\rvert \scal{\psi}{\psi}. 	\qedhere
  \end{align*}
 \end{proof}
 
@@ -1788,8 +1784,7 @@ and the following bounds hold: $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$
 \end{itemize}
 \end{lem}
 \begin{proof} The proof is by induction in $n$. In the inductive step, we have to treat the cases of even $n$ and odd $n$ separately (but the calculations are similar).\\
-\underline{basis:}\\
-We take the case of $n=0$ as the basis. For
+\underline{basis $n=0$:} For
 \bd
 \ad^0_B(\dot B) = \dot B = \frac{1}{2}\int \di x\di y\left( \dot k(x,y) a^\ast_x a^\ast_y - \cc{\dot k(x,y)} a_x a_y \right)
 \ed
@@ -1817,7 +1812,7 @@ Clearly
 & \quad + \norm{\int \di y\, \cc{k(y,z)}f_{n,2}(x,y)}_{L^2(dxdz)} + \norm{\int \di y\, \cc{k(y,z)} f_{n,2}(y,x)}_{L^2(dxdz)} \bigg),
 \end{split}
 \ee
-Using Hoelder's inequality we get
+Using H\"older's inequality we get
 \begin{align*}
 & \norm{\int \di y\,k(x,y) f_{n,2}(z,y)}^2_{L^2(dxdz)} = \int \di x\di z \left\lvert \int \di y\,k(x,y) f_{n,2}(z,y) \right\rvert^2 \\
 & \leq \int \di x \di z \int \di y_1\,\lvert k(x,y_1) \rvert^2 \int \di y_2\,\lvert f_{n,2}(z,y_2) \rvert^2 = \norm{k}^2 \norm{f_{n,2}}^2. 
@@ -1826,17 +1821,17 @@ The other three summands in \eqr{normnorm} obey the same bound, so by making use
 \bd
 \norm{f_{n+1,1}}_{L^2} \leq \norm{\dot k} (2\norm{k})^{n+1},
 \ed
-which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the same way. We still have to proof the second estimate of the lemma, so we calculate using Hoelder's inequality that
-\bd
+which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the same way. We still have to proof the second estimate of the lemma, so using H\"older's inequality we calculate that
+\[
 \int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq \norm{\dot k} (2\norm{k})^{n+1}
-\ed
+\]
 and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x \leq \norm{\dot k}(2\norm{k})^{n+1}$.\\
 \underline{inductive step, starting from odd $n$:}\\
 We calculate (by using the CCR and appropriately renaming integration variables)
 \begin{align*}
 & \ad^{n+1}_B(\dot B)\\
 & = \left[ \frac{1}{2}\int \di x \di y \left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)} a_x a_y \right) , \frac{1}{2}\int \di x\di y \left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right) \right] \\
-& = \frac{1}{2} \int \di x\di z \left( a^\ast_x a^\ast_z f_{n+1,1}(x,z) + a_x a_z f_{n+1,2}(x,z) \right)
+& = \frac{1}{2} \int \di x\di z \big( a^\ast_x a^\ast_z f_{n+1,1}(x,z) + a_x a_z f_{n+1,2}(x,z) \big)
 \end{align*}
 where
 \begin{equation}
@@ -1846,10 +1841,10 @@ f_{n+1,1}(x,z) & = - \int \di y\, k(x,y)\left( f_{n,1}(z,y) + f_{n,2}(y,z) \righ
 f_{n+1,2}(x,z) & = - \int \di y\, \cc{k(x,y)}\left( f_{n,1}(y,z) + f_{n,2}(z,y) \right),
 \end{split}
 \end{equation}
-so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for $\norm{f_{n+1,1}}$ and $\norm{f_{n+1,2}}$ again follows by invoking Hoelder's inequality and the inductive hypothesis.
+so, as $n+1$ is even, we have the correct expression for $\ad^{n+1}_B(\dot B)$. Validity of the estimate for $\norm{f_{n+1,1}}$ and $\norm{f_{n+1,2}}$ again follows by H\"older's inequality and the inductive hypothesis.
 \end{proof}
 
-The operator $\partial_t\left((\partial_t T^*_t)T_t\right)$ can be bounded by applying $\partial_t$ to all summands of the series of $(\partial_t T^*_t)T_t$ individually and then employing lemma \ref{lm:Bbound} and the following lemma. The second estimate is only needed for odd $n$.
+The operator $\partial_t\left((\partial_t T^*_t)T_t\right)$ can be bounded by applying $\partial_t$ to all summands of the series of $(\partial_t T^*_t)T_t$ individually and then employing lemma \ref{lm:Bbound} and the following lemma. %The second estimate is only needed for odd $n$.
 \begin{lem}
 \label{lm:deldelt}
 For all $n \in \Nbb$ and all $i \in \{1,2\}$, we have the estimates
@@ -1862,21 +1857,21 @@ For odd $n$, we have the estimate
 \ed
 \end{lem}
 \begin{proof}
-The first estimate is proved by induction. The basis is trivial. For the inductive step, we again have to treat the cases of even and odd $n$ separately: We employ \eqref{eq:even} respectively \eqref{eq:odd}, use Hoelder's inequality, then make use of $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and finally apply the inductive hypothesis.
+The first estimate is proved by induction. The basis is trivial. For the inductive step, we again have to treat the cases of even and odd $n$ separately: We employ \eqref{eq:even} respectively \eqref{eq:odd}, use H\"older's inequality, then make use of $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and finally apply the inductive hypothesis.
 
-For the second estimate, we use \eqref{eq:even} to express $f_{n,i}$ in terms of the $f_{n-1,i}$, use Hoelder's inequality and apply the first estimate.
+For the second estimate, we use \eqref{eq:even} to express $f_{n,i}$ in terms of the $f_{n-1,i}$, use H\"older's inequality and apply the first estimate.
 \end{proof}
 
 We now combine the bounds on the individual summands to obtain an estimate for the series.
 \begin{lem}
 \label{lm:timederivative}
-There exists a constant $C$ independent of $N$ and $t$ such that the following estimate holds for all $t \in \Rbb$ and all $\psi \in \fock$:
+There exists a constant $C$ such that for all $t \in \Rbb$ and all $\psi \in \fock$
  \bd
   \lvert \scal{\psi}{(\partial_t T^*_t)T_t \psi} \rvert \leq \norm{\dot k} e^{2\norm{k}} \scal{\psi}{(\Ncal+1)\psi} \leq C \norm{\ph}_{H^2}^2 \scal{\psi}{(\Ncal+1)\psi}.
  \ed
 Furthermore
  \bd
-    \lvert \scal{\psi}{\partial_t \left[ \left(\partial_t T^\ast_t\right) T_t \right] \psi} \rvert \leq \left( 2\norm{\dot k}^2 + \norm{\ddot k} \right) e^{2\norm{k}} \scal{\psi}{(\Ncal+1)\psi}.
+    \lvert \scal{\psi}{\partial_t \big( \left(\partial_t T^\ast_t\right) T_t \big) \psi} \rvert \leq \left( 2\norm{\dot k}^2 + \norm{\ddot k} \right) e^{2\norm{k}} \scal{\psi}{(\Ncal+1)\psi}.
  \ed
 \end{lem}
 \begin{proof}
@@ -1898,9 +1893,7 @@ Gross-Pitaevskii equation as $N \to \infty$. In subsection
 \ref{sec:phdotreg}, we collect some estimates on the regularity of $\phdot$
 and $\phddot$.
 
-
-\marginpar{I think this should not be called a corollary.}
-\begin{cor} \label{l:pdes}% \label{c:reg2}
+\begin{thm} \label{t:pdes}% \label{c:reg2}
   Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and suppose that
   $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
   1$, consider a solution $\ph$ of the modified Hartree equation
@@ -1932,7 +1925,7 @@ and $\phddot$.
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}}.
     \tag{iii}
   \end{equation}
-\end{cor}
+\end{thm}
 
 
 The initial value problem for the Hartree equation
@@ -2627,7 +2620,7 @@ and by Hardy's inequality, this is bounded by
 \ed
 \end{proof}
 
-
+\cite{*}
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
 
