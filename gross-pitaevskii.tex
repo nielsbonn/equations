@@ -106,7 +106,7 @@
 
 \begin{abstract}
 The non-linear Gross-Pitaevskii equation describes the macroscopic dynamics of Bose-Einstein condensates in the limit of large number of particles $N$. In this paper we show that the microscopic quantum mechanical evolution converges towards the Gross-Pitaevskii dynamics if the two-particle interaction potential is scaled as $N^3 V(N(x_i-x_j))$. 
-Our method is based on using the Bogoliubov transformation to implement a short-scale structure on coherent initial states, which thus become squeezed coherent states (?). The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
+Our method is based on using the Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
 \end{abstract}
 
 \section{Introduction and Main Result}
@@ -187,7 +187,7 @@ The integration corresponds to taking the partial trace or `tracing out' $N-k$ p
 \end{rem}
 
 \emph{Heuristics of our approach:} 
-The method of our proof is based on the study of the evolution of coherent states. Rodniaski and Schlein \cite{RS2009} show that for solutions to the Schr\"odinger equation with Hamiltonian
+The method of our proof is based on the study of the evolution of coherent states. Rodnianski and Schlein \cite{RS2009} show that for solutions to the Schr\"odinger equation with Hamiltonian
 \[
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N U(x_i-x_j)
 \]
@@ -197,12 +197,12 @@ i \partial_t \ph = -\Delta \ph + \left(U \ast \lvert \ph\rvert^2 \right) \ph.
 \]
 This bound was improved \cite{CLS2011} to a bound of the form $C e^{Kt}/N$. Notice that formally for $U = N V_N \to b_0 \delta$ we obtain a Gross-Pitaevskii equation with coupling constant $b_0$. However, from \cite{ESY2010} it is known that the correct coupling constant is $8 \pi a_0$, but $8 \pi a_0 \neq b_0$. (The result in that paper is based on a compactness argument and does not give any information about the rate of convergence.) This failure of naively taking the limit has its origin in a singular short-scale structure of the $N$-body quantum state $\psi_{N,t}$. The short-scale structure is given by the two-particle scattering equation \cite{EMS2009}.
 
-Therefore we compare the evolution of coherent states with the evolution given by the modified Hartree equation
+Therefore we compare the evolution of coherent states with the effective evolution given by the modified Hartree equation
 \be{modHartreeEqu}
 i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
 \ee
 which formally has the correct limiting equation.
-Using the Bogoliubov transformation we can then explicitly exhibit cancellations in the generator of fluctuation dynamics around the evolution given by the modified Hartree equation.
+Using the Bogoliubov transformation we can implement the short-scale structure in our effective dynamics. This formally corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
 
 The argument is completed by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
 \newline
