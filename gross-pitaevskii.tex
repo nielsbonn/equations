@@ -87,6 +87,8 @@
 \newcommand{\bd}{\begin{displaymath}}			% abbreviation begin displaymath
 \newcommand{\ed}{\end{displaymath}}
 
+\newcommand{\todo}[1]{}
+
 \newcommand{\tagg}[1]{ \stepcounter{equation} \tag{\theequation} \label{eq:#1} } % add tag and label in align*-environments
 
 \newcommand{\eqr}[1]{\eqref{eq:#1}}			%eqref with prefix :eq
@@ -96,17 +98,19 @@
 
 %\allowdisplaybreaks
 
-\author{Bonn}
-\title{GP equation}
+\author{HCM Bonn}
+\title{Rate of Convergence towards Gross-Pitaevskii limit of interacting Bose-Einstein condensates}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
- Gross-Pitaevskii equation, Bose-Einstein condensate with repulsive interaction, Squeezed coherent states, Bogoliubov transform, Mean-field limit, Hartree equation.
+The non-linear Gross-Pitaevskii equation describes the macroscopic dynamics of Bose-Einstein condensates in the limit of large number of particles $N$. In this paper we show that the microscopic quantum mechanical evolution converges towards the Gross-Pitaevskii dynamics if the two-particle interaction potential is scaled as $N^3 V(N(x_i-x_j))$. 
+Our method is based on using the Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
 \end{abstract}
 
 \section{Introduction and Main Result}
+\label{s:intro}
 We consider a system of $N$ identical bosons with repulsive interaction. This system is described on the Hilbert space $L^2_s(\Rbb^{3N})$ by the Hamiltonian
 \bd
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N N^3 V(N(x_i-x_j)).
@@ -121,7 +125,7 @@ We are interested in the time evolution of factorized initial wave functions, wh
 \ed
 where $\varphi \in H^4(\Rbb^3)$ is a one-particle wave function normalized to $\norm{\varphi}_{L^2} = 1$. The time evolution is given by the solution to the Schr\"odinger equation 
 \bd
-i \partial_t \psi_{N,t} = H_N \psi_{N,t},\quad \mbox{with inital data } \psi_{N,0} = \psi_N.
+i \partial_t \psi_{N,t} = H_N \psi_{N,t}\quad \mbox{with inital data } \psi_{N,0} = \psi_N.
 \ed
 
 The function $f_N = 1 - w_N: \Rbb^3 \to \Rbb$ is the solution to the zero-energy scattering equation
@@ -134,31 +138,28 @@ with boundary condition $\lim_{\lvert x\rvert \to \infty} f_N(x) = 1$. The scatt
 \ed
 which is clearly independent of $N$.
 
-The modified Hartree equation reads
-\be{modHartreeEqu}
-i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
-\ee
-where we denote by $\ph$ the solution to the modified Hartree equation with initial data $\varphi^{(N)}_0 = \varphi$.
-
 We expect that in the limiting case of large $N$, the dynamics of the Bose-Einstein condensate is well described by
-\bd
+\be{approx_dyn}
 \psi_{N,t}(x_1,\ldots x_N) \simeq \prod_{j=1}^N \varphi_t(x_j),
-\ed
+\ee
 where $\varphi_t$ is the solution to the Gross-Pitaevskii equation
-\bd
-i \partial_t \varphi_t = - \Delta \varphi_t + 8\pi a_0 \lvert \varphi_t\rvert^2 \varphi_t
-\ed
-with initial data $\varphi_0 = \varphi$.
-
-Note that for the unmodified Hartree equation
 \[
-i \partial_t \ph = -\Delta \ph + \left(N V_N \ast \lvert \ph\rvert^2 \right) \ph,
+i \partial_t \varphi_t = - \Delta \varphi_t + 8\pi a_0 \lvert \varphi_t\rvert^2 \varphi_t\quad \mbox{with initial data } \varphi_0 = \varphi.
 \]
-so with $N V_N \to b_0 \delta$ we formally obtain the limiting equation
-\bd
-i \partial_t \varphi_t = - \Delta \varphi_t + b_0 \lvert \varphi_t\rvert^2 \varphi_t,
-\ed
-while in the modified Hartree equation $N f_N V_N \to 8 \pi a_0 \delta$, which by \cite{ESY2010} is expected to be the correct limiting equation.
+
+To make precise in which sense \eqr{approx_dyn} holds we have to introduce reduced density matrices, also called marginal densities.
+%Let us write
+%\[
+%\gamma_{N,t}(x_1, \ldots x_N; y_1, \ldots y_N) = \psi_{N,t}(x_1,\ldots x_N) \cc{\psi_{N,t}(y_1,\ldots y_N)}.
+%\]
+The $k$-particle reduced density matrix associated with a state $\psi_{N,t} \in L^2_s(\Rbb^{3N})$ is the positive trace-class operator on $L^2(\Rbb^{3k})$ given by the integral kernel
+\be{red_density}
+\begin{split}
+& \gamma_{N,t}^{(k)}(x_1,\ldots x_k;y_1,\ldots y_k) \\
+&  := \int \di x_{k+1} \cdots \di x_N\,\psi_{N,t}(x_1,\ldots x_k,x_{k+1},\ldots x_N) \cc{\psi_{N,t}(y_1,\ldots y_k,x_{k+1},\ldots x_N)}.
+\end{split}
+\ee
+The integration corresponds to taking the partial trace or `tracing out' $N-k$ particles. It is obvious that $\Tr \gamma_{N,t}^{(k)} = 1$ if $\norm{\psi_{N,t}} = 1$.
 
 \begin{thm}[Time Evolution of Factorized States] \label{thm:main_factorized}
  Let $\psi_N(x_1, \ldots x_N) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schr\"odinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
@@ -173,28 +174,69 @@ while in the modified Hartree equation $N f_N V_N \to 8 \pi a_0 \delta$, which b
 
 \begin{rem}
 \begin{enumerate}
-\item We remark that in the second-quantized setting we are working in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
-\item Remark on $k$-particle density matrices.
+\item In the second-quantized setting we are working in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
+\item As pointed out by Seiringer \cite{RS2009} we have $\Tr \big\lvert \gamma_{N}^{(1)} - \project{\varphi} \big\rvert \leq 2 \norm{\gamma_N^{(1)} - \project{\varphi}}_{HS}$ for any reduced density matrix $\gamma^{(1)}_N$. As the Hilbert-Schmidt operators form a Hilbert space with scalar product $\Tr A^\ast B$ we have $\norm{\gamma_N^{(1)} - \project{\varphi}}_{HS} \leq \sup_{\norm{J}_{HS}=1} \Tr \left( J \big( \gamma^{(1)}- \project{\varphi} \big) \right)$. Thus we have actually proven convergence in the trace norm
+\bd
+\Tr \left\lvert \gamma_{N}^{(1)} - \project{\varphi} \right\rvert \leq \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
+\ed
+\item It is a general fact \cite{KP2009} that a bound on the convergence of the one-particle reduced density matrix implies a bound on the convergence of the $k$-particle reduced density matrix. We thus obtain
+\bd
+\Tr \left\lvert \gamma_{N}^{(k)} - \project{\varphi}^{\otimes k} \right\rvert \leq C\sqrt{ \frac{k}{ N^{1/4} } }e^{K_1 e^{K_2 t}/2}.
+\ed
 \end{enumerate}
 \end{rem}
 
-Literature: BBGKY, Grillakis-Machedon-Margetis \cite{GMM2010}, Pickl, Rodnianski-Schlein.
+\emph{Heuristics of our approach:} 
+The method of our proof is based on the study of the evolution of coherent states. Rodnianski and Schlein \cite{RS2009} show that for solutions to the Schr\"odinger equation with Hamiltonian
+\[
+H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N U(x_i-x_j)
+\]
+and with factorized initial data the reduced density matrices convergence in trace-norm with a bound of the form $C e^{Kt}/\sqrt{N}$ to a solution of the Hartree equation
+\[
+i \partial_t \ph = -\Delta \ph + \left(U \ast \lvert \ph\rvert^2 \right) \ph.
+\]
+This bound was improved \cite{CLS2011} to a bound of the form $C e^{Kt}/N$. Notice that formally for $U = N V_N \to b_0 \delta$ we obtain a Gross-Pitaevskii equation with coupling constant $b_0$. However, from \cite{ESY2010} it is known that the correct coupling constant is $8 \pi a_0$, but $8 \pi a_0 \neq b_0$. (The result in that paper is based on a compactness argument and does not give any information about the rate of convergence.) This failure of naively taking the limit has its origin in a singular short-scale structure of the $N$-body quantum state $\psi_{N,t}$. The short-scale structure is given by the two-particle scattering equation \cite{EMS2009}.
 
-Organization: Lift to Fock Space. The Bogoliubov Transformation. Controlling the Number of Quantum Fluctuations by a Gronwall estimate. Time Evolution of Factorized States and Proof of the Main Theorem. Appendix on Generator-Estimates. Appendix on Hartree and Gross-Pitaevskii equation. Appendix: Bounds on the Bogoliubov Transformation.
+Therefore we compare the evolution of coherent states with the effective evolution given by the modified Hartree equation
+\be{modHartreeEqu}
+i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
+\ee
+which formally has the correct limiting equation.
+Using the Bogoliubov transformation we can implement the short-scale structure in our effective dynamics. This formally corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
 
-Remarks on notation: We use the symbol $C$ throughout the paper for constants which might be redefined from line to line, but which are always independent of $N$ and of time $t$.
+The argument is completed by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
+\newline
+
+\emph{Overview of the field}: References to BBGKY, Grillakis-Machedon-Margetis \cite{GMM2010}, Pickl. Comparison of scaling. TODO.\newline
+
+\emph{Organization of the paper:}
+In section \ref{s:fock} we explain how the $N$-particle system can be embedded into Fock space so that coherent states can be used.
+
+In section \ref{s:bogoliubov} we introduce the Bogoliubov transformation.
+
+In section \ref{s:fluctuations} we introduce the dynamics of fluctuations around the effective evolution. Subsection \ref{ss:generator} is dedicated to the calculation of the generator of fluctuation dynamics, where the Bogoliubov transform is used to explicitly exhibit cancellations. Subsection \ref{ss:number} explains how the number of fluctuations can be bounded and subsection \ref{ss:apriori} states some weak a-priori estimates.
+
+Section \ref{s:expectation} is dedicated to estimating expectation values $\Tr\big(J \gamma_{N,t}^{(1)}\big)$ in terms of the number of fluctuations; then the main theorem and a similar theorem on the evolution of squeezed coherent states is proven.
+
+Appendix \ref{s:generatorestimates} lists estimates for the summand of the generator of fluctuations. Appendix \ref{s:pde} is dedicated to proving uniform in $N$ regularity estimates for solutions of the Hartree and Gross-Pitaevskii equation and shows that solutions of the Hartree equation converge to solutions of the Gross-Pitaevskii equation. Appendix \ref{s:bogbounds} lists some further estimates on the integral kernels appearing in the Bogoliubov transformation.
+\newline
+
+\emph{Remarks on notation:} We use the symbol $C$ throughout the paper for constants which might be redefined from line to line, but which are always independent of $N$ and of time $t$. We sometimes comment explicitly on additional properties of constants $C$.
 The notation
 \[
   A \apprle B
 \]
 means that $A \le C B$ for some constant $C$.
-Notice that we use $\sup_x$ as a short-hand for $\operatorname{esssup}_{x\in \Rbb^3}$. In accordance with \eqr{no1} $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$.
 
+Notice that we use $\sup_x$ as a short-hand for $\operatorname{ess\,sup}_{x\in \Rbb^3}$.
+
+In accordance with \eqr{no1} we have $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$. It should be clear from the context where $\norm{\cdot}_{L^2}$ means the $L^2(\Rbb^3)$ or $L^2(\Rbb^3 \times \Rbb^3)$ norm, similarly it should be clear which norm is meant by $\norm{\cdot}$ (usually Fock space or one of the $L^2$-norms).
 For any integral kernel $p$ the gradient with respect to the second variable is denoted by $\nabla_2 p$.
 
 Notice also that though $k$ may depend on $t$ through $\ph$, we do not denote the $t$-dependence of $k$ explicitly, similarly for the other integral kernels $s$, $r$ and $p$. Some lemmata about the integral kernels are formulated for general $\varphi$ where the modified Hartree equation does not play any role.
 
 \section{Fock Space Representation}
+\label{s:fock}
 The bosonic Fock space over $L^2(\R^3)$ is the Hilbert space
 \[
   \mathcal{F} = \bigoplus_{n \ge 0} L^2(\R^3)^{\otimes_s n} = \mathds{C}
@@ -264,7 +306,7 @@ $\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
 
 The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
 \psi)^{(n)} = \Hcal_N^{(n)} \psi^{(n)}$ with
-\marginpar{Double sum inconsistent with single sum in other places.}
+\todo{Double sum inconsistent with single sum in other places.}
 \[
   \Hcal_N^{(n)} = \sum_{j=1}^n (-\Delta_{x_j}) + \sum_{j=1}^n
   \sum_{i=1}^{j-1} V_N(x_i - x_j).
@@ -295,6 +337,11 @@ with
 We call $\K$ the kinetic energy operator, and $\mathcal{V}_N$ the potential
 energy operator.
 
+We can extend the definition of one-particle reduced density matrices to states $\psi \in \fock$ by the following definition:
+\be{fock_density}
+\gamma_{\psi}^{(1)}(x;y) := \frac{1}{\scal{\psi}{\Ncal \psi}} \scal{\psi}{a^\ast_y a_x \psi}.
+\ee
+For $\psi$ in the $N$-particle subspace of $\fock$, $\psi \in L^2_s(\Rbb^{3N})$, this definition is equivalent to the definition in \eqr{red_density}.
 
 The following lemma provides some useful bounds to control creation and
 annihilation operators in terms of the number of particles operator and the
@@ -375,6 +422,7 @@ and coherent states.
 
 
 \section{Bogoliubov Transformation}
+\label{s:bogoliubov}
 Consider a function $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$ (an integral kernel). To simplify the
 notation we write
 \be{no1}
@@ -416,7 +464,7 @@ and
     a_y^* T(k) = a^*(c_y) + a(s_y)
   \ee
   with integral kernels $c(x,y)$ and $s(x,y)$ given by
-  \marginpar{Why $(x,y)$ in some places and not in others? Why we need to
+  \todo{Why $(x,y)$ in some places and not in others? Why we need to
   evaulate the functions?}
   \begin{alignat*}{2}
     c(x,y) & = \delta(x-y) + p(x,y), & \qquad p & = \sum_{n=1}^\infty \frac{1}{(2n)!}
@@ -425,8 +473,7 @@ and
     \big( k \overline{k} \big)^n k,
   \end{alignat*}
   where the product in the power series is the convolution of integral
-  kernels, i.\,e.\ $fg(x,y) = \int dz \, f(x,z) g(z,y)$. Furthermore
-  \marginpar{Why i.e. instead of that is?}
+  kernels, that is $fg(x,y) = \int dz \, f(x,z) g(z,y)$. Furthermore
   \begin{alignat*}{2}
     \| p \|_{L^2} & \le e^{\| k \|_{L^2}}, \qquad & \| \nabla_2 p
     \|_{L^2} & \le e^{\| k \|_{L^2}} \| \nabla_2 (k
@@ -767,6 +814,7 @@ This completes the proof of the lemma.
 
 
 \section{Dynamics of Quantum Fluctuations}
+\label{s:fluctuations}
 We use the short-hand $T_t = T(k)$ with
 \bd
 k(x,y) = - N w_N(x-y) \ph(x) \ph(y),
@@ -779,6 +827,7 @@ U_N(t) := T^\ast_t W^\ast_t e^{-it \Hcal_N} W_0 T_0.
 To simplify the notation we sometimes write $U_t := U_N(t)$.
 
 \subsection{The Generator of Quantum Fluctuations}
+\label{ss:generator}
 The generator $\Lcal_N(t)$ of quantum fluctuations is defined by
 \bd
 \Lcal_N(t) U_N(t) = i \partial_t U_N(t).
@@ -886,9 +935,9 @@ The final result is
 
 
 \subsection{Estimating the number of fluctuations}
+\label{ss:number}
 The estimates in this section hold for the expectation value $\ev{\cdot} =
-\scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. \marginpar{This
-remark about $C$ was already made in page 3.}Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$. 
+\scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ here stands for constants which are also independent of $\psi$. 
 We define
 \bd
 \tilV := \frac{1}{4} \int \di x\di y\, V_N(x-y) a^\ast(c_x) a^\ast(c_y)a(c_y)a(c_x).
@@ -920,9 +969,8 @@ so by leaving away this non-negative term we obtain
 \be{Lcalbound}
 \ev{\Lcal_N(t)} \geq \ev{\frac{1}{2}\tilK + \tilV} - \lvert\ev{\Lcal_{\textrm{rem}}}\rvert.
 \ee
-\marginpar{I would change this sentence\dots}
 We now collect the estimates for lines \eqref{l7}, \eqref{l8} and \eqref{l10} through \eqref{l25} from appendix \ref{ch:generatorestimates} and also use Lemma \ref{lm:timederivative} to obtain an upper bound for $\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$, i.\,e.\ a lower bound for $-\lvert\ev{\Lcal_{\textrm{rem}}}\rvert$.
-\marginpar{How about just saying that $1/N \le 1$ \dots}(To simplify the notation we insert factors of $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ in some places, leave away prefactors $\frac{1}{N}$ and $\frac{1}{\sqrt{N}}$ where they are not needed to controll a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$. Numerical prefactors are absorbed into $C$.)
+(Notice that $\norm{\ph}_{H^2} \geq \norm{\ph}_{L^2} =1$ and use $\frac{1}{N} \leq 1$, $\frac{1}{\sqrt{N}} \leq 1$ where they are not needed to controll a $\Ncal^2$, and use that $1 \leq 1/\varepsilon$.)
 \bd
 \lvert\ev{\Lcal_{\textrm{rem}}}\rvert \leq C \norm{\ph}_{H^2}^2 \left( \frac{1}{\varepsilon}\ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} + \varepsilon\ev{\Kcal+\tilV} \right).
 \ed
@@ -941,7 +989,7 @@ Now choose $\varepsilon = 1/(4C\norm{\ph}_{H^2}^2)$ (with $C$ having the same va
 This completes the proof.
 \end{proof}
 
-\marginpar{I think this this lemma is not needed. Lemma 4.1 does the job.}
+For later reference we explicitly state the following simple Corollary.
 \begin{lem}
 \label{lem:Llowerbound}
 There exists a constant $C$ such that
@@ -987,7 +1035,7 @@ Recall that
 \[\Lcal_N(t) = (i \partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t.\]
 
 We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop out. The other summands get numerical prefactors, but except for that stay unchanged. %(Because of these prefactors, the sign of the $+\hc$-part changes, but this is not important for our estimates.)
-Therefore we can use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
+Thus we can use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
 
 We expand $(\partial_t T^\ast_t)T_t$ as a series according to
 \bd
@@ -998,12 +1046,11 @@ From this we can see that $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form
 \end{proof}
 
 
-\marginpar{$0 \ge$ is trivial\dots}
 \begin{prp}[Bound on Number of Fluctuations]
 \label{prp:Nbound}
 Let $\Psi \in \fock$ with $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$ and  $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal \right)\Psi} \leq C$ for some constant $C$ (independent of $N$). Then
 \bd
-0 \leq \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}}
+\scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}}
 \ed
 for some constants $C$, $K_1$ and $K_2$ (all independent of $N$ and $t$).
 \end{prp}
@@ -1055,6 +1102,7 @@ Plug in $a(c_x) = a_x + a(p_x)$, multiply out and use Hoelder's inequality.
 \end{proof}\fi
 
 \subsection{A-priori estimates}
+\label{ss:apriori}
 For $\varphi \in L^2(\Rbb^3)$ and $k \in L^2(\Rbb^3\times \Rbb^3)$, we use the short-hands
 \[
   W = W(\sqrt{N} \varphi) \qquad \text{and} \qquad T = T(k)
@@ -1316,53 +1364,52 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 
 \section{Convergence of Expectation Values}
+\label{s:expectation}
 \begin{lem}
 \label{lem:TrJ}
 Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J \in L^2(\Rbb^3 \times \Rbb^3)$ be a Hilbert-Schmidt operator. Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
 \bd
 \left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}_{HS} \Big( \scal{U_N(t) T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_N(t) T^\ast_0 \Psi} \Big)^{1/2},
 \ed
-where $d_N = \norm{P_N W_0\Psi}^{-1}$ and 
-\bd
-\gamma_{N,t}^{(1)}(x;y) = \frac{\scal{e^{-it \Hcal_N} d_N P_N W_0 \Psi}{a^\ast_y a_x e^{-it \Hcal_N} d_N P_N W_0 \Psi}}{\scal{d_N P_N W_0 \Psi}{\Ncal d_N P_N W_0 \Psi}}.
-\ed
-The operator $P_N$ is the projection on the $N$-particle subspace of Fock space.
+where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)} := \gamma_{\psi_{N,t}}^{(1)}$ is the one-particle reduced density matrix associated with the state $\psi_{N,t} = e^{-it \Hcal_N} d_N P_N W_0 \Psi$ (the operator $P_N$ is the projection on the $N$-particle subspace of Fock space).
 %
 %Remark: $\ph$ needn't be a solution of the Hartree equation here.
 \end{lem}
 \begin{proof}
-The operator $P_N$ commutes with $e^{-it \Hcal_N}$ and with $a^\ast_y a_x$, so because of $P_N^2 = P_N$ one of the projections $P_N$ can be eliminated. We then insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}:
+We will use the definition \eqr{fock_density} of the reduced density matrix. 
+
+We start by rewriting $\Tr\left(J \gamma_{N,t}^{(1)} \right)$ in an appropriate way. The operator $P_N$ commutes with $e^{-it \Hcal_N}$ and with $a^\ast_x a_y$, so because of $P_N^2 = P_N$ one of the projections $P_N$ can be eliminated. We then insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}:
 \begin{align}
-& \Tr\left(J\gamma_{N,t}^{(1)}\right) \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}P_N W_0 \Psi} \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_y a_x e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_y + \sqrt{N} \ph(y) \right) \times \nonumber\\
-& \qquad\qquad\qquad\quad \times \left(a_x + \sqrt{N} \ph(x) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:quad}\\
-& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:lin1} \\
-& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_x W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
-& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi}. \label{eq:gamma}
+& \Tr\left(J\gamma_{N,t}^{(1)}\right) = \int \di x \di y\, J(x;y) \gamma_{N,t}^{(1)}(y;x) \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_x a_y e^{-it\Hcal_N t}P_N W_0 \Psi} \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{e^{-it\Hcal_N}P_N W_0 \Psi}{ a^\ast_x a_y e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\left(a^\ast_x + \sqrt{N} \cc{\ph(x)} \right) \times \nonumber\\
+& \qquad\qquad\qquad\quad \times \left(a_y + \sqrt{N} \ph(y) \right) W^\ast_t e^{-it\Hcal_N t}W_0 \Psi} \nonumber\\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a^\ast_x a_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:quad}\\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \label{eq:lin1} \\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_y W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
+& \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi}. \label{eq:gamma}
 \end{align}
 The last line, \eqref{eq:gamma}, is the expectation value in the factorized state:
 \begin{align*}
-& \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \\
-& = \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(y)}\ph(x) \norm{P_N W_0 \Psi}^2 \\
-& = \int \di x\di y J(x,y) \cc{\ph(y)} \ph(x) = \Tr\left( J\project{\ph} \right).
+& \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \\
+& = \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \norm{P_N W_0 \Psi}^2 \\
+& = \int \di x\di y J(x,y) \ph(y) \cc{\ph(x)} = \Tr\left( J\project{\ph} \right).
 \end{align*}
 Summands \eqref{eq:quad} - \eqref{eq:lin2} have to be estimated. We start with line \eqref{eq:lin1}:
 \begin{align*}
-& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(x) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \right\rvert \\
-& \leq \frac{d_N^2}{N} \int \di x \sqrt{N} \lvert \ph(x)\rvert \norm{W^\ast_t e^{-it \Hcal_N} P_N W_0 \Psi} \norm{ a^\ast(J(x,\cdot))W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \\
-& \leq \frac{d_N}{\sqrt{N}} \int \di x \lvert \ph(x)\rvert \norm{J(x,\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2}W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
+& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \right\rvert \\
+& \leq \frac{d_N^2}{N} \int \di y \sqrt{N} \lvert \ph(y)\rvert \norm{W^\ast_t e^{-it \Hcal_N} P_N W_0 \Psi} \norm{ a^\ast(J_y)W^\ast_t e^{-it \Hcal_N} W_0 \Psi} \\
+& \leq \frac{d_N}{\sqrt{N}} \int \di y \lvert \ph(y)\rvert \norm{J_y}_{L^2} \norm{(\Ncal+1)^{1/2}W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{\textrm{HS}} \Big( \scal{W^\ast_t e^{-it \Hcal_N}W_0 \Psi}{(\Ncal+1)W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \Big)^{1/2} \\
 & \leq \frac{d_N}{\sqrt{N}} \norm{J}_{\textrm{HS}} \Big(C \scal{U_t T^\ast_0 \Psi}{(\Ncal+1)U_t T^\ast_0 \Psi} \Big)^{1/2},
 \end{align*}
 where in the last step Proposition \ref{p:TNT} (\ref{TNT}) has been used in the form of $\Ncal \leq C T_t (\Ncal+1)T^\ast_t$.
 Line \eqref{eq:lin2} can be estimated in the same way as line \eqref{eq:lin1}.
 
-We now estimate line \eqref{eq:quad}. Recall that $\di\Gamma(J) := \int \di x\di y J(y,x) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in \fock$.
+We now estimate line \eqref{eq:quad}. Recall that $\di\Gamma(J) := \int \di x\di y J(x,y) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in \fock$.
 \begin{align*}
-& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_y a_x W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \right\rvert \\
+& \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x a_y W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \right\rvert \\
 %& = \frac{d_N^2}{N} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\di\Gamma(J) W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N^2}{N} \norm{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi} \norm{\di\Gamma(J)W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \\
 & \leq \frac{d_N^2}{N} d_N^{-1} \norm{J}_{\textrm{HS}} \norm{\Ncal W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
@@ -1394,7 +1441,7 @@ The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} =
 \begin{proof}[Proof of Theorem \ref{thm:main_factorized}]
 We choose $\Psi = \Omega$ in Lemma \ref{lem:TrJ}. Then $d_N P_N W_0 \Psi = \varphi^{\otimes N}$ and $d_N = \frac{\sqrt{N!}}{e^{-N/2}N^{N/2}} \simeq N^{1/4}$.
 
-We want to apply Proposition \ref{prp:Nbound}%. Clearly $\scal{\Omega}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Omega} = 0$ satisfies the assumption of the proposition.
+We want to apply Proposition \ref{prp:Nbound} %. Clearly $\scal{\Omega}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Omega} = 0$ satisfies the assumption of the proposition.
 so we have to check the condition on 
 \bd
 \scal{T^\ast_0 \Omega}{\Lcal_N(0)T^\ast_0 \Omega} = \scal{\Omega}{\left(T_0(i\partial_t T^\ast_t)\rvert_{t=0} + \Lcal_N^{(0)}(0)\right)\Omega}.
@@ -1404,12 +1451,11 @@ According to \eqref{eq:no3} $\Lcal_N^{(0)}(0)$ is normal-ordered and thus $\scal
 The proof is completed by employing Lemma \ref{lem:phNtoph}.
 \end{proof}
 
-To formulate a theorem on the rate of convergence for squeezed coherent states let us define a one-particle density matrix $\Gamma_\psi$ by
-\[\Gamma_{\psi}(x;y) := \frac{\scal{\psi}{a^\ast_y a_x \psi}}{\scal{\psi}{\Ncal \psi}}.\]
+To expose the naturalness of squeezed coherent states as initial data we prove the following theorem. (This theorem is not necessary for the proof of the main result.)
 \begin{thm}[Time Evolution of Squeezed Coherent States] \label{thm:main_squeezed}
  Let $\psi_{N} = W(\sqrt{N} \varphi) T_0 \Omega$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it \Hcal_N}\psi_N$ the solution to the second-quantized Schr\"odinger equation in Fock space
 \[i \partial_t \psi_{N,t} = \Hcal_N \psi_{N,t},\quad \mbox{with inital data } \psi_{N,0} = \psi_N.\]
-Let $\Gamma_{N,t} := \Gamma_{\psi_{N,t}}$ be the corresponding one-particle density matrix.
+Let $\Gamma_{N,t} := \gamma_{\psi_{N,t}}^{(1)}$ be the corresponding one-particle reduced density matrix.
 
  Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
 
@@ -1418,20 +1464,20 @@ Let $\Gamma_{N,t} := \Gamma_{\psi_{N,t}}$ be the corresponding one-particle dens
 \left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
 \ed
 \end{thm}
-\begin{proof}
-Using Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) we easily calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Thus $1/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \leq 1/N$.
+\begin{proof} Notice first that $e^{-it \Hcal_N}$ commutes with $\Ncal$. Thus
+using Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) and equation \eqr{no4} we easily calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Thus $1/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \leq 1/N$.
 
 The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_factorized} but the projection $P_N$ is now absent. We expand
 \begin{align}
-& \scal{\psi_{N,t}}{a^\ast_y a_x \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
-& = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_y a_x W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez1} \\
-& + \sqrt{N} \ph(x) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
-& + \sqrt{N} \cc{\ph(y)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
-& + N \ph(x) \cc{\ph(y)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1}. \label{eq:squeez4}
+& \Gamma_{N,t}(y;x) = \scal{\psi_{N,t}}{a^\ast_x a_y \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
+& = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez1} \\
+& + \sqrt{N} \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
+& + \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
+& + N \ph(y) \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1}. \label{eq:squeez4}
 \end{align}
-Clearly line \eqref{eq:squeez4} is equal to $\frac{N}{\norm{s}^2+N} \ph(x) \cc{\ph(y)}$. Using H\"older's inequality
+Clearly line \eqref{eq:squeez4} is equal to $\frac{N}{\norm{s}^2+N} \ph(y) \cc{\ph(x)}$. Using H\"older's inequality
 \[
-\left\lvert \frac{N}{\norm{s}^2+N} \int \di x \di y\, J(x,y) \ph(x) \cc{\ph(y)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}_{HS},
+\left\lvert \frac{N}{\norm{s}^2+N} \int \di x \di y\, J(x,y) \ph(y) \cc{\ph(x)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}_{HS},
 \]
 and according to Lemma \ref{lem:phNtoph}
 \bd
@@ -1441,16 +1487,16 @@ and according to Lemma \ref{lem:phNtoph}
 We have to prove bounds for lines \eqref{eq:squeez1} and \eqref{eq:squeez3}; line \eqref{eq:squeez2} is similar to line \eqref{eq:squeez3}.
 For line \eqref{eq:squeez3} we have the estimate
 \begin{align*}
-& \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(x) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_y W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
-& \leq \frac{\sqrt{N}}{\norm{s}^2+N}\left\lvert \int \di x\, \ph(x) \norm{a^\ast\big(J(x,\cdot)\big)W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \right\rvert\\
-& \leq \frac{C}{\sqrt{N}} \int \di x \lvert \ph(x)\rvert \norm{J(x,\cdot)}_{L^2} \norm{(\Ncal+1)^{1/2} W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
+& \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
+& \leq \frac{\sqrt{N}}{\norm{s}^2+N}\left\lvert \int \di y\, \ph(y) \norm{a^\ast(J_y)W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \right\rvert\\
+& \leq \frac{C}{\sqrt{N}} \int \di y \lvert \ph(y)\rvert \norm{J_y}_{L^2} \norm{(\Ncal+1)^{1/2} W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
 & \leq \frac{C}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{HS} \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{(\Ncal+1)W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
 & \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \scal{U_t \Omega}{(\Ncal+1)U_t \Omega},
 \end{align*}
 where in the last step Proposition \ref{p:TNT} (\ref{TNT}) has been used.
 For line \eqref{eq:squeez1} we have the estimate
 \begin{align*}
-& \left\lvert \frac{1}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_y a_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \right \rvert \\
+& \left\lvert \frac{1}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \right \rvert \\
 & \leq \frac{1}{\norm{s}^2+N} \norm{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}\norm{\di\Gamma(J) W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
 & \leq \frac{1}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{\Ncal^2 W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}}{N} \right)^{1/2} \\
 & \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{U_t \Omega}{(\Ncal+1)^2 U_t \Omega}}{N} \right)^{1/2} \\
@@ -1465,7 +1511,8 @@ According to Proposition \ref{prp:Nbound} $\scal{U_t \Omega}{\left(\Ncal + 1\rig
 \appendix
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
-The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
+\label{s:generatorestimates}
+The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
 
 In this section it is assumed that
 \[k(x,y) = - N w_N(x-y)\ph(x)\ph(y)\]
@@ -1545,15 +1592,14 @@ Leaving away the last summand, which is non-negative, we get
 \end{split}
 \end{equation}
 \estlist{9}{2}
-Using the product rule, integration by parts and the identity $-\nabla_x w_N(x-y) = \nabla_y w_N(x-y)$ we get
+Using the product rule and the identity $-\nabla_x w_N(y-x) = \nabla_y w_N(y-x)$ we get (where the $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable)
 \begin{align*}
- a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(x-\cdot)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\big(\nabla(-N w_N(x-\cdot)\ph(\cdot))\big) \\
- & + \cc{\nabla_x \ph(x)} a\big(-Nw_N(x-\cdot)\ph(\cdot)\big) + a(\nabla_x r_x).
+ a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(\cdot-x)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\big(\nabla\big(N w_N(\cdot-x)\ph(\cdot)\big)\big) \\
+ & + \cc{\nabla_x \ph(x)} a\big(-Nw_N(\cdot-x)\ph(\cdot)\big) + a(\nabla_x r_x).
 \end{align*}
-(The $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable.)
-Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and \eqr{agradnorm}, we now conclude
+Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and \eqr{agradnorm} we now conclude
 \begin{align*}
- & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
+ & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(-\Delta_x s_x) a(s_x)\psi} = \frac{1}{2}\int \di x\, \norm{a(\nabla_x s_x)\psi}^2 \\
 & \leq \frac{1}{2} \int \di x \Big( \lvert \ph(x)\rvert \norm{a\big(-Nw_N(x-\cdot)\nabla\ph(\cdot)\big)\psi} \\
 & \qquad\qquad\quad + \lvert \ph(x)\rvert \norm{a\big(\nabla(-N w_N(x-\cdot)\ph(\cdot))\big)\psi} \\
 & \qquad\qquad\quad + \lvert \nabla_x \ph(x)\rvert \norm{a\big(-Nw_N(x-\cdot)\ph(\cdot)\big)\psi} + \norm{a(\nabla_x r_x)\psi}  \Big)^2 \\
@@ -1902,7 +1948,7 @@ For the second estimate, differentiate the summands individually (i.\,e. place a
 
 
 \section{Hartree and Gross-Pitaevskii equations}
-
+\label{s:pde}
 
 In this section we prove uniform (i.\,e.\ independent of $N$) $H^n$
 regularity for the solutions of the modified Hartree equation and the
@@ -1912,7 +1958,8 @@ Gross-Pitaevskii equation as $N \to \infty$. We finally collect some
 estimates on the regularity of $\phdot$ and $\phddot$.
 
 
-\subsection{$H^n$-regularity}
+\subsection{Uniform $H^n$-regularity}
+\label{ss:regularity}
 
 
 \begin{thm} \label{t:pdes}% \label{c:reg2}
@@ -1951,6 +1998,9 @@ estimates on the regularity of $\phdot$ and $\phddot$.
   \end{equation}
 \end{thm}
 
+\begin{proof}
+Collect Lemmata... comment on $V = \delta$... TODO. \marginpar{TODO.} 
+\end{proof}
 
 \begin{proof}
   This theorem is a combined restatement of Proposition \ref{p:reg1},
@@ -2494,7 +2544,7 @@ as $N \to \infty$.
 
 \subsection{Regularity of $\phdot$ and $\phddot$}
 \label{sec:phdotreg}
-
+\label{ss:phdotreg}
 \begin{lem} \label{lm:phdotregularity}
 Let $\ph$ be a solution of the modified Hartree equation
 \be{modHartree}
@@ -2584,6 +2634,7 @@ Employing Lemma \ref{lm:phdotregularity} the proof is finished.
 \end{proof}
 
 \section{Bounds for the Bogoliubov Transformation}
+\label{s:bogbounds}
 \begin{lem}
 \label{lem:dottedests1}
 Let $p$ and $s$ be the integral kernels defined in Lemma \ref{l:bt}. Then, the following estimates hold:
@@ -2732,10 +2783,7 @@ and by Hardy's inequality, this is bounded by
 \leq C \int \di y \lvert \phdot(y)\rvert^2 \norm{\nabla \ph}_{L^2}^2 \norm{\nabla \ph}_{L^2}^2 \leq C \norm{\phdot}_{L^2}^2. \qedhere
 \ed
 \end{proof}
-
-\cite{*}
+\cite{*} CITE ALL
 \bibliographystyle{plain}
 \bibliography{gross-pitaevskii}
-
-
 \end{document}
