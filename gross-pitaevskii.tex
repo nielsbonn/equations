@@ -1965,14 +1965,14 @@ estimates on the regularity of $\phdot$ and $\phddot$.
 \begin{thm} \label{t:pdes}% \label{c:reg2}
   Let $\varphi \in H^n(\R^3)$ with $n \ge 2$ and $\| \varphi \|_{L^2} = 1$.
   Suppose that $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge
-  0$. For $N \ge 1$, consider a solution $\ph \in H^1(\R^3)$ of the modified
-  Hartree equation
+  0$. For $N \ge 1$, consider the solution $\ph \in H^1(\R^3)$ of the
+  modified Hartree equation
   \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
   \]
   with initial data $\varphi^{(N)}_0 = \varphi$, where $f_N V_N(x) = N^2
-  f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
+  f(Nx)V(Nx)$. Consider also the solution $\varphi_t \in H^1(\R^3)$ of the
   Gross-Pitaevskii equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
@@ -1989,18 +1989,15 @@ estimates on the regularity of $\phdot$ and $\phddot$.
     \| \varphi_t^{(N)} \|_{H^n} & \le C_n e^{K_n t}, & \qquad \| \varphi_t
     \|_{H^n} & \le C_n e^{K_n t}. \tag{ii}
   \end{alignat}
- Furthermore, there exist constants $C$ and $K$, depending only on $\|
- \varphi \|_{H^1}$, $\| \varphi \|_{H^2}$ and $\| fV \|_{L^1}$, such that,
- for all $N \geq 1$ and $t \geq 0$,
+  Furthermore, there exist constants $C$ and $K$, depending only on $\|
+  \varphi \|_{H^1}$, $\| \varphi \|_{H^2}$ and $\| fV \|_{L^1}$, such that,
+  for all $N \geq 1$ and $t \geq 0$,
   \begin{equation}
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}}.
     \tag{iii}
   \end{equation}
 \end{thm}
 
-\begin{proof}
-Collect Lemmata... comment on $V = \delta$... TODO. \marginpar{TODO.} 
-\end{proof}
 
 \begin{proof}
   This theorem is a combined restatement of Proposition \ref{p:reg1},
@@ -2085,7 +2082,7 @@ solutions that holds uniformly in time.
 
 \begin{prp} \label{p:reg1}
   Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider
-  a solution $\varphi_t \in H^1(\R^3)$ of the Hartree equation
+  the solution $\varphi_t \in H^1(\R^3)$ of the Hartree equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
     \varphi_t
@@ -2103,8 +2100,8 @@ solutions that holds uniformly in time.
 
 
 \begin{proof}
- Recall that $V \ge 0$. By conservation of mass and energy, and by
- Proposition \ref{p:energy},
+  Recall that $V \ge 0$. By conservation of mass and energy, and by
+  Proposition \ref{p:energy},
   \[
     \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
     \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \apprle \| \varphi
@@ -2125,7 +2122,7 @@ that holds locally in time.
 
 \begin{prp} \label{p:lregn}
   Let $\varphi \in H^n(\R^3)$ with $n \geq 2$, and let $V \in L^1(\R^3)$
-  with $V \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of the
+  with $V \ge 0$. Consider the solution $\varphi_t \in H^1(\R^3)$ of the
   Hartree equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
@@ -2172,13 +2169,13 @@ bounds for the $H^n$-norm that hold globally in time.
   e^{K_1 t}$ for some constants $B_1$ and $K_1$ that depend only on $\|
   \varphi \|_{H^1}$. This proves the desired estimate for $n=1$.
 
-
   Suppose that $\| \varphi_t \|_{H^{n-1}} \le B_{n-1} e^{K_{n-1} t}$, where
   $B_{n-1}$ is a constant that depends only on $\| \varphi \|_{H^j}$ for $1
   \le j \le n-1$, and $K_{n-1}$ is a constant that depends only on $\|
-  \varphi \|_{H^1}$. In view of Proposition \ref{p:lregn}, for any $t > 0$,
-  there exists an integer $j$, depending only on $B_1$ and $n$, such that
-  $(j-1)T < t \le jT$. Consequently,
+  \varphi \|_{H^1}$. By Proposition \ref{p:reg1}, we have $\| \varphi_t
+  \|_{H^1} \le B_1$ for all $t \ge 0$. Thus, by Proposition \ref{p:lregn},
+  for any $t > 0$, there exist a constant $T>0$ an integer $j$, depending
+  only on $B_1$ and $n$, such that $(j-1)T < t \le jT$. Therefore,
   \begin{align*}
     \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
     \|_{H^n} \\
@@ -2186,10 +2183,15 @@ bounds for the $H^n$-norm that hold globally in time.
     \varphi_s \|_{H^{n-1}}^3 \\
     & \le C \| \varphi_{(j-1)T} \|_{H^n} + B_{n-1}^3 e^{3 K_{n-1} j T},
   \end{align*}
-  where $C$ is a constant that depends only on $n$. Now observe that, since
-  $\| \varphi_t \|_{H^1} \le B_1$ for all $t \ge 0$, the constant $T$ can be
-  chosen uniformly in time. Thus, we can iterate the above expression $j$
-  times to cover the interval $[0,jT]$ and obtain
+  where $C$ is a constant that depends only on $n$. Since $\|
+  \varphi_{(j-2)T} \|_{H^1} < B_1$, similarly we have
+  \[
+    \| \varphi_{(j-1)T} \|_{H^n} \le \sup_{s \in [(j-2)T, (j-1)T]} \|
+    \varphi_s \|_{H^n} \le C \|
+    \varphi_{(j-2)T} \|_{H^n} + B_{n-1}^3 e^{3 K_{n-1} (j-1)T}.
+  \]
+  Thus we can iterate the above procedure $j$ times to cover the interval
+  $[0,t]$ and obtain
   \begin{align*}
     \| \varphi_t \|_{H^n} & \le C^j \| \varphi \|_{H^n} + (1+C) B_{n-1}^3
     \sum_{l=0}^j e^{3 K_{n-1} (j-l)T} \\
@@ -2399,14 +2401,14 @@ as $N \to \infty$.
 \begin{lem} \label{lem:phitN2phit}
   Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that
   $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
-  1$, consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the modified
+  1$, consider the solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the modified
   Hartree equation
   \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
   \]
   with initial data $\varphi^{(N)}_0 = \varphi$, where $f_N V_N(x) = N^2
-  f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
+  f(Nx)V(Nx)$. Consider also the solution $\varphi_t \in H^1(\R^3)$ of the
   Gross-Pitaevskii equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
@@ -2529,7 +2531,7 @@ as $N \to \infty$.
     \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C_3 e^{Kt} \|
     \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + \frac{C_3}{N} e^{Kt}.
   \]
-  Finally, by Gronwall's inequality,
+  Finally, by Gronwall's inequality (with reminder),
   \begin{align*}
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} & \le e^{\int_0^t C_3 e^{Ks} ds}
     \Big( \| \varphi_0^{(N)} - \varphi_0 \|_{L^2} + \int_0^t \frac{C_3}{N}
