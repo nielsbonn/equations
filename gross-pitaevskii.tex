@@ -1900,48 +1900,63 @@ and then using the Lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{
 For the second estimate, differentiate the summands individually (i.\,e. place a dot on the respective $f_{n,i}$) and then estimate all summands like before, now using lemma \ref{lm:deldelt}.
 \end{proof}
 
+
 \section{Hartree and Gross-Pitaevskii equations}
+
+
 In this section we prove uniform (i.\,e.\ independent of $N$) $H^n$
 regularity for the solutions of the modified Hartree equation and the
 Gross-Pitaevskii equation. We also prove that solutions $\varphi_t^{(N)}$ of
 the modified Hartree equation converge to solutions $\varphi_t$ of the
-Gross-Pitaevskii equation as $N \to \infty$. In subsection
-\ref{sec:phdotreg}, we collect some estimates on the regularity of $\phdot$
-and $\phddot$.
+Gross-Pitaevskii equation as $N \to \infty$. We finally collect some
+estimates on the regularity of $\phdot$ and $\phddot$.
+
+
+\subsection{$H^n$-regularity}
+
 
 \begin{thm} \label{t:pdes}% \label{c:reg2}
-  Let $\varphi \in H^n(\R^3)$ with $\| \varphi \|_{L^2} = 1$, and suppose that
-  $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
-  1$, consider a solution $\ph$ of the modified Hartree equation
+  Let $\varphi \in H^n(\R^3)$ with $n \ge 2$ and $\| \varphi \|_{L^2} = 1$.
+  Suppose that $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge
+  0$. For $N \ge 1$, consider a solution $\ph \in H^1(\R^3)$ of the modified
+  Hartree equation
   \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
   \]
   with initial data $\varphi^{(N)}_0 = \varphi$, where $f_N V_N(x) = N^2
-  f(Nx)V(Nx)$. Consider also a solution $\varphi_t$ of the Gross-Pitaevskii equation
+  f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
+  Gross-Pitaevskii equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
     \varphi_t
   \]
   with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$.
-  Then, there exist constants $C_1$ and $K_n$, which depend only on $\|
-  \varphi \|_{H^1}$ and $\| fV \|_{L^1}$, and a constant $C_n$, which
-  depends only on $\| \varphi \|_{H^n}$ and $\| fV \|_{L^1}$, such that, for
-  all $N \ge 1$ and $t \ge 0$,
+  Then, there exist constants $C_1$ and $K_n$, depending only on $\| \varphi
+  \|_{H^1}$ and $\| fV \|_{L^1}$, and a constant $C_n$, depending only on
+  $\| fV \|_{L^1}$ and $\| \varphi \|_{H^j}$ for $1 \le j \le n$, such that,
+  for all $N \ge 1$ and $t \ge 0$,
   \begin{alignat}{2}
     \| \varphi_t^{(N)} \|_{H^1} & \le C_1, & \qquad \| \varphi_t \|_{H^1} &
     \le C_1, \tag{i} \label{H1} \\
     \| \varphi_t^{(N)} \|_{H^n} & \le C_n e^{K_n t}, & \qquad \| \varphi_t
     \|_{H^n} & \le C_n e^{K_n t}. \tag{ii}
   \end{alignat}
- Furthermore, there exist constants $C$ and $K$, which depend only on $\| fV
- \|_{L^1}$ and $\| \varphi \|_{H^2}$, such that, for all $N \geq 1$
- and $t \geq 0$,
+ Furthermore, there exist constants $C$ and $K$, depending only on $\|
+ \varphi \|_{H^1}$, $\| \varphi \|_{H^2}$ and $\| fV \|_{L^1}$, such that,
+ for all $N \geq 1$ and $t \geq 0$,
   \begin{equation}
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}}.
     \tag{iii}
   \end{equation}
 \end{thm}
+
+
+\begin{proof}
+  This theorem is a combined restatement of Proposition \ref{p:reg1},
+  Corollary \ref{c:regn}, and Lemma \ref{lem:phitN2phit}, which are proved
+  below.
+\end{proof}
 
 
 The initial value problem for the Hartree equation
@@ -1969,7 +1984,20 @@ energy
 \]
 where $8 \pi a_0 = \int f V$.
 
-In this paper, we are mainly interested in what we call the modified Hartree equation, in which the potential $V$ is given by $N f_N V_N$. As we need regularity estimates which are independent of $N$, we must not use any other norm of $V$ than the $L^1$-norm, which is given by $\norm{N f_N V_N}_{L^1} = 8 \pi a_0$ and thus independent of $N$. The Gross-Pitaevskii equation formally can be seen as the limiting equation of the modified Hartree equation as $N f_N V_N \to 8 \pi a_0 \delta$ ($N \to \infty$).
+
+\marginpar{I modified this paragraph. Compare with your older version.}
+We are mainly interested in what we call the modified Hartree equation, in
+which the potential $V$ is given by $N f_N V_N$. As we need regularity
+estimates that are independent of $N$, we must not use any norm of
+\marginpar{\dots any norm of $V$ other than\dots(?)} $N f_N V_N$ other than
+the $L^1$-norm, which is given by $\norm{N f_N V_N}_{L^1} = \| fV \|_{L^1}$.
+The Gross-Pitaevskii equation can be formally \marginpar{\dots can be
+formally seen\dots(?)} seen as the limiting equation of the modified Hartree
+equation as $N f_N V_N \to 8 \pi a_0 \delta$ when $N \to \infty$.
+
+
+The next proposition provides an upper bound for the energy of both partial
+differential equations.
 
 
 \begin{prp} \label{p:energy}
@@ -2001,60 +2029,133 @@ In this paper, we are mainly interested in what we call the modified Hartree equ
 \end{proof}
 
 
-\subsection{Uniform $H^n$-Regularity}
+Using the above estimates, we obtain an upper bound for the $H^1$-norm of
+solutions that holds uniformly in time.
 
-\begin{prp}[$H^1$-Regularity] \label{p:reg1}
-  Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider a
-  solution $\varphi_t$ of the Hartree equation
+
+\begin{prp} \label{p:reg1}
+  Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider
+  a solution $\varphi_t \in H^1(\R^3)$ of the Hartree equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
     \varphi_t
   \]
-  with initial data $\varphi_0 = \varphi$. Then, there exists a constant $B_1$, depending only on $\| V \|_{L^1}$ and $\| \varphi
-  \|_{H^1}$, such that for all $t \geq 0$
-\[
-\norm{\varphi_t}_{H^1} \leq B_1. 
-\]
+  with initial data $\varphi_0 = \varphi$. Then, there exists a constant
+  $B_1$, depending only on $\| \varphi \|_{H^1}$ and $\| V \|_{L^1}$, such
+  that, for all $t \geq 0$,
+  \[
+    \norm{\varphi_t}_{H^1} \leq B_1. 
+  \]
+  Furthermore, the constant $B_1$ increases monotonically with respect to
+  $\| \varphi \|_{H^1}$. The exact same statement holds for solutions of the
+  Gross-Pitaevskii equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{prp}
+
+
 \begin{proof}
- Recall that $V \ge 0$. By conservation of mass and energy,
-  and by Proposition \ref{p:energy},
+ Recall that $V \ge 0$. By conservation of mass and energy, and by
+ Proposition \ref{p:energy},
   \[
     \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
     \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \apprle \| \varphi
-    \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4 \eqqcolon B_1^2. \qedhere
+    \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4 \eqqcolon B_1^2.
   \]
+  Clearly the constant $B_1$ increases monotonically with respect to $\|
+  \varphi \|_{H^1}$. This proves the first part of the proposition. The
+  proof of the estimate for solutions of the Gross-Pitaevskii equation is
+  similar.
 \end{proof}
 
+
+It turns out that the initial value problems for the Hartree and
+Gross-Pitaevskii equations are also well-posed in $H^n(\R^3)$ for $n \ge 2$.
+The next proposition provides an upper bound for the $H^n$-norm of solutions
+that holds locally in time.
+
+
 \begin{prp} \label{p:lregn}
-  Let $\varphi \in H^n(\R^3)$ with $n \geq 2$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider a
-  solution $\varphi_t$ of the Hartree equation
+  Let $\varphi \in H^n(\R^3)$ with $n \geq 2$, and let $V \in L^1(\R^3)$
+  with $V \ge 0$. Consider a solution $\varphi_t \in H^1(\R^3)$ of the
+  Hartree equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
     \varphi_t
   \]
-  with initial data $\varphi_0 = \varphi$. Then, there exist constants $T > 0$
-  and $C$, which depend only on $\| V \|_{L^1}$, $\| \varphi \|_{H^1}$ and
-  $n$, such that
+  with initial data $\varphi_0 = \varphi$. Then, there exists a constants $T
+  > 0$, depending only on $\| \varphi \|_{H^1}$, $\| V \|_{L^1}$ and $n$,
+  such that
   \[
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C \| \varphi \|_{H^n} + C
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3.
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C \| \varphi \|_{H^n} +
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3,
   \]
+  where $C$ is a constant that depends only on $n$. Furthermore, the
+  constant $T$ decreases monotonically with respect to $\| \varphi
+  \|_{H^1}$. The exact same statement holds for solutions of the
+  Gross-Pitaevskii equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{prp}
+
+
+We shall shortly prove this proposition. Before doing that, we first prove
+that by combining it with the global estimates for the $H^1$-norm, we obtain
+bounds for the $H^n$-norm that hold globally in time.
 
 
 \begin{cor}[$H^n$-Regularity] \label{c:regn}
   Under the hypothesis of Proposition \ref{p:lregn}, there exist constants
-  $B_n$ and $K_n$, where $B_n$ depends only on $\| V \|_{L^1}$, $\| \varphi
-  \|_{H^n}$ and $n$, and $K_n$ depends only on $\| V \|_{L^1}$, $\| \varphi
-  \|_{H^1}$ and $n$, such that for all $t \ge 0$
+  $B_n$ and $K_n$, where $B_n$ depends only on $\| \varphi \|_{H^j}$ for $1
+  \le j \le n$, $\| V \|_{L^1}$ and $n$, and $K_n$ depends only on $\|
+  \varphi \|_{H^1}$, $\| V \|_{L^1}$ and $n$, such that, for all $t \ge 0$,
   \[
     \| \varphi_t \|_{H^n} \le B_n e^{K_n t}.
   \]
+  The exact same statement holds for solutions of the Gross-Pitaevskii
+  equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{cor}
 
-The proof of Proposition \ref{p:lregn} is based on well-known Strichartz
-estimates for the free Schr\"odinger evolution and the following lemma.
+
+\begin{proof}
+  For simplicity, we will omit the dependence of the constants with respect
+  to $\| V \|_{L^1}$ and $n$.
+
+  The proof is by induction in $n$. First observe that, from Proposition
+  \ref{p:reg1}, it follows trivially that $\| \varphi_t \|_{H^1} \le B_1
+  e^{K_1 t}$ for some constants $B_1$ and $K_1$ that depend only on $\|
+  \varphi \|_{H^1}$. This proves the desired estimate for $n=1$.
+
+
+  Suppose that $\| \varphi_t \|_{H^{n-1}} \le B_{n-1} e^{K_{n-1} t}$, where
+  $B_{n-1}$ is a constant that depends only on $\| \varphi \|_{H^j}$ for $1
+  \le j \le n-1$, and $K_{n-1}$ is a constant that depends only on $\|
+  \varphi \|_{H^1}$. In view of Proposition \ref{p:lregn}, for any $t > 0$,
+  there exists an integer $j$, depending only on $B_1$ and $n$, such that
+  $(j-1)T < t \le jT$. Consequently,
+  \begin{align*}
+    \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
+    \|_{H^n} \\
+    & \le C \| \varphi_{(j-1)T} \|_{H^n} + \sup_{s \in [(j-1)T, jT]} \|
+    \varphi_s \|_{H^{n-1}}^3 \\
+    & \le C \| \varphi_{(j-1)T} \|_{H^n} + B_{n-1}^3 e^{3 K_{n-1} j T},
+  \end{align*}
+  where $C$ is a constant that depends only on $n$. Now observe that, since
+  $\| \varphi_t \|_{H^1} \le B_1$ for all $t \ge 0$, the constant $T$ can be
+  chosen uniformly in time. Thus, we can iterate the above expression $j$
+  times to cover the interval $[0,jT]$ and obtain
+  \begin{align*}
+    \| \varphi_t \|_{H^n} & \le C^j \| \varphi \|_{H^n} + (1+C) B_{n-1}^3
+    \sum_{l=0}^j e^{3 K_{n-1} (j-l)T} \\
+    & \le \| \varphi \|_{H^n} (C^{2 T^{-1}})^{jT/2} + (1+C) B_{n-1}^3
+    (1-e^{-3K_{n-1} T})^{-1} e^{6 K_{n-1} jT/2} \\
+    & \le B_n e^{K_n t},
+  \end{align*}
+  for some constant $B_n$ depending only on $\| \varphi \|_{H^j}$ for $1 \le
+  j \le n$, and some constant $K_n$ depending only on $\| \varphi \|_{H^1}$.
+  This completes the induction step and the proof of the corollary.
+\end{proof}
+
+
+We next prove Proposition \ref{p:lregn}. Its proof is based on well-known
+Strichartz estimates for the free Schr\"odinger evolution and the following
+lemma, which we prove first.
 
 
 For $T > 0$ set
@@ -2094,12 +2195,12 @@ For $T > 0$ set
 
 
 \begin{proof}[Proof of Proposition \ref{p:lregn}]
-  First, the Hartree equation is rewritten as an integral equation:
+  The Hartree equation in integral form is
   \[
     \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
     |\varphi_s|^2) \varphi_s.
   \]
-  Differentiating this equation w.\,r.\,t.\ the spatial variables and using integration by parts we find that
+  Differentiating this equation we find that
   \[
     \partial^\alpha \varphi_t = e^{it \Delta} \partial^\alpha \varphi - i
     \int_0^t ds \, e^{i(t-s) \Delta} \sum_{\beta \le \alpha} \sum_{\nu \le
@@ -2116,22 +2217,20 @@ For $T > 0$ set
   Strichartz estimates for the free Schr\"odinger evolution $e^{it\Delta}$
   (see \cite[Theorem 1.2]{KT}). By these estimates, triangle inequality, Lemma
   \ref{l:interp}, and H\"older's inequality,
-  \begin{equation} \label{Dphi}
-    \begin{split}
-      & \| \partial^\alpha \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} - \|
-      \partial^\alpha \varphi \|_{L^2} \\
-      & \le \sum_{\beta \le \alpha} \sum_{\nu \le \beta} \binom{\alpha}{\beta}
-      \binom{\beta}{\nu} \| \big( V * (\partial^\nu
-      \overline{\varphi_{(\cdot)}} \partial^{\beta - \nu} \varphi_{(\cdot)})
-      \big) \partial^{\alpha - \beta} \varphi_{(\cdot)} \|_{L_t^2 L_x^{6/5}}
-      \\
-      & \le \| V \|_{L^1} T^{1/2} \sum_{\beta \le \alpha} \sum_{\nu \le \beta}
-      \binom{\alpha}{\beta} \binom{\beta}{\nu} \sup_{t \in [0,T]} \|
-      \partial^\nu \varphi_t \|_{L^{p_1}} \| \partial^{\beta - \nu} \varphi_t
-      \|_{L^{p_2}} \sup_{t \in [0,T]} \| \partial^{\alpha - \beta} \varphi_t
-      \|_{L^{p_3}}
-    \end{split}
-  \end{equation}
+  \begin{align}
+    & \| \partial^\alpha \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} - \|
+    \partial^\alpha \varphi \|_{L^2} \notag \\
+    & \le \sum_{\beta \le \alpha} \sum_{\nu \le \beta} \binom{\alpha}{\beta}
+    \binom{\beta}{\nu} \| \big( V * (\partial^\nu
+    \overline{\varphi_{(\cdot)}} \partial^{\beta - \nu} \varphi_{(\cdot)})
+    \big) \partial^{\alpha - \beta} \varphi_{(\cdot)} \|_{L_t^2 L_x^{6/5}}
+    \notag \\
+    & \le \| V \|_{L^1} T^{1/2} \sum_{\beta \le \alpha} \sum_{\nu \le \beta}
+    \binom{\alpha}{\beta} \binom{\beta}{\nu} \sup_{t \in [0,T]} \|
+    \partial^\nu \varphi_t \|_{L^{p_1}} \| \partial^{\beta - \nu} \varphi_t
+    \|_{L^{p_2}} \sup_{t \in [0,T]} \| \partial^{\alpha - \beta} \varphi_t
+    \|_{L^{p_3}} \label{Dphi}
+  \end{align}
   with $p_1^{-1} + p_2^{-1} + p_3^{-1} = 5/6$. Note that $(p_1, p_2, p_3)$ can
   be chosen differently for each term in the summation. We will appropriatedly
   choose it to be either $(2,6,6)$, $(6,2,6)$ or $(6,6,2)$, as we describe
@@ -2153,129 +2252,123 @@ For $T > 0$ set
   \[
     \| \partial^\gamma \varphi_t \|_{L^2} \le \| \varphi_t \|_{H^{|\gamma|}}.
   \]
+  We will estimate all terms in \eqref{Dphi} using these two inequalities.
 
 
-  Now, consider a term that has a factor with derivative of highest order
-  $|\alpha| - k$, where $k$ is an integer such that $0 \le k \le |\alpha| -
-  2$, and let $\gamma_1$ and $\gamma_2$ be the multi-indexes in the
-  derivatives of the other two factors in this term. Note that $|\gamma_1 +
-  \gamma_2|=k$ so that $|\gamma_1| \le k$ and $|\gamma_2| \le k$. Hence, using
-  the above estimates to bound the factor with highest order derivative and
-  the other two factors, we conclude that the term under consideration is
+  Let $k$ be an integer such that $1 \le k \le |\alpha|$, and consider a
+  term in \eqref{Dphi} whose factor of highest order derivative has order
+  $k$. Let $\gamma_1$ and $\gamma_2$ be the multi-indexes in the derivatives
+  of the other two factors in this term. Note that $|\gamma_1 + \gamma_2| =
+  |\alpha|-k$. By proceeding as described in the above paragraph, we
+  conclude that the term under consideration is bounded by a constant times
+  \begin{equation} \label{quant}
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\gamma_1|+1}} \sup_{t \in [0,T]}
+    \| \varphi_t \|_{H^{|\gamma_2|+1}} \sup_{t \in [0,T]} \| \varphi_t
+    \|_{H^k}.
+  \end{equation}
+  Observe that, by varying $k$ in the range $1 \le k \le |\alpha|$, we
+  exhaust all terms in \eqref{Dphi}. We next estimate \eqref{quant} by
+  considering different values of $k$ separately. 
+
+
+  If $|\alpha|=1$ and $k=1$, then $|\gamma_1|=|\gamma_2|=0$, so that
+  \eqref{quant} is bounded by
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^3.
+  \]
+  Let $|\alpha|=2$. If $k=1$, then either $|\gamma_1|=1$ and $|\gamma_2|=0$,
+  or $|\gamma_1|=0$ and $|\gamma_2|=1$. If $k=2$, then $|\gamma_1| =
+  |\gamma_2| = 0$. In all these cases \eqref{quant} is bounded by
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^2 \sup_{t \in [0,T]} \|
+    \varphi_t \|_{H^2}.
+  \]
+  If $|\alpha| = 3$ and $k = 1$, then $|\gamma_1|=|\gamma_2|=1$, and thus
+  \eqref{quant} is bounded by
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^2}^2 \sup_{t \in [0,T]} \|
+    \varphi_t \|_{H^1}.
+  \]
+  If $|\alpha| \ge 3$ and $2 \le k < |\alpha|$, then $|\gamma_1| \le
+  |\alpha| - 2 $ and $|\gamma_2| \le |\alpha|-2$, and \eqref{quant} is
   bounded by
-  \begin{align*}
-    & \apprle \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\gamma_1|+1}} \sup_{t
-    \in [0,T]} \| \varphi_t \|_{H^{|\gamma_2|+1}} \sup_{t \in [0,T]} \|
-    \varphi_t \|_{H^{|\alpha|-k}} \\
-    & \le \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|k|+1}}^2 \sup_{t \in [0,T]}
-    \| \varphi_t \|_{H^{|\alpha|-k}}.
-  \end{align*}
-  Observe that, by varying $k$ in the range $0 \le k \le |\alpha|-2$, we can
-  estimate all terms in \eqref{Dphi}. In fact, it follows that
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\alpha|-1}}^3.
+  \]
+  If $|\alpha| \ge 3$ and $k=|\alpha|$, then $|\gamma_1|=|\gamma_2|=0$, so
+  that \eqref{Dphi} is bounded by
+  \[
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^2 \sup_{t \in [0,T]} \|
+    \varphi_t \|_{H^{|\alpha|}}.
+  \]
+  We have considered all possible values for $|\alpha|$ and $k$.
+  
+  
+  Combining the above estimates with \eqref{Dphi}, we find that, for any
+  $\alpha$ obeying $0 \le |\alpha| \le n$,
   \begin{equation} \label{dal}
     \begin{split}
       & \sup_{t \in [0,T]} \| \partial^\alpha \varphi_t \|_{L^2} \\
       & \le \| \partial^\alpha \varphi \|_{L^2} + C_1 4^{|\alpha|} \| V
       \|_{L^1} T^{1/2} \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^2
       \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\alpha|}} + \sup_{t \in [0,T]}
-      \| \varphi_t \|_{H^{|\alpha|-1}}^3 \Big]
+      \| \varphi_t \|_{H^{|\alpha|-1}}^3 \Big],
     \end{split}
   \end{equation}
-  for some universal constant $C_1$. By Proposition \ref{p:reg1}, there is a
-  constant $C_2$, depending only on $\| V \|_{L^1}$ and $\| \varphi \|_{H^1}$,
-  such that $\| \varphi_t \|_{H^1} \le C_2$. Furthermore, there are universal
-  constants $c$ and $C$ such that
+  where $C_1$ is a universal constant. By Proposition \ref{p:reg1}, there is a
+  constant $B_1$, depending only on $\| V \|_{L^1}$ and monotonically
+  increasing on $\| \varphi \|_{H^1}$, such that $\| \varphi_t \|_{H^1} \le
+  B_1$. Thus, by summing \eqref{dal} over $|\alpha| \le n$, we get
   \[
-    c \sum_{|\alpha| \le n} \| \partial^\alpha f \|_{L^2} \le \| f \|_{H^n}
-    \le C \sum_{|\alpha| \le n} \| \partial^\alpha f \|_{L^2}.
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C_3 \| \varphi \|_{H^n} +
+    C_4 T^{1/2} \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} + \sup_{t \in
+    [0,T]} \| \varphi_t \|_{H^{n-1}}^3 \Big],
   \]
-  Thus, by summing \eqref{dal} over $|\alpha| \le n$, we obtain
+  for some constant $C_3$ depending only on $n$, and some constant $C_4$
+  depending only on $\| V \|_{L^1}$ and monotonically increasing on $\|
+  \varphi \|_{H^1}$ and $n$. Therefore, by choosing $T > 0$ such that $C_4
+  T^{1/2} \le 1/2$, we obtain
   \[
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C_1 \| \varphi \|_{H^n} + C_2
-    T^{1/2} 4^n n \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} + \sup_{t \in
-    [0,T]} \| \varphi_t \|_{H^{n-1}}^3 \Big]
+    \sup_{t \in [0,T_n]} \| \varphi_t \|_{H^n} \le 2 C_3 \| \varphi \|_{H^n}
+    + \sup_{t \in [0,T_n]} \| \varphi_t \|_{H^{n-1}}^3.
   \]
-  for some constants $C_1$ and $C_2$ as above. Therefore, by choosing $T > 0$
-  sufficiently small, but depending only on $\| V \|_{L^1}$, $\| \varphi
-  \|_{H^1}$ and $n$, we conclude that
-  \[
-    \sup_{t \in [0,T_n]} \| \varphi_t \|_{H^n} \le C \| \varphi \|_{H^n} + C
-    \sup_{t \in [0,T_n]} \| \varphi_t \|_{H^{n-1}}^3,
-  \]
-  where $C$ is a constant that depends only on $\| V \|_{L^1}$, $\| \varphi
-  \|_{H^1}$ and $n$.
-\end{proof}
-
-
-\begin{proof}[Proof of Corollary \ref{c:regn}]
-  For simplicity, we will omit the dependence of the constants with respect to
-  $\| V \|_{L^1}$.
-
-  We prove that $\| \varphi_t \|_{H^n} \le B_n e^{K_n t}$ by induction in
-  $n$. First observe that, from Proposition \ref{p:reg1}, it follows trivially that
-  $\| \varphi_t \|_{H^1} \le B_1 e^{K_1 t}$ for some constants $B_1$ and $K_1$
-  that depend only on $\| \varphi \|_{H^1}$. This proves the desired estimate
-  for $n=1$.
-
-
-  Suppose that $\| \varphi_t \|_{H^{n-1}} \le B_{n-1} e^{K_{n-1} t}$, where
-  $B_{n-1}$ is a constant that depends only on $\| \varphi \|_{H^{n-1}}$ and
-  $n-1$, and $K_{n-1}$ is a constant that depends only on $\| \varphi
-  \|_{H^1}$ and $n-1$. In view of Proposition \ref{p:lregn}, for any $t > 0$,
-  we can find an integer $j$ sufficiently large, depending only on $\|
-  \varphi_{(j-1)T} \|_{H^1}$ and $n$, such that $0 < t/j < T$.
-  Consequently,
-  \begin{align*}
-    \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
-    \|_{H^n} \\
-    & \le C \| \varphi_{(j-1)T} \|_{H^n} + C \sup_{s \in [(j-1)T,
-    jT]} \| \varphi_s \|_{H^{n-1}}^3 \\
-    & \le C \| \varphi_{(j-1)T} \|_{H^n} + C B_{n-1}^3 e^{3 K_{n-1} j
-    T},
-  \end{align*}
-  where $C$ is a constant that depends only on $\| \varphi_{(j-1)T}
-  \|_{H^1}$ and $n$. Now observe that, since $\| \varphi_{(j-1)T} \|_{H^1}
-  \le B_1$, the constants $T$ and $C$ can be chosen uniformly in time. Thus,
-  we can iterate de above expression $j$ times to cover the interval $[0,t]$
-  and obtain
-  \begin{align*}
-    \| \varphi_t \|_{H^n} & \le C^j \| \varphi \|_{H^n} + C B_n^3
-    \sum_{l=1}^j e^{3 K_{n-1} (j-l+1)T} \\
-    & \le (C^{2T^{-1}})^t \| \varphi \|_{H^n} + C B_{n-1}^3
-    \frac{2t}{T} e^{3 K_{n-1} t} \le B_n e^{K_n t},
-  \end{align*}
-  for some constant $B_n$ depending only on $\| V \|_{L^1}$, $\| \varphi
-  \|_{H^n}$ and $n$, and some constant $K_n$ depending only on $\| V
-  \|_{L^1}$, $\| \varphi \|_{H^1}$ and $n$. This completes the induction step
-  and the proof of the corollary.
+  This is the desired estimate. Observe that $T$ depends only on $\| V
+  \|_{L^1}$, $\| \varphi \|_{H^1}$ and $n$, and decreases monotonically with
+  respect to $\| \varphi \|_{H^1}$.
 \end{proof}
 
 
 \subsection{$\ph$ converges to $\varphi_t$ in $L^2$}
 
 
-\begin{lem}
-\label{lem:phitN2phit}
-  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that $f
-  \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N > 0$,
-  consider a solution $\varphi_t^{(N)}$ of the modified Hartree equation
+The next lemma says that solutions $\varphi_t^{(N)}$ of the modified Hartree
+equation converge to solutions $\varphi_t$ of the Gross-Pitaevskii equation
+as $N \to \infty$.
+
+
+\begin{lem} \label{lem:phitN2phit}
+  Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that
+  $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
+  1$, consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the modified
+  Hartree equation
   \[
     i \partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + (N f_N V_N *
     |\varphi_t^{(N)}|^2) \varphi_t^{(N)}
   \]
   with initial data $\varphi^{(N)}_0 = \varphi$, where $f_N V_N(x) = N^2
-  f(Nx)V(Nx)$. Consider also a solution $\varphi_t$ of the Gross-Pitaevskii equation
+  f(Nx)V(Nx)$. Consider also a solution $\varphi_t \in H^1(\R^3)$ of the
+  Gross-Pitaevskii equation
   \[
     i \partial_t \varphi_t = - \Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2
     \varphi_t
   \]
-  with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$. Then,
-  for all $N > 0$ and $t \ge 0$,
+  with initial data $\varphi_0 = \varphi$, where $8 \pi a_0 = \int f V$.
+  Then, for all $N \ge 1$ and $t \ge 0$,
   \[
     \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le \frac{C}{N} e^{e^{K t}},
   \]
-  where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$,
-  $a_0$ and $\| \varphi \|_{H^2}$.
+  where $C$ and $K$ are constants that depend only on $\| \varphi \|_{H^1}$,
+  $\| \varphi \|_{H^2}$ and $\| fV \|_{L^1}$.
 \end{lem}
 
 
@@ -2311,30 +2404,32 @@ For $T > 0$ set
   \end{align*}
   By triangle inequality, Sobolev's inequality, and Young's inequality,
   \begin{align*}
-    & |\langle \varphi_t, N f_N V_N * \big(|\varphi_t^{(N)}|^2 - |\varphi_t|^2\big)
-    (\varphi_t - \varphi_t^{(N)}) \rangle| \\
-    & \le \int \di x\, |\varphi_t(x)| |\varphi_t(x) - \varphi_t^{(N)}(x)| \int \di y\, N
-    f_N V_N(x-y) \big(|\varphi_t^{(N)}(y)| + |\varphi_t(y)|\big) |\varphi_t^{(N)}(y) -
-    \varphi_t(y)| \\
+    & |\langle \varphi_t, N f_N V_N * \big(|\varphi_t^{(N)}|^2 -
+    |\varphi_t|^2\big) (\varphi_t - \varphi_t^{(N)}) \rangle| \\
+    & \le \int \di x\, |\varphi_t(x)| |\varphi_t(x) - \varphi_t^{(N)}(x)|
+    \int \di y\, N f_N V_N(x-y) \big(|\varphi_t^{(N)}(y)| +
+    |\varphi_t(y)|\big) |\varphi_t^{(N)}(y) - \varphi_t(y)| \\
     & \le \| \varphi_t \|_{L^\infty} ( \| \varphi_t^{(N)} \|_{L^\infty} + \|
     \varphi_t \|_{L^\infty} ) \int dx dy \, |\varphi_t(x) -
-    \varphi_t^{(N)}(x)| N f_N V_N(x-y) |\varphi_t^{(N)}(y) - \varphi_t(y)| \\
+    \varphi_t^{(N)}(x)| N f_N V_N(x-y) |\varphi_t^{(N)}(y) - \varphi_t(y)|
+    \\
     & \apprle \| \varphi_t \|_{H^2} ( \| \varphi_t^{(N)} \|_{H^2} + \|
     \varphi_t \|_{H^2} ) \| fV \|_{L^1} \| \varphi_t^{(N)} - \varphi_t
     \|_{L^2}^2.
   \end{align*}
   Thus, substituting all this into \eqref{ddt}, and using Corollary
-  \ref{c:regn} and Proposition \ref{p:reg1} to estimate $\| \varphi_t^{(N)} \|_{H^1}$, $\|
+  \ref{c:regn} and Proposition \ref{p:reg1} to estimate $\| \varphi_t^{(N)}
+  \|_{H^1}$, $\|
   \varphi_t^{(N)} \|_{H^2}$, $\| \varphi_t \|_{H^1}$ and $\| \varphi_t
   \|_{H^2}$, we obtain
   \begin{equation} \label{endproof2}
-    \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C \| \varphi
-    \|_{H^2}^2 e^{Kt} \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + C \| N f_N
-    V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3},
+    \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C e^{Kt} \|
+    \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + C \| N f_N V_N * |\varphi_t|^2
+    - 8 \pi a_0 |\varphi_t|^2 \|_{L^3},
   \end{equation}
-  where $C$ and $K$ are constants that depend only on $\| fV \|_{L^1}$ and $\|
-  \varphi \|_{H^1}$. We are left to estimating the second term in
-  \eqref{endproof2}.
+  where $C$ and $K$ are constants that depend only on $\| \varphi \|_{H^1}$,
+  $\| \varphi \|_{H^2}$ and $\| fV \|_{L^1}$. We are left to estimating the
+  second term in \eqref{endproof2}.
 
 
   Write
@@ -2343,20 +2438,20 @@ For $T > 0$ set
     \big( |\varphi_t(x-y)|^2 - |\varphi_t(x)|^2 \big) N^3 fV(Ny) \\
     & = \int dz \big( |\varphi_t(x-z/N)|^2 - |\varphi_t(x)|^2 \big) fV(z),
   \end{align*}
-  and let $R$ be such that $\text{supp} \ V \subset \{ x \in \R^3 : |x| \le R \}$.
-  By Minkowski's, H\"older's, and Sobolev's inequalities,
+  and let $R$ be such that $\text{supp} \ V \subset \{ x \in \R^3 : |x| \le
+  R \}$. By Minkowski's, H\"older's, and Sobolev's inequalities,
   \begin{align*}
-    \| N f_N V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3} & \le \int
-    dz \, \| |\varphi_t(\, \cdot \, -z/N)|^2 - |\varphi_t|^2 \|_{L^3} |fV(z)|
-    \\
-    & \le \| fV \|_{L^1} \sup_{|z| \le R} \| |\varphi_t(\, \cdot \, - z/N)|^2
-    - |\varphi_t|^2 \|_{L^3}.
+    \| N f_N V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3} & \le
+    \int dz \, \| |\varphi_t(\, \cdot \, -z/N)|^2 - |\varphi_t|^2 \|_{L^3}
+    |fV(z)| \\
+    & \le \| fV \|_{L^1} \sup_{|z| \le R} \| |\varphi_t(\, \cdot \, -
+    z/N)|^2 - |\varphi_t|^2 \|_{L^3}.
   \end{align*}
   Given $\varepsilon = 1/N$, there exists $\psi_t \in C^\infty(\R^3)$ such
   that $\| \varphi_t - \psi_t \|_{H^2} < 1/N$. Hence, by H\"older's
   inequality, Sobolev's inequality and an $\varepsilon/3$-argument, the mean
-  value theorem (with some constant $0 \le c \le 1$), and Sobolev's inequality
-  again,
+  value theorem (with some constant $0 \le c \le 1$), and Sobolev's
+  inequality again,
   \begin{align*}
     \| |\varphi_t(\, \cdot \, - z/N)|^2 - |\varphi_t|^2 \|_{L^3} & \le 2 \|
     \varphi_t \|_{L^6} \| |\varphi_t(\, \cdot \, - z/N)| - |\varphi_t|
@@ -2375,23 +2470,25 @@ For $T > 0$ set
     & \| N f_N V_N * |\varphi_t|^2 - 8 \pi a_0 |\varphi_t|^2 \|_{L^3} \\
     & \apprle \| fV \|_{L^1} \| \varphi_t \|_{H^1} \Big( \frac{1}{N} +
     \frac{R}{N^2} + \frac{R}{N} \| \varphi_t \|_{H^2} \Big) \le
-    \frac{C}{N}(1 + \| \varphi_t \|_{H^2}) \le \frac{2C}{N} \| \varphi
-    \|_{H^2} e^{Kt},
+    \frac{C_1}{N}(1 + \| \varphi_t \|_{H^2}) \le \frac{C_2}{N} e^{Kt},
   \end{align*}
-  where $C$ is a constant that depends only on $\| fV \|_{L^1}$, $a_0$ and $\|
-  \varphi \|_{H^1}$. Substituting this into \eqref{endproof2}, we obtain
+  where $C_2$ is a constant that depends only on $\| \varphi \|_{H^1}$, $\|
+  \varphi \|_{H^2}$ and $\| fV \|_{L^1}$. Substituting this into
+  \eqref{endproof2}, we obtain
   \[
-    \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C e^{Kt} \|
-    \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + \frac{C}{N} e^{Kt}.
+    \partial_t \| \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 \le C_3 e^{Kt} \|
+    \varphi_t^{(N)} - \varphi_t \|_{L^2}^2 + \frac{C_3}{N} e^{Kt}.
   \]
   Finally, by Gronwall's inequality,
-  \[
-    \| \varphi_t^{(N)} - \varphi_t \|_{L^2} \le e^{K^{-1} C e^{Kt}} \Big( \|
-    \varphi_0^{(N)} - \varphi_0 \|_{L^2} + \frac{C}{KN} e^{Kt} \Big) \le
-    \frac{C_2}{N} e^{e^{K_2 t}},
-  \]
-  for some constants $C_2$ and $K_2$ depending only on $\| fV \|_{L^1}$,
-  $a_0$, and $\| \varphi \|_{H^2}$.
+  \begin{align*}
+    \| \varphi_t^{(N)} - \varphi_t \|_{L^2} & \le e^{\int_0^t C_3 e^{Ks} ds}
+    \Big( \| \varphi_0^{(N)} - \varphi_0 \|_{L^2} + \int_0^t \frac{C_3}{N}
+    e^{Ks} ds \big) \\
+    & = e^{K^{-1} C_3 e^{Kt}} \Big( \| \varphi_0^{(N)} - \varphi_0 \|_{L^2}
+    + \frac{C_3}{KN} e^{Kt} \Big) \le \frac{C_4}{N} e^{e^{K_1 t}},
+  \end{align*}
+  for some constants $C_4$ and $K_1$ depending only on $\| \varphi
+  \|_{H^1}$, $\| \varphi \|_{H^2}$ and $\| fV \|_{L^1}$.
 \end{proof}
 
 
