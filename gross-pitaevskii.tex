@@ -2127,18 +2127,17 @@ that holds locally in time.
     \varphi_t
   \]
   with initial data $\varphi_0 = \varphi$. Then, there exists a constants $T
-  > 0$, depending only on $\| \varphi \|_{H^1}$, $\| V \|_{L^1}$ and $n$,
+  > 0$, depending only on $\| \varphi_0 \|_{H^1}$, $\| V \|_{L^1}$ and $n$,
   such that
-  \[
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C \| \varphi \|_{H^n} +
+  \begin{equation}\label{eq:preregularity}
+    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C \| \varphi_0 \|_{H^n} +
     \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3,
-  \]
+  \end{equation}
   where $C$ is a constant that depends only on $n$. Furthermore, the
-  constant $T$ decreases monotonically with respect to $\| \varphi
+  constant $T$ decreases monotonically with respect to $\| \varphi_0
   \|_{H^1}$. The exact same statement holds for solutions of the
   Gross-Pitaevskii equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{prp}
-
 
 We shall shortly prove this proposition. Before doing that, we first prove
 that by combining it with the global estimates for the $H^1$-norm, we obtain
@@ -2159,6 +2158,7 @@ bounds for the $H^n$-norm that hold globally in time.
 
 
 \begin{proof}
+The proof is based on the fact that $T$ in Proposition \ref{p:lregn} depends only on the $H^1$-norm: As the $H^1$-norm is bounded uniformly in time, \eqref{eq:preregularity} can be iterated. 
   For simplicity, we will omit the dependence of the constants with respect
   to $\| V \|_{L^1}$ and $n$.
 
@@ -2171,9 +2171,13 @@ bounds for the $H^n$-norm that hold globally in time.
   $B_{n-1}$ is a constant that depends only on $\| \varphi \|_{H^j}$ for $1
   \le j \le n-1$, and $K_{n-1}$ is a constant that depends only on $\|
   \varphi \|_{H^1}$. By Proposition \ref{p:reg1}, we have $\| \varphi_t
-  \|_{H^1} \le B_1$ for all $t \ge 0$. Thus, by Proposition \ref{p:lregn},
-  for any $t > 0$, there exist a constant $T>0$ an integer $j$, depending
+  \|_{H^1} \le B_1$ for all $t \ge 0$.
+%
+ Thus by Proposition \ref{p:lregn} there exist a constant $T>0$, depending \marginpar{modified this a bit, please check that I understood this correctly}
+  only on $B_1$ and $n$, such that \eqref{eq:preregularity} holds on arbitrary intervals of length $T$. Now for
+ any $t > 0$ there exists an integer $j$, depending
   only on $B_1$ and $n$, such that $(j-1)T < t \le jT$. Therefore,
+%
   \begin{align*}
     \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
     \|_{H^n} \\
