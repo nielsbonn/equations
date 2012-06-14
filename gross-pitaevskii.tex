@@ -1575,8 +1575,8 @@ Using \eqref{eq:bound1B} and integration by parts we get
 \estlist{9}{1}
 First notice that
 \begin{align*}
- & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} = \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(\nabla_x c_x)a(\nabla_x c_x)\psi} \\
-& = \scal{\psi}{\frac{1}{2}\int \di x \big( \nabla_x a^\ast_x + a^\ast(\nabla_x p_x) \big)\big(  \nabla_x a_x + a(\nabla_x p_x) \big) \psi} \\
+ & \scal{\psi}{\frac{1}{2}\int \di x\, a^\ast(c_x) a(-\Delta_x c_x)\psi} = \frac{1}{2}\int \di x \scal{a(\nabla_x c_x)\psi}{a(\nabla_x c_x)\psi} \\
+& = \frac{1}{2}\int \di x \scal{\big( \nabla_x a_x + a(\nabla_x p_x) \big)\psi}{\big(  \nabla_x a_x + a(\nabla_x p_x) \big) \psi} \\
 & = \scal{\psi}{\frac{1}{2}\Kcal \psi} + \frac{1}{2}\int \di x\scal{\nabla_x
 a_x \psi}{a(\nabla_x p_x)\psi} \\
 & \quad + \frac{1}{2}\int \di x\, \scal{a(\nabla_x p_x)\psi}{\nabla_x a_x \psi} + \frac{1}{2}\int \di x\, \norm{a(\nabla_x p_x)\psi}^2.
@@ -2173,7 +2173,7 @@ The proof is based on the fact that $T$ in Proposition \ref{p:lregn} depends onl
   \varphi \|_{H^1}$. By Proposition \ref{p:reg1}, we have $\| \varphi_t
   \|_{H^1} \le B_1$ for all $t \ge 0$.
 %
- Thus by Proposition \ref{p:lregn} there exist a constant $T>0$, depending \marginpar{modified this a bit, please check that I understood this correctly}
+ Thus by Proposition \ref{p:lregn} there exist a constant $T>0$, depending 
   only on $B_1$ and $n$, such that \eqref{eq:preregularity} holds on arbitrary intervals of length $T$. Now for
  any $t > 0$ there exists an integer $j$, depending
   only on $B_1$ and $n$, such that $(j-1)T < t \le jT$. Therefore,
