@@ -116,15 +116,16 @@ We consider a system of $N$ identical bosons with repulsive interaction. This sy
 \bd
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N N^3 V(N(x_i-x_j)).
 \ed
-We assume that the unscaled potential $V \in C^\infty_c(\Rbb^3)$ is non-negative and spherically symmetric. We choose $R \in \Rbb$ such that $\operatorname{supp} V \subset \{x \in \Rbb^3 : \lvert x\rvert \leq R \}$. The scaling is chosen in such a way that for $N \to \infty$ formally $N^3 V(N(x_i-x_j)) \to \delta(x_i-x_j) b_0$, where $b_0 = \int V$.
+We assume that the unscaled potential $V \in C^\infty_c(\Rbb^3)$ is
+non-negative and spherically symmetric. \marginpar{*} We choose $R \in \Rbb$ such that $\operatorname{supp} V \subset \{x \in \Rbb^3 : \lvert x\rvert \leq R \}$. The scaling is chosen in such a way that for $N \to \infty$ formally $N^3 V(N(x_i-x_j)) \to \delta(x_i-x_j) b_0$, where $b_0 = \int V$.
 
-We use the short-hand $V_N(x) = N^2 V(Nx)$.
+\marginpar{*} We use the short-hand $V_N(x) = N^2 V(Nx)$.
 
 We are interested in the time evolution of factorized initial wave functions, which we see as a model for a Bose-Einstein condensate in a trap:
 \bd
 \psi_N(x_1,\ldots x_N) = \prod_{j=1}^N \varphi(x_j),
 \ed
-where $\varphi \in H^4(\Rbb^3)$ is a one-particle wave function normalized to $\norm{\varphi}_{L^2} = 1$. The time evolution is given by the solution to the Schr\"odinger equation 
+\marginpar{*} where $\varphi \in H^4(\Rbb^3)$ is a one-particle wave function normalized to $\norm{\varphi}_{L^2} = 1$. The time evolution is given by the solution to the Schr\"odinger equation 
 \bd
 i \partial_t \psi_{N,t} = H_N \psi_{N,t}\quad \mbox{with inital data } \psi_{N,0} = \psi_N.
 \ed
@@ -137,9 +138,10 @@ with boundary condition $\lim_{\lvert x\rvert \to \infty} f_N(x) = 1$. The scatt
 \bd
 8\pi a_0 = \int \di x NV_N(x)f_N(x),
 \ed
-which is clearly independent of $N$.
+\marginpar{*} which is clearly independent of $N$.
 
-We expect that in the limiting case of large $N$, the dynamics of the Bose-Einstein condensate is well described by
+We expect that in the limiting case of large $N$, the dynamics of the
+Bose-Einstein condensate is well-described by
 \be{approx_dyn}
 \psi_{N,t}(x_1,\ldots x_N) \simeq \prod_{j=1}^N \varphi_t(x_j),
 \ee
@@ -165,9 +167,10 @@ The integration corresponds to taking the partial trace or `tracing out' $N-k$ p
 \begin{thm}[Time Evolution of Factorized States] \label{thm:main_factorized}
  Let $\psi_N(x_1, \ldots x_N) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schr\"odinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
 
- Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
+\marginpar{*} Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
 
- Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any  Hilbert-Schmidt operator $J \in L^2(\Rbb^3 \times \Rbb^3)$ (a one-particle observable)
+ Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$
+ and $t$, such that for any  \marginpar{*} Hilbert-Schmidt operator $J \in L^2(\Rbb^3 \times \Rbb^3)$ (a one-particle observable)
 \bd
 \left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
 \ed
@@ -175,8 +178,8 @@ The integration corresponds to taking the partial trace or `tracing out' $N-k$ p
 
 \begin{rem}
 \begin{enumerate}
-\item In the second-quantized setting we are working in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
-\item As pointed out by Seiringer \cite{RS2009} we have $\Tr \big\lvert \gamma_{N}^{(1)} - \project{\varphi} \big\rvert \leq 2 \norm{\gamma_N^{(1)} - \project{\varphi}}_{HS}$ for any reduced density matrix $\gamma^{(1)}_N$. As the Hilbert-Schmidt operators form a Hilbert space with scalar product $\Tr A^\ast B$ we have $\norm{\gamma_N^{(1)} - \project{\varphi}}_{HS} \leq \sup_{\norm{J}_{HS}=1} \Tr \left( J \big( \gamma^{(1)}- \project{\varphi} \big) \right)$. Thus we have actually proven convergence in the trace norm
+\marginpar{*} \item In the second-quantized setting we are working in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
+\item \marginpar{*} As pointed out by Seiringer \cite{RS2009} we have $\Tr \big\lvert \gamma_{N}^{(1)} - \project{\varphi} \big\rvert \leq 2 \norm{\gamma_N^{(1)} - \project{\varphi}}_{HS}$ for any reduced density matrix $\gamma^{(1)}_N$. As the Hilbert-Schmidt operators form a Hilbert space with scalar product $\Tr A^\ast B$ we have $\norm{\gamma_N^{(1)} - \project{\varphi}}_{HS} \leq \sup_{\norm{J}_{HS}=1} \Tr \left( J \big( \gamma^{(1)}- \project{\varphi} \big) \right)$. Thus we have actually proven convergence in the trace norm
 \bd
 \Tr \left\lvert \gamma_{N}^{(1)} - \project{\varphi} \right\rvert \leq \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
 \ed
@@ -188,7 +191,8 @@ The integration corresponds to taking the partial trace or `tracing out' $N-k$ p
 \end{rem}
 
 \emph{Heuristics of our approach:} 
-The method of our proof is based on the study of the evolution of coherent states. Rodnianski and Schlein \cite{RS2009} show that for solutions to the Schr\"odinger equation with Hamiltonian
+The method of our proof is based on the study of the evolution of coherent
+states. \marginpar{*} Rodnianski and Schlein \cite{RS2009} show that for solutions to the Schr\"odinger equation with Hamiltonian
 \[
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N U(x_i-x_j)
 \]
@@ -196,16 +200,24 @@ and with factorized initial data the reduced density matrices convergence in tra
 \[
 i \partial_t \ph = -\Delta \ph + \left(U \ast \lvert \ph\rvert^2 \right) \ph.
 \]
-This bound was improved \cite{CLS2011} to a bound of the form $C e^{Kt}/N$. Notice that formally for $U = N V_N \to b_0 \delta$ we obtain a Gross-Pitaevskii equation with coupling constant $b_0$. However, from \cite{ESY2010} it is known that the correct coupling constant is $8 \pi a_0$, but $8 \pi a_0 \neq b_0$. (The result in that paper is based on a compactness argument and does not give any information about the rate of convergence.) This failure of naively taking the limit has its origin in a singular short-scale structure of the $N$-body quantum state $\psi_{N,t}$. The short-scale structure is given by the two-particle scattering equation \cite{EMS2009}.
+\marginpar{*} This bound was improved \cite{CLS2011} to a bound of the form
+$C e^{Kt}/N$. Notice that formally for \marginpar{U a} $U = N V_N \to b_0
+\delta$ we obtain a Gross-Pitaevskii equation with coupling constant $b_0$.
+However, from \cite{ESY2010} it is known that the correct coupling constant
+is $8 \pi a_0$, but $8 \pi a_0 \neq b_0$. \marginpar{*} (The result in that
+paper is based on a compactness argument and does not give any information
+about the rate of convergence.) \marginpar{*} This failure of naively taking
+the limit has its origin in a singular short-scale structure of the $N$-body
+quantum state $\psi_{N,t}$. \marginpar{*} The short-scale structure is given by the two-particle scattering equation \cite{EMS2009}.
 
-Therefore we compare the evolution of coherent states with the effective evolution given by the modified Hartree equation
+\marginpar{*} Therefore we compare the evolution of coherent states with the effective evolution given by the modified Hartree equation
 \be{modHartreeEqu}
 i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
 \ee
-which formally has the correct limiting equation.
-Using the Bogoliubov transformation we can implement the short-scale structure in our effective dynamics. This formally corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
+\marginpar{f} which formally has the correct limiting equation.
+Using the Bogoliubov transformation we can implement the short-scale structure in our effective dynamics. \marginpar{f} This formally corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
 
-The argument is completed by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
+\marginpar{par} The argument is completed by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
 \newline
 
 \emph{Overview of the field}: References to BBGKY, Grillakis-Machedon-Margetis \cite{GMM2010}, Pickl. Comparison of scaling. TODO.\newline
@@ -234,7 +246,7 @@ Notice that we use $\sup_x$ as a short-hand for $\operatorname{ess\,sup}_{x\in \
 In accordance with \eqr{no1} we have $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$. It should be clear from the context where $\norm{\cdot}_{L^2}$ means the $L^2(\Rbb^3)$ or $L^2(\Rbb^3 \times \Rbb^3)$ norm, similarly it should be clear which norm is meant by $\norm{\cdot}$ (usually Fock space or one of the $L^2$-norms).
 For any integral kernel $p$ the gradient with respect to the second variable is denoted by $\nabla_2 p$.
 
-Notice also that though $k$ may depend on $t$ through $\ph$, we do not denote the $t$-dependence of $k$ explicitly, similarly for the other integral kernels $s$, $r$ and $p$. Some lemmata about the integral kernels are formulated for general $\varphi$ where the modified Hartree equation does not play any role.
+\marginpar{*} Notice also that though $k$ may depend on $t$ through $\ph$, we do not denote the $t$-dependence of $k$ explicitly, similarly for the other integral kernels $s$, $r$ and $p$. Some lemmata about the integral kernels are formulated for general $\varphi$ where the modified Hartree equation does not play any role.
 
 \section{Fock Space Representation}
 \label{s:fock}
@@ -302,7 +314,7 @@ where $\delta$ is the Dirac delta distribution.
 
 The number of particles operator $\mathcal{N}$ on $\mathcal{F}$ is defined as
 $(\N \psi)^{(n)} = n \psi^{(n)}$. Eigenvectors of $\N$ are vectors of the form
-$\{0, \dots, 0, \psi^{(m)}, 0, \dots \}$ with a fixed number of particles.
+$(0, \dots, 0, \psi^{(m)}, 0, \dots )$ with a fixed number of particles.
 
 
 The Hamiltonian $\Hcal_N$ on $\mathcal{F}$ is defined as $(\Hcal_N
@@ -335,11 +347,11 @@ with
 We call $\K$ the kinetic energy operator, and $\mathcal{V}_N$ the potential
 energy operator.
 
-We can extend the definition of one-particle reduced density matrices to states $\psi \in \fock$ by the following definition:
+\marginpar{*} We can extend the definition of one-particle reduced density matrices to states $\psi \in \fock$ by the following definition:
 \be{fock_density}
 \gamma_{\psi}^{(1)}(x;y) := \frac{1}{\scal{\psi}{\Ncal \psi}} \scal{\psi}{a^\ast_y a_x \psi}.
 \ee
-For $\psi$ in the $N$-particle subspace of $\fock$, $\psi \in L^2_s(\Rbb^{3N})$, this definition is equivalent to the definition in \eqr{red_density}.
+\marginpar{*} For $\psi$ in the $N$-particle subspace of $\fock$, $\psi \in L^2_s(\Rbb^{3N})$, this definition is equivalent to the definition in \eqr{red_density}.
 
 The following lemma provides some useful bounds to control creation and
 annihilation operators in terms of the number of particles operator and the
@@ -360,7 +372,7 @@ and
 \be{agradnorm}
 \norm{a(\nabla g)\psi}  \leq \norm{g}_{L^2} \norm{\Kcal^{1/2}\psi}.
 \ee
-\end{lem}
+\end{lem} \marginpar{*} 
 
 For $f \in L^2(\R^3)$, we define the Weyl operator on $\mathcal{F}$ as
 \[
@@ -421,7 +433,7 @@ and coherent states.
 
 \section{Bogoliubov Transformation}
 \label{s:bogoliubov}
-Consider a function $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$ (an integral kernel). To simplify the
+\marginpar{*} Consider a function $f\colon \Rbb^3\times\Rbb^3 \to \Cbb$ (an integral kernel). To simplify the
 notation we write
 \be{no1}
   f_y(x) = f(x,y)
@@ -493,12 +505,12 @@ Let $f$ be the solution of the zero-energy scattering equation
 \[
   \left( -\Delta + \frac{1}{2} V \right) f = 0
 \]
-with normalization $\lim_{|x|\to\infty} f(x) = 1$. We will write
+\marginpar{*} with normalization $\lim_{|x|\to\infty} f(x) = 1$. We will write
 \[
   f = 1 - w
 \]
-with $\lim_{|x|\to\infty} w(x) = 0$. The scattering length of $V$ is denote
-by $a_0$ and is defined as
+with $\lim_{|x|\to\infty} w(x) = 0$. The scattering length of $V$ is defined
+as
 \[
   a_0 = \lim_{|x| \to \infty} w(x)|x|.
 \]
@@ -643,7 +655,7 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{l:bt}]
-  The operator $B(k)$ is densely defined and anti-self-adjoint.
+  (i) The operator $B(k)$ is densely defined and anti-self-adjoint.
   Hence, by the spectral theorem, the unitary operator $T(k) = e^{B(k)}$ is
   well-defined and $T(k)^* = T(k)^{-1} = T(-k)$.
 \iffalse
@@ -657,7 +669,7 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   \]
 \fi
 
-  Observing that $[a_w a_z, a_y] = [a_w^* a_z^*, a_y^*] = 0$ and
+  (ii) Observing that $[a_w a_z, a_y] = [a_w^* a_z^*, a_y^*] = 0$ and
   \[
     [a_w a_z, a_y^*] = \delta(w-y) a_z + \delta(z-y) a_w \qquad \text{and}
     \qquad [a_w^* a_z^*, a_y] = -\delta(y-w) a_z^* - \delta(y-z) a_w^*,
@@ -732,9 +744,9 @@ This completes the proof of the lemma.
   \[
     \| I \|_{L^2}^2 = \int dx \, |\varphi(x)|^2 \int dy \, |\nabla
     \varphi(y)|^2 \left| \int dz \, N^2 w_N(x-z) w_N(z-y) |\varphi(z)|^2
-    \right|^2 \apprle C^2 \| \varphi \|_{H^1}^8
+    \right|^2 \apprle C^2 \| \varphi \|_{H^1}^8,
   \]
-  and, using Lemma \ref{l:w} \ref{l:w3} and \ref{l:w4}, and Hardy's inequality,
+  and, using Lemma \ref{l:w} \ref{l:w3}-\ref{l:w4}, and Hardy's inequality,
   \begin{align*}
     \| J \|_{L^2}^2 & = \int dx \, |\varphi(x)|^2 \int dy \, |\varphi(y)|^2
     \left| \int dz \, N^2 w_N(x-z) \nabla w_N(z-y) |\varphi(z)|^2 \right|^2 \\
@@ -845,8 +857,10 @@ where, using $(i \partial_t W^*_t) W_t = i a(\sqrt{N} \phdot) - i a^\ast(\sqrt{N
 		& \quad + N^{-1/2}\left[  \int \di x \di y\, NV_N(x-y) \left( \cc{\ph(x)} a^*_y a_y a_x + \hc \right)  \right] + b(N,t).
 \end{split}
 \ee
-The phase $b(N,t) \in \Rbb$, like all phases appearing in $\Lcal_N(t)$, will be dropped from now on without any further comment. (Notice that $\scal{U_N(t)T^\ast_0 \Psi}{(\Ncal+1)U_t T_0^\ast \Psi} = \scal{\tilde U_N(t)T^\ast_0 \Psi}{(\Ncal+1)\tilde U_t T_0^\ast \Psi}$ for all $\tilde U_N(t) = e^{i\theta_N(t)} U_N(t)$ with $\theta_N(t) \in \Rbb$.)
+The phase $b(N,t) \in \Rbb$, like all phases appearing in $\Lcal_N(t)$, will
+be dropped from now on without any further comment. \marginpar{*} (Notice that $\scal{U_N(t)T^\ast_0 \Psi}{(\Ncal+1)U_t T_0^\ast \Psi} = \scal{\tilde U_N(t)T^\ast_0 \Psi}{(\Ncal+1)\tilde U_t T_0^\ast \Psi}$ for all $\tilde U_N(t) = e^{i\theta_N(t)} U_N(t)$ with $\theta_N(t) \in \Rbb$.)
 
+\marginpar{*} 
 In \eqr{no3}, we made use of a cancellation in the term $\Ocal({N^{1/2}})$
 (term which is linear in creation and annihilation operators) due to $\ph$ satisfying the modified Hartree equation \eqr{modHartreeEqu}.
 %\bd
@@ -854,7 +868,7 @@ In \eqr{no3}, we made use of a cancellation in the term $\Ocal({N^{1/2}})$
 %\ed
 Compare to \cite{RS2009}, but notice that due to the factor $f_N$ in the modified Hartree equation, in our case the cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ instead of $b_0$ in the Gross-Pitaevskii equation and ensures important cancellations (see below). These cancellations are revealed through the Bogoliubov transformation, to be calculated now.
 
-We first identify cancellations between linear terms originating from the transform \eqr{no4} of linear terms and linear terms originating from normal-ordering the transform of cubic terms
+\marginpar{*} We first identify cancellations between linear terms originating from the transform \eqr{no4} of linear terms and linear terms originating from normal-ordering the transform of cubic terms
 \begin{align*}
 T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 = \int \di x\, T^*_t a^*_x T_t \bigg[ &   \frac{1}{2}(-\Delta_x T^*_t a_x T_t)  + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
@@ -864,7 +878,9 @@ T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 & + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} T^*_t a_x a_y T_t  \bigg]\tagg{cubicterm} \\
 + \hc \qquad \quad
 \end{align*}
-In line \eqr{cubicterm}, we use $T^\ast_t a_x a_y T_t = \left( a(c_x)+a^\ast (s_x) \right)\left( a(c_y) + a^\ast(s_y) \right)$ and normal-order these terms, thereby creating a commutator $\scal{c_x}{s_y}$. Now $\scal{c_x}{s_y} = \scal{\delta_x + p_x}{k_y + r_y} = k(x,y) + r(x,y) + \scal{p_x}{s_y}$, and the contribution of $k(x,y)$ cancels line \eqr{linearterm}. The result is
+In line \eqr{cubicterm}, we use $T^\ast_t a_x a_y T_t = \left( a(c_x)+a^\ast
+(s_x) \right)\left( a(c_y) + a^\ast(s_y) \right)$ and normal-order these
+terms, thereby creating a \marginpar{*} commutator $\scal{c_x}{s_y}$. Now $\scal{c_x}{s_y} = \scal{\delta_x + p_x}{k_y + r_y} = k(x,y) + r(x,y) + \scal{p_x}{s_y}$, and the contribution of $k(x,y)$ cancels line \eqr{linearterm}. The result is
 \begin{align*}
 T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 = \int \di x\, T^*_t a^*_x T_t \bigg[ &   \frac{1}{2}(-\Delta_x T^*_t a_x T_t)  + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
@@ -874,7 +890,9 @@ T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 & \qquad \qquad \hspace{0.7cm}   a^*(s_x) a^*(s_y) + a^*(s_x) a(c_y)  + a^*(s_y) a(c_x) + a(c_x) a(c_y)  \bigg)  \bigg] \\
 + \hc \qquad \quad
 \end{align*}
-As the next step, we expand the Bogoliubov transform everywhere using \eqr{no4}, then multiply out all the terms and normal-order them. To simplify the expression a bit, notice that many terms appear twice, e.\,g.\ in the hermitian conjugate or with $x$ and $y$ interchanged. We obtain
+As the next step, we expand the Bogoliubov transform everywhere using
+\eqr{no4}, then multiply out all the terms and normal-order them. To
+simplify the expression a \marginpar{*} bit, notice that many terms appear twice, e.\,g.\ in the hermitian conjugate or with $x$ and $y$ interchanged. We obtain
 \begin{align*}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \\ 
 & \frac{1}{2} \int \di x\, \left[ a^*(c_x) a(-\Delta_x c_x) + \boxed{2 a^*(c_x) a^*(-\Delta_x s_x)} + a^*(-\Delta_x s_x) a(s_x) \right]\\% \tagg{cancellation_kinetic} \\
@@ -982,7 +1000,9 @@ Combining this with $\ev{\tilK} \geq \ev{\Kcal} - C\left(\varepsilon\ev{\Kcal} +
 \ed
 Now choose $\varepsilon = 1/(4C\norm{\ph}_{H^2}^2)$ (with $C$ having the same value as in the previous equation) to conclude
 \bd
-\ev{\Lcal_N(t)} + 4\left( C \norm{\ph}_{H^2}^2 \right)^2 \ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} \geq \ev{\frac{1}{4}\Kcal+\frac{3}{4}\tilV} \geq \frac{1}{4} \ev{\Kcal + \tilV},
+\ev{\Lcal_N(t)} + 4\left( C \norm{\ph}_{H^2}^2 \right)^2
+\ev{\frac{1}{N}\Ncal^2 + \Ncal + 1} \geq
+\ev{\frac{1}{4}\Kcal+\frac{3}{4}\tilV} \geq \frac{1}{4} \ev{\Kcal + \tilV}.
 \ed
 This completes the proof.
 \end{proof}
@@ -1006,17 +1026,19 @@ As $\ev{\Kcal} \geq 0$ and $\ev{\tilV} \geq 0$, this lemma is an easy corollary 
  \ed
 \end{lem}
 \begin{proof}
+\marginpar{*}
 Combining Lemma \ref{lm:timederivative} and Lemma \ref{lm:kbounds}, we obtain the estimate
 \bd
 \lvert\ev{\partial_t\big((\partial_t T^\ast_t) T_t \big)}\rvert \leq C \norm{\ph}_{H^4}^4 \ev{\Ncal+1}.
 \ed
-The term $\ev{\partial_t\big( T^\ast_t \Lcal_N^{(0)}(t) T_t \big)}$ can be estimated by the same methods which are used for estimating $\ev{ T^\ast_t \Lcal_N^{(0)}(t) T_t}$ in appendix \ref{ch:generatorestimates}, however, additionally the following quantities are used:
+\marginpar{*}The term $\ev{\partial_t\big( T^\ast_t \Lcal_N^{(0)}(t) T_t \big)}$ can be estimated by the same methods which are used for estimating $\ev{ T^\ast_t \Lcal_N^{(0)}(t) T_t}$ in appendix \ref{ch:generatorestimates}, however, additionally the following quantities are used:
 \begin{align*}
 & \norm{\gradone \dot p},\ \norm{\gradone \dot r},\ \norm{\dot s},\ \norm{\dot p},\ \sup_x \norm{\dot p_x},\ \sup_x \norm{\dot s_x},\ \mbox{Sobolev norms of } \phdot, \\
 & \int \di x\di y V_N(x-y) \lvert \dot r(x,y)\rvert^2,\ \int \di x \di y V_N(x-y) \lvert \dot s(x,y)\rvert^2/N.
 \end{align*}
 These quantities are then estimated using the Lemmata \ref{lem:dottedests1}, \ref{lem:dottedests2} and \ref{lem:dottedests3}.
 
+\marginpar{*}
 (Remark: In $\partial_t\big( T^\ast_t \Lcal_N^{(0)}(t) T_t\big)$ there are about four times as many terms as in $T^\ast_t \Lcal_N^{(0)}(t) T_t$ because of the product rule, but many of them are easier to estimate because $\partial_t a^\ast(c_x) = a^\ast(\dot p_x)$ is regular while $a^\ast(c_x)$ is singular.)
 \end{proof}
 
@@ -1033,9 +1055,10 @@ Recall that
 \[\Lcal_N(t) = (i \partial_t T^\ast_t)T_t + T^\ast_t \Lcal_N^{(0)}(t)T_t.\]
 
 We start by calculating $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$. Summands which contain an equal number of annihilation and creation operators commute with $\Ncal$ and thus drop out. The other summands get numerical prefactors, but except for that stay unchanged. %(Because of these prefactors, the sign of the $+\hc$-part changes, but this is not important for our estimates.)
-Thus we can use the estimates from appendix \ref{ch:generatorestimates} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
+Thus we can use the estimates from appendix \ref{ch:generatorestimates}
+\marginpar{*} (choose e.\,g.\ $\varepsilon = 1$) to bound all summands of the commutator $[T^\ast_t \Lcal_N^{(0)}(t)T_t,\Ncal]$.
 
-We expand $(\partial_t T^\ast_t)T_t$ as a series according to
+\marginpar{*}We expand $(\partial_t T^\ast_t)T_t$ as a series according to
 \bd
 \left(\partial_t e^{-B(t)} \right) e^{B(t)} = - \dot B(t) +
 \frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots
@@ -1046,7 +1069,9 @@ From this we can see that $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form
 
 \begin{prp}[Bound on Number of Fluctuations]
 \label{prp:Nbound}
-Let $\Psi \in \fock$ with $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C$ and  $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal \right)\Psi} \leq C$ for some constant $C$ (independent of $N$). Then
+Let $\Psi \in \fock$ with $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi}
+\leq C$ and  $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal \right)\Psi} \leq
+C$ for some constant $C$ (independent of $N$). Then
 \bd
 \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}}
 \ed
@@ -1082,7 +1107,9 @@ for some constants $K_1$ and $K_2$ (both independent of $N$). The factor $u(0)$ 
 \bd
 u(0) = \scal{T^\ast_0 \Psi}{(\tLcalo + \Ncal+1)T^\ast_0 \Psi}.
 \ed
-By Proposition \ref{p:TNT}, we know that $\scal{T^\ast_0 \Psi}{(\Ncal+1)T^\ast_0 \Psi} \leq C\scal{\Psi}{(\Ncal+1)\Psi}$. So by assumption $u(0) \leq C$ for some constant $C$.
+By Proposition \ref{p:TNT}, we know that $\scal{T^\ast_0
+\Psi}{(\Ncal+1)T^\ast_0 \Psi} \leq C\scal{\Psi}{(\Ncal+1)\Psi}$.
+\marginpar{*}So by assumption $u(0) \leq C$ for some constant $C$.
 \end{proof}
 
 \iffalse
@@ -1113,7 +1140,7 @@ all $\psi \in \mathcal{F}$.
 
 
 \begin{lem} \label{l:ap}
-There exists a constant $C$,% uniform in $N$ and $t$,
+There exists a constant $C$, % uniform in $N$ and $t$,
       that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
         \[
           U_t^* \N^2 U_t \le C \big( N U_t^* \N U_t + N (\N+1) + (\N+1)^2
@@ -1271,7 +1298,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 
 \begin{proof}[Proof of Lemma \ref{l:ap}]
-  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels} (\ref{k}) and Theorem
+  Observe that, by Lemmata \ref{l:bt}, \ref{l:kernels}\ref{k} and Theorem
   \ref{t:pdes}\eqref{H1}, there exists a constant $C$, %uniform in $N$ and $t$,
   that depends only on $\| \varphi \|_{H^1}$ and $V$, such that
   \begin{equation} \label{c2}
@@ -1316,7 +1343,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
     \overline{\varphi}) \psi \rangle \\
     & \quad + \langle \N T_t U_t \psi, W_t^* e^{-it\mathcal{H}_N} W_0 \N T_0 \psi \rangle.
   \end{align*}
-  Hence, applying Cauchy-Schwarz inequality and Lemma \ref{l:a}, and observing
+  \marginpar{*}Hence, applying Cauchy-Schwarz inequality and Lemma \ref{l:a}, and observing
   that the operator norm of $P$ (the integral operator with kernel $p$) and $S$ is controlled by their Hilbert-Schmidt
   norm, we get
   \begin{align*}
