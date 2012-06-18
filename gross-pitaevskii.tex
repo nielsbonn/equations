@@ -36,6 +36,7 @@
 \newtheorem{exm}[thm]{Example}
 
 \newtheorem*{rem}{Remark}
+\newtheorem*{rems}{Remarks}
 \newtheorem*{hyp}{Hypothesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Gustavo's aliases %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,6 +83,7 @@
 \newcommand{\tLcalo}{\tilde \Lcal_N(0)}
 \newcommand{\xn}{\mathbf{x}}		% x = (x_1. dots x_N)
 \newcommand{\gradone}{\nabla_2}
+\newcommand{\HS}{_{\textrm{HS}}}
 
 \newcommand{\be}[1]{\begin{equation}\label{eq:#1}}	%begin equation with label
 \newcommand{\ee}{\end{equation}}
@@ -99,24 +101,24 @@
 
 %\allowdisplaybreaks
 
-\author{HCM Bonn}
-\title{Rate of Convergence towards Gross-Pitaevskii limit of interacting Bose-Einstein condensates}
+\author{Institute of Applied Mathematics, University of Bonn\\ Endenicher Allee 60, 53115 Bonn, Germany}
+\title{Rate of Convergence towards the Gross-Pitaevskii limit of interacting Bose-Einstein condensate}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-The non-linear Gross-Pitaevskii equation describes the macroscopic dynamics of Bose-Einstein condensates in the limit of large number of particles $N$. In this paper we show that the microscopic quantum mechanical evolution converges towards the Gross-Pitaevskii dynamics if the two-particle interaction potential is scaled as $N^3 V(N(x_i-x_j))$. 
+\textbf{\sffamily Abstract.} The non-linear Gross-Pitaevskii equation describes the macroscopic dynamics of Bose-Einstein condensates in the limit of large number of particles $N$. In this paper we show that the microscopic quantum mechanical evolution converges towards the Gross-Pitaevskii dynamics if the two-particle interaction potential is scaled as $N^3 V(N(x_i-x_j))$. 
 Our method is based on using the Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
 \end{abstract}
 
 \section{Introduction and Main Result}
 \label{s:intro}
-We consider a system of $N$ identical bosons with repulsive interaction. This system is described on the Hilbert space $L^2_s(\Rbb^{3N})$ by the Hamiltonian
+We consider a system of $N$ identical bosons with repulsive interaction. This system is described on the Hilbert space $L^2_s(\Rbb^{3N})$ of wave functions symmetric w.\,r.\,t.\ permutation of the $N$ variables by the Hamiltonian
 \bd
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N N^3 V(N(x_i-x_j)).
 \ed
-We assume that the unscaled potential $V \in C^\infty_c(\Rbb^3)$ is
+We assume that the unscaled potential $V \in C^\infty_c(\Rbb^3)$ is \marginpar{for us, $V \in C_c$ seems ok. What about scatt. equ. properties?}
 non-negative and spherically symmetric. The scaling is chosen in such a way that for $N \to \infty$ formally $N^3 V(N(x_i-x_j)) \to \delta(x_i-x_j) b_0$, where $b_0 = \int V$.
 We use the short-hand $V_N(x) = N^2 V(Nx)$.
 
@@ -136,9 +138,9 @@ The function $f_N = 1 - w_N: \Rbb^3 \to \Rbb$ is the solution to the zero-energy
 \end{equation}
 with boundary condition $\lim_{\lvert x\rvert \to \infty} f_N(x) = 1$. The scattering length $a_0$ of the potential $V$ is given by
 \bd
-8\pi a_0 = \int \di x NV_N(x)f_N(x) = \int \di x V(x)f(x).
+8\pi a_0 = \int \di x NV_N(x)f_N(x) = \int \di x V(x)f(x),
 \ed
-where we write $f = f_1$.
+where we write $f$ for $f_N$ with $N=1$.
 
 We expect that in the limiting case of large $N$, the dynamics of the
 Bose-Einstein condensate is well-described by
@@ -164,6 +166,10 @@ The $k$-particle reduced density matrix associated with a state $\psi_{N,t} \in 
 \ee
 The integration corresponds to taking the partial trace or `tracing out' $N-k$ particles. It is obvious that $\Tr \gamma_{N,t}^{(k)} = 1$ if $\norm{\psi_{N,t}} = 1$.
 
+We denote the projection on the state $\varphi_t \in L^2(\Rbb^3)$ by the Dirac bra-ket notation $\project{\varphi_t}$.
+
+We can now formulate a theorem estimating the difference of the expectation values of one-particle observables w.\,r.\,t.\ the Schr\"odinger evolution and the effective evolution.
+
 \begin{thm}[Time Evolution of Factorized States] \label{thm:main_factorized}
  Let $\psi_N(x_1, \ldots x_N) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schr\"odinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
 Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
@@ -171,13 +177,15 @@ Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial da
  Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$
  and $t$, such that for any Hilbert-Schmidt operator $J$ on $L^2(\Rbb^3)$ (a one-particle observable)
 \bd
-\left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
+\left\lvert \Tr\Big(J \gamma_{N,t}^{(1)} \Big) - \Tr\Big( J \project{\varphi_t}  \Big) \right\rvert \leq \norm{J}\HS \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
 \ed
 \end{thm}
 
-\begin{rem}
+\begin{rems}
 \begin{enumerate}
-\item It is a general fact \cite{RS2009} that $\Tr \big\lvert \gamma_{N}^{(1)} - \project{\varphi} \big\rvert \leq 2 \norm{\gamma_N^{(1)} - \project{\varphi}}_{HS}$ for any reduced density matrix $\gamma^{(1)}_N$. As the Hilbert-Schmidt operators form a Hilbert space with scalar product $\Tr A^\ast B$ we have $\norm{\gamma_N^{(1)} - \project{\varphi}}_{HS} \leq \sup_{\norm{J}_{HS}=1} \Tr \left( J \big( \gamma^{(1)}- \project{\varphi} \big) \right)$. Thus we have actually proven convergence in the trace norm
+\item It is a general fact \cite{RS2009} that $\Tr \big\lvert \gamma_{N}^{(1)} - \project{\varphi} \big\rvert \leq 2 \norm{\gamma_N^{(1)} - \project{\varphi}}\HS$ for any reduced density matrix $\gamma^{(1)}_N$. As the Hilbert-Schmidt operators form a Hilbert space with scalar product $\scal{A}{B}\HS = \Tr A^\ast B$ we have 
+\[\norm{\gamma_N^{(1)} - \project{\varphi}}\HS \leq \sup_{\norm{J}\HS=1} \Tr \left( J \big( \gamma^{(1)}- \project{\varphi} \big) \right).\]
+ Thus we have actually proven convergence in the trace norm,
 \bd
 \Tr \left\lvert \gamma_{N}^{(1)} - \project{\varphi} \right\rvert \leq \frac{C}{N^{1/4}}e^{K_1 e^{K_2 t}}.
 \ed
@@ -187,7 +195,7 @@ Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial da
 \ed
 \item In the second-quantized setting we are going to work in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
 \end{enumerate}
-\end{rem}
+\end{rems}
 
 \emph{Heuristics of our approach:} 
 The method of our proof is based on the study of the evolution of coherent
@@ -195,18 +203,18 @@ states. It is known \cite{RS2009, CLS2011} that for solutions to the Schr\"oding
 \[
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N U(x_i-x_j),
 \]
-and with factorized initial data the reduced density matrices convergence in trace-norm to a solution of the Hartree equation
+and with factorized initial data, the reduced density matrices convergence in trace-norm to a solution of the Hartree equation
 \[
-i \partial_t \ph = -\Delta \ph + \left(U \ast \lvert \ph\rvert^2 \right) \ph,
+i \partial_t \varphi_t = -\Delta \varphi_t + \left(U \ast \lvert \varphi_t\rvert^2 \right) \varphi_t,
 \]
 that is
 \[
-\Tr \left\lvert \gamma_{N}^{(1)} - \project{\varphi} \right\rvert \leq \frac{C}{N}e^{Kt}.
+\Tr \left\lvert \gamma_{N,t}^{(1)} - \project{\varphi_t} \right\rvert \leq \frac{C}{N}e^{Kt}.
 \]
-Notice that formally for $U = N V_N \to b_0
+Notice that for $U = N V_N \to b_0
 \delta$ we obtain a Gross-Pitaevskii equation with coupling constant $b_0$.
 However, from \cite{ESY2010} it is known that the correct coupling constant
-is $8 \pi a_0$ and not $b_0$. (The result in that
+is $8 \pi a_0$ and not $b_0$. (Notice that the result in that
 paper is based on a compactness argument and does not give any information
 about the rate of convergence.) This behaviour has its origin in a singular short-scale structure of the $N$-body
 quantum state $\psi_{N,t}$. The short-scale structure is given \cite{EMS2009} by the solution to the two-particle scattering equation \eqref{eq:scatt}.
@@ -216,7 +224,7 @@ Our strategy now is to compare the evolution of coherent states with the effecti
 i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
 \ee
 which has the correct limiting equation.
-Using the Bogoliubov transformation we can implement the short-scale structure in the coherent states. This formally corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
+Using the Bogoliubov transformation we can implement the short-scale structure in the coherent states. This corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
 We complete the proof by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
 \newline
 
@@ -351,7 +359,7 @@ We can extend the definition of one-particle reduced density matrices to states 
 \be{fock_density}
 \gamma_{\psi}^{(1)}(x;y) := \frac{1}{\scal{\psi}{\Ncal \psi}} \scal{\psi}{a^\ast_y a_x \psi}.
 \ee
-For $\psi$ in the $N$-particle subspace of $\fock$ this definition is equivalent to the definition in \eqr{red_density}.
+For $\psi$ in the $N$-particle subspace of $\fock$ this definition is equivalent to definition \eqr{red_density}.
 
 The following standard lemma provides some useful bounds to control creation and
 annihilation operators in terms of the number of particles operator and the
@@ -510,7 +518,7 @@ as
 \[
   a_0 = \lim_{|x| \to \infty} w(x)|x|.
 \]
-Since $V$ has compact support, we have
+Since $V$ is supported inside a ball of radius $R$, we have
 \[
   f(x) = 1 - \frac{a_0}{|x|} \qquad \text{for } |x| \ge R,
 \]
@@ -561,7 +569,7 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
       \]
     \item \label{l:w5} It follows from \ref{l:w4} that
       \[
-        |\nabla w_N(x)| \le \max\{ C_1, C a_0 \} \frac{2N}{N^2|x|^2 + 1}
+        |\nabla w_N(x)| \le C(1+ a_0) \frac{2N}{N^2|x|^2 + 1}
         \qquad \text{for all} \ x \in \R^3.
       \]
   \end{enumerate}
@@ -578,11 +586,9 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   unscaled potential~$V$, such that: 
   \begin{enumerate}
     \item \label{k}
-      \[
-        \| k \|_{L^2} \le C \| \varphi \|_{H^1}^2, \qquad \| \nabla_2 k
+      $        \| k \|_{L^2} \le C \| \varphi \|_{H^1}^2, \qquad \| \nabla_2 k
         \|_{L^2} \le C \| \varphi \|_{H^1}^2 \sqrt{N}, \qquad \| \nabla_2 (k
-        \overline{k}) \|_{L^2} \le C \| \varphi \|_{H^1}^4.
-      \]
+        \overline{k}) \|_{L^2} \le C \| \varphi \|_{H^1}^4.      $
     \item \label{kr} For almost all $x,y \in \R^3$,
       \[
         |k(x,y)| \leq N |\varphi(x)| |\varphi(y)|, \qquad |r(x,y)| \le e^{C \|
@@ -1387,7 +1393,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 \label{lem:TrJ}
 Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J \in L^2(\Rbb^3 \times \Rbb^3)$ be a Hilbert-Schmidt operator. Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
 \bd
-\left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}_{HS} \Big( \scal{U_N(t) T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_N(t) T^\ast_0 \Psi} \Big)^{1/2},
+\left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}\HS \Big( \scal{U_N(t) T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_N(t) T^\ast_0 \Psi} \Big)^{1/2},
 \ed
 where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)} := \gamma_{\psi_{N,t}}^{(1)}$ is the one-particle reduced density matrix associated with the state $\psi_{N,t} = e^{-it \Hcal_N} d_N P_N W_0 \Psi$ (the operator $P_N$ is the projection on the $N$-particle subspace of Fock space).
 %
@@ -1479,7 +1485,7 @@ Let $\Gamma_{N,t} := \gamma_{\psi_{N,t}}^{(1)}$ be the corresponding one-particl
 
  Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any one-particle Hilbert-Schmidt operator $J \in L^2(\Rbb^3 \times \Rbb^3)$
 \bd
-\left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}_{HS} \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
+\left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}\HS \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
 \ed
 \end{thm}
 \begin{proof} Notice first that $e^{-it \Hcal_N}$ commutes with $\Ncal$. Thus
@@ -1495,7 +1501,7 @@ The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_f
 \end{align}
 Clearly line \eqref{eq:squeez4} is equal to $\frac{N}{\norm{s}^2+N} \ph(y) \cc{\ph(x)}$. Using H\"older's inequality
 \[
-\left\lvert \frac{N}{\norm{s}^2+N} \int \di x \di y\, J(x,y) \ph(y) \cc{\ph(x)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}_{HS},
+\left\lvert \frac{N}{\norm{s}^2+N} \int \di x \di y\, J(x,y) \ph(y) \cc{\ph(x)} - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{C}{N} \norm{J}\HS,
 \]
 and according to Lemma \ref{lem:phNtoph}
 \bd
@@ -1508,17 +1514,17 @@ For line \eqref{eq:squeez3} we have the estimate
 & \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
 & \leq \frac{\sqrt{N}}{\norm{s}^2+N}\left\lvert \int \di y\, \ph(y) \norm{a^\ast(J_y)W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega} \right\rvert\\
 & \leq \frac{C}{\sqrt{N}} \int \di y \lvert \ph(y)\rvert \norm{J_y}_{L^2} \norm{(\Ncal+1)^{1/2} W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
-& \leq \frac{C}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}_{HS} \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{(\Ncal+1)W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
-& \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \scal{U_t \Omega}{(\Ncal+1)U_t \Omega},
+& \leq \frac{C}{\sqrt{N}} \norm{\ph}_{L^2} \norm{J}\HS \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{(\Ncal+1)W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
+& \leq \frac{C}{\sqrt{N}} \norm{J}\HS \scal{U_t \Omega}{(\Ncal+1)U_t \Omega},
 \end{align*}
 where in the last step Proposition \ref{p:TNT} (\ref{TNT}) has been used.
 For line \eqref{eq:squeez1} we have the estimate
 \begin{align*}
 & \left\lvert \frac{1}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \right \rvert \\
 & \leq \frac{1}{\norm{s}^2+N} \norm{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}\norm{\di\Gamma(J) W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega} \\
-& \leq \frac{1}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{\Ncal^2 W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}}{N} \right)^{1/2} \\
-& \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \left( \frac{\scal{U_t \Omega}{(\Ncal+1)^2 U_t \Omega}}{N} \right)^{1/2} \\
-& \leq \frac{C}{\sqrt{N}} \norm{J}_{HS} \left( \scal{U_t \Omega}{(\Ncal+1) U_t \Omega} \right)^{1/2},
+& \leq \frac{1}{\sqrt{N}} \norm{J}\HS \left( \frac{\scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{\Ncal^2 W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}}{N} \right)^{1/2} \\
+& \leq \frac{C}{\sqrt{N}} \norm{J}\HS \left( \frac{\scal{U_t \Omega}{(\Ncal+1)^2 U_t \Omega}}{N} \right)^{1/2} \\
+& \leq \frac{C}{\sqrt{N}} \norm{J}\HS \left( \scal{U_t \Omega}{(\Ncal+1) U_t \Omega} \right)^{1/2},
 \end{align*}
 where in the last two steps Proposition \ref{p:TNT} (\ref{TN2T}) and Corollary \ref{cor:N2} were used.
 According to Proposition \ref{prp:Nbound} $\scal{U_t \Omega}{\left(\Ncal + 1\right) U_t \Omega} \leq C e^{K_1 e^{K_2 t}}$, so the proof is complete.
@@ -1991,7 +1997,7 @@ estimates on the regularity of $\phdot$ and $\phddot$.
 
 \begin{thm} \label{t:pdes}% \label{c:reg2}
   Let $\varphi \in H^n(\R^3)$ with $n \ge 2$ and $\| \varphi \|_{L^2} = 1$.
-  Suppose that $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge
+  Suppose that $f \in L^\infty(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge
   0$. For $N \ge 1$, consider the solution $\ph \in H^1(\R^3)$ of the
   modified Hartree equation
   \[
@@ -2429,7 +2435,7 @@ as $N \to \infty$.
 
 \begin{lem} \label{lem:phitN2phit}
   Let $\varphi \in H^2(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that
-  $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
+  $f \in L^\infty(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
   1$, consider the solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the modified
   Hartree equation
   \[
@@ -2578,7 +2584,7 @@ as $N \to \infty$.
 \label{ss:phdotreg}
 \begin{lem} \label{lm:phdotregularity}
 Let $\varphi \in H^4(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that
-  $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
+  $f \in L^\infty(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
   1$, consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the modified
   Hartree equation
   \[
@@ -2655,7 +2661,7 @@ The $L^2$-norms of the summands on the right hand side can be estimated by the s
 %
 \begin{lem} \label{lm:kbounds}
 Let $\varphi \in H^4(\R^3)$ with $\| \varphi \|_{L^2} = 1$. Suppose that
-  $f \in L^1(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
+  $f \in L^\infty(\R^3)$ and $V \in C_c^\infty(\R^3)$ with $fV \ge 0$. For $N \ge
   1$, consider a solution $\varphi_t^{(N)} \in H^1(\R^3)$ of the modified
   Hartree equation
   \[
