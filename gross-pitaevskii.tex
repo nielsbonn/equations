@@ -58,9 +58,11 @@
 \newcommand{\Ocal}{\mathcal{O}}		% big-O, order-of
 \newcommand{\tilV}{\tilde{\mathcal{V}}_N}		% symbol for the smeared potential energy part of the hamiltonian
 \newcommand{\tilK}{\tilde{\mathcal{K}}}		% smeared kinetic energy
-\newcommand{\estlist}[2]{\underline{Line \ref{l#1}, summand #2:}}
+% estlist
+\newcommand{\estlist}[2]{\emph{\vspace{.3em}\\Line \ref{l#1}, summand #2:}}
 \newcommand{\nestlist}[2]{line \ref{l#1}, summand #2}
 \newcommand{\Nestlist}[2]{Line \ref{l#1}, summand #2}
+%
 \newcommand{\hc}{\mbox{h.c.}}		%hermitian conjugate
 \newcommand{\scal}[2]{\big<#1,#2\big>} % scalaer product
 \newcommand{\cc}[1]{\overline{#1}}	% complex conjugate
@@ -109,12 +111,12 @@
 
 \begin{abstract}
 \textbf{\sffamily Abstract.} The non-linear Gross-Pitaevskii equation describes the macroscopic dynamics of Bose-Einstein condensates in the limit of large number of particles $N$. In this paper we show that the microscopic quantum mechanical evolution converges towards the Gross-Pitaevskii dynamics if the two-particle interaction potential is scaled as $N^3 V(N(x_i-x_j))$. 
-Our method is based on using the Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
+Our method is based on using a time-dependent Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
 \end{abstract}
 
 \section{Introduction and Main Result}
 \label{s:intro}
-We consider a system of $N$ identical bosons with repulsive interaction. This system is described on the Hilbert space $L^2_s(\Rbb^{3N})$ of wave functions symmetric w.\,r.\,t.\ permutation of the $N$ variables by the Hamiltonian
+We consider a system of $N$ identical bosons with repulsive interaction. On the Hilbert space $L^2_s(\Rbb^{3N})$ of wave functions symmetric w.\,r.\,t.\ permutation of the $N$ variables this system is described by the Hamiltonian
 \bd
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N N^3 V(N(x_i-x_j)).
 \ed
@@ -224,7 +226,7 @@ Our strategy now is to compare the evolution of coherent states with the effecti
 i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
 \ee
 which has the correct limiting equation.
-Using the Bogoliubov transformation we can implement the short-scale structure in the coherent states. This corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
+Using a time-dependent Bogoliubov transformation we can implement the short-scale structure in the coherent states. This corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
 We complete the proof by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
 \newline
 
@@ -242,7 +244,7 @@ Section \ref{s:expectation} is dedicated to estimating expectation values $\Tr\b
 Appendix \ref{s:generatorestimates} lists estimates for the summand of the generator of fluctuations. Appendix \ref{s:pde} is dedicated to proving uniform in $N$ regularity estimates for solutions of the Hartree and Gross-Pitaevskii equation and shows that solutions of the Hartree equation converge to solutions of the Gross-Pitaevskii equation. Appendix \ref{s:bogbounds} lists some further estimates on the integral kernels appearing in the Bogoliubov transformation.
 \newline
 
-\emph{Remarks on notation:} We use the symbol $C$ throughout the paper for constants which might be redefined from line to line, but which are always independent of $N$ and of time $t$. We sometimes comment explicitly on additional properties of constants $C$.
+\emph{Notation:} We use the symbol $C$ throughout the paper for constants which might be redefined from line to line, but which are always independent of $N$ and of time $t$. We sometimes comment explicitly on additional properties of constants $C$.
 The notation
 \[
   A \apprle B
@@ -255,6 +257,8 @@ In accordance with \eqr{no1} we have $\norm{p_x}_{L^2} = \left( \int \di y\, \lv
 For any integral kernel $p$ the gradient with respect to the second variable is denoted by $\nabla_2 p$.
 
 Notice also that though the integral kernels appearing in our calculation (like $k$, $s$, $r$ and $p$, see below) may depend on $t$ through $\ph$, we do not denote their $t$-dependence explicitly. Some lemmata about the integral kernels are formulated for general $\varphi$ where the modified Hartree equation does not play any role.
+
+We commonly denote Hilbert-Schmidt operators and their integral kernels by the same letter.
 
 \section{Fock Space Representation}
 \label{s:fock}
@@ -1389,18 +1393,19 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 \section{Convergence of Expectation Values}
 \label{s:expectation}
+Let $P_N$ be the projection on the $N$-particle subspace of Fock space.
 \begin{lem}
 \label{lem:TrJ}
-Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J \in L^2(\Rbb^3 \times \Rbb^3)$ be a Hilbert-Schmidt operator. Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
+Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J$ be a Hilbert-Schmidt operator on $L^2(\Rbb^3)$. Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
 \bd
 \left\lvert \Tr\left(J \gamma_{N,t}^{(1)} \right) - \Tr\left( J \project{\ph}  \right) \right\rvert \leq \frac{d_N}{\sqrt{N}}C_2 \norm{J}\HS \Big( \scal{U_N(t) T^\ast_0 \Psi}{\left( \Ncal+1 \right)U_N(t) T^\ast_0 \Psi} \Big)^{1/2},
 \ed
-where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)} := \gamma_{\psi_{N,t}}^{(1)}$ is the one-particle reduced density matrix associated with the state $\psi_{N,t} = e^{-it \Hcal_N} d_N P_N W_0 \Psi$ (the operator $P_N$ is the projection on the $N$-particle subspace of Fock space).
+where $d_N = \norm{P_N W_0\Psi}^{-1}$ and $\gamma_{N,t}^{(1)} = \gamma_{\psi_{N,t}}^{(1)}$ is the one-particle reduced density matrix associated with the state $\psi_{N,t} = e^{-it \Hcal_N} d_N P_N W_0 \Psi \in \fock$.
 %
 %Remark: $\ph$ needn't be a solution of the Hartree equation here.
 \end{lem}
 \begin{proof}
-We will use the definition \eqr{fock_density} of the reduced density matrix. 
+Recall the definition \eqr{fock_density} of the reduced density matrix. 
 
 We start by rewriting $\Tr\left(J \gamma_{N,t}^{(1)} \right)$ in an appropriate way. The operator $P_N$ commutes with $e^{-it \Hcal_N}$ and with $a^\ast_x a_y$, so because of $P_N^2 = P_N$ one of the projections $P_N$ can be eliminated. We then insert $W^\ast_t W_t$ and apply Lemma \ref{l:W} \ref{l:W3}:
 \begin{align}
@@ -1414,7 +1419,7 @@ We start by rewriting $\Tr\left(J \gamma_{N,t}^{(1)} \right)$ in an appropriate 
 & \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{a_y W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \label{eq:lin2} \\
 & \quad + \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi}. \label{eq:gamma}
 \end{align}
-The last line, \eqref{eq:gamma}, is the expectation value in the factorized state:
+The last line, \eqref{eq:gamma}, is the expectation value of $J$ in the one-particle state given by the Gross-Pitaevskii equation:
 \begin{align*}
 & \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{W^\ast_t e^{-it\Hcal_N} W_0 \Psi} \\
 & = \frac{d_N^2}{N} \int \di x\di y J(x,y) N \cc{\ph(x)}\ph(y) \norm{P_N W_0 \Psi}^2 \\
@@ -1431,7 +1436,7 @@ Summands \eqref{eq:quad} - \eqref{eq:lin2} have to be estimated. We start with l
 where in the last step Proposition \ref{p:TNT} (\ref{TNT}) has been used in the form of $\Ncal \leq C T_t (\Ncal+1)T^\ast_t$.
 Line \eqref{eq:lin2} can be estimated in the same way as line \eqref{eq:lin1}.
 
-We now estimate line \eqref{eq:quad}. Recall that $\di\Gamma(J) := \int \di x\di y J(x,y) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in \fock$.
+We now estimate line \eqref{eq:quad}. Recall that $\di\Gamma(J) := \int \di x\di y J(x,y) a^\ast_x a_y$ can be estimated by $\norm{\di\Gamma(J)\zeta} \leq \norm{J}_{\textrm{HS}} \norm{\Ncal \zeta}$ for all $\zeta \in \fock$. Then
 \begin{align*}
 & \left\lvert \frac{d_N^2}{N} \int \di x\di y J(x,y) \scal{W^\ast_t e^{-it\Hcal_N} P_N W_0 \Psi}{a^\ast_x a_y W^\ast_t e^{-it \Hcal_N}W_0 \Psi} \right\rvert \\
 %& = \frac{d_N^2}{N} \scal{W^\ast_t e^{-it\Hcal_N}P_N W_0 \Psi}{\di\Gamma(J) W^\ast_t e^{-it\Hcal_N}W_0 \Psi} \\
@@ -1447,7 +1452,7 @@ In the last step, Proposition \ref{p:TNT} (\ref{TN2T}) has been used. The estima
 \label{lem:phNtoph}
 Let $\ph$ be the solution to the modified Hartree equation with initial data $\varphi_0 = \varphi$ and let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
 
-Then there exists a constant $C$ independent of $N$ and $t$ such that for any one-particle Hilbert-Schmidt operator $J$ the following estimate holds:
+Then there exists a constant $C$ such that for any Hilbert-Schmidt operator $J$ on $L^2(\Rbb^3)$ the following estimate holds:
 \bd
 \left\lvert \Tr\left(J \project{\ph}\right) - \Tr\left(J \project{\varphi_t}\right) \right\rvert \leq \norm{J}_{\textrm{HS}} \frac{C}{N} e^{e^{Kt}}.
 \ed
@@ -1464,13 +1469,12 @@ The proof is finished noticing that $\norm{\varphi_t}_{L^2} = \norm{\ph}_{L^2} =
 
 \begin{proof}[Proof of Theorem \ref{thm:main_factorized}]
 We choose $\Psi = \Omega$ in Lemma \ref{lem:TrJ}. Then $d_N P_N W_0 \Psi = \varphi^{\otimes N}$ and $d_N = \frac{\sqrt{N!}}{e^{-N/2}N^{N/2}} \simeq N^{1/4}$.
-
 We want to apply Proposition \ref{prp:Nbound} %. Clearly $\scal{\Omega}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Omega} = 0$ satisfies the assumption of the proposition.
 so we have to check the condition on 
 \bd
 \scal{T^\ast_0 \Omega}{\Lcal_N(0)T^\ast_0 \Omega} = \scal{\Omega}{\left(T_0(i\partial_t T^\ast_t)\rvert_{t=0} + \Lcal_N^{(0)}(0)\right)\Omega}.
 \ed
-According to \eqref{eq:no3} $\Lcal_N^{(0)}(0)$ is normal-ordered and thus $\scal{\Omega}{\Lcal_N^{(0)}(0)\Omega} = 0$ (recall that the scalar term in $\Lcal_N^{(0)}(0)$ was dropped because it corresponds to a trivial phase). The expectation value $\scal{\Omega}{T_0(i\partial_t T^\ast_t)\rvert_{t=0} \Omega}$ can be bounded by Lemma \ref{lm:timederivative} with $t=0$.
+According to \eqref{eq:no3} $\Lcal_N^{(0)}(0)$ is normal-ordered and thus $\scal{\Omega}{\Lcal_N^{(0)}(0)\Omega} = 0$ (recall that the scalar term in $\Lcal_N^{(0)}(0)$ was dropped because it's just  a phase in the unitary evolution). The expectation value $\scal{\Omega}{T_0(i\partial_t T^\ast_t)\rvert_{t=0} \Omega}$ can be bounded by Lemma \ref{lm:timederivative} with $t=0$.
 
 The proof is completed by employing Lemma \ref{lem:phNtoph}.
 \end{proof}
@@ -1480,10 +1484,9 @@ To expose the naturalness of squeezed coherent states as initial data we prove t
  Let $\psi_{N} = W(\sqrt{N} \varphi) T_0 \Omega$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it \Hcal_N}\psi_N$ the solution to the second-quantized Schr\"odinger equation in Fock space
 \[i \partial_t \psi_{N,t} = \Hcal_N \psi_{N,t},\quad \mbox{with inital data } \psi_{N,0} = \psi_N.\]
 Let $\Gamma_{N,t} := \gamma_{\psi_{N,t}}^{(1)}$ be the corresponding one-particle reduced density matrix.
+Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
 
- Furthermore, let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial data $\varphi_0 = \varphi$.
-
- Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any one-particle Hilbert-Schmidt operator $J \in L^2(\Rbb^3 \times \Rbb^3)$
+ Then there exist constants $C$, $K_1$ and $K_2$, which do not depend on $N$ and $t$, such that for any Hilbert-Schmidt operator $J$ on $L^2(\Rbb^3)$
 \bd
 \left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}\HS \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
 \ed
@@ -1495,9 +1498,9 @@ The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_f
 \begin{align}
 & \Gamma_{N,t}(y;x) = \scal{\psi_{N,t}}{a^\ast_x a_y \psi_{N,t}}/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \nonumber \\
 & = \scal{W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}{a^\ast_x a_y W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez1} \\
-& + \sqrt{N} \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
-& + \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
-& + N \ph(y) \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1}. \label{eq:squeez4}
+& \quad + \sqrt{N} \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez3}\\
+& \quad + \sqrt{N} \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{a_y W^\ast_t e^{-i \Hcal_N t} W_0 T_0 \Omega} \left(\norm{s}^2 + N\right)^{-1} \label{eq:squeez2}\\
+& \quad + N \ph(y) \cc{\ph(x)} \scal{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}{W^\ast_t e^{-i\Hcal_N t} W_0 T_0 \Omega}\left(\norm{s}^2 + N\right)^{-1}. \label{eq:squeez4}
 \end{align}
 Clearly line \eqref{eq:squeez4} is equal to $\frac{N}{\norm{s}^2+N} \ph(y) \cc{\ph(x)}$. Using H\"older's inequality
 \[
@@ -1508,7 +1511,7 @@ and according to Lemma \ref{lem:phNtoph}
 \left\lvert \Tr\left(J \project{\ph}\right) - \Tr\left(J \project{\varphi_t}\right) \right\rvert \leq \norm{J}_{\textrm{HS}} \frac{C}{N} e^{e^{Kt}}.
 \ed
 
-We have to prove bounds for lines \eqref{eq:squeez1} and \eqref{eq:squeez3}; line \eqref{eq:squeez2} is similar to line \eqref{eq:squeez3}.
+We have to prove bounds for lines \eqref{eq:squeez1} and \eqref{eq:squeez3}; the proof for line \eqref{eq:squeez2} is similar to line \eqref{eq:squeez3}.
 For line \eqref{eq:squeez3} we have the estimate
 \begin{align*}
 & \left\lvert \frac{\sqrt{N}}{\norm{s}^2+N} \int \di x\di y\, J(x,y) \ph(y) \scal{W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}{a^\ast_x W^\ast_t e^{-i\Hcal_N t}W_0 T_0 \Omega}  \right\rvert \\
@@ -1536,7 +1539,7 @@ According to Proposition \ref{prp:Nbound} $\scal{U_t \Omega}{\left(\Ncal + 1\rig
 \section{Estimates for the terms of the generator}
 \label{ch:generatorestimates}
 \label{s:generatorestimates}
-The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $N$, $t$ and $\psi$.
+The estimates in this section hold for the expectation value $\ev{\cdot} = \scal{\psi}{\cdot\,\psi}$ in any state $\psi \in \fock$. Especially, $C$ stands for constants independent of $\psi$ (and, as always, of $N$ and $t$).
 
 In this section it is assumed that
 \[k(x,y) = - N w_N(x-y)\ph(x)\ph(y)\]
@@ -1547,9 +1550,9 @@ For convenience, we remind the reader of the simple but repeatedly useful estima
 \int \di x\, \norm{a(c_x)\psi}^2 \leq 2(1+\norm{p}^2)\scal{\psi}{\Ncal\psi} \leq C\ev{\Ncal}.
 \ed
 We now have the following list of estimates for the terms of the generator.\newline
-\begin{fleqn}[1em]	% move formulas to left side in this section, make it look less chaotic.
+\begin{fleqn}[0.5em]	% move formulas to left side in this section, make it look less chaotic.
 \estlist{7}{1} (here, the cancellation is important!)
-Using integration by parts to move the derivative from $\nabla_x w_N(x-y) = - \nabla_y w_N(x-y)$ to $\ph(y)$ resp.\ $a_y$ we estimate
+Using integration by parts to move the derivative from $\nabla_x w_N(x-y) = - \nabla_y w_N(x-y)$ to $\ph(y) a_y$ we estimate
 \begin{align*}
 & \lvert \scal{\psi}{\frac{1}{2}\int \di x\, 2a^\ast(c_x) \int \di y\,a^\ast_y N\nabla_x w_N(x-y)\nabla_x \ph(x) 2\ph(y) \psi}\rvert \\
 & \leq 2\left\lvert \int \di x \di y\, Nw_N(x-y) \nabla_x \ph(x)  \nabla_y \ph(y) \scal{a_y\psi}{a^\ast_x\psi} \right\rvert \\
@@ -1619,14 +1622,14 @@ Leaving away the last summand, which is non-negative, we get
 \estlist{9}{2}
 We start with an elementary Lemma.
 \begin{lem} \label{l:agradnorm}
- Let $g \in H^1(\Rbb^3)$. Then $\norm{a(\nabla g)\psi}  \leq \norm{g}_{L^2} \norm{\Kcal^{1/2}\psi}$.
+ Let $g \in H^1(\Rbb^3)$ and $\psi \in \fock$. Then $\norm{a(\nabla g)\psi}  \leq \norm{g}_{L^2} \norm{\Kcal^{1/2}\psi}$.
 \end{lem}
 \begin{proof}
 Write in terms of operator-valued distributions and use integration by parts. 
 \end{proof}
 Using the product rule and the identity $-\nabla_x w_N(y-x) = \nabla_y w_N(y-x)$ we get (where the $\nabla$ in the second summand of the first line has to be understood with respect to the 'dot'-variable)
 \begin{align*}
- a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(\cdot-x)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\big(\nabla\big(N w_N(\cdot-x)\ph(\cdot)\big)\big) \\
+ a(\nabla_x s_x) & = \cc{\ph(x)} a\big(-Nw_N(\cdot-x)\nabla\ph(\cdot)\big) + \cc{\ph(x)}\,a\Big(\nabla\big(N w_N(\cdot-x)\ph(\cdot)\big)\Big) \\
  & + \cc{\nabla_x \ph(x)} a\big(-Nw_N(\cdot-x)\ph(\cdot)\big) + a(\nabla_x r_x).
 \end{align*}
 Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and Lemma \ref{l:agradnorm} we now conclude
@@ -1644,7 +1647,7 @@ Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and Lemma \ref{l:agradnorm} we now c
 \end{align*}
 Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $ \norm{\gradone r} \leq C$.\newline
 
-\underline{In proving the following estimates, the important ideas are:}
+\emph{In proving the following estimates, the important ideas are:}
 \begin{itemize}
  \item As $c_x = \delta_x + p_x$, $a^*(c_x)$ is only defined as an operator-valued distribution. Thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$ which is a well-defined operator.
 \item We use Cauchy-Schwarz so that at most two operators $a$ or $a^\ast$ act on each $\psi$. Usually following Cauchy-Schwarz we apply H\"older's inequality in the form
@@ -1693,7 +1696,7 @@ By definition of $\tilV$
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal^2}.
 \end{align*}
 Here we made use of the fact that both summands originating from the Hoelder inequality are equal, as can be seen by interchanging the integration variables $x$ and $y$.\newline
-\underline{\Nestlist{12}{1}, \nestlist{12}{2} and \nestlist{13}{1}:} can be estimated in the same way as \nestlist{11}{2}.\newline
+\emph{\vspace{.3em}\\\Nestlist{12}{1}, \nestlist{12}{2} and \nestlist{13}{1}:} can be estimated in the same way as \nestlist{11}{2}.\newline
 \estlist{14}{1} (here, cancellation is important!)
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a^\ast(c_y) \left( r(y,x)+\scal{p_y}{s_x} \right)\psi} \rvert \\
@@ -1720,7 +1723,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 %\leq & \frac{b_0}{N} \sup_y \norm{s_y}^2 \int \di x \norm{a(c_x)\psi}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}. 
 \end{align*}
-\underline{\Nestlist{15}{2} and \nestlist{15}{3}:} like \nestlist{15}{1}.\newline
+\emph{\vspace{.3em}\\\Nestlist{15}{2} and \nestlist{15}{3}:} like \nestlist{15}{1}.\newline
 \estlist{16}{1}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N}a^\ast(c_x) a(s_y) \scal{c_y}{s_x}\psi} \rvert \\
@@ -1739,7 +1742,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \frac{1}{2} \sup_y \norm{s_y}^2 \int \di x\, \norm{a(c_x)\psi}^2 \int \di y\, V_N(x-y) \\
 & \leq C\norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal}.
 \end{align*}
-\underline{\Nestlist{16}{3}:} like \nestlist{16}{1}.\newline
+\emph{\vspace{.3em}\\\Nestlist{16}{3}:} like \nestlist{16}{1}.\newline
 \estlist{17}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{1}{N}2 a^\ast(c_x)a^\ast(s_x) \scal{s_y}{s_y}\psi} \rvert \\
@@ -1747,7 +1750,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \sup_y \norm{s_y}^2 \int \di x\, \frac{b_0}{N} \norm{a(c_x)\psi}^2 + \sup_y \norm{s_y}^2 \int \di x\, \frac{b_0}{N} \norm{a^\ast(s_x)\psi}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \frac{1}{N}\ev{\Ncal+1}.
 \end{align*}
-\underline{\Nestlist{17}{2}:} like \nestlist{17}{1}.\newline
+\emph{\vspace{.3em}\\\Nestlist{17}{2}:} like \nestlist{17}{1}.\newline
 \estlist{17}{3}
 \begin{align*}
 & \lvert \scal{\psi}{\dxyNV \frac{1}{N} a^\ast(c_y) a(s_x) \scal{c_y}{s_x} \psi} \rvert \\
@@ -1769,7 +1772,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 %& \leq \dxyNV \lvert\ph(x)\rvert^2 \norm{a(c_x)\psi}^2 + \dxyNV \lvert \ph(y)\rvert^2 \norm{a(s_y)\psi}^2 \\
 %& \leq C\norm{\ph}_{H^2}^2 \ev{\Ncal+1}.
 %\end{align*}
-\underline{\Nestlist{18}{2} through \nestlist{20}{3}:} like \nestlist{18}{1}.\newline
+\emph{\vspace{.3em}\\\Nestlist{18}{2} through \nestlist{20}{3}:} like \nestlist{18}{1}.\newline
 \estlist{21}{1}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)}a^\ast(c_x)a^\ast(s_x)a^\ast(s_y)\psi} \rvert \\
@@ -1778,7 +1781,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \norm{\ph}_{H^2}^2 C \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \int \di x\di y\, NV_N(x-y) \norm{s_x}^2 \norm{s_y}^2 \\
 & \leq C\norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{(\Ncal+2)^2} \right).
 \end{align*}
-\underline{\Nestlist{21}{2} and \nestlist{22}{1}:} like \nestlist{21}{1}.\newline
+\emph{\vspace{.3em}\\\Nestlist{21}{2} and \nestlist{22}{1}:} like \nestlist{21}{1}.\newline
 \estlist{22}{2}
 \begin{align*}
  & \lvert \scal{\psi}{\dxyNV \frac{2}{\sqrt{N}}\cc{\ph(y)} a^\ast(c_x)a(c_x)a(c_y)\psi} \rvert \\
@@ -1796,7 +1799,7 @@ Here we made use of the fact that both summands originating from the Hoelder ine
 & \leq \norm{\ph}_\infty^2 b_0 \norm{s}^2 \ev{\Ncal} + \frac{1}{N}b_0 \sup_x\norm{s_x}^2 \int \di x\, \norm{a(c_x)\Ncal^{1/2}\psi}^2 \\
 & \leq C \norm{\ph}_{H^2}^2 \left( \ev{\Ncal} + \frac{1}{N}\ev{\Ncal^2}\right). 
 \end{align*}
-\underline{\Nestlist{23}{1} and \nestlist{23}{2}:} %34
+\emph{\vspace{.3em}\\\Nestlist{23}{1} and \nestlist{23}{2}:} %34
 like \nestlist{22}{2}.\newline
 \estlist{23}{3}
 \begin{align*}
@@ -1817,7 +1820,7 @@ like \nestlist{22}{2}.\newline
 & \leq \sup_x \norm{s_x}^2 \frac{1}{\sqrt{N}} b_0 \ev{\Ncal+1} \left( \int \di y\, \lvert \ph(y)\rvert^2 \right)^{1/2} \left( \int \di y\, \norm{s_y}^2 \right)^{1/2} \\
 & \leq C\norm{\ph}_{H^2}^2 \frac{1}{\sqrt{N}}\ev{\Ncal+1}.
 \end{align*}
-\underline{\Nestlist{24}{2} through \nestlist{25}{4}:} like \nestlist{24}{1}.\newline
+\emph{\vspace{.3em}\\\Nestlist{24}{2} through \nestlist{25}{4}:} like \nestlist{24}{1}.\newline
 This completes the list of estimates for the terms of $T^*_t \Lcal_N^{(0)}(t) T_t$.\vspace{1em}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{fleqn}
@@ -1856,7 +1859,7 @@ To prove the second estimate we use the CCR and H\"older's inequality:
  \end{align*}
 \end{proof}
 
-We now calculate and estimate the functions $f_i$ which appear in the series for $(\partial_t T^*_t)T_t$. Recall that for two operators $A$ and $B$
+We now calculate and estimate the functions $f_i$ which will appear in the series for $(\partial_t T^*_t)T_t$. Recall that for two operators $A$ and $B$
 \[
  \ad^0_A(B) = B \qquad \mbox{and} \qquad \ad^n_A(B) = [A,\ad^{n-1}_A(B)] \mbox{ for } n \geq 1.
 \]
@@ -1866,26 +1869,25 @@ We now calculate and estimate the functions $f_i$ which appear in the series for
 \label{lm:highercommutators}
  For each $n \in \Nbb$ and each $i \in \{1,2\}$, there exists $f_{n,i} \in L^2(\Rbb^3 \times \Rbb^3)$ such that
 \begin{itemize}
- \item \underline{for $n$ even we have}
+ \item for $n$ even we have
 \bd
 \ad^n_B(\dot B) = \frac{1}{2} \int \di x\di y\left( f_{n,1}(x,y) a^\ast_y a^\ast_x + f_{n,2}(x,y) a_x a_y \right)
 \ed
-and $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
- \item \underline{for $n$ odd we have}
+and $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$; 
+ \item for $n$ odd we have
 \bd
 \ad^n_B(\dot B) = \frac{1}{2} \int \di x\di y\left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right)
 \ed
-and the following bounds hold: $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and $\int \lvert f_{n,i}(x,x)\rvert \di x \leq \norm{\dot k} (2\norm{k})^n$ for all $n \in \Nbb$ and $i \in \{1,2\}$. 
+and the following bounds hold: $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and $\int \lvert f_{n,i}(x,x)\rvert \di x \leq \norm{\dot k} (2\norm{k})^n$. 
 \end{itemize}
 \end{lem}
 \begin{proof} The proof is by induction in $n$. In the inductive step, we have to treat the cases of even $n$ and odd $n$ separately (but the calculations are similar).\\
-\underline{basis $n=0$:} For
+\underline{Basis $n=0$:} The estimate stated in the even case is clearly fulfilled for
 \bd
-\ad^0_B(\dot B) = \dot B = \frac{1}{2}\int \di x\di y\left( \dot k(x,y) a^\ast_x a^\ast_y - \cc{\dot k(x,y)} a_x a_y \right)
+\ad^0_B(\dot B) = \dot B = \frac{1}{2}\int \di x\di y\left( \dot k(x,y) a^\ast_x a^\ast_y - \cc{\dot k(x,y)} a_x a_y \right).
 \ed
-the estimate stated in the even case is clearly fulfilled.\\
-\underline{inductive step, starting from even $n$:}\\
-We calculate (by using the CCR and appropriately renaming integration variables)
+\underline{Inductive step, starting from even $n$:}\\
+We calculate by using the CCR and appropriately renaming integration variables that
 \begin{align*}
 & \ad^{n+1}_B(\dot B) = [B,\ad^n_B(\dot B)] \\
 & = \left[\frac{1}{2} \int \di x\di y\left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)}a_x a_y \right), \frac{1}{2}\int \di x\di y\left( f_{n,1}(x,y) a^\ast_x a^\ast_y + f_{n,2}(x,y) a_x a_y \right)\right] \\
@@ -1920,9 +1922,9 @@ which was to be proven. The calculation for $\norm{f_{n+1,2}}_{L^2}$ works the s
 \[
 \int \lvert f_{n+1,1}(x,x) \rvert \di x \leq 2\norm{k} \norm{f_{n,2}} \leq \norm{\dot k} (2\norm{k})^{n+1}
 \]
-and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x \leq \norm{\dot k}(2\norm{k})^{n+1}$.\\
-\underline{inductive step, starting from odd $n$:}\\
-We calculate (by using the CCR and appropriately renaming integration variables)
+and in the same way $\int \lvert f_{n+1,2}(x,x) \rvert \di x \leq \norm{\dot k}(2\norm{k})^{n+1}$.\vspace{1em}\\
+\underline{Inductive step, starting from odd $n$:}\\
+We calculate that% (by using the CCR and appropriately renaming integration variables)
 \begin{align*}
 & \ad^{n+1}_B(\dot B)\\
 & = \left[ \frac{1}{2}\int \di x \di y \left( k(x,y)a^\ast_x a^\ast_y - \cc{k(x,y)} a_x a_y \right) , \frac{1}{2}\int \di x\di y \left( f_{n,1}(x,y) a^\ast_x a_y + f_{n,2}(x,y) a_x a^\ast_y \right) \right] \\
@@ -1952,9 +1954,9 @@ For odd $n$, we have the estimate
 \ed
 \end{lem}
 \begin{proof}
-The first estimate is proved by induction. The basis is trivial. For the inductive step, we again have to treat the cases of even and odd $n$ separately: We employ \eqref{eq:even} respectively \eqref{eq:odd}, use H\"older's inequality, then make use of $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and finally apply the inductive hypothesis.
+The first estimate is proved by induction. The proof of the basis case is trivial. For the inductive step, we again have to treat the cases of even and odd $n$ separately: We employ \eqref{eq:even} respectively \eqref{eq:odd}, use H\"older's inequality, then make use of $\norm{f_{n,i}} \leq \norm{\dot k} (2\norm{k})^n$ and finally apply the inductive hypothesis.
 
-For the second estimate, we use \eqref{eq:even} to express $f_{n,i}$ in terms of the $f_{n-1,i}$, use H\"older's inequality and apply the first estimate.
+To prove the second estimate, we use \eqref{eq:even} to express $f_{n,i}$ in terms of the $f_{n-1,i}$ and then use H\"older's inequality and apply the first estimate.
 \end{proof}
 
 We now combine the bounds on the individual summands to obtain an estimate for the series.
