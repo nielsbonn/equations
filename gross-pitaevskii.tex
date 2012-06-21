@@ -2042,7 +2042,7 @@ estimates on the regularity of $\phdot$ and $\phddot$.
 
 The initial value problem for the Hartree equation
 \[
-  i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
+  i \partial_t \varphi_t = - \Delta \varphi_t + (U * |\varphi_t|^2)
   \varphi_t
 \]
 with initial data $\varphi_0 = \varphi$ is known to be globally well-posed
@@ -2050,7 +2050,7 @@ in $H^1(\R^3)$. This follows from the conservation of mass $\| \varphi
 \|_{L^2}$ and energy
 \[
   \mathcal{E}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + \frac{1}{2} \int
-  dx \, (V * |\varphi|^2)(x) |\varphi(x)|^2.
+  dx \, (U * |\varphi|^2)(x) |\varphi(x)|^2.
 \]
 The exact same statement holds for the Gross-Pitaevskii equation
 \[
@@ -2063,11 +2063,11 @@ energy
   \mathcal{E}_{GP}(\varphi) = \int dx \, |\nabla \varphi(x)|^2 + 4 \pi a_0
   \int dx \, |\varphi(x)|^4,
 \]
-where $8 \pi a_0 = \int f V$.
+where $8 \pi a_0 = \int U$.
 
 
 We are mainly interested in what we call the modified Hartree equation, in
-which the potential $V$ is given by $N f_N V_N$. As we need regularity
+which the potential $U$ is given by $N f_N V_N$. As we need regularity
 estimates that are independent of $N$, we must not use any norm of
 $N f_N V_N$ other than
 the $L^1$-norm, which is given by $\norm{N f_N V_N}_{L^1} = \| fV \|_{L^1}$.
@@ -2080,9 +2080,9 @@ differential equations.
 
 
 \begin{prp} \label{p:energy}
-  Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$. Then,
+  Let $\varphi \in H^1(\R^3)$ and $U \in L^1(\R^3)$. Then,
   \[
-    \mathcal{E}(\varphi) \apprle \| \varphi \|_{H^1}^2 + \| V \|_{L^1} \|
+    \mathcal{E}(\varphi) \apprle \| \varphi \|_{H^1}^2 + \| U \|_{L^1} \|
     \varphi \|_{H^1}^4 \qquad \text{and} \qquad \mathcal{E}_{GP}(\varphi)
     \apprle \| \varphi \|_{H^1}^2 + |a_0| \| \varphi \|_{L^2} \| \varphi
     \|_{H^1}^3.
@@ -2093,8 +2093,8 @@ differential equations.
 \begin{proof}
   By Young's inequality, Sobolev's inequality, and H\"older's inequality, 
   \[
-    \int dx \, (V * |\varphi|^2)(x) |\varphi(x)|^2 \le \| V \|_{L^1} \|
-    \varphi^2 \|_{L^2}^2 = \| V \|_{L^1} \| \varphi \|_{L^4}^4 \apprle \| V
+    \int dx \, (U * |\varphi|^2)(x) |\varphi(x)|^2 \le \| U \|_{L^1} \|
+    \varphi^2 \|_{L^2}^2 = \| U \|_{L^1} \| \varphi \|_{L^4}^4 \apprle \| U
     \|_{L^1} \| \varphi \|_{H^1}^4
   \]
   and
@@ -2113,31 +2113,31 @@ solutions that holds uniformly in time.
 
 
 \begin{prp} \label{p:reg1}
-  Let $\varphi \in H^1(\R^3)$ and $V \in L^1(\R^3)$ with $V \ge 0$. Consider
+  Let $\varphi \in H^1(\R^3)$ and $U \in L^1(\R^3)$ with $U \ge 0$. Consider
   the solution $\varphi_t \in H^1(\R^3)$ of the Hartree equation
   \[
-    i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
+    i \partial_t \varphi_t = - \Delta \varphi_t + (U * |\varphi_t|^2)
     \varphi_t
   \]
   with initial data $\varphi_0 = \varphi$. Then, there exists a constant
-  $B_1$, depending only on $\| \varphi \|_{H^1}$ and $\| V \|_{L^1}$, such
+  $B_1$, depending only on $\| \varphi \|_{H^1}$ and $\| U \|_{L^1}$, such
   that, for all $t \geq 0$,
   \[
     \norm{\varphi_t}_{H^1} \leq B_1. 
   \]
   Furthermore, the constant $B_1$ increases monotonically with respect to
   $\| \varphi \|_{H^1}$. The exact same statement holds for solutions of the
-  Gross-Pitaevskii equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
+  Gross-Pitaevskii equation with $\| U \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{prp}
 
 
 \begin{proof}
-  Recall that $V \ge 0$. By conservation of mass and energy, and by
+  Recall that $U \ge 0$. By conservation of mass and energy, and by
   Proposition \ref{p:energy},
   \[
     \| \varphi_t \|_{H^1}^2 \le \| \varphi_t \|_{L^2}^2 +
     \mathcal{E}(\varphi_t) = 1 + \mathcal{E}(\varphi) \apprle \| \varphi
-    \|_{H^1}^2 + \| V \|_{L^1} \| \varphi \|_{H^1}^4 \eqqcolon B_1^2.
+    \|_{H^1}^2 + \| U \|_{L^1} \| \varphi \|_{H^1}^4 \eqqcolon B_1^2.
   \]
   Clearly the constant $B_1$ increases monotonically with respect to $\|
   \varphi \|_{H^1}$. This proves the first part of the proposition. The
@@ -2153,15 +2153,15 @@ that holds locally in time.
 
 
 \begin{prp} \label{p:lregn}
-  Let $\varphi \in H^n(\R^3)$ with $n \geq 2$, and let $V \in L^1(\R^3)$
-  with $V \ge 0$. Consider the solution $\varphi_t \in H^1(\R^3)$ of the
+  Let $\varphi \in H^n(\R^3)$ with $n \geq 2$, and let $U \in L^1(\R^3)$
+  with $U \ge 0$. Consider the solution $\varphi_t \in H^1(\R^3)$ of the
   Hartree equation
   \[
-    i \partial_t \varphi_t = - \Delta \varphi_t + (V * |\varphi_t|^2)
+    i \partial_t \varphi_t = - \Delta \varphi_t + (U * |\varphi_t|^2)
     \varphi_t
   \]
   with initial data $\varphi_0 = \varphi$. Then, there exists a constants $T
-  > 0$, depending only on $\| \varphi_0 \|_{H^1}$, $\| V \|_{L^1}$ and $n$,
+  > 0$, depending only on $\| \varphi_0 \|_{H^1}$, $\| U \|_{L^1}$ and $n$,
   such that
   \begin{equation}\label{eq:preregularity}
     \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le C \| \varphi_0 \|_{H^n} +
@@ -2170,7 +2170,7 @@ that holds locally in time.
   where $C$ is a constant that depends only on $n$. Furthermore, the
   constant $T$ decreases monotonically with respect to $\| \varphi_0
   \|_{H^1}$. The exact same statement holds for solutions of the
-  Gross-Pitaevskii equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
+  Gross-Pitaevskii equation with $\| U \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{prp}
 
 We shall shortly prove this proposition. Before doing that, we first prove
@@ -2181,20 +2181,20 @@ bounds for the $H^n$-norm that hold globally in time.
 \begin{cor}[$H^n$-Regularity] \label{c:regn}
   Under the hypothesis of Proposition \ref{p:lregn}, there exist constants
   $B_n$ and $K_n$, where $B_n$ depends only on $\| \varphi \|_{H^j}$ for $1
-  \le j \le n$, $\| V \|_{L^1}$ and $n$, and $K_n$ depends only on $\|
-  \varphi \|_{H^1}$, $\| V \|_{L^1}$ and $n$, such that, for all $t \ge 0$,
+  \le j \le n$, $\| U \|_{L^1}$ and $n$, and $K_n$ depends only on $\|
+  \varphi \|_{H^1}$, $\| U \|_{L^1}$ and $n$, such that, for all $t \ge 0$,
   \[
     \| \varphi_t \|_{H^n} \le B_n e^{K_n t}.
   \]
   The exact same statement holds for solutions of the Gross-Pitaevskii
-  equation with $\| V \|_{L^1}$ replaced by $8 \pi a_0$.
+  equation with $\| U \|_{L^1}$ replaced by $8 \pi a_0$.
 \end{cor}
 
 
 \begin{proof}
 The proof is based on the fact that $T$ in Proposition \ref{p:lregn} depends only on the $H^1$-norm: As the $H^1$-norm is bounded uniformly in time, \eqref{eq:preregularity} can be iterated. 
   For simplicity, we will omit the dependence of the constants with respect
-  to $\| V \|_{L^1}$ and $n$.
+  to $\| U \|_{L^1}$ and $n$.
 
   The proof is by induction in $n$. First observe that, from Proposition
   \ref{p:reg1}, it follows trivially that $\| \varphi_t \|_{H^1} \le B_1
@@ -2253,12 +2253,12 @@ For $T > 0$ set
 
 
 \begin{lem} \label{l:interp}
-  Let $V \in L^1(\R^3)$, $f \in L_t^{q_1} L_x^{r_1}$ and $g \in L_t^{q_2}
-  L_x^{r_2}$ with $q_j, r_j \in [1,\infty]$ for $j \in \{1,2\}$. Then, for any $s \in [1, \infty]$, $(V * f)
+  Let $U \in L^1(\R^3)$, $f \in L_t^{q_1} L_x^{r_1}$ and $g \in L_t^{q_2}
+  L_x^{r_2}$ with $q_j, r_j \in [1,\infty]$ for $j \in \{1,2\}$. Then, for any $s \in [1, \infty]$, $(U * f)
   g \in L_t^q L_x^r$ with $q^{-1} = s^{-1} + q_1^{-1} + q_2^{-1}$ and $r^{-1}
   = r_1^{-1} + r_2^{-1}$. Furthermore
   \[
-    \| (V * f)g \|_{L_t^q L_x^r} \le \| V \|_{L^1} T^{1/s} \| f \|_{L_t^{q_1}
+    \| (U * f)g \|_{L_t^q L_x^r} \le \| U \|_{L^1} T^{1/s} \| f \|_{L_t^{q_1}
     L_x^{r_1}} \| g \|_{L_t^{q_2} L_x^{r_2}}.
   \]
 \end{lem}
@@ -2267,14 +2267,14 @@ For $T > 0$ set
 \begin{proof}
   Applying H\"older's inequality in space, and then in time, we find that
   \[
-    \| (V * f) g \|_{L_t^q L_x^r} \le \| V * f \|_{L_t^u L_x^{r_1}} \| g
+    \| (U * f) g \|_{L_t^q L_x^r} \le \| U * f \|_{L_t^u L_x^{r_1}} \| g
     \|_{L_t^{q_2} L_x^{r_2}}
   \]
   with $q^{-1} = u^{-1} + q_2^{-1}$ and $r^{-1} = r_1^{-1} + r_2^{-1}$. Now,
   applying Young's inequality in space, H\"older's inequality in time, and
-  observing that $V$ is time-independent, we get
+  observing that $U$ is time-independent, we get
   \[
-    \| V * f \|_{L_t^u L_x^{r_1}} \le \| V \|_{L^1} T^{1/s} \| f \|_{L_t^{q_1}
+    \| U * f \|_{L_t^u L_x^{r_1}} \le \| U \|_{L^1} T^{1/s} \| f \|_{L_t^{q_1}
     L_x^{r_1}}
   \]
   with $u^{-1} = s^{-1} + q_1^{-1}$. Combining all this we obtain the desired
@@ -2285,14 +2285,14 @@ For $T > 0$ set
 \begin{proof}[Proof of Proposition \ref{p:lregn}]
   The Hartree equation in integral form is
   \[
-    \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (V *
+    \varphi_t = e^{it\Delta} \varphi - i \int_0^t ds \, e^{i(t-s)\Delta} (U *
     |\varphi_s|^2) \varphi_s.
   \]
   Differentiating this equation we find that
   \[
     \partial^\alpha \varphi_t = e^{it \Delta} \partial^\alpha \varphi - i
     \int_0^t ds \, e^{i(t-s) \Delta} \sum_{\beta \le \alpha} \sum_{\nu \le
-    \beta} \binom{\alpha}{\beta} \binom{\beta}{\nu} \big( V * (\partial^\nu
+    \beta} \binom{\alpha}{\beta} \binom{\beta}{\nu} \big( U * (\partial^\nu
     \overline{\varphi_s} \partial^{\beta - \nu} \varphi_s) \big)
     \partial^{\alpha - \beta} \varphi_s.
   \]
@@ -2309,11 +2309,11 @@ For $T > 0$ set
     & \| \partial^\alpha \varphi_{(\cdot)} \|_{L_t^\infty L_x^2} - \|
     \partial^\alpha \varphi \|_{L^2} \notag \\
     & \le \sum_{\beta \le \alpha} \sum_{\nu \le \beta} \binom{\alpha}{\beta}
-    \binom{\beta}{\nu} \| \big( V * (\partial^\nu
+    \binom{\beta}{\nu} \| \big( U * (\partial^\nu
     \overline{\varphi_{(\cdot)}} \partial^{\beta - \nu} \varphi_{(\cdot)})
     \big) \partial^{\alpha - \beta} \varphi_{(\cdot)} \|_{L_t^2 L_x^{6/5}}
     \notag \\
-    & \le \| V \|_{L^1} T^{1/2} \sum_{\beta \le \alpha} \sum_{\nu \le \beta}
+    & \le \| U \|_{L^1} T^{1/2} \sum_{\beta \le \alpha} \sum_{\nu \le \beta}
     \binom{\alpha}{\beta} \binom{\beta}{\nu} \sup_{t \in [0,T]} \|
     \partial^\nu \varphi_t \|_{L^{p_1}} \| \partial^{\beta - \nu} \varphi_t
     \|_{L^{p_2}} \sup_{t \in [0,T]} \| \partial^{\alpha - \beta} \varphi_t
@@ -2397,14 +2397,14 @@ For $T > 0$ set
   \begin{equation} \label{dal}
     \begin{split}
       & \sup_{t \in [0,T]} \| \partial^\alpha \varphi_t \|_{L^2} \\
-      & \le \| \partial^\alpha \varphi \|_{L^2} + C_1 4^{|\alpha|} \| V
+      & \le \| \partial^\alpha \varphi \|_{L^2} + C_1 4^{|\alpha|} \| U
       \|_{L^1} T^{1/2} \Big[ \sup_{t \in [0,T]} \| \varphi_t \|_{H^1}^2
       \sup_{t \in [0,T]} \| \varphi_t \|_{H^{|\alpha|}} + \sup_{t \in [0,T]}
       \| \varphi_t \|_{H^{|\alpha|-1}}^3 \Big],
     \end{split}
   \end{equation}
   where $C_1$ is a universal constant. By Proposition \ref{p:reg1}, there is a
-  constant $B_1$, depending only on $\| V \|_{L^1}$ and monotonically
+  constant $B_1$, depending only on $\| U \|_{L^1}$ and monotonically
   increasing on $\| \varphi \|_{H^1}$, such that $\| \varphi_t \|_{H^1} \le
   B_1$. Thus, by summing \eqref{dal} over $|\alpha| \le n$, we get
   \[
@@ -2413,14 +2413,14 @@ For $T > 0$ set
     [0,T]} \| \varphi_t \|_{H^{n-1}}^3 \Big],
   \]
   for some constant $C_3$ depending only on $n$, and some constant $C_4$
-  depending only on $\| V \|_{L^1}$ and monotonically increasing on $\|
+  depending only on $\| U \|_{L^1}$ and monotonically increasing on $\|
   \varphi \|_{H^1}$ and $n$. Therefore, by choosing $T > 0$ such that $C_4
   T^{1/2} \le 1/2$, we obtain
   \[
     \sup_{t \in [0,T_n]} \| \varphi_t \|_{H^n} \le 2 C_3 \| \varphi \|_{H^n}
     + \sup_{t \in [0,T_n]} \| \varphi_t \|_{H^{n-1}}^3.
   \]
-  This is the desired estimate. Observe that $T$ depends only on $\| V
+  This is the desired estimate. Observe that $T$ depends only on $\| U
   \|_{L^1}$, $\| \varphi \|_{H^1}$ and $n$, and decreases monotonically with
   respect to $\| \varphi \|_{H^1}$.
 \end{proof}
