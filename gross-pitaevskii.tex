@@ -168,7 +168,7 @@ The $k$-particle reduced density matrix associated with a state $\psi_{N,t} \in 
 \ee
 The integration corresponds to taking the partial trace or `tracing out' $N-k$ particles. It is obvious that $\Tr \gamma_{N,t}^{(k)} = 1$ if $\norm{\psi_{N,t}} = 1$.
 
-We denote the projection on the state $\varphi_t \in L^2(\Rbb^3)$ by the Dirac bra-ket notation $\project{\varphi_t}$.
+We denote the projection onto the state $\varphi_t \in L^2(\Rbb^3)$ by the Dirac bra-ket notation $\project{\varphi_t}$.
 
 We can now formulate the main theorem, which estimates the difference of the expectation values of one-particle observables w.\,r.\,t.\ the Schr\"odinger evolution and the effective evolution.
 
@@ -252,7 +252,9 @@ means that $A \le C B$ for some constant $C$.
 
 Notice that we use $\sup_x$ as a short-hand for $\operatorname{ess\,sup}_{x\in \Rbb^3}$.
 
-In accordance with \eqr{no1} we have $\norm{p_x}_{L^2} = \left( \int \di y\, \lvert p(y,x\rvert^2 \right)^{1/2}$. It should be clear from the context where $\norm{\cdot}_{L^2}$ means the $L^2(\Rbb^3)$ or $L^2(\Rbb^3 \times \Rbb^3)$ norm, similarly it should be clear which norm is meant by $\norm{\cdot}$ (usually Fock space or one of the $L^2$-norms).
+In accordance with \eqr{no1} we have $\norm{p_x}_{L^2} = \left( \int \di y\,
+\lvert p(y,x)\rvert^2 \right)^{1/2}$. It should be clear from the context
+whether $\norm{\cdot}_{L^2}$ means the $L^2(\Rbb^3)$ or $L^2(\Rbb^3 \times \Rbb^3)$ norm, similarly it should be clear which norm is meant by $\norm{\cdot}$ (usually Fock space or one of the $L^2$-norms).
 For any integral kernel $p$ the gradient with respect to the second variable is denoted by $\nabla_2 p$.
 
 Notice also that though the integral kernels appearing in our calculation (like $k$, $s$, $r$ and $p$, see below) may depend on $t$ through $\ph$, we do not denote their $t$-dependence explicitly. Some lemmata about the integral kernels are formulated for general $\varphi$ where the modified Hartree equation does not play any role.
@@ -281,7 +283,7 @@ inner product on $\mathcal{F}$ is defined as
 An $N$-particle state with wave function $\psi_N$ is described on
 $\mathcal{F}$ by a sequence $(\psi^{(n)})_{n \ge 0}$ where $\psi^{(n)} =
 0$ for all $n \neq N$ and $\psi^{(N)} = \psi_N$. The vector $(1, 0, 0, \dots
-) \in \mathcal{F}$ is called the vacuum, and is denoted by $\Omega$.
+) \in \mathcal{F}$ is called the vacuum and is denoted by $\Omega$.
 
 
 For $f \in L^2(\R^3)$, the creation operator $a^*(f)$ and the annihilation
@@ -355,7 +357,7 @@ with
   \K = \int dx \, \nabla_x a_x^* \nabla_x a_x \qquad \text{and} \qquad
   \mathcal{V}_N = \frac{1}{2} \int dx dy \, V_N(x-y) a_x^* a_y^* a_y a_x.
 \]
-We call $\K$ the kinetic energy operator, and $\mathcal{V}_N$ the potential
+We call $\K$ the kinetic energy operator and $\mathcal{V}_N$ the potential
 energy operator.
 
 We can extend the definition of one-particle reduced density matrices to states $\psi \in \fock$ by defining its kernel as
@@ -364,9 +366,8 @@ We can extend the definition of one-particle reduced density matrices to states 
 \ee
 For $\psi$ in the $N$-particle subspace of $\fock$ this definition is equivalent to definition \eqr{red_density}.
 
-The following standard lemma provides some useful bounds to control creation and
-annihilation operators in terms of the number of particles operator and the
-kinetic energy operator.
+The following lemma provides some useful bounds to control creation and
+annihilation operators in terms of the number of particles operator (see \cite{RS2009} for a proof).
 
 
 \begin{lem} \label{l:a}
