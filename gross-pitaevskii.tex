@@ -522,12 +522,13 @@ as
 \[
   a_0 = \lim_{|x| \to \infty} w(x)|x|.
 \]
-Since $V$ is supported inside a ball of radius $R$, we have
+Since $V$ has compact support, we have
 \[
   f(x) = 1 - \frac{a_0}{|x|} \qquad \text{for } |x| \ge R,
 \]
-where we have chosen $R \in \Rbb$ such that $\operatorname{supp} \ V \subset \{ x \in \R^3: |x| \le R \}$.
-From the zero-energy scattering equation we also have the identity
+where we have chosen $R \in \Rbb$ such that $\operatorname{supp} \ V \subset
+\{ x \in \R^3: |x| \le R \}$. From the zero-energy scattering equation we
+also have the identity
 \[
   \int dx \, V(x) f(x) = 8 \pi a_0.
 \]
@@ -680,7 +681,7 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
     [a_w a_z, a_y^*] = \delta(w-y) a_z + \delta(z-y) a_w \qquad \text{and}
     \qquad [a_w^* a_z^*, a_y] = -\delta(y-w) a_z^* - \delta(y-z) a_w^*,
   \]
-  one easily finds the expression
+  we easily find the expression
   \begin{align*}
     T(k)^* a_y T(k) & = e^{-B(k)} a_y e^{B(k)} = a_y - [B(k), a_y] +
     \frac{1}{2!} [B(k), [B(k), a_y]] + \cdots \\
@@ -873,7 +874,10 @@ In \eqr{no3}, we made use of a cancellation among the terms which are linear in 
 %\ed
 This should be compared to \cite{RS2009}, with the important difference being that due to the factor $f_N$ in the modified Hartree equation, in our case this cancellation is incomplete. This is essential for ensuring the correct coupling constant $8\pi a_0$ instead of $b_0$ in the Gross-Pitaevskii equation and ensures important cancellations (see below). These cancellations are revealed through the Bogoliubov transformation, to be calculated now.
 
-We first identify cancellations between linear terms originating from the transform \eqr{no4}, $T(k)^* a_y T(k) = a(c_y) + a^*(s_y)$, of linear terms and of linear terms originating from normal-ordering the transform of cubic terms
+We first identify cancellations between linear terms originating from the
+transform \linebreak $T(k)^* a_y T(k) = a(c_y) + a^*(s_y)$ of linear terms,
+and linear terms originating from normal-ordering the transform of cubic
+terms:
 \begin{align*}
 T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 = \int \di x\, T^*_t a^*_x T_t \bigg[ &   \frac{1}{2}(-\Delta_x T^*_t a_x T_t)  + \frac{1}{4}\int \di y V_N(x-y) T^*_t a^*_y a_y a_x T_t \\
@@ -883,7 +887,7 @@ T^*_t \Lcal^{(0)}_N(t) T_t \qquad \\
 & + N^{-1/2} \int \di y\, NV_N(x-y) \cc{\ph(y)} T^*_t a_x a_y T_t  \bigg]\tagg{cubicterm} \\
 + \hc \qquad \quad
 \end{align*}
-In line \eqr{cubicterm}, we use $T^\ast_t a_x a_y T_t = \left( a(c_x)+a^\ast
+In line \eqr{cubicterm}, we use that $T^\ast_t a_x a_y T_t = \left( a(c_x)+a^\ast
 (s_x) \right)\left( a(c_y) + a^\ast(s_y) \right)$ and normal-order these
 terms, thereby creating a commutator $[a(c_x),a^\ast(s_y)] = \scal{c_x}{s_y}$. Now $\scal{c_x}{s_y} = \scal{\delta_x + p_x}{k_y + r_y} = k(x,y) + r(x,y) + \scal{p_x}{s_y}$, and the contribution of $k(x,y)$ cancels line \eqr{linearterm}. The result is
 \begin{align*}
@@ -920,11 +924,12 @@ As the next step, we expand the Bogoliubov transform everywhere using
 					    & \qquad\qquad\qquad\quad + a^*(c_x)r(x,y) + a^*(c_x)\scal{p_x}{s_y} + a(s_x)r(x,y) + a(s_x)\scal{p_x}{s_y}		\bigg)    \Big]\\
 & + \hc
 \end{align*}
-We proceed to identify a cancellation among the boxed terms. We exhibit the
+We proceed to identifying a cancellation among the boxed terms. We exhibit the
 cancellation by expanding $c = \delta + p$ and $s = k + r$ and applying the
-product rule to $-\Delta_x k(y,x)$. Thus, the left hand side of the zero-energy scattering equation \eqr{scattering} appears. However, there are some (more regular) remainder terms left, see \eqref{l7}, \eqref{l8}, \eqref{l14} and \eqref{l18} in the final result for the generator below.
-
-The final result is
+product rule to $-\Delta_x k(y,x)$. Thus, the left hand side of the
+zero-energy scattering equation \eqr{scattering} appears. However, there are
+some (more regular) remainder terms left, see \eqref{l7}, \eqref{l8},
+\eqref{l14} and \eqref{l18} in the final result for the generator:
 \begin{align}
 & T^*_t \Lcal_N^{(0)}(t) T_t = \nonumber \\ 
 & \frac{1}{2} \int \di x\, \bigg[ a^*(c_x) \int \di y\, a^*_y \Big(4 N \nabla w_N(x-y) \nabla_x \ph(x) \ph(y) \label{l7}\\
@@ -1011,7 +1016,7 @@ Now choose $\varepsilon = 1/(4C\norm{\ph}_{H^2}^2)$ (with $C$ having the same va
 This completes the proof.
 \end{proof}
 
-For later reference we explicitly state the following simple Corollary.
+\marginpar{Corollary $\to$ consequence (?)}For later reference we explicitly state the following simple Corollary.
 \begin{lem}
 \label{lem:Llowerbound}
 There exists a constant $C$ such that
@@ -1210,9 +1215,10 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 
 \begin{proof}[Proof of Proposition \ref{p:TNT}]
-  We first remark that it is clear that all the steps in the proof hold with
-  $T$ replaced by $T^*$ because $T^* a_x T = a(c_x) + a^*(s_x)$ and $T a_x T^*
-  = a(c_x) - a^*(s_x)$ differ only by a minus sign.
+  We first point out that it is clear that all the steps in the proof hold
+  with $T$ replaced by $T^*$ because $T^* a_x T = a(c_x) + a^*(s_x)$ and $T
+  a_x T^* = a(c_x) - a^*(s_x)$ differ only by a minus sign. We next prove
+  the statements.
 
 
   \eqref{TNT} Write
@@ -1346,9 +1352,10 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
     \overline{\varphi}) \psi \rangle \\
     & \quad + \langle \N T_t U_t \psi, W_t^* e^{-it\mathcal{H}_N} W_0 \N T_0 \psi \rangle.
   \end{align*}
-  Hence, applying Cauchy-Schwarz inequality and Lemma \ref{l:a}, and observing
-  that the operator norm of $P$ and $S$ (the integral operators with kernel $p$ resp.\ $s$) is controlled by their Hilbert-Schmidt
-  norm, we get
+  Hence, applying Cauchy-Schwarz inequality and Lemma \ref{l:a}, and
+  observing that the operator norms of $P$ and $S$ (the integral operators
+  with kernels $p$ and $s$) are controlled by their Hilbert-Schmidt norm, we
+  get
   \begin{align*}
     & \langle T_t U_t \psi, \N^2 T_t U_t \psi \rangle \\
     & \le \| \N T_t U_t \psi \| \left( \sqrt{N} \| \phi(\ph) T_t U_t \psi \|
