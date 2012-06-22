@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,draft,DIV11]{scrartcl}	%twoside
+\documentclass[11pt,a4paper,DIV11]{scrartcl}	%twoside
 %\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage[bookmarksnumbered=true]{hyperref}
@@ -111,7 +111,7 @@
 
 \begin{abstract}
 \textbf{\sffamily Abstract.} The non-linear Gross-Pitaevskii equation describes the macroscopic dynamics of Bose-Einstein condensates in the limit of large number of particles $N$. In this paper we show that the microscopic quantum mechanical evolution converges towards the Gross-Pitaevskii dynamics if the two-particle interaction potential is scaled as $N^3 V(N(x_i-x_j))$. 
-Our method is based on using a time-dependent Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated as a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
+Our method is based on using a time-dependent Bogoliubov transformation to implement a short-scale structure on coherent initial states, similar to squeezed coherent states known from quantum optics. The Gross-Pitaevskii limit can then be treated like a mean-field limit. We obtain explicit estimates on the rate of convergence of $k$-particle reduced density matrices.
 \end{abstract}
 
 \section{Introduction and Main Result}
@@ -143,7 +143,7 @@ where $\varphi_t$ is the solution to the Gross-Pitaevskii equation
 i \partial_t \varphi_t = - \Delta \varphi_t + 8\pi a_0 \lvert \varphi_t\rvert^2 \varphi_t\quad \mbox{with initial data } \varphi_0 = \varphi.
 \ee
 The constant $a_0$ in the Gross-Pitaevskii equation is the scattering length of the potential, which we will introduce now.
-\marginpar{Let $f_n$\dots}Let the function $f_N = 1 - w_N: \Rbb^3 \to \Rbb$ be the solution to the zero-energy scattering equation
+Let $f_N = 1 - w_N: \Rbb^3 \to \Rbb$ be the solution to the zero-energy scattering equation
 \begin{equation}
 \label{eq:scatt}
 \left(-\Delta + \frac{1}{2}V_N \right) f_N = 0
@@ -152,27 +152,26 @@ with boundary condition $\lim_{\lvert x\rvert \to \infty} f_N(x) = 1$. By scalin
 \bd
 8\pi a_0 = \int \di x NV_N(x)f_N(x) = \int \di x V(x)f(x).
 \ed
-\marginpar{*}Notice that while the Schr\"odinger equation is linear, the Gross-Pitaevskii equation is a non-linear PDE. The advantage of the Gross-Pitaevskii equation is that it is a PDE in $L^2(\Rbb^3)$ while the Schr\"odinger equation is formulated in $L^2(\Rbb^{3N})$ for very large $N$.
 
 To make precise in which sense \eqr{approx_dyn} holds we have to introduce reduced density matrices, also called marginal densities.
 %Let us write
 %\[
 %\gamma_{N,t}(x_1, \ldots x_N; y_1, \ldots y_N) = \psi_{N,t}(x_1,\ldots x_N) \cc{\psi_{N,t}(y_1,\ldots y_N)}.
 %\]
-\marginpar{given by the $\to$ with}The $k$-particle reduced density matrix associated with a state $\psi_{N,t} \in L^2_s(\Rbb^{3N})$ is the positive trace-class operator on $L^2(\Rbb^{3k})$ given by the integral kernel
+The $k$-particle reduced density matrix associated with a state $\psi_{N,t} \in L^2_s(\Rbb^{3N})$ is the positive trace-class operator on $L^2(\Rbb^{3k})$ with the integral kernel
 \be{red_density}
 \begin{split}
 & \gamma_{N,t}^{(k)}(x_1,\ldots x_k;y_1,\ldots y_k) \\
 &  := \int \di x_{k+1} \cdots \di x_N\,\psi_{N,t}(x_1,\ldots x_k,x_{k+1},\ldots x_N) \cc{\psi_{N,t}(y_1,\ldots y_k,x_{k+1},\ldots x_N)}.
 \end{split}
 \ee
-\marginpar{If\dots, it is obvious that\dots}The integration corresponds to taking the partial trace or `tracing out' $N-k$ particles. It is obvious that $\Tr \gamma_{N,t}^{(k)} = 1$ if $\norm{\psi_{N,t}} = 1$.
+The integration corresponds to taking the partial trace or `tracing out' $N-k$ particles. For $\norm{\psi_{N,t}} = 1$ it is obvious that $\Tr \gamma_{N,t}^{(k)} = 1$.
 
-\marginpar{by $\to$ using}We denote the projection onto the state $\varphi_t \in L^2(\Rbb^3)$ by the Dirac bra-ket notation $\project{\varphi_t}$.
+We denote the projection onto the state $\varphi_t \in L^2(\Rbb^3)$ using the Dirac bra-ket notation by $\project{\varphi_t}$.
 
-\marginpar{\dots which provides estimates for the\dots}We can now formulate the main theorem, which estimates the difference of the expectation values of one-particle observables w.\,r.\,t.\ the Schr\"odinger evolution and the effective evolution.
+We can now formulate the main theorem which provides estimates for the difference of the expectation values of one-particle observables w.\,r.\,t.\ the Schr\"odinger evolution and the effective evolution. Notice that while the Schr\"odinger equation is linear, the Gross-Pitaevskii equation is a non-linear PDE. The advantage of the Gross-Pitaevskii equation is that it is a PDE in $L^2(\Rbb^3)$ while the Schr\"odinger equation is formulated in $L^2(\Rbb^{3N})$ with typically very large $N$.
 
-\begin{thm}[Time Evolution of Factorized States] \label{thm:main_factorized}
+\begin{thm}[Evolution of Factorized States] \label{thm:main_factorized}
  Let $\psi_N(x_1, \ldots x_N) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schr\"odinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
 Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation \eqr{gp} with initial data $\varphi_0 = \varphi$.
 
@@ -196,21 +195,17 @@ Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation \eqr{gp} with i
 \bd
 \Tr \left\lvert \gamma_{N}^{(k)} - \project{\varphi}^{\otimes k} \right\rvert \leq C\sqrt{ \frac{k}{ N^{1/4} } }e^{K_1 e^{K_2 t}/2}.
 \ed
-\item \marginpar{natural $\to$ convenient}In the second-quantized setting we are going to work in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states a better rate of convergence can be obtained, see Theorem \ref{thm:main_squeezed}.
-\marginpar{can be $\to$ is}
+In the second-quantized setting we are going to work in it is more natural to consider the time evolution of squeezed coherent states instead of factorized states. For squeezed coherent states we obtain a better rate of convergence, see Theorem \ref{thm:main_squeezed}.
 \end{enumerate}
 \end{rems}
 
 \emph{Heuristics of our approach:} 
 The method of our proof is based on the study of the evolution of coherent
-states. It is known \cite{RS2009, CLS2011} that for solutions to the Schr\"odinger equation with Hamiltonian with potential $U^2 \apprle (1-\Delta)$,
-\marginpar{\dots equation with factorized initial data and Hamilt.
-(formula), where $U$ satisfies $U^2 \le$, the one-particle reduced density
-matrix converges\dots}
+states. It is known \cite{RS2009, CLS2011} that for solutions to the Schr\"odinger equation with factorized initial data and Hamiltonian
 \[
 H_N = \sum_{j=1}^N (-\Delta_{x_j}) + \frac{1}{N}\sum_{i<j}^N U(x_i-x_j),
 \]
-and with factorized initial data, the reduced density matrices convergence in trace-norm to a solution of the Hartree equation
+where the potential $U$ satisfies $U^2 \apprle (1-\Delta)$, the one-particle reduced density matrix convergences in trace-norm to a solution of the Hartree equation
 \be{hahartree}
 i \partial_t \varphi_t = -\Delta \varphi_t + \left(U \ast \lvert \varphi_t\rvert^2 \right) \varphi_t,
 \ee
@@ -229,8 +224,8 @@ Our strategy now is to compare the evolution of coherent states with the effecti
 \be{modHartreeEqu}
 i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph,
 \ee
-\marginpar{we can $\to$ we}which has the correct limiting equation.
-Using a time-dependent Bogoliubov transformation we can implement the short-scale structure in the effective evolution. This corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
+which has the correct limiting equation.
+Using a time-dependent Bogoliubov transformation we implement the short-scale structure in the effective evolution. This corresponds to the use of squeezed coherent states known from quantum optics \cite{Loudon}. Mathematically, the Bogoliubov transformation explicitly exhibits cancellations in the generator of fluctuation dynamics around the effective evolution.
 We complete the proof by showing that solutions of the modified Hartree equation converge to solutions of the Gross-Pitaevskii equation with coupling constant $8\pi a_0$.
 \newline
 
@@ -1353,7 +1348,8 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
     & \quad + \langle T_t U_t \psi, \N W_t^* e^{-it\mathcal{H}_N} W_0 \left(\N +
     \sqrt{N} \phi(\varphi) + N\right) T_0 \psi \rangle \\
     & = - \sqrt{N} \langle T_t U_t \psi, \N \phi(\ph) W_t^*
-    e^{-it\mathcal{H}_N} W_0 T_0 \psi \rangle + \sqrt{N} \langle T_t U_t \psi, \N
+    e^{-it\mathcal{H}_N} W_0 T_0 \psi \rangle \\
+    & \quad + \sqrt{N} \langle T_t U_t \psi, \N
     W_t^* e^{-it\mathcal{H}_N} W_0 T_0 \phi(C \varphi + S \overline{\varphi}) \psi
     \rangle \\
     & \quad + \langle T_t U_t \psi, \N W_t^* e^{-it\mathcal{H}_N} W_0 \N T_0 \psi
@@ -1498,7 +1494,7 @@ The proof is completed by employing Lemma \ref{lem:phNtoph}.
 \end{proof}
 
 To expose the naturalness of squeezed coherent states as initial data we prove the following theorem. (This theorem is not necessary for the proof of the main result.)
-\begin{thm}[Time Evolution of Squeezed Coherent States] \label{thm:main_squeezed}
+\begin{thm}[Evolution of Squeezed Coherent States] \label{thm:main_squeezed}
  Let $\psi_{N} = W(\sqrt{N} \varphi) T_0 \Omega$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it \Hcal_N}\psi_N$ the solution to the second-quantized Schr\"odinger equation in Fock space
 \[i \partial_t \psi_{N,t} = \Hcal_N \psi_{N,t},\quad \mbox{with inital data } \psi_{N,0} = \psi_N.\]
 Let $\Gamma_{N,t} := \gamma_{\psi_{N,t}}^{(1)}$ be the corresponding one-particle reduced density matrix.
@@ -1847,14 +1843,14 @@ We still have to give a bound for the $(\partial_t T^*_t)T_t$-part of the genera
 \label{lm:Bbound}
 Let $f_1, f_2 \in L^2(\Rbb^3\times \Rbb^3)$. Then for all $\psi \in \fock$
  \[
-\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \scal{\psi}{(\Ncal+1)\psi} \frac{\norm{f_1}+\norm{f_2}}{2}.
+\lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi} \rvert \leq \scal{\psi}{(\Ncal+1)\psi} \frac{\norm{f_1}+\norm{f_2}}{2}
 \]
 and
-\[
+\begin{align*}
  \lvert \scal{\psi}{\frac{1}{2} \int \di x\di y \left( f_1(x,y) a^\ast_x
-a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert
- \leq \scal{\psi}{\Ncal\psi} \frac{\norm{f_1}+\norm{f_2}}{2} + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
-\]
+a_y + f_2(x,y) a_x a^\ast_y \right)  \psi} \rvert 
+& \leq \scal{\psi}{\Ncal\psi} \frac{\norm{f_1}+\norm{f_2}}{2} \\ & \quad + \left\lvert \int f_2(x,x) \di x \right\rvert \frac{\scal{\psi}{\psi}}{2}.
+\end{align*}
 \end{lem}
 \begin{proof} Using H\"older's inequality we prove the first estimate as follows:
  \begin{align*}
@@ -2782,7 +2778,8 @@ Also by a Sobolev inequality $\norm{\lvert \ph\rvert^2}_{L^2} \leq C$ because $\
 We now apply this to get
 \begin{align*}
 & \lvert \dot r(x,y) \rvert = \left\lvert \sum_{n=1}^\infty \frac{1}{(2n+1)!} \partial_t \left(k(\cc k k)^n \right)(x,y)\right\rvert \\
-& \leq \sum_{n=1}^\infty \frac{1}{(2n+1)!} \bigg\lvert\Big( \dot k(\cc k k)^n + \sum_{j=1}^{n-1} k(\cc k k)^{j-1}(\cc{\dot k}k + \cc k \dot k)(\cc k k)^{n-j} + k (\cc k k)^{n-1} \cc{\dot k} k + k(\cc{k}k)^{n-1}\cc{k}\dot k \Big)(x,y)\bigg\rvert \\
+& \leq \sum_{n=1}^\infty \frac{1}{(2n+1)!}
+ \bigg\lvert\Big( \dot k(\cc k k)^n + \sum_{j=1}^{n-1} k(\cc k k)^{j-1}(\cc{\dot k}k + \cc k \dot k)(\cc k k)^{n-j} + k (\cc k k)^{n-1} \big( \cc{\dot k} k + \cc{k}\dot k\big) \Big)(x,y)\bigg\rvert \\
 & \leq \left(\int \di z \lvert \dot k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!} \\
 & \quad + \norm{\dot k} \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-2}}{(2n+1)!} (2n-1) \tagg{no2}\\
 & \quad + \left( \int \di z \lvert k(x,z)\rvert^2 \right)^{1/2} \left( \int \di z \lvert \dot k(z,y)\rvert^2 \right)^{1/2} \sum_{n=1}^\infty \frac{\norm{k}^{2n-1}}{(2n+1)!}.
