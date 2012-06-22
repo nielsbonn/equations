@@ -1400,7 +1400,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 
 \section{Convergence of Expectation Values}
 \label{s:expectation}
-Let $P_N$ be the projection on the $N$-particle subspace of Fock space.
+Let $P_N$ be the projection onto the $N$-particle subspace of Fock space.
 \begin{lem}
 \label{lem:TrJ}
 Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J$ be a Hilbert-Schmidt operator on $L^2(\Rbb^3)$. Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
@@ -1654,6 +1654,8 @@ Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and Lemma \ref{l:agradnorm} we now c
 \end{align*}
 Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $ \norm{\gradone r} \leq C$.\newline
 
+\marginpar{In order to prove the estimates below, we use the following
+remarks: (?)}
 \emph{In proving the following estimates, the important ideas are:}
 \begin{itemize}
  \item As $c_x = \delta_x + p_x$, $a^*(c_x)$ is only defined as an operator-valued distribution. Thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$ which is a well-defined operator.
@@ -1908,7 +1910,9 @@ f_{n+1,1}(x,z) & = -\frac{1}{2} \int \di y \left( k(x,y) \left( f_{n,2}(z,y) + f
 f_{n+1,2}(x,z) & = -\frac{1}{2} \int \di y \left( k(y,z) \left( f_{n,1}(x,y) + f_{n,1}(y,x) \right) + \cc{k(x,y)}\left( f_{n,1}(z,y) + f_{n,1}(y,z)\right) \right), 
 \end{split}
 \end{equation}
-so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot B)$. We still have to check for validity of the estimates.
+so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot
+B)$. We still have to check for validity of the estimates.\marginpar{\dots
+to check that \dots(?)}
 Clearly
 \be{normnorm}
 \begin{split}
@@ -1984,7 +1988,8 @@ The first estimate is proved by expanding the time derivative as a series,
 \left(\partial_t e^{-B(t)} \right) e^{B(t)} = - \dot B(t) +
 \frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(n+1)!} \ad^n_B(\dot B),
 \ed
-and then using the Lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and \ref{lm:kbounds}.\\
+and then using the Lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and
+\ref{lm:kbounds}.\marginpar{Par here ?}\\
 For the second estimate, differentiate the summands individually (i.\,e. place a dot on the respective $f_{n,i}$) and then estimate all summands like before, now using lemma \ref{lm:deldelt}.
 \end{proof}
 
