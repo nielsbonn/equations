@@ -546,8 +546,7 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   Let $V \in C_c^\infty(\R^3)$ with $V \ge 0$, and suppose that $V$ is
   spherically symmetric with scattering length $a_0$. Let $f_N = 1 - w_N$ be
   the solution of the zero-energy scattering equation \eqref{eq:scattering}
-  with scaled potential $V_N$. Then, the following hold with constants
-  uniform in $N$.
+  with scaled potential $V_N$. Then the following hold:% with constants uniform in $N$.
   \begin{enumerate}
     \item \label{l:w1} There exists a constant $C_0 > 0$, which depends on
     the unscaled potential $V$, such that
@@ -587,8 +586,8 @@ where $f_N = 1 - w_N$ with $w_N(x) = w(Nx)$.
   \[
     k(x,y) = - N w_N(x-y) \varphi(x) \varphi(y).
   \]
-  Then, there exists a constant $C$, uniform in $N$, that depends only on the
-  unscaled potential~$V$, such that: 
+  Then there exists a constant $C$%, uniform in $N$
+ that depends only on the unscaled potential~$V$, such that: 
   \begin{enumerate}
     \item \label{k}
       $        \| k \|_{L^2} \le C \| \varphi \|_{H^1}^2, \qquad \| \nabla_2 k
@@ -836,7 +835,12 @@ We use the short-hand $T_t = T(k)$ with
 \bd
 k(x,y) = - N w_N(x-y) \ph(x) \ph(y),
 \ed
-where $\ph$ is a solution of the modified Hartree equation. We also write $W_t = W(\sqrt{N}\ph)$.
+where $\ph$ is a solution of the modified Hartree equation
+\[
+ i \partial_t \ph = -\Delta \ph + \left(N f_N V_N \ast \lvert \ph\rvert^2 \right) \ph
+\]
+and $w_N$ is defined through the solution $f_N = 1 - w_N$ of the zero energy scattering equation.
+We also write $W_t = W(\sqrt{N}\ph)$.
 We define the time evolution of quantum fluctuations by
 \bd
 U_N(t) := T^\ast_t W^\ast_t e^{-it \Hcal_N} W_0 T_0.
@@ -868,7 +872,7 @@ The phase $b(N,t) \in \Rbb$, like all phases appearing in $\Lcal_N(t)$, will
 be dropped from now on without any further comment. This is possible because $\scal{U_N(t)T^\ast_0 \Psi}{(\Ncal+1)U_t T_0^\ast \Psi} = \scal{\tilde U_N(t)T^\ast_0 \Psi}{(\Ncal+1)\tilde U_t T_0^\ast \Psi}$ for all $\tilde U_N(t) = e^{i\theta_N(t)} U_N(t)$ with $\theta_N(t) \in \Rbb$.
 
 
-In \eqr{no3}, we made use of a cancellation among the terms which are linear in creation and annihilation operators due to $\ph$ satisfying the modified Hartree equation \eqr{modHartreeEqu}.
+In \eqr{no3}, we made use of a cancellation among the terms which are linear in creation and annihilation operators due to $\ph$ satisfying the modified Hartree equation.
 %\bd
 %i\partial_t \ph = -\Delta \ph + \left(f_N N V_N \ast \lvert \ph \rvert^2 \right) \ph.
 %\ed
@@ -1016,7 +1020,7 @@ Now choose $\varepsilon = 1/(4C\norm{\ph}_{H^2}^2)$ (with $C$ having the same va
 This completes the proof.
 \end{proof}
 
-\marginpar{Corollary $\to$ consequence (?)}For later reference we explicitly state the following simple Corollary.
+For later reference we explicitly state the following simple Lemma.
 \begin{lem}
 \label{lem:Llowerbound}
 There exists a constant $C$ such that
@@ -1077,9 +1081,11 @@ From this we can see that $[(\partial_t T^\ast_t)T_t,\Ncal]$ is of the same form
 
 \begin{prp}[Bound on Number of Fluctuations]
 \label{prp:Nbound}
-Let $\Psi \in \fock$ with $\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi}
-\leq C$ and  $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal \right)\Psi} \leq
-C$ for some constant $C$ (independent of $N$). Then
+Let $\Psi \in \fock$ with 
+\[
+\scal{T^\ast_0 \Psi}{\Lcal_N(0)T^\ast_0 \Psi} \leq C \quad \mbox{and}\quad \scal{\Psi}{\Big(\frac{1}{N}\Ncal^2 + \Ncal \Big)\Psi} \leq C
+\]
+ for some constant $C$ (independent of $N$). Then
 \bd
 \scal{U_t T^\ast_0 \Psi}{\left(\Ncal+1\right)U_t T^\ast_0 \Psi} \leq C e^{K_1 e^{K_2 t}}
 \ed
@@ -1498,8 +1504,7 @@ Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation with initial da
 \left\lvert \Tr\left(J \Gamma_{N,t} \right) - \Tr\left( J \project{\varphi_t}  \right) \right\rvert \leq \norm{J}\HS \frac{C}{\sqrt{N}}e^{K_1 e^{K_2 t}}.
 \ed
 \end{thm}
-\begin{proof} Notice first that $e^{-it \Hcal_N}$ commutes with $\Ncal$. Thus
-using Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) and equation \eqr{no4} we easily calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Thus $1/\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} \leq 1/N$.
+\begin{proof} Notice first that $e^{-it \Hcal_N}$ commutes with $\Ncal$. Thus we can use Proposition \ref{p:f} (\ref{f2}) and (\ref{f4}) and equation \eqr{no4} to calculate that $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}} = \norm{s}^2 + N$. Therefore we obtain $\scal{\psi_{N,t}}{\Ncal \psi_{N,t}}^{-1} \leq 1/N$.
 
 The remaining proof follows the strategy of the proof of Theorem \ref{thm:main_factorized} but the projection $P_N$ is now absent. We expand
 \begin{align}
@@ -1654,9 +1659,7 @@ Using $(a+b+c+d)^2 \leq 4(a^2+b^2+c^2+d^2)$ and Lemma \ref{l:agradnorm} we now c
 \end{align*}
 Here we made use of the following estimates: $\norm{-N w_N(x-\cdot) \nabla\ph(\cdot)}_{L^2}^2 \leq C\norm{\Delta \ph}_{L^2}$, $\norm{-N w_N(x-\cdot)\ph(\cdot)}^2 \leq C \norm{\nabla \ph}^2$  and $ \norm{\gradone r} \leq C$.\newline
 
-\marginpar{In order to prove the estimates below, we use the following
-remarks: (?)}
-\emph{In proving the following estimates, the important ideas are:}
+\emph{In order to prove the estimates below we make use of the following ideas:}
 \begin{itemize}
  \item As $c_x = \delta_x + p_x$, $a^*(c_x)$ is only defined as an operator-valued distribution. Thus each $a^\ast(c_x)$ has to be moved to the other argument of the scalar product as $a(c_x)$ which is a well-defined operator.
 \item We use Cauchy-Schwarz so that at most two operators $a$ or $a^\ast$ act on each $\psi$. Usually following Cauchy-Schwarz we apply H\"older's inequality in the form
@@ -1911,9 +1914,7 @@ f_{n+1,2}(x,z) & = -\frac{1}{2} \int \di y \left( k(y,z) \left( f_{n,1}(x,y) + f
 \end{split}
 \end{equation}
 so, as $n+1$ is odd, we have the correct expression for $\ad^{n+1}_B(\dot
-B)$. We still have to check for validity of the estimates.\marginpar{\dots
-to check that \dots(?)}
-Clearly
+B)$. We still have to prove the estimates. Clearly
 \be{normnorm}
 \begin{split}
 \norm{f_{n+1,1}}_{L^2} & \leq \frac{1}{2} \bigg( \norm{\int \di y\, k(x,y) f_{n,2}(z,y)}_{L^2(dxdz)} + \norm{\int \di y\, k(x,y) f_{n,2}(y,z)}_{L^2(dxdz)} \\
@@ -1989,7 +1990,8 @@ The first estimate is proved by expanding the time derivative as a series,
 \frac{1}{2!}[B(t),\dot B(t)] - \frac{1}{3!}[B(t),[B(t),\dot B(t)]] + \dots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(n+1)!} \ad^n_B(\dot B),
 \ed
 and then using the Lemmata \ref{lm:highercommutators}, \ref{lm:Bbound} and
-\ref{lm:kbounds}.\marginpar{Par here ?}\\
+\ref{lm:kbounds}.
+
 For the second estimate, differentiate the summands individually (i.\,e. place a dot on the respective $f_{n,i}$) and then estimate all summands like before, now using lemma \ref{lm:deldelt}.
 \end{proof}
 
