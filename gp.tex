@@ -1,21 +1,22 @@
-\documentclass[11pt,a4paper,DIV11]{scrartcl}	%twoside
-%\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry}
+%\documentclass[11pt,a4paper,DIV11]{scrartcl}
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage[bookmarksnumbered=true]{hyperref}
-\usepackage[color]{showkeys}
-\usepackage{scrtime}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
-\usepackage{dsfont,wasysym,mathtools}
-\usepackage{gitinfo}
-\usepackage{nccmath}
+\usepackage{wasysym} %needed for \apprle
+%\usepackage[color]{showkeys}
+%\usepackage{scrtime}
+%\usepackage{gitinfo}
+%\usepackage{nccmath}
 
 % Footer:
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\rfoot{Page \thepage}
-\lfoot{Commit \gitAbbrevHash \ on \gitCommitterIsoDate \ (\jobname.tex)}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\renewcommand{\headrulewidth}{0pt}
+%\rfoot{Page \thepage}
+%\lfoot{Commit \gitAbbrevHash \ on \gitCommitterIsoDate \ (\jobname.tex)}
 
 % Set enumerate environment using roman counters
 \renewcommand{\theenumi}{{\rm (\roman{enumi})}}
@@ -218,7 +219,7 @@
 %%%%%
 
 
-\newcommand{\R}{\mathds{R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\K}{\mathcal{K}}
 
@@ -560,10 +561,10 @@ satisfying (\ref{eq:ass-thm1}), provided $\| P_N W(\sqrt{N} \ph) T(k_0) \psi \| 
 
 The bosonic Fock space over $L^2(\R^3)$ is the Hilbert space
 \[
-  \mathcal{F} = \bigoplus_{n \ge 0} L^2(\R^3)^{\otimes_s n} = \mathds{C}
+  \mathcal{F} = \bigoplus_{n \ge 0} L^2(\R^3)^{\otimes_s n} = \mathbb{C}
   \oplus \bigoplus_{n \ge 1} L^2_s(\R^{3n}),
 \]
-with the convention that $L^2(\R^3)^{\otimes_s 0} = \mathds{C}$. Here
+with the convention that $L^2(\R^3)^{\otimes_s 0} = \mathbb{C}$. Here
 $L^2_s (\R^{3n})$ is the subspace of $L^2(\R^{3n})$ consisting of all functions
 that are symmetric with respect to arbitrary permutations of the $n$
 variables. Vectors in $\mathcal{F}$ are sequences $\psi = (\psi^{(n)})_{n
@@ -969,8 +970,11 @@ with
 \[ \cL_N^{(0)} (t) =  \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N} \varphi_t^{(N)}) + 
 W^* (\sqrt{N} \varphi_t^{(N)}) \cH_N W (\sqrt{N} \varphi_t^{(N)}). \]
 A simple computation shows that
-\[ 
- \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N} \varphi_t^{(N)}) = - a(\sqrt{N} i \partial_t \varphi_t^{(N)}) - a^* (\sqrt{N} i \partial_t \varphi_t^{(N)}) + N \Im \scal{\varphi_t^{(N)} }{i\partial_t \varphi_t^{(N)}}. \]
+\begin{multline*}
+ \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N}
+ \varphi_t^{(N)}) \\= - a(\sqrt{N} i \partial_t \varphi_t^{(N)}) - a^*
+ (\sqrt{N} i \partial_t \varphi_t^{(N)}) + N \Im \scal{\varphi_t^{(N)}
+ }{i\partial_t \varphi_t^{(N)}}. \end{multline*}
  On the other hand, using (\ref{eq:W3}), we find
  \[ \begin{split} W^* (\sqrt{N} &\varphi_t^{(N)}) \cH_N W (\sqrt{N} \varphi_t^{(N)})  \\
  %= \; & \int dx \, \nabla_x (a_x^* + \sqrt{N} \overline{\varphi}_t^{(N)} (x) ) \nabla_x (a_x + \sqrt{N} 
@@ -985,7 +989,11 @@ A simple computation shows that
 &+ \frac{1}{\sqrt{N}} \left[  \int dx dy \, N^3 V(N(x-y)) a_x^* \left( \varphi_t^{(N)} (y) a_y^* + \overline{\varphi}_t^{(N)} (y) a_y \right) a_x \right] \\
 &+\frac{1}{2N} \int dx dy N^3 V(N (x-y)) a_x^* a_y^* a_y a_x. \end{split} \]
 Combining the last two equations and using (\ref{eq:mod-GP}), we conclude that
-\[ \begin{split} \cL_N^{(0)} (t) = \; & N \, \text{Im } \left\langle \varphi_t^{(N)} , \left(N^3 (f(N.) - 1/2) V(N.) * |\varphi_t^{(N)}|^2 \right] \varphi_t^{(N)} \right\rangle \\ &+ \sqrt{N}  \left[  a^*\left( (N^3 w(N.) V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) + a\left( (N^3 w (N.)V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right] \\
+\[ \begin{split} \cL_N^{(0)} (t) = \; & N \, \text{Im } \left\langle
+\varphi_t^{(N)} , \left(N^3 (f(N.) - 1/2) V(N.) * |\varphi_t^{(N)}|^2
+\right] \varphi_t^{(N)} \right\rangle \\ &+ \sqrt{N}  \left[  a^*\left( (N^3
+w(N.) V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right. \\
+& \quad \qquad + \left. a\left( (N^3 w (N.)V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right] \\
 &+ \left[ \int dx \, \nabla_x a_x^* \nabla_x a_x + \int dx \, (N^3 V (N,) * |\varphi_t^{(N)}|^2) (x) a_x^* a_x \right. \\ 
 &\hspace{.5cm}+ \int dx dy N^3 V(N (x-y)) \varphi_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y) a_x^* a_y \\
 &\hspace{.5cm}+ \left.  \frac{1}{2} \int dx dy N^3 V(N (x-y)) \left( \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) a_x^* a_y^* + 
@@ -1160,7 +1168,8 @@ with $j(x,y) = -N w(N (x-y)) \nabla \varphi_t^{(N)} (x) \varphi_t^{(N)} (y)$. Si
 The first term on the r.h.s. of (\ref{eq:exc2-K}), on the other hand, can be written as
 \[ \begin{split}
 - N^2 \int dx dy \nabla w (N (x-y)) \varphi_t^{(N)} &(x) \varphi_t^{(N)} (y) \nabla_x a^*_x a_y^* \\ &=
- N^3 \int dx dy (\Delta w) (N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) a^*_x a_y^* \\ &+ N^2 \int dx dy \nabla w (N (x-y)) \nabla \varphi^{(N)}_t (x) \varphi_t^{(N)} (y) a_x^* a_y^* \end{split} \]
+ N^3 \int dx dy (\Delta w) (N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y)
+ a^*_x a_y^* \\ &\quad + N^2 \int dx dy \nabla w (N (x-y)) \nabla \varphi^{(N)}_t (x) \varphi_t^{(N)} (y) a_x^* a_y^* \end{split} \]
 The first contribution on the r.h.s. of the last equation is large and appears explicitly on the r.h.s. of (\ref{eq:pr-K}). The second term, on the other hand, is an error; integrating by parts, it can be expressed as
 \[ \begin{split} N^2 \int dx dy \nabla &w (N (x-y)) \nabla \varphi^{(N)}_t (x) \varphi_t^{(N)} (y) a_x^* a_y^* \\ = \; &- N \int dx dy  w (N (x-y)) \nabla \varphi^{(N)}_t (x) \nabla \varphi_t^{(N)} (y) a_x^* a_y^* \\ &- N \int dx dy w (N (x-y)) \nabla \varphi^{(N)}_t (x)  \varphi_t^{(N)} (y) a_x^* \nabla_y a_y^*  \\ = \; &- \int dx \nabla \varphi_t^{(N)} (x) a_x^* a^* (N w(N(x-.) \nabla \varphi_t^{(N)}) - \int dy  \nabla_y a_y^* a^* (j_y) \end{split} \]
 with the same kernel $j$ defined above. The second term is bounded as in (\ref{eq:exc3-K}). The first term, on the other hand, is estimated by
@@ -1280,7 +1289,8 @@ The hermitian conjugate of (\ref{eq:2-cancel}), proportional to $a (c_x) a (c_y)
 
 The second bound in (\ref{eq:T2T-cl}) follows similarly, using the fact that the commutator of $\cN$ with the terms on the r.h.s. of (\ref{eq:T2T}) leaves their form unchanged (a part for the constant terms and the quadratic terms with one creation and one annihilation operators, whose contribution to the commutator $[\cN , \cE_2 (t)]$ vanishes).  
 
-Also the third bound in (\ref{eq:T2T-cl}) can be proven analogously, using the bounds for $\| \dot{\text{sh}}_{k_t} \|_2, \| \dot{p}_{k_t} \|_2$, as proven in Lemma \ref{lm:dotk} . When the time derivative hits the factor $\varphi_t^{(N)} (x)$ or $\varphi_t^{(N)} (y)$, it generates a contribution which has to be bounded by $\| \dot\varphi_t^{(N)} \|_{H^2} \leq C \| \varphi_t^{(N)} \|_{H^4}$, using the Gross-Pitaevskii equation (\ref{eq:mod-GP}). 
+Also the third bound in (\ref{eq:T2T-cl}) can be proven analogously, using
+the bounds for $\| \dot{\text{sh}}_{k_t} \|_2$, $\| \dot{p}_{k_t} \|_2$, as proven in Lemma \ref{lm:dotk} . When the time derivative hits the factor $\varphi_t^{(N)} (x)$ or $\varphi_t^{(N)} (y)$, it generates a contribution which has to be bounded by $\| \dot\varphi_t^{(N)} \|_{H^2} \leq C \| \varphi_t^{(N)} \|_{H^4}$, using the Gross-Pitaevskii equation (\ref{eq:mod-GP}). 
 \end{proof}
 
 \subsection{Analysis of $T^* \cL^{(0)}_{3,N} (t) T$}
@@ -1375,7 +1385,10 @@ To prove Proposition \ref{prop:TL4T}, we will make use of the following two lemm
 \begin{lemma}\label{lm:4}
 Suppose $j_1, j_2 \in L^2 (\bR^3 \times \bR^3)$ are kernels with the property that 
 \[ M_i  := \text{max} \left( \sup_x \int dy \, |j_i (x,y)|^2 , \sup_y \int dx \, |j_i (x,y)|^2 \right) < \infty \]
-for $i =1 ,2$. Let $j_{i,x} (z) := j_i (x,z)$ and recall the definition $c_x (z) = \text{ch}_{k_t} (x,z)$ from (\ref{eq:def-csprx}). Then there exists a constant $C$ depending only on $M_1, M_2$ and on the $L^2$-norms $\| j_1 \|_{L^2 (\bR^3 \times \bR^3)} , \| j_2 \|_{L^2 (\bR^3 \times \bR^3)}$ such that
+for $i =1 ,2$. Let $j_{i,x} (z) := j_i (x,z)$ and recall the definition $c_x
+(z) = \text{ch}_{k_t} (x,z)$ from (\ref{eq:def-csprx}). Then there exists a
+constant $C$ depending only on $M_1, M_2$ and on the $L^2$-norms $\| j_1
+\|_{L^2 (\bR^3 \times \bR^3)}$, $\| j_2 \|_{L^2 (\bR^3 \times \bR^3)}$ such that
 \begin{equation}\label{eq:lm4-1}
 \int dx dy N^3 V (N (x-y)) \| a^\sharp (j_{1,x}) a_y \psi \|^2 \leq C M_1 \| (\cN+1) \psi \|^2
 \end{equation}
@@ -1617,8 +1630,7 @@ from Lemma \ref{lm:dotk} The second inequality in (\ref{eq:prT-cl1}) follows sim
 
 In this section, we combine the results of the previous subsection, to obtain a proof of Theorem \ref{thm:L}. {F}rom (\ref{eq:TL1T}) and Propositions \ref{prop:TKT}, \ref{prop:TwtL2T}, \ref{prop:TL3T}, \ref{prop:TL4T} it follows that
 \begin{equation}\label{eq:cLN-can1} \begin{split} 
-\cL_N (t) = \; &C_N (t) \\
-&+ \cK  + \frac{1}{2N}  \int dx dy N^3 V (N (x-y)) a_x^* a_y^* a_y a_x \\
+\cL_N (t) = \; &C_N (t) + \cK  + \frac{1}{2N}  \int dx dy N^3 V (N (x-y)) a_x^* a_y^* a_y a_x \\
 &+ \Big[ N^3 \int dx dy (\Delta w) (N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y)  a_x^* a_y^* \\ 
 &\hspace{2cm}+ \frac{1}{2} \int dx dy N^3 V(N (x-y)) (1- w(N(x-y))) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y)\, a_x^* a_y^* \\&\hspace{.5cm}+ \text{h.c.} \Big]  
 \\ &+ \cE (t) 
@@ -2153,7 +2165,6 @@ Inserting the last bounds in (\ref{eq:px2}), we find
 Integrating over $y$ and taking the supremum over $x$ gives
 \[ \sup_x \| \dot{p} (k_t) (x,.) \|_2 \leq C e^{K |t|} \]
 The bound for $\dot{r} (k_t)$ can be proven analogously. Combining the bound for $\dot{r} (k_t)$ with the one for $\dot{k}_t$, we also obtain the bound for $\dot{\text{sh}} (k_t)$.
-
 \end{proof}
 
 \begin{thebibliography}{10}
