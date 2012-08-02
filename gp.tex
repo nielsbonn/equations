@@ -335,6 +335,7 @@ minimizer $\phi_{\text{GP}} \in L^2 (\bR^3)$ of (\ref{eq:GP-en}) and where $\gam
 \begin{equation}\label{eq:one-red} \gamma^{(1)}_N (x;x') := \int dx_2 \dots dx_N \psi_N (x , x_2, \dots  ,x_N) \overline{\psi}_N (x' , x_2 , \dots , x_N) \end{equation}
 We assume here that $\| \psi_N \|  =1$, and therefore that $\tr \, \gamma^{(1)}_N = 1$. The convergence in (\ref{eq:cond}), which hold in the trace-class topology, implies that, in the ground state of (\ref{eq:ham-0}), all particles, up to a fraction which vanishes in the limit of large $N$, are in the same one particle state, described by the orbital $\phi_{\text{GP}}$. The results of \cite{LSY,LS} show that the Gross-Pitaevskii theory correctly describes the ground state properties of the Hamiltonian (\ref{eq:ham-0}). 
 
+
 \bigskip
 
 {\it Time evolution.} 
@@ -504,8 +505,8 @@ and it seems impossible to obtain uniform (in $N$) bound on the growth of the nu
 Since correlations are, in first order, an effect of two-body interactions, we are going to approximate them using a unitary operator of the form
 \[ T(k) = e^{\frac{1}{2} \int dx dy \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right)} \]
 for an appropriate $k \in L^2 (\bR^3 \times \bR^3)$, which will be interpreted as the integral kernel of a Hilbert-Schmidt operator (again denoted by $k$) on $L^2 (\bR^3)$. The operator $T(k)$ acts on creation and annihilation operators as a Bogoliubov transformation (see Sect. \ref{sec:bt} for precise definitions and basic properties):
-\[ \begin{split} T^* (k) a (f) T (k) &= a(\text{ch} (k) (f)) - a^* (\text{sh} (k) (\overline{f})) \\
-T^*(k) a^* (f) T (k) &= a^* (\text{ch} (k) (f)) - a^* (\text{sh} (\overline{k}) (\overline{f}))
+\[ \begin{split} T^* (k) a (f) T (k) &= a(\text{ch} (k) (f)) + a^* (\text{sh} (k) (\overline{f})) \\
+T^*(k) a^* (f) T (k) &= a^* (\text{ch} (k) (f)) + a^* (\text{sh} (\overline{k}) (\overline{f}))
 \end{split} \]
 where $\text{ch} (k), \text{sh} (k)$ are the bounded operators on $L^2 (\bR^3)$ defined by the (absolute convergent) series
 \[ \begin{split} 
@@ -780,7 +781,7 @@ we have, for any $f,g \in L^2 (\bR^3)$,
 & = A (f,g) - \int_0^1 d \lambda_1  \, e^{-\lambda_1 B} [B,A (f,g)] e^{\lambda_1 B}
  \end{split} \]
 Iterating, we find
-\begin{equation}\label{eq:baker} \begin{split} e^{-B} A (f,g) e^{B} = \; &A (f,g) + \sum_{j=1}^n \frac{(-1)^j}{j!} \,\text{ad}_B^j (A (f,g)) \\ &+(-1)^n  \int_0^1 d\lambda_1 \int_0^{\lambda_1} d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{-\lambda_{n+1} B}  \end{split}\end{equation}
+\begin{equation}\label{eq:baker} \begin{split} e^{-B} A (f,g) e^{B} = \; &A (f,g) + \sum_{j=1}^n \frac{(-1)^j}{j!} \,\text{ad}_B^j (A (f,g)) \\ &+(-1)^n  \int_0^1 d\lambda_1 \int_0^{\lambda_1} d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{-\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{\lambda_{n+1} B}  \end{split}\end{equation}
 where $\text{ad}_B (C) = [B,C]$. A simple computation shows that 
 \[  \text{ad}_B (A (f,g)) = [ B, A(f,g)] = - A \left(\left(  \begin{array}{ll}0 &  k  \\ \overline{k} & 0 \end{array} \right) \left( \begin{array}{l} f \\ g \end{array} \right) \right)  \]
 and therefore that 
@@ -794,7 +795,7 @@ the error converges to zero. We claim, more precisely, that the error term on th
 To prove this claim, we start by observing that
 \begin{equation}\label{eq:NTN} \| (\cN+1)^{1/2} e^{-\lambda B} (\cN+1)^{-1/2} \| = \| (\cN+1)^{-1/2} e^{\lambda B} (\cN+1)^{1/2} \| \leq e^{2 |\lambda| \| k \|_2} \end{equation}
 for every $\lambda \in \bR$. Assuming for example, that $n$ is odd, (\ref{eq:NTN}) implies that 
-\[ \begin{split} \Big| \int_0^1 d\lambda_1 \int_0^{\lambda_1} &d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{-\lambda_{n+1} B} (\cN +1)^{-1/2} \Big\| \\ \leq \; & \frac{e^{\| k \|_2}}{n!}  \| A \left( (k\overline{k})^{(n+1)/2} f , (\overline{k} k)^{(n+1)/2} g \right) (\cN+1)^{-1/2} \| \\
+\[ \begin{split} \Big| \int_0^1 d\lambda_1 \int_0^{\lambda_1} &d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{-\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{\lambda_{n+1} B} (\cN +1)^{-1/2} \Big\| \\ \leq \; & \frac{e^{\| k \|_2}}{n!}  \| A \left( (k\overline{k})^{(n+1)/2} f , (\overline{k} k)^{(n+1)/2} g \right) (\cN+1)^{-1/2} \| \\
 \leq \; & \| (f \| + \| g \|) \, e^{\| k \|_2} \, \frac{\| (k\overline{k})^{(n+1)/2} \|_2}{n!} \leq C \frac{\| k \|_2^n}{n!} 
 \end{split}\]
 which vanishes as $n \to \infty$. The case $n$ even can be treated similarly. To prove (\ref{eq:NTN}), we observe that 
