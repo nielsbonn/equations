@@ -883,12 +883,18 @@ Equivalently, $a_0$ is given by
 \[  8 \pi a_0 = \int dx \, V(x) f(x) \, . \]
 Note that, if $V$ has compact support inside $\{ x \in \bR^3 : |x| < R \}$, we have $w(x) = a_0/|x|$, for $|x| > R$ and $a_0 < R$. In general, under our assumptions on $V$, one can prove the following properties of the function $w$.
 \begin{lem}\label{lm:w}
-Suppose $V \in L^1 (\bR^3)$, with $|V(x)| \leq |x|^{-3-\eps}$ at infinity. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), and $w = 1 - f$. Then there exists $c < 1$ with 
-\[ 0 \leq w(x) \leq c \quad \text{for all } x \in \bR^3 \]
+Let $V \in L^1 (\bR^3)$ be spherically symmetric, with $V \geq 0$. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), and $w = 1 - f$. Then 
+\[ 0 \leq w(x) \leq 1 \quad \text{for all } x \in \bR^3 \]
 Moreover, there is a constant $C>0$ with 
-\[ w(x) \leq \frac{C}{|x|+1} \qquad \text{and } \quad  |\nabla w (x)| \leq \frac{C}{|x|^2 + 1}. \]
+\begin{equation}\label{eq:bdw} w(x) \leq \frac{C}{|x|+1} \qquad \text{and } \quad  |\nabla w (x)| \leq \frac{C}{|x|^2 + 1}. \end{equation}
 \end{lem}
-A proof of Lemma \ref{lm:w} can be found in \cite{ESY2}, under the additional assumption that $V$ is compactly supported.
+\begin{proof}
+Standard arguments show that $0 \leq f (x) \leq 1$ holds for every $x \in \bR^3$ ($f  (x) \leq 1$ follows from $V \geq 0$, because of the monotonic dependence of $f$ on the potential; see Appendix C in \cite{LSSY}). This implies that $0 \leq w (x) \leq 1$ for all $x \in \bR^3$. {F}rom the zero energy scattering equation, we have $-\Delta w = Vf /2$ and therefore
+\[ w(x) = C \int dy \, \frac{1}{|x-y|} V (y) f (y) \]
+for an appropriate constant $C>0$. This representation, together with the properties of $V$ and the estimate $0 \leq f \leq 1$, easily implies the first bound in (\ref{eq:bdw}). Moreover, it gives 
+\[ \nabla w (x) = C \int dy \frac{x-y}{|x-y|^3} \, V (y) f (y) \]
+which implies that $|\nabla w (x)| \leq C |x|^{-2}$. Combining with $|\nabla w (x)| \leq C$ by standard elliptic regularity, we also obtain the second bound in (\ref{eq:bdw}). 
+\end{proof}
 
 The zero-energy scattering equation for the rescaled potential $N^2 V (Nx)$ is then solved by $f_N (x) := f (Nx)$. We define $w_N (x) = 1- f_N (x) = w(Nx)$. Clearly 
 \[ \lim_{|x| \to \infty} w_N(x) |x| = \lim_{|x| \to \infty} w(Nx) |x| = \frac{a_0}{N} ,\]
@@ -2258,14 +2264,19 @@ A.~{Knowles} and P.~{Pickl}.
 
 \bibitem{LS}
 Elliott~H. Lieb and Robert Seiringer.
-\newblock Proof of bose-einstein condensation for dilute trapped gases.
+\newblock Proof of {B}ose-{E}instein condensation for dilute trapped gases.
 \newblock {\em Phys. Rev. Lett.}, 88:170409, 2002.
 
 \bibitem{LSY}
 Elliott~H. Lieb, Robert Seiringer, and Jakob Yngvason.
-\newblock Bosons in a trap: A rigorous derivation of the gross-pitaevskii
+\newblock Bosons in a trap: A rigorous derivation of the {G}ross-{P}itaevskii
   energy functional.
 \newblock {\em Phys. Rev. A}, 61:043602, 2000.
+
+\bibitem{LSSY}
+Elliott~H. Lieb, Robert Seiringer, Jan Philip Solovej, and Jakob Yngvason.
+{\it The mathematics of the {B}ose gas and its condensation}. 
+Oberwolfach Seminars, {\bf 34}. Birkhauser Verlag, Basel, 2005.
 
 %\bibitem{Loudon}
 %Rodney Loudon.
