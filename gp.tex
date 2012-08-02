@@ -1,6 +1,6 @@
 %\documentclass[11pt,a4paper,DIV11]{scrartcl}
 \documentclass[11pt,a4paper]{article}
-\usepackage[a4paper,hmargin=2.8cm,vmargin=2.8cm]{geometry}
+\usepackage[a4paper,hmargin=2.8cm,vmargin=3cm]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage[bookmarksnumbered=true]{hyperref}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
@@ -281,10 +281,9 @@
 
 %\allowdisplaybreaks
 
-\author{Institute of Applied Mathematics, University of Bonn\\ Endenicher Allee 60, 53115 Bonn, Germany}
-
-
 \title{Quantitative Derivation of the Gross-Pitaevskii Equation} 
+
+\author{Niels Benedikter, Gustavo de Oliveira and Benjamin Schlein \\ \\ Institute of Applied Mathematics, University of Bonn\\ Endenicher Allee 60, 53115 Bonn, Germany}
 
 \begin{document}
 \maketitle
@@ -500,7 +499,7 @@ The term $(i\partial_t W^* (\sqrt{N} \varphi^{(N)}_t)) W (\sqrt{N} \varphi^{(N)}
 &=- \sqrt{N} \int dx \left[ -\Delta \varphi^{(N)}_t (x) + (N^3 V(N.) f(N.) |\varphi^{(N)}_t (x)|^2 \varphi^{(N)}_t (x) \right] a_x^* - \text{h.c.}
 \end{split}\]
 In contrast with the mean field regime discussed above, here there is no complete cancellation between the two large linear terms. Hence, the generator $\cL^{\text{GP}}_N (t)$ of (\ref{eq:cU-mfGP}) contains a large contribution, linear in the creation and annihilation operators, of the form
-\[  \sqrt{N} \int dx \left( N^3 V(N.) (1- f(N.)) * |\varphi^{(N)}_t|^2 \right) (x) \left( \varphi^{(N)}_t (x) a_x^* + \text{h.c.} \right)  \]
+\begin{equation}\label{eq:lin-N} \sqrt{N} \int dx \left( N^3 V(N.) (1- f(N.)) * |\varphi^{(N)}_t|^2 \right) (x) \left( \varphi^{(N)}_t (x) a_x^* + \text{h.c.} \right)  \end{equation}
 and it seems impossible to obtain uniform (in $N$) bound on the growth of the number of particles w.r.t. (\ref{eq:cU-mfGP}). The reason for this failure is that we are trying to control fluctuations around the wrong evolution. When we approximate $e^{-it \cH_N} W(\sqrt{N} \varphi) \psi$ by an evolved coherent state $W(\sqrt{N} \varphi^{(N)}_t) \psi$, we are completely neglecting the correlation structure developed by the many body evolution. As a result, fluctuations around the coherent approximation $W(\sqrt{N} \varphi^{(N)}_t)$ are too strong to be bounded uniformly in $N$. 
 Since correlations are, in first order, an effect of two-body interactions, we are going to approximate them using a unitary operator of the form
 \[ T(k) = e^{\frac{1}{2} \int dx dy \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right)} \]
@@ -518,7 +517,7 @@ where $\varphi^{(N)}_t$ is the solution of the modified Gross-Pitaevskii equatio
 \[ w (x) = 1 - f(x) \]
 with $f$ being the solution of (\ref{eq:0en-0}). We will consider an initial state of the form $W(\sqrt{N} \varphi) T(k_0) \psi$, for $\psi$ with bounded number of particles and bounded energy, and we will approximate its time evolution by $W(\sqrt{N} \varphi_t) T(k_t) \psi$, leading therefore to the fluctuation dynamics 
 \begin{equation}\label{eq:cU-0} \cU (t;s) = T^* (k_t) W^* (\sqrt{N} \varphi_t) e^{-i(t-s) \cH_N} W(\sqrt{N} \varphi_s) T(k_s) \end{equation}
-In this way, the approximating dynamics takes into account the correct correlation structure, and we have a better chance to bound the fluctuations. In fact, we will show in Section \ref{s:growthoffluct} that it is indeed possible to obtain a uniform (in $N$) control for the growth of the number of particles w.r.t. the dynamics (\ref{eq:cU-0}). As a corollary, this will imply convergence of the reduced densities associated with the fully evolved Fock state $e^{-i \cH_N t} W(\sqrt{N} \varphi_t) T(k_t) \psi$ towards the orthogonal projection onto the solution of the Gross-Pitaevskii equation (\ref{eq:GP-0}), with a bound on the rate of convergence. Moreover, we obtain convergence towards the Gross-Pitaevskii dynamics for a certain class of $N$-particle states, again with a bound on the rate of convergence. Note that the idea of adding an operator with a quadratic expression in creations and annihilation operators in the exponent to the Weyl operator generating the coherent state was used in the mean-field regime in \cite{GMM2010}, to obtain norm-approximations of the many-body dynamics. 
+In this way, the approximating dynamics takes into account the correct correlation structure, and we have a better chance to bound the fluctuations. In fact, we will show in Section \ref{s:growthoffluct} that it is indeed possible to obtain a uniform (in $N$) control for the growth of the number of particles w.r.t. the dynamics (\ref{eq:cU-0}). We will see in Section \ref{sec:gen-fd} that the large linear contribution (\ref{eq:lin-N}), which will still appear in the generator of (\ref{eq:cU-0}), is compensated by a contribution arising from sandwiching the cubic term in $W^* (\sqrt{N} \varphi_t^{(N)}) \cH_N W(\sqrt{N} \varphi_t^{(N)})$ between $T(k_t)$ and $T^* (k_t)$. In fact, after conjugating with the Bogoliubov transformation, some of the (cubic) terms will not be in normal order (a creation operator will lie on the right of an annihilation operator). By the canonical commutation relations, normal ordering produces then terms which are linear in the creation and annihilation operators; some of these terms cancel exactly the large contribution (\ref{eq:lin-N}). Other important cancellations will emerge between the quadratic and the not normally ordered quartic terms; see Section \ref{sec:gen-fd} for the details. The control of the growth of the number of particles w.r.t. (\ref{eq:cU-0}) will imply convergence of the reduced densities associated with the fully evolved Fock state $e^{-i \cH_N t} W(\sqrt{N} \varphi_t) T(k_t) \psi$ towards the orthogonal projection onto the solution of the Gross-Pitaevskii equation (\ref{eq:GP-0}), with a bound on the rate of convergence. Note that the idea of adding an operator with a quadratic expression in creations and annihilation operators in the exponent to the Weyl operator generating the coherent state was used in the mean-field regime in \cite{GMM2010}, to obtain norm-approximations of the many-body dynamics. 
 
 \bigskip
 
@@ -731,7 +730,7 @@ for bounded linear maps $U, V: L^2 (\bR^3) \to L^2 (\bR^3)$ satisfying $U^* U - 
 \medskip
 
 For a kernel $k \in L^2 (\bR^3 \times \bR^3)$ with $k (x,y) = k(y,x)$, we define now the operator 
-\begin{equation}\label{eq:Tk-def} T (k) = \exp \left(\frac{1}{2} \int dx dy \, \left(k(x,y) a_x^* a_y^* - \overline{k (x,y)} a_x a_y \right) \right) \end{equation} 
+\begin{equation}\label{eq:Tk-def} T (k) = \exp \left(\frac{1}{2} \int dx dy \, \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right) \right) \end{equation} 
 acting on the Fock space $\cF$. 
 \begin{lem} \label{l:bt}
 Let $k \in L^2(\R^3 \times \R^3)$ be symmetric, in the sense that $k(x,y) = k(y,x)$ ($k$ is therefore the kernel of a symmetric Hilbert-Schmidt operator on $L^2 (\bR^3)$). 
@@ -743,7 +742,7 @@ Let $k \in L^2(\R^3 \times \R^3)$ be symmetric, in the sense that $k(x,y) = k(y,
 \item[(ii)] For every $f,g \in L^2 (\bR^3)$, we have 
 \begin{equation}\label{eq:TAT} T (k)^* A(f,g) T(k) = A (\Theta_k (f,g)) \end{equation}
 where $\Theta_k : L^2 (\bR^3) \oplus L^2 (\bR^3) \to L^2 (\bR^3) \oplus L^2 (\bR^3)$ is the Bogoliubov transformation defined by the matrix 
-\[ \Theta_k = \left(\begin{array}{ll} \text{ch} (k)  & - \text{sh} (k)  \\ - \text{sh} (\overline{k}) & \text{ch} (\overline{k}) \end{array} \right) \]
+\[ \Theta_k = \left(\begin{array}{ll} \text{ch} (k)  & \text{sh} (k)  \\ \text{sh} (\overline{k}) & \text{ch} (\overline{k}) \end{array} \right) \]
 where $\text{ch} (k), \text{sh} (k) : L^2 (\bR^3) \to L^2 (\bR^3)$ are the bounded operators defined by 
 \[ \begin{split} 
 \text{ch} (k) & = \sum_{n\geq 0} \frac{1}{(2n)!} (k\overline{k})^n \\
@@ -777,11 +776,11 @@ and
 (i) is clear. To prove (ii), we observe that, letting 
 \[  B = \frac{1}{2} \int dx dy \, \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right) , \]
 we have, for any $f,g \in L^2 (\bR^3)$,  
-\[ \begin{split} e^{B} A (f,g) e^{-B} & = A (f,g)+ \int_0^1 d \lambda_1  \frac{d}{d\lambda_1} e^{\lambda_1 B} A (f,g) e^{-\lambda_1 B}\\
-& = A (f,g) + \int_0^1 d \lambda_1  \, e^{\lambda_1 B} [B,A (f,g)] e^{-\lambda_1 B}
+\[ \begin{split} e^{-B} A (f,g) e^{B} & = A (f,g) - \int_0^1 d \lambda_1  \frac{d}{d\lambda_1} e^{-\lambda_1 B} A (f,g) e^{\lambda_1 B}\\
+& = A (f,g) - \int_0^1 d \lambda_1  \, e^{-\lambda_1 B} [B,A (f,g)] e^{\lambda_1 B}
  \end{split} \]
 Iterating, we find
-\begin{equation}\label{eq:baker} \begin{split} e^{B} A (f,g) e^{-B} = \; &A (f,g) + \sum_{j=1}^n \frac{1}{j!} \,\text{ad}_B^j (A (f,g)) \\ &+ \int_0^1 d\lambda_1 \int_0^{\lambda_1} d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{-\lambda_{n+1} B}  \end{split}\end{equation}
+\begin{equation}\label{eq:baker} \begin{split} e^{-B} A (f,g) e^{B} = \; &A (f,g) + \sum_{j=1}^n \frac{(-1)^j}{j!} \,\text{ad}_B^j (A (f,g)) \\ &+(-1)^n  \int_0^1 d\lambda_1 \int_0^{\lambda_1} d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{-\lambda_{n+1} B}  \end{split}\end{equation}
 where $\text{ad}_B (C) = [B,C]$. A simple computation shows that 
 \[  \text{ad}_B (A (f,g)) = [ B, A(f,g)] = - A \left(\left(  \begin{array}{ll}0 &  k  \\ \overline{k} & 0 \end{array} \right) \left( \begin{array}{l} f \\ g \end{array} \right) \right)  \]
 and therefore that 
@@ -884,13 +883,12 @@ Equivalently, $a_0$ is given by
 \[  8 \pi a_0 = \int dx \, V(x) f(x) \, . \]
 Note that, if $V$ has compact support inside $\{ x \in \bR^3 : |x| < R \}$, we have $w(x) = a_0/|x|$, for $|x| > R$ and $a_0 < R$. In general, under our assumptions on $V$, one can prove the following properties of the function $w$.
 \begin{lem}\label{lm:w}
-Suppose $V \in ..$. Let $f$ denote the solution of the zero-energy scattering 
-equation (\ref{eq:0en-0}), and $w = 1 - f$. Then there exists $c < 1$ with 
+Suppose $V \in L^1 (\bR^3)$, with $|V(x)| \leq |x|^{-3-\eps}$ at infinity. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), and $w = 1 - f$. Then there exists $c < 1$ with 
 \[ 0 \leq w(x) \leq c \quad \text{for all } x \in \bR^3 \]
 Moreover, there is a constant $C>0$ with 
 \[ w(x) \leq \frac{C}{|x|+1} \qquad \text{and } \quad  |\nabla w (x)| \leq \frac{C}{|x|^2 + 1}. \]
 \end{lem}
-A proof of Lemma \ref{lm:w} can be found in \cite{ESY2}.
+A proof of Lemma \ref{lm:w} can be found in \cite{ESY2}, under the additional assumption that $V$ is compactly supported.
 
 The zero-energy scattering equation for the rescaled potential $N^2 V (Nx)$ is then solved by $f_N (x) := f (Nx)$. We define $w_N (x) = 1- f_N (x) = w(Nx)$. Clearly 
 \[ \lim_{|x| \to \infty} w_N(x) |x| = \lim_{|x| \to \infty} w(Nx) |x| = \frac{a_0}{N} ,\]
@@ -1014,8 +1012,8 @@ In the next subsection, we study separately the different terms on the r.h.s. of
 Define the time-dependent constant (of order $N$)
 \begin{equation}\label{eq:CNt} \begin{split} 
 C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t (x,y))|^2  \\ &+  \int dx dy (N^3 V(N.) * |\varphi_t^{(N)}|^2) (x) \, |\text{sh} (k_t) (x,y)|^2 \\ &+ \int dx dy dz \, N^3 V(N (x-y)) \varphi_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y) \text{sh} (\overline{k}_t) (x,z)  \, \text{sh} (k_t) (y,z)  \\ &+ \text{Re } \int dx dy dz \, N^3 V(N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \text{sh} (\overline{k}_t) (x,z) \text{ch} (k_t) (y,z)  \\
-&+ \int dx dy N^2 V(N (x-y)) \\ &\hspace{1.5cm}  \times \left[ \left|\int dz \, \text{sh} (\overline{k}_t) (x,z) \, \text{ch} (y,z) \right|^2  + \left| \int dz \, \text{sh} (\overline{k}_t) (x,z) \, \text{sh} (y,z) \right|^2 \right. \\ &\hspace{3cm}  \left. 
-+  \int dz_1 dz_2 \, \text{sh} (\overline{k}_t) (x,z_1) \, \text{sh} (x,z_1)  \text{sh} (\overline{k}_t) (x,z_2) \, \text{sh} (y,z_2) \right] 
+&+ \int dx dy N^2 V(N (x-y)) \\ &\hspace{1.5cm}  \times \left[ \left|\int dz \, \text{sh} (\overline{k}_t) (x,z) \, \text{ch} (y,z) \right|^2  + \left| \int dz \, \text{sh} (\overline{k}_t) (x,z) \, \text{sh} (y,z) \right|^2 \right. \\ &\hspace{2cm}  \left. 
++  \int dz_1 dz_2 \, \text{sh} (\overline{k}_t) (x,z_1) \, \text{sh} (k_t) (y,z_1)  \text{sh} (\overline{k}_t) (x,z_2) \, \text{sh} (k_t) (y,z_2) \right] 
 \end{split} \end{equation}
 and let
 \begin{equation}\label{eq:wtcL} \wt{\cL}_N (t) = \cL_N (t) - C_N (t). \end{equation}
