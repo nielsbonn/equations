@@ -283,7 +283,7 @@
 
 \title{Quantitative Derivation of the Gross-Pitaevskii Equation} 
 
-\author{Niels Benedikter, Gustavo de Oliveira and Benjamin Schlein \\ \\ Institute of Applied Mathematics, University of Bonn\\ Endenicher Allee 60, 53115 Bonn, Germany}
+\author{Niels Benedikter, Gustavo de Oliveira\thanks{Supported by ERC Grant MAQD 240518} and Benjamin Schlein\thanks{Partially supported by ERC Grant MAQD 240518} \\ \\ Institute of Applied Mathematics, University of Bonn\\ Endenicher Allee 60, 53115 Bonn, Germany}
 
 \begin{document}
 \maketitle
@@ -523,9 +523,9 @@ In this way, the approximating dynamics takes into account the correct correlati
 
 {\it The main theorem.} We are now ready to state our main result. 
 \begin{thm}\label{thm:main}
-Let $\varphi \in H^4 (\bR^3)$, with $\| \varphi \|_2 =1$. Let $\cH_N$ be the Hamilton operator defined in (\ref{eq:cHN}), with a non-negative and spherically symmetric potential $V \in L^1 (\bR^3)$ decaying sufficiently fast at infinity (so that $|V(x)| \leq C |x|^{-4-\eps}$ for some $\eps > 0$). Let $\psi \in \cF$ be such that
+Let $\varphi \in H^4 (\bR^3)$, with $\| \varphi \|_2 =1$. Let $\cH_N$ be the Hamilton operator defined in (\ref{eq:cHN}), with a non-negative and spherically symmetric potential $V \in L^1 (\bR^3, (1+|x|) dx)$. Let $\psi \in \cF$ be such that
 \begin{equation}\label{eq:ass-thm1} \langle \psi , \cN \psi \rangle ,  \frac{1}{N} \langle \psi , \cN^2 \psi \rangle, \langle \psi, \cH_N \psi \rangle \leq D \end{equation}
-for a constant $D>0$. Let $\Gamma_{N,t}^{(1)}$ denote the one-particle reduced density associated with the evolved state $e^{-i\cH_N t} W(\sqrt{N} \varphi) T(k_0) \psi$, as defined in (\ref{eq:GNt}). Then there exist constants $C, c_1, c_2 >0$, depending only on $\| V \|_1, \| \varphi \|_{H^4}$ and on the constant $D$ appearing in (\ref{eq:ass-thm1}), such that
+for a constant $D>0$. Let $\Gamma_{N,t}^{(1)}$ denote the one-particle reduced density associated with the evolved state $e^{-i\cH_N t} W(\sqrt{N} \varphi) T(k_0) \psi$, as defined in (\ref{eq:GNt}). Then there exist constants $C, c_1, c_2 >0$, depending only on $\| V \|_{L^1 (\bR^3, (1+|x|) dx)}, \| \varphi \|_{H^4}$ and on the constant $D$ appearing in (\ref{eq:ass-thm1}), such that
 \begin{equation}\label{eq:mt} \tr \left| \Gamma_{N,t}^{(1)} - |\varphi_t\rangle \langle \varphi_t| \right| \leq \frac{C \exp (c_1 \exp (c_2 |t|))}{N^{1/2}} \end{equation}
 for all $t \in \bR$ and $N \in \bN$. Here $\varphi_t$ denotes the solution of the time-dependent Gross-PItaevskii equation
 \begin{equation}\label{eq:GP} i\partial_t \varphi_t = -\Delta \varphi_t + 8 \pi a_0 |\varphi_t|^2 \varphi_t \end{equation}
@@ -843,7 +843,7 @@ For a given $\varphi \in H^1 (\bR^3)$, we define $\varphi^{(N)}_t$ as the soluti
 where $f$ denotes the solution of the zero-energy scattering equation (\ref{eq:0en-0}). 
 For technical reason, which will be made clear later on, it is more convenient for us to work with the solution of the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}), rather than directly with the solution of (\ref{eq:GP}). Since $N^3 f(Nx) V(Nx) \to 8 \pi a_0 \delta (x)$, the solution $\varphi_t^{(N)}$ converges towards the solution of (\ref{eq:GP}), as $N \to \infty$. This is proven, together with other important properties of the solutions of (\ref{eq:GP}) and (\ref{eq:mod-GP}), in the next proposition. 
 \begin{proposition} \label{t:pdes}
-Suppose that $V \in L^1 (\bR^3)$ is non-negative and decays sufficiently fast at infinity, s.t. $V(x) \leq C |x|^{-4-\eps}$ for some $\eps > 0$. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), with boundary condition $f(x) \to 1$ as $|x| \to \infty$. Then $Vf \geq 0$ and $Vf \in L^1$ such that also $|x| V(x) f(x) \in L^1 (\bR^3)$. Let $\varphi \in H^1 (\bR^3)$, with $\| \varphi \| = 1$.
+Let $V \in L^1 (\bR^3, (1+|x|) dx)$ be non-negative and spherically symmetric. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), with boundary condition $f(x) \to 1$ as $|x| \to \infty$. Then $Vf \geq 0$ and $Vf \in L^1$ such that also $|x| V(x) f(x) \in L^1 (\bR^3)$. Let $\varphi \in H^1 (\bR^3)$, with $\| \varphi \| = 1$.
 \begin{itemize}
 \item[(i)] Well-posedness. There exist unique global solutions $\varphi_. , \varphi_.^{(N)} \in C(\bR ; H^1 (\bR^3))$ of the Gross-Pitaevskii equation (\ref{eq:GP}) and, respectively, of the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}), with initial data $\varphi$. These solutions are s.t. $\| \varphi_t \| = \| \varphi_t^{(N)} \| = 1$ for all $t \in \bR$. Moreover, there exists a constant $C > 0$ with 
 \[  \| \varphi_t \|_{H^1} , \| \varphi_t^{(N)} \|_{H^1} \leq C \]
@@ -1024,15 +1024,15 @@ C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t (x,y)
 and let
 \begin{equation}\label{eq:wtcL} \wt{\cL}_N (t) = \cL_N (t) - C_N (t). \end{equation}
 Then we have
-\begin{equation}\label{eq:thmL-1} \wt{\cL}_N (t) \geq \frac{1}{2} \left( \cK + \frac{1}{2} \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) - C \, \frac{\cN^2}{N}  - C \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right), \end{equation}
+\begin{equation}\label{eq:thmL-1} \wt{\cL}_N (t) \geq \frac{1}{2} \cH_N - C \, \frac{\cN^2}{N}  - C \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right), \end{equation}
 and
-\begin{equation}\label{eq:thmL-1b} \wt{\cL}_N (t) \leq \frac{3}{2} \left( \cK + \frac{1}{2} \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + C \, \frac{\cN^2}{N}  +  C \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right), \end{equation}
+\begin{equation}\label{eq:thmL-1b} \wt{\cL}_N (t) \leq \frac{3}{2} \cH_N + C \, \frac{\cN^2}{N}  +  C \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right), \end{equation}
 Moreover, 
-\begin{equation}\label{eq:thmL-2} \pm \left[ \cN , \wt{\cL}_N (t) \right]  \leq \cK  + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x   + C \frac{\cN^2}{N} + C \| \varphi_t^{(N)} \|_{H^2}^2 (\cN+1) \end{equation}
+\begin{equation}\label{eq:thmL-2} \pm \left[ \cN , \wt{\cL}_N (t) \right]  \leq \cH_N + C \frac{\cN^2}{N} + C \| \varphi_t^{(N)} \|_{H^2}^2 (\cN+1) \end{equation}
 and 
 \begin{equation}\label{eq:thmL-3}
 \begin{split} 
-\pm \dot{\wt{\cL}}_N (t)  \leq \; &\cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x  + C \| \varphi_t^{(N)} \|_{H^4}^2 \, \frac{\cN^2}{N}  \\ &+ C \left( \| \varphi_t^{(N)} \|_{H^4}  \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \left(\cN+1 \right)  
+\pm \dot{\wt{\cL}}_N (t)  \leq \; &\cH_N + C \| \varphi_t^{(N)} \|_{H^4}^2 \, \frac{\cN^2}{N}  \\ &+ C \left( \| \varphi_t^{(N)} \|_{H^4}  \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \left(\cN+1 \right)  
 \end{split}
 \end{equation}
 \end{thm}
@@ -1419,12 +1419,12 @@ To prove (\ref{eq:lm4-1}), we observe that
 As for (\ref{eq:lm4-2}), we notice that (considering for example the case $a^\sharp (j_{2,y}) = a^* (j_{2,y})$) 
 \[ \begin{split} 
 \int dx dy N^3 V(N (x-y)) & \| a^\sharp (j_{1,x}) a^* (j_{2,y}) \psi \|^2 \\ \leq \; & \int dx dy N^3 V (N (x-y)) \| j_{1,x} \|_2 \| (\cN+1)^{1/2} a^* (j_{2,y}) \psi \|^2 \\ \leq \; & \int dx dy N^3 V (N (x-y)) \| j_{1,x} \|^2_2 \| a^* (j_{2,y}) (\cN+2)^{1/2} \psi \|^2  \\ \leq \; & \int dx dy N^3 V (N (x-y)) \| j_{1,x} \|^2_2  \| j_{2,y} \|_2^2 \| (\cN+1)^{1/2} (\cN+2)^{1/2} \psi \|^2 \\ \leq \; & C M_1 \| j_2 \|^2_{2} \| (\cN+1) \psi \|^2.  \end{split} \]
-Eq.\ (\ref{eq:lm4-3}) follows from the first two, by writing $a (c_y) = a_y + a (p_y)$ (recall here that we are using the notation $p_y (z) = p (k_t) (y,z)$ with the kernel $p (k_t) \in L^2 (\bR^3 \times \bR^3)$ defined in Lemma~\ref{l:kernels}). Eq.\ (\ref{eq:lm4-4}) follows similarly; in this case, however, one can immediately integrate over the variable $y$, making the proof simpler. 
+Eq.\ (\ref{eq:lm4-3}) follows from the first two, by writing $a (c_y) = a_y + a (p_y)$ (recall here that we are using the notation $p_y (z) = p (k_t) (z,y)$ with the kernel $p (k_t) \in L^2 (\bR^3 \times \bR^3)$ defined in Lemma~\ref{l:kernels}). Eq.\ (\ref{eq:lm4-4}) follows similarly; in this case, however, one can immediately integrate over the variable $y$, making the proof simpler. 
 \end{proof}
 
 Terms of the form (\ref{eq:lm4-3}), but with $j_{1,x}$ replaced by $c_x$ (which, remember, is not in $L^2$) are treated differently.
 \begin{lemma}\label{lm:4b}
-Recall the definition $c_x (z) = \text{ch}_{k_t} (x,z)$ from (\ref{eq:def-csprx}). Then there exists a constant $C>0$ with
+Recall the definition $c_x (z) = \text{ch}_{k_t} (z,x)$ from (\ref{eq:def-csprx}). Then there exists a constant $C>0$ with
 \begin{equation}\label{eq:lm4b-1}
 \begin{split}
 \int dx dy N^3 V(N(x-y)) \| a (c_x) a(c_y) \psi \|^2 \leq \; &C \int dx dy N^3 V (N(x-y)) \| a_x a_y \psi \|^2 \\ &+ C\, \| (\cN+1) \psi \|^2 \end{split}. \end{equation}
@@ -1435,7 +1435,7 @@ with
 \[ \pm \wt{\cE} (t) \leq \delta \int dx dy N^3 V (N (x-y)) \| a_x a_y \psi \|^2 + C_\delta \| (\cN+1) \psi \|^2. \]
 \end{lemma}
 \begin{proof}
-We write $a (c_x) = a_x + a (p_x)$, using the notation $p_x (z) = p (k_t) (x,z)$ introduced in (\ref{eq:def-csprx}). We have
+We write $a (c_x) = a_x + a (p_x)$, using the notation $p_x (z) = p (k_t) (z,x)$ introduced in (\ref{eq:def-csprx}). We have
 \[ \| a (c_x) a (c_y) \psi \| \leq \| a_x a_y \psi \| + \| a_x a (p_y) \psi \| + \| a (p_x) a (c_y) \psi \|. \] 
 Therefore, using (\ref{eq:lm4-1}) and (\ref{eq:lm4-3}), we immediately find (using Lemma \ref{l:kernels} to bound $\| p \|_2$ and $\sup_x \| p_x \|_2$)
 \[ \int dx dy N^3 V(N(x-y)) \| a(c_x) a(c_y) \psi \|^2 \leq C \int dx dy N^3 V (N (x-y)) \| a_x a_y \psi \|^2 + C \| (\cN+1) \psi \|^2. \]
@@ -1662,9 +1662,7 @@ This concludes the proof of Theorem \ref{thm:L}.
 The goal of this section is to prove a bound, uniform in $N$, for the growth of the expectation of the number of particles operator with respect to the fluctuation dynamics. The properties of the generator $\cL_N (t)$ of the fluctuation dynamics, as established in Section \ref{sec:gen-fd}, will play a crucial role here.
 
 \begin{thm}\label{thm:N}
-Suppose $\psi \in \cF$ with $\| \psi \|_\cF  =1$ is such that \begin{equation}\label{eq:ass-grw} \begin{split} \left\langle \psi , \left( \frac{\cN^2}{N} + \cN \right) \psi \right\rangle &\leq C \\ \left\langle \psi , \cK \psi \right\rangle = \int dx \left\| \nabla_x a_x \psi \right\|^2 & \leq C \\
-\int dx dy N^2 V(N (x-y)) \| a_x a_y \psi \|^2 &\leq C 
- \end{split} \end{equation}
+Suppose $\psi \in \cF$ with $\| \psi \|_\cF  =1$ is such that \begin{equation}\label{eq:ass-grw} \begin{split} \left\langle \psi , \left( \frac{\cN^2}{N} + \cN + \cH_N \right) \psi \right\rangle &\leq C  \end{split} \end{equation}
 for a constant $C>0$. Let $\varphi \in H^4 (\bR^3)$, and let $\varphi_t^{(N)}$ be the solution of the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}), with initial data $\varphi$. Let $\cU (t;s)$ be the fluctuation dynamics defined in (\ref{eq:cU}). Then there exist constants $C,c_1,c_2 > 0$ such that
 \[ \langle \psi , \cU^* (t;0) \cN \cU (t;0) \psi \rangle \leq C \exp (c_1 \exp (c_2 |t|)). \] 
 \end{thm}
@@ -1787,10 +1785,10 @@ for all $s \in \bR$, and with generator $\wt{\cL}_N (t) = \cL_N (t) - C_N (t)$, 
 \[ \langle \psi , \cU^* (t;0) \cN \cU (t;0) \psi \rangle = \langle \psi , \wt{\cU}^* (t;0) \cN \wt{\cU} (t;0) \psi \rangle. \]
 We now use the properties of $\wt{\cL}_N(t)$, as established in (\ref{eq:thmL-1}), (\ref{eq:thmL-1b}), (\ref{eq:thmL-2}) and (\ref{eq:thmL-3}). To this end, we observe that, by the assumption $\varphi \in H^4 (\bR^3)$ and by Proposition \ref{t:pdes}, there exist constants $C,K > 0$ such that \begin{equation}\label{eq:varphi-bds}  \| \varphi_t^{(N)} \|_{H^4}^2 , \left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \leq C e^{K |t|} \end{equation}
 uniformly in $N$, and for all $t \in \bR$. Eq. (\ref{eq:thmL-1}) implies therefore 
-\begin{equation}\label{eq:en-bd} \cK + \frac{1}{2} \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \leq 2 \wt{\cL}_N (t) + C \frac{\cN^2}{N} + C e^{K |t|} (\cN + 1) \end{equation}
+\begin{equation}\label{eq:en-bd} \cH_N \leq 2 \wt{\cL}_N (t) + C \frac{\cN^2}{N} + C e^{K |t|} (\cN + 1) \end{equation}
 {F}rom Proposition \ref{prop:apri}, we conclude that there exist a constant $C_1$ (depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})), such that
 \begin{equation}\label{eq:grw-1} \begin{split} 
-\Big\langle \psi , \wt{\cU}^* (t;0) &\left(\cK + \frac{1}{2} \int dx dy \, N^2 V (N (x-y)) a_x^* a_y^* a_y a_x \right) \wt{\cU} (t;0) \psi \Big\rangle \\ &\hspace{3cm} \leq \left\langle \psi , \wt{\cU}^* (t;0) \left( 2 \wt{\cL}_N (t) + C_1 e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \end{equation}
+0 \leq \Big\langle \psi , \wt{\cU}^* (t;0) &\cH_N \wt{\cU} (t;0) \psi \Big\rangle \leq \left\langle \psi , \wt{\cU}^* (t;0) \left( 2 \wt{\cL}_N (t) + C_1 e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \end{equation}
 {F}rom (\ref{eq:thmL-2}), combined with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, there exists moreover a constant $C_2 > 0$ (depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})) such that
 \[ \begin{split} 
 \frac{d}{dt} \left\langle \psi, \wt{\cU}^* (t;0) \cN \wt{\cU} (t;0) \psi \right\rangle  \leq  \left\langle \psi , \wt{\cU}^* (t;0)  \left(2 \wt{\cL}_N (t) +C_2 e^{K|t|} (\cN + 1) \right)  \wt{\cU} (t;0) \psi \right\rangle
@@ -1804,8 +1802,11 @@ We fix now $D := \max (C_1 + 1, C_2 , C_3 , K)$. Then, we have
 \frac{d}{dt} \Big\langle \psi , &\wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\  \leq \; & \left\langle \psi, \wt{\cU}^* (t;0) \, \left[ (2 + 2D e^{K|t|}) \wt{\cL}_N (t) + (D e^{K |t|} +D K e^{K |t|} + D^2 e^{2K |t|}) (\cN + 1) \right] \wt{\cU} (t;0) \psi \right\rangle\\  \leq \; &(2 + D e^{K|t|}) \, \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right \rangle \\ \leq \; & 2D e^{K |t|} \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \]
 By Gronwall, we conclude that
 \[ \begin{split}  \Big\langle \psi , \wt{\cU}^* &(t;0) \left( \wt{\cL}_N (t) + 
-D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_x a^y + C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
-where in the last inequality, we used the upper bound (\ref{eq:thmL-1b}). {F}rom the assumption (\ref{eq:ass-grw}), we obtain the claim.
+D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \frac{3}{2} \cH_N+ C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
+where in the last inequality, we used the upper bound (\ref{eq:thmL-1b}). {F}rom the assumption (\ref{eq:ass-grw}), we obtain 
+\[  \Big\langle \psi , \wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + 
+D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle  \leq C \exp (c_1 \exp (c_2 |t|)) \]
+The claim now follows from (\ref{eq:en-bd}), because $D \geq C_1 +1$.
 \end{proof}
 
 \section{Proof of main theorems}
