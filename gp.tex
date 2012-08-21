@@ -291,7 +291,7 @@
 \begin{abstract}
 Starting from first principle many-body quantum dynamics, we show that the dynamics of 
 Bose-Einstein condensates can be approximated by the time-dependent nonlinear 
-Gross-Pitaevskii equation, giving a bound on the rate of convergence. Initial data are constructed on the bosonic Fock space applying an appropriate Bogoliubov transformation on a coherent state with expected number of particles $N$. The Bogoliubov transformation plays a crucial role; it produces the correct microscopic correlations among the particles. Our analysis shows that, up to a small error of the order $N^{-1/2}$, the form of the initial data is preserved by the many body evolution.  
+Gross-Pitaevskii equation, giving a bound on the rate of convergence. Initial data are constructed on the bosonic Fock space applying an appropriate Bogoliubov transformation on a coherent state with expected number of particles $N$. The Bogoliubov transformation plays a crucial role; it produces the correct microscopic correlations among the particles. Our analysis shows that, up to a small error of the order $N^{-1/2}$, the form of the initial data is preserved by the many-body evolution.  
 \end{abstract}
 
 \section{Introduction and main results}
@@ -300,7 +300,7 @@ Gross-Pitaevskii equation, giving a bound on the rate of convergence. Initial da
 
 A Bose-Einstein condensate is a state of matter of a gas of bosons where a macroscopic fraction of the particles occupy the same one-particle state. The existence of Bose-Einstein condensation at small temperature was first predicted in 1925 by Bose and Einstein, who based their analysis on gases of non-interacting bosons. Seventy years later, in 1995, the existence of Bose-Einstein condensates 
 was then confirmed by experiments; see \cite{BEC1,BEC2}. Since then, Bose-Einstein condensates have attracted a lot of attention in theoretical and in experimental physics. In particular, they have been used to explore fundamental questions in quantum mechanics, such as the emergence of interference, decoherence, superfluidity and quantized vortices. In experiments, condensates are initially trapped by strong magnetic fields. They are then cooled down at extremely low temperatures (in the nano-kelvin scale). Finally, the traps are released, and the subsequent evolution of the condensate is observed. The goal of this paper is to study the dynamics of initially trapped Bose-Einstein condensates. In particular, we 
-show rigorously, starting from many body quantum dynamics, that the evolution of the condensate can be described, in certain regimes, by the time-dependent Gross-Piteavskii equation. 
+show rigorously, starting from many-body quantum dynamics, that the evolution of the condensate can be described, in certain regimes, by the time-dependent Gross-Piteavskii equation. 
 
 %This gives a mathematical description of the experiments discussed above.
 
@@ -357,7 +357,7 @@ This result establishes the stability of complete Bose-Einstein condensation wit
 \bigskip
 
 {\it Mean field regime.} The method used in \cite{ESY1,ESY2,ESY3,ESY4} 
-to prove (\ref{eq:conv-GP}) relies on techniques first developed to understand the mean-field limit of many body quantum dynamics. This regime is achieved when considering the time-evolution 
+to prove (\ref{eq:conv-GP}) relies on techniques first developed to understand the mean-field limit of many-body quantum dynamics. This regime is achieved when considering the time-evolution 
 \begin{equation}\label{eq:mf-schr}
 i\partial_t \psi_{N,t} = H_N^{\text{mf}} \psi_{N,t} 
 \end{equation}
@@ -382,7 +382,7 @@ i\partial_t \gamma^{(k)}_{\infty,t} =  \sum_{j=1}^k \left[-\Delta_{x_j} , \gamma
 It turns out that this infinite hierarchy has factorized solutions. In fact, it is easy to check that the ansatz $\gamma^{(k)}_{\infty,t} = |\varphi_t \rangle \langle \varphi_t|^{\otimes k}$ solves (\ref{eq:inf-hier}) if and only if $\varphi_t$ is a solution to the Hartree equation (\ref{eq:hartree-0}). To obtain a rigorous derivation of (\ref{eq:hartree-0}) it is therefore enough to a) show the compactness of the sequence of families $\{ \gamma_{N,t}^{(k)} \}_{k=1}^N$ w.r.t. an appropriate weak topology, b) prove that every limit point of the sequence of reduced densities is a solution of the infinite hierarchy (\ref{eq:inf-hier}) and c) show the uniqueness of the solution of (\ref{eq:inf-hier}). Steps b) and c) imply that there can only be one limit point to the sequence of densities, given by the product of solutions of the Hartree equation (\ref{eq:hartree-0}). {F}rom the compactness in step a), we conclude the convergence $\gamma^{(k)}_{N,t} \to |\varphi_t \rangle \langle \varphi_t|^{\otimes k}$, as $N \to \infty$ (the convergence is first proven in the weak topology, but can then be extended to stronger topologies, using the fact that the limiting densities are rank-one projections). This general scheme, first introduced in \cite{S} for bounded interactions, was later extended to potentials with Coulomb singularities in \cite{EY} (and in \cite{ES}, for bosons with relativistic dispersions). In \cite{ESY1,ESY2,ESY3,ESY4}, this strategy was then applied to analyze the dynamics generated by the Hamiltonian (\ref{eq:ham-1}) and obtain a rigorous derivation of the Gross-Pitaevskii equation (\ref{eq:GP-0}). To this end, one can write (\ref{eq:ham-1}) as
 \begin{equation}\label{eq:ham-11} H_N = \sum_{j=1}^N -\Delta_{x_j} + \frac{1}{N} \sum_{i<j}^N N^3 V (N (x_i - x_j)) \end{equation}
 The regime described by (\ref{eq:ham-1}) can therefore be interpreted as a very singular mean-field limit, where the interaction converges, as $N \to \infty$, towards a delta-function. 
-{F}rom the point of view of physics, however, the mean field regime described by (\ref{eq:ham-mf}) and the Gross-Pitaevskii regime described by (\ref{eq:ham-1}) are very different. While in the first one particles experience a large number of weak collisions, the evolution generated by (\ref{eq:ham-0}) is characterized by very rare and strong interactions (two particles only interact when they are very close, at distances of order $N^{-1}$ from each others, which is much smaller than the typical interparticle distance, of order $N^{-1/3}$). As a consequence, it is difficult to use the analogy with the mean field regime to make predictions for the dynamics generated by (\ref{eq:ham-1}). This is already clear by looking at the Gross-Pitaevskii equation (\ref{eq:GP-0}). Since, $N^3 V(Nx) \to b_0 \delta (x)$, where $b_0 = \int dx\, V(x)$, the mean-field interpretation suggests that, as $N \to \infty$, the many body evolution can be approximated by the Hartree equation (\ref{eq:hartree-0}), with $V$ replaced by $b_0 \delta$. Since $b_0 \not = 8 \pi a_0$, however, this replacement does not yield the correct Gross-Pitaevskii equation (\ref{eq:GP-0}) ($b_0$ is, in fact, only the first Born approximation to $8\pi a_0$). In fact, it turns out that the emergence of the scattering length in (\ref{eq:GP-0}) is a consequence of the correlations among particles, which are produced by the many-body evolution  (\ref{eq:schr}). To appreciate this point, let us consider the first equation (with $k=1$) in the BBGKY hierarchy (\ref{eq:BBGKY}), for the rescaled interaction potential $N^3 V (N.)$ appearing in (\ref{eq:ham-11}). In terms of the kernels $\gamma^{(1)}_{N,t} (x;x')$ and $\gamma^{(2)}_{N,t} (x_1, x_2 ; x'_1, x'_2)$ of the one- and, respectively, two-particle reduced densities, we have
+{F}rom the point of view of physics, however, the mean field regime described by (\ref{eq:ham-mf}) and the Gross-Pitaevskii regime described by (\ref{eq:ham-1}) are very different. While in the first one particles experience a large number of weak collisions, the evolution generated by (\ref{eq:ham-0}) is characterized by very rare and strong interactions (two particles only interact when they are very close, at distances of order $N^{-1}$ from each others, which is much smaller than the typical interparticle distance, of order $N^{-1/3}$). As a consequence, it is difficult to use the analogy with the mean field regime to make predictions for the dynamics generated by (\ref{eq:ham-1}). This is already clear by looking at the Gross-Pitaevskii equation (\ref{eq:GP-0}). Since, $N^3 V(Nx) \to b_0 \delta (x)$, where $b_0 = \int dx\, V(x)$, the mean-field interpretation suggests that, as $N \to \infty$, the many-body evolution can be approximated by the Hartree equation (\ref{eq:hartree-0}), with $V$ replaced by $b_0 \delta$. Since $b_0 \not = 8 \pi a_0$, however, this replacement does not yield the correct Gross-Pitaevskii equation (\ref{eq:GP-0}) ($b_0$ is, in fact, only the first Born approximation to $8\pi a_0$). In fact, it turns out that the emergence of the scattering length in (\ref{eq:GP-0}) is a consequence of the correlations among particles, which are produced by the many-body evolution  (\ref{eq:schr}). To appreciate this point, let us consider the first equation (with $k=1$) in the BBGKY hierarchy (\ref{eq:BBGKY}), for the rescaled interaction potential $N^3 V (N.)$ appearing in (\ref{eq:ham-11}). In terms of the kernels $\gamma^{(1)}_{N,t} (x;x')$ and $\gamma^{(2)}_{N,t} (x_1, x_2 ; x'_1, x'_2)$ of the one- and, respectively, two-particle reduced densities, we have
 \begin{equation}\label{eq:BBGKY1} \begin{split} 
 i\partial_t & \gamma^{(1)}_{N,t} (x;x') \\ = \; & \left( -\Delta_x + \Delta_{x'} \right) \gamma^{(1)}_{N,t} (x;x')  
 \\ &+ \int dx_2 \, \left( (N-1) N^2 V (N (x-x_2) - (N-1) N^2 V(N (x'-x_2)) \right) \gamma^{(2)}_{N,t} (x,x_2 ; x',x_2) \end{split} \end{equation}
@@ -405,7 +405,7 @@ If we assume the initial state to exhibit complete condensation and we accept th
 Plugging into (\ref{eq:BBGKY1}), we obtain a new self-consistent equation for $\varphi_t$,  given by
 \begin{equation}\label{eq:gp-mod0} i\partial_t \varphi_t = -\Delta \varphi_t + \left(N^2 (N-1) V(N.) f(N.) * |\varphi_t|^2 \right) \varphi_t
 \end{equation}
-{F}rom (\ref{eq:8pia}), we have $N^2 (N-1) V(Nx) f(Nx) \simeq N^3 V(Nx) f(Nx) \simeq 8\pi a_0 \delta (x)$ as $N \to \infty$; therefore,in this limit, $\varphi_t$ must be a solution of the Gross-Pitaevskii equation (\ref{eq:GP-0}). The presence of the factor $f(N.)$ in the nonlinear term in (\ref{eq:gp-mod0}) is crucial to obtain the correct coupling constant $8\pi a_0$ in (\ref{eq:GP-0}). This heuristic argument shows that any derivation of (\ref{eq:GP-0}) must take into account the correlation structure developed by the many body dynamics. 
+{F}rom (\ref{eq:8pia}), we have $N^2 (N-1) V(Nx) f(Nx) \simeq N^3 V(Nx) f(Nx) \simeq 8\pi a_0 \delta (x)$ as $N \to \infty$; therefore,in this limit, $\varphi_t$ must be a solution of the Gross-Pitaevskii equation (\ref{eq:GP-0}). The presence of the factor $f(N.)$ in the nonlinear term in (\ref{eq:gp-mod0}) is crucial to obtain the correct coupling constant $8\pi a_0$ in (\ref{eq:GP-0}). This heuristic argument shows that any derivation of (\ref{eq:GP-0}) must take into account the correlation structure developed by the many-body dynamics. 
  
 %This heuristic argument shows that, in order to
 %understand the appearance of the scattering length and to obtain a rigorous derivation of 
@@ -424,7 +424,7 @@ Even so, the expansion can only be shown to converge for short times, and the bo
 %\[ \tr\, \left| \gamma^{(1)}_{N,t} - |\varphi_t \rangle \langle \varphi_t| \right| \leq C N^{-\frac{1}{2^t}} \] 
 %which can be easily proven for bounded potentials, following the ideas of \cite{S}. 
 %For the dynamics generated by (\ref{eq:ham-1}), no such bound can be extracted (or, at least, has been extracted so far) with the approach presented above. 
-The problem of controlling the rate of convergence is by no means of purely academic interest. In experiments, the number of particles $N$ is large ($N \simeq 10^3$ in typical samples of Bose-Einstein condensates), but of course finite. For fixed $N$, the statement (\ref{eq:conv-GP}) is empty. Only an explicit  bound on the difference $\gamma^{(1)}_{N,t} - |\varphi_t \rangle \langle \varphi_t|$ can tell us whether the limiting (Hartree or Gross-Pitaevskii) dynamics is a good approximation for the many body evolution. In \cite{RS}, a different approach to the study of the many-body quantum dynamics in the mean field regime was developed, starting from ideas introduced in a slightly different context in \cite{H,GV}. 
+The problem of controlling the rate of convergence is by no means of purely academic interest. In experiments, the number of particles $N$ is large ($N \simeq 10^3$ in typical samples of Bose-Einstein condensates), but of course finite. For fixed $N$, the statement (\ref{eq:conv-GP}) is empty. Only an explicit  bound on the difference $\gamma^{(1)}_{N,t} - |\varphi_t \rangle \langle \varphi_t|$ can tell us whether the limiting (Hartree or Gross-Pitaevskii) dynamics is a good approximation for the many-body evolution. In \cite{RS}, a different approach to the study of the many-body quantum dynamics in the mean field regime was developed, starting from ideas introduced in a slightly different context in \cite{H,GV}. 
 To explain this approach, we consider the bosonic Fock space 
 \[ \cF = \bigoplus_{n \geq 0} L^2_s (\bR^{3n} , dx_1 \dots  dx_n) \]
 The idea here is that on $\cF$ we can describe states with variable number of particles. The normalized Fock-state $\psi = \{ \psi^{(n)} \}_{n\geq 1}$ contains $n$ particles with probability $\| \psi^{(n)} \|^2$. For $f \in L^2 (\bR^3)$ we introduce, as usual, creation and annihilation operators $a^* (f), a(f)$ which act on $\cF$ by creating, respectively, annihilating a particle with wave function $f$ (precise definitions and basic properties are given in Section \ref{sec:fock}). For $x \in \bR^3$, we can also introduce operator valued distributions $a_x^*, a_x$, creating and annihilating a particle at $x$. In terms of these distributions, we define the mean field Hamiltonian
@@ -438,7 +438,7 @@ Coherent states do not have a fixed number of particles. It turns out that the e
 
 Moreover, it is possible to express the difference between the reduced densities associated with the evolved coherent state and the orthogonal projection onto $\varphi_t$ in terms of a so called fluctuation dynamics, defined as the two-parameter group of unitary transformations
 \begin{equation}\label{eq:cU-mf} \cU^{\text{mf}} (t;s) = W^* (\sqrt{N} \varphi_t) e^{-i \cH^{\text{mf}}_N (t-s)} W(\sqrt{N} \varphi_s) \end{equation}
-Essentially, the problem of bounding the rate of the convergence of the many body evolution towards the Hartree dynamics in the mean field limit reduces to the problem of controlling the growth of the expectation of the number of particles operator $\cN$ with respect to $\cU^{\text{mf}} (t;s)$, uniformly in $N$. To obtain such estimates, one observes that the fluctuation dynamics satisfies a Schr\"odinger type equation
+Essentially, the problem of bounding the rate of the convergence of the many-body evolution towards the Hartree dynamics in the mean field limit reduces to the problem of controlling the growth of the expectation of the number of particles operator $\cN$ with respect to $\cU^{\text{mf}} (t;s)$, uniformly in $N$. To obtain such estimates, one observes that the fluctuation dynamics satisfies a Schr\"odinger type equation
 \[ i\partial_t \cU^{\text{mf}} (t;s) = \cL^{\text{mf}}_N (t) \cU^{\text{mf}} (t;s) \]
 with $\cU^{\text{mf}} (s;s) = 1$ and with the time dependent generator
 \begin{equation}\label{eq:cL-mf} \begin{split} 
@@ -500,7 +500,7 @@ The term $(i\partial_t W^* (\sqrt{N} \varphi^{(N)}_t)) W (\sqrt{N} \varphi^{(N)}
 \end{split}\]
 In contrast with the mean field regime discussed above, here there is no complete cancellation between the two large linear terms. Hence, the generator $\cL^{\text{GP}}_N (t)$ of (\ref{eq:cU-mfGP}) contains a large contribution, linear in the creation and annihilation operators, of the form
 \begin{equation}\label{eq:lin-N} \sqrt{N} \int dx \left( N^3 V(N.) (1- f(N.)) * |\varphi^{(N)}_t|^2 \right) (x) \left( \varphi^{(N)}_t (x) a_x^* + \text{h.c.} \right)  \end{equation}
-and it seems impossible to obtain uniform (in $N$) bound on the growth of the number of particles w.r.t. (\ref{eq:cU-mfGP}). The reason for this failure is that we are trying to control fluctuations around the wrong evolution. When we approximate $e^{-it \cH_N} W(\sqrt{N} \varphi) \psi$ by an evolved coherent state $W(\sqrt{N} \varphi^{(N)}_t) \psi$, we are completely neglecting the correlation structure developed by the many body evolution. As a result, fluctuations around the coherent approximation $W(\sqrt{N} \varphi^{(N)}_t)$ are too strong to be bounded uniformly in $N$. 
+and it seems impossible to obtain uniform (in $N$) bound on the growth of the number of particles w.r.t. (\ref{eq:cU-mfGP}). The reason for this failure is that we are trying to control fluctuations around the wrong evolution. When we approximate $e^{-it \cH_N} W(\sqrt{N} \varphi) \psi$ by an evolved coherent state $W(\sqrt{N} \varphi^{(N)}_t) \psi$, we are completely neglecting the correlation structure developed by the many-body evolution. As a result, fluctuations around the coherent approximation $W(\sqrt{N} \varphi^{(N)}_t)$ are too strong to be bounded uniformly in $N$. 
 Since correlations are, in first order, an effect of two-body interactions, we are going to approximate them using a unitary operator of the form
 \[ T(k) = \exp\left(\frac{1}{2} \int dx dy \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right)\right) \]
 for an appropriate $k \in L^2 (\bR^3 \times \bR^3)$, which will be interpreted as the integral kernel of a Hilbert-Schmidt operator (again denoted by $k$) on $L^2 (\bR^3)$. The operator $T(k)$ acts on creation and annihilation operators as a Bogoliubov transformation (see Sect. \ref{sec:bt} for precise definitions and basic properties):
@@ -829,9 +829,9 @@ Finally, to show (v), we remark that%, writing $p (k) = \sum_{n \geq 0} (k \over
 \[ \| \dot p (k) \|_2 \leq \sum_{n \geq 1} \frac{1}{(2n)!} 2n \| \dot k \|_2 \| k \|_2^{2n-1} \leq \| \dot k \|_2 \, e^{ \|k \|_2}.  \]
 The bound for $\dot r (k)$ can be proven analogously. {F}rom the product rule, we also find that
 \[ \begin{split} 
-\| \nabla_1 \dot p (k) \|_2 & \leq \sum_{n=2}^\infty \frac{n(n-1)}{(2n)!}   \, \| k  \|_2^{2(n-2)} 
+\| \nabla_1 \dot p (k) \|_2 & \leq \sum_{n=2}^\infty \frac{n-1}{(2n)!}   \, \| k  \|_2^{2(n-2)} 
 \| \partial_t (k \overline{k}) \|_2  \, \| \nabla_1 (k \overline{k}) \|_2  + 
-\sum_{n=1}^\infty \frac{n}{(2n)!} \, \| k \|_2^{2(n-1)}  \| \nabla_1 \partial_t (k \overline{k}) \|_2 \\
+\sum_{n=1}^\infty \frac{1}{(2n)!} \, \| k \|_2^{2(n-1)}  \| \nabla_1 \partial_t (k \overline{k}) \|_2 \\
 & \leq e^{\| k \|_2} \left( \| \dot k \|_2 \,  \| \nabla_1 (k \overline{k}) \|_2 + \| \nabla_1 (k \dot{\overline{k}}) \|_2  + \| \nabla_1 (\dot k\overline{k}) \|_2 \right). \end{split} \]
 The other bounds are shown similarly.
 \end{proof}
@@ -867,7 +867,7 @@ The proof of Proposition \ref{t:pdes} can be found in Appendix \ref{s:pde}.
 \medskip
 
 Using the solution $\varphi_t^{(N)}$ of (\ref{eq:mod-GP}), we are going to approximate the coherent part of the evolution. As explained in the introduction, however, this approximation is not good enough. The many-body evolution develops a singular correlation structure, which is completely absent in the evolved coherent state. As a consequence, fluctuations around the coherent approximation are too strong to be controlled. To solve this problem, we have to produce a better approximation of the many-body evolution, in particular an approximation which takes into account the short-scale correlation structure. To reach this goal, we are going to multiply the Weyl operator $W(\sqrt{N} \varphi_t^{(N)})$, which generates the coherent approximation to the many-body dynamics by another unitary operator $T(k)$, having the form (\ref{eq:Tk-def}), obtained by taking the exponential of a quadratic expression in creation and annihilation operators. The kernel $k \in L^2 (\bR^3 \times \bR^3)$ has to be chosen so that $T(k)$ creates the correct correlations among the particles. Since correlations are, in good approximation, two-body effects, we can try to approximate them through the solution $f$ of the zero-energy scattering equation (\ref{eq:0en-0}). We will write 
-%In this section, we will choose a kernel $k \in L^2 (\bR^3 \times \bR^3)$ and we will use it to %construct the unitary operator $T(k)$, as defined in (\ref{eq:Tk-def}). This operator should generate, %when applied to coherent states, the short scale correlation structure developed by the many-body %evolution because of the singular interaction. It will thus allow us to give a better approximation of %the full dynamics; as a consequence, we will have a better chance to control the growth of the %fluctuations around it. 
+%In this section, we will choose a kernel $k \in L^2 (\bR^3 \times \bR^3)$ and we will use it to %construct the unitary operator $T(k)$, as defined in (\ref{eq:Tk-def}). This operator should generate, %when applied to coherent states, the short-scale correlation structure developed by the many-body %evolution because of the singular interaction. It will thus allow us to give a better approximation of %the full dynamics; as a consequence, we will have a better chance to control the growth of the %fluctuations around it. 
 %
 %The correlation structure is generated by the two-body interactions. In good approximation, we can %model it using the solution of the zero-energy scattering equation. In the following, we will assume %that $V \geq 0$, and $V \in L^\infty (\bR^3) \cap L^1 (\bR^3)$. We define then $f$ to be the radial %solution of 
 %\begin{equation}\label{eq:0enV}
@@ -884,10 +884,10 @@ as
 \]
 Equivalently, $a_0$ is given by 
 \[  8 \pi a_0 = \int dx \, V(x) f(x) \, . \]
-Note that, if $V$ has compact support inside $\{ x \in \bR^3 : |x| < R \}$, we have $w(x) = a_0/|x|$, for $|x| > R$ and $a_0 < R$. In general, under our assumptions on $V$, one can prove the following properties of the function $w$.
+Note that, if $V$ has compact support inside $\{ x \in \bR^3 : |x| < R \}$, then $a_0 \leq R$ and $w(x) = a_0/|x|$ for $|x| > R$. In general, under our assumptions on $V$, one can prove the following properties of the function $w$.
 \begin{lem}\label{lm:w}
 Let $V \in L^1 (\bR^3)$ be spherically symmetric, with $V \geq 0$. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), and $w = 1 - f$. Then 
-\[ 0 \leq w(x) \leq 1 \quad \text{for all } x \in \bR^3 \]
+\[ 0 \leq w(x) \leq 1 \quad \text{for all } x \in \bR^3. \]
 Moreover, there is a constant $C>0$ with 
 \begin{equation}\label{eq:bdw} w(x) \leq \frac{C}{|x|+1} \qquad \text{and } \quad  |\nabla w (x)| \leq \frac{C}{|x|^2 + 1}. \end{equation}
 \end{lem}
@@ -913,7 +913,7 @@ We will use the solution $f_N (x)$ of the scaled zero-energy scattering equation
 k_t (x,y)  = - N w_N (x-y) \ph (x) \ph (y) = - N w (N (x-y)) \ph (x) \ph (y) \end{equation}
 and the corresponding unitary operator
  \[ T (k_t) = \text{exp} \left( \frac{1}{2} \int dx dy \, \left( k_t (x,y) a_x^* a_y^* - \overline{k}_t (x,y) a_x a_y \right)\right). \]
-In the next lemma, we collect several bounds for the kernel $k_t$ which will be useful in the rest of the paper. 
+In the next lemma, we collect several bounds for the kernel $k_t$ which will be useful in the following. 
 \begin{lem} \label{l:kernels}
 Let $\varphi_t^{(N)} \in H^1(\R^3)$ be the solution of (\ref{eq:mod-GP}) with initial data $\varphi \in H^1 (\bR^3)$. Let $w_N (x) = w(Nx) = 1 - f(Nx)$, where $f$ solves the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt}). \begin{enumerate}
 \item \label{k} There exists a constant $C$, depending only on $\| \varphi^{(N)}_t \|_{H^1}$ such that
@@ -959,7 +959,7 @@ The proof of the last two lemmas can also be found in Appendix \ref{sec:kernels}
 
 As explained in the introduction, we are going to approximate the many-body evolution
 \[ e^{-i \cH_N t} W(\sqrt{N} \varphi ) T(k_0) \psi \]
-of an initial state which is almost coherent, but with the correct short scale structure, by the Fock state $W(\sqrt{N} \varphi_t^{(N)}) T(k_t) \psi$, which is again almost coherent and has again the correct microscopic correlations. This leads us to the fluctuation dynamics, defined as the two-parameter group of unitary transformations 
+of an initial state which is almost coherent, but with the correct short-scale structure, by the Fock state $W(\sqrt{N} \varphi_t^{(N)}) T(k_t) \psi$, which is again almost coherent and has again the correct microscopic correlations. This leads us to the fluctuation dynamics, defined as the two-parameter group of unitary transformations 
 \begin{equation}\label{eq:cU} \cU (t;s) = T^* (k_t) W^* (\sqrt{N} \varphi_t^{(N)}) e^{-i\cH_N (t-s)} W(\sqrt{N} \varphi_s^{(N)}) T(k_s) \end{equation}
 where $\cU (s;s) = 1$ for all $s \in \bR$. 
 
@@ -1020,7 +1020,10 @@ In the next subsection, we study separately the different terms on the r.h.s.\ o
 
 Define the time-dependent constant (of order $N$)
 \begin{equation}\label{eq:CNt} \begin{split} 
-C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t) (y,x)|^2  \\ &+  \int dx dy (N^3 V(N.) * |\varphi_t^{(N)}|^2) (x) \, |\text{sh} (k_t) (y,x)|^2 \\ &+ \int dx dy dz \, N^3 V(N (x-y)) \varphi_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y) \text{sh} (\overline{k}_t) (z,x)  \, \text{sh} (k_t) (x,y)  \\ &+ \text{Re } \int dx dy dz \, N^3 V(N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \text{sh} (\overline{k}_t) (z,x) \text{ch} (k_t) (z,y)  \\
+C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t) (y,x)|^2  \\
+ &+  \int dx dy (N^3 V(N.) * |\varphi_t^{(N)}|^2) (x) \, |\text{sh} (k_t) (y,x)|^2 \\
+ &+ \int dx dy dz \, N^3 V(N (x-y)) \varphi_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y) \text{sh} (\overline{k}_t) (z,x)  \, \text{sh} (k_t) (z,y)  \\
+ &+ \text{Re } \int dx dy dz \, N^3 V(N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \text{sh} (\overline{k}_t) (z,x) \text{ch} (k_t) (z,y)  \\
 &+ \int dx dy N^2 V(N (x-y)) \\ &\hspace{1.5cm}  \times \left[ \left|\int dz \, \text{sh} (\overline{k}_t) (z,x) \, \text{ch} (z,y) \right|^2  + \left| \int dz \, \text{sh} (\overline{k}_t) (z,x) \, \text{sh} (z,y) \right|^2 \right. \\ &\hspace{2cm}  \left. 
 +  \int dz_1 dz_2 \, \text{sh} (\overline{k}_t) (z_1,x) \, \text{sh} (k_t) (z_1,y)  \text{sh} (\overline{k}_t) (z_2,x) \, \text{sh} (k_t) (z_2,y) \right] 
 \end{split} \end{equation}
@@ -1135,8 +1138,8 @@ and we observe that
 Hence
 \[\begin{split} 
  \int dx a^* (\nabla_x k_x) a^\sharp (j_{1,x}) = \; & \int dx dy k (x,y) \, \nabla_y a^*_y  a^\sharp (j_{1,x}) 
-\\ &- \int dx dy N w (N (x-y)) \nabla \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \, a^*_y  \, a(j_{1,x})
-\\& - \int dx dy N w (N (x-y)) \nabla \varphi_t^{(N)} (y) \varphi_t^{(N)} (x) \, a^*_y  \, a(j_{1,x}).\end{split} \]
+\\ &- \int dx dy N w (N (x-y)) \nabla \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \, a^*_y  \, a^\sharp(j_{1,x})
+\\& - \int dx dy N w (N (x-y)) \nabla \varphi_t^{(N)} (y) \varphi_t^{(N)} (x) \, a^*_y  \, a^\sharp(j_{1,x}).\end{split} \]
 This implies
 \[ \begin{split}  \Big|  \int &dx \langle \psi,   a^* (\nabla_x k_x) a^\sharp (j_{1,x}) \psi \rangle \Big| \\ \leq \; & \int dx dy \, |k(x,y)| \| \nabla_y a_y \psi \| \, \| a^\sharp (j_{1,x}) \psi \| \\ &+ C \int dx dy \,  \frac{1}{|x-y|}  \left( |\nabla \varphi_t^{(N)} (x)| |\varphi^{(N)}_t (y)| +|\nabla \varphi_t^{(N)} (y)| |\varphi^{(N)}_t (x)| \right) \| a_y \psi \| \, \| a^\sharp (j_{1,x}) \psi \|  \\ 
 \leq \; &\delta \int dx dy |\varphi_t^{(N)} (x)|^2 \| \nabla_y a_y \psi \|^2 + C_\delta \int dx dy \frac{1}{|x-y|^2} |\varphi^{(N)}_t (y)|^2 \|j_{1,x}\|_2^2 \| |(\cN+1)^{1/2} \psi \|^2 \\ &
@@ -1721,7 +1724,7 @@ We use the decomposition $\text{ch} (k_t) = 1 + p(k_t)$ and the shorthand notati
   \langle \psi, T^* (k_t)  \N T (k_t) \psi \rangle = \; & \int dx \, \langle  \psi, (a^* (c_x) + a (s_x)) (a (c_x) + a^* (s_x)) \psi \rangle \\ = \; &\int dx \, \| (a_x + a(p_x) + a^*(s_x)) \psi
   \|^2 \\  \leq \; &C  \int dx \, \| a_x \psi \|^2
     + \int dx \, \| a(p_x) \psi \|^2 + \int dx \, \| a^*(s_x) \psi \|^2 \\
-    \leq \; &C ( 1 + \| p (k) \|_2^2 + \| \text{sh} (k) \|_2^2 ) \| (\N + 1)^{1/2}  \psi \| 
+    \leq \; &C ( 1 + \| p (k_t) \|_2^2 + \| \text{sh} (k_t) \|_2^2 ) \| (\N + 1)^{1/2}  \psi \| 
       \end{split}\]
 and (\ref{eq:TNT}) follows by Lemma \ref{l:bt} (since $\| p (k_t) \|_2, \| \text{sh} (k_t) \|_2 \leq e^{\| k_t \|_2})$. To prove (\ref{eq:TN2T}), we observe that 
 \begin{align*}
@@ -1806,7 +1809,7 @@ We fix now $D := \max (C_1 + 1, C_2 , C_3 , K)$. Then, we have
 \frac{d}{dt} \Big\langle \psi , &\wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\  \leq \; & \left\langle \psi, \wt{\cU}^* (t;0) \, \left[ (2 + 2D e^{K|t|}) \wt{\cL}_N (t) + (D e^{K |t|} +D K e^{K |t|} + D^2 e^{2K |t|}) (\cN + 1) \right] \wt{\cU} (t;0) \psi \right\rangle\\  \leq \; &(2 + D e^{K|t|}) \, \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right \rangle \\ \leq \; & 2D e^{K |t|} \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \]
 By Gronwall, we conclude that
 \[ \begin{split}  \Big\langle \psi , \wt{\cU}^* &(t;0) \left( \wt{\cL}_N (t) + 
-D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \frac{3}{2} \cH_N+ C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
+D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & C e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  C e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \frac{3}{2} \cH_N+ C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
 where in the last inequality, we used the upper bound (\ref{eq:thmL-1b}). {F}rom the assumption (\ref{eq:ass-grw}), we obtain 
 \[  \Big\langle \psi , \wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + 
 D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle  \leq C \exp (c_1 \exp (c_2 |t|)) \]
@@ -2081,7 +2084,7 @@ and therefore, by Hardy's inequality
 As for the gradient of $k_t$, we have
 \[ \nabla_1 k_t (x,y) = -N^2 \nabla w (N (x-y)) \ph (x) \ph (y) - N w (N (x-y)) \nabla \ph (x) \ph (y) \]
 and thus, from the second bound in (\ref{eq:wN-bd}), 
-\[ \begin{split} \| \nabla_1 k_t \|_2^2 & \leq C \int dx dy \, \frac{N^4}{(N^2 |x-y|^2 + 1)^2}  |\ph (x)|^2 |\ph (y)|^2  \\ & \leq C N \left(\int dx \frac{N^3}{N^2 |x|^2 + 1} \right) \| \ph \|_{H^1}^4 \leq C N \end{split} \]
+\[ \begin{split} \| \nabla_1 k_t \|_2^2 & \leq C \int dx dy \, \frac{N^4}{(N^2 |x-y|^2 + 1)^2}  |\ph (x)|^2 |\ph (y)|^2  \\ & \leq C N \int dx \frac{N^3}{(N^2 |x|^2 + 1)^2} \| \ph \|_{H^1}^4 \leq C N \end{split} \]
 where we used the operator inequality $\pm V(x-y) \leq C \| V \|_1 (1-\Delta_x) (1-\Delta_y)$ (see, for example, Lemma 5.2 in \cite{ESY0}). Next we compute
 \[ \begin{split} 
 \nabla_1(k_t \overline{k}_t) (x,y) =\; & \nabla_x \int dz k_t (x,z) \overline{k}_t (z,y) \\ 
