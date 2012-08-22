@@ -707,7 +707,7 @@ Coherent states have particularly nice algebraic properties, which also simplify
 for all $f,g \in L^2 (\bR^3)$.
 
 
-\subsection{Bogoliubov Transformations}
+\subsection{Bogoliubov transformations}
 \label{sec:bt}
 
 For $f,g \in L^2 (\bR^3)$, we introduce the notation
@@ -977,11 +977,16 @@ with
 \[ \cL_N^{(0)} (t) =  \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N} \varphi_t^{(N)}) + 
 W^* (\sqrt{N} \varphi_t^{(N)}) \cH_N W (\sqrt{N} \varphi_t^{(N)}). \]
 A simple computation shows that
-\begin{multline*}
+%\begin{multline*}
+\begin{displaymath}
  \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N}
- \varphi_t^{(N)}) \\= - a(\sqrt{N} i \partial_t \varphi_t^{(N)}) - a^*
- (\sqrt{N} i \partial_t \varphi_t^{(N)}) + N \Im \scal{\varphi_t^{(N)}
- }{i\partial_t \varphi_t^{(N)}}. \end{multline*}
+ \varphi_t^{(N)})% \\
+= - a(\sqrt{N} i \partial_t \varphi_t^{(N)}) - a^*
+ (\sqrt{N} i \partial_t \varphi_t^{(N)})% + N \Im \scal{\varphi_t^{(N)}
+% }{\partial_t \varphi_t^{(N)}}
+.
+\end{displaymath}
+% \end{multline*}
  On the other hand, using (\ref{eq:W3}), we find
  \[ \begin{split} W^* (\sqrt{N} &\varphi_t^{(N)}) \cH_N W (\sqrt{N} \varphi_t^{(N)})  \\
  %= \; & \int dx \, \nabla_x (a_x^* + \sqrt{N} \overline{\varphi}_t^{(N)} (x) ) \nabla_x (a_x + \sqrt{N} 
@@ -996,9 +1001,11 @@ A simple computation shows that
 &+ \frac{1}{\sqrt{N}} \int dx dy \, N^3 V(N(x-y)) a_x^* \left( \varphi_t^{(N)} (y) a_y^* + \overline{\varphi}_t^{(N)} (y) a_y \right) a_x \\
 &+\frac{1}{2N} \int dx dy N^3 V(N (x-y)) a_x^* a_y^* a_y a_x. \end{split} \]
 Combining the last two equations and using (\ref{eq:mod-GP}), we conclude that
-\[ \begin{split} \cL_N^{(0)} (t) = \; & N \, \text{Im } \left\langle
-\varphi_t^{(N)} , \left(N^3 (f(N.) - 1/2) V(N.) * |\varphi_t^{(N)}|^2
-\right] \varphi_t^{(N)} \right\rangle \\ &+ \sqrt{N}  \left[  a^*\left( (N^3
+\[ \begin{split} \cL_N^{(0)} (t) = \; & %N \, \text{Im } \left\langle
+%\varphi_t^{(N)} , \left(N^3 (f(N.) - 1/2) V(N.) * |\varphi_t^{(N)}|^2
+%\right] \varphi_t^{(N)} \right\rangle \\
+N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
+&+ \sqrt{N}  \left[  a^*\left( (N^3
 w(N.) V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right. \\
 & \quad \qquad + \left. a\left( (N^3 w (N.)V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right] \\
 &+ \left[ \int dx \, \nabla_x a_x^* \nabla_x a_x + \int dx \, (N^3 V (N.) * |\varphi_t^{(N)}|^2) (x) a_x^* a_x \right. \\ 
@@ -1147,7 +1154,7 @@ This implies
 C \int dx dy | \nabla \varphi_t^{(N)} (x)|^2 \| a_y \psi \|^2 \\
 &+C\int dx dy \frac{1}{|x-y|^2} |\varphi_t^{(N)} (x)|^2 \| a_y \psi \|^2 
 + C \int dx dy |\nabla \varphi_t^{(N)} (y)|^2  \|j_{1,x} \|_2^2 \| (\cN+1)^{1/2} \psi \|^2 \end{split}. \]
-We conclude that for every $\delta >0$ there exists $C_\delta > 0$ (depending on $ \| j_1 \|_{L^2 (\bR^3 \times \bR^3)}$, $\delta$, $\| \varphi_t^{(N)} \|_{H^1}$) such that 
+Using Hardy's inequality, we conclude that for every $\delta >0$ there exists $C_\delta > 0$ (depending on $ \| j_1 \|_{L^2 (\bR^3 \times \bR^3)}$, $\delta$, $\| \varphi_t^{(N)} \|_{H^1}$) such that 
 \[ \left| \langle \psi , \int dx a^* (\nabla_x k_x) a^\sharp (j_{1,x}) \psi \rangle \right| \leq \delta \langle \psi , \cK \psi \rangle + C_\delta (1+  \| j_1 \|_2^2 ) \, \langle \psi , (\cN + 1) \psi \rangle. \]
 To show (\ref{eq:lmK-4}), we write
 \[  \begin{split} \int dx  \, a^* (\nabla_x k_x) a (\nabla_x k_x) & = \int dx dy_1 dy_2 \, \nabla_x k (y_1,x) \nabla_x \overline{k} (y_2,x) \, a_{y_1}^* a_{y_2} \\ & =: \int dy_1 dy_2 \; g (y_1, y_2) a_{y_1}^* a_{y_2}. \end{split} \]
@@ -1515,7 +1522,7 @@ and
 \[ \dot{k}_t (x,y) = - N w (N (x-y))  \left( \dot{\varphi}_t^{(N)} (x) \varphi_t^{(N)} (y) + \varphi_t^{(N)} (x) \dot{\varphi}_t^{(N)} (y) \right). \]
 Then $T = \exp (B)$. Using the Baker-Campbell-Hausdorff formula, we compute
 \begin{equation}\label{eq:BCH} \left(\partial_t T^* \right) T = \sum_{n \geq 0} \frac{1}{(n+1)!}\,  \text{ad}^n_{B} (\dot{B}) \end{equation}
-where $\ad^0_B (A) = A$ and $\ad^n_B (A) = [B,\ad^{n-1}_B (A)]$ for all $n \geq 1$. Since the operators $B$ and $\dot{B}$ are unbounded, some care is needed when dealing with this formula. We will see however, that the series is absolute convergent on the domain of the number of particles operator $D(\cN)$. Since $D(\cN)$ is invariant w.r.t. the fluctuation dynamics $\cU (t,s)$, (\ref{eq:BCH}) can be used to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$, for any $\psi \in D(\cN)$. 
+where $\ad^0_B (A) = A$ and $\ad^n_B (A) = [B,\ad^{n-1}_B (A)]$ for all $n \geq 1$. Since the operators $B$ and $\dot{B}$ are unbounded, some care is needed when dealing with this formula. We will see however, that the series is absolute convergent on the domain of the number of particles operator $D(\cN)$. Since $D(\cN)$ is invariant w.r.t. the fluctuation dynamics $\cU (t,s)$ (this can be proved using Lemma \ref{lm:TNT} and the methods used to prove Prop.\ \ref{prop:apri}), (\ref{eq:BCH}) can be used to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$, for any $\psi \in D(\cN)$. 
 
 Next, we compute the terms on the r.h.s.\ of (\ref{eq:BCH}).
 
@@ -1806,13 +1813,13 @@ The growth of the expectation of the generator $\wt{\cL}_N (t)$ can be estimated
 \end{split} \]
 We fix now $D := \max (C_1 + 1, C_2 , C_3 , K)$. Then, we have
 \[ \begin{split} 
-\frac{d}{dt} \Big\langle \psi , &\wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\  \leq \; & \left\langle \psi, \wt{\cU}^* (t;0) \, \left[ (2 + 2D e^{K|t|}) \wt{\cL}_N (t) + (D e^{K |t|} +D K e^{K |t|} + D^2 e^{2K |t|}) (\cN + 1) \right] \wt{\cU} (t;0) \psi \right\rangle\\  \leq \; &(2 + D e^{K|t|}) \, \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right \rangle \\ \leq \; & 2D e^{K |t|} \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \]
+\frac{d}{dt} \Big\langle \psi , &\wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\  \leq \; & \left\langle \psi, \wt{\cU}^* (t;0) \, \left[ (2 + 2D e^{K|t|}) \wt{\cL}_N (t) + (D e^{K |t|} +D K e^{K |t|} + D^2 e^{2K |t|}) (\cN + 1) \right] \wt{\cU} (t;0) \psi \right\rangle\\  \leq \; &(2 + D e^{K|t|}) \, \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right \rangle \\ \leq \; & 2D e^{K |t|} \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \]
 By Gronwall, we conclude that
 \[ \begin{split}  \Big\langle \psi , \wt{\cU}^* &(t;0) \left( \wt{\cL}_N (t) + 
-D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & C e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  C e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \frac{3}{2} \cH_N+ C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
+D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & C e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  C e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \frac{3}{2} \cH_N+ C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
 where in the last inequality, we used the upper bound (\ref{eq:thmL-1b}). {F}rom the assumption (\ref{eq:ass-grw}), we obtain 
 \[  \Big\langle \psi , \wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + 
-D e^{K t} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle  \leq C \exp (c_1 \exp (c_2 |t|)) \]
+D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle  \leq C \exp (c_1 \exp (c_2 |t|)) \]
 The claim now follows from (\ref{eq:en-bd}), because $D \geq C_1 +1$.
 \end{proof}
 
@@ -1825,13 +1832,13 @@ Using the bounds established in Theorem \ref{thm:N}, we proceed now to prove our
 \begin{proof}[Proof of Theorem \ref{thm:main}]
 Let $\Psi_{N,t} = e^{-i\cH_N t} W(\sqrt{N} \varphi) T(k_0) \psi$. The one-particle reduced density of $\Psi_{N,t}$ has the integral kernel
 \begin{equation}\label{eq:fin-G1} \Gamma_{N,t}^{(1)} (x;y) = \frac{1}{\langle \Psi_{N,t} , \cN \Psi_{N,t} \rangle} \langle \Psi_{N,t} , a_y^* a_x \Psi_{N,t} \rangle. \end{equation}
-We start by computing the denominator. Since $\cN$ commutes with the number of particles operator, we find
+We start by computing the denominator. Since $\Hcal_N$ commutes with the number of particles operator, we find
 \[ \begin{split} 
 \langle \Psi_{N,t} , \cN \Psi_{N,t} \rangle = \; &\langle \psi,T^* (k_0) W^* (\sqrt{N} \varphi) \cN W (\sqrt{N} \varphi)  T(k_0) \psi\rangle  \\ = \; &\langle \psi, T^* (k_0) \left( \cN - \sqrt{N} \phi (\varphi) + N \right) T(k_0) \psi \rangle \\ = \; &N + \left\langle \psi,  T^* (k_0) \left(\cN - \sqrt{N} \phi(\varphi) \right) T(k_0) \psi \right\rangle\end{split}. \]
 By Lemma \ref{lm:TNT}
 \[  \langle \psi , T^* (k_0) \cN T(k_0) \psi \rangle \leq C \langle \psi , (\cN+1) \, \psi \rangle \leq C \]
 and 
-\[ \left| \langle \psi , T^*(k_0) \phi (\varphi) T(k_0) \psi \rangle \right| \leq \langle \psi, T^* (k_0) (\cN+1)^{1/2} T(k_0) \psi \rangle \leq C \langle \psi , (\cN+1) \psi \rangle \leq C. \]
+\[ \left| \langle \psi , T^*(k_0) \phi (\varphi) T(k_0) \psi \rangle \right| \leq C \langle \psi, T^* (k_0) (\cN+1)^{1/2} T(k_0) \psi \rangle \leq C \langle \psi , (\cN+1) \psi \rangle \leq C. \]
 Hence, there exists $C>0$ with
 \begin{equation}\label{eq:fin-G2} \left| \langle \Psi_{N,t} , \cN \Psi_{N,t} \rangle - N \right| \leq C N^{-1/2}. \end{equation}
 On the other hand, with $\varphi^{(N)}_t$ denoting the solution of the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}), the numerator of (\ref{eq:fin-G1}), can be written as  
@@ -1922,10 +1929,10 @@ Theorem \ref{thm:main} now follows because, if $\varphi_t$ denotes the solution 
 %which is conserved. 
 Hence one obtains global existence and a uniform bound on the $H^1$-norm. 
 
-(ii) Also this part is rather standard, but since the non-linearity in (\ref{eq:mod-GP}) depends on $N$, and we need bounds uniform in $N$, we sketch the proof of the bound (\ref{eq:hireg}) for $\| \varphi_t^{(N)} \|_{H^n}$ (the bound for $\| \varphi_t \|_{H^n}$ can be proven analogously). We claim, first of all, that there exists $T>0$ depending only on $\| \varphi \|_{H^1}$ and $n \in \bN$ such that
+(ii) Also this part is rather standard, but since the non-linearity in (\ref{eq:mod-GP}) depends on $N$, and we need bounds uniform in $N$, we sketch the proof of the bound (\ref{eq:hireg}) for $\| \varphi_t^{(N)} \|_{H^n}$ (the bound for $\| \varphi_t \|_{H^n}$ can be proven analogously). We present the proof for the case $t >0$. We claim, first of all, that there exists $T>0$ depending only on $\| \varphi \|_{H^1}$ and $n \in \bN$ such that
   \begin{equation}\label{eq:preregularity}
     \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le 2 \| \varphi_0 \|_{H^n} +
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3,
+    2 \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3,
  \end{equation}
  Introducing the short-hand notation $U_N (x)= N^3 V(Nx)f(Nx)$, we write the solution 
 $\varphi_t^{(N)}$ of (\ref{eq:mod-GP}) as
@@ -1948,13 +1955,13 @@ Strichartz estimates for the free Schr\"odinger evolution $e^{it\Delta}$
 \| \partial^\alpha & \varphi^{(N)}_{(\cdot)} \|_{L_t^\infty L_x^2}  \\ \leq \; & \|
     \partial^\alpha \varphi \|_{L^2} +  \sum_{\beta \le \alpha} \sum_{\nu \le \beta} \binom{\alpha}{\beta}
     \binom{\beta}{\nu} \| \big( U_N * (\partial^\nu
-    \overline{\varphi}^{(N)}_{(\cdot)} \partial^{\beta - \nu} \varphi_{(\cdot)})
-    \big) \partial^{\alpha - \beta} \varphi_{(\cdot)} \|_{L_t^2 L_x^{6/5}} \\
+    \overline{\varphi}^{(N)}_{(\cdot)} \partial^{\beta - \nu} \varphi^{(N)}_{(\cdot)})
+    \big) \partial^{\alpha - \beta} \varphi^{(N)}_{(\cdot)} \|_{L_t^2 L_x^{6/5}} \\
      \leq \; & \|
     \partial^\alpha \varphi \|_{L^2} +  T^{1/2} \sum_{\beta \le \alpha} \sum_{\nu \le \beta} \binom{\alpha}{\beta}
     \binom{\beta}{\nu}  \sup_{t \in [0,T]} \| \big( U_N * (\partial^\nu
-    \overline{\varphi}^{(N)}_{(\cdot)} \partial^{\beta - \nu} \varphi^{(N)}_{(\cdot)})
-    \big) \partial^{\alpha - \beta} \varphi^{(N)}_{(\cdot)} \|_{L_x^{6/5}}.
+    \overline{\varphi}^{(N)}_{t} \partial^{\beta - \nu} \varphi^{(N)}_{t})
+    \big) \partial^{\alpha - \beta} \varphi^{(N)}_{t} \|_{L_x^{6/5}}.
 \end{split} \]    
 By H\"older and Young inequality, we find 
 \[ \begin{split}
@@ -1972,25 +1979,25 @@ for all multiindices $\gamma_1, \gamma_2, \gamma_3$ with $|\gamma_i| \leq n-2$, 
 \[ \| \partial^\alpha \varphi^{(N)}_{(\cdot)} \|_{L_t^\infty L_x^2} \leq  \|
     \partial^\alpha \varphi \|_{L^2} + C T^{1/2} \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^n} + C T^{1/2} \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^{n-1}}^3. \]   
 Summing over all $\alpha$ with $|\alpha| =n$, we find
-\[ \sup_{t \in [0,T]} \| \varphi^{(N)}_{t} \|_{H^n} \leq  \| \varphi \|_{H^n} + C T^{1/2} \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^n} + C T^{1/2} \sup_{t \in [0,T]} \| \varphi_t^{(N)}. \|_{H^{n-1}}^3 \]  
+\[ \sup_{t \in [0,T]} \| \varphi^{(N)}_{t} \|_{H^n} \leq  \| \varphi \|_{H^n} + C T^{1/2} \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^n} + (C T^{1/2}+1) \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^{n-1}}^3. \]  
 Choosing $T > 0$ so small that $CT^{1/2} \leq 1/2$, we find (\ref{eq:preregularity}).
 
-To show (\ref{eq:hireg}), we iterate now (\ref{eq:preregularity}). We proceed by induction over $n$. For $n =1$, the claim follows from part (i). Suppose now that $\| \varphi^{(N)}_t \|_{H^{(n-1)}} \leq C_{n-1} \exp (K_{n-1} |t|)$, for constants $C_{n-1}, K_{n-1}$ depending on $\| \varphi \|_{H^{(n-1)}}$ and, respectively, on $\| \varphi \|_{H^1}$. Let $T$ be as in (\ref{eq:preregularity}). For an arbitrary $t \in \bR$, there exists an integer $j \in \bN$ such that $(j-1) T < t \leq jT$. Then
+To show (\ref{eq:hireg}), we iterate now (\ref{eq:preregularity}). We proceed by induction over $n$. For $n =1$, the claim follows from part (i). Suppose now that $\| \varphi^{(N)}_t \|_{H^{(n-1)}} \leq C_{n-1} \exp (K_{n-1} |t|)$, for constants $C_{n-1}, K_{n-1}$ depending on $\| \varphi \|_{H^{(n-1)}}$ and, respectively, on $\| \varphi \|_{H^1}$. Let $T$ be as in (\ref{eq:preregularity}). For an arbitrary $t >0$, there exists an integer $j \in \bN$ such that $(j-1) T < t \leq jT$. Then
   \begin{align*}
     \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
     \|_{H^n} \\
-    & \le 2 \| \varphi_{(j-1)T} \|_{H^n} + \sup_{s \in [(j-1)T, jT]} \|
+    & \le 2 \| \varphi_{(j-1)T} \|_{H^n} + 2\sup_{s \in [(j-1)T, jT]} \|
     \varphi_s \|_{H^{n-1}}^3 \\
-    & \le 2 \| \varphi_{(j-1)T} \|_{H^n} + C_{n-1}^3 e^{3 K_{n-1} j T}.
+    & \le 2 \| \varphi_{(j-1)T} \|_{H^n} + 2 C_{n-1}^3 e^{3 K_{n-1} j T}.
   \end{align*}
 Similarly we have
   \[
     \| \varphi_{(j-1)T} \|_{H^n} \le 2 \|
-    \varphi_{(j-2)T} \|_{H^n} + C_{n-1}^3  e^{3 K_{n-1} (j-1)T}.
+    \varphi_{(j-2)T} \|_{H^n} + 2 C_{n-1}^3  e^{3 K_{n-1} (j-1)T}.
   \]
 Iterating $j$-times, we obtain
   \begin{align*}
-    \| \varphi_t \|_{H^n} & \le 2^j \| \varphi \|_{H^n} + C_{n-1}^3
+    \| \varphi_t \|_{H^n} & \le 2^j \| \varphi \|_{H^n} + 2 C_{n-1}^3
     \sum_{\ell=0}^j 2^{\ell} e^{3 K_{n-1} (j-\ell)T} \le C_n e^{K_n t},
   \end{align*}
   for some constant $C_n$ depending on $\| \varphi \|_{H^n}$ and $K_n$ depending only on $\| \varphi \|_{H^1}$.
