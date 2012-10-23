@@ -5,6 +5,7 @@
 \usepackage[bookmarksnumbered=true]{hyperref}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{wasysym} %needed for \apprle
+\usepackage{marginnote}			% just to place the done-notes on the margin, can be removed when finished
 %\usepackage[color]{showkeys}
 %\usepackage{scrtime}
 %\usepackage{gitinfo}
@@ -44,7 +45,7 @@
 \newtheorem*{hyp}{Hypothesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Gustavo's aliases %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newcommand{\done}{\marginnote{\Large\checkmark}}	% redefine as empty command when finished
 
 
 \newcommand{\PP}{{\mathbb P }}
@@ -539,10 +540,10 @@ no correlations (the problem of the creation of correlation was studied in \cite
 \item[(ii)] The time dependence on the r.h.s.\ of (\ref{eq:mt}) deteriorates fast for large $t$. This however is just a consequence of the fact that, in general, high Sobolev norms of the solution of (\ref{eq:GP}) can grow exponentially fast. Assuming a uniform bound for $\| \varphi_t \|_{H^4}$, the time dependence on the r.h.s.\ of (\ref{eq:mt}) can be replaced by $C \exp (K |t|)$. In fact, if one assumes the $L^\infty$-norm of $\varphi_t$ and of its time-derivative $\dot\varphi_t$ to vanish sufficiently fast as $t \to \infty$ (at an integrable rate), one even obtains bounds which are uniform in $t$. For the mean field regime, this was observed in \cite{KP2009}.
 \item[(iii)] To simplify a little bit the computations, we did not include an external potential in the Hamiltonian (\ref{eq:cHN}) generating the evolution on the Fock space. In contrast to \cite{ESY1,ESY2,ESY3,ESY4}, the approach we present in this paper can be extended with no additional complication to Hamilton operators with external potential. This remark is important to describe experiments where the evolution of the condensate is observed after tuning the magnetic traps, rather than switching them off. 
 \item[(iv)] The convergence (\ref{eq:mt}) and the fact that the limit is a rank-one projection immediately implies convergence of higher order reduced densities $\Gamma_{N,t}^{(k)}$, defined in (\ref{fock_density}). In fact, following the arguments outlined in Section 2 of \cite{KP2009}, (\ref{eq:mt}) implies that, for every $k \in \bN$,
-\[ \tr \, \left| \Gamma^{(k)}_{N,t} - |\varphi_t \rangle \langle \varphi_t|^{\otimes k} \right| \leq C \frac{k^{1/2}}{N^{1/4}} \exp (c_1 \exp (c_2 |t|)/2). \]
+\[ \tr \, \left| \Gamma^{(k)}_{N,t} - |\varphi_t \rangle \langle \varphi_t|^{\otimes k} \right| \leq C \frac{k^{1/2}}{N^{1/4}} \exp\left(\frac{c_1}{2} \exp (c_2 |t|)\right).\done \]
 To obtain bounds for the convergence of the $k$-particle reduced density $\gamma^{(k)}_t$ with the same $N^{-1/2}$ rate as in (\ref{eq:mt}), following the same approach used below to study $\gamma^{(1)}_{N,t}$ would require to control the growth of higher powers of the number of particle operator with respect to the fluctuation dynamics (\ref{eq:cU-0}). This may be doable, but the analysis becomes increasingly involved. 
-\item[(v)] We expect that Theorem \ref{thm:main} and the method used in its proof can also be applied to deduce the convergence towards the Gross-Pitaevskii dynamics for initial data with a fixed number $N$ of particles. In fact one immediately gets a convergence similar to (\ref{eq:mt}) (but with slower rate) for initial $N$-particles states of the form $P_N W(\sqrt{N} \ph) T(k_0) \psi$, for $\psi \in \cF$
-satisfying (\ref{eq:ass-thm1}), provided $\| P_N W(\sqrt{N} \ph) T(k_0) \psi \| \gg N^{-1/2}$ for large $N$. Here $P_N$ is the orthogonal projection onto the $N$-particle sector of $\cF$. It is not yet clear to us which $N$-particles states can be written this way. We will come back to this problem in a separate work.
+\item[(v)] We expect that Theorem \ref{thm:main} and the method used in its proof can also be applied to deduce the convergence towards the Gross-Pitaevskii dynamics for initial data with a fixed number $N$ of particles. In fact one immediately gets a convergence similar to (\ref{eq:mt}) (but with slower rate) for initial $N$-particles states of the form $P_N W(\sqrt{N} \varphi) T(k_0) \psi$\done, for $\psi \in \cF$
+satisfying (\ref{eq:ass-thm1}), provided $\| P_N W(\sqrt{N} \varphi) T(k_0) \psi \| \gg N^{-1/2}$\done for large $N$. Here $P_N$ is the orthogonal projection onto the $N$-particle sector of $\cF$. It is not yet clear to us which $N$-particles states can be written this way. We will come back to this problem in a separate work.
 \end{itemize}
 
 %It is also possible to extract convergence towards the limiting Gross-Pitaevskii dynamics for a certain %class of initial data having a fixed number of particles $N$. This is the content of our second %theorem.
@@ -660,7 +661,7 @@ for any $\psi \in \cF$.
 It is important to introduce the notion of reduced density matrices for vectors on the Fock space. To this end, we define, for any $\psi \in \cF$, the $k$-particles reduced density as the non-negative trace-class
 operator on $L^2 (\bR^{3k})$ with integral kernel 
 \begin{equation} \label{fock_density}
-\Gamma_{\psi}^{(k)}(x_1, \dots, x_k ; y_1, \dots , y_k) := \frac{1}{\scal{\psi}{\Ncal^k \psi}} \scal{\psi}{a^*_{x_1} \dots a^*_{x_k} a_{y_1} \dots a_{y_k} \psi}.
+\Gamma_{\psi}^{(k)}(x_1, \dots, x_k ; y_1, \dots , y_k) := \frac{\scal{\psi}{a^*_{x_1} \dots a^*_{x_k} a_{y_1} \dots a_{y_k} \psi}}{\scal{\psi}{\Ncal(\Ncal-1)\cdots(\Ncal-k+1)\psi}}.\done
 \end{equation}
 It is simple to check that, for $\psi$ in the $N$-particle sector of $\fock$, this definition is equivalent to definition \eqref{eq:kred}.
 
@@ -668,7 +669,7 @@ It is simple to check that, for $\psi$ in the $N$-particle sector of $\fock$, th
 
 For $f \in L^2(\R^3)$, we define the Weyl operator 
 \[
-  W(f) = e^{a^*(f) - a(f)}.
+  W(f) = e^{a^*(f) - a(f)}\done
 \]
 acting on the Fock space $\cF$. In the following lemma we collect some well-known properties of Weyl operators.
 \begin{lem}\label{l:W}
@@ -723,7 +724,7 @@ A bounded linear map $\Theta : L^2 (\bR^3) \oplus L^2 (\bR^3) \to L^2 (\bR^3) \o
 \Theta \left( \begin{array}{ll} 0 & J \\ J & 0 \end{array} \right) = \left( \begin{array}{ll} 0 & J \\ J & 0 \end{array} \right) \Theta \end{equation}
 and
 \begin{equation}\label{eq:bog2} S = \Theta^* \, S \, \Theta \end{equation}
-is called a Bogoliubov transformation. Bogoliubov transformations are linear maps of the pairs $(f,g) \in L^2 (\bR^3) \oplus L^2 (\bR^3)$ with the property that the operators $b^* (f), b(f)$ defined similarly to (\ref{eq:Afg}) by the equation \[ b (f) + b^* (\overline{g}) = A (\Theta (f,g)) \] for any $f,g \in L^2 (\bR^3)$, are still creation and annihilation operators satisfying canonical commutation relations and being adjoint to each other. It is simple to check that a general Bogoliubov transformation can be written as  
+is called a Bogoliubov transformation. Bogoliubov transformations are linear maps of the pairs $(f,g) \in L^2 (\bR^3) \oplus L^2 (\bR^3)$ with the property that the operators $b^* (f)$ and $b(f)$,\done{} defined similarly to (\ref{eq:Afg}) by the equation \[ b (f) + b^* (\overline{g}) = A (\Theta (f,g)) \] for any $f,g \in L^2 (\bR^3)$, are still creation and annihilation operators satisfying canonical commutation relations and being adjoint to each other. It is simple to check that a general Bogoliubov transformation can be written as  
 \begin{equation}\label{eq:theta-UV} \Theta = \left( \begin{array}{ll} U &  \overline{V}  \\ V & \overline{U} \end{array} \right) \end{equation}
 for bounded linear maps $U, V: L^2 (\bR^3) \to L^2 (\bR^3)$ satisfying $U^* U - V^* V = 1$ and $U^* \overline{V} = V^*\overline{U}$. Here $\overline{U} = J U J$ for any bounded operator $U$ on $L^2 (\bR^3)$. If the operator $U$ has the integral kernel $U(x,y)$, then the operator $\overline{U} = J U J$ has the kernel $\overline{U(x,y)}$. 
 
@@ -796,7 +797,7 @@ To prove this claim, we start by observing that
 \leq e^{|\lambda| \| k \|_2} \end{equation}
 for every $\lambda \in \bR$. Assuming for example, that $n$ is odd, (\ref{eq:NTN}) implies that 
 \[ \begin{split} \Big\| \int_0^1 d\lambda_1 \int_0^{\lambda_1} &d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{-\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{\lambda_{n+1} B} (\cN +1)^{-1/2} \Big\| \\ \leq \; & \frac{e^{\| k \|_2}}{(n+1)!}  \| A \left( (k\overline{k})^{(n+1)/2} f , (\overline{k} k)^{(n+1)/2} g \right) (\cN+1)^{-1/2} \| \\
-\leq \; & \| (f \| + \| g \|) \, e^{\| k \|_2} \, \frac{\| (k\overline{k})^{(n+1)/2} \|_2}{(n+1)!} \leq C \frac{\| k \|_2^n}{(n+1)!} 
+\leq \; & (\| f \| + \| g \|) \, e^{\| k \|_2} \, \frac{\| (k\overline{k})^{(n+1)/2} \|_2}{(n+1)!} \leq C \frac{\| k \|_2^n}{(n+1)!}\done 
 \end{split}\]
 which vanishes as $n \to \infty$. The case $n$ even can be treated similarly. To prove (\ref{eq:NTN}), we observe that 
 \[ \begin{split} \frac{d}{d\lambda} \| (\cN+1)^{1/2} & e^{-\lambda B} \psi \|^2  \\
@@ -839,7 +840,7 @@ The other bounds are shown similarly.
 \section{Construction of the fluctuation dynamics}
 
 In this section, we will construct an approximation for the full many-body evolution of an approximately coherent initial state, as generated by the Hamiltonian (\ref{eq:ham-F}). Our approximation will consist 
-of two parts. First of all, the evolution of a coherent (or approximately coherent) initial state will be approximately coherent, with an evolved one-particle wave function. 
+of two parts. First of all, the evolution of a coherent (or approximately coherent) initial state will be approximated by a coherent (or approximately coherent) state\done{} with an evolved one-particle wave function. 
 
 For a given $\varphi \in H^1 (\bR^3)$, we define $\varphi^{(N)}_t$ as the solution of the modified time-dependent Gross-Pitaevskii equation
 \begin{equation}\label{eq:mod-GP} i\partial_t \varphi_t^{(N)} = - \Delta \varphi_t^{(N)} + \left( N^3 f(N.) V(N.) * |\varphi^{(N)}_t|^2 \right) \varphi_t^{(N)} \end{equation}
@@ -901,7 +902,9 @@ which implies that $|\nabla w (x)| \leq C |x|^{-2}$. Combining with $|\nabla w (
 
 The zero-energy scattering equation for the rescaled potential $N^2 V (Nx)$ is then solved by $f_N (x) := f (Nx)$. We define $w_N (x) = 1- f_N (x) = w(Nx)$. Clearly 
 \[ \lim_{|x| \to \infty} w_N(x) |x| = \lim_{|x| \to \infty} w(Nx) |x| = \frac{a_0}{N} ,\]
-showing that the scattering length of $N^2 V(Nx)$ is $a_0/N$. It follows immediately from Lemma \ref{lm:w} that $0 < w(Nx) < c$ for some $c <1$ and for all $x \in \bR^3$, and that there exists $C$ with 
+showing that the scattering length of $N^2 V(Nx)$ is $a_0/N$. Equivalently this follows from $\int \di x\, N^2V(Nx)f(Nx) = 8\pi a_0/N$.\done
+
+It follows immediately from Lemma \ref{lm:w} that $0 < w(Nx) < c$ for some $c <1$ and for all $x \in \bR^3$, and that there exists $C$ with 
 \begin{equation}\label{eq:wN-bd} w_N (x) \leq \frac{C}{N|x| + 1} \qquad \text{and } \quad |\nabla w_N (x)| \leq C \frac{N}{N^2 |x|^2 + 1}. \end{equation}
 
 %The function $f (Nx)$ describes the correlation structure developed by the many-body evolution, %varying on the microscopic scale $1/N$. 
@@ -1093,7 +1096,7 @@ T^* \cK T = \; &  \int dx dy | \nabla_x \text{sh}_{k_t} (y,x) |^2 + \cK  \\
 &+ N^3 \int dx dy (\Delta w) (N (x-y)) \, \left(\varphi_t^{(N)} (x) \varphi_t^{(N)} (y)  a_x^* a^*_y + \overline{\varphi}_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y)  a_x a_y  \right) \\
 &+ \cE_K (t) 
 \end{split} \end{equation}
-where the error $\cE_K (t)$ is an operator s.t.\ for every $\delta > 0$ there exists a constant $C_\delta > 0$ with 
+where the error $\cE_K (t)$ is an operator such that\done{} for every $\delta > 0$ there exists a constant $C_\delta > 0$ with 
 \begin{equation}\label{eq:TKT-cl} 
 \begin{split} 
 \pm \, \cE_K (t) &\leq \delta \cK + C_\delta \| \varphi_t^{(N)} \|_{H^2} \, (\cN + 1) \\
@@ -1807,11 +1810,11 @@ uniformly in $N$, and for all $t \in \bR$. Eq.\ (\ref{eq:thmL-1}) implies theref
 \[  
 \frac{d}{dt} \left\langle \psi, \wt{\cU}^* (t;0) \cN \wt{\cU} (t;0) \psi \right\rangle  \leq  \left\langle \psi , \wt{\cU}^* (t;0)  \left(2 \wt{\cL}_N (t) +C_2 e^{K|t|} (\cN + 1) \right)  \wt{\cU} (t;0) \psi \right\rangle.
  \]
-The growth of the expectation of the generator $\wt{\cL}_N (t)$ can be estimated using (\ref{eq:thmL-3}): together with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, we conclude that there exists a constant $C_3 >0$ (again, depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})), with 
+We now estimate the growth of the expectation\done{} of the generator $\wt{\cL}_N (t)$. Using (\ref{eq:thmL-3}) together with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, we conclude that there exists a constant $C_3 >0$ (again, depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})), with 
 \[ \begin{split}
 \frac{d}{dt} \left\langle \psi, \wt{\cU}^* (t;0) \wt{\cL}_N (t) \wt{\cU} (t;0) \psi \right\rangle = \; & \left\langle \psi, \wt{\cU}^* (t;0) \dot{\wt{\cL}}_N (t) \, \wt{\cU} (t;0) \psi \right\rangle \\ \leq \; & \left\langle \psi , \wt{\cU}^* (t;0) \left( 2 \wt{\cL}_N (t) + C_3 e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. 
 \end{split} \]
-We fix now $D := \max (C_1 + 1, C_2 , C_3 , K)$. Then, we have
+We now fix $D := \max (C_1 + 1, C_2 , C_3 , K)$. Then, we have
 \[ \begin{split} 
 \frac{d}{dt} \Big\langle \psi , &\wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\  \leq \; & \left\langle \psi, \wt{\cU}^* (t;0) \, \left[ (2 + 2D e^{K|t|}) \wt{\cL}_N (t) + (D e^{K |t|} +D K e^{K |t|} + D^2 e^{2K |t|}) (\cN + 1) \right] \wt{\cU} (t;0) \psi \right\rangle\\  \leq \; &(2 + D e^{K|t|}) \, \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right \rangle \\ \leq \; & 2D e^{K |t|} \left\langle \psi, \wt{\cU}^* (t;0) \, \left( \wt{\cL}_N (t) + D e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \]
 By Gronwall, we conclude that
@@ -1931,8 +1934,8 @@ Hence one obtains global existence and a uniform bound on the $H^1$-norm.
 
 (ii) Also this part is rather standard, but since the non-linearity in (\ref{eq:mod-GP}) depends on $N$, and we need bounds uniform in $N$, we sketch the proof of the bound (\ref{eq:hireg}) for $\| \varphi_t^{(N)} \|_{H^n}$ (the bound for $\| \varphi_t \|_{H^n}$ can be proven analogously). We present the proof for the case $t >0$. We claim, first of all, that there exists $T>0$ depending only on $\| \varphi \|_{H^1}$ and $n \in \bN$ such that
   \begin{equation}\label{eq:preregularity}
-    \sup_{t \in [0,T]} \| \varphi_t \|_{H^n} \le 2 \| \varphi_0 \|_{H^n} +
-    2 \sup_{t \in [0,T]} \| \varphi_t \|_{H^{n-1}}^3,
+    \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^n} \le 2 \| \varphi_0 \|_{H^n} +
+    2 \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^{n-1}}^3,\done
  \end{equation}
  Introducing the short-hand notation $U_N (x)= N^3 V(Nx)f(Nx)$, we write the solution 
 $\varphi_t^{(N)}$ of (\ref{eq:mod-GP}) as
@@ -1984,21 +1987,21 @@ Choosing $T > 0$ so small that $CT^{1/2} \leq 1/2$, we find (\ref{eq:preregulari
 
 To show (\ref{eq:hireg}), we iterate now (\ref{eq:preregularity}). We proceed by induction over $n$. For $n =1$, the claim follows from part (i). Suppose now that $\| \varphi^{(N)}_t \|_{H^{(n-1)}} \leq C_{n-1} \exp (K_{n-1} |t|)$, for constants $C_{n-1}, K_{n-1}$ depending on $\| \varphi \|_{H^{(n-1)}}$ and, respectively, on $\| \varphi \|_{H^1}$. Let $T$ be as in (\ref{eq:preregularity}). For an arbitrary $t >0$, there exists an integer $j \in \bN$ such that $(j-1) T < t \leq jT$. Then
   \begin{align*}
-    \| \varphi_t \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s
-    \|_{H^n} \\
-    & \le 2 \| \varphi_{(j-1)T} \|_{H^n} + 2\sup_{s \in [(j-1)T, jT]} \|
-    \varphi_s \|_{H^{n-1}}^3 \\
-    & \le 2 \| \varphi_{(j-1)T} \|_{H^n} + 2 C_{n-1}^3 e^{3 K_{n-1} j T}.
+    \| \varphi_t^{(N)} \|_{H^n} & \le \sup_{s \in [(j-1)T, jT]} \| \varphi_s^{(N)}
+    \|_{H^n}\done \\
+    & \le 2 \| \varphi_{(j-1)T}^{(N)} \|_{H^n} + 2\sup_{s \in [(j-1)T, jT]} \|
+    \varphi_s^{(N)} \|_{H^{n-1}}^3 \\
+    & \le 2 \| \varphi_{(j-1)T}^{(N)} \|_{H^n} + 2 C_{n-1}^3 e^{3 K_{n-1} j T}.
   \end{align*}
 Similarly we have
   \[
-    \| \varphi_{(j-1)T} \|_{H^n} \le 2 \|
-    \varphi_{(j-2)T} \|_{H^n} + 2 C_{n-1}^3  e^{3 K_{n-1} (j-1)T}.
+    \| \varphi_{(j-1)T}^{(N)} \|_{H^n} \le 2 \|
+    \varphi_{(j-2)T}^{(N)} \|_{H^n} + 2 C_{n-1}^3  e^{3 K_{n-1} (j-1)T}.\done
   \]
 Iterating $j$-times, we obtain
   \begin{align*}
-    \| \varphi_t \|_{H^n} & \le 2^j \| \varphi \|_{H^n} + 2 C_{n-1}^3
-    \sum_{\ell=0}^j 2^{\ell} e^{3 K_{n-1} (j-\ell)T} \le C_n e^{K_n t},
+    \| \varphi_t^{(N)} \|_{H^n} & \le 2^j \| \varphi \|_{H^n} + 2 C_{n-1}^3
+    \sum_{\ell=0}^j 2^{\ell} e^{3 K_{n-1} (j-\ell)T} \le C_n e^{K_n t},\done
   \end{align*}
   for some constant $C_n$ depending on $\| \varphi \|_{H^n}$ and $K_n$ depending only on $\| \varphi \|_{H^1}$.
 
@@ -2092,7 +2095,7 @@ As for the gradient of $k_t$, we have
 \[ \nabla_1 k_t (x,y) = -N^2 \nabla w (N (x-y)) \ph (x) \ph (y) - N w (N (x-y)) \nabla \ph (x) \ph (y) \]
 and thus, from the second bound in (\ref{eq:wN-bd}), 
 \[ \begin{split} \| \nabla_1 k_t \|_2^2 & \leq C \int dx dy \, \frac{N^4}{(N^2 |x-y|^2 + 1)^2}  |\ph (x)|^2 |\ph (y)|^2  \\ & \leq C N \int dx \frac{N^3}{(N^2 |x|^2 + 1)^2} \| \ph \|_{H^1}^4 \leq C N \end{split} \]
-where we used the operator inequality $\pm V(x-y) \leq C \| V \|_1 (1-\Delta_x) (1-\Delta_y)$ (see, for example, Lemma 5.2 in \cite{ESY0}). Next we compute
+where we used Young and then Sobolev inequalities\done{}. Next we compute
 \[ \begin{split} 
 \nabla_1(k_t \overline{k}_t) (x,y) =\; & \nabla_x \int dz k_t (x,z) \overline{k}_t (z,y) \\ 
 = \; &\nabla_x \left[  \ph (x) \ph (y) \int dz N^2 w (N(x-z)) w(N(z-y)) |\ph (z)|^2 \right] \\
@@ -2189,24 +2192,23 @@ The bound for $\dot{r} (k_t)$ can be proven analogously. Combining the bound for
 
 \begin{thebibliography}{10}
 
-\bibitem{BEC1}
-M.H. Anderson, J.R. Ensher, M.R. Matthews, C.E. Wieman, and E.A. Cornell.
+\bibitem{BEC1}\done{}
+M.~H.~Anderson, J.~R.~Ensher, M.~R.~Matthews, C.~E.~Wieman, and E.~A.~Cornell.
 \newblock Observation of bose-einstein condensation in a dilute atomic vapor.
 \newblock {\em Science}, 269:198--201, 1995.
 
 \bibitem{CLS}
-L.~{Chen}, J.~O. {Lee}, and B.~{Schlein}.
+L.~{Chen}, J.~O.~{Lee}, and B.~{Schlein}.
 \newblock {Rate of Convergence Towards Hartree Dynamics}.
 \newblock {\em J. Stat. Phys.}, 144:872--903, 2011.
 
 \bibitem{BEC2}
-K.~B. Davis, M.~O. Mewes, M.~R. Andrews, N.~J. van Druten, D.~S. Durfee, D.~M.
-  Kurn, and W.~Ketterle.
+K.~B.~Davis, M.~O.~Mewes, M.~R.~Andrews, N.~J.~van Druten, D.~S.~Durfee, D.~M.~Kurn, and W.~Ketterle.
 \newblock Bose-einstein condensation in a gas of sodium atoms.
 \newblock {\em Phys. Rev. Lett.}, 75:3969--3973, 1995.
 
 \bibitem{ES}
-Alexander Elgart and Benjamin Schlein.
+A.~Elgart and B.~Schlein.
 \newblock Mean field dynamics of boson stars.
 \newblock {\em Comm. Pure Appl. Math.}, 60(4):500--545, 2007.
 
@@ -2216,37 +2218,38 @@ L.~{Erd{\H o}s}, A.~{Michelangeli}, and B.~{Schlein}.
 \newblock {\em Comm. Math. Phys.}, 289:1171--1210, 2009.
 
 \bibitem{ESY1}
-L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T. {Yau}.
+L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
 \newblock {Derivation of the cubic non-linear Schr{\"o}dinger equation from
   quantum dynamics of many-body systems}.
 \newblock {\em Inv. Math.}, 167:515--614, 2006.
 
 \bibitem{ESY3}
-L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T. {Yau}.
+L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
 \newblock {Rigorous Derivation of the Gross-Pitaevskii Equation}.
 \newblock {\em Phys. Rev. Lett.}, 98(4):040404, 2007.
 
 \bibitem{ESY4}
-L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T. {Yau}.
+L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
 \newblock {Rigorous derivation of the Gross-Pitaevskii equation with a large
   interaction potential}.
 \newblock {\em J. Amer. Math. Soc.}, 22:1099--1156,
   2009.
-
+\iffalse
 \bibitem{ESY0}
 L{\'a}szl{\'o} Erd{\H{o}}s, Benjamin Schlein, and Horng-Tzer Yau.
 \newblock Derivation of the {G}ross-{P}itaevskii hierarchy for the dynamics of
   {B}ose-{E}instein condensate.
 \newblock {\em Comm. Pure Appl. Math.}, 59(12):1659--1741, 2006.
+\fi
 
 \bibitem{ESY2}
-L{\'a}szl{\'o} Erd{\H{o}}s, Benjamin Schlein, and Horng-Tzer Yau.
+L.~Erd{\H{o}}s, B.~Schlein, and H.-T.~Yau.
 \newblock Derivation of the {G}ross-{P}itaevskii equation for the dynamics of
   {B}ose-{E}instein condensate.
 \newblock {\em Ann. of Math. (2)}, 172(1):291--370, 2010.
 
 \bibitem{EY}
-L{\'a}szl{\'o} Erd{\H{o}}s and Horng-Tzer Yau.
+L.~Erd{\H{o}}s and H.-T.~Yau.
 \newblock Derivation of the nonlinear {S}chr\"odinger equation from a many body
   {C}oulomb system.
 \newblock {\em Adv. Theor. Math. Phys.}, 5(6):1169--1205, 2001.
@@ -2258,18 +2261,18 @@ J.~Ginibre and G.~Velo.
 \newblock {\em Comm. Math. Phys.}, 66:37--76, 1979.
 
 \bibitem{GMM2010}
-Manoussos~G. Grillakis, Matei Machedon, and Dionisios Margetis.
+M.~G.~Grillakis, M.~Machedon, and D.~Margetis.
 \newblock Second-order corrections to mean field evolution of weakly
   interacting bosons. {I}.
 \newblock {\em Comm. Math. Phys.}, 294(1):273--301, 2010.
 
 \bibitem{H}
-Klaus Hepp.
+K.~Hepp.
 \newblock The classical limit for quantum mechanical correlation functions.
 \newblock {\em Comm. Math. Phys.}, 35:265--277, 1974.
 
 \bibitem{KT}
-Markus Keel and Terence Tao.
+M.~Keel and T.~Tao.
 \newblock Endpoint {S}trichartz estimates.
 \newblock {\em Amer. J. Math.}, 120(5):955--980, 1998.
 
@@ -2279,18 +2282,18 @@ A.~{Knowles} and P.~{Pickl}.
 \newblock {\em Comm. Math. Phys.}, 298:101--138, 2010.
 
 \bibitem{LS}
-Elliott~H. Lieb and Robert Seiringer.
+E.~H.~Lieb and R.~Seiringer.
 \newblock Proof of {B}ose-{E}instein condensation for dilute trapped gases.
 \newblock {\em Phys. Rev. Lett.}, 88:170409, 2002.
 
 \bibitem{LSY}
-Elliott~H. Lieb, Robert Seiringer, and Jakob Yngvason.
+E.~H.~Lieb, R.~Seiringer, and J.~Yngvason.
 \newblock Bosons in a trap: A rigorous derivation of the {G}ross-{P}itaevskii
   energy functional.
 \newblock {\em Phys. Rev. A}, 61:043602, 2000.
 
 \bibitem{LSSY}
-Elliott~H. Lieb, Robert Seiringer, Jan Philip Solovej, and Jakob Yngvason.
+E.~H.~Lieb, R.~Seiringer, J.~P.~Solovej, and J.~Yngvason.
 {\it The mathematics of the {B}ose gas and its condensation}. 
 Oberwolfach Seminars, {\bf 34}. Birkhauser Verlag, Basel, 2005.
 
@@ -2306,13 +2309,13 @@ P.~{Pickl}.
 \newblock {\em ArXiv 1001.4894 [math-ph]}, 2010.
 
 \bibitem{RS}
-Igor Rodnianski and Benjamin Schlein.
+I.~Rodnianski and B.~Schlein.
 \newblock Quantum fluctuations and rate of convergence towards mean field
   dynamics.
 \newblock {\em Comm. Math. Phys.}, 291(1):31--61, 2009.
 
 \bibitem{S}
-Herbert Spohn.
+H.~Spohn.
 \newblock Kinetic equations from hamiltonian dynamics: Markovian limits.
 \newblock {\em Rev. Mod. Phys.}, 52:569--615, 1980.
 
