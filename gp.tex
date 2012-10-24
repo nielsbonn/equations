@@ -345,7 +345,7 @@ When the traps are switched off, the system starts to evolve, the dynamics being
 with the translation invariant Hamiltonian
 \begin{equation}\label{eq:ham-1} H_N = \sum_{j=1}^N -\Delta_{x_j} + \sum_{i<j}^N N^2 V(N (x_i - x_j)) \end{equation}
 It turns out that the time evolution of an initial data exhibiting complete condensation can be described, in the limit of large $N$, by the Gross-Pitaevskii theory. In fact, the following result was established in 
-\cite{ESY1,ESY2,ESY3,ESY4}, and, in a slightly different form, in \cite{P}. Consider a family $\psi_N \in L^2_s (\bR^{3N})$ with bounded energy per particle
+\cite{ESY0,ESY1,ESY2,ESY3,ESY4}, and, in a slightly different form, in \cite{P}. Consider a family $\psi_N \in L^2_s (\bR^{3N})$ with bounded energy per particle
 \[ \langle \psi_N , H_N \psi_N \rangle \leq C N \]
 and exhibiting complete condensation in a one-particle state $\varphi \in H^1 (\bR^3)$, in the sense that the one-particle reduced density $\gamma^{(1)}_N$ associated with $\psi_N$ (defined as in (\ref{eq:one-red})) satisfies
 \[ \gamma_N^{(1)} \to |\varphi \rangle \langle \varphi| \] 
@@ -357,7 +357,7 @@ This result establishes the stability of complete Bose-Einstein condensation wit
 
 \bigskip
 
-{\it Mean field regime.} The method used in \cite{ESY1,ESY2,ESY3,ESY4} 
+{\it Mean field regime.} The method used in \cite{ESY0,ESY1,ESY2,ESY3,ESY4} 
 to prove (\ref{eq:conv-GP}) relies on techniques first developed to understand the mean-field limit of many-body quantum dynamics. This regime is achieved when considering the time-evolution 
 \begin{equation}\label{eq:mf-schr}
 i\partial_t \psi_{N,t} = H_N^{\text{mf}} \psi_{N,t} 
@@ -416,7 +416,7 @@ Plugging into (\ref{eq:BBGKY1}), we obtain a new self-consistent equation for $\
 
 \bigskip
 
-{\it The coherent states approach.} A drawback of the approach used in \cite{S,EY,ES,ESY1,ESY2,ESY3,ESY4} is the fact that it does not give any control on the rate of the convergence of the many-body quantum evolution towards the limiting dynamics (described by the Hartree or the Gross-Pitaevskii equation). This is a consequence of the abstract compactness argument used to establish the convergence of the sequence $\{ \gamma^{(k)}_{N,t} \}_{k=1}^N$ of reduced densities. For mean field dynamics with bounded potentials, it is possible to avoid the compactness argument by expanding directly the solution of the BBGKY hierarchy (\ref{eq:BBGKY}).
+{\it The coherent states approach.} A drawback of the approach used in \cite{S,EY,ES,ESY0,ESY1,ESY2,ESY3,ESY4} is the fact that it does not give any control on the rate of the convergence of the many-body quantum evolution towards the limiting dynamics (described by the Hartree or the Gross-Pitaevskii equation). This is a consequence of the abstract compactness argument used to establish the convergence of the sequence $\{ \gamma^{(k)}_{N,t} \}_{k=1}^N$ of reduced densities. For mean field dynamics with bounded potentials, it is possible to avoid the compactness argument by expanding directly the solution of the BBGKY hierarchy (\ref{eq:BBGKY}).
 %(instead of expanding the simpler infinite hierarchy to prove the uniqueness of its solution). 
 %This was in fact the approach originally used in \cite{S}. 
 Even so, the expansion can only be shown to converge for short times, and the bounds on the rate of convergence obtained in this way deteriorate very fast. 
@@ -452,7 +452,7 @@ for the growth of the number of particles operator (and actually, also for all i
 on the rate of convergence towards the Hartree dynamics followed. Here $\Gamma_{N,t}^{(1)}$ denotes the one-particle reduced density associated with the evolved state $\Psi_{N,t} = e^{-i\cH_N t} W(\sqrt{N} \varphi) \Omega$. The one-particle reduced density associated with a Fock space vector $\Psi$ is defined by the integral kernel
 \begin{equation}\label{eq:GNt} \Gamma_{\Psi}^{(1)} (x,y) = \frac{1}{\langle \Psi , \cN \Psi \rangle} \left\langle \Psi , a_y^* a_x \Psi \right\rangle \end{equation}
 It is simple to check that, for $N$-particle states, (\ref{eq:GNt}) coincides with the definition (\ref{eq:one-red}). 
-The analysis of the time evolution of initial coherent states is also useful to study the dynamics of initial data with a fixed number of particles $N$. For $N$-particle initial data $\psi_N \in L^2 (\bR^{3N})$ obtained projecting down a Fock-state of the form $W(\sqrt{N} \varphi) \Psi$ onto the $N$-particle sector, bounds of the form (\ref{eq:bds-mf}) were established in \cite{CLS}, extending the ideas developed in \cite{RS}, for arbitrary $\Psi \in \cF$ with finite number of particles and energy (note that this class of $N$-particle states include factorized wave functions of the form $\varphi^{\otimes N}$, which are obtained choosing $\psi = \Omega$). Using techniques similar to those proposed in \cite{P}, bounds for the rate of convergence towards the nonlinear Hartree dynamics were also obtained in \cite{KP2009}, allowing also for potential with strong singularities. 
+The analysis of the time evolution of initial coherent states is also useful to study the dynamics of initial data with a fixed number of particles $N$. For $N$-particle initial data $\psi_N \in L^2 (\bR^{3N})$ obtained projecting down a Fock-state of the form $W(\sqrt{N} \varphi) \Psi$ onto the $N$-particle sector, bounds of the form (\ref{eq:bds-mf}) were established in \cite{CLS}, extending the ideas developed in \cite{RS}, for arbitrary $\Psi \in \cF$ with finite number of particles and energy (note that this class of $N$-particle states include factorized wave functions of the form $\varphi^{\otimes N}$, which are obtained choosing $\psi = \Omega$). Using techniques similar to those proposed in \cite{P}, bounds for the rate of convergence towards the nonlinear Hartree dynamics were also obtained in \cite{KP2009}, allowing also for potential with strong singularities. A different point of view on the mean field limit was given in \cite{FKS}, where the convergence towards the Hartree dynamics was interpreted as a Egorov-type theorem.
 
 \bigskip
 
@@ -542,8 +542,9 @@ no correlations (the problem of the creation of correlation was studied in \cite
 \item[(iv)] The convergence (\ref{eq:mt}) and the fact that the limit is a rank-one projection immediately implies convergence of higher order reduced densities $\Gamma_{N,t}^{(k)}$, defined in (\ref{fock_density}). In fact, following the arguments outlined in Section 2 of \cite{KP2009}, (\ref{eq:mt}) implies that, for every $k \in \bN$,
 \[ \tr \, \left| \Gamma^{(k)}_{N,t} - |\varphi_t \rangle \langle \varphi_t|^{\otimes k} \right| \leq C \frac{k^{1/2}}{N^{1/4}} \exp\left(\frac{c_1}{2} \exp (c_2 |t|)\right).\done \]
 To obtain bounds for the convergence of the $k$-particle reduced density $\gamma^{(k)}_t$ with the same $N^{-1/2}$ rate as in (\ref{eq:mt}), following the same approach used below to study $\gamma^{(1)}_{N,t}$ would require to control the growth of higher powers of the number of particle operator with respect to the fluctuation dynamics (\ref{eq:cU-0}). This may be doable, but the analysis becomes increasingly involved. 
-\item[(v)] We expect that Theorem \ref{thm:main} and the method used in its proof can also be applied to deduce the convergence towards the Gross-Pitaevskii dynamics for initial data with a fixed number $N$ of particles. In fact one immediately gets a convergence similar to (\ref{eq:mt}) (but with slower rate) for initial $N$-particles states of the form $P_N W(\sqrt{N} \varphi) T(k_0) \psi$\done, for $\psi \in \cF$
-satisfying (\ref{eq:ass-thm1}), provided $\| P_N W(\sqrt{N} \varphi) T(k_0) \psi \| \gg N^{-1/2}$\done for large $N$. Here $P_N$ is the orthogonal projection onto the $N$-particle sector of $\cF$. It is not yet clear to us which $N$-particles states can be written this way. We will come back to this problem in a separate work.
+\item[(v)] Theorem \ref{thm:main} and the method used in its proof can also be applied to deduce the convergence towards the Gross-Pitaevskii dynamics for initial data with a fixed number of particles. In Appendix \ref{sec:Npart}, we consider initial $N$-particle states of the form 
+$P_N W(\sqrt{N} \varphi) T(k_0) \psi$, for $\psi \in \cF$ satisfying (\ref{eq:ass-thm1}), assuming 
+$\| P_N W(\sqrt{N} \varphi) T(k_0) \psi \| \gg N^{-1/2}$ for large $N$ (it is explained in Appendix \ref{sec:Npart} why this is a reasonable condition). It remains to be understood which class of $N$ particle states can be written as $P_N W(\sqrt{N} \varphi) T(k_0) \psi$, for a $\psi \in \cF$ satisfying (\ref{eq:ass-thm1}). 
 \end{itemize}
 
 %It is also possible to extract convergence towards the limiting Gross-Pitaevskii dynamics for a certain %class of initial data having a fixed number of particles $N$. This is the content of our second %theorem.
@@ -2192,6 +2193,98 @@ Integrating over $y$ and taking the supremum over $x$ gives
 The bound for $\dot{r} (k_t)$ can be proven analogously. Combining the bound for $\dot{r} (k_t)$ with the one for $\dot{k}_t$, we also obtain the bound for $\dot{\text{sh}} (k_t)$.
 \end{proof}
 
+
+\section{Convergence for $N$-particle states}
+\label{sec:Npart}
+
+In this section, we show how the result of Theorem \ref{thm:main}, stated there for initial data of the form $W(\sqrt{N} \varphi) T(k_0) \psi$ can be extended to a certain class of initial data with number of particles fixed to $N$. 
+\begin{thm}\label{thm:Npart}
+Let $\varphi \in H^4 (\bR^3)$ and suppose $\psi \in \cF$ with $\| \psi \|_\cF  =1$ is such that \begin{equation}\label{eq:ass1-N} \begin{split} \left\langle \psi , \left( \frac{\cN^2}{N} + \cN + \cH_N \right) \psi \right\rangle &\leq C  \end{split} \end{equation}
+for a constant $C>0$. Let $P_N$ denote the projection onto the $N$-particle sector of the Fock space and assume that 
+\begin{equation}\label{eq:ass2-N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \| \geq C N^{-1/4} \end{equation}
+for all $N \in \bN$ large enough. We consider the time evolution 
+\[ \psi_{N,t} = e^{-i \cH_N t} \frac{P_N W(\sqrt{N} \varphi) T(k_0) \psi}{\| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|} \] and we denote by $\gamma_{N,t}^{(1)}$ the one-particle reduced density associated with the $N$-particle state $\psi_{N,t}$. Then there exist constants $C, c_1 ,c_2 > 0$ with 
+\[ \tr  \; \left| \gamma^{(1)}_{N,t} - | \varphi_t \rangle \langle \varphi_t| \right| \leq \frac{C\,  \exp \left( c_1 \exp (c_2 |t|) \right)}{N^{1/4}} \]
+for all $t \in \bR$ and all $N$ large enough. Here $\varphi_t$ denotes the solution of the time-dependent Gross-Pitaevskii equation (\ref{eq:GP}), with initial data $\varphi_{t=0} = \varphi$. 
+\end{thm}
+
+{\it Remarks. } 
+\begin{itemize}
+\item If we relax (\ref{eq:ass2-N}) to the weaker condition $\| P_N W (\sqrt{N} \varphi) T(k_0) \psi \| \geq C N^{-\alpha}$, for some $1/4 \leq \alpha < 1/2$, the proof below still implies the convergence $\gamma^{(1)}_{N,t} \to |\varphi_t \rangle \langle \varphi_t|$ but only with the slower rate $N^{-1/2+ \alpha}$. 
+\item The assumption (\ref{eq:ass2-N}) and its weaker versions mentioned in the previous remark 
+are very reasonable; let us explain why. The expected number of particles in the Fock state $W(\sqrt{N} \varphi) T(k_0) \psi$ is given by
+\begin{equation}\label{eq:expecN}
+\begin{split} &\left\langle W(\sqrt{N} \varphi) T(k_0) \psi , \cN \, W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ & \hspace{2cm}= N + \sqrt{N} \langle T(k_0) \psi , \phi (\varphi) T(k_0) \psi \rangle + \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \end{split} \end{equation}
+with the notation $\phi (\varphi) = a(\varphi) + a^* (\varphi)$. {F}rom Lemma \ref{l:a}, Lemma \ref{lm:TNT} and the assumption (\ref{eq:ass1-N}) we conclude that there exists a constant $C >0$ with 
+\[ N - CN^{1/2} \leq \left\langle W(\sqrt{N} \varphi) T(k_0) \psi , \cN \, W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq N + C N^{1/2} \]
+The expectation of $\cN^2$, on the other hand, is given by
+\[ \begin{split} 
+\big\langle W(\sqrt{N} \varphi) &T(k_0)  \psi , \cN^2 \, W(\sqrt{N} \varphi) T(k_0) \psi \big\rangle \\
+= \; &\langle T(k_0) \psi , (\cN + \sqrt{N} \phi (\varphi) + N)^2 T(k_0) \psi \rangle \\ = \; &N^2 + 2 N^{3/2} \langle T(k_0) \psi , \phi (\varphi) T(k_0) \psi \rangle + 2N \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \\ &+N \langle  T(k_0) \psi , \phi (\varphi)^2 T(k_0) \psi \rangle + \sqrt{N} \langle   T(k_0) \psi ,  \left( \cN \phi (\varphi) + \phi (\varphi) \cN \right) T(k_0) \psi \rangle \\ &+ \langle T(k_0) \psi, \cN^2 T(k_0) \psi \rangle \end{split} \]
+ Subtracting the square of (\ref{eq:expecN}), and applying again Lemma \ref{l:a}, Lemma \ref{lm:TNT} and the assumption (\ref{eq:ass1-N}), we estimate the variance of the number of particles in the state $W(\sqrt{N} \varphi) T(k_0) \psi$ by
+ \[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi, (\cN - \langle \cN \rangle)^2 W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq C N \]
+for an appropriate constant $C >0$. Here $\langle \cN \rangle$ is a shorthand notation for (\ref{eq:expecN}). We conclude that
+\[  \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - \langle \cN \rangle | \geq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq C K^{-2} \]
+Choosing $K >0$ sufficiently large, we find
+\[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - \langle \cN \rangle | \leq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \geq 1/2 \] 
+{F}rom (\ref{eq:expecN}), adjusting the value of $K$, we obtain
+\[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - N | \leq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \geq 1/2 \] 
+This means that
+\[ \sum_{j= N - K \sqrt{N}}^{N+K \sqrt{N}} \left\| P_j \,  W(\sqrt{N} \varphi) T(k_0) \psi \right\|^2 \geq 1/2 \]
+The average value of $\| P_j W (\sqrt{N} \varphi) T(k_0) \psi \|^2$, for $j$ between $N- K \sqrt{N}$ and $N+K \sqrt{N}$ is therefore larger or equal to $N^{-1/4}$, in accordance with the assumption (\ref{eq:ass2-N}). In fact, this argument shows that for every $N$ there exists an $M \in [N-K \sqrt{N} , N + K \sqrt{N}]$ with $\| P_M \, W(\sqrt{N} \varphi) T(k_0) \psi \| \geq N^{-1/4}$. Letting \[ \psi_{N,M,t} = e^{-i \cH_N t}  \frac{P_M \, W(\sqrt{N} \varphi) T(k_0) \psi}{\|  P_M \, W(\sqrt{N} \varphi) T(k_0) \psi \|} \]
+and denoting by $\gamma^{(1)}_{N,M,t}$ the one-particle reduced density associated with $\psi_{N,M,t}$, one can show, similarly to Theorem \ref{thm:Npart}, that
+\[ \tr \; \left| \gamma^{(1)}_{N,M,t} - |\varphi_t \rangle \langle \varphi_t| \right| \leq  \frac{C\,  \exp \left( c_1 \exp (c_2 |t|) \right)}{N^{1/4}} \]
+The fact that the number of particles $M$ does not exactly match the parameter $N$ entering the Hamiltonian and the Weyl operator $W(\sqrt{N} \varphi)$ does not change the analysis substantially (because $|M - N| \leq C N^{1/2}$ is lower order). 
+\end{itemize}
+
+ \begin{proof}
+We write the integral kernel of $\gamma^{(1)}_{N,t}$ as
+\[ \begin{split} \gamma^{(1)}_{N,t} &(x;y) \\ = \; &\frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.5cm} \times \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , a_y^* a_x  e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\  = \; & \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.5cm}  \times \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \left(a_y^* + \sqrt{N} \overline{\varphi}_t^{(N)} (y) \right) \right. \\  & \hspace{2cm} \times \left. \left( a_x + \sqrt{N} \varphi_t^{(N)} (x)\right) W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \end{split} \]
+Hence, we find
+\[ \begin{split} 
+ \gamma^{(1)}_{N,t} &(x;y) - \overline{\varphi}_t^{(N)} (y)\varphi_t^{(N)} (x) \\  = \; & \frac{\varphi_t (x)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} 
+\\ & \hspace{.1cm}  \times \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_y^* W(\sqrt{N} \varphi_t^{(N1} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ &+ \frac{\overline{\varphi}_t (y)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.1cm}  \times \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_x W(\sqrt{N} \varphi_t^{(N)} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle\\ &+ \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \left\langle  e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \right. \\ & \left. \hspace{6cm}  \times  a^*_y a_x W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle 
+\end{split} \]
+Therefore, for any compact operator $J$ on $L^2 (\bR^3)$ we find 
+\[ \begin{split} 
+\tr \; J \, &\left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right) \\ = \; &\frac{1}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2}  \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \right. \\ & \left. \hspace{4cm} \times \left( a (J\varphi_t) + a^* (J \varphi_t) \right) W(\sqrt{N} \varphi_t^{(N)}  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle
+\\ &+  \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \right. \\ &\hspace{4cm} \left.  \times d\Gamma (J) \, W(\sqrt{N} \varphi_t^{(N)}  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \end{split} \]
+where $d\Gamma (J)$ denotes the second quantization of the operator $J$, defined by  
+\( (d\Gamma (J) \psi)^{(n)} = \sum_{i=1}^n J^{(i)} \psi^{(n)} \)
+for every $\psi = \{ \psi^{(n)} \}_{n\geq 0} \in \cF$ (here $J^{(i)}$ denotes the operator acting as $J$ on the $i$-th particle and as the identity on the other $(n-1)$ particles). Since $\| d\Gamma (J)  \psi \| \leq \| J \| \, \| \cN \psi \|$, we find, applying Lemma \ref{l:a}, 
+\[ \begin{split}
+\Big| \tr \; J \, &\left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \Big| \\ \leq \; &\frac{\| J \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}   \| (\cN+1)^{1/2} \, W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \| 
+\\ &+  \frac{\| J \|}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|} \| \cN \, W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \|  \end{split} \]
+where $\| J \|$ denotes the operator norm of $J$. {F}rom Lemma \ref{lm:TNT}, recalling the definition 
+(\ref{eq:cU}) of the fluctuation dynamics, we find
+\[  \begin{split}
+\Big| \tr \; J \, &\left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \Big| \\  \leq \; &\frac{\| J \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  \| \cN^{1/2} \,T^* (k_t) \,  W^* (\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \|  
+\\ &+  \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|} \| \cN \, T^* (k_t) \, W^* (\sqrt{N} \varphi_t^{(N)}  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \|  \\ \leq \:& \frac{ \| (\cN+1)^{1/2} \, \cU (t;0) \psi \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  + \frac{ \| \cN \, \cU (t;0) \psi \| 
+}{N \|  P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  \end{split} \]
+Using Proposition \ref{prop:apri}, we conclude that
+\[  \begin{split}
+\left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right|  \leq \:& \frac{C\| J \| \, \| (\cN+1)^{1/2} \, \cU (t;0) \psi \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}   + 
+\frac{C \| (\cN+1)^{1/2} \, \psi \|  }{\sqrt{N} \|  P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  
+\\ &+ \frac{C \| (\cN+1) \psi \| }{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  \end{split}
+\]
+{F}rom the assumptions (\ref{eq:ass1-N}) and (\ref{eq:ass2-N}), we obtain
+\[ \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right| \leq \frac{C\| J \|}{N^{1/4}} \| (\cN+1)^{1/2} \, \cU (t;0) \psi \| + \frac{C}{N^{1/4}} \]
+Finally, Theorem \ref{thm:N} implies that
+\begin{equation}\label{eq:last} \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right| \leq \frac{C\| J \| \exp \left(c_1 \exp (c_2 |t|) \right)}{N^{1/4}} \end{equation}
+Since the Banach space $\cL^1 (L^2 (\bR^3))$ is the dual space to the space of compact operators, equipped with the operator norm, (\ref{eq:last}) implies the claim. 
+\end{proof}
+
+
+
+
+
+
 \begin{thebibliography}{10}
 
 \bibitem{BEC1}\done{}
@@ -2219,11 +2312,23 @@ L.~{Erd{\H o}s}, A.~{Michelangeli}, and B.~{Schlein}.
 \newblock {Dynamical Formation of Correlations in a Bose-Einstein Condensate}.
 \newblock {\em Comm. Math. Phys.}, 289:1171--1210, 2009.
 
+\bibitem{ESY0}
+L. Erd{\H{o}}s, B. Schlein, and H.-T. Yau.
+\newblock Derivation of the {G}ross-{P}itaevskii hierarchy for the dynamics of
+  {B}ose-{E}instein condensate.
+\newblock {\em Comm. Pure Appl. Math.}, 59(12):1659--1741, 2006.
+
 \bibitem{ESY1}
 L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
 \newblock {Derivation of the cubic non-linear Schr{\"o}dinger equation from
   quantum dynamics of many-body systems}.
 \newblock {\em Inv. Math.}, 167:515--614, 2006.
+
+\bibitem{ESY2}
+L.~Erd{\H{o}}s, B.~Schlein, and H.-T.~Yau.
+\newblock Derivation of the {G}ross-{P}itaevskii equation for the dynamics of
+  {B}ose-{E}instein condensate.
+\newblock {\em Ann. of Math. (2)}, 172(1):291--370, 2010.
 
 \bibitem{ESY3}
 L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
@@ -2234,27 +2339,17 @@ L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
 L.~{Erd{\H o}s}, B.~{Schlein}, and H.-T.~{Yau}.
 \newblock {Rigorous derivation of the Gross-Pitaevskii equation with a large
   interaction potential}.
-\newblock {\em J. Amer. Math. Soc.}, 22:1099--1156,
-  2009.
-\iffalse
-\bibitem{ESY0}
-L{\'a}szl{\'o} Erd{\H{o}}s, Benjamin Schlein, and Horng-Tzer Yau.
-\newblock Derivation of the {G}ross-{P}itaevskii hierarchy for the dynamics of
-  {B}ose-{E}instein condensate.
-\newblock {\em Comm. Pure Appl. Math.}, 59(12):1659--1741, 2006.
-\fi
-
-\bibitem{ESY2}
-L.~Erd{\H{o}}s, B.~Schlein, and H.-T.~Yau.
-\newblock Derivation of the {G}ross-{P}itaevskii equation for the dynamics of
-  {B}ose-{E}instein condensate.
-\newblock {\em Ann. of Math. (2)}, 172(1):291--370, 2010.
-
+\newblock {\em J. Amer. Math. Soc.}, 22:1099--1156, 2009.
+  
 \bibitem{EY}
 L.~Erd{\H{o}}s and H.-T.~Yau.
 \newblock Derivation of the nonlinear {S}chr\"odinger equation from a many body
   {C}oulomb system.
 \newblock {\em Adv. Theor. Math. Phys.}, 5(6):1169--1205, 2001.
+
+\bibitem{FKS}
+J. Fr\"ohlich, A. Knowles, S. Schwarz.
+
 
 \bibitem{GV}
 J.~Ginibre and G.~Velo.
