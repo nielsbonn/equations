@@ -46,6 +46,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%% Gustavo's aliases %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\done}{\marginnote{\Large\checkmark}}	% redefine as empty command when finished
+\newcommand{\ech}[2]{#2}	%'exponential-bounds-change': replaces (e.g.) old norm-bounds by new exp ones (first arg by second), easily undoable
+\newcommand{\ekt}{e^{K\lvert t\rvert}}	%exp-bound
 
 
 \newcommand{\PP}{{\mathbb P }}
@@ -537,14 +539,14 @@ with the initial condition $\varphi_{t=0} =\varphi$.
 \begin{itemize}
 \item[(i)] Let us point out that we insert the correct correlation structure in the initial data. Our result implies the approximate stability of states of the form $W(\sqrt{N} \varphi) T(k_0) \psi$ with respect to the many-body evolution (in the sense that the evolution of $W(\sqrt{N} \varphi) T(k_0) \psi$ has approximately the same form, just with evolved $\varphi_t$, up to an error which vanishes as $N\to \infty$, with a certain rate). It does not imply, on the other hand, that the correlation structure is produced by the time-evolution. This is in contrast with the results of \cite{ESY1,ESY2,ESY3,ESY4}, which can also be applied to completely factorized initial data. It remains unclear, however, if it is possible to obtain convergence with a $N^{-1/2}$ rate (or with any rate) for initial data with 
 no correlations (the problem of the creation of correlation was studied in \cite{EMS}). 
-\item[(ii)] The time dependence on the r.h.s.\ of (\ref{eq:mt}) deteriorates fast for large $t$. This however is just a consequence of the fact that, in general, high Sobolev norms of the solution of (\ref{eq:GP}) can grow exponentially fast. Assuming a uniform bound for $\| \varphi_t \|_{H^4}$, the time dependence on the r.h.s.\ of (\ref{eq:mt}) can be replaced by $C \exp (K |t|)$. In fact, if one assumes the $L^\infty$-norm of $\varphi_t$ and of its time-derivative $\dot\varphi_t$ to vanish sufficiently fast as $t \to \infty$ (at an integrable rate), one even obtains bounds which are uniform in $t$. For the mean field regime, this was observed in \cite{KP2009}.
+\item[(ii)] The time dependence on the r.h.s.\ of (\ref{eq:mt}) deteriorates fast for large $t$. This however is just a consequence of the fact that, in general, high Sobolev norms of the solution of (\ref{eq:GP}) can grow exponentially fast. Assuming a uniform bound for $\| \varphi_t \|_{H^4}$, the time dependence on the r.h.s.\ of (\ref{eq:mt}) can be replaced by $C \exp (K |t|)$. In fact, if one assumes the $L^\infty$-norm of $\varphi_t$ and of its time-derivative $\dot\varphi_t$ to vanish sufficiently fast as $t \to \infty$ (at an integrable rate), one should even obtain bounds which are uniform in $t$. For the mean field regime, this was observed in \cite{KP2009}.
 \item[(iii)] To simplify a little bit the computations, we did not include an external potential in the Hamiltonian (\ref{eq:cHN}) generating the evolution on the Fock space. In contrast to \cite{ESY1,ESY2,ESY3,ESY4}, the approach we present in this paper can be extended with no additional complication to Hamilton operators with external potential. This remark is important to describe experiments where the evolution of the condensate is observed after tuning the magnetic traps, rather than switching them off. 
 \item[(iv)] The convergence (\ref{eq:mt}) and the fact that the limit is a rank-one projection immediately implies convergence of higher order reduced densities $\Gamma_{N,t}^{(k)}$, defined in (\ref{fock_density}). In fact, following the arguments outlined in Section 2 of \cite{KP2009}, (\ref{eq:mt}) implies that, for every $k \in \bN$,
 \[ \tr \, \left| \Gamma^{(k)}_{N,t} - |\varphi_t \rangle \langle \varphi_t|^{\otimes k} \right| \leq C \frac{k^{1/2}}{N^{1/4}} \exp\left(\frac{c_1}{2} \exp (c_2 |t|)\right).\done \]
 To obtain bounds for the convergence of the $k$-particle reduced density $\gamma^{(k)}_t$ with the same $N^{-1/2}$ rate as in (\ref{eq:mt}), following the same approach used below to study $\gamma^{(1)}_{N,t}$ would require to control the growth of higher powers of the number of particle operator with respect to the fluctuation dynamics (\ref{eq:cU-0}). This may be doable, but the analysis becomes increasingly involved. 
 \item[(v)] Theorem \ref{thm:main} and the method used in its proof can also be applied to deduce the convergence towards the Gross-Pitaevskii dynamics for initial data with a fixed number of particles. In Appendix \ref{sec:Npart}, we consider initial $N$-particle states of the form 
 $P_N W(\sqrt{N} \varphi) T(k_0) \psi$, for $\psi \in \cF$ satisfying (\ref{eq:ass-thm1}), assuming 
-$\| P_N W(\sqrt{N} \varphi) T(k_0) \psi \| \gg N^{-1/2}$ for large $N$ (it is explained in Appendix \ref{sec:Npart} why this is a reasonable condition). It remains to be understood which class of $N$ particle states can be written as $P_N W(\sqrt{N} \varphi) T(k_0) \psi$, for a $\psi \in \cF$ satisfying (\ref{eq:ass-thm1}). 
+$\| P_N W(\sqrt{N} \varphi) T(k_0) \psi \| \gg N^{-1/2}$ for large $N$ (it is explained in Appendix \ref{sec:Npart} why this is a reasonable condition). It remains to be understood which class of $N$-particle states can be written as $P_N W(\sqrt{N} \varphi) T(k_0) \psi$, for a $\psi \in \cF$ satisfying (\ref{eq:ass-thm1}). 
 \end{itemize}
 
 %It is also possible to extract convergence towards the limiting Gross-Pitaevskii dynamics for a certain %class of initial data having a fixed number of particles $N$. This is the content of our second %theorem.
@@ -768,8 +770,8 @@ where $1$ denotes the identity operator on $L^2 (\bR^3)$. Then $p (k)$ and $r (k
 \[   \| \dot{p} (k) \|_2 , \| \dot{r} (k)\|_2  \leq \| \dot{k} \|_2 \, e^{\| k \|_2} \]
 and
 \[ \begin{split} 
-\| \nabla_1 \dot p (k) \|_2 , \| \nabla_1 \dot r (k) \|_2  &\leq C  e^{\| k \|_2} \left( \| \dot k \|_2 \| \nabla_1 (k\overline{k}) \|_2 + \| \nabla_1 (\dot{k} \overline{k}) \|_2 + \| \nabla_1 (k \overline{\dot{k}}) \|_2 \right) \\
- \| \nabla_2 \dot p (k) \|_2 , \| \nabla_2 \dot r (k) \|_2  &\leq C  e^{\| k \|_2} \left( \| \dot k \|_2 \| \nabla_2 (k\overline{k}) \|_2 + \| \nabla_2 (\dot{k} \overline{k}) \|_2 + \| \nabla_2 (k \overline{\dot{k}}) \|_2 \right). 
+\| \nabla_1 \dot p (k) \|_2 , \| \nabla_1 \dot r (k) \|_2  &\leq C  e^{\| k \|_2} \left( \| \dot k \|_2 \| \nabla_1 (k\overline{k}) \|_2 + \| \nabla_1 (\dot{k} \overline{k}) \|_2 + \| \nabla_1 (k \overline{\dot{k}}) \|_2 \right)\done \\
+ \| \nabla_2 \dot p (k) \|_2 , \| \nabla_2 \dot r (k) \|_2  &\leq C  e^{\| k \|_2} \left( \| \dot k \|_2 \| \nabla_2 (k\overline{k}) \|_2 + \| \nabla_2 (\dot{k} \overline{k}) \|_2 + \| \nabla_2 (k \overline{\dot{k}}) \|_2 \right).\done 
  \end{split} \]
 \end{itemize}
 \end{lem}
@@ -930,13 +932,13 @@ Defining $p(k_t)$ and $r (k_t)$ as in (\ref{eq:pr-def}), so that $\text{ch} (k_t
         \| \nabla_1 r (k_t) \|_2 , \| \nabla_2 r (k_t) \|_2 & \leq C. \end{split} \] 
     \item \label{kr} For almost all $x,y \in \R^3$, we have the pointwise bounds 
       \[ \begin{split} 
-        |k_t (x,y)| & \leq \min \left(N |\varphi(x)| |\varphi(y)| , \frac{1}{|x-y|} |\varphi (x)| |\varphi(y)| \right), \\
-        |r (k_t) (x,y)| &\le C |\varphi(x)| |\varphi(y)|, \\ |p(k_t) (x,y)| &\leq C |\varphi(x)| |\varphi(y)| \end{split} 
+        |k_t (x,y)| & \leq \min \left(N |\ph(x)| |\ph(y)| , \frac{1}{|x-y|} |\ph (x)| |\ph(y)| \right), \\
+        |r (k_t) (x,y)| &\le C |\ph(x)| |\ph(y)|, \\ |p(k_t) (x,y)| &\leq C |\ph(x)| |\ph(y)| \end{split} 
       \] 
       where $p(k_t), r(k_t)$ are the kernels defined in (\ref{eq:pr-def}) and the constant $C$ depends only on $\| \varphi_t^{(N)} \|_{H^1}$. 
-    \item \label{sup} Suppose further that $\varphi \in H^2(\R^3)$. Then,
+    \item \label{sup} Suppose further that $\varphi \in H^2(\R^3)$. Then
       \[
-         \sup_{x \in \R^3} \, \norm{k_t (.,x)}_{2}, \sup_{x \in \R^3} \, \norm{p (k_t) (.,x)}_{2},  \sup_{x \in \R^3} \, \norm{r (k_t) (.,x)}_{2} , \sup_{x \in \R^3}  \norm{\text{sh} (k_t) (.,x)}_{2} \leq C \norm{\varphi}_{H^2}.
+         \sup_{x \in \R^3} \, \norm{k_t (.,x)}_{2}, \sup_{x \in \R^3} \, \norm{p (k_t) (.,x)}_{2},  \sup_{x \in \R^3} \, \norm{r (k_t) (.,x)}_{2} , \sup_{x \in \R^3}  \norm{\text{sh} (k_t) (.,x)}_{2} \leq C \norm{\ph}_{H^2}.
       \]
   \end{enumerate}
 \end{lem}
@@ -996,8 +998,7 @@ A simple computation shows that
  %= \; & \int dx \, \nabla_x (a_x^* + \sqrt{N} \overline{\varphi}_t^{(N)} (x) ) \nabla_x (a_x + \sqrt{N} 
  %\varphi_t^{(N)} (x)) \\ &+ \int dx dy \, N^2 V (N(x-y)) \,  (a_x^* + \sqrt{N} \overline{\varphi}_t^{(N)} (x) ) %(a_y^* + \sqrt{N} \overline{\varphi}_t^{(N)} (y) ) \\ & \hspace{6cm} \times 
 %(a_y + \sqrt{N} \varphi_t^{(N)} (y)) (a_x + \sqrt{N} \varphi_t^{(N)} (x)) \\
-= \; & %N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
-N \int \di x\left( N^3 V(N.)\Big(\frac{1}{2}-f(N.)\Big)\ast \lvert \ph\rvert^2 \right)(x) \lvert \ph(x)\rvert^2 \done\\
+= \; & N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
 &+ \sqrt{N} \left[  a^*\left( (N^3 V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) + a\left( (N^3 V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right] \\
 &+ \left[ \int dx \, \nabla_x a_x^* \nabla_x a_x + \int dx \, (N^3 V (N.) * |\varphi_t^{(N)}|^2) (x) a_x^* a_x \right. \\ 
 &\hspace{.5cm}+ \int dx dy N^3 V(N (x-y)) \varphi_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y) a_x^* a_y \\
@@ -1009,7 +1010,8 @@ Combining the last two equations and using (\ref{eq:mod-GP}), we conclude that
 \[ \begin{split} \cL_N^{(0)} (t) = \; & %N \, \text{Im } \left\langle
 %\varphi_t^{(N)} , \left(N^3 (f(N.) - 1/2) V(N.) * |\varphi_t^{(N)}|^2
 %\right] \varphi_t^{(N)} \right\rangle \\
-N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
+%N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
+N \int \di x\left( N^3 V(N.)\Big(\frac{1}{2}-f(N.)\Big)\ast \lvert \ph\rvert^2 \right)(x) \lvert \ph(x)\rvert^2 \done\\
 &+ \sqrt{N}  \left[  a^*\left( (N^3
 w(N.) V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right. \\
 & \quad \qquad + \left. a\left( (N^3 w (N.)V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right] \\
@@ -1028,8 +1030,9 @@ where $\cL^{(0)}_{j,N} (t)$, for $j=0, \dots , 4$, is the part of $\cL_N^{(0)} (
 \begin{equation}\label{eq:dec-cLN} \cL_N (t) =  \cL_{0,N}^{(0)} (t) + \sum_{j=1}^4 T^* (k_t) \cL_{j,N}^{(0)} (t) T (k_t) +\left[ i \partial_t T^* (k_t) \right] T(k_t) \end{equation}
 
 In the next subsection, we study separately the different terms on the r.h.s.\ of (\ref{eq:dec-cLN}). The final goal of this analysis is to prove the following theorem, which will allow us to control the growth of the expectation of the number of particle with respect to the fluctuation dynamics.
+%
+%
 \begin{thm}\label{thm:L}
-
 Define the time-dependent constant (of order $N$)
 \begin{equation}\label{eq:CNt} \begin{split} 
 C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t) (y,x)|^2  \\
@@ -1042,15 +1045,15 @@ C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t) (y,x
 and let
 \begin{equation}\label{eq:wtcL} \wt{\cL}_N (t) = \cL_N (t) - C_N (t). \end{equation}
 Then we have
-\begin{equation}\label{eq:thmL-1} \wt{\cL}_N (t) \geq \frac{1}{2} \cH_N - C \, \frac{\cN^2}{N}  - C \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right), \end{equation}
+\begin{equation}\label{eq:thmL-1} \wt{\cL}_N (t) \geq \frac{1}{2} \cH_N - C \, \frac{\cN^2}{N}  - C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt}  \left(\cN + 1\right), \end{equation}
 and
-\begin{equation}\label{eq:thmL-1b} \wt{\cL}_N (t) \leq \frac{3}{2} \cH_N + C \, \frac{\cN^2}{N}  +  C \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right). \end{equation}
+\begin{equation}\label{eq:thmL-1b} \wt{\cL}_N (t) \leq \frac{3}{2} \cH_N + C \, \frac{\cN^2}{N}  +  C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt}  \left(\cN + 1\right). \end{equation}
 Moreover, 
-\begin{equation}\label{eq:thmL-2} \pm \left[ \cN , \wt{\cL}_N (t) \right]  \leq \cH_N + C \frac{\cN^2}{N} + C \| \varphi_t^{(N)} \|_{H^2}^2 (\cN+1) \end{equation}
+\begin{equation}\label{eq:thmL-2} \pm \left[ \cN , \wt{\cL}_N (t) \right]  \leq \cH_N + C \frac{\cN^2}{N} + C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} (\cN+1) \end{equation}
 and 
 \begin{equation}\label{eq:thmL-3}
 \begin{split} 
-\pm \dot{\wt{\cL}}_N (t)  \leq \; &\cH_N + C \| \varphi_t^{(N)} \|_{H^4}^2 \, \frac{\cN^2}{N}  \\ &+ C \left( \| \varphi_t^{(N)} \|_{H^4}  \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \left(\cN+1 \right).  
+\pm \dot{\wt{\cL}}_N (t)  \leq \; &\cH_N + \ech{C \| \varphi_t^{(N)} \|_{H^4}^2 \, \frac{\cN^2}{N}  \\ &+ C \left( \| \varphi_t^{(N)} \|_{H^4}  \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \left(\cN+1 \right)}{C \ekt \left(\frac{\Ncal^2}{N} + \Ncal + 1 \right)}.  
 \end{split}
 \end{equation}
 \end{thm}
@@ -1101,9 +1104,9 @@ T^* \cK T = \; &  \int dx dy | \nabla_x \text{sh}_{k_t} (y,x) |^2 + \cK  \\
 where the error $\cE_K (t)$ is an operator such that\done{} for every $\delta > 0$ there exists a constant $C_\delta > 0$ with 
 \begin{equation}\label{eq:TKT-cl} 
 \begin{split} 
-\pm \, \cE_K (t) &\leq \delta \cK + C_\delta \| \varphi_t^{(N)} \|_{H^2} \, (\cN + 1) \\
-\pm \, \left[ \cN , \cE_K (t) \right] &\leq \delta \cK + C_\delta \, \| \varphi_t^{(N)} \|_{H^2} \, (\cN + 1) \\
-\pm \dot{\cE}_K (t) &\leq \delta \cK + C_\delta \| \varphi_t^{(N)} \|^2_{H^3} \,  (\cN+1). 
+\pm \, \cE_K (t) &\leq \delta \cK + C_\delta \ech{\| \varphi_t^{(N)} \|_{H^2}}{\ekt} \, (\cN + 1) \\
+\pm \, \left[ \cN , \cE_K (t) \right] &\leq \delta \cK + C_\delta \ech{\, \| \varphi_t^{(N)} \|_{H^2}}{\ekt} \, (\cN + 1) \\
+\pm \dot{\cE}_K (t) &\leq \delta \cK + C_\delta \ech{\| \varphi_t^{(N)} \|^2_{H^3}}{\ekt} \,  (\cN+1). 
 \end{split}
 \end{equation}
 \end{proposition}
@@ -1131,11 +1134,11 @@ Moreover, we have
 \left| \int dx \langle \psi , a^* (\nabla_x k_x) a (\nabla_x k_x) \psi \rangle \right| \leq C \| \cN^{1/2} \psi \|^2
 \end{equation}
 To control the time derivative of $\cE_K (t)$, we will also use the following bounds. For every $\delta > 0$ there exists $C_\delta > 0$ such that 
-\begin{equation}\label{eq:lmK-5} \left| \int dx \langle \psi , a^* (\nabla_x \dot{k}_x) a^\sharp (j_{1,x}) \psi \rangle \right| \leq \delta \cK + C_\delta \, \| \varphi_t^{(N)} \|_{H^3}^2 \,   (1+\| j_1 \|^2_2) \, \| (\cN+1)^{1/2} \psi \|^2 .
+\begin{equation}\label{eq:lmK-5} \left| \int dx \langle \psi , a^* (\nabla_x \dot{k}_x) a^\sharp (j_{1,x}) \psi \rangle \right| \leq \delta \cK + C_\delta \ech{\, \| \varphi_t^{(N)} \|_{H^3}^2}{\ekt}(1+\| j_1 \|^2_2) \, \| (\cN+1)^{1/2} \psi \|^2 .
 \end{equation}
 Moreover,
 \begin{equation}\label{eq:lmK-6} 
-\left| \int dx \langle \psi , a^* (\nabla_x \dot{k}_x) a (\nabla_x k_x) \psi \rangle \right| \leq C \| \varphi_t^{(N)} \|_{H^3}^2  \| \cN^{1/2} \psi \|^2. \end{equation}
+\left| \int dx \langle \psi , a^* (\nabla_x \dot{k}_x) a (\nabla_x k_x) \psi \rangle \right| \leq C \ech{\| \varphi_t^{(N)} \|_{H^3}^2}{\ekt}  \| \cN^{1/2} \psi \|^2. \end{equation}
 \end{lemma}
 \begin{proof}
 To prove (\ref{eq:lmK-1}), we compute
@@ -1195,7 +1198,7 @@ The first term on the r.h.s.\ of (\ref{eq:exc2-K}), on the other hand, can be wr
 The first contribution on the r.h.s.\ of the last equation is large and appears explicitly on the r.h.s.\ of (\ref{eq:pr-K}). The second term, on the other hand, is an error; integrating by parts, it can be expressed as
 \[ \begin{split} N^2 \int dx dy \nabla &w (N (x-y)) \nabla \varphi^{(N)}_t (x) \varphi_t^{(N)} (y) a_x^* a_y^* \\ = \; &- N \int dx dy  w (N (x-y)) \nabla \varphi^{(N)}_t (x) \nabla \varphi_t^{(N)} (y) a_x^* a_y^* \\ &- N \int dx dy w (N (x-y)) \nabla \varphi^{(N)}_t (x)  \varphi_t^{(N)} (y) a_x^* \nabla_y a_y^*  \\ = \; &- \int dx \nabla \varphi_t^{(N)} (x) a_x^* a^* (N w(N(x-.) \nabla \varphi_t^{(N)}) + \int dy  \nabla_y a_y^* a^* (j_y) \end{split} \]
 with $j(x,y) = -N w(N(x-y)) \nabla\ph(x)\ph(y)$. The second term is bounded as in (\ref{eq:exc3-K}). The first term, on the other hand, is estimated by
-\begin{equation}\label{eq:lmK-sp} \begin{split}\Big|   \int dx \nabla \varphi_t^{(N)} (x)  \langle a_x \psi, &a^* (N w(N(x-.)) \nabla \varphi_t^{(N)}) \psi \rangle \Big| \\ &\leq C \sup_x \| N w(N(x-.)) \nabla \varphi_t^{(N)} \|_2 \| (\cN+1)^{1/2} \psi \|^2 \\ &\leq C \| \varphi_t^{(N)} \|_{H^2} \| (\cN+1)^{1/2} \psi \|^2.   \end{split} \end{equation}
+\begin{equation}\label{eq:lmK-sp} \begin{split}\Big|   \int dx \nabla \varphi_t^{(N)} (x)  \langle a_x \psi, &a^* (N w(N(x-.)) \nabla \varphi_t^{(N)}) \psi \rangle \Big| \\ &\leq C \sup_x \| N w(N(x-.)) \nabla \varphi_t^{(N)} \|_2 \| (\cN+1)^{1/2} \psi \|^2 \\ &\leq C \| \varphi_t^{(N)} \|_{H^2} \| (\cN+1)^{1/2} \psi \|^2   \end{split} \end{equation} and \eqref{eq:hireg}.
 
 Also the second bound in (\ref{eq:TKT-cl}) follows from Lemma \ref{lm:K}. In fact, when one takes the commutator of $\cN$ with the terms on the r.h.s.\ of (\ref{eq:TKT}) one either finds zero (for all terms with one creation and one annihilation operators, which therefore preserve the number of particles), or one finds again the same terms (up to a possible change of sign). This follows because, by the canonical commutation relations
 \[ [ \cN , a (f) ] = - a (f) \qquad \text{and } \quad [\cN , a^* (f)] = a^* (f) \]
@@ -1226,7 +1229,7 @@ T^* \wt{\cL}_{2,N}^{(0)} &(t) T \\ =\; & \int dx (N^3 V(N.) * |\varphi_t^{(N)}|^
 where the error $\cE_2 (t)$ is such that 
 \begin{equation} \label{eq:T2T-cl}
 \begin{split}
-\pm  \cE_2 (t) &\leq C \| \varphi_t^{(N)} \|_{H^2}^2 \,  (\cN + 1), \\  \pm \left[ \cN , \cE_2 (t) \right]  &\leq C \| \varphi_t^{(N)} \|_{H^2}^2 \, (\cN + 1), \\ \pm \dot{\cE}_2 (t) &\leq C \, \left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} +   \| \varphi_t^{(N)} \|_{H^2}^3 \right) \, (\cN+1) .
+\pm  \cE_2 (t) &\leq C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} \,  (\cN + 1), \\  \pm \left[ \cN , \cE_2 (t) \right]  &\leq C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} \, (\cN + 1), \\ \pm \dot{\cE}_2 (t) &\leq C \, \ech{\left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} +   \| \varphi_t^{(N)} \|_{H^2}^3 \right)}{\ekt} \, (\cN+1) .
 \end{split}
 \end{equation} 
 \end{proposition}
@@ -1299,9 +1302,9 @@ To prove the first bound in (\ref{eq:T2T-cl}), we notice that the quadratic term
 \int dx dy N^3 V(N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) a^* (c_x) a^* (p_y) 
  \end{split} \end{equation}
 The contribution of the last two terms can be bounded by Lemma \ref{lm:2b}, because one of the arguments of the creation operators are square integrable. In fact
-\[ \begin{split} \Big| \int dx dy N^3 V(N (x-y)) &\varphi_t^{(N)} (x) \varphi_t^{(N)} (y)  \langle \psi , a^* (p_x) a_y^* \psi \rangle \Big| \\ \leq \; & \int dx dy N^3 V(N (x-y)) |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} (y)|   \| a_y \psi \| \, \| a^* (p_x) \psi \|   \\ \leq \; & C \| \varphi_t^{(N)} \|_{H^2}^2 \, \| (\cN+1)^{1/2} \psi \|^2 
+\[ \begin{split} \Big| \int dx dy N^3 V(N (x-y)) &\varphi_t^{(N)} (x) \varphi_t^{(N)} (y)  \langle \psi , a^* (p_x) a_y^* \psi \rangle \Big| \\ \leq \; & \int dx dy N^3 V(N (x-y)) |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} (y)|   \| a_y \psi \| \, \| a^* (p_x) \psi \|   \\ \leq \; & C \| \varphi_t^{(N)} \|_{H^2}^2 \, \| (\cN+1)^{1/2} \psi \|^2 \leq C \ekt \| (\cN+1)^{1/2} \psi \|^2
 \end{split} \]
-by (\ref{eq:lm2b-2}), and similarly for the last term on the r.h.s.\ of (\ref{eq:2-cancel}).
+by (\ref{eq:lm2b-2}) and \eqref{eq:hireg}, and similarly for the last term on the r.h.s.\ of (\ref{eq:2-cancel}).
 % while
 %\[ \begin{split} \Big| \int dx dy N^3 V(N (x-y)) &\varphi_t^{(N)} (x) \varphi_t^{(N)} (y)  \langle \psi , a^* 
 %(c_x) a^* (p_y) \psi \rangle \Big| \\ \leq \; & \int dx dy N^3 V(N (x-y)) |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} %(y)|   \| a (c_x) \psi \| \, \| a^* (p_y) \psi \|   \\ \leq \; & C \| (\cN+1)^{1/2} \psi \|^2 
@@ -1339,10 +1342,10 @@ We have
 \end{split} \end{equation}
 where we used the definition (\ref{eq:kt}) of the kernel $k_t$ and where the error term $\cE_3 (t)$ is s.t.\ for every $\delta > 0$ there exists a constant $C_\delta > 0$ with
 \begin{equation}\label{eq:TL3T-cl}
-\begin{split} \pm \cE_3 (t)  &\leq \delta \int dx dy N^2 V (N (x-y)) a_x^* a_y^* a_x a_y + \delta \,\frac{\cN^2}{N} + C_\delta \| \varphi_t^{(N)} \|_{H^2}^2 \left(\cN + 1\right) \\
-\pm \left[ \cN , \cE_3 (t) \right] &\leq \delta \int dx dy N^2 V (N (x-y)) a_x^* a_y^* a_x a_y + \delta \,  \frac{\cN^2}{N} + C_\delta  \| \varphi_t^{(N)} \|_{H^2}^2  \left(\cN + 1\right) \\
+\begin{split} \pm \cE_3 (t)  &\leq \delta \int dx dy N^2 V (N (x-y)) a_x^* a_y^* a_x a_y + \delta \,\frac{\cN^2}{N} + C_\delta \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} \left(\cN + 1\right) \\
+\pm \left[ \cN , \cE_3 (t) \right] &\leq \delta \int dx dy N^2 V (N (x-y)) a_x^* a_y^* a_x a_y + \delta \,  \frac{\cN^2}{N} + C_\delta  \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt}  \left(\cN + 1\right) \\
 \pm \dot{\cE}_3 (t) & \leq \delta \int dx dy N^2 V (N (x-y)) a_x^* a_y^* a_x a_y + \delta \, \frac{\cN^2}{N} 
-\\ & \hspace{.5cm} + C_\delta \left( \| \varphi_t^{(N)} \|_{H^4}^2 \| \varphi_t^{(N)} \|_{H^2}^2 + \| \varphi_t^{(N)} \|_{H^2}^4 \right) \,  \left( \cN + 1\right).
+\ech{\\ & \hspace{.5cm} + C_\delta \left( \| \varphi_t^{(N)} \|_{H^4}^2 \| \varphi_t^{(N)} \|_{H^2}^2 + \| \varphi_t^{(N)} \|_{H^2}^4 \right)}{+ C_\delta \ekt} \,  \left( \cN + 1\right).
 \end{split} \end{equation}
 \end{proposition}
 
@@ -1358,9 +1361,9 @@ in such a way that, in the resulting quartic contribution, two operators act on 
 To bound the second linear term, we write 
 \[ \begin{split} 
 \frac{1}{\sqrt{N}} \int dx dy & N^3 V(N (x-y)) \varphi_t^{(N)} (y) \langle s_x, c_y \rangle (a(c_x) + a^* (s_x))  \\ = \; & \frac{1}{\sqrt{N}} \int dx dy  N^3 V(N (x-y)) \varphi_t^{(N)} (y) \overline{k}_t (x,y) \, (a(c_x) + a^* (s_x)) + \wt{\cE} (t) \end{split} \]
-where $\pm \wt{\cE} (t) \leq N^{-1/2} (\cN+1)^{1/2}$ because $|\langle s_x , c_y \rangle - \overline{k}_t (x,y)| \leq C |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} (y)|$. This conclude the proof of the first estimate in (\ref{eq:TL3T-cl}). 
+where $\pm \wt{\cE} (t) \leq N^{-1/2} (\cN+1)^{1/2}$ because $|\langle s_x , c_y \rangle - \overline{k}_t (x,y)| \leq C |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} (y)|$. Using \eqref{eq:hireg}, this conclude the proof of the first estimate in (\ref{eq:TL3T-cl}). 
 
-The other two estimates are proven analogously, using the fact that the commutators of $\cN$ with the terms on the r.h.s.\ of (\ref{eq:cub-no}) have the same form as the terms on the r.h.s.\ of (\ref{eq:cub-no}) (with possibly just a different sign), and the uniform bounds for $\| \dot{\text{sh}}_{k_t} \|, \| \dot{p}_{k_t} \|$ from Lemma \ref{lm:dotk}.
+The other two estimates are proven analogously, using the fact that the commutators of $\cN$ with the terms on the r.h.s.\ of (\ref{eq:cub-no}) have the same form as the terms on the r.h.s.\ of (\ref{eq:cub-no}) (with possibly just a different sign), and the bounds for $\| \dot{\text{sh}}_{k_t} \|, \| \dot{p}_{k_t} \|$ from Lemma \ref{lm:dotk}.
 \end{proof}
 
 \subsection{Analysis of $T^* \cL^{(0)}_{4,N} T$}
@@ -1395,10 +1398,10 @@ We have
 where the error $\cE_4 (t)$ is such that, for every $\delta > 0$, there exists a constant $C_\delta > 0$ with  
 \begin{equation}\label{eq:TL4T-cl} 
 \begin{split}
-\pm \, \cE_4 (t) &\leq \delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + C_\delta  \frac{\cN^2}{N}  + C_\delta \| \varphi_t^{(N)} \|_{H^2}^2 \left(\cN + 1 \right) \\
-\pm \, \left[ \cN , \cE_4 (t) \right]  &\leq  \delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + C_\delta \frac{\cN^2}{N} + C_\delta \| \varphi_t^{(N)} \|_{H^2}^2 \left(\cN + 1 \right) \\
+\pm \, \cE_4 (t) &\leq \delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + C_\delta  \frac{\cN^2}{N}  + C_\delta \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} \left(\cN + 1 \right) \\
+\pm \, \left[ \cN , \cE_4 (t) \right]  &\leq  \delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + C_\delta \frac{\cN^2}{N} + C_\delta \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} \left(\cN + 1 \right) \\
 \pm \dot{\cE}_4 (t) &\leq 
-\delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + C_\delta \| \varphi_t^{(N)} \|_{H^4}^2  \frac{\cN^2}{N} \\ &\hspace{.5cm} + C_\delta \left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \, \left(\cN + 1 \right).
+\delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + \ech{C_\delta \| \varphi_t^{(N)} \|_{H^4}^2  \frac{\cN^2}{N} \\ &\hspace{.5cm} + C_\delta \left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \, \left(\cN + 1 \right)}{C_\delta \ekt \left(\frac{\Ncal^2}{N} +\Ncal + 1 \right)}.
 \end{split}
 \end{equation}
 \end{proposition}
@@ -1511,7 +1514,9 @@ Proceeding analogously to control the second quadratic term on the r.h.s.\ of (\
 \int dx dy \, N^2 V (N (x-y)) & \left[ \langle c_y, s_x \rangle \,  a^* (c_x) a^* (c_y)  + \langle s_x, c_y \rangle \, a (c_y)  a(c_x) \right] \\  = \; & \int dx dy \, N^2 V(N(x-y))  \left[ k(x,y) a^*_x a^*_y + \overline{k} (x,y) a_x a_y \right] \\ &+ \wt{\cE} (t) \end{split} \]
 where the error $\wt{\cE} (t)$ is such that, for every $\delta >0$ there exists $C_\delta$ with 
 \[ \pm \, \wt{\cE} (t) \leq  \delta \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x + C_\delta \| \varphi_t^{(N)}  \|_{H^2}^2 \,  (\cN + 1). \]
-This concludes the proof of the first bound in (\ref{eq:TL4T-cl}).  The proof of the second inequality in (\ref{eq:TL4T-cl}) is analogous, because commuting the terms contributing to $\cE_4 (t)$ with the number of particles operator $\cN$ either gives zero or leaves the terms essentially invariant (up to a constant and a possible sign change). Finally, also the third estimate in (\ref{eq:TL4T-cl}) can be proven similarly, because the time derivative of the terms contributing to $\cE_4 (t)$ can be expressed as linear combination of terms having the same form, just with one argument $c_x$, $c_y$, $s_x$ or $s_y$ replaced by its time-derivative. These terms can then be handled as above, using however 
+We then use \eqref{eq:hireg} to conclude the proof of the first bound in (\ref{eq:TL4T-cl}).
+
+The proof of the second inequality in (\ref{eq:TL4T-cl}) is analogous, because commuting the terms contributing to $\cE_4 (t)$ with the number of particles operator $\cN$ either gives zero or leaves the terms essentially invariant (up to a constant and a possible sign change). Finally, also the third estimate in (\ref{eq:TL4T-cl}) can be proven similarly, because the time derivative of the terms contributing to $\cE_4 (t)$ can be expressed as linear combination of terms having the same form, just with one argument $c_x$, $c_y$, $s_x$ or $s_y$ replaced by its time-derivative. These terms can then be handled as above, using however 
 the bounds for $ \dot{\text{sh}}_{k_t}$ and $\dot{p}_{k_t}$ proven in Lemma \ref{lm:dotk}.
 \end{proof}
 
@@ -1611,9 +1616,9 @@ Using Lemma \ref{lm:highercommutators}, we obtain the following properties of $(
 \begin{proposition}
 There exists a constant $C>0$ with 
 \begin{equation}\begin{split}
-\label{eq:prT-cl1}  \pm \, (i\partial_t T^*) T &\leq C \| \varphi_t^{(N)} \|_{H^2} \,  (\cN +1) \\
-\pm \, \left[ \cN , (i\partial_t T^*) T \right]  &\leq C \| \varphi_t^{(N)} \|_{H^2} \, (\cN + 1) \\
-\pm \partial_t \left[ (i\partial_t T^*) T \right] &\leq C (\| \varphi_t^{(N)} \|^2_{H^2} + \| \varphi_t^{(N)} \|_{H^4}) \, (\cN +1). 
+\label{eq:prT-cl1}  \pm \, (i\partial_t T^*) T &\leq C \ech{\| \varphi_t^{(N)} \|_{H^2}}{\ekt} \,  (\cN +1) \\
+\pm \, \left[ \cN , (i\partial_t T^*) T \right]  &\leq C \ech{\| \varphi_t^{(N)} \|_{H^2}}{\ekt} \, (\cN + 1) \\
+\pm \partial_t \left[ (i\partial_t T^*) T \right] &\leq C \ech{(\| \varphi_t^{(N)} \|^2_{H^2} + \| \varphi_t^{(N)} \|_{H^4})}{\ekt} \, (\cN +1). 
 \end{split}
 \end{equation}
 \end{proposition}
@@ -1642,10 +1647,10 @@ In fact, (\ref{eq:prT-1}) follows because
 \leq \; &C \sum_{n\geq 0} \frac{(2 \| k_t \|)^n}{(n+1)!} \, \| \dot{k}_t \| \, \| (\cN+1)^{1/2} \psi \|^2 + %\\ &+ 
 \sum_{n\geq 1} \frac{(2\| k_t \|)^n}{(2n)!}  \| \dot k_t \| \| \psi \|^2 \\ 
 \leq \; & C e^{2\| k_t \|} \| \dot{k}_t \| \, \| (\cN+1)^{1/2} \psi \|^2 \\
-\leq \; & C \| \varphi_t^{(N)} \|_{H^2} \, \| (\cN+1)^{1/2} \psi \|^2. 
+\leq \; & C \ech{\| \varphi_t^{(N)} \|_{H^2}}{\ekt} \, \| (\cN+1)^{1/2} \psi \|^2. 
 \end{split}
 \]
-from Lemma \ref{lm:dotk} The second inequality in (\ref{eq:prT-cl1}) follows similarly because, essentially, the only consequence of taking the commutator with $\cN$ is to eliminate the terms $\text{ad}^n_B (\dot{B})$ for all odd $n$. Also the third bound in (\ref{eq:prT-cl1}) can be proven analogously, taking the time derivative of the expressions for $\text{ad}^n_B (\dot{B})$ given in (\ref{eq:adnBB}), using the bounds for $\| \dot f_{n,i} \|$ in (\ref{eq:est-dotfn}) and (\ref{eq:est-fn2}) and, finally, using the estimate for $\| \ddot k_t \|$ proven in Lemma \ref{lm:dotk}.
+from Lemma \ref{lm:dotk}. The second inequality in (\ref{eq:prT-cl1}) follows similarly because, essentially, the only consequence of taking the commutator with $\cN$ is to eliminate the terms $\text{ad}^n_B (\dot{B})$ for all odd $n$. Also the third bound in (\ref{eq:prT-cl1}) can be proven analogously, taking the time derivative of the expressions for $\text{ad}^n_B (\dot{B})$ given in (\ref{eq:adnBB}), using the bounds for $\| \dot f_{n,i} \|$ in (\ref{eq:est-dotfn}) and (\ref{eq:est-fn2}) and, finally, using the estimate for $\| \ddot k_t \|$ proven in Lemma \ref{lm:dotk}.
 \end{proof}
 
 \subsection{Proof of Theorem \ref{thm:L}}
@@ -1660,9 +1665,9 @@ In this section, we combine the results of the previous subsection, to obtain a 
 \end{split} \end{equation}
 where the constant $C_N (t)$ is defined in (\ref{eq:CNt}) and the error $\cE (t)$ is such that, for every $\delta > 0$ there exists $C_\delta > 0$ with
 \begin{equation}\label{eq:cE-tot}
-\begin{split} \pm \cE (t) &\leq \delta \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + C_\delta \frac{\cN^2}{N} + C_\delta \| \varphi_t^{(N)} \|_{H^2}^2 \, \left( \cN + 1 \right) \\
-\pm \left[ \cN ,  \cE (t)\right]  &\leq \delta \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + C_\delta \frac{\cN^2}{N}  + C_\delta \| \varphi^{(N)}_t \|_{H^2}^2 \left( \cN + 1 \right)\\
-\pm \dot{\cE} (t) & \leq \delta \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + C_\delta \| \varphi_t^{(N)} \|_{H^4}^2 \frac{\cN^2}{N} \\ &\hspace{.5cm} + C_\delta \left( \| \varphi_t^{(N)} \|_{H^4}  \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \left(\cN+1 \right). 
+\begin{split} \pm \cE (t) &\leq \delta \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + C_\delta \frac{\cN^2}{N} + C_\delta \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt} \, \left( \cN + 1 \right) \\
+\pm \left[ \cN ,  \cE (t)\right]  &\leq \delta \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + C_\delta \frac{\cN^2}{N}  + C_\delta \ech{\| \varphi^{(N)}_t \|_{H^2}^2}{\ekt} \left( \cN + 1 \right)\\
+\pm \dot{\cE} (t) & \leq \delta \left( \cK + \int dx dy N^2 V(N (x-y)) a_x^* a_y^* a_y a_x \right) + \ech{C_\delta \| \varphi_t^{(N)} \|_{H^4}^2 \frac{\cN^2}{N} \\ &\hspace{.5cm} + C_\delta \left( \| \varphi_t^{(N)} \|_{H^4}  \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \left(\cN+1 \right)}{C_\delta \ekt \left( \frac{\Ncal^2}{N}+\Ncal+1\right)}. 
 \end{split} \end{equation}
 In deriving (\ref{eq:cLN-can1}), we made use of the crucial cancellation between the linear contributions in (\ref{eq:TL1T}) and the linear terms in (\ref{eq:pr-TL3T}).  Next, we notice another crucial cancellation. The terms on the third and fourth line in (\ref{eq:cLN-can1}) can be written as
 \[ \begin{split} 
@@ -1803,17 +1808,17 @@ Then $\wt{\cU} (t;s)$ satisfies the Schr\"odinger type equation
 \[ i\partial_t \wt{\cU} (t;s) = \wt{\cL}_N (t) \wt{\cU} (t;s), \quad \text{with } \wt{\cU} (s;s) = 1 \]
 for all $s \in \bR$, and with generator $\wt{\cL}_N (t) = \cL_N (t) - C_N (t)$, as defined in (\ref{eq:wtcL}). On the other hand, since the two evolutions only differ by a phase, we have
 \[ \langle \psi , \cU^* (t;0) \cN \cU (t;0) \psi \rangle = \langle \psi , \wt{\cU}^* (t;0) \cN \wt{\cU} (t;0) \psi \rangle. \]
-We now use the properties of $\wt{\cL}_N(t)$, as established in (\ref{eq:thmL-1}), (\ref{eq:thmL-1b}), (\ref{eq:thmL-2}) and (\ref{eq:thmL-3}). To this end, we observe that, by the assumption $\varphi \in H^4 (\bR^3)$ and by Proposition \ref{t:pdes}, there exist constants $C,K > 0$ such that \begin{equation}\label{eq:varphi-bds}  \| \varphi_t^{(N)} \|_{H^4}^2 , \left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \leq C e^{K |t|} \end{equation}
-uniformly in $N$, and for all $t \in \bR$. Eq.\ (\ref{eq:thmL-1}) implies therefore 
+We now use the properties of $\wt{\cL}_N(t)$, as established in (\ref{eq:thmL-1}), (\ref{eq:thmL-1b}), (\ref{eq:thmL-2}) and (\ref{eq:thmL-3}).\ech{To this end, we observe that, by the assumption $\varphi \in H^4 (\bR^3)$ and by Proposition \ref{t:pdes}, there exist constants $C,K > 0$ such that \begin{equation}\label{eq:varphi-bds}  \| \varphi_t^{(N)} \|_{H^4}^2 , \left(\| \varphi_t^{(N)} \|_{H^4} \| \varphi_t^{(N)} \|_{H^2} + \| \varphi_t^{(N)} \|_{H^2}^3 \right) \leq C e^{K |t|} \end{equation}
+uniformly in $N$, and for all $t \in \bR$.}{} Eq.\ (\ref{eq:thmL-1}) implies \ech{therefore}{} 
 \begin{equation}\label{eq:en-bd} \cH_N \leq 2 \wt{\cL}_N (t) + C \frac{\cN^2}{N} + C e^{K |t|} (\cN + 1). \end{equation}
-{F}rom Proposition \ref{prop:apri}, we conclude that there exist a constant $C_1$ (depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})), such that
+{F}rom Proposition \ref{prop:apri}, we conclude that there exist a constant $C_1$ (depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$\ech{and on the constant $C$ in (\ref{eq:varphi-bds})}{}), such that
 \begin{equation}\label{eq:grw-1} \begin{split} 
 0 \leq \Big\langle \psi , \wt{\cU}^* (t;0) &\cH_N \wt{\cU} (t;0) \psi \Big\rangle \leq \left\langle \psi , \wt{\cU}^* (t;0) \left( 2 \wt{\cL}_N (t) + C_1 e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. \end{split} \end{equation}
-{F}rom (\ref{eq:thmL-2}), combined with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, there exists moreover a constant $C_2 > 0$ (depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})) such that
+{F}rom (\ref{eq:thmL-2}), combined with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, there exists moreover a constant $C_2 > 0$ (depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$\ech{ and on the constant $C$ in (\ref{eq:varphi-bds})}{}) such that
 \[  
 \frac{d}{dt} \left\langle \psi, \wt{\cU}^* (t;0) \cN \wt{\cU} (t;0) \psi \right\rangle  \leq  \left\langle \psi , \wt{\cU}^* (t;0)  \left(2 \wt{\cL}_N (t) +C_2 e^{K|t|} (\cN + 1) \right)  \wt{\cU} (t;0) \psi \right\rangle.
  \]
-We now estimate the growth of the expectation\done{} of the generator $\wt{\cL}_N (t)$. Using (\ref{eq:thmL-3}) together with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, we conclude that there exists a constant $C_3 >0$ (again, depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$ and on the constant $C$ in (\ref{eq:varphi-bds})), with 
+We now estimate the growth of the expectation\done{} of the generator $\wt{\cL}_N (t)$. Using (\ref{eq:thmL-3}) together with (\ref{eq:en-bd}) and Proposition \ref{prop:apri}, we conclude that there exists a constant $C_3 >0$ (again, depending on $\langle \psi , (\cN^2/ N + \cN + 1) \psi \rangle$\ech{ and on the constant $C$ in (\ref{eq:varphi-bds})}{}), with 
 \[ \begin{split}
 \frac{d}{dt} \left\langle \psi, \wt{\cU}^* (t;0) \wt{\cL}_N (t) \wt{\cU} (t;0) \psi \right\rangle = \; & \left\langle \psi, \wt{\cU}^* (t;0) \dot{\wt{\cL}}_N (t) \, \wt{\cU} (t;0) \psi \right\rangle \\ \leq \; & \left\langle \psi , \wt{\cU}^* (t;0) \left( 2 \wt{\cL}_N (t) + C_3 e^{K|t|} (\cN + 1) \right) \wt{\cU} (t;0) \psi \right\rangle. 
 \end{split} \]
@@ -2093,7 +2098,7 @@ This section is devoted to the proof of Lemma \ref{l:kernels} and Lemma \ref{lm:
 (i) We will make use of the bounds (\ref{eq:wN-bd}). The first bound implies immediately that
 \begin{equation}\label{eq:k-pt} |k_t (x,y)| \leq \min \left(N |\ph (x)| |\ph (y)| , \frac{1}{|x-y|} |\ph (x)| |\ph (y)| \right) \end{equation}
 and therefore, by Hardy's inequality 
-\[ \| k_t \|_2^2 \leq C \int dx dy \frac{1}{|x-y|^2} |\ph (x)|^2 |\ph (y)|^2 \leq C \| \ph \|_{H^1} \|^2 \ph \|_2^2  \leq C \, . \]
+\[ \| k_t \|_2^2 \leq C \int dx dy \frac{1}{|x-y|^2} |\ph (x)|^2 |\ph (y)|^2 \leq C \| \ph \|_{H^1}^2 \| \ph \|_2^2  \leq C \, . \]
 As for the gradient of $k_t$, we have
 \[ \nabla_1 k_t (x,y) = -N^2 \nabla w (N (x-y)) \ph (x) \ph (y) - N w (N (x-y)) \nabla \ph (x) \ph (y) \]
 and thus, from the second bound in (\ref{eq:wN-bd}), 
@@ -2112,20 +2117,21 @@ Using (\ref{eq:wN-bd}), we find
   \begin{align*}
     |( k_t &\overline{k}_t)^n k_t(x,y)| \\ & = | k_t \overline{k}_t ( k_t \overline{k}_t)^{n-1}
     k_t (x,y)| \\
-    & = |\varphi(x)| |\varphi(y)| \, \left| \int dz_1 dz_2 \, N^2 w_N(x-z_1)
-    w_N(z_2-y) \varphi(z_1) \varphi(z_2) \overline{k}_t (k_t
+    & = |\ph(x)| |\ph(y)| \\
+& \quad \times \left| \int dz_1 dz_2 \, N^2 w_N(x-z_1)
+    w_N(z_2-y) \ph(z_1) \ph(z_2) \overline{k}_t (k_t
     \overline{k}_t)^{n-1}(z_1,z_2) \right| \\
-    & \le |\varphi(x)| |\varphi(y)| \, \| \overline{k}_t (k_t \overline{k}_t)^{n-1}
+    & \le |\ph(x)| |\ph(y)| \, \| \overline{k}_t (k_t \overline{k}_t)^{n-1}
     \|_{2} \\
-    & \quad \times \left( \int dz_1 N^2 w_N(x-z_1)^2 |\varphi(z_1)|^2 \int
-    dz_2 \, N^2 w_N(z_2-y)^2 |\varphi(z_2)|^2 \right)^{1/2} \\
-    & \le C |\varphi(x)| |\varphi(y)|  \| \nabla \varphi \|_{2}^2 \| k
+    & \quad \times \left( \int dz_1 N^2 w_N(x-z_1)^2 |\ph(z_1)|^2 \int
+    dz_2 \, N^2 w_N(z_2-y)^2 |\ph(z_2)|^2 \right)^{1/2} \\
+    & \le C |\ph(x)| |\ph(y)|  \| \nabla \ph \|_{2}^2 \| k
     \|_{2}^{2n-1}.
   \end{align*}
   Thus
   \[
     |r(k_t) (x,y)| \le \sum_{n=1}^\infty \frac{1}{(2n+1)!} |( k_t \overline{k}_t)^n k
-    (x,y)|\le C |\varphi(x)| |\varphi(y)| e^{\| k \|_2}.
+    (x,y)|\le C |\ph(x)| |\ph(y)| e^{\| k \|_2}.
   \]
   The pointwise estimate for $p (k_t) (x,y)$ can be proven similarly. 
   This completes the proof of part (ii). Part (iii) follows easily from the pointwise bounds in part (ii).
@@ -2210,8 +2216,8 @@ for all $t \in \bR$ and all $N$ large enough. Here $\varphi_t$ denotes the solut
 
 {\it Remarks. } 
 \begin{itemize}
-\item If we relax (\ref{eq:ass2-N}) to the weaker condition $\| P_N W (\sqrt{N} \varphi) T(k_0) \psi \| \geq C N^{-\alpha}$, for some $1/4 \leq \alpha < 1/2$, the proof below still implies the convergence $\gamma^{(1)}_{N,t} \to |\varphi_t \rangle \langle \varphi_t|$ but only with the slower rate $N^{-1/2+ \alpha}$. 
-\item The assumption (\ref{eq:ass2-N}) and its weaker versions mentioned in the previous remark 
+\item[(i)] If we relax (\ref{eq:ass2-N}) to the weaker condition $\| P_N W (\sqrt{N} \varphi) T(k_0) \psi \| \geq C N^{-\alpha}$, for some $1/4 \leq \alpha < 1/2$, the proof below still implies the convergence $\gamma^{(1)}_{N,t} \to |\varphi_t \rangle \langle \varphi_t|$ but only with the slower rate $N^{-1/2+ \alpha}$. 
+\item[(ii)] The assumption (\ref{eq:ass2-N}) and its weaker versions mentioned in the previous remark 
 are very reasonable; let us explain why. The expected number of particles in the Fock state $W(\sqrt{N} \varphi) T(k_0) \psi$ is given by
 \begin{equation}\label{eq:expecN}
 \begin{split} &\left\langle W(\sqrt{N} \varphi) T(k_0) \psi , \cN \, W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ & \hspace{2cm}= N + \sqrt{N} \langle T(k_0) \psi , \phi (\varphi) T(k_0) \psi \rangle + \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \end{split} \end{equation}
@@ -2237,17 +2243,17 @@ and denoting by $\gamma^{(1)}_{N,M,t}$ the one-particle reduced density associat
 The fact that the number of particles $M$ does not exactly match the parameter $N$ entering the Hamiltonian and the Weyl operator $W(\sqrt{N} \varphi)$ does not change the analysis substantially (because $|M - N| \leq C N^{1/2}$ is lower order). 
 \end{itemize}
 
- \begin{proof}
+ \begin{proof}[Proof of Theorem \ref{thm:Npart}]
 We write the integral kernel of $\gamma^{(1)}_{N,t}$ as
 \[ \begin{split} \gamma^{(1)}_{N,t} &(x;y) \\ = \; &\frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.5cm} \times \left\langle  
 e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , a_y^* a_x  e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\  = \; & \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.5cm}  \times \left\langle  
-e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \left(a_y^* + \sqrt{N} \overline{\varphi}_t^{(N)} (y) \right) \right. \\  & \hspace{2cm} \times \left. \left( a_x + \sqrt{N} \varphi_t^{(N)} (x)\right) W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \end{split} \]
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \left(a_y^* + \sqrt{N} \overline{\varphi}_t^{(N)} (y) \right) \right. \\  & \hspace{2cm} \times \left. \left( a_x + \sqrt{N} \varphi_t^{(N)} (x)\right) W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle. \end{split} \]
 Hence, we find
 \[ \begin{split} 
  \gamma^{(1)}_{N,t} &(x;y) - \overline{\varphi}_t^{(N)} (y)\varphi_t^{(N)} (x) \\  = \; & \frac{\varphi_t (x)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} 
 \\ & \hspace{.1cm}  \times \left\langle  
 e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_y^* W(\sqrt{N} \varphi_t^{(N1} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ &+ \frac{\overline{\varphi}_t (y)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.1cm}  \times \left\langle  
-e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_x W(\sqrt{N} \varphi_t^{(N)} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle\\ &+ \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \left\langle  e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \right. \\ & \left. \hspace{6cm}  \times  a^*_y a_x W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle 
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_x W(\sqrt{N} \varphi_t^{(N)} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle\\ &+ \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \left\langle  e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \right. \\ & \left. \hspace{6cm}  \times  a^*_y a_x W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle. 
 \end{split} \]
 Therefore, for any compact operator $J$ on $L^2 (\bR^3)$ we find 
 \[ \begin{split} 
@@ -2266,17 +2272,17 @@ where $\| J \|$ denotes the operator norm of $J$. {F}rom Lemma \ref{lm:TNT}, rec
 \[  \begin{split}
 \Big| \tr \; J \, &\left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \Big| \\  \leq \; &\frac{\| J \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  \| \cN^{1/2} \,T^* (k_t) \,  W^* (\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \|  
 \\ &+  \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|} \| \cN \, T^* (k_t) \, W^* (\sqrt{N} \varphi_t^{(N)}  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \|  \\ \leq \:& \frac{ \| (\cN+1)^{1/2} \, \cU (t;0) \psi \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  + \frac{ \| \cN \, \cU (t;0) \psi \| 
-}{N \|  P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  \end{split} \]
+}{N \|  P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}.  \end{split} \]
 Using Proposition \ref{prop:apri}, we conclude that
 \[  \begin{split}
 \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right|  \leq \:& \frac{C\| J \| \, \| (\cN+1)^{1/2} \, \cU (t;0) \psi \|}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}   + 
 \frac{C \| (\cN+1)^{1/2} \, \psi \|  }{\sqrt{N} \|  P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  
-\\ &+ \frac{C \| (\cN+1) \psi \| }{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}  \end{split}
+\\ &+ \frac{C \| (\cN+1) \psi \| }{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|}.  \end{split}
 \]
 {F}rom the assumptions (\ref{eq:ass1-N}) and (\ref{eq:ass2-N}), we obtain
-\[ \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right| \leq \frac{C\| J \|}{N^{1/4}} \| (\cN+1)^{1/2} \, \cU (t;0) \psi \| + \frac{C}{N^{1/4}} \]
+\[ \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right| \leq \frac{C\| J \|}{N^{1/4}} \| (\cN+1)^{1/2} \, \cU (t;0) \psi \| + \frac{C}{N^{1/4}}. \]
 Finally, Theorem \ref{thm:N} implies that
-\begin{equation}\label{eq:last} \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right| \leq \frac{C\| J \| \exp \left(c_1 \exp (c_2 |t|) \right)}{N^{1/4}} \end{equation}
+\begin{equation}\label{eq:last} \left| \tr \; J \, \left( \gamma^{(1)}_{N,t} - |\varphi_t \rangle\langle \varphi_t| \right)  \right| \leq \frac{C\| J \| \exp \left(c_1 \exp (c_2 |t|) \right)}{N^{1/4}}. \end{equation}
 Since the Banach space $\cL^1 (L^2 (\bR^3))$ is the dual space to the space of compact operators, equipped with the operator norm, (\ref{eq:last}) implies the claim. 
 \end{proof}
 
@@ -2348,8 +2354,10 @@ L.~Erd{\H{o}}s and H.-T.~Yau.
 \newblock {\em Adv. Theor. Math. Phys.}, 5(6):1169--1205, 2001.
 
 \bibitem{FKS}
-J. Fr\"ohlich, A. Knowles, S. Schwarz.
-
+J.~Fr{\"o}hlich, A.~Knowles, and S.~Schwarz.
+\newblock On the mean-field limit of bosons with {C}oulomb two-body
+  interaction.
+\newblock {\em Comm. Math. Phys.}, 288(3):1023--1059, 2009.
 
 \bibitem{GV}
 J.~Ginibre and G.~Velo.
