@@ -985,9 +985,9 @@ A simple computation shows that
  \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N}
  \varphi_t^{(N)})% \\
 = - a(\sqrt{N} i \partial_t \varphi_t^{(N)}) - a^*
- (\sqrt{N} i \partial_t \varphi_t^{(N)})% + N \Im \scal{\varphi_t^{(N)}
+ (\sqrt{N} i \partial_t \varphi_t^{(N)}) - N \scal{\ph}{i\partial_t \ph}.\done
+% + N \Im \scal{\varphi_t^{(N)}
 % }{\partial_t \varphi_t^{(N)}}
-.
 \end{displaymath}
 % \end{multline*}
  On the other hand, using (\ref{eq:W3}), we find
@@ -995,7 +995,8 @@ A simple computation shows that
  %= \; & \int dx \, \nabla_x (a_x^* + \sqrt{N} \overline{\varphi}_t^{(N)} (x) ) \nabla_x (a_x + \sqrt{N} 
  %\varphi_t^{(N)} (x)) \\ &+ \int dx dy \, N^2 V (N(x-y)) \,  (a_x^* + \sqrt{N} \overline{\varphi}_t^{(N)} (x) ) %(a_y^* + \sqrt{N} \overline{\varphi}_t^{(N)} (y) ) \\ & \hspace{6cm} \times 
 %(a_y + \sqrt{N} \varphi_t^{(N)} (y)) (a_x + \sqrt{N} \varphi_t^{(N)} (x)) \\
-= \; & N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
+= \; & %N \left[ \| \nabla \varphi_t^{(N)} \|_2^2 + \frac{1}{2} \int dx \, (N^3 V (N .) * |\varphi_t^{(N)}|^2) (x) |\varphi_t^{(N)} (x)|^2 \right] \\
+N \int \di x\left( N^3 V(N.)\Big(\frac{1}{2}-f(N.)\Big)\ast \lvert \ph\rvert^2 \right)(x) \lvert \ph(x)\rvert^2 \done\\
 &+ \sqrt{N} \left[  a^*\left( (N^3 V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) + a\left( (N^3 V (N.) *| \varphi_t^{(N)}|^2) \varphi_t^{(N)} \right) \right] \\
 &+ \left[ \int dx \, \nabla_x a_x^* \nabla_x a_x + \int dx \, (N^3 V (N.) * |\varphi_t^{(N)}|^2) (x) a_x^* a_x \right. \\ 
 &\hspace{.5cm}+ \int dx dy N^3 V(N (x-y)) \varphi_t^{(N)} (x) \overline{\varphi}_t^{(N)} (y) a_x^* a_y \\
@@ -1158,17 +1159,17 @@ C \int dx dy | \nabla \varphi_t^{(N)} (x)|^2 \| a_y \psi \|^2 \\
 &+C\int dx dy \frac{1}{|x-y|^2} |\varphi_t^{(N)} (x)|^2 \| a_y \psi \|^2 
 + C \int dx dy |\nabla \varphi_t^{(N)} (y)|^2  \|j_{1,x} \|_2^2 \| (\cN+1)^{1/2} \psi \|^2 \end{split}. \]
 Using Hardy's inequality, we conclude that for every $\delta >0$ there exists $C_\delta > 0$ (depending on $ \| j_1 \|_{L^2 (\bR^3 \times \bR^3)}$, $\delta$, $\| \varphi_t^{(N)} \|_{H^1}$) such that 
-\[ \left| \langle \psi , \int dx a^* (\nabla_x k_x) a^\sharp (j_{1,x}) \psi \rangle \right| \leq \delta \langle \psi , \cK \psi \rangle + C_\delta (1+  \| j_1 \|_2^2 ) \, \langle \psi , (\cN + 1) \psi \rangle. \]
+\[ \left| \langle \psi , \int dx\, a^* (\nabla_x k_x) a^\sharp (j_{1,x}) \psi \rangle \right| \leq \delta \langle \psi , \cK \psi \rangle + C_\delta (1+  \| j_1 \|_2^2 ) \, \langle \psi , (\cN + 1) \psi \rangle. \]
 To show (\ref{eq:lmK-4}), we write
 \[  \begin{split} \int dx  \, a^* (\nabla_x k_x) a (\nabla_x k_x) & = \int dx dy_1 dy_2 \, \nabla_x k (y_1,x) \nabla_x \overline{k} (y_2,x) \, a_{y_1}^* a_{y_2} \\ & =: \int dy_1 dy_2 \; g (y_1, y_2) a_{y_1}^* a_{y_2}. \end{split} \]
-Since
-\[ \begin{split} \Big| \int dy_1 dy_2 g (y_1 , y_2) \langle &\psi , a_{y_1}^* a_{y_2} \psi \rangle \Big| \\ \leq \; & \int dy_1 dy_2 |g (y_1 , y_2)| \| a_{y_1} \psi \| \, \|  a_{y_2} \psi \| \\ \leq  \; & \left(\int dy_1 dy_2 |g (y_1 , y_2)|^2 \right)^{1/2}  \left( \int dy_1 dy_2 \, \| a_{y_1} \psi \|^2 \, \|  a_{y_2} \psi \|^2 \right)^{1/2} \\ = \; & \| g \|_2 \, \| \cN^{1/2} \psi \|^2 \end{split} \] 
-and, from the definition (\ref{eq:kt}) of the kernel $k_t$ and from the bounds of Lemma \ref{lm:w}, 
+We have\done
+\[ \begin{split} \Big| \int dy_1 dy_2\, g (y_1 , y_2) \langle &\psi , a_{y_1}^* a_{y_2} \psi \rangle \Big| \\ \leq \; & \int dy_1 dy_2 |g (y_1 , y_2)| \| a_{y_1} \psi \| \, \|  a_{y_2} \psi \| \\ \leq  \; & \left(\int dy_1 dy_2 |g (y_1 , y_2)|^2 \right)^{1/2}  \left( \int dy_1 dy_2 \, \| a_{y_1} \psi \|^2 \, \|  a_{y_2} \psi \|^2 \right)^{1/2} \\ = \; & \| g \|_2 \, \| \cN^{1/2} \psi \|^2. \end{split} \] 
+Moreover, from the definition (\ref{eq:kt}) of the kernel $k_t$ and from the bounds of Lemma \ref{lm:w}, we find\done 
 \[ \begin{split} \| g \|_2^2 \leq \; &C \int dy_1 dy_2 dx_1 dx_2  \frac{|\varphi_t^{(N)} (x_1)|^2 |\varphi_t^{(N)} (x_2)|^2 |\varphi_t^{(N)} (y_1)|^2 |\varphi_t^{(N)} (y_2)|^2}{|x_1 - y_1|^2 |x_1 - y_2|^2 |x_2-y_1|^2 |x_2 - y_2|^2}  \\ &+C \int dy_1 dy_2 dx_1 dx_2 \frac{|\nabla \varphi_t^{(N)} (x_1)|^2 |\nabla \varphi_t^{(N)} (x_2)|^2 |\varphi_t^{(N)} (y_1)|^2 |\varphi_t^{(N)} (y_2)|^2}{|x_1 - y_1| |x_1 - y_2| |x_2-y_1| |x_2 - y_2|} \\  \leq \;& C \int dy_1 dy_2 dx_1 dx_2  \frac{|\varphi_t^{(N)} (x_1)|^6 |\varphi_t^{(N)} (x_2)|^2}{|x_1 - y_1|^2 |x_1 - y_2|^2 |x_2-y_1|^2 |x_2 - y_2|^2} \\ &+C 
 \int dy_1 dy_2 dx_1 dx_2  \frac{ |\nabla\varphi_t^{(N)} (x_1)|^2 |\nabla \varphi_t^{(N)} (x_2)|^2 
 |\varphi_t^{(N)} (y_1)|^2 |\varphi_t^{(N)} (y_2)|^2}{|x_1 - y_1|^2 |x_2 - y_2|^2}  \\ \leq \; &C \int dx_1 dx_2 \frac{1}{|x_1 - x_2|^2} |\varphi_t^{(N)} (x_1)|^6 |\varphi_t^{(N)} (x_2)|^2 \\ &+ C \left( \sup_x \int dy \frac{1}{|x-y|^2} |\varphi_t^{(N)} (y)|^2 \right)^2 \| \varphi_t^{(N)} \|_{H^1}^4 \\ \leq \; & C 
 \end{split} \]
-for a constant $C$ depending only on the $H^1$-norm of $\varphi_t^{(N)}$, we obtain (\ref{eq:lmK-4}). 
+for a constant $C$ depending only on the $H^1$-norm of $\varphi_t^{(N)}$. The last two bounds prove (\ref{eq:lmK-4}).\done 
 
 The inequalities (\ref{eq:lmK-5}), (\ref{eq:lmK-6}) can be proven similarly to (\ref{eq:lmK-3}) and (\ref{eq:lmK-4}); this time, however, the bounds will contain one factor $\| \dot{\varphi}_t^{(N)} \|^2_{H^1}$, which can be controlled by $\| \varphi_t^{(N)} \|^2_{H^3}$ (all other constants only depend on the $H^1$-norm of $\varphi_t^{(N)}$).
 \end{proof}
@@ -1176,7 +1177,7 @@ The inequalities (\ref{eq:lmK-5}), (\ref{eq:lmK-6}) can be proven similarly to (
 \begin{proof}[Proof of Proposition \ref{prop:TKT}] 
 We prove the first bound in (\ref{eq:TKT-cl}). To this end, we observe that Lemma \ref{lm:K} can be used to bound all factors on the r.h.s.\ of (\ref{eq:TKT})  (using the uniform estimates for $\| \nabla_1 p (k_t) \|_{L^2 (\bR^3 \times \bR^3)}, \| \nabla_1 r_{k_t} \|_{L^2 (\bR^3 \times \bR^3)}$ from Lemma \ref{l:kernels}), with two exceptions, given by the term
 \begin{equation}\label{eq:exc-K} \int dx \nabla_x a^*_x a^* (\nabla_x k_x) \end{equation}
-and its hermitian conjugate. To control (\ref{eq:exc-K}), we use that by definition (\ref{eq:kt})
+and its hermitian conjugate. To control (\ref{eq:exc-K}), we use that from (\ref{eq:kt})\done
 \[ \nabla_x k_t (y,x) = - N^2 \nabla w (N (x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) - N w (N (x-y)) \nabla\varphi_t^{(N)} (x) \varphi_t^{(N)} (y).  \]
 Hence
 \begin{equation}\label{eq:exc2-K} \begin{split} 
@@ -1525,7 +1526,7 @@ and
 \[ \dot{k}_t (x,y) = - N w (N (x-y))  \left( \dot{\varphi}_t^{(N)} (x) \varphi_t^{(N)} (y) + \varphi_t^{(N)} (x) \dot{\varphi}_t^{(N)} (y) \right). \]
 Then $T = \exp (B)$. Using the Baker-Campbell-Hausdorff formula, we compute
 \begin{equation}\label{eq:BCH} \left(\partial_t T^* \right) T = \sum_{n \geq 0} \frac{1}{(n+1)!}\,  \text{ad}^n_{B} (\dot{B}) \end{equation}
-where $\ad^0_B (A) = A$ and $\ad^n_B (A) = [B,\ad^{n-1}_B (A)]$ for all $n \geq 1$. Since the operators $B$ and $\dot{B}$ are unbounded, some care is needed when dealing with this formula. We will see however, that the series is absolute convergent on the domain of the number of particles operator $D(\cN)$. Since $D(\cN)$ is invariant w.r.t. the fluctuation dynamics $\cU (t,s)$ (this can be proved using Lemma \ref{lm:TNT} and the methods used to prove Prop.\ \ref{prop:apri}), (\ref{eq:BCH}) can be used to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$, for any $\psi \in D(\cN)$. 
+where $\ad^0_B (A) = A$ and $\ad^n_B (A) = [B,\ad^{n-1}_B (A)]$ for all $n \geq 1$. Since the operators $B$ and $\dot{B}$ are unbounded, some care is needed when dealing with this formula. We will see however, that the series is absolute convergent on the domain of the number of particles operator $D(\cN)$. Since $D(\cN)$ is invariant w.\,r.\,t.\ the fluctuation dynamics $\cU (t,s)$ (this is proven similarly to Prop.\ \ref{prop:apri})\done{}, we can use (\ref{eq:BCH}) to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$ for any $\psi \in D(\cN)$. 
 
 Next, we compute the terms on the r.h.s.\ of (\ref{eq:BCH}).
 
@@ -1694,7 +1695,8 @@ Let the fluctuation dynamics $\cU (t;s)$ be defined as in (\ref{eq:cU}). Then th
 
 The next lemma is useful in the proof of Proposition \ref{prop:apri} .
 \begin{lemma} \label{lm:TNT}
-Let $k_t \in L^2(\R^3 \times \R^3)$ be as defined in (\ref{eq:kt}). Then there exists a constant $C$, depending only on $\| k_t \|_2$, such that 
+Let $k_t \in L^2(\R^3 \times \R^3)$ be as defined in (\ref{eq:kt}). Then there exists a constant $C$, depending only on $\| k_t \|_2$, such that
+% Remark: If \norm{k_t} is bounded uniformly in t, so is C. 
 \begin{align}
     T^* (k_t)  \, \N \, T (k_t) & \le C (\N+1), \label{eq:TNT} \\
 %    T^* \K T & \le C (\K + \| \nabla_2 k \|_{L^2}^2), \label{TKT} \tag{ii} \\
@@ -1976,7 +1978,7 @@ By H\"older and Young inequality, we find
     \|_{p_3} 
   \end{split}\]
 for $p_1, p_2, p_3 \geq 1$ with $p_1^{-1} + p_2^{-1} + p_3^{-1} = 5/6$. It is important to note that the indices $(p_1, p_2, p_3)$ can be chosen differently for each term in the summation. In some of the terms all derivatives hit the same $\varphi_t^{(N)}$. Since $1/6 + 1/6 + 1/2 = 5/6$, these terms can be bounded by
-\begin{equation}\label{eq:multi-a}  \| \varphi_t^{(N)} \|^2_{6} \; \| \partial^\alpha \varphi_t^{(N)} \|_{2} \leq C \| \varphi_t^{(N)} \|_{H^n} \end{equation} for $C$ depending only on $\| \varphi \|_{H^1}$ (recall here that $|\alpha| = n$ and that the $H^1$ norm is bounded uniformly in $t$, by part (i)). In other terms, one $\varphi_t^{(N)}$ has $n - 1$ derivatives, one has one derivative and the last one has no derivatives. Since $\| \partial^{\gamma} \varphi_t^{(N)} \|_6 \leq \| \varphi_t^{(N)} \|_{H^n}$, if $|\gamma| = n-1$, these terms are bounded by the r.h.s.\ of (\ref{eq:multi-a}). In all other terms, the three copies of $\varphi_t^{(N)}$ have at most $n-2$ derivatives. These terms are bounded by 
+\begin{equation}\label{eq:multi-a}  \| \varphi_t^{(N)} \|^2_{6} \; \| \partial^\alpha \varphi_t^{(N)} \|_{2} \leq C \| \varphi_t^{(N)} \|_{H^n} \end{equation} for $C$ depending only on $\| \varphi \|_{H^1}$ (recall here that $|\alpha| = n$ and that the $H^1$ norm is bounded uniformly in $t$, by part (i)). In some other terms, one $\varphi_t^{(N)}$ has $n - 1$ derivatives, one has one derivative and the last one has no derivatives. Since $\| \partial^{\gamma} \varphi_t^{(N)} \|_6 \leq \| \varphi_t^{(N)} \|_{H^n}$, if $|\gamma| = n-1$, these terms are bounded by the r.h.s.\ of (\ref{eq:multi-a}). In all other terms, the three copies of $\varphi_t^{(N)}$ have at most $n-2$ derivatives. These terms are bounded by 
 \[  \| \partial^{\gamma_1} \varphi_t^{(N)} \|_{6} \| \partial^{\gamma_2} \varphi_t^{(N)} \|_6 \| \partial^{\gamma_3} \varphi_t^{(N)} \|_2 \leq C \| \varphi_t^{(N)} \|_{H^{n-1}}^3 \]
 for all multiindices $\gamma_1, \gamma_2, \gamma_3$ with $|\gamma_i| \leq n-2$, for $i=1,2,3$. We conclude that
 \[ \| \partial^\alpha \varphi^{(N)}_{(\cdot)} \|_{L_t^\infty L_x^2} \leq  \|
