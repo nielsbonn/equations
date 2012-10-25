@@ -1044,7 +1044,7 @@ C_N (t) = \; &\cL^{(0)}_{0,N} (t) + \int dx dy \, |\nabla_x \text{sh} (k_t) (y,x
 \end{split} \end{equation}
 and let
 \begin{equation}\label{eq:wtcL} \wt{\cL}_N (t) = \cL_N (t) - C_N (t). \end{equation}
-Then we have
+Then we have, for some $K > 0$ depending only on $\norm{\varphi}_{H^1}$,
 \begin{equation}\label{eq:thmL-1} \wt{\cL}_N (t) \geq \frac{1}{2} \cH_N - C \, \frac{\cN^2}{N}  - C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt}  \left(\cN + 1\right), \end{equation}
 and
 \begin{equation}\label{eq:thmL-1b} \wt{\cL}_N (t) \leq \frac{3}{2} \cH_N + C \, \frac{\cN^2}{N}  +  C \ech{\| \varphi_t^{(N)} \|_{H^2}^2}{\ekt}  \left(\cN + 1\right). \end{equation}
@@ -1175,7 +1175,8 @@ Moreover, from the definition (\ref{eq:kt}) of the kernel $k_t$ and from the bou
 \end{split} \]
 for a constant $C$ depending only on the $H^1$-norm of $\varphi_t^{(N)}$. The last two bounds prove (\ref{eq:lmK-4}).\done 
 
-The inequalities (\ref{eq:lmK-5}), (\ref{eq:lmK-6}) can be proven similarly to (\ref{eq:lmK-3}) and (\ref{eq:lmK-4}); this time, however, the bounds will contain one factor $\| \dot{\varphi}_t^{(N)} \|^2_{H^1}$, which can be controlled by $\| \varphi_t^{(N)} \|^2_{H^3}$ (all other constants only depend on the $H^1$-norm of $\varphi_t^{(N)}$).
+The inequalities (\ref{eq:lmK-5}), (\ref{eq:lmK-6}) can be proven similarly to (\ref{eq:lmK-3}) and (\ref{eq:lmK-4}); this time, however, the bounds will contain the norm $\| \dot{\varphi}_t^{(N)} \|_{H^1}$. Using the modified Gross-Pitaevskii equation \eqref{eq:mod-GP} and a Young inequality to estimate the non-linearity, one obtains $\norm{\phdot}_{H^1} \leq  C \norm{\ph}_{H^3}$, where $C$ depends only on $\norm{V}_{L^1}$ and $\norm{\varphi}_{H^1}$. Therefore, by \eqref{eq:hireg}, $\norm{\phdot}_{H^1} \leq C \ekt$ for some $C, K$.
+%, which can be controlled by $\| \varphi_t^{(N)} \|^2_{H^3}$ (all other constants only depend on the $H^1$-norm of $\varphi_t^{(N)}$).
 \end{proof}
 
 \begin{proof}[Proof of Proposition \ref{prop:TKT}] 
@@ -1202,7 +1203,7 @@ with $j(x,y) = -N w(N(x-y)) \nabla\ph(x)\ph(y)$. The second term is bounded as i
 
 Also the second bound in (\ref{eq:TKT-cl}) follows from Lemma \ref{lm:K}. In fact, when one takes the commutator of $\cN$ with the terms on the r.h.s.\ of (\ref{eq:TKT}) one either finds zero (for all terms with one creation and one annihilation operators, which therefore preserve the number of particles), or one finds again the same terms (up to a possible change of sign). This follows because, by the canonical commutation relations
 \[ [ \cN , a (f) ] = - a (f) \qquad \text{and } \quad [\cN , a^* (f)] = a^* (f) \]
-for every $f \in L^2 (\bR^3)$. Finally, the third bound in (\ref{eq:TKT-cl}) is a consequence of Lemma \ref{lm:K} as well. In fact, the time derivative $\dot{\cE}_K (t)$ is a sum of terms very similar to the terms appearing on the r.h.s.\ of (\ref{eq:TKT}), with the difference that one of the appearing kernels contains a time-derivative. Combining the estimates from Lemma \ref{lm:K} (including, in this case, also (\ref{eq:lmK-5}), (\ref{eq:lmK-6})) with the bounds for $\| \nabla_1 \dot{p}_{k_t} \|, \| \nabla_1 \dot{r}_{k_t} \|$ from Lemma \ref{lm:dotk}, we obtain thus the last inequality in (\ref{eq:TKT-cl}). Note that, on the l.h.s.\ of (\ref{eq:lmK-sp}), it is always possible to arrange the terms so that the time derivative hits the first factor $\nabla \varphi_t^{(N)} (x)$, outside the argument of $a^*$; for this reason, the resulting contribution is bounded by $\| \nabla \dot{\varphi}_t^{(N)} \|_2 \| \varphi_t^{(N)} \|_{H^2}$, which is controlled by $\| \varphi_t^{(N)}\|_{H^3}^2$. 
+for every $f \in L^2 (\bR^3)$. Finally, the third bound in (\ref{eq:TKT-cl}) is a consequence of Lemma \ref{lm:K} as well. In fact, the time derivative $\dot{\cE}_K (t)$ is a sum of terms very similar to the terms appearing on the r.h.s.\ of (\ref{eq:TKT}), with the difference that one of the appearing kernels contains a time-derivative. Combining the estimates from Lemma \ref{lm:K} (including, in this case, also (\ref{eq:lmK-5}), (\ref{eq:lmK-6})) with the bounds for $\| \nabla_1 \dot{p}_{k_t} \|, \| \nabla_1 \dot{r}_{k_t} \|$ from Lemma \ref{lm:dotk}, we obtain thus the last inequality in (\ref{eq:TKT-cl}). Note that, on the l.h.s.\ of (\ref{eq:lmK-sp}), it is always possible to arrange the terms so that the time derivative hits the first factor $\nabla \varphi_t^{(N)} (x)$, outside the argument of $a^*$; for this reason, the resulting contribution is bounded by $\| \nabla \dot{\varphi}_t^{(N)} \|_2 \| \varphi_t^{(N)} \|_{H^2}$, which is controlled by $\| \varphi_t^{(N)}\|_{H^3}^2$ via the modified Gross-Pitaevskii equation \eqref{eq:mod-GP}. The proof is completed noting $\norm{\ph}_{H^3}^2 \leq C \ekt$ by \eqref{eq:hireg} for some $C,K$. 
 \end{proof}
 
 \subsubsection{Properties of $T^* \wt{\cL}_{2,N}^{(0)} (t) T$}
@@ -1315,7 +1316,7 @@ The hermitian conjugate of (\ref{eq:2-cancel}), proportional to $a (c_x) a (c_y)
 The second bound in (\ref{eq:T2T-cl}) follows similarly, using the fact that the commutator of $\cN$ with the terms on the r.h.s.\ of (\ref{eq:T2T}) leaves their form unchanged (apart from the constant terms and the quadratic terms with one creation and one annihilation operators, whose contribution to the commutator $[\cN , \cE_2 (t)]$ vanishes).  
 
 Also the third bound in (\ref{eq:T2T-cl}) can be proven analogously, using
-the bounds for $\| \dot{\text{sh}}_{k_t} \|_2$, $\| \dot{p}_{k_t} \|_2$, as proven in Lemma \ref{lm:dotk} . When the time derivative hits the factor $\varphi_t^{(N)} (x)$ or $\varphi_t^{(N)} (y)$, it generates a contribution which has to be bounded by $\| \dot\varphi_t^{(N)} \|_{H^2} \leq C \| \varphi_t^{(N)} \|_{H^4}$, using the Gross-Pitaevskii equation (\ref{eq:mod-GP}). 
+the bounds for $\| \dot{\text{sh}}_{k_t} \|_2$, $\| \dot{p}_{k_t} \|_2$, as proven in Lemma \ref{lm:dotk} . When the time derivative hits the factor $\varphi_t^{(N)} (x)$ or $\varphi_t^{(N)} (y)$, it generates a contribution which has to be bounded by $\| \dot\varphi_t^{(N)} \|_{H^2} \leq C \| \varphi_t^{(N)} \|_{H^4}^4 \leq C \ekt$ (for some $K$ depending only on $\norm{\varphi}_{H^1}$ and $n$), using the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}) and for the exponential bound \eqref{eq:hireg}. 
 \end{proof}
 
 \subsection{Analysis of $T^* \cL^{(0)}_{3,N} (t) T$}
@@ -2138,6 +2139,8 @@ Using (\ref{eq:wN-bd}), we find
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{lm:dotk}]
+In the following proof we will use that via the modified Gross-Pitaevskii equation \eqref{eq:mod-GP} and using \eqref{eq:hireg} we have (as before) $\norm{\phdot}_{H^1} \leq C \norm{\ph}_{H^3} \leq C \ekt$. Similarly $\norm{\phdot}_\infty \leq \norm{\phdot}_{H^2} \leq C \norm{\ph}_{H^4}^3 \leq C \ekt$ and $\norm{\phddot}_{L^2} \leq C \norm{\ph}_{H^4}^4 \leq C \ekt$ for some $C,K$.
+
 (i) {F}rom (\ref{eq:dtk}), we find
 \begin{equation}\label{eq:dotk1}\norm{\dot k_t}^2 \leq 4 \int \di x\di y\, \frac{1}{|x-y|^2}  |\phdot(x)|^2 |\ph(y)|^2 \leq \, C\| \phdot \|_2^2 \| \ph \|_{H^1}^2 \leq C e^{K |t|} \end{equation}
 by Hardy's inequality, and from Proposition \ref{t:pdes}, part (iii). Similarly, 
@@ -2194,7 +2197,7 @@ The middle term, on the other hand is bounded in absolute value by
 \end{split}\] 
 Inserting the last bounds in (\ref{eq:px2}), we find
 \[ |\dot{p} (k_t) (x,y)| \leq C e^{K |t|}  e^{\| k_t \|_2} \, (|\ph (x)| + |\phdot (x)|) (|\ph (y)| +|\phdot (y)|).  \]
-Integrating over $y$ and taking the supremum over $x$ gives
+Integrating over $x$ and taking the supremum over $y$ gives, as before using \eqref{eq:hireg},
 \[ \sup_y \| \dot{p} (k_t) (.,y) \|_2 \leq C e^{K |t|}. \]
 The bound for $\dot{r} (k_t)$ can be proven analogously. Combining the bound for $\dot{r} (k_t)$ with the one for $\dot{k}_t$, we also obtain the bound for $\dot{\text{sh}} (k_t)$.
 \end{proof}
