@@ -5,7 +5,7 @@
 \usepackage[bookmarksnumbered=true]{hyperref}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{wasysym} %needed for \apprle
-\usepackage{marginnote}			% just to place the done-notes on the margin, can be removed when finished
+%\usepackage{marginnote}			% just to place the done-notes on the margin, can be removed when finished
 %\usepackage[color]{showkeys}
 %\usepackage{scrtime}
 %\usepackage{gitinfo}
@@ -45,7 +45,8 @@
 \newtheorem*{hyp}{Hypothesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Gustavo's aliases %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\done}{\marginnote{\Large\checkmark}}	% redefine as empty command when finished
+%\newcommand{\done}{\marginnote{\Large\checkmark}}	% redefine as empty command when finished
+\newcommand{\done}{}
 \newcommand{\ech}[2]{#2}	%'exponential-bounds-change': replaces (e.g.) old norm-bounds by new exp ones (first arg by second), easily undoable
 \newcommand{\ekt}{e^{K\lvert t\rvert}}	%exp-bound
 
