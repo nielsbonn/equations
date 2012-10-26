@@ -171,7 +171,7 @@ We denote the projection onto the state $\varphi_t \in L^2(\Rbb^3)$ using the Di
 
 We can now formulate the main theorem which provides estimates for the difference of the expectation values of one-particle observables w.\,r.\,t.\ the Schr\"odinger evolution and the effective evolution. Notice that while the Schr\"odinger equation is linear, the Gross-Pitaevskii equation is a non-linear PDE. The advantage of the Gross-Pitaevskii equation is that it is a PDE in $L^2(\Rbb^3)$ while the Schr\"odinger equation is formulated in $L^2(\Rbb^{3N})$ with typically very large $N$.
 
-\begin{thm}[Evolution of Factorized States] \label{thm:main_factorized}
+\begin{thm}[Evolution of Factorized States] \label{thm:main_factorized}\marginpar{The Theorem for factorized initial data is not proven correctly, see remark at Lemma 5.1. Only for Squeezed Coherent Initial Data, we have a Theorem (see Thm. 5.3).}
  Let $\psi_N(x_1, \ldots x_N) = \prod_{j=1}^N \varphi(x_j)$ for some $\varphi \in H^4(\Rbb^3)$ with $\norm{\varphi}_{L^2} = 1$. Denote by $\psi_{N,t} = e^{-it H_N}\psi_N$ the solution to the Schr\"odinger equation with initial data $\psi_{N,0}= \psi_N$, and let $\gamma_{N,t}^{(1)}$ be the one-particle reduced density matrix associated with $\psi_{N,t}$.
 Let $\varphi_t$ be the solution to the Gross-Pitaevskii equation \eqr{gp} with initial data $\varphi_0 = \varphi$.
 
@@ -1408,7 +1408,7 @@ This is evident from Lemma \ref{l:ap} and Proposition \ref{p:TNT}.
 \section{Convergence of Expectation Values}
 \label{s:expectation}
 Let $P_N$ be the projection onto the $N$-particle subspace of Fock space.
-\begin{lem}
+\begin{lem} \marginpar{This Lemma is incorrect: We can not use initial data without $T_0$, because we dropped a constant of order $N$ in defining the fluctuations. (The $t=0$ contrib in Gronwall will thus be large of order $N$.)}
 \label{lem:TrJ}
 Let $\Psi \in \fock$ and assume there is a constant $C_1$ such that $\scal{\Psi}{\left(\frac{1}{N}\Ncal^2 + \Ncal\right)\Psi} \leq C_1 \scal{\Psi}{\Psi}$. Let $J$ be a Hilbert-Schmidt operator on $L^2(\Rbb^3)$. Then there exists a constant $C_2$ (independent of $N$ and $t$) such that
 \bd
