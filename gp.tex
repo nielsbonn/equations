@@ -885,10 +885,12 @@ Using the solution $\varphi_t^{(N)}$ of (\ref{eq:mod-GP}), we are going to appro
 with $\lim_{|x|\to\infty} w(x) = 0$. The scattering length of $V$ is defined
 as
 \[
-  a_0 = \lim_{|x| \to \infty} w(x)|x|.
+  8 \pi a_0 = \int dx \, V(x) f(x).
 \]
 Equivalently, $a_0$ is given by 
-\[  8 \pi a_0 = \int dx \, V(x) f(x) \, . \]
+\[
+  a_0 = \lim_{|x| \to \infty} w(x)|x|.
+\]
 Note that, if $V$ has compact support inside $\{ x \in \bR^3 : |x| < R \}$, then $a_0 \leq R$ and $w(x) = a_0/|x|$ for $|x| > R$. In general, under our assumptions on $V$, one can prove the following properties of the function $w$.
 \begin{lem}\label{lm:w}
 Let $V \in L^1 \cap L^3(\bR^3, (1+|x|^6)dx)$ be spherically symmetric, with
