@@ -891,17 +891,65 @@ Equivalently, $a_0$ is given by
 \[  8 \pi a_0 = \int dx \, V(x) f(x) \, . \]
 Note that, if $V$ has compact support inside $\{ x \in \bR^3 : |x| < R \}$, then $a_0 \leq R$ and $w(x) = a_0/|x|$ for $|x| > R$. In general, under our assumptions on $V$, one can prove the following properties of the function $w$.
 \begin{lem}\label{lm:w}
-Let $V \in L^1 (\bR^3)$ be spherically symmetric, with $V \geq 0$. Let $f$ denote the solution of the zero-energy scattering equation (\ref{eq:0en-0}), and $w = 1 - f$. Then 
+Let $V \in L^1 \cap L^3(\bR^3, (1+|x|^6)dx)$ be spherically symmetric, with
+$V \geq 0$. Denote by $f$ the solution of the zero-energy scattering
+equation (\ref{eq:0en-0}) and let $w = 1 - f$. Then 
 \[ 0 \leq w(x) \leq 1 \quad \text{for all } x \in \bR^3. \]
-Moreover, there is a constant $C>0$ with 
+Moreover, there is a constant $C>0$ such that
 \begin{equation}\label{eq:bdw} w(x) \leq \frac{C}{|x|+1} \qquad \text{and } \quad  |\nabla w (x)| \leq \frac{C}{|x|^2 + 1}. \end{equation}
 \end{lem}
 \begin{proof}
-Standard arguments show that $0 \leq f (x) \leq 1$ holds for every $x \in \bR^3$ ($f  (x) \leq 1$ follows from $V \geq 0$, because of the monotonic dependence of $f$ on the potential; see Appendix C in \cite{LSSY}). This implies that $0 \leq w (x) \leq 1$ for all $x \in \bR^3$. {F}rom the zero energy scattering equation, we have $-\Delta w = Vf /2$ and therefore
+  (JUST SAYING PROOF 1)
+
+  By combining arguments from \cite[Appendix C]{LSSY} and \cite[Appendix
+  D]{ESY2}, we can show that $0 \le w(x) \le 1$ for all $x \in \R^3$. We do
+  not give the details here.
+
+  (JUST SAYING PROOF 2)
+
+  By combining arguments from \cite[Appendix C]{LSSY} and \cite[Appendix
+  D]{ESY2}, we can show that $0 \le w(x) \le 1$ for all $x \in \R^3$. This
+  follows by first proving the claim for the equivalent problem in a ball of
+  radius $R$, for arbitrary $R$, and then showing that the solution of this
+  problem converges to the solution of \eqref{eq:0en-0} as $R$ goes to
+  infinity, with the desired properties. We do not give the details here.
+
+  (TENTATIVE PROOF -- for the record)
+
+  Suppose that $R_2 > R_1 > 0$ and let $V_1(x)$ be equal to $V(x)$ for $|x|
+  \le R_1$ and $0$ for $|x| > R_1$. Consider the equation $(-\Delta +
+  \frac{1}{2} V_1)g = 0$ on the ball $B_{R_2}$ with boundary condition
+  $g(x)=1$ for $|x|=R_2$. By \cite[Theorem C.1]{LSSY}, this equation has a
+  unique nonnegative spherically symmetric solution. By \cite[(C.7)]{LSSY},
+  for $|x| > R_1$,
+  \[
+    g(x) = 1 - \frac{a}{|x|} + \frac{a}{R_2} - \frac{a^2}{R_2 |x|} + r(x),
+  \]
+  where $r(x) = O(a^2/R_2^2)$ for all $|x|>R_1$. Here $a=a(R_1)$ (which is
+  bounded from above) is the scattering length of the potential $V_1$. Now
+  observe that, for any $R_2 > 0$ and $V$, we can choose $R_1$ obeying $c
+  R_2 < R_1 < R_2$, where $c < 1$ is a constant, so that $1/2 \le g(x) \le
+  1$ for $|x| \geq R_1$. Thus $-\Delta g = -V_1 g/2 \le 0$ on $B_{R_2}
+  \setminus B_{R_1}$ because $V_1$ is nonnegative. By the maximum principle,
+  we conclude that $g \le 1$ on $B_{R_2}$. Therefore $0 \le g \le 1$ on
+  $B_{R_2}$ for every $R_2 > 0$. We claim that the solution of this problem
+  converges (in a appropriated sense) to the solution of problem
+  \eqref{eq:0en-0} as $R_2$ goes to infinity. We do not give the details
+  here. This proves that $0 \le w(x) \le 1$ for all $x \in \R^3$.
+  
+From the zero energy scattering equation, we have $-\Delta w = Vf /2$, and therefore
 \[ w(x) = C \int dy \, \frac{1}{|x-y|} V (y) f (y) \]
-for an appropriate constant $C>0$. This representation, together with the properties of $V$ and the estimate $0 \leq f \leq 1$, easily implies the first bound in (\ref{eq:bdw}). Moreover, it gives 
-\[ \nabla w (x) = C \int dy \frac{x-y}{|x-y|^3} \, V (y) f (y) \]
-which implies that $|\nabla w (x)| \leq C |x|^{-2}$. Combining with $|\nabla w (x)| \leq C$ by standard elliptic regularity, we also obtain the second bound in (\ref{eq:bdw}). 
+for an appropriate constant $C>0$. Using this formula, we easily obtain
+\[ \nabla w (x) = C \int dy \frac{x-y}{|x-y|^3} \, V (y) f (y). \]
+We now use that $1+|x| \le 1 + |x-y| + |y|$, the fact that $f \le 1$, and
+the Hardy-Littlewood-Sobolev inequality to estimate
+\begin{align*}
+  |(1+|x|)w(x)| & \le C \int dy \left( \frac{1}{|x-y|} + 1 +
+\frac{|y|}{|x-y|} \right) V(y) f(y) \\
+& \le C (\| V \|_{3/2} + \| V \|_{L^1} + \| |y| V(y) \|_{3/2} ) < \infty.
+\end{align*}
+This gives the bound for $|w(x)|$ in \eqref{eq:bdw}. The proof of the
+estimate for $|\nabla w(x)|$ is similar.
 \end{proof}
 
 The zero-energy scattering equation for the rescaled potential $N^2 V (Nx)$ is then solved by $f_N (x) := f (Nx)$. We define $w_N (x) = 1- f_N (x) = w(Nx)$. Clearly 
