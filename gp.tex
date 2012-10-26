@@ -527,7 +527,9 @@ In this way, the approximating dynamics takes into account the correct correlati
 
 {\it The main theorem.} We are now ready to state our main result. 
 \begin{thm}\label{thm:main}
-Let $\varphi \in H^4 (\bR^3)$, with $\| \varphi \|_2 =1$. Let $\cH_N$ be the Hamilton operator defined in (\ref{eq:cHN}), with a non-negative and spherically symmetric potential $V \in L^1 (\bR^3, (1+|x|) dx)$. Let $\psi \in \cF$ be such that
+Let $\varphi \in H^4 (\bR^3)$, with $\| \varphi \|_2 =1$. Let $\cH_N$ be the
+Hamilton operator defined in (\ref{eq:cHN}), with a non-negative and
+spherically symmetric potential $V \in L^1\cap L^3 (\bR^3, (1+|x|^6) dx)$. Let $\psi \in \cF$ be such that
 \begin{equation}\label{eq:ass-thm1} \langle \psi , \cN \psi \rangle ,  \frac{1}{N} \langle \psi , \cN^2 \psi \rangle, \langle \psi, \cH_N \psi \rangle \leq D \end{equation}
 for a constant $D>0$. Let $\Gamma_{N,t}^{(1)}$ denote the one-particle reduced density associated with the evolved state $e^{-i\cH_N t} W(\sqrt{N} \varphi) T(k_0) \psi$, as defined in (\ref{eq:GNt}). Then there exist constants $C, c_1, c_2 >0$, depending only on $\| V \|_{L^1 (\bR^3, (1+|x|) dx)}, \| \varphi \|_{H^4}$ and on the constant $D$ appearing in (\ref{eq:ass-thm1}), such that
 \begin{equation}\label{eq:mt} \tr \left| \Gamma_{N,t}^{(1)} - |\varphi_t\rangle \langle \varphi_t| \right| \leq \frac{C \exp (c_1 \exp (c_2 |t|))}{N^{1/2}} \end{equation}
