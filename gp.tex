@@ -1584,9 +1584,9 @@ with
 \[ k_t (x,y) = -N w(N(x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \]
 and
 \[ \dot{k}_t (x,y) = - N w (N (x-y))  \left( \dot{\varphi}_t^{(N)} (x) \varphi_t^{(N)} (y) + \varphi_t^{(N)} (x) \dot{\varphi}_t^{(N)} (y) \right). \]
-Then $T = \exp (B)$. Using the Baker-Campbell-Hausdorff formula, we compute
-\begin{equation}\label{eq:BCH} \left(\partial_t T^* \right) T = \sum_{n \geq 0} \frac{1}{(n+1)!}\,  \text{ad}^n_{B} (\dot{B}) \end{equation}
-where $\ad^0_B (A) = A$ and $\ad^n_B (A) = [B,\ad^{n-1}_B (A)]$ for all $n \geq 1$. Since the operators $B$ and $\dot{B}$ are unbounded, some care is needed when dealing with this formula. We will see however, that the series is absolute convergent on the domain of the number of particles operator $D(\cN)$. Since $D(\cN)$ is invariant w.\,r.\,t.\ the fluctuation dynamics $\cU (t,s)$ (this is proven similarly to Prop.\ \ref{prop:apri})\done{}, we can use (\ref{eq:BCH}) to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$ for any $\psi \in D(\cN)$. 
+Then $T = \exp (B)$. Using \eqref{eq:baker}, we compute that in expectation values
+\begin{equation}\label{eq:BCH} \left(\partial_t T^* \right) T = \int_0^1 \di\lambda\, e^{-\lambda B(t)} \dot B(t) e^{\lambda B(t)} = \sum_{n \geq 0} \frac{1}{(n+1)!}\,  \text{ad}^n_{B} (\dot{B}) \end{equation}
+where $\ad^0_B (\dot B) = \dot B$ and $\ad^n_B (\dot B) = [B,\ad^{n-1}_B (\dot B)]$ for all $n \geq 1$. Notice that by a calculation similar to the proof of lemma \ref{l:bt}, we can show that the error term converges to $0$ in expectation values on the domain of the number of particles operator $D(\cN)$, and the series is absolutely convergent, as we will see. Since $D(\cN)$ is invariant w.\,r.\,t.\ the fluctuation dynamics $\cU (t,s)$ (this is proven similarly to Prop.\ \ref{prop:apri})\done{}, we can use (\ref{eq:BCH}) to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$ for any $\psi \in D(\cN)$. 
 
 Next, we compute the terms on the r.h.s.\ of (\ref{eq:BCH}).
 
@@ -2308,7 +2308,7 @@ Hence, we find
 \[ \begin{split} 
  \gamma^{(1)}_{N,t} &(x;y) - \overline{\varphi}_t^{(N)} (y)\varphi_t^{(N)} (x) \\  = \; & \frac{\varphi_t (x)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} 
 \\ & \hspace{.1cm}  \times \left\langle  
-e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_y^* W(\sqrt{N} \varphi_t^{(N1} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ &+ \frac{\overline{\varphi}_t (y)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.1cm}  \times \left\langle  
+e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_y^* W(\sqrt{N} \varphi_t^{(N)} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ &+ \frac{\overline{\varphi}_t (y)}{\sqrt{N} \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \\ & \hspace{.1cm}  \times \left\langle  
 e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) a_x W(\sqrt{N} \varphi_t^{(N)} ) e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle\\ &+ \frac{1}{N \| P_N W(\sqrt{N} \varphi) T(k_0) \psi \|^2} \left\langle  e^{-i\cH_N t}  P_N W(\sqrt{N} \varphi) T(k_0) \psi , W (\sqrt{N} \varphi_t^{(N)}) \right. \\ & \left. \hspace{6cm}  \times  a^*_y a_x W(\sqrt{N} \varphi_t^{(N)})  e^{-i\cH_N t}  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle. 
 \end{split} \]
 Therefore, for any compact operator $J$ on $L^2 (\bR^3)$ we find 
