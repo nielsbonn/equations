@@ -956,25 +956,25 @@ This gives the bound for $|w(x)|$ in \eqref{eq:bdw}. The proof of the
 estimate for $|\nabla w(x)|$ is similar.
 \end{proof}
 
-The zero-energy scattering equation for the rescaled potential $N^2 V (Nx)$ is then solved by $f_N (x) := f (Nx)$. We define $w_N (x) = 1- f_N (x) = w(Nx)$. Clearly 
-\[ \lim_{|x| \to \infty} w_N(x) |x| = \lim_{|x| \to \infty} w(Nx) |x| = \frac{a_0}{N} ,\]
+The zero-energy scattering equation for the rescaled potential $N^2 V (Nx)$ is then solved by $f(Nx)$. We define $w(Nx) = 1- f(Nx)$. Clearly 
+\[ \lim_{|x| \to \infty} w(Nx) |x| = \frac{a_0}{N} ,\]
 showing that the scattering length of $N^2 V(Nx)$ is $a_0/N$. Equivalently this follows from $\int \di x\, N^2V(Nx)f(Nx) = 8\pi a_0/N$.\done
 
 It follows immediately from Lemma \ref{lm:w} that $0 < w(Nx) < c$ for some $c <1$ and for all $x \in \bR^3$, and that there exists $C$ with 
-\begin{equation}\label{eq:wN-bd} w_N (x) \leq \frac{C}{N|x| + 1} \qquad \text{and } \quad |\nabla w_N (x)| \leq C \frac{N}{N^2 |x|^2 + 1}. \end{equation}
+\begin{equation}\label{eq:wN-bd} w(Nx) \leq \frac{C}{N|x| + 1} \qquad \text{and } \quad |\nabla_x w(Nx)| \leq C \frac{N}{N^2 |x|^2 + 1}. \end{equation}
 
 %The function $f (Nx)$ describes the correlation structure developed by the many-body evolution, %varying on the microscopic scale $1/N$. 
 %Variations on the macroscopic scale of order one are described (at least, this is what we want to %show) by the solution $\ph_t$ of the nonlinear Gross-Pitaevskii equation (\ref{eq:gp}). In order for the %unitary operator $T(k)$, as defined in (\ref{eq:Tk-def}), to produce the correct correlation structure, %we define the kernel
 %\[ k (x,y) = - N w_N (x) \ph_t (x) \ph_t (y) \]
 
-We will use the solution $f_N (x)$ of the scaled zero-energy scattering equation to approximate the correlations among the particles, arising on the microscopic scale. It is however important to keep in mind that these correlations are also modulated on the macroscopic scale. The macroscopic variation are described, or at least, this is what we expect, by the solution of the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}). We define therefore the kernel
+We will use the solution $f(Nx)$ of the scaled zero-energy scattering equation to approximate the correlations among the particles, arising on the microscopic scale. It is however important to keep in mind that these correlations are also modulated on the macroscopic scale. The macroscopic variation are described, or at least, this is what we expect, by the solution of the modified Gross-Pitaevskii equation (\ref{eq:mod-GP}). We define therefore the kernel
 \begin{equation}\label{eq:kt} 
-k_t (x,y)  = - N w_N (x-y) \ph (x) \ph (y) = - N w (N (x-y)) \ph (x) \ph (y) \end{equation}
+k_t (x,y)  = - N w (N (x-y)) \ph (x) \ph (y) \end{equation}
 and the corresponding unitary operator
  \[ T (k_t) = \text{exp} \left( \frac{1}{2} \int dx dy \, \left( k_t (x,y) a_x^* a_y^* - \overline{k}_t (x,y) a_x a_y \right)\right). \]
 In the next lemma, we collect several bounds for the kernel $k_t$ which will be useful in the following. 
 \begin{lem} \label{l:kernels}
-Let $\varphi_t^{(N)} \in H^1(\R^3)$ be the solution of (\ref{eq:mod-GP}) with initial data $\varphi \in H^1 (\bR^3)$. Let $w_N (x) = w(Nx) = 1 - f(Nx)$, where $f$ solves the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt}). \begin{enumerate}
+Let $\varphi_t^{(N)} \in H^1(\R^3)$ be the solution of (\ref{eq:mod-GP}) with initial data $\varphi \in H^1 (\bR^3)$. Let $w(Nx) = 1 - f(Nx)$, where $f$ solves the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt}). \begin{enumerate}
 \item \label{k} There exists a constant $C$, depending only on $\| \varphi^{(N)}_t \|_{H^1}$ such that
 \[ \begin{split}  \| k_t \|_{2} &\le C , \\ \| \nabla_1 k_t \|_2 , \| \nabla_2 k_t
         \|_{2} &\le C \sqrt{N}, \\ \| \nabla_1 (k_t \overline{k}_t) \|_2 ,  \| \nabla_2 (k_t
@@ -998,7 +998,7 @@ Defining $p(k_t)$ and $r (k_t)$ as in (\ref{eq:pr-def}), so that $\text{ch} (k_t
 
 We will also need bounds on the time derivative of the kernels $k_t$, $p(k_t)$, $r(k_t)$. These are collected in the following lemma.
 \begin{lemma}\label{lm:dotk} 
-Let $\varphi \in H^4(\R^3)$, and $\ph \in H^4 (\bR^3)$ be the solution of (\ref{eq:mod-GP}), with initial data $\varphi$. Let $w_N (x) = w(Nx) = 1 - f(Nx)$, where $f$ is the solution of the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt}), so that
+Let $\varphi \in H^4(\R^3)$, and $\ph \in H^4 (\bR^3)$ be the solution of (\ref{eq:mod-GP}), with initial data $\varphi$. Let $w(Nx) = 1 - f(Nx)$, where $f$ is the solution of the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt}), so that
 \begin{equation}\label{eq:dtk} \dot{k}_t (x,y) = - N w (N (x-y)) \left( \dot{\varphi}_t^{(N)} (x) \varphi_t^{(N)} (y) + \varphi_t^{(N)} (x) \dot{\varphi}_t^{(N)} (y) \right). \end{equation}
 Then there are constants $C,K >0$, where $C$ depends on the $\| \varphi \|_{H^4}$ and $K$ only on $\| \varphi \|_{H^1}$ such that the following bounds hold: 
 \begin{itemize}
@@ -2172,13 +2172,13 @@ Using (\ref{eq:wN-bd}), we find
     |( k_t &\overline{k}_t)^n k_t(x,y)| \\ & = | k_t \overline{k}_t ( k_t \overline{k}_t)^{n-1}
     k_t (x,y)| \\
     & = |\ph(x)| |\ph(y)| \\
-& \quad \times \left| \int dz_1 dz_2 \, N^2 w_N(x-z_1)
-    w_N(z_2-y) \ph(z_1) \ph(z_2) \overline{k}_t (k_t
+& \quad \times \left| \int dz_1 dz_2 \, N^2 w(N(x-z_1))
+    w(N(z_2-y)) \ph(z_1) \ph(z_2) \overline{k}_t (k_t
     \overline{k}_t)^{n-1}(z_1,z_2) \right| \\
     & \le |\ph(x)| |\ph(y)| \, \| \overline{k}_t (k_t \overline{k}_t)^{n-1}
     \|_{2} \\
-    & \quad \times \left( \int dz_1 N^2 w_N(x-z_1)^2 |\ph(z_1)|^2 \int
-    dz_2 \, N^2 w_N(z_2-y)^2 |\ph(z_2)|^2 \right)^{1/2} \\
+    & \quad \times \left( \int dz_1 N^2 w(N(x-z_1))^2 |\ph(z_1)|^2 \int
+    dz_2 \, N^2 w(N(z_2-y))^2 |\ph(z_2)|^2 \right)^{1/2} \\
     & \le C |\ph(x)| |\ph(y)|  \| \nabla \ph \|_{2}^2 \| k
     \|_{2}^{2n-1}.
   \end{align*}
@@ -2207,12 +2207,12 @@ applying (\ref{eq:dotk1}). The bound for $\dot r (k_t)$ can be proven analogousl
 We are left with the task of estimating $\| \nabla_1 (k_t \dot{\overline{k}}_t) \|_2$ and $\| \nabla_1 (\dot k_t \overline{k}_t) \|_2$. We start by applying the product rule:
 \begin{align}
 & \norm{\nabla_1 (k_t \dot{\overline{k}}_t)}_2^2  \nonumber \\
-& = \int \di x \di y \, \bigg\lvert \nabla_x \, \int dz \left( N w(N(x-z)) \dot{\cc{\varphi}}_t^{(N)} (x) \cc{\varphi}_t^{(N)} (z) + N w_N(x-z)\ \cc{\varphi}_t^{(N)} (x) \dot{\cc{\varphi}}_t^{(N)} (z) \right) \nonumber \\
+& = \int \di x \di y \, \bigg\lvert \nabla_x \, \int dz \left( N w(N(x-z)) \dot{\cc{\varphi}}_t^{(N)} (x) \cc{\varphi}_t^{(N)} (z) + N w(N(x-z))\ \cc{\varphi}_t^{(N)} (x) \dot{\cc{\varphi}}_t^{(N)} (z) \right) \nonumber \\
 & \qquad\qquad\qquad \times N w(N(z-y)) {\ph(z)} {\ph(y)} \bigg\rvert^2 \nonumber \\
 & \leq 4 \int \di x \di y \left\lvert \int dz N^2 \nabla w (N(z-x)) \dot{\cc{\varphi}}_t^{(N)} (x)  |\ph(z)|^2  \ph(y) N w (N(y-z)) \right|^2 \label{eq:kk1} \\
 & \quad + 4 \int \di x \di y \left| \int dz \, N w (N(z-x)) \nabla \dot{\cc{\varphi}}_t^{(N)} (x) |\ph(z)|^2 \ph(y) N w (N(y-z)) \right|^2 \label{eq:kk2}\\
 & \quad + 4 \int \di x \di y \left| \int dz \, N^2 \nabla w (N(z-x)) \cc{\varphi}_t^{(N)} (x) \dot{\cc{\varphi}}_t^{(N)} (z) \right. \nonumber \\ & \left. \hspace{6cm} \times \ph(z)  \ph(y) \, N w (N(y-z)) \right|^2 \label{eq:kk3}\\
-& \quad + 4 \int \di x \di y \left| \int dz \, N w(N(z-y)) \nabla \cc{\varphi}_t^{(N)} (x) \dot{\cc{\varphi}}_t^{(N)} (z) \ph(z) \ph(y) N w_N(y-z) \right|^2. \label{eq:kk4}
+& \quad + 4 \int \di x \di y \left| \int dz \, N w(N(z-y)) \nabla \cc{\varphi}_t^{(N)} (x) \dot{\cc{\varphi}}_t^{(N)} (z) \ph(z) \ph(y) N w(N(y-z)) \right|^2. \label{eq:kk4}
 \end{align}
 Next, we estimate the four terms on the r.h.s.\ of the last equation. For the summands \eqref{eq:kk2} and \eqref{eq:kk4} we use that, from (\ref{eq:wN-bd}), $N w(Nx) \leq C |x|^{-1}$. Applying Hardy's inequality, both terms are bounded by $C \norm{\nabla \phdot}_{2}^2 \leq C \exp (K |t|)$, using Proposition \ref{t:pdes}. Since, again by (\ref{eq:wN-bd}), $N^2 \nabla w (Nx)\leq C |x|^{-2}$, the contribution (\ref{eq:kk1}) is bounded by 
 \begin{align*}
