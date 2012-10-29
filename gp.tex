@@ -739,7 +739,10 @@ acting on the Fock space $\cF$. In the following lemma we collect some well-know
 
 Using Weyl operators, we construct coherent states on $\cF$. For $f \in L^2 (\bR^3)$, the coherent state with wave function $f$ is defined as $W(f) \Omega$, where $\Omega = \{ 1, 0, \dots \}$ is the vacuum vector in $\cF$, describing a state with no particles. Since $W(f)$ is unitary, coherent states are always normalized. {F}rom the canonical commutation relations (\ref{eq:ccr}), it follows that  
 \[ \begin{split} 
-W(f) \Omega &= e^{-\| f \|_2^2 /2} e^{a^* (f)} \Omega = e^{-\| f\|_2^2/2} \sum_{n \geq 0} \frac{(a^* (f))^n}{n!} \Omega \\ &= e^{-\| f\|_2^2/2} \left\{ 1 , f , \frac{f^{\otimes 2}}{\sqrt{2!}} , \dots , \frac{f^{\otimes n}}{\sqrt{n!}} , \dots \right\} \end{split}. \]
+W(f) \Omega &= e^{-\| f \|_2^2 /2} e^{a^* (f)} \Omega = e^{-\| f\|_2^2/2}
+\sum_{n \geq 0} \frac{(a^* (f))^n}{n!} \Omega \\ &= e^{-\| f\|_2^2/2}
+\left\{ 1 , f , \frac{f^{\otimes 2}}{\sqrt{2!}} , \dots , \frac{f^{\otimes
+n}}{\sqrt{n!}} , \dots \right\}. \end{split} \]
 In particular, coherent states do not have a fixed number of particles. Instead, they are given by linear combinations of states with all possible number of particles. {F}rom (\ref{eq:W3}), the expected 
 number of particles in the state $W(f) \Omega$ is given by
 \[ \langle W(f) \Omega, \cN \, W(f) \Omega \rangle = \int dx \, \langle \Omega, (a_x^* + \overline{f} (x)) (a_x + f(x)) \Omega \rangle = \| f \|_2^2. \]
@@ -803,7 +806,8 @@ where $1$ denotes the identity operator on $L^2 (\bR^3)$. Then $p (k)$ and $r (k
 %\end{split}
 \end{equation}
 \item[(iv)] Suppose now that $k \in L^2 (\bR^3 \times \bR^3)$ is s.t.\ $\nabla_1 k  \in L^2 (\bR^3 \times \bR^3)$. Then, by symmetry, also $\nabla_2 k \in L^2 (\bR^3 \times \bR^3)$ (we use here the notation $(\nabla_1 k) (x,y) = \nabla_x k (x,y)$ and $(\nabla_2 k)(x,y) = \nabla_y k (x,y)$; note that $\nabla_1 k$ and $\nabla_2 k$ are the integral kernels of the operator products $\nabla k$ and $-k \nabla$). Moreover 
-\[  \begin{split}  \| \nabla_1 p (k) \|_{2} , \| \nabla_1 r (k) \|_2 & \le e^{\| k \|_{2}} \| \nabla_1 (k \overline{k}) \|_{2} \\
+\[  \begin{split}  \| \nabla_1 p (k) \|_{2} , \| \nabla_1 r (k) \|_2 & \le
+e^{\| k \|_{2}} \| \nabla_1 (k \overline{k}) \|_{2}, \\
  \| \nabla_2 p (k)  \|_{2}, \| \nabla_2 r (k) \|_2 & \le e^{\| k \|_{2}} \| \nabla_2 (\overline{k} k)   \|_2.% \\
  % \| \nabla_1 \text{sh} (k)   \|_{2} , \| \nabla_2 \text{sh} (k) \|_2 & \le e^{\| k \|_{2}} \| \nabla_2 k \|_{2} 
   \end{split} \]
@@ -811,7 +815,10 @@ where $1$ denotes the identity operator on $L^2 (\bR^3)$. Then $p (k)$ and $r (k
 \[   \| \dot{p} (k) \|_2 , \| \dot{r} (k)\|_2  \leq \| \dot{k} \|_2 \, e^{\| k \|_2} \]
 and
 \[ \begin{split} 
-\| \nabla_1 \dot p (k) \|_2 , \| \nabla_1 \dot r (k) \|_2  &\leq C  e^{\| k \|_2} \left( \| \dot k \|_2 \| \nabla_1 (k\overline{k}) \|_2 + \| \nabla_1 (\dot{k} \overline{k}) \|_2 + \| \nabla_1 (k \overline{\dot{k}}) \|_2 \right)\done \\
+\| \nabla_1 \dot p (k) \|_2 , \| \nabla_1 \dot r (k) \|_2  &\leq C  e^{\| k
+\|_2} \left( \| \dot k \|_2 \| \nabla_1 (k\overline{k}) \|_2 + \| \nabla_1
+(\dot{k} \overline{k}) \|_2 + \| \nabla_1 (k \overline{\dot{k}}) \|_2
+\right),\done \\
  \| \nabla_2 \dot p (k) \|_2 , \| \nabla_2 \dot r (k) \|_2  &\leq C  e^{\| k \|_2} \left( \| \dot k \|_2 \| \nabla_2 (k\overline{k}) \|_2 + \| \nabla_2 (\dot{k} \overline{k}) \|_2 + \| \nabla_2 (k \overline{\dot{k}}) \|_2 \right).\done 
  \end{split} \]
 \end{itemize}
@@ -822,7 +829,8 @@ and
 \[  B = \frac{1}{2} \int dx dy \, \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right) , \]
 we have, for any $f,g \in L^2 (\bR^3)$,  
 \[ \begin{split} e^{-B} A (f,g) e^{B} & = A (f,g) + \int_0^1 d \lambda_1  \frac{d}{d\lambda_1} e^{-\lambda_1 B} A (f,g) e^{\lambda_1 B}\\
-& = A (f,g) - \int_0^1 d \lambda_1  \, e^{-\lambda_1 B} [B,A (f,g)] e^{\lambda_1 B}
+& = A (f,g) - \int_0^1 d \lambda_1  \, e^{-\lambda_1 B} [B,A (f,g)]
+e^{\lambda_1 B}.
  \end{split} \]
 Iterating, we find
 \begin{equation}\label{eq:baker} \begin{split} e^{-B} A (f,g) e^{B} = \; &A (f,g) + \sum_{j=1}^n \frac{(-1)^j}{j!} \,\text{ad}_B^j (A (f,g)) \\ &+(-1)^{n+1}  \int_0^1 d\lambda_1 \int_0^{\lambda_1} d\lambda_2 \dots \int_0^{\lambda_{n}} d\lambda_{n+1} \, e^{-\lambda_{n+1} B}  \text{ad}_B^{n+1} (A (f,g)) \, e^{\lambda_{n+1} B}  \end{split}\end{equation}
