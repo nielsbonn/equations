@@ -1914,11 +1914,12 @@ The bounds from Lemma \ref{l:bt} imply \eqref{eq:TN2T}.
 We now show how to bound the r.h.s.\ of the last equation. Using the definition of the fluctuation dynamics $\cU (t;0) = T^* (k_t) W^* (\sqrt{N} \varphi_t^{(N)}) e^{-i\cH_N t} W^* (\sqrt{N} \varphi) T (k_0)$, we find 
 \begin{equation}\label{ep4}
 \begin{split}
-\langle \psi, &\cU^* (t;0) T^* (k_t) \N^2 T (k_t) \cU (t;0) \psi \rangle 
-     \\  = \; & \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)}) \, (\cN - \sqrt{N} \phi (\varphi_t^{(N)}) + N) e^{-i\cH_N t}  W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\
-      = \; & \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)}) \,  \cN e^{-i \cH_N t}
-      W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\ & - \sqrt{N} \, \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)} )\, \phi (\varphi_t^{(N)}) e^{-i \cH_N t}  W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\
-      &+  N  \langle \psi,\cU^* (t;0) T^* (k_t) \cN T (k_t) \cU (t;0) \psi \rangle 
+& \langle \psi, \cU^* (t;0) T^* (k_t) \N^2 T (k_t) \cU (t;0) \psi \rangle 
+     \\ & = \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)}) \, (\cN - \sqrt{N} \phi (\varphi_t^{(N)}) + N) e^{-i\cH_N t}  W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\
+      & = \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)}) \,  \cN e^{-i \cH_N t}
+      W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\ 
+      & \quad - \sqrt{N} \, \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)} )\, \phi (\varphi_t^{(N)}) e^{-i \cH_N t}  W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\
+      & \quad +  N  \langle \psi,\cU^* (t;0) T^* (k_t) \cN T (k_t) \cU (t;0) \psi \rangle 
       \end{split} \end{equation}
 where we used the notation $\phi (f) = a( f) + a^* (f)$, and the property (\ref{eq:W3}) to show that 
 \[ W^* (\sqrt{N} \varphi_t^{(N)}) \cN W (\sqrt{N} \varphi_t^{(N)}) = \cN - \sqrt{N} \phi (\varphi_t^{(N)})  +N.  \]      
@@ -1939,7 +1940,7 @@ Subtracting the first term appearing on the r.h.s., and using the bound $\| \phi
 \cN \, T(k_0)  \psi \|^2 + N \| (\cN+1)^{1/2} T(k_0) \psi \|^2 + N \| (\cN+1)^{1/2} T(k_t) \cU (t;0)  \psi \|^2 \right).  \end{split} \]
 By Lemma \ref{lm:TNT} we conclude that 
 \[ \begin{split} \langle \psi , \cU^* (t;0) T^* (k_t)  \cN^2 &T (k_t) \cU (t;0) \psi \rangle \\ \leq \; &C N  \| \cN^{1/2}  \cU (t;0) \psi \|^2 + C \| \cN \psi \|^2 + CN \| (\cN+1)^{1/2} \psi \|^2 . \end{split} \]
-With (\ref{ep4-0}), this concludes the proof of the proposition.
+With (\ref{ep4-0}), this completes the proof of the proposition.
 \end{proof}
 
 We are now ready to show Theorem \ref{thm:N}.
@@ -1973,7 +1974,8 @@ By Gronwall, we conclude that
 D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle \\ \leq \; & C e^{2 \frac{D}{K} e^{K |t|}} \, \left\langle \psi , \left( \wt{\cL}_N (0) + (\cN + 1)\right) \psi \right\rangle \\ \leq \; &  C e^{2 \frac{D}{K} e^{K |t|}} \left\langle \psi , \left( \frac{3}{2} \cH_N+ C \frac{\cN^2}{N} + C (\cN+ 1) \right) \psi \right\rangle \end{split} \]
 where in the last inequality, we used the upper bound (\ref{eq:thmL-1b}). {F}rom the assumption (\ref{eq:ass-grw}), we obtain 
 \[  \Big\langle \psi , \wt{\cU}^* (t;0) \left( \wt{\cL}_N (t) + 
-D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle  \leq C \exp (c_1 \exp (c_2 |t|)) \]
+D e^{K \lvert t\rvert} (\cN + 1) \right) \wt{\cU} (t;0) \psi \Big\rangle
+\leq C \exp (c_1 \exp (c_2 |t|)). \]
 The claim now follows from (\ref{eq:en-bd}), because $D \geq C_1 +1$.
 \end{proof}
 
