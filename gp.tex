@@ -1990,7 +1990,11 @@ Let $\Psi_{N,t} = e^{-i\cH_N t} W(\sqrt{N} \varphi) T(k_0) \psi$. The one-partic
 \begin{equation}\label{eq:fin-G1} \Gamma_{N,t}^{(1)} (x;y) = \frac{1}{\langle \Psi_{N,t} , \cN \Psi_{N,t} \rangle} \langle \Psi_{N,t} , a_y^* a_x \Psi_{N,t} \rangle. \end{equation}
 We start by computing the denominator. Since $\Hcal_N$ commutes with the number of particles operator, we find
 \[ \begin{split} 
-\langle \Psi_{N,t} , \cN \Psi_{N,t} \rangle = \; &\langle \psi,T^* (k_0) W^* (\sqrt{N} \varphi) \cN W (\sqrt{N} \varphi)  T(k_0) \psi\rangle  \\ = \; &\langle \psi, T^* (k_0) \left( \cN - \sqrt{N} \phi (\varphi) + N \right) T(k_0) \psi \rangle \\ = \; &N + \left\langle \psi,  T^* (k_0) \left(\cN - \sqrt{N} \phi(\varphi) \right) T(k_0) \psi \right\rangle\end{split}. \]
+\langle \Psi_{N,t} , \cN \Psi_{N,t} \rangle = \; &\langle \psi,T^* (k_0) W^*
+(\sqrt{N} \varphi) \cN W (\sqrt{N} \varphi)  T(k_0) \psi\rangle  \\ = \;
+&\langle \psi, T^* (k_0) \left( \cN - \sqrt{N} \phi (\varphi) + N \right)
+T(k_0) \psi \rangle \\ = \; &N + \left\langle \psi,  T^* (k_0) \left(\cN -
+\sqrt{N} \phi(\varphi) \right) T(k_0) \psi \right\rangle. \end{split} \]
 By Lemma \ref{lm:TNT}
 \[  \langle \psi , T^* (k_0) \cN T(k_0) \psi \rangle \leq C \langle \psi , (\cN+1) \, \psi \rangle \leq C \]
 and 
@@ -2079,7 +2083,7 @@ Theorem \ref{thm:main} now follows because, if $\varphi_t$ denotes the solution 
 
 
 \begin{proof}[Proof of Proposition \ref{t:pdes}] 
-(i) This part of the proposition is standard. One proves first local well-posedness of the two equations in $H^1 (\bR^3)$. The time of existence depends only on the $H^1$ norm of the initial data. Since $V,f \geq 0$, the $H^1$-norm is bounded by the energy, which is conserved.  
+(i) This part of the proposition is standard. One proves first local well-posedness of the two equations in $H^1 (\bR^3)$. The time of existence depends only on the $H^1$-norm of the initial data. Since $V,f \geq 0$, the $H^1$-norm is bounded by the energy, which is conserved.  
 %\[ \cE (\ph) = \int dx |\nabla \varphi|^2 + \frac{1}{2} \int dx dy \, N^3 V(N(x-y)) f(N(x-y)) |\varphi (x)|^2 |
 %\varphi (y)|^2 \]
 %which is conserved. 
@@ -2088,7 +2092,7 @@ Hence one obtains global existence and a uniform bound on the $H^1$-norm.
 (ii) Also this part is rather standard, but since the non-linearity in (\ref{eq:mod-GP}) depends on $N$, and we need bounds uniform in $N$, we sketch the proof of the bound (\ref{eq:hireg}) for $\| \varphi_t^{(N)} \|_{H^n}$ (the bound for $\| \varphi_t \|_{H^n}$ can be proven analogously). We present the proof for the case $t >0$. We claim, first of all, that there exists $T>0$ depending only on $\| \varphi \|_{H^1}$ and $n \in \bN$ such that
   \begin{equation}\label{eq:preregularity}
     \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^n} \le 2 \| \varphi_0 \|_{H^n} +
-     \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^{n-1}}^3,\done
+     \sup_{t \in [0,T]} \| \varphi_t^{(N)} \|_{H^{n-1}}^3.\done
  \end{equation}
  Introducing the short-hand notation $U_N (x)= N^3 V(Nx)f(Nx)$, we write the solution 
 $\varphi_t^{(N)}$ of (\ref{eq:mod-GP}) as
@@ -2129,7 +2133,7 @@ By H\"older and Young inequality, we find
     \|_{L^{p_3}} 
   \end{split}\]
 for $p_1, p_2, p_3 \geq 1$ with $p_1^{-1} + p_2^{-1} + p_3^{-1} = 5/6$. It is important to note that the indices $(p_1, p_2, p_3)$ can be chosen differently for each term in the summation. In some of the terms with $\lvert \alpha\rvert = n$, all $n$ derivatives hit the same $\varphi_t^{(N)}$. Since $1/6 + 1/6 + 1/2 = 5/6$, these terms can be bounded by
-\begin{equation}\label{eq:multi-a}  \| \varphi_t^{(N)} \|^2_{L^6} \; \| \partial^\alpha \varphi_t^{(N)} \|_{L^2} \leq C \| \varphi_t^{(N)} \|_{H^n} \end{equation} for $C$ depending only on $\| \varphi \|_{H^1}$ (recall here that the $H^1$ norm is bounded uniformly in $t$, by part (i)). In some of the other terms, one $\varphi_t^{(N)}$ has $n - 1$ derivatives, one has at most one derivative and the last one has no derivatives. Since $\| \partial^{\gamma} \varphi_t^{(N)} \|_{L^6} \leq \| \varphi_t^{(N)} \|_{H^n}$, if $|\gamma| \leq n-1$, these terms are bounded by the r.h.s.\ of (\ref{eq:multi-a}). In all other terms, the three copies of $\varphi_t^{(N)}$ have at most $n-2$ derivatives. These terms are bounded by 
+\begin{equation}\label{eq:multi-a}  \| \varphi_t^{(N)} \|^2_{L^6} \; \| \partial^\alpha \varphi_t^{(N)} \|_{L^2} \leq C \| \varphi_t^{(N)} \|_{H^n} \end{equation} for $C$ depending only on $\| \varphi \|_{H^1}$ (recall here that the $H^1$-norm is bounded uniformly in $t$, by part (i)). In some of the other terms, one $\varphi_t^{(N)}$ has $n - 1$ derivatives, one has at most one derivative and the last one has no derivatives. Since $\| \partial^{\gamma} \varphi_t^{(N)} \|_{L^6} \leq \| \varphi_t^{(N)} \|_{H^n}$, if $|\gamma| \leq n-1$, these terms are bounded by the r.h.s.\ of (\ref{eq:multi-a}). In all other terms, the three copies of $\varphi_t^{(N)}$ have at most $n-2$ derivatives. These terms are bounded by 
 \[  \| \partial^{\gamma_1} \varphi_t^{(N)} \|_{L^6} \| \partial^{\gamma_2} \varphi_t^{(N)} \|_{L^6} \| \partial^{\gamma_3} \varphi_t^{(N)} \|_{L^2} \leq C \| \varphi_t^{(N)} \|_{H^{n-1}}^3 \]
 for all multiindices $\gamma_1, \gamma_2, \gamma_3$ with $|\gamma_i| \leq n-2$, for $i=1,2,3$. We conclude that
 \[ \| \partial^\alpha \varphi^{(N)}_{(\cdot)} \|_{L_t^\infty L_x^2} \leq  \|
@@ -2294,7 +2298,10 @@ by Proposition \ref{t:pdes}. Writing $p (k_t) = \sum_{n \geq 0} (k_t \overline{k
 applying (\ref{eq:dotk1}). The bound for $\dot r (k_t)$ can be proven analogously. 
 
 (ii) {F}rom \ref{l:bt}, Part~(v), we have
-\[\| \nabla_1 \dot p (k_t) \|_2 \leq C e^{\| k_t \|_2} \left( \| \dot k_t \|_2 \,  \| \nabla_1 (k_t \overline{k}_t) \|_2 + C \| \nabla_1 (k_t \dot{\overline{k}}_t) \|_2  + C \| \nabla_1 (\dot k_t \overline{k}_t) \|_2 \right) , \]
+\[\| \nabla_1 \dot p (k_t) \|_2 \leq C e^{\| k_t \|_2} \left( \| \dot k_t
+\|_2 \,  \| \nabla_1 (k_t \overline{k}_t) \|_2 + C \| \nabla_1 (k_t
+\dot{\overline{k}}_t) \|_2  + C \| \nabla_1 (\dot k_t \overline{k}_t) \|_2
+\right). \]
 We are left with the task of estimating $\| \nabla_1 (k_t \dot{\overline{k}}_t) \|_2$ and $\| \nabla_1 (\dot k_t \overline{k}_t) \|_2$. We start by applying the product rule:
 \begin{align}
 & \norm{\nabla_1 (k_t \dot{\overline{k}}_t)}_2^2  \nonumber \\
@@ -2320,7 +2327,7 @@ by Proposition \ref{t:pdes}. To show the bound for $\dot{p} (k_t)$, we observe t
 \begin{equation}\label{eq:px2} \begin{split}
 \dot{p} (k_t) (x,y) = \; & \partial_t \sum_{n \geq 0}\frac{1}{(2n)!} \int dz_1 dz_2 \, k_t (x,z_1) (\overline{k}_t k_t)^{(n-1)} (z_1 ,z_2) \overline{k}_t (z_2 ,y ) \\ = \;& \sum_{n \geq 0}\frac{1}{(2n)!} \Big[  \int dz_1 dz_2 \, \dot{k}_t (x,z_1) (\overline{k}_t k_t)^{(n-1)} (z_1 ,z_2) \overline{k}_t (z_2 ,y ) \\ &\hspace{1.5cm} +
  \int dz_1 dz_2 \, k_t (x,z_1) (\partial_t (\overline{k}_t k_t)^{(n-1)}) (z_1 ,z_2) \overline{k}_t (z_2 ,y )\\
-  &\hspace{1.5cm} + \int dz_1 dz_2 \, k_t (x,z_1) (\overline{k}_t k_t)^{(n-1)} (z_1 ,z_2) \dot{\overline{k}}_t (z_2 ,y ) \Big]  \end{split} \end{equation}
+  &\hspace{1.5cm} + \int dz_1 dz_2 \, k_t (x,z_1) (\overline{k}_t k_t)^{(n-1)} (z_1 ,z_2) \dot{\overline{k}}_t (z_2 ,y ) \Big]. \end{split} \end{equation}
 The first term in the parenthesis can be bounded in absolute value by
 \[ \begin{split} 
 \Big| \int &dz_1 dz_2 \, \dot{k}_t (x,z_1) (\overline{k}_t k_t)^{(n-1)} (z_1 ,z_2) \overline{k}_t (z_2 ,y ) \Big| \\ \leq \; &C \int dz_1 dz_2 \, \frac{1}{|x-z_1|} \left( |\phdot (x)| |\ph (z_1)|+ |\ph (x)| |\phdot (z_1)| \right)  \\ &\hspace{5cm} \times | (\overline{k}_t k_t)^{(n-1)} (z_1 ,z_2)| \, \frac{1}{|y-z_2|} |\ph (z_2)| |\ph (y)| \\
@@ -2369,24 +2376,40 @@ are very reasonable; let us explain why. The expected number of particles in the
 \begin{equation}\label{eq:expecN}
 \begin{split} &\left\langle W(\sqrt{N} \varphi) T(k_0) \psi , \cN \, W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \\ & \hspace{2cm}= N + \sqrt{N} \langle T(k_0) \psi , \phi (\varphi) T(k_0) \psi \rangle + \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \end{split} \end{equation}
 with the notation $\phi (\varphi) = a(\varphi) + a^* (\varphi)$. {F}rom Lemma \ref{l:a}, Lemma \ref{lm:TNT} and the assumption (\ref{eq:ass1-N}) we conclude that there exists a constant $C >0$ with 
-\[ N - CN^{1/2} \leq \left\langle W(\sqrt{N} \varphi) T(k_0) \psi , \cN \, W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq N + C N^{1/2} \]
+\[ N - CN^{1/2} \leq \left\langle W(\sqrt{N} \varphi) T(k_0) \psi , \cN \,
+W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq N + C N^{1/2}. \]
 The expectation of $\cN^2$, on the other hand, is given by
 \[ \begin{split} 
 \big\langle W(\sqrt{N} \varphi) &T(k_0)  \psi , \cN^2 \, W(\sqrt{N} \varphi) T(k_0) \psi \big\rangle \\
-= \; &\langle T(k_0) \psi , (\cN + \sqrt{N} \phi (\varphi) + N)^2 T(k_0) \psi \rangle \\ = \; &N^2 + 2 N^{3/2} \langle T(k_0) \psi , \phi (\varphi) T(k_0) \psi \rangle + 2N \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \\ &+N \langle  T(k_0) \psi , \phi (\varphi)^2 T(k_0) \psi \rangle + \sqrt{N} \langle   T(k_0) \psi ,  \left( \cN \phi (\varphi) + \phi (\varphi) \cN \right) T(k_0) \psi \rangle \\ &+ \langle T(k_0) \psi, \cN^2 T(k_0) \psi \rangle \end{split} \]
+= \; &\langle T(k_0) \psi , (\cN + \sqrt{N} \phi (\varphi) + N)^2 T(k_0)
+\psi \rangle \\ = \; &N^2 + 2 N^{3/2} \langle T(k_0) \psi , \phi (\varphi)
+T(k_0) \psi \rangle + 2N \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \\
+&+N \langle  T(k_0) \psi , \phi (\varphi)^2 T(k_0) \psi \rangle + \sqrt{N}
+\langle   T(k_0) \psi ,  \left( \cN \phi (\varphi) + \phi (\varphi) \cN
+\right) T(k_0) \psi \rangle \\ &+ \langle T(k_0) \psi, \cN^2 T(k_0) \psi
+\rangle. \end{split} \]
  Subtracting the square of (\ref{eq:expecN}), and applying again Lemma \ref{l:a}, Lemma \ref{lm:TNT} and the assumption (\ref{eq:ass1-N}), we estimate the variance of the number of particles in the state $W(\sqrt{N} \varphi) T(k_0) \psi$ by
  \[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi, (\cN - \langle \cN \rangle)^2 W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq C N \]
 for an appropriate constant $C >0$. Here $\langle \cN \rangle$ is a shorthand notation for (\ref{eq:expecN}). We conclude that
-\[  \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - \langle \cN \rangle | \geq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq C K^{-2} \]
+\[  \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN -
+\langle \cN \rangle | \geq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0)
+\psi \right\rangle \leq C K^{-2}. \]
 Choosing $K >0$ sufficiently large, we find
-\[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - \langle \cN \rangle | \leq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \geq 1/2 \] 
+\[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN -
+\langle \cN \rangle | \leq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0)
+\psi \right\rangle \geq 1/2. \] 
 {F}rom (\ref{eq:expecN}), adjusting the value of $K$, we obtain
-\[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - N | \leq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \geq 1/2 \] 
+\[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN - N |
+\leq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \geq
+1/2. \] 
 This means that
-\[ \sum_{j= N - K \sqrt{N}}^{N+K \sqrt{N}} \left\| P_j \,  W(\sqrt{N} \varphi) T(k_0) \psi \right\|^2 \geq 1/2 \]
+\[ \sum_{j= N - K \sqrt{N}}^{N+K \sqrt{N}} \left\| P_j \,  W(\sqrt{N}
+\varphi) T(k_0) \psi \right\|^2 \geq 1/2. \]
 The average value of $\| P_j W (\sqrt{N} \varphi) T(k_0) \psi \|^2$, for $j$ between $N- K \sqrt{N}$ and $N+K \sqrt{N}$ is therefore larger or equal to $N^{-1/4}$, in accordance with the assumption (\ref{eq:ass2-N}). In fact, this argument shows that for every $N$ there exists an $M \in [N-K \sqrt{N} , N + K \sqrt{N}]$ with $\| P_M \, W(\sqrt{N} \varphi) T(k_0) \psi \| \geq N^{-1/4}$. Letting \[ \psi_{N,M,t} = e^{-i \cH_N t}  \frac{P_M \, W(\sqrt{N} \varphi) T(k_0) \psi}{\|  P_M \, W(\sqrt{N} \varphi) T(k_0) \psi \|} \]
 and denoting by $\gamma^{(1)}_{N,M,t}$ the one-particle reduced density associated with $\psi_{N,M,t}$, one can show, similarly to Theorem \ref{thm:Npart}, that
-\[ \tr \; \left| \gamma^{(1)}_{N,M,t} - |\varphi_t \rangle \langle \varphi_t| \right| \leq  \frac{C\,  \exp \left( c_1 \exp (c_2 |t|) \right)}{N^{1/4}} \]
+\[ \tr \; \left| \gamma^{(1)}_{N,M,t} - |\varphi_t \rangle \langle
+\varphi_t| \right| \leq  \frac{C\,  \exp \left( c_1 \exp (c_2 |t|)
+\right)}{N^{1/4}}. \]
 The fact that the number of particles $M$ does not exactly match the parameter $N$ entering the Hamiltonian and the Weyl operator $W(\sqrt{N} \varphi)$ does not change the analysis substantially (because $|M - N| \leq C N^{1/2}$ is lower order). 
 \end{itemize}
 
