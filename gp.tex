@@ -326,9 +326,9 @@ which implies that the scattering length of the rescaled potential $N^2 V(N.)$ a
 
 \bigskip
 
-{\it Ground state properties.} Let \[ E_N = \min_{\psi_N \in L^2_s (\bR^{3N}), \| \psi_N \| = 1} \langle \psi_N , H^{\text{trap}}_N \psi_N \rangle \]
+{\it Ground state properties.} Let \[ E_N = \min_{\substack{\psi_N \in L^2_s (\bR^{3N})\\\| \psi_N \| = 1}} \langle \psi_N , H^{\text{trap}}_N \psi_N \rangle \]
 denote the ground state energy of (\ref{eq:ham-0}). It was proven in \cite{LSY} that
-\[ \lim_{N \to \infty} \frac{E_N}{N} = \min_{\varphi \in L^2 (\bR^3) : \| \varphi \|_2 = 1} \cE_{\text{GP}} (\varphi) \]
+\[ \lim_{N \to \infty} \frac{E_N}{N} = \min_{\substack{\varphi \in L^2 (\bR^3)\\\| \varphi \|_2 = 1}} \cE_{\text{GP}} (\varphi) \]
 where 
 \begin{equation}\label{eq:GP-en} \cE_{\text{GP}} (\varphi) = \int dx \, \left[ |\nabla \varphi (x)|^2 + V_{\text{ext}} (x) |\varphi (x)|^2 + 4 \pi a_0 |\varphi (x)|^4 \right] \end{equation}
 is the Gross-Pitaevskii energy functional. Hence, in the leading order, the ground state energy per particle depends on the interaction potential $V$ only through its scattering length $a_0$. In \cite{LS}, it was also shown that the ground state of (\ref{eq:ham-0}) exhibits complete Bose-Einstein condensation in the minimizer of the Gross-Pitaevskii energy functional (\ref{eq:GP-en}),
@@ -336,7 +336,7 @@ in the sense that
 \begin{equation}\label{eq:cond} \gamma_N^{(1)} \to | \phi_{\text{GP}} \rangle \langle \phi_{\text{GP}}| \end{equation}
 where $|\phi_{\text{GP}} \rangle \langle \phi_{\text{GP}} |$ is the orthogonal projection onto the (normalized) 
 minimizer $\phi_{\text{GP}} \in L^2 (\bR^3)$ of (\ref{eq:GP-en}) and where $\gamma^{(1)}_N$ denotes the one-particle reduced density associated with the ground state $\psi_N \in L^2_s (\bR^{3N})$ of (\ref{eq:ham-0}), which is defined as the non-negative trace class operator with integral kernel
-\begin{equation}\label{eq:one-red} \gamma^{(1)}_N (x;x') := \int dx_2 \dots dx_N \psi_N (x , x_2, \dots  ,x_N) \overline{\psi}_N (x' , x_2 , \dots , x_N) \end{equation}
+\begin{equation}\label{eq:one-red} \gamma^{(1)}_N (x;x') := \int dx_2 \dots dx_N \psi_N (x , x_2, \dots  ,x_N) \overline{\psi}_N (x' , x_2 , \dots , x_N). \end{equation}
 We assume here that $\| \psi_N \|  =1$, and therefore that $\tr \, \gamma^{(1)}_N = 1$. The convergence in (\ref{eq:cond}), which hold in the trace-class topology, implies that, in the ground state of (\ref{eq:ham-0}), all particles, up to a fraction which vanishes in the limit of large $N$, are in the same one particle state, described by the orbital $\phi_{\text{GP}}$. The results of \cite{LSY,LS} show that the Gross-Pitaevskii theory correctly describes the ground state properties of the Hamiltonian (\ref{eq:ham-0}). 
 
 \bigskip
@@ -498,7 +498,7 @@ The term $(i\partial_t W^* (\sqrt{N} \varphi^{(N)}_t)) W (\sqrt{N} \varphi^{(N)}
 - \sqrt{N} \int dx \big[ (i\partial_t &\varphi^{(N)}_t (x)) a_x^* + \text{h.c.}\big]  \\
 &=- \sqrt{N} \int dx \left[ -\Delta \varphi^{(N)}_t (x) + (N^3 V(N.) f(N.) |\varphi^{(N)}_t (x)|^2 \varphi^{(N)}_t (x) \right] a_x^* - \text{h.c.}
 \end{split}\]
-In contrast with the mean field regime discussed above, there is here no complete cancellation between the two large linear terms. Hence, the generator $\cL^{\text{GP}}_N (t)$ of (\ref{eq:cU-mfGP}) contains a large contribution, linear in the creation and annihilation operators, of the form
+In contrast with the mean field regime discussed above, because of the factor $f$, here there is no complete cancellation between the two large linear terms. Hence, the generator $\cL^{\text{GP}}_N (t)$ of (\ref{eq:cU-mfGP}) contains a large contribution, linear in the creation and annihilation operators, of the form
 \begin{equation}\label{eq:lin-N} \sqrt{N} \int dx \left( N^3 V(N.) (1- f(N.)) * |\varphi^{(N)}_t|^2 \right) (x) \left( \varphi^{(N)}_t (x) a_x^* + \text{h.c.} \right)  \end{equation}
 and it seems impossible to obtain uniform (in $N$) bound on the growth of the number of particles w.r.t. (\ref{eq:cU-mfGP}). The reason for this failure is that we are trying to control fluctuations around the wrong evolution. When we approximate $e^{-it \cH_N} W(\sqrt{N} \varphi) \psi$ by an evolved coherent state $W(\sqrt{N} \varphi^{(N)}_t) \psi$, we are completely neglecting the correlation structure developed by the many-body evolution. As a result, fluctuations around the coherent approximation $W(\sqrt{N} \varphi^{(N)}_t)$ are too strong to be bounded uniformly in $N$. 
 Since correlations are, in first order, an effect of two-body interactions, we are going to approximate them using a unitary operator of the form
@@ -765,7 +765,7 @@ where $1$ denotes the identity operator on $L^2 (\bR^3)$. Then $p (k)$ and $r (k
 \| r (k) \|_{2} \le e^{\| k \|_{2}},  \quad \| \text{sh} (k) \|_2 \leq  e^{\| k \|_{2}}.
 %\end{split}
 \end{equation}
-(Here $\| p (k) \|_2$ denotes the $L^2 (\bR^3 \times \bR^3)$ norm of the kernel $p(k) (x,y)$, which agrees with the Hilbert Schmidt norm of the operator $p(k)$).
+(Here $\| p (k) \|_2$ denotes the $L^2 (\bR^3 \times \bR^3)$ norm of the kernel $p(k) (x,y)$, which agrees with the Hilbert-Schmidt norm of the operator $p(k)$).
 \item[(iv)] Suppose now that $k \in L^2 (\bR^3 \times \bR^3)$ is s.t.\ $\nabla_1 k  \in L^2 (\bR^3 \times \bR^3)$. Then, by symmetry, also $\nabla_2 k \in L^2 (\bR^3 \times \bR^3)$ (we use here the notation $(\nabla_1 k) (x,y) = \nabla_x k (x,y)$ and $(\nabla_2 k)(x,y) = \nabla_y k (x,y)$; note that $\nabla_1 k$ and $\nabla_2 k$ are the integral kernels of the operator products $\nabla k$ and $-k \nabla$). Moreover 
 \[  \begin{split}  \| \nabla_1 p (k) \|_{2} , \| \nabla_1 r (k) \|_2 & \le e^{\| k \|_{2}} \| \nabla_1 (k \overline{k}) \|_{2} \\ \| \nabla_2 p (k)  \|_{2}, \| \nabla_2 r (k) \|_2 & \le e^{\| k \|_{2}} \| \nabla_2 (\overline{k} k)   \|_2.  \end{split} \]
 \item[(v)] If the kernel $k$ depends on a parameter $t$ (later, it will depend on time), and if derivatives w.r.t. $t$ are denoted by a dot, we have
@@ -868,7 +868,7 @@ for all $t \in \bR$.
 \item[(iii)] Regularity of time derivatives. Suppose $\varphi \in H^4 (\bR^3)$. Then there exists a constant $C>0$, depending on $\| \varphi \|_{H^4}$,  and $K > 0$, depending only on $\| \varphi \|_{H^1}$, such that
 \[   \|\dot{\varphi}_t^{(N)} \|_{H^2} , \| \ddot{\varphi}_t^{(N)} \|_2 \leq C e^{K |t|} \]
 for all $t \in \bR$.
-\item[(iv)] Convergence of dynamics. Suppose now $\varphi \in H^2 (\bR^3)$. Then there exist constants $C,c_1,c_2 > 0$, depending on $\| \varphi \|_{H^2}$ ($c_2$ actually depends only on $\| \varphi \|_{H^1}$) such that 
+\item[(iv)] Comparison of dynamics. Suppose now $\varphi \in H^2 (\bR^3)$. Then there exist constants $C,c_1,c_2 > 0$, depending on $\| \varphi \|_{H^2}$ ($c_2$ actually depends only on $\| \varphi \|_{H^1}$) such that 
 \[ \| \varphi_t^{(N)} - \varphi_t \|_2 \leq \frac{C \exp (c_1 \exp (c_2 |t|))}{N} \,  \]
 for all $t \in \bR$.
 \end{itemize}
@@ -999,7 +999,7 @@ The fluctuation dynamics satisfies the Schr\"odinger-type equation
 with the time-dependent generator
 \[ \begin{split} \cL_N (t) = \; &T^* (k_t) \left[ i \partial_t W^* (\sqrt{N} \varphi_t^{(N)}) \right] W(\sqrt{N} \varphi_t^{(N)}) T (k_t) \\ &+ T^* (k_t) W^* (\sqrt{N} \varphi_t^{(N)}) \cH_N W (\sqrt{N} \varphi_t^{(N)}) T (k_t) + \left[ i \partial_t T^* (k_t) \right] T(k_t).  \end{split} \]
 
-The next theorem, whose proof is deferred to Section \ref{sec:gen-fd}, is the main technical ingredient of this paper. It contains important estimates for the generator $\cL_N (t)$, which will be used, in the next section to control the growth of the expectation of the number of particles operator with respect to the fluctuation dynamics $\cU (t;s)$. 
+The next theorem, whose proof is deferred to Section \ref{sec:gen-fd}, is the main technical ingredient of this paper. It contains important estimates for the generator $\cL_N (t)$, which will be used in the next section to control the growth of the expectation of the number of particles operator with respect to the fluctuation dynamics $\cU (t;s)$. 
 \begin{thm}\label{thm:L}
 Define the time-dependent constant (of order $N$)
 \begin{equation}\label{eq:CNt} \begin{split} 
@@ -1390,7 +1390,7 @@ Hence
  \int dx a^* (\nabla_x k_x) a^\sharp (j_{1,x}) = \; & \int dx dy k (x,y) \, \nabla_y a^*_y  a^\sharp (j_{1,x}) 
 \\ &- \int dx dy N w (N (x-y)) \nabla \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \, a^*_y  \, a^\sharp(j_{1,x})
 \\& - \int dx dy N w (N (x-y)) \nabla \varphi_t^{(N)} (y) \varphi_t^{(N)} (x) \, a^*_y  \, a^\sharp(j_{1,x}).\end{split} \]
-This implies
+This implies, using Lemma \ref{lm:w} to bound $Nw(N(x-y))$,
 \[ \begin{split}  \Big|  \int &dx \langle \psi,   a^* (\nabla_x k_x) a^\sharp (j_{1,x}) \psi \rangle \Big| \\ \leq \; & \int dx dy \, |k(x,y)| \| \nabla_y a_y \psi \| \, \| a^\sharp (j_{1,x}) \psi \| \\ &+ C \int dx dy \,  \frac{1}{|x-y|}  \left( |\nabla \varphi_t^{(N)} (x)| |\varphi^{(N)}_t (y)| +|\nabla \varphi_t^{(N)} (y)| |\varphi^{(N)}_t (x)| \right) \| a_y \psi \| \, \| a^\sharp (j_{1,x}) \psi \|  \\ 
 \leq \; &\delta \int dx dy |\varphi_t^{(N)} (x)|^2 \| \nabla_y a_y \psi \|^2 + C_\delta \int dx dy \frac{1}{|x-y|^2} |\varphi^{(N)}_t (y)|^2 \|j_{1,x}\|_2^2 \| |(\cN+1)^{1/2} \psi \|^2 \\ &
 +C \int dx dy \frac{1}{|x-y|^2} |\varphi^{(N)}_t (y)|^2 \|j_{1,x}\|_2^2 \| |(\cN+1)^{1/2} \psi \|^2 + 
@@ -1775,9 +1775,9 @@ with
 \[ k_t (x,y) = -N w(N(x-y)) \varphi_t^{(N)} (x) \varphi_t^{(N)} (y) \]
 and
 \[ \dot{k}_t (x,y) = - N w (N (x-y))  \left( \dot{\varphi}_t^{(N)} (x) \varphi_t^{(N)} (y) + \varphi_t^{(N)} (x) \dot{\varphi}_t^{(N)} (y) \right). \]
-Then $T = \exp (B)$. Using \eqref{eq:baker}, we compute that in expectation values
+Then $T = \exp (B)$. Using \eqref{eq:baker}, we find%(for $\ad^0_B (\dot B) = \dot B$ and $\ad^n_B (\dot B) = [B,\ad^{n-1}_B (\dot B)]$)
 \begin{equation}\label{eq:BCH} \left(\partial_t T^* \right) T = \int_0^1 \di\lambda\, e^{-\lambda B(t)} \dot B(t) e^{\lambda B(t)} = \sum_{n \geq 0} \frac{1}{(n+1)!}\,  \text{ad}^n_{B} (\dot{B}) \end{equation}
-where $\ad^0_B (\dot B) = \dot B$ and $\ad^n_B (\dot B) = [B,\ad^{n-1}_B (\dot B)]$ for all $n \geq 1$. Notice that by a calculation similar to the proof of lemma \ref{l:bt}, we can show that the error term converges to $0$ in expectation values on the domain of the number of particles operator $D(\cN)$, and the series is absolutely convergent, as we will see. Since $D(\cN)$ is invariant w.\,r.\,t.\ the fluctuation dynamics $\cU (t,s)$ (this is proven similarly to Prop.\ \ref{prop:apri})\done{}, we can use (\ref{eq:BCH}) to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$ for any $\psi \in D(\cN)$. 
+up to an error term, which however converges to zero in expectation on the domain $D(\cN)$ of the number of particles operator (this can be shown as in Lemma \ref{l:bt}). Notice that, by the estimates in Prp.\ \ref{prp:dTT}, the series is absolutely convergent in expectations. Since $D(\cN)$ is invariant w.\,r.\,t.\ the fluctuation dynamics $\cU (t,s)$ (this is proven similarly to Prop.\ \ref{prop:apri})\done{}, we can use (\ref{eq:BCH}) to compute the expectation of $(\partial_t T^*) T$ in the state $\cU (t;0) \psi$ for any $\psi \in D(\cN)$. 
 
 Next, we compute the terms on the r.h.s.\ of (\ref{eq:BCH}).
 
@@ -1863,7 +1863,7 @@ The bounds (\ref{eq:est-fn}), (\ref{eq:est-dotfn}), (\ref{eq:est-fn2}) follow as
 
 
 Using Lemma \ref{lm:highercommutators}, we obtain the following properties of $(\partial_t T^*)T$.
-\begin{proposition}
+\begin{proposition}\label{prp:dTT}
 There exists a constant $C>0$ with 
 \begin{equation}\begin{split}
 \label{eq:prT-cl1}  \pm \, (i\partial_t T^*) T &\leq C \ech{\|
@@ -1876,8 +1876,7 @@ There exists a constant $C>0$ with
 \end{proposition}
 
 \begin{proof}
-We observe, first of all, that, for all $f_1, f_2 \in L^2 (\bR^3 \times\bR^3)$, with 
-\[ \int dx \, |f_2 (x,x)| < \infty \]
+We observe first of all that, for all $f_1, f_2 \in L^2 (\bR^3 \times\bR^3)$ with $\int dx \, |f_2 (x,x)| < \infty$,
 we have
 \begin{equation}\label{eq:prT-1}  \left| \left\langle \psi, \int dx dy \left( f_1(x,y) a^\ast_x a^\ast_y + f_2(x,y) a_x a_y \right) \psi \right\rangle \right|  \leq (\| f_1 \|_2 + \| f_2 \|_2) \, \scal{\psi}{(\Ncal+1)\psi} 
 \end{equation}
@@ -2265,7 +2264,7 @@ The bound for $\dot{r} (k_t)$ can be proven analogously. Combining the bound for
 \section{Convergence for $N$-particle states}
 \label{sec:Npart}
 
-In this section, we show how the result of Theorem \ref{thm:main}, stated there for initial data of the form $W(\sqrt{N} \varphi) T(k_0) \psi$ can be extended to a certain class of initial data with number of particles fixed to $N$. 
+In this section, we show how the result of Theorem \ref{thm:main}, stated there for initial data of the form $W(\sqrt{N} \varphi) T(k_0) \psi$ can be extended to a certain class of data with number of particles fixed to $N$. 
 \begin{thm}\label{thm:Npart}
 Let $\varphi \in H^4 (\bR^3)$ and suppose $\psi \in \cF$ with $\| \psi \|_\cF  =1$ is such that \begin{equation}\label{eq:ass1-N} \begin{split} \left\langle \psi , \left( \frac{\cN^2}{N} + \cN + \cH_N \right) \psi \right\rangle &\leq C  \end{split} \end{equation}
 for a constant $C>0$. Let $P_N$ denote the projection onto the $N$-particle sector of the Fock space and assume that 
@@ -2298,7 +2297,7 @@ T(k_0) \psi \rangle + 2N \langle T(k_0) \psi , \cN T(k_0) \psi \rangle \\
 \rangle. \end{split} \]
  Subtracting the square of (\ref{eq:expecN}), and applying again Lemma \ref{l:a}, Lemma \ref{lm:TNT} and the assumption (\ref{eq:ass1-N}), we estimate the variance of the number of particles in the state $W(\sqrt{N} \varphi) T(k_0) \psi$ by
  \[ \left\langle W(\sqrt{N} \varphi) T(k_0) \psi, (\cN - \langle \cN \rangle)^2 W(\sqrt{N} \varphi) T(k_0) \psi \right\rangle \leq C N \]
-for an appropriate constant $C >0$. Here $\langle \cN \rangle$ is a shorthand notation for (\ref{eq:expecN}). We conclude that
+for an appropriate constant $C >0$. Here $\langle \cN \rangle$ is a shorthand notation for the l.h.s.\ of (\ref{eq:expecN}). We conclude that
 \[  \left\langle W(\sqrt{N} \varphi) T(k_0) \psi,  {\bf 1} \left(| \cN -
 \langle \cN \rangle | \geq K \sqrt{N} \right)  W(\sqrt{N} \varphi) T(k_0)
 \psi \right\rangle \leq C K^{-2}. \]
