@@ -1116,7 +1116,7 @@ Let $k_t \in L^2(\R^3 \times \R^3)$ be as defined in (\ref{eq:kt}). Then there e
     T^* (k_t) \, \N^2 \, T (k_t) & \le C (\N+1)^2 \label{eq:TN2T} % \\
 %    \phi(f) \K \phi(f) & \le C_1 \big( \| f \|_{L^2}^2 \K (\N+1) + \| \nabla f \|_{L^2}^2 (\N + 1) \big). \label{fKf} \tag{iv}
   \end{align}
-for all $t \in \bR$.
+for all $t \in \bR$. Furthermore, the same inequalities hold with $T$ replaced by $T^*$.
 \end{lemma}
 
 %\begin{rem}
@@ -1173,7 +1173,7 @@ The bounds from Lemma \ref{l:bt} imply \eqref{eq:TN2T}.
 \end{proof}
 
 \begin{proof}[Proof of Proposition \ref{prop:apri}]
-{F}rom Lemma \ref{lm:TNT} and Cauchy-Schwarz, we find
+  From Lemma \ref{lm:TNT} (with $T$ replaced by $T^*$) and Cauchy-Schwarz, we find
 \begin{equation}\label{ep4-0}   \langle \psi , \cU^* (t;0) \cN^2 \cU (t;0) \psi \rangle \leq C \left( \langle \psi , \cU^* (t;0) T^* (k_t) \cN^2 T (k_t) \cU (t;0) \psi \rangle +\langle \psi,\psi\rangle\right). \end{equation}
 We now show how to bound the r.h.s.\ of the last equation. Using the definition of the fluctuation dynamics $\cU (t;0) = T^* (k_t) W^* (\sqrt{N} \varphi_t^{(N)}) e^{-i\cH_N t} W(\sqrt{N} \varphi) T(k_0)$, we find 
 \begin{equation}\label{ep4}
@@ -1185,8 +1185,8 @@ We now show how to bound the r.h.s.\ of the last equation. Using the definition 
       &+  N  \langle \psi,\cU^* (t;0) T^* (k_t) \cN T (k_t) \cU (t;0) \psi \rangle 
       \end{split} \end{equation}
 where we used the notation $\phi (f) = a( f) + a^* (f)$, and the property (\ref{eq:W3}) to show that 
-\[ W^* (\sqrt{N} \varphi_t^{(N)}) \cN W (\sqrt{N} \varphi_t^{(N)}) = \cN - \sqrt{N} \phi (\varphi_t^{(N)})  +N.  \]      
-In the first term on the r.h.s.\ of (\ref{ep4}), we use now the fact that $\cN$ commutes with $\cH_N$. In the second term, on the other hand, we move the factor $\phi (\varphi_t^{(N)})$ back to the left of the Weyl operator $W (\sqrt{N} \varphi_t^{(N)})$, using that \[ W^* (\sqrt{N} \varphi_t^{(N)}) \phi (\varphi_t^{(N)}) = \left(\phi (\varphi_t^{(N)}) + 2 \sqrt{N} \right) \, W^* (\sqrt{N} \varphi_t^{(N)})\,. \] We conclude that
+\[ W (\sqrt{N} \varphi_t^{(N)}) \cN W^* (\sqrt{N} \varphi_t^{(N)}) = \cN - \sqrt{N} \phi (\varphi_t^{(N)})  +N.  \]      
+(We will also use this formula with $\varphi_t^{(N)}$ replaced by $-\varphi$. Note that $W(-\varphi)=W^*(\varphi)$ and $\phi(-\varphi)=-\phi(\varphi)$.) In the first term on the r.h.s.\ of (\ref{ep4}), we use now the fact that $\cN$ commutes with $\cH_N$. In the second term, on the other hand, we move the factor $\phi (\varphi_t^{(N)})$ back to the left of the Weyl operator $W (\sqrt{N} \varphi_t^{(N)})$, using that \[ W^* (\sqrt{N} \varphi_t^{(N)}) \phi (\varphi_t^{(N)}) = \left(\phi (\varphi_t^{(N)}) + 2 \sqrt{N} \right) \, W^* (\sqrt{N} \varphi_t^{(N)})\,. \] We conclude that
 \begin{equation}\begin{split}
 \langle \psi , &\cU^* (t;0) T^* (k_t) \cN^2 T(k_t) \cU (t;0) \psi \rangle \\ = \; & \langle \cN \, T (k_t) \cU (t;0) \psi,  W^* (\sqrt{N} \varphi_t^{(N)}) \,  e^{-i \cH_N t} W (\sqrt{N} \varphi) (\cN + \sqrt{N} \phi (\varphi) + N) \, T (k_0) \psi \rangle \\ &-  \sqrt{N} \, \langle \cN \, T (k_t) \cU (t;0) \psi,  \left(\phi (\varphi_t^{(N)}) + 2\sqrt{N} \right)  W^* (\sqrt{N} \varphi_t^{(N)}) \, e^{-i \cH_N t}  W (\sqrt{N} \varphi) T (k_0) \psi \rangle \\
  &+ N  \langle \psi, \cU^* (t;0)  T^* (k_t) \cN T (k_t) \cU (t;0) \psi \rangle \\
