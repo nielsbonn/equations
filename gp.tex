@@ -6,7 +6,7 @@
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{wasysym} %needed for \apprle
 %\usepackage{marginnote}			% just to place the done-notes on the margin, can be removed when finished
-\usepackage[color]{showkeys}
+%\usepackage[color]{showkeys}
 %\usepackage{scrtime}
 %\usepackage{gitinfo}
 %\usepackage{nccmath}
@@ -526,7 +526,7 @@ Since correlations are, in first order, an effect of two-body interactions, we a
 \begin{equation}\label{eq:tk0} T(k) = \exp\left(\frac{1}{2} \int dx dy \left(k(x,y) a_x^* a_y^* - \overline{k} (x,y) a_x a_y \right)\right) \end{equation}
 for an appropriate $k \in L^2 (\bR^3 \times \bR^3)$, which will be interpreted as the integral kernel of a Hilbert-Schmidt operator (again denoted by $k$) on $L^2 (\bR^3)$. The operator $T(k)$ acts on creation and annihilation operators as a Bogoliubov transformation (see Section~\ref{sec:bt} for precise definitions and basic properties):
 \begin{equation}\label{eq:TT} \begin{split} T^* (k) a (f) T (k) &= a(\text{ch} (k) (f)) + a^* (\text{sh} (k) (\overline{f})) \\
-T^*(k) a^* (f) T (k) &= a^* (\text{ch} (k) (f)) + a^* (\text{sh} (\overline{k}) (\overline{f}))
+T^*(k) a^* (f) T (k) &= a^* (\text{ch} (k) (f)) + a (\text{sh} (k) (\overline{f}))
 \end{split} \end{equation}
 where $\text{ch} (k)$ and $\text{sh} (k)$ are the bounded operators on $L^2 (\bR^3)$ defined by the absolutely convergent series
 \[ \begin{split} 
@@ -552,7 +552,7 @@ first line on the r.h.s. of (\ref{eq:Ln}), it will still contain the large contr
 normal order will then generate linear terms, canceling (\ref{eq:lin-N}). Other important cancellations will emerge between the quadratic and the quartic part of $W^* (\sqrt{N} \varphi_t^{(N)}) \cH_N W(\sqrt{N} \varphi_t^{(N)})$ (again, after conjugation with the Bogoliubov transformation $T(k_t)$; see Section \ref{sec:gen-fd} for the details. The control of the growth of the number of particles w.r.t. (\ref{eq:cU-0}) will imply convergence of the one-particle reduced density matrix associated with the fully evolved Fock state $e^{-i \cH_N t} W(\sqrt{N} \varphi_t) T(k_t) \psi$ towards the orthogonal projection onto the solution of the Gross-Pitaevskii equation (\ref{eq:GP-0}) as $N \to \infty$, with a bound on the rate of the convergence.
 
 
-Notice that operators of the form (\ref{eq:tk0}) have been used in physics to describe the evolution of Bose gases; see \cite{W1,W2}. More recently this idea has been introduced in the mathematical literature in \cite{GMM2010,GMM2011} to obtain norm-approximations to the many body Fock space dynamics in the mean field regime. The same result has been shown in \cite{XChen0} for system interacting through a three body potential. In \cite{LNS}, Bogoliubov transformation play an important role to get a norm-approximation for the dynamics of $N$-particle systems (adapting techniques developed in the time-independent setting in \cite{LNSS}). A slightly different point of view is presented in \cite{BKS,BSS}, where fluctuations around mean field Hartree dynamics are described by time-dependent Bogoliubov transformations. Similarly as explained above, also in \cite{GMM2010,GMM2011,XChen0} one can think that the effect of the Bogoliubov transformation consists in canceling certain terms from the generator of the fluctuation dynamics. However, it is important to stress the difference with respect to our work. In  the mean field regime studied in \cite{GMM2010,GMM2011,XChen0,LNS,BKS,BSS}, the effect of the correlations is of lower order; the Bogoliubov transform is only need to get second order corrections. In the Gross-Pitaevskii regime that we are considering, on the other hand, because of the singularity of the interaction the correlations are a leading order effect.
+Notice that operators of the form (\ref{eq:tk0}) have been used in physics to describe the evolution of Bose gases; see \cite{W1,W2}. More recently this idea has been introduced in the mathematical literature in \cite{GMM2010,GMM2011} to obtain norm-approximations to the many body Fock space dynamics in the mean field regime. The same result has been shown in \cite{XChen0} for system interacting through a three body potential. In \cite{LNS}, Bogoliubov transformation play an important role to get a norm-approximation for the dynamics of $N$-particle systems (adapting techniques developed in the time-independent setting in \cite{LNSS}). A slightly different point of view is presented in \cite{BKS,BSS}, where fluctuations around mean field Hartree dynamics are described by time-dependent Bogoliubov transformations. Similarly as explained above, also in \cite{GMM2010,GMM2011,XChen0} one can think that the effect of the Bogoliubov transformation consists in canceling certain terms from the generator of the fluctuation dynamics. However, it is important to stress the difference with respect to our work. In  the mean field regime studied in \cite{GMM2010,GMM2011,XChen0,LNS,BKS,BSS}, the effect of the correlations is of lower order; the Bogoliubov transformation is only needed to get second order corrections. In the Gross-Pitaevskii regime that we are considering, on the other hand, because of the singularity of the interaction the correlations are a leading order effect.
 
 \bigskip
 
@@ -994,7 +994,7 @@ In the next lemma, we collect several bounds for the kernel $k_t$ which will be 
 \begin{lem} \label{l:kernels}
 Let $\varphi_t^{(N)} \in H^1(\R^3)$ be the solution of (\ref{eq:mod-GP}) with initial data $\varphi \in H^1 (\bR^3)$. Let $w(Nx) = 1 - f(Nx)$, where $f$ solves the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt})\footnote{In fact, the lemma holds for any kernel $k(x,y) = -N w(N(x-y)) \varphi(x) \varphi(y)$ with $\varphi \in H^1(\Rbb^3)$.}. 
 \begin{enumerate}
-\item \label{k} There exists a constant $C$, depending only on $\| \varphi^{(N)}_t \|_{H^1}$\footnote{By Proposition \ref{t:pdes} this norm is uniformly bounded in $t$.} such that
+\item \label{k} There exists a constant $C$, depending only on\footnote{By Proposition \ref{t:pdes} this norm is uniformly bounded in $t$.} $\| \varphi^{(N)}_t \|_{H^1}$ such that
 \[ \begin{split}  \| k_t \|_{2} &\le C , \\ \| \nabla_1 k_t \|_2 , \| \nabla_2 k_t
         \|_{2} &\le C \sqrt{N}, \\ \| \nabla_1 (k_t \overline{k}_t) \|_2 ,  \| \nabla_2 (k_t
         \overline{k}_t) \|_{2} &\le C .   \end{split}    \]
@@ -1631,6 +1631,7 @@ To prove (\ref{eq:lm2b-1}), we notice that for any $\alpha > 0$
 \int dx dy &N^3 V(N (x-y)) |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} (y)|  \| a^\sharp (j_{1,x}) \psi \| \, \| a^\sharp (j_{2,y}) \psi \| \\ \leq \; & \alpha \int dx dy N^3 V(N (x-y)) |\varphi^{(N)}_t (x)|^2 \| j_{2,y} \|_2^2 \| (\cN+1)^{1/2} \psi \|^2 \\ &+ \alpha^{-1}
  \int dx dy N^3 V(N (x-y)) |\varphi^{(N)}_t (y)|^2 \| j_{1,x} \|_2^2 \| (\cN+1)^{1/2} \psi \|^2 \\
  \leq \; & \| N^3 V(N.) * |\varphi_t^{(N)}|^2 \|_\infty  \left( \alpha \| j_{1} \|^2_2 + \alpha^{-1}
+
  \| j_2 \|_{2}^2 \right) \, \| (\cN+1)^{1/2} \psi \|^2.
  \end{split} \]
  Using $\| N^3 V(N.) * |\varphi_t^{(N)}|^2 \|_\infty \leq C \| \varphi_t^{(N)} \|_{H^2}^2$, and optimizing over $\alpha >0$, we obtain (\ref{eq:lm2b-1}). Analogously, (\ref{eq:lm2b-2}) follows from
