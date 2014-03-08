@@ -994,7 +994,7 @@ In the next lemma, we collect several bounds for the kernel $k_t$ which will be 
 \begin{lem} \label{l:kernels}
 Let $\varphi_t^{(N)} \in H^1(\R^3)$ be the solution of (\ref{eq:mod-GP}) with initial data $\varphi \in H^1 (\bR^3)$. Let $w(Nx) = 1 - f(Nx)$, where $f$ solves the zero-energy scattering equation (\ref{eq:0en-0}). Let the kernel $k_t$ be defined as in (\ref{eq:kt})\footnote{In fact, the lemma holds for any kernel $k(x,y) = -N w(N(x-y)) \varphi(x) \varphi(y)$ with $\varphi \in H^1(\Rbb^3)$.}. 
 \begin{enumerate}
-\item \label{k} There exists a constant $C$, depending only on\footnote{By Proposition \ref{t:pdes} this norm is uniformly bounded in $t$.} $\| \varphi^{(N)}_t \|_{H^1}$ such that
+\item \label{k} There exists a constant $C$, depending only on the norm\footnote{By Proposition \ref{t:pdes} this norm is uniformly bounded in $t$.} $\| \varphi^{(N)}_t \|_{H^1}$ such that
 \[ \begin{split}  \| k_t \|_{2} &\le C , \\ \| \nabla_1 k_t \|_2 , \| \nabla_2 k_t
         \|_{2} &\le C \sqrt{N}, \\ \| \nabla_1 (k_t \overline{k}_t) \|_2 ,  \| \nabla_2 (k_t
         \overline{k}_t) \|_{2} &\le C .   \end{split}    \]
@@ -1077,8 +1077,7 @@ for a constant $D>0$ (independent of $N$). Let $\varphi \in H^4 (\bR^3)$, and le
 \[ \langle \psi , \cU^* (t;0) \cN \cU (t;0) \psi \rangle \leq C \exp (c_1 \exp (c_2 |t|)). \] 
 \end{thm}
 
-The strategy to prove Theorem \ref{thm:N} consists in applying Gronwall's
-inequality. The derivative of the expectation of $\cN$ is given by the
+The strategy of the proof of Theorem \ref{thm:N}, which will be given at the end of this section, consists in applying Gronwall's inequality. The derivative of the expectation of $\cN$ is given by the
 expectation of the commutator $i[\cN , \cL_N (t)]$, where $\cL_N(t)$ is the
 generator \eqref{eq:cLN} of the fluctuation dynamics. By (\ref{eq:thmL-2}),
 this commutator  is bounded in terms of the energy, of $(\cN+ 1)$, and of
@@ -1630,9 +1629,7 @@ To prove (\ref{eq:lm2b-1}), we notice that for any $\alpha > 0$
 \[ \begin{split} 
 \int dx dy &N^3 V(N (x-y)) |\varphi_t^{(N)} (x)| |\varphi_t^{(N)} (y)|  \| a^\sharp (j_{1,x}) \psi \| \, \| a^\sharp (j_{2,y}) \psi \| \\ \leq \; & \alpha \int dx dy N^3 V(N (x-y)) |\varphi^{(N)}_t (x)|^2 \| j_{2,y} \|_2^2 \| (\cN+1)^{1/2} \psi \|^2 \\ &+ \alpha^{-1}
  \int dx dy N^3 V(N (x-y)) |\varphi^{(N)}_t (y)|^2 \| j_{1,x} \|_2^2 \| (\cN+1)^{1/2} \psi \|^2 \\
- \leq \; & \| N^3 V(N.) * |\varphi_t^{(N)}|^2 \|_\infty  \left( \alpha \| j_{1} \|^2_2 + \alpha^{-1}
-
- \| j_2 \|_{2}^2 \right) \, \| (\cN+1)^{1/2} \psi \|^2.
+ \leq \; & \| N^3 V(N.) * |\varphi_t^{(N)}|^2 \|_\infty  \left( \alpha \| j_{1} \|^2_2 + \alpha^{-1} \| j_2 \|_{2}^2 \right) \, \| (\cN+1)^{1/2} \psi \|^2.
  \end{split} \]
  Using $\| N^3 V(N.) * |\varphi_t^{(N)}|^2 \|_\infty \leq C \| \varphi_t^{(N)} \|_{H^2}^2$, and optimizing over $\alpha >0$, we obtain (\ref{eq:lm2b-1}). Analogously, (\ref{eq:lm2b-2}) follows from
 \[ \begin{split} 
